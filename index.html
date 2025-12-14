@@ -18,7 +18,6 @@
             color: #fff;
         }
 
-        /* 海南风景背景 */
         .hero-bg {
             position: fixed;
             top: 0;
@@ -56,7 +55,6 @@
             100% { transform: scale(1.15); }
         }
 
-        /* 导航栏 */
         nav {
             position: fixed;
             top: 0;
@@ -90,15 +88,9 @@
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid transparent;
-            background: linear-gradient(135deg, #667eea, #764ba2, #f093fb) border-box;
-            animation: logoRotate 20s linear infinite, logoGlow 3s ease-in-out infinite;
+            border: 3px solid rgba(138, 43, 226, 0.5);
+            animation: logoGlow 3s ease-in-out infinite;
             box-shadow: 0 0 30px rgba(138, 43, 226, 0.6);
-        }
-
-        @keyframes logoRotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
         }
 
         @keyframes logoGlow {
@@ -137,7 +129,7 @@
 
         .nav-menu {
             display: flex;
-            gap: 30px;
+            gap: 25px;
             list-style: none;
             align-items: center;
             flex-wrap: wrap;
@@ -191,7 +183,6 @@
             box-shadow: 0 6px 25px rgba(102, 126, 234, 0.6);
         }
 
-        /* 其余样式保持不变... */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -489,15 +480,15 @@
             font-size: 18px;
         }
 
-        .gallery-grid {
+        .people-grid, .scenery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             max-width: 1400px;
             margin: 0 auto;
         }
 
-        .gallery-card {
+        .people-card, .scenery-card {
             background: rgba(30, 41, 59, 0.5);
             backdrop-filter: blur(15px);
             border-radius: 20px;
@@ -507,30 +498,37 @@
             cursor: pointer;
         }
 
-        .gallery-card:hover {
+        .people-card:hover, .scenery-card:hover {
             transform: translateY(-10px);
             border-color: #4ade80;
             box-shadow: 0 20px 40px rgba(74, 222, 128, 0.3);
         }
 
-        .gallery-image {
+        .people-image, .scenery-image {
             width: 100%;
-            height: 250px;
+            height: 200px;
             object-fit: cover;
         }
 
-        .gallery-content {
+        .people-content, .scenery-content {
             padding: 25px;
         }
 
-        .gallery-card h3 {
+        .people-card h3, .scenery-card h3 {
             font-size: 22px;
             color: #4ade80;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             font-weight: 700;
         }
 
-        .gallery-card p {
+        .people-card .subtitle {
+            font-size: 14px;
+            color: #94a3b8;
+            margin-bottom: 12px;
+            font-style: italic;
+        }
+
+        .people-card p, .scenery-card p {
             color: #cbd5e1;
             line-height: 1.8;
             font-size: 15px;
@@ -701,7 +699,8 @@
             .services-grid,
             .contact-grid,
             .payment-grid,
-            .gallery-grid {
+            .people-grid,
+            .scenery-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -713,7 +712,7 @@
     <nav>
         <div class="logo-section">
             <div class="logo-container">
-                <img src="https://i.imgur.com/9KQfZqP.png" alt="Solana Logo" class="logo" onerror="this.style.display='none'">
+                <img src="logo.png" alt="Solana Logo" class="logo">
             </div>
             <div class="brand-text">
                 <div class="brand-name-zh" data-zh="海南索拉纳" data-en="Hainan Solana">海南索拉纳</div>
@@ -725,7 +724,7 @@
             <li><a href="#about" data-zh="关于" data-en="About">关于</a></li>
             <li><a href="#services" data-zh="服务" data-en="Services">服务</a></li>
             <li><a href="#people" data-zh="海南人物" data-en="People">海南人物</a></li>
-            <li><a href="#scenery" data-zh="海南风景" data-en="Scenery">海南风景</a></li>
+            <li><a href="#scenery" data-zh="风景名胜" data-en="Scenery">风景名胜</a></li>
             <li><a href="#payment" data-zh="收款" data-en="Payment">收款</a></li>
             <li><a href="#contact" data-zh="联系" data-en="Contact">联系</a></li>
         </ul>
@@ -881,54 +880,192 @@
     </section>
 
     <section id="people" class="section section-alt">
-        <h2 class="section-title" data-zh="海南人物" data-en="People">海南人物</h2>
-        <div class="gallery-grid">
-            <div class="gallery-card">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800" alt="企业家" class="gallery-image">
-                <div class="gallery-content">
-                    <h3 data-zh="创新企业家" data-en="Entrepreneurs">创新企业家</h3>
-                    <p>海南自贸港吸引了众多优秀企业家，在这片热土上创新创业</p>
+        <h2 class="section-title" data-zh="海南知名人物" data-en="Famous People">海南知名人物</h2>
+        <div class="people-grid">
+            <div class="people-card">
+                <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=400" alt="海瑞" class="people-image">
+                <div class="people-content">
+                    <h3>海瑞</h3>
+                    <div class="subtitle">明代著名清官</div>
+                    <p>海南琼山人，明代名臣，以刚正不阿、清廉自守著称，被誉为"海青天"。</p>
                 </div>
             </div>
-            <div class="gallery-card">
-                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800" alt="专业人才" class="gallery-image">
-                <div class="gallery-content">
-                    <h3 data-zh="专业服务人才" data-en="Professionals">专业服务人才</h3>
-                    <p>汇聚了财税、法律、金融等领域的专业人才</p>
+            <div class="people-card">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400" alt="丘濬" class="people-image">
+                <div class="people-content">
+                    <h3>丘濬</h3>
+                    <div class="subtitle">明代政治家、理学家</div>
+                    <p>海南琼山人，官至礼部尚书、文渊阁大学士，著有《大学衍义补》等。</p>
                 </div>
             </div>
-            <div class="gallery-card">
-                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800" alt="国际人才" class="gallery-image">
-                <div class="gallery-content">
-                    <h3 data-zh="国际化人才" data-en="International">国际化人才</h3>
-                    <p>吸引了大量国际人才，促进文化交流与商业合作</p>
+            <div class="people-card">
+                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400" alt="冼夫人" class="people-image">
+                <div class="people-content">
+                    <h3>冼夫人</h3>
+                    <div class="subtitle">古代巾帼英雄</div>
+                    <p>俚族首领，为维护国家统一和民族团结做出重要贡献，被尊为"岭南圣母"。</p>
+                </div>
+            </div>
+            <div class="people-card">
+                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400" alt="苏东坡" class="people-image">
+                <div class="people-content">
+                    <h3>苏东坡</h3>
+                    <div class="subtitle">北宋文学家（谪居海南）</div>
+                    <p>被贬海南时在此生活三年，对海南文化教育发展影响深远，留下众多诗篇。</p>
+                </div>
+            </div>
+            <div class="people-card">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400" alt="白玉蟾" class="people-image">
+                <div class="people-content">
+                    <h3>白玉蟾</h3>
+                    <div class="subtitle">南宋道教南宗五祖</div>
+                    <p>海南琼山人，道教南宗创始人之一，精通诗词书画，被尊为"紫清真人"。</p>
+                </div>
+            </div>
+            <div class="people-card">
+                <img src="https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=400" alt="王佐" class="people-image">
+                <div class="people-content">
+                    <h3>王佐</h3>
+                    <div class="subtitle">明代诗人</div>
+                    <p>海南临高人，明代著名诗人，与丘濬、海瑞并称"海南三贤"。</p>
+                </div>
+            </div>
+            <div class="people-card">
+                <img src="https://images.unsplash.com/photo-1463453091185-61582044d556?w=400" alt="张岳崧" class="people-image">
+                <div class="people-content">
+                    <h3>张岳崧</h3>
+                    <div class="subtitle">清代海南唯一探花</div>
+                    <p>海南定安人，清代探花，官至湖北布政使，学识渊博，诗文俱佳。</p>
+                </div>
+            </div>
+            <div class="people-card">
+                <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=400" alt="宋庆龄" class="people-image">
+                <div class="people-content">
+                    <h3>宋庆龄</h3>
+                    <div class="subtitle">伟大的爱国主义者（祖籍海南）</div>
+                    <p>祖籍海南文昌，国家名誉主席，为中国革命和建设事业做出杰出贡献。</p>
+                </div>
+            </div>
+            <div class="people-card">
+                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400" alt="宋氏三姐妹" class="people-image">
+                <div class="people-content">
+                    <h3>宋氏三姐妹</h3>
+                    <div class="subtitle">中国近代史上著名姐妹（祖籍海南）</div>
+                    <p>祖籍海南文昌，宋霭龄、宋庆龄、宋美龄在中国近代史上影响深远。</p>
+                </div>
+            </div>
+            <div class="people-card">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400" alt="张云逸" class="people-image">
+                <div class="people-content">
+                    <h3>张云逸</h3>
+                    <div class="subtitle">开国大将</div>
+                    <p>海南文昌人，中国人民解放军开国大将，为中国革命事业建立卓越功勋。</p>
+                </div>
+            </div>
+            <div class="people-card">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400" alt="符克" class="people-image">
+                <div class="people-content">
+                    <h3>符克</h3>
+                    <div class="subtitle">革命烈士</div>
+                    <p>海南文昌人，琼崖革命根据地创建人之一，为海南解放事业献出生命。</p>
+                </div>
+            </div>
+            <div class="people-card">
+                <img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=400" alt="云光英" class="people-image">
+                <div class="people-content">
+                    <h3>云光英</h3>
+                    <div class="subtitle">当代企业家</div>
+                    <p>海南企业家代表，致力于海南经济建设和社会发展事业。</p>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="scenery" class="section">
-        <h2 class="section-title" data-zh="海南风景" data-en="Scenery">海南风景</h2>
-        <div class="gallery-grid">
-            <div class="gallery-card">
-                <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800" alt="海滩" class="gallery-image">
-                <div class="gallery-content">
-                    <h3 data-zh="碧海蓝天" data-en="Blue Sea">碧海蓝天</h3>
-                    <p>海南拥有绵延的海岸线和清澈的海水</p>
+        <h2 class="section-title" data-zh="海南风景名胜" data-en="Scenery">海南风景名胜</h2>
+        <div class="scenery-grid">
+            <div class="scenery-card">
+                <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600" alt="三亚海滩" class="scenery-image">
+                <div class="scenery-content">
+                    <h3>三亚亚龙湾</h3>
+                    <p>被誉为"天下第一湾"，拥有7公里长的银白色海滩，海水清澈见底，是世界级度假胜地。</p>
                 </div>
             </div>
-            <div class="gallery-card">
-                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800" alt="雨林" class="gallery-image">
-                <div class="gallery-content">
-                    <h3 data-zh="热带雨林" data-en="Rainforest">热带雨林</h3>
-                    <p>丰富的热带雨林资源，生态环境优美</p>
+            <div class="scenery-card">
+                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600" alt="热带雨林" class="scenery-image">
+                <div class="scenery-content">
+                    <h3>呀诺达热带雨林</h3>
+                    <p>中国唯一的热带雨林，拥有丰富的动植物资源，被称为"天然氧吧"和"绿色基因库"。</p>
                 </div>
             </div>
-            <div class="gallery-card">
-                <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=800" alt="城市" class="gallery-image">
-                <div class="gallery-content">
-                    <h3 data-zh="现代化都市" data-en="Modern City">现代化都市</h3>
-                    <p>海口、三亚等城市快速发展，基础设施完善</p>
+            <div class="scenery-card">
+                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600" alt="天涯海角" class="scenery-image">
+                <div class="scenery-content">
+                    <h3>天涯海角</h3>
+                    <p>海南最著名的景点之一，巨石上刻有"天涯"和"海角"，象征着浪漫的爱情和永恒的友谊。</p>
+                </div>
+            </div>
+            <div class="scenery-card">
+                <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600" alt="蜈支洲岛" class="scenery-image">
+                <div class="scenery-content">
+                    <h3>蜈支洲岛</h3>
+                    <p>被誉为"中国的马尔代夫"，海水能见度高达27米，是潜水和海上运动的天堂。</p>
+                </div>
+            </div>
+            <div class="scenery-card">
+                <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=600" alt="海口骑楼老街" class="scenery-image">
+                <div class="scenery-content">
+                    <h3>海口骑楼老街</h3>
+                    <p>中国历史文化名街，融合了中西建筑风格，展现了海南独特的南洋文化和历史风貌。</p>
+                </div>
+            </div>
+            <div class="scenery-card">
+                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600" alt="五指山" class="scenery-image">
+                <div class="scenery-content">
+                    <h3>五指山</h3>
+                    <p>海南第一高山，因山峰形似五指而得名，是黎族文化的发源地，自然风光壮丽。</p>
+                </div>
+            </div>
+            <div class="scenery-card">
+                <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600" alt="大东海" class="scenery-image">
+                <div class="scenery-content">
+                    <h3>三亚大东海</h3>
+                    <p>三亚著名的海滨浴场，水清沙细，全年适合游泳，是三亚最早开发的海滨度假区。</p>
+                </div>
+            </div>
+            <div class="scenery-card">
+                <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600" alt="南山寺" class="scenery-image">
+                <div class="scenery-content">
+                    <h3>南山文化旅游区</h3>
+                    <p>拥有108米高的海上观音像，是佛教文化圣地，景区内山海相依，风光旖旎。</p>
+                </div>
+            </div>
+            <div class="scenery-card">
+                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600" alt="分界洲岛" class="scenery-image">
+                <div class="scenery-content">
+                    <h3>分界洲岛</h3>
+                    <p>海南南北气候分界线，海洋生态丰富，是观赏海洋生物和体验海岛风情的绝佳之地。</p>
+                </div>
+            </div>
+            <div class="scenery-card">
+                <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=600" alt="博鳌" class="scenery-image">
+                <div class="scenery-content">
+                    <h3>博鳌亚洲论坛</h3>
+                    <p>博鳌亚洲论坛永久会址，江河湖海四水交汇，自然风光独特，是国际会议重要场所。</p>
+                </div>
+            </div>
+            <div class="scenery-card">
+                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600" alt="尖峰岭" class="scenery-image">
+                <div class="scenery-content">
+                    <h3>尖峰岭国家森林公园</h3>
+                    <p>中国现存面积最大、保存最完好的热带原始雨林，生物多样性极其丰富。</p>
+                </div>
+            </div>
+            <div class="scenery-card">
+                <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600" alt="石梅湾" class="scenery-image">
+                <div class="scenery-content">
+                    <h3>石梅湾</h3>
+                    <p>被誉为"海南最美海湾"，青山绿水碧海，沙滩洁白细腻，是度假休闲的理想之地。</p>
                 </div>
             </div>
         </div>
@@ -969,7 +1106,7 @@
             <div class="contact-card">
                 <span class="contact-icon">📍</span>
                 <h3 data-zh="地址" data-en="Address">地址</h3>
-                <p data-zh="海南省海口市龙华区" data-en="Longhua, Haikou">海南省海口市龙华区</p>
+                <p data-zh="海南省海口市美兰区" data-en="Meilan, Haikou">海南省海口市美兰区</p>
             </div>
             <div class="contact-card">
                 <span class="contact-icon">🌐</span>
@@ -981,9 +1118,9 @@
 
     <footer>
         <div class="footer-content">
-            <p data-zh="© 2024 海南索拉纳商务咨询中心" data-en="© 2024 Hainan Solana">© 2024 海南索拉纳商务咨询中心</p>
+            <p data-zh="© 2025 海南索拉纳商务咨询中心" data-en="© 2025 Hainan Solana">© 2025 海南索拉纳商务咨询中心</p>
             <div class="footer-divider"></div>
-            <p data-zh="营业执照：91460100MACP01PC0Q | 注册地址：海南省海口市龙华区" data-en="License: 91460100MACP01PC0Q">营业执照：91460100MACP01PC0Q | 注册地址：海南省海口市龙华区</p>
+            <p data-zh="营业执照：91460100MACP01PC0Q | 注册地址：海南省海口市美兰区" data-en="License: 91460100MACP01PC0Q">营业执照：91460100MACP01PC0Q | 注册地址：海南省海口市美兰区</p>
             <p data-zh="专业的海南自贸港商务服务平台" data-en="Professional FTP service">专业的海南自贸港商务服务平台</p>
         </div>
     </footer>
@@ -1015,7 +1152,7 @@
             });
         }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-        document.querySelectorAll('.service-card, .contact-card, .payment-card, .gallery-card').forEach(card => {
+        document.querySelectorAll('.service-card, .contact-card, .payment-card, .people-card, .scenery-card').forEach(card => {
             card.style.opacity = '0';
             card.style.transform = 'translateY(30px)';
             card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
