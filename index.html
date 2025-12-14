@@ -1,92 +1,89 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>海南索拉纳商务咨询中心 | Hainan Solana Advisory</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title id="title">海南索拉纳商务咨询中心</title>
+<meta name="description" content="专业提供海南自贸港公司注册、税务筹划、政策咨询等一站式服务">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;overflow-x:hidden;background:#000;color:#fff}
-.hero-bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1}
-.hero-bg::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,rgba(10,14,39,.92),rgba(30,15,50,.88));z-index:1}
-.hero-bg::after{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1920') center/cover fixed;animation:bgZoom 25s ease-in-out infinite alternate;z-index:0}
-@keyframes bgZoom{0%{transform:scale(1)}100%{transform:scale(1.15)}}
-nav{position:fixed;top:0;left:0;width:100%;padding:12px 40px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(180deg,rgba(10,14,39,.95) 0%,rgba(10,14,39,.7) 100%);backdrop-filter:blur(20px);z-index:1000;border-bottom:1px solid rgba(138,43,226,.3);box-shadow:0 4px 30px rgba(0,0,0,.3)}
-.logo-section{display:flex;align-items:center;gap:15px}
-.logo-container{width:100px;height:100px}
-.logo{width:100%;height:100%;border-radius:50%;object-fit:cover;border:3px solid rgba(138,43,226,.5);animation:logoGlow 3s ease-in-out infinite;box-shadow:0 0 30px rgba(138,43,226,.6)}
-@keyframes logoGlow{0%,100%{box-shadow:0 0 30px rgba(138,43,226,.6)}50%{box-shadow:0 0 50px rgba(138,43,226,.9)}}
-.brand-text{display:flex;flex-direction:column;gap:3px}
-.brand-name-zh{font-size:24px;font-weight:bold;background:linear-gradient(135deg,#667eea 0%,#764ba2 50%,#f093fb 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:2px}
-.brand-name-en{font-size:13px;color:#4ade80;font-weight:500;letter-spacing:1px;text-transform:uppercase}
-.nav-menu{display:flex;gap:18px;list-style:none;align-items:center;flex-wrap:wrap}
-.nav-menu a{color:#e2e8f0;text-decoration:none;font-size:14px;font-weight:500;transition:all .3s;position:relative;padding:6px 0;white-space:nowrap}
-.nav-menu a:hover{color:#4ade80}
-.lang-switch{padding:8px 20px;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);border:none;border-radius:25px;color:white;cursor:pointer;font-size:13px;font-weight:600;transition:all .3s}
-.lang-switch:hover{transform:translateY(-3px);box-shadow:0 6px 25px rgba(102,126,234,.6)}
-.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:130px 40px 40px}
-.hero-content{max-width:1200px;text-align:center}
-.hero-title{font-size:64px;font-weight:800;margin-bottom:20px;background:linear-gradient(135deg,#667eea 0%,#764ba2 30%,#f093fb 60%,#4ade80 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:titleSlideDown 1s ease-out;line-height:1.2}
-@keyframes titleSlideDown{from{opacity:0;transform:translateY(-60px)}to{opacity:1;transform:translateY(0)}}
-.hero-subtitle{font-size:32px;color:#4ade80;font-weight:600;margin-bottom:25px;animation:subtitleSlideUp 1s ease-out .3s both;letter-spacing:2px}
-.hero-description{font-size:20px;color:#cbd5e1;margin-bottom:40px;line-height:1.8;animation:fadeIn 1.5s ease-out .6s both;max-width:800px;margin-left:auto;margin-right:auto}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
-.cta-buttons{display:flex;gap:20px;justify-content:center;animation:fadeIn 2s ease-out .9s both;flex-wrap:wrap;margin-bottom:60px}
-.btn{padding:16px 45px;font-size:17px;font-weight:600;border:none;border-radius:35px;cursor:pointer;transition:all .4s;text-decoration:none;display:inline-block}
-.btn-primary{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:white;box-shadow:0 8px 25px rgba(102,126,234,.4)}
-.btn-primary:hover{transform:translateY(-5px);box-shadow:0 15px 40px rgba(102,126,234,.6)}
-.btn-secondary{background:transparent;color:#4ade80;border:3px solid #4ade80}
-.btn-secondary:hover{background:#4ade80;color:#0a0e27;transform:translateY(-5px)}
-.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:25px;animation:fadeIn 2s ease-out 1.2s both}
-.feature-item{background:rgba(30,41,59,.4);backdrop-filter:blur(10px);padding:25px;border-radius:18px;border:1px solid rgba(102,126,234,.2);transition:all .3s;text-align:center}
-.feature-item:hover{transform:translateY(-8px);border-color:#4ade80;box-shadow:0 15px 30px rgba(74,222,128,.3)}
-.feature-icon{font-size:42px;margin-bottom:12px;display:block}
-.feature-title{font-size:18px;font-weight:600;color:#4ade80;margin-bottom:8px}
-.feature-text{font-size:13px;color:#94a3b8;line-height:1.5}
-.section{padding:80px 40px}
-.section-alt{background:rgba(15,23,42,.7);backdrop-filter:blur(10px)}
-.section-title{text-align:center;font-size:46px;font-weight:800;margin-bottom:60px;background:linear-gradient(135deg,#667eea 0%,#764ba2 50%,#f093fb 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.content-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:25px;max-width:1400px;margin:0 auto}
-.card{background:rgba(30,41,59,.5);backdrop-filter:blur(15px);padding:30px;border-radius:20px;border:1px solid rgba(102,126,234,.2);transition:all .3s}
-.card:hover{transform:translateY(-10px);border-color:#4ade80;box-shadow:0 20px 40px rgba(74,222,128,.3)}
-.card h3{font-size:22px;color:#4ade80;margin-bottom:15px;font-weight:700}
-.card p{color:#cbd5e1;line-height:1.7;font-size:14px}
-.pricing-table{max-width:1200px;margin:0 auto;background:rgba(30,41,59,.5);backdrop-filter:blur(15px);border-radius:18px;overflow:hidden;border:1px solid rgba(102,126,234,.2)}
-.pricing-table table{width:100%;border-collapse:collapse}
-.pricing-table th{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:white;padding:18px;text-align:left;font-size:15px;font-weight:600}
-.pricing-table td{padding:15px 18px;border-bottom:1px solid rgba(255,255,255,.1);color:#cbd5e1;font-size:14px}
-.pricing-table tr:hover{background:rgba(102,126,234,.1)}
-.pricing-table .price{color:#4ade80;font-weight:700;font-size:16px}
-.pricing-table .note{color:#94a3b8;font-size:12px;font-style:italic}
-.process-flow{max-width:1200px;margin:40px auto 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:25px}
-.process-step{background:rgba(30,41,59,.5);backdrop-filter:blur(15px);padding:25px;border-radius:18px;border:1px solid rgba(102,126,234,.2);text-align:center;transition:all .3s}
-.process-step:hover{transform:translateY(-8px);border-color:#4ade80;box-shadow:0 15px 30px rgba(74,222,128,.3)}
-.process-number{width:45px;height:45px;background:linear-gradient(135deg,#667eea,#764ba2);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:22px;font-weight:bold;color:white}
-.process-step h4{color:#4ade80;margin-bottom:8px;font-size:16px}
-.process-step p{color:#cbd5e1;font-size:13px;line-height:1.5}
-footer{background:rgba(10,14,39,.95);padding:40px;text-align:center;border-top:1px solid rgba(102,126,234,.3)}
-footer p{color:#94a3b8;margin:8px 0;font-size:14px}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;line-height:1.6;overflow-x:hidden}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+nav{background:rgba(0,0,0,.3);backdrop-filter:blur(10px);position:sticky;top:0;z-index:100;padding:15px 0}
+nav .container{display:flex;justify-content:space-between;align-items:center}
+.brand{font-size:24px;font-weight:700;color:#4ade80}
+.nav-links{display:flex;gap:25px;list-style:none}
+.nav-links a{color:#fff;text-decoration:none;transition:.3s;font-size:15px}
+.nav-links a:hover{color:#4ade80}
+.lang-btn{background:#4ade80;color:#1a1a2e;border:none;padding:8px 16px;border-radius:20px;cursor:pointer;font-weight:600;transition:.3s}
+.lang-btn:hover{transform:scale(1.05)}
+.hero{text-align:center;padding:100px 20px;background:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23667eea" width="1200" height="600"/></svg>');background-size:cover}
+h1{font-size:52px;margin-bottom:20px;text-shadow:2px 2px 8px rgba(0,0,0,.3)}
+.subtitle{font-size:22px;margin-bottom:15px;color:#cbd5e1}
+.desc{font-size:16px;max-width:700px;margin:0 auto 40px;color:#e2e8f0}
+.btn-group{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+.btn{padding:14px 32px;border-radius:30px;text-decoration:none;font-weight:600;transition:.3s;cursor:pointer;border:none;font-size:16px}
+.btn-primary{background:#4ade80;color:#1a1a2e}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 10px 25px rgba(74,222,128,.4)}
+.btn-secondary{background:rgba(255,255,255,.1);color:#fff;border:2px solid #fff}
+.btn-secondary:hover{background:rgba(255,255,255,.2)}
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;margin:60px auto;padding:0 20px}
+.feature{background:rgba(255,255,255,.1);backdrop-filter:blur(10px);padding:30px;border-radius:16px;text-align:center;transition:.3s;border:1px solid rgba(255,255,255,.2)}
+.feature:hover{transform:translateY(-5px);background:rgba(255,255,255,.15)}
+.feature-title{font-size:18px;margin-bottom:10px;color:#4ade80}
+section{padding:80px 20px}
+h2{font-size:42px;text-align:center;margin-bottom:50px;color:#fff;text-shadow:1px 1px 4px rgba(0,0,0,.2)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;margin-top:40px}
+.card{background:rgba(255,255,255,.1);backdrop-filter:blur(10px);padding:30px;border-radius:16px;border:1px solid rgba(255,255,255,.2);transition:.3s}
+.card:hover{transform:translateY(-5px);background:rgba(255,255,255,.15);box-shadow:0 10px 30px rgba(0,0,0,.3)}
+.card h3{color:#4ade80;margin-bottom:15px;font-size:20px}
+.card p{color:#cbd5e1;font-size:15px;line-height:1.8}
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;margin-top:40px}
+.price-card{background:rgba(255,255,255,.1);backdrop-filter:blur(10px);padding:25px;border-radius:16px;border:1px solid rgba(255,255,255,.2)}
+.price-card h3{color:#4ade80;margin-bottom:10px;font-size:18px}
+.price{font-size:28px;font-weight:700;color:#fff;margin:10px 0}
+.price-note{font-size:13px;color:#94a3b8}
+.flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:40px}
+.step{background:rgba(255,255,255,.1);backdrop-filter:blur(10px);padding:20px;border-radius:12px;text-align:center;position:relative}
+.step::after{content:'→';position:absolute;right:-15px;top:50%;transform:translateY(-50%);font-size:24px;color:#4ade80}
+.step:last-child::after{display:none}
+.step-title{font-weight:600;color:#4ade80;margin-bottom:8px;font-size:16px}
+.step-desc{font-size:13px;color:#cbd5e1}
+.policy-grid,.news-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:25px;margin-top:40px}
+.policy-item,.news-item{background:rgba(255,255,255,.1);backdrop-filter:blur(10px);padding:25px;border-radius:16px;border:1px solid rgba(255,255,255,.2)}
+.policy-item h3,.news-item h3{color:#4ade80;margin-bottom:12px;font-size:18px}
+.about-section{background:rgba(0,0,0,.2);backdrop-filter:blur(10px);padding:40px;border-radius:20px;margin:40px auto;max-width:900px;border:1px solid rgba(255,255,255,.2)}
+.about-section p{font-size:16px;line-height:2;color:#e2e8f0}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;margin-top:40px}
+.contact-card{background:rgba(255,255,255,.1);backdrop-filter:blur(10px);padding:25px;border-radius:16px;text-align:center;border:1px solid rgba(255,255,255,.2)}
+.contact-card h3{color:#4ade80;margin-bottom:15px;font-size:18px}
+.contact-card p{color:#cbd5e1;margin:8px 0;font-size:15px}
+.contact-card img{width:150px;height:150px;margin:15px auto;border-radius:12px;object-fit:cover}
+.payment-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:25px;margin:30px 0}
+.payment-item{background:rgba(255,255,255,.1);backdrop-filter:blur(10px);padding:20px;border-radius:12px;text-align:center}
+.payment-item h3{color:#4ade80;margin-bottom:10px}
+.payment-item img{width:120px;height:120px;margin:10px auto;border-radius:8px}
+.register-section{background:rgba(0,0,0,.2);backdrop-filter:blur(10px);padding:40px;border-radius:20px;margin:40px auto;max-width:800px}
+.register-section h3{color:#4ade80;margin:25px 0 15px;font-size:22px}
+.register-section ul{list-style:none;padding:0}
+.register-section li{padding:10px 0;color:#cbd5e1;font-size:15px}
+.register-section li:before{content:'✓ ';color:#4ade80;font-weight:700;margin-right:8px}
+footer{background:rgba(0,0,0,.3);backdrop-filter:blur(10px);padding:30px 20px;text-align:center;margin-top:60px}
+footer p{color:#94a3b8;font-size:14px}
 @media (max-width:768px){
-nav{padding:12px 20px;flex-direction:column;gap:15px}
-.logo-container{width:80px;height:80px}
-.nav-menu{flex-direction:column;gap:12px}
-.hero-title{font-size:38px}
-.content-grid,.process-flow{grid-template-columns:1fr}
-.pricing-table{overflow-x:auto}
+h1{font-size:36px}
+h2{font-size:32px}
+.nav-links{display:none}
+.features,.cards,.pricing-grid{grid-template-columns:1fr}
 }
+.note{background:rgba(74,222,128,.2);padding:15px;border-radius:8px;margin:20px 0;border-left:4px solid #4ade80}
 </style>
 </head>
 <body>
-<div class="hero-bg"></div>
 <nav>
-<div class="logo-section">
-<div class="logo-container"><img src="logo.png" alt="Logo" class="logo"></div>
-<div class="brand-text">
-<div class="brand-name-zh" id="brand">海南索拉纳</div>
-<div class="brand-name-en">HAINAN SOLANA ADVISORY</div>
-</div>
-</div>
-<ul class="nav-menu">
+<div class="container">
+<div class="brand" id="brand">海南索拉纳</div>
+<ul class="nav-links">
 <li><a href="#home" id="n1">首页</a></li>
 <li><a href="#services" id="n2">服务</a></li>
 <li><a href="#pricing" id="n3">收费</a></li>
@@ -97,30 +94,33 @@ nav{padding:12px 20px;flex-direction:column;gap:15px}
 <li><a href="#register" id="n8">注册</a></li>
 <li><a href="#about" id="n9">关于</a></li>
 </ul>
-<button class="lang-switch" onclick="toggleLang()" id="langBtn">EN</button>
+<button class="lang-btn" id="langBtn" onclick="toggleLang()">EN</button>
+</div>
 </nav>
 
-<section id="home" class="hero">
-<div class="hero-content">
-<h1 class="hero-title" id="title">海南索拉纳商务咨询中心</h1>
-<h2 class="hero-subtitle" id="subtitle">您的海南自贸港商务伙伴</h2>
-<p class="hero-description" id="desc">专业提供海南自由贸易港公司注册、税务筹划、政策咨询等一站式服务</p>
-<div class="cta-buttons">
+<div class="hero" id="home">
+<div class="container">
+<h1 id="title">海南索拉纳商务咨询中心</h1>
+<p class="subtitle" id="subtitle">您的海南自贸港商务伙伴</p>
+<p class="desc" id="desc">专业提供海南自由贸易港公司注册、税务筹划、政策咨询等一站式服务</p>
+<div class="btn-group">
 <a href="#pricing" class="btn btn-primary" id="btn1">查看收费</a>
 <a href="#services" class="btn btn-secondary" id="btn2">了解服务</a>
 </div>
-<div class="features">
-<div class="feature-item"><span class="feature-icon">⚡</span><div class="feature-title" id="f1t">快速注册</div><div class="feature-text" id="f1d">3-7个工作日</div></div>
-<div class="feature-item"><span class="feature-icon">💎</span><div class="feature-title" id="f2t">税收优惠</div><div class="feature-text" id="f2d">企业所得税15%</div></div>
-<div class="feature-item"><span class="feature-icon">🛡️</span><div class="feature-title" id="f3t">合规保障</div><div class="feature-text" id="f3d">专业团队</div></div>
-<div class="feature-item"><span class="feature-icon">🌐</span><div class="feature-title" id="f4t">全球服务</div><div class="feature-text" id="f4d">境内外企业</div></div>
 </div>
 </div>
-</section>
 
-<section id="services" class="section section-alt">
-<h2 class="section-title" id="st1">我们的服务</h2>
-<div class="content-grid">
+<div class="features">
+<div class="feature"><div class="feature-title" id="f1t">快速注册</div><p id="f1d">3-7个工作日</p></div>
+<div class="feature"><div class="feature-title" id="f2t">税收优惠</div><p id="f2d">企业所得税15%</p></div>
+<div class="feature"><div class="feature-title" id="f3t">合规保障</div><p id="f3d">专业团队</p></div>
+<div class="feature"><div class="feature-title" id="f4t">全球服务</div><p id="f4d">境内外企业</p></div>
+</div>
+
+<section id="services">
+<div class="container">
+<h2 id="st1">我们的服务</h2>
+<div class="cards">
 <div class="card"><h3 id="s1">🌍 全球企业注册</h3><p id="s1d">为世界各地企业提供海南自贸港公司注册方案</p></div>
 <div class="card"><h3 id="s2">🇨🇳 国内企业注册</h3><p id="s2d">协助国内企业在海南自贸港设立分支机构</p></div>
 <div class="card"><h3 id="s3">💰 税务优惠咨询</h3><p id="s3d">深度解读海南自贸港税收优惠政策</p></div>
@@ -131,157 +131,141 @@ nav{padding:12px 20px;flex-direction:column;gap:15px}
 <div class="card"><h3 id="s8">⛓️ 区块链咨询</h3><p id="s8d">区块链技术咨询、数字资产合规、Web3项目孵化</p></div>
 <div class="card"><h3 id="s9">📈 美股开户咨询</h3><p id="s9d">美股账户开户指导、投资策略咨询、市场分析</p></div>
 </div>
+</div>
 </section>
 
-<section id="pricing" class="section">
-<h2 class="section-title" id="st2">服务收费明细</h2>
-<div style="max-width:1200px;margin:0 auto">
-<div class="pricing-table">
-<table>
-<thead>
-<tr>
-<th id="th1">服务项目</th>
-<th id="th2">服务内容说明</th>
-<th id="th3">收费标准</th>
-<th id="th4">备注</th>
-</tr>
-</thead>
-<tbody>
-<tr><td id="pr1">公司名称核准</td><td id="pr1d">提供3-5个名称核名</td><td class="price">¥200</td><td class="note" id="pr1n">免费重提一次</td></tr>
-<tr><td id="pr2">工商注册(基础)</td><td id="pr2d">营业执照+刻章+税务登记</td><td class="price">¥800</td><td class="note" id="pr2n">客户自备地址</td></tr>
-<tr><td id="pr3">工商注册(全包)</td><td id="pr3d">含挂靠地址一年</td><td class="price">¥1,900</td><td class="note" id="pr3n">适合无址创业</td></tr>
-<tr><td id="pr4">刻章服务</td><td id="pr4d">公章/财务/法人/合同/发票章</td><td class="price">¥300</td><td class="note" id="pr4n">全套优惠价</td></tr>
-<tr><td id="pr5">税务报到</td><td id="pr5d">税种核定+发票资格开通</td><td class="price">¥500</td><td class="note" id="pr5n">含指导</td></tr>
-<tr><td id="pr6">发票申领</td><td id="pr6d">普票或专票申请</td><td class="price">¥300/次</td><td class="note" id="pr6n">按次收费</td></tr>
-<tr><td id="pr7">银行开户协助</td><td id="pr7d">材料准备+陪同办理</td><td class="price">¥1,200</td><td class="note" id="pr7n">不含银行费用</td></tr>
-<tr><td id="pr8">社保公积金开户</td><td id="pr8d">单位账户设立</td><td class="price">¥500</td><td class="note" id="pr8n">含首次增员</td></tr>
-<tr><td id="pr9">代理记账(零申报)</td><td id="pr9d">每月申报</td><td class="price">¥150/月</td><td class="note" id="pr9n">年付1,500元</td></tr>
-<tr><td id="pr10">代理记账(小规模)</td><td id="pr10d">月度报税+建账</td><td class="price">¥200/月</td><td class="note" id="pr10n">年付2,000元</td></tr>
-<tr><td id="pr11">代理记账(一般纳税人)</td><td id="pr11d">增值税+全盘账务</td><td class="price">¥500/月</td><td class="note" id="pr11n">年付5,000元</td></tr>
-<tr><td id="pr12">公司变更</td><td id="pr12d">法人/股东/地址/资本等</td><td class="price">¥600/项</td><td class="note" id="pr12n">多项可打包</td></tr>
-<tr><td id="pr13">公司注销</td><td id="pr13d">税务清算+工商注销</td><td class="price">¥2,000起</td><td class="note" id="pr13n">按情况报价</td></tr>
-<tr><td id="pr14">商标注册</td><td id="pr14d">国内商标（1类）</td><td class="price">¥600+官费¥300</td><td class="note" id="pr14n">周期6-8个月</td></tr>
-<tr><td id="pr15">企业年报代报</td><td id="pr15d">年度公示系统申报</td><td class="price">¥200/年</td><td class="note" id="pr15n">逾期有风险</td></tr>
-<tr><td id="pr16">进出口权</td><td id="pr16d">进出口经营权+海关备案</td><td class="price">¥1,500</td><td class="note" id="pr16n">全套办理</td></tr>
-</tbody>
-</table>
+<section id="pricing">
+<div class="container">
+<h2 id="st2">收费明细</h2>
+<div class="pricing-grid">
+<div class="price-card"><h3 id="pr1">公司名称核准</h3><div class="price" id="pr1p">¥200</div><p class="price-note" id="pr1n">1-2个工作日</p></div>
+<div class="price-card"><h3 id="pr2">工商注册（基础）</h3><div class="price" id="pr2p">¥800</div><p class="price-note" id="pr2n">含营业执照</p></div>
+<div class="price-card"><h3 id="pr3">工商注册（全包）</h3><div class="price" id="pr3p">¥1,900</div><p class="price-note" id="pr3n">含章、税务、银行</p></div>
+<div class="price-card"><h3 id="pr4">刻章服务</h3><div class="price" id="pr4p">¥300</div><p class="price-note" id="pr4n">公章、财务章、法人章</p></div>
+<div class="price-card"><h3 id="pr5">税务报到</h3><div class="price" id="pr5p">¥500</div><p class="price-note" id="pr5n">国地税报到</p></div>
+<div class="price-card"><h3 id="pr6">发票申领</h3><div class="price" id="pr6p">¥300/次</div><p class="price-note" id="pr6n">增值税发票</p></div>
+<div class="price-card"><h3 id="pr7">银行开户协助</h3><div class="price" id="pr7p">¥1,200</div><p class="price-note" id="pr7n">预约、陪同</p></div>
+<div class="price-card"><h3 id="pr8">社保公积金</h3><div class="price" id="pr8p">¥500</div><p class="price-note" id="pr8n">开户设立</p></div>
+<div class="price-card"><h3 id="pr9">代理记账（零申报）</h3><div class="price" id="pr9p">¥150/月</div><p class="price-note" id="pr9n">小规模</p></div>
+<div class="price-card"><h3 id="pr10">代理记账（小规模）</h3><div class="price" id="pr10p">¥200/月</div><p class="price-note" id="pr10n">有业务</p></div>
+<div class="price-card"><h3 id="pr11">代理记账（一般纳税人）</h3><div class="price" id="pr11p">¥500/月</div><p class="price-note" id="pr11n">含报税</p></div>
+<div class="price-card"><h3 id="pr12">公司变更</h3><div class="price" id="pr12p">¥600/项</div><p class="price-note" id="pr12n">名称、地址等</p></div>
+<div class="price-card"><h3 id="pr13">公司注销</h3><div class="price" id="pr13p">¥2,000起</div><p class="price-note" id="pr13n">含税务注销</p></div>
+<div class="price-card"><h3 id="pr14">商标注册</h3><div class="price" id="pr14p">¥600+¥300</div><p class="price-note" id="pr14n">代理费+官费</p></div>
+<div class="price-card"><h3 id="pr15">企业年报</h3><div class="price" id="pr15p">¥200/年</div><p class="price-note" id="pr15n">工商年检</p></div>
+<div class="price-card"><h3 id="pr16">进出口权</h3><div class="price" id="pr16p">¥1,500</div><p class="price-note" id="pr16n">海关、商委备案</p></div>
 </div>
-
-<h3 style="text-align:center;color:#4ade80;margin:50px 0 30px;font-size:28px" id="pflow">服务流程</h3>
-<div class="process-flow">
-<div class="process-step"><div class="process-number">1</div><h4 id="ps1">免费咨询</h4><p id="ps1d">微信/电话沟通需求</p></div>
-<div class="process-step"><div class="process-number">2</div><h4 id="ps2">方案确认</h4><p id="ps2d">确定服务内容及价格</p></div>
-<div class="process-step"><div class="process-number">3</div><h4 id="ps3">签订合同</h4><p id="ps3d">双方签署服务协议</p></div>
-<div class="process-step"><div class="process-number">4</div><h4 id="ps4">支付定金</h4><p id="ps4d">支付50%服务费用</p></div>
-<div class="process-step"><div class="process-number">5</div><h4 id="ps5">服务执行</h4><p id="ps5d">专业团队办理业务</p></div>
-<div class="process-step"><div class="process-number">6</div><h4 id="ps6">成果交付</h4><p id="ps6d">交付所有证照材料</p></div>
-<div class="process-step"><div class="process-number">7</div><h4 id="ps7">支付余款</h4><p id="ps7d">验收合格支付尾款</p></div>
-<div class="process-step"><div class="process-number">8</div><h4 id="ps8">服务完成</h4><p id="ps8d">提供后续咨询支持</p></div>
-</div>
-
-<div style="text-align:center;margin-top:50px;padding:30px;background:rgba(102,126,234,.1);border-radius:15px">
-<h4 style="color:#4ade80;margin-bottom:20px" id="pm">💚 支付方式</h4>
-<div style="display:flex;gap:30px;justify-content:center;flex-wrap:wrap">
-<div><p style="color:#cbd5e1;margin-bottom:10px" id="pmw">✅ 微信支付</p><img src="wechat_pay.jpg" style="width:150px;height:150px;border-radius:10px;border:2px solid #4ade80"></div>
-<div><p style="color:#cbd5e1;margin-bottom:10px" id="pma">✅ 支付宝</p><img src="alipay.jpg" style="width:150px;height:150px;border-radius:10px;border:2px solid #4ade80"></div>
-<div><p style="color:#cbd5e1;margin-bottom:10px" id="pmb">✅ 银行转账</p><div style="width:150px;height:150px;border-radius:10px;border:2px solid #4ade80;display:flex;align-items:center;justify-content:center;background:rgba(102,126,234,.1)"><p style="color:#4ade80;font-size:13px;text-align:center;padding:10px" id="pmbd">账户信息<br>请联系获取</p></div></div>
+<div style="margin-top:40px">
+<h3 style="color:#4ade80;margin-bottom:20px" id="flow">服务流程</h3>
+<div class="flow">
+<div class="step"><div class="step-title" id="flow1">免费咨询</div><p class="step-desc" id="flow1d">微信/电话沟通</p></div>
+<div class="step"><div class="step-title" id="flow2">方案确认</div><p class="step-desc" id="flow2d">确定服务和价格</p></div>
+<div class="step"><div class="step-title" id="flow3">签订合同</div><p class="step-desc" id="flow3d">双方签署协议</p></div>
+<div class="step"><div class="step-title" id="flow4">支付定金</div><p class="step-desc" id="flow4d">支付50%服务费</p></div>
+<div class="step"><div class="step-title" id="flow5">服务执行</div><p class="step-desc" id="flow5d">专业团队办理</p></div>
+<div class="step"><div class="step-title" id="flow6">成果交付</div><p class="step-desc" id="flow6d">交付全部文件</p></div>
+<div class="step"><div class="step-title" id="flow7">支付余款</div><p class="step-desc" id="flow7d">验收后付尾款</p></div>
+<div class="step"><div class="step-title" id="flow8">服务完成</div><p class="step-desc" id="flow8d">后续咨询支持</p></div>
 </div>
 </div>
 </div>
 </section>
 
-<section id="policy" class="section section-alt">
-<h2 class="section-title" id="st3">海南优惠政策</h2>
-<p style="text-align:center;color:#94a3b8;font-size:14px;margin-top:-40px;margin-bottom:40px" id="polnote">💡 政策更新请联系管理员添加</p>
-<div class="content-grid">
-<div class="card"><h3 id="pol1">🎯 零关税政策</h3><p id="pol1d">2025年封关后，岛内企业进口货物全免关税</p></div>
-<div class="card"><h3 id="pol2">💰 低税率优惠</h3><p id="pol2d">鼓励类企业所得税15%，高端人才个税15%</p></div>
-<div class="card"><h3 id="pol3">🌏 贸易自由便利</h3><p id="pol3d">"一线放开、二线管住"，境外货物免征进口关税</p></div>
-<div class="card"><h3 id="pol4">💵 投资自由便利</h3><p id="pol4d">企业开办时间压减90%，材料压减77%</p></div>
-<div class="card"><h3 id="pol5">🔄 跨境资金流动</h3><p id="pol5d">EF账户上线，跨境收支超1000亿美元</p></div>
-<div class="card"><h3 id="pol6">✈️ 人员进出便利</h3><p id="pol6d">59国人员免签30天，2024年超35万人次</p></div>
+<section id="policy">
+<div class="container">
+<h2 id="st3">海南优惠政策</h2>
+<div class="note"><p id="polnote">💡 政策更新请联系管理员添加</p></div>
+<div class="policy-grid">
+<div class="policy-item"><h3 id="pol1">🎯 零关税</h3><p id="pol1d">加工增值30%以上免关税</p></div>
+<div class="policy-item"><h3 id="pol2">💰 低税率</h3><p id="pol2d">企业所得税15%，个人所得税15%</p></div>
+<div class="policy-item"><h3 id="pol3">🌏 贸易自由</h3><p id="pol3d">货物、服务贸易零关税</p></div>
+<div class="policy-item"><h3 id="pol4">💵 投资自由</h3><p id="pol4d">非禁即入，外资准入</p></div>
+<div class="policy-item"><h3 id="pol5">🔄 跨境资金</h3><p id="pol5d">资金自由进出</p></div>
+<div class="policy-item"><h3 id="pol6">✈️ 人员进出</h3><p id="pol6d">旅游免签、工作许可便利</p></div>
+</div>
 </div>
 </section>
 
-<section id="news" class="section">
-<h2 class="section-title" id="st4">相关新闻</h2>
-<p style="text-align:center;color:#94a3b8;font-size:14px;margin-top:-40px;margin-bottom:40px" id="newsnote">💡 新闻更新请联系管理员添加</p>
-<div class="content-grid">
-<div class="card"><h3 id="news1">🚀 封关运作倒计时</h3><p id="news1d">2025年底将如期实现封关运作目标</p></div>
-<div class="card"><h3 id="news2">📈 人才个税延续</h3><p id="news2d">高端人才税负超15%部分继续免征</p></div>
-<div class="card"><h3 id="news3">🎉 总书记考察</h3><p id="news3d">习近平强调加快建设世界影响力自贸港</p></div>
-<div class="card"><h3 id="news4">💼 外贸大增</h3><p id="news4d">2024年前11月增长20.5%，超全国平均</p></div>
+<section id="news">
+<div class="container">
+<h2 id="st4">相关新闻</h2>
+<div class="note"><p id="newsnote">💡 新闻更新请联系管理员添加</p></div>
+<div class="news-grid">
+<div class="news-item"><h3 id="news1">🚀 封关运作倒计时</h3><p id="news1d">2025年底前实现全岛封关运作</p></div>
+<div class="news-item"><h3 id="news2">📈 人才个税政策延续</h3><p id="news2d">高端人才个税超15%部分免征延至2035年</p></div>
+<div class="news-item"><h3 id="news3">🎉 总书记考察海南</h3><p id="news3d">强调加快建设具有世界影响力的自由贸易港</p></div>
+<div class="news-item"><h3 id="news4">💼 前11月外贸大增</h3><p id="news4d">2024年前11月进出口总额增长19.4%</p></div>
+</div>
 </div>
 </section>
 
-<section id="people" class="section section-alt">
-<h2 class="section-title" id="st5">椰风人物志</h2>
-<div class="content-grid">
-<div class="card"><img src="images/people/p1.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="Person 1" onerror="this.style.display='none'"><h3 id="p1">海瑞 (1514-1587)</h3><p id="p1d">明代清官典范，刚正不阿敢骂皇帝，人称"海青天"。去世时家里只有几两银子。</p></div>
-<div class="card"><img src="images/people/p2.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="Person 2" onerror="this.style.display='none'"><h3 id="p2">丘濬 (1420-1495)</h3><p id="p2d">明代大学士、理学家。海南第一位进入内阁的宰相级人物，著有《大学衍义补》160卷。</p></div>
-<div class="card"><img src="images/people/p3.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="Person 3" onerror="this.style.display='none'"><h3 id="p3">冼夫人 (约512-602)</h3><p id="p3d">古代巾帼英雄、岭南圣母。南北朝时期俚族首领，一生经历三个朝代，维护国家统一。</p></div>
-<div class="card"><img src="images/people/p4.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="Person 4" onerror="this.style.display='none'"><h3 id="p4">苏东坡 (1037-1101)</h3><p id="p4d">北宋文豪谪居海南。62岁被贬海南，办学堂教书育人，发明"东坡肉"和"椰子饭"。</p></div>
-<div class="card"><img src="images/people/p5.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="Person 5" onerror="this.style.display='none'"><h3 id="p5">白玉蟾 (1194-?)</h3><p id="p5d">道教南宗五祖、紫清真人。12岁能诗，创立道教南宗，诗词书画样样精通。</p></div>
-<div class="card"><img src="images/people/p6.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="Person 6" onerror="this.style.display='none'"><h3 id="p6">张岳崧 (1773-1842)</h3><p id="p6d">清代海南唯一探花。嘉庆年间考中探花（全国第三名），官至湖北布政使。</p></div>
-<div class="card"><img src="images/people/p7.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="Person 7" onerror="this.style.display='none'"><h3 id="p7">宋庆龄 (1893-1981)</h3><p id="p7d">国家名誉主席，祖籍海南文昌。孙中山先生夫人，二十世纪最伟大女性之一。</p></div>
-<div class="card"><img src="images/people/p8.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="Person 8" onerror="this.style.display='none'"><h3 id="p8">张云逸 (1892-1974)</h3><p id="p8d">开国大将，海南文昌人。从辛亥革命打到解放战争，1955年被授予大将军衔。</p></div>
-<div class="card"><img src="images/people/p9.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="Person 9" onerror="this.style.display='none'"><h3 id="p9">符克 (1923-1949)</h3><p id="p9d">革命烈士，海南文昌人。琼崖革命根据地创建者之一，26岁牺牲。</p></div>
-<div class="card"><img src="images/people/p10.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="Person 10" onerror="this.style.display='none'"><h3 id="p10">云光英 (当代)</h3><p id="p10d">当代企业家代表。新时代海商，为海南自贸港建设贡献力量。</p></div>
-<div class="card"><img src="images/people/p11.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="Person 11" onerror="this.style.display='none'"><h3 id="p11">陈峰 (1953-)</h3><p id="p11d">海航集团创始人，海南文昌人。白手起家创建世界500强企业。</p></div>
-<div class="card"><img src="images/people/p12.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="Person 12" onerror="this.style.display='none'"><h3 id="p12">王文明 (1894-1930)</h3><p id="p12d">琼崖革命领导人，海南乐会人。琼崖革命"23年红旗不倒"奠基人。</p></div>
-<div class="card"><img src="images/people/p13.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="Person 13" onerror="this.style.display='none'"><h3 id="p13">冯白驹 (1903-1973)</h3><p id="p13d">琼崖纵队司令员，海南琼山人。被誉为"琼崖人民的一面旗帜"。</p></div>
-<div class="card"><img src="images/people/p14.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="Person 14" onerror="this.style.display='none'"><h3 id="p14">邢诒孔 (1909-1993)</h3><p id="p14d">著名华侨领袖，海南文昌人。泰国商业巨子，热心支持祖国建设。</p></div>
-<div class="card"><img src="images/people/p15.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="Person 15" onerror="this.style.display='none'"><h3 id="p15">林毅夫 (1952-)</h3><p id="p15d">著名经济学家，祖籍海南。世界银行首席经济学家，北大教授。</p></div>
+<section id="people">
+<div class="container">
+<h2 id="st5">椰风人物志</h2>
+<div class="cards">
+<div class="card"><img src="images/people/p1.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="海瑞" onerror="this.style.display='none'"><h3 id="p1">海瑞 (1514-1587)</h3><p id="p1d">明代清官典范，刚正不阿敢骂皇帝，人称"海青天"。去世时家里只有几两银子。</p></div>
+<div class="card"><img src="images/people/p2.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="丘濬" onerror="this.style.display='none'"><h3 id="p2">丘濬 (1420-1495)</h3><p id="p2d">明代大学士、理学家。海南第一位进入内阁的宰相级人物，著有《大学衍义补》160卷。</p></div>
+<div class="card"><img src="images/people/p3.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="冼夫人" onerror="this.style.display='none'"><h3 id="p3">冼夫人 (约512-602)</h3><p id="p3d">古代巾帼英雄、岭南圣母。南北朝时期俚族首领，一生经历三个朝代，维护国家统一。</p></div>
+<div class="card"><img src="images/people/p4.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="苏东坡" onerror="this.style.display='none'"><h3 id="p4">苏东坡 (1037-1101)</h3><p id="p4d">北宋文豪谪居海南。62岁被贬海南，办学堂教书育人，发明"东坡肉"和"椰子饭"。</p></div>
+<div class="card"><img src="images/people/p5.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="白玉蟾" onerror="this.style.display='none'"><h3 id="p5">白玉蟾 (1194-?)</h3><p id="p5d">道教南宗五祖、紫清真人。12岁能诗，创立道教南宗，诗词书画样样精通。</p></div>
+<div class="card"><img src="images/people/p6.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="张岳崧" onerror="this.style.display='none'"><h3 id="p6">张岳崧 (1773-1842)</h3><p id="p6d">清代海南唯一探花。嘉庆年间考中探花（全国第三名），官至湖北布政使。</p></div>
+<div class="card"><img src="images/people/p7.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="王文明" onerror="this.style.display='none'"><h3 id="p7">王文明 (1894-1930)</h3><p id="p7d">琼崖革命领导人，海南乐会人。琼崖革命"23年红旗不倒"奠基人。</p></div>
+<div class="card"><img src="images/people/p8.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="冯白驹" onerror="this.style.display='none'"><h3 id="p8">冯白驹 (1903-1973)</h3><p id="p8d">琼崖纵队司令员，海南琼山人。被誉为"琼崖人民的一面旗帜"。</p></div>
+<div class="card"><img src="images/people/p9.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="邢诒孔" onerror="this.style.display='none'"><h3 id="p9">邢诒孔 (1909-1993)</h3><p id="p9d">著名华侨领袖，海南文昌人。泰国商业巨子，热心支持祖国建设。</p></div>
+<div class="card"><img src="images/people/p10.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="宋庆龄" onerror="this.style.display='none'"><h3 id="p10">宋庆龄 (1893-1981)</h3><p id="p10d">国家名誉主席，祖籍海南文昌。孙中山先生夫人，二十世纪最伟大女性之一。</p></div>
+<div class="card"><img src="images/people/p11.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="陈峰" onerror="this.style.display='none'"><h3 id="p11">陈峰 (1953-)</h3><p id="p11d">海航集团创始人，海南文昌人。白手起家创建世界500强企业。</p></div>
+<div class="card"><img src="images/people/p12.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="张云逸" onerror="this.style.display='none'"><h3 id="p12">张云逸 (1892-1974)</h3><p id="p12d">开国大将，海南文昌人。从辛亥革命打到解放战争，1955年被授予大将军衔。</p></div>
+<div class="card"><img src="images/people/p13.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="符克" onerror="this.style.display='none'"><h3 id="p13">符克 (1923-1949)</h3><p id="p13d">革命烈士，海南文昌人。琼崖革命根据地创建者之一，26岁牺牲。</p></div>
+<div class="card"><img src="images/people/p14.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="林毅夫" onerror="this.style.display='none'"><h3 id="p14">林毅夫 (1952-)</h3><p id="p14d">著名经济学家，祖籍海南。世界银行首席经济学家，北大教授。</p></div>
+<div class="card"><img src="images/people/p15.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="云光英" onerror="this.style.display='none'"><h3 id="p15">云光英 (当代)</h3><p id="p15d">当代企业家代表。新时代海商，为海南自贸港建设贡献力量。</p></div>
+</div>
 </div>
 </section>
 
-<section id="scenery" class="section">
-<h2 class="section-title" id="st6">魅力海南</h2>
-<div class="content-grid">
-<div class="card"><img src="images/scenery/sc1.jpg" style="width:100%;height:220px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="Scenery 1" onerror="this.style.display='none'"><h3 id="sc1">🏖️ 亚龙湾</h3><p id="sc1d">天下第一湾，7.5公里月牙形海滩，沙细水蓝，被称为"东方夏威夷"。</p></div>
-<div class="card"><img src="images/scenery/sc2.jpg" style="width:100%;height:220px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="Scenery 2" onerror="this.style.display='none'"><h3 id="sc2">🏝️ 蜈支洲岛</h3><p id="sc2d">中国的马尔代夫，海水能见度27米，热带植物2700种，情侣圣地。</p></div>
-<div class="card"><img src="images/scenery/sc3.jpg" style="width:100%;height:220px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="Scenery 3" onerror="this.style.display='none'"><h3 id="sc3">💙 天涯海角</h3><p id="sc3d">浪漫地标，象征海枯石烂的爱情。苏东坡曾被贬至此。</p></div>
-<div class="card"><img src="images/scenery/sc4.jpg" style="width:100%;height:220px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="Scenery 4" onerror="this.style.display='none'"><h3 id="sc4">🌊 大东海</h3><p id="sc4d">三亚市区最近的优质海滩，一年四季可游泳，是三亚人的"城市会客厅"。</p></div>
-<div class="card"><img src="images/scenery/sc5.jpg" style="width:100%;height:220px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="Scenery 5" onerror="this.style.display='none'"><h3 id="sc5">🌳 呀诺达雨林</h3><p id="sc5d">中国唯一热带雨林，天然氧吧，负氧离子爆表。"呀诺达"是黎语"你好"。</p></div>
-<div class="card"><img src="images/scenery/sc6.jpg" style="width:100%;height:220px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="Scenery 6" onerror="this.style.display='none'"><h3 id="sc6">⛰️ 五指山</h3><p id="sc6d">海南第一高山，主峰1867米。《西游记》里孙悟空被压的五指山原型。</p></div>
-<div class="card"><img src="images/scenery/sc7.jpg" style="width:100%;height:220px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="Scenery 7" onerror="this.style.display='none'"><h3 id="sc7">🌲 尖峰岭</h3><p id="sc7d">中国现存最大原始热带雨林，保存3500多种植物，是"绿色基因库"。</p></div>
-<div class="card"><img src="images/scenery/sc8.jpg" style="width:100%;height:220px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="Scenery 8" onerror="this.style.display='none'"><h3 id="sc8">🐚 分界洲岛</h3><p id="sc8d">海南南北气候分界线。有海底邮局，可与海豚一起游泳。</p></div>
-<div class="card"><img src="images/scenery/sc9.jpg" style="width:100%;height:220px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="Scenery 9" onerror="this.style.display='none'"><h3 id="sc9">🏛️ 骑楼老街</h3><p id="sc9d">海口特色，中西建筑风格，浓浓南洋风情。当年下南洋海南人建造。</p></div>
-<div class="card"><img src="images/scenery/sc10.jpg" style="width:100%;height:220px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="Scenery 10" onerror="this.style.display='none'"><h3 id="sc10">🙏 南山文化旅游区</h3><p id="sc10d">108米海上观音像，全世界最高海上观音。"福如东海，寿比南山"。</p></div>
-<div class="card"><img src="images/scenery/sc11.jpg" style="width:100%;height:220px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="Scenery 11" onerror="this.style.display='none'"><h3 id="sc11">🌏 博鳌亚洲论坛</h3><p id="sc11d">国际会议之都，三江汇聚入海。每年各国政要云集。</p></div>
-<div class="card"><img src="images/scenery/sc12.jpg" style="width:100%;height:220px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="Scenery 12" onerror="this.style.display='none'"><h3 id="sc12">🚀 文昌航天发射场</h3><p id="sc12d">中国最年轻航天发射场，全世界唯一能看海景的航天城。中国航天梦起飞地。</p></div>
-<div class="card"><img src="images/scenery/sc13.jpg" style="width:100%;height:220px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="Scenery 13" onerror="this.style.display='none'"><h3 id="sc13">🏄 日月湾</h3><p id="sc13d">中国冲浪圣地，万宁日月湾。常年浪高适中，是国家冲浪队训练基地。</p></div>
+<section id="scenery">
+<div class="container">
+<h2 id="st6">魅力海南</h2>
+<div class="cards">
+<div class="card"><img src="images/scenery/sc1.jpg" style="width:100%;height:220px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="亚龙湾" onerror="this.style.display='none'"><h3 id="sc1">🏖️ 亚龙湾</h3><p id="sc1d">天下第一湾，7公里月牙形海滩，海水清澈见底，被誉为"东方夏威夷"。</p></div>
+<div class="card"><img src="images/scenery/sc2.jpg" style="width:100%;height:220px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="蜈支洲岛" onerror="this.style.display='none'"><h3 id="sc2">🏝️ 蜈支洲岛</h3><p id="sc2d">中国马尔代夫，珊瑚礁保护区，30种珊瑚，热带鱼类丰富。</p></div>
+<div class="card"><img src="images/scenery/sc3.jpg" style="width:100%;height:220px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="天涯海角" onerror="this.style.display='none'"><h3 id="sc3">💙 天涯海角</h3><p id="sc3d">浪漫地标，"天涯""海角"巨石，象征永恒爱情。</p></div>
+<div class="card"><img src="images/scenery/sc4.jpg" style="width:100%;height:220px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="大东海" onerror="this.style.display='none'"><h3 id="sc4">🌊 大东海</h3><p id="sc4d">三亚市区海滩，水清沙白，交通便利，适合家庭度假。</p></div>
+<div class="card"><img src="images/scenery/sc5.jpg" style="width:100%;height:220px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="呀诺达" onerror="this.style.display='none'"><h3 id="sc5">🌳 呀诺达雨林</h3><p id="sc5d">海南热带雨林，负氧离子爆表，雨林峡谷徒步，绿色肺部。</p></div>
+<div class="card"><img src="images/scenery/sc6.jpg" style="width:100%;height:220px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="五指山" onerror="this.style.display='none'"><h3 id="sc6">⛰️ 五指山</h3><p id="sc6d">海南最高峰，海拔1867米，黎族文化发源地，云雾缭绕。</p></div>
+<div class="card"><img src="images/scenery/sc7.jpg" style="width:100%;height:220px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="尖峰岭" onerror="this.style.display='none'"><h3 id="sc7">🌲 尖峰岭</h3><p id="sc7d">中国最大热带原始森林，动植物基因库，被誉为"绿色基因库"。</p></div>
+<div class="card"><img src="images/scenery/sc8.jpg" style="width:100%;height:220px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="分界洲岛" onerror="this.style.display='none'"><h3 id="sc8">🐚 分界洲岛</h3><p id="sc8d">南北气候分界线，海底景观丰富，潜水胜地。</p></div>
+<div class="card"><img src="images/scenery/sc9.jpg" style="width:100%;height:220px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="骑楼老街" onerror="this.style.display='none'"><h3 id="sc9">🏛️ 骑楼老街</h3><p id="sc9d">海口百年南洋建筑，中西合璧，充满历史韵味。</p></div>
+<div class="card"><img src="images/scenery/sc10.jpg" style="width:100%;height:220px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="南山" onerror="this.style.display='none'"><h3 id="sc10">🙏 南山文化旅游区</h3><p id="sc10d">108米海上观音像，佛教文化圣地，南山长寿文化。</p></div>
+<div class="card"><img src="images/scenery/sc11.jpg" style="width:100%;height:220px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="博鳌" onerror="this.style.display='none'"><h3 id="sc11">🌏 博鳌亚洲论坛</h3><p id="sc11d">永久会址，国际会议中心，玉带滩奇观。</p></div>
+<div class="card"><img src="images/scenery/sc12.jpg" style="width:100%;height:220px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="文昌航天" onerror="this.style.display='none'"><h3 id="sc12">🚀 文昌航天发射场</h3><p id="sc12d">中国最年轻航天发射场，全世界唯一能看海景的航天城。中国航天梦起飞地。</p></div>
+<div class="card"><img src="images/scenery/sc13.jpg" style="width:100%;height:220px;object-fit:cover;border-radius:12px;margin-bottom:15px" alt="日月湾" onerror="this.style.display='none'"><h3 id="sc13">🏄 日月湾</h3><p id="sc13d">中国冲浪圣地，万宁日月湾。常年浪高适中，是国家冲浪队训练基地。</p></div>
+</div>
 </div>
 </section>
 
-
-<section id="register" class="section">
-<h2 class="section-title" id="st8">用户注册</h2>
-<div style="max-width:800px;margin:0 auto">
-<div style="background:rgba(30,41,59,.5);padding:40px;border-radius:20px;border:1px solid rgba(102,126,234,.2)">
-<p style="color:#cbd5e1;line-height:1.8;margin-bottom:30px;text-align:center" id="regdesc">注册成为会员，享受更多优惠和专属服务</p>
-<div style="background:rgba(102,126,234,.1);padding:20px;border-radius:12px;margin-bottom:20px">
-<h4 style="color:#4ade80;margin-bottom:12px" id="regh1">🎁 会员权益</h4>
-<ul style="color:#cbd5e1;line-height:2;padding-left:25px">
+<section id="register">
+<div class="container">
+<h2 id="st8">用户注册</h2>
+<div class="register-section">
+<p id="regdesc" style="text-align:center;font-size:18px;margin-bottom:30px">注册成为会员，享受更多优惠和专属服务</p>
+<h3 id="regh1">🎁 会员权益</h3>
+<ul>
 <li id="regb1">注册服务优惠10%</li>
 <li id="regb2">免费政策咨询（每月2次）</li>
 <li id="regb3">专属客服一对一服务</li>
 <li id="regb4">优先获取政策更新通知</li>
 <li id="regb5">免费参加企业培训活动</li>
 </ul>
-</div>
-<div style="background:rgba(102,126,234,.1);padding:20px;border-radius:12px">
-<h4 style="color:#4ade80;margin-bottom:12px" id="regh2">📝 注册方式</h4>
-<p style="color:#cbd5e1;line-height:1.8" id="reginfo">扫描下方二维码添加客服微信或Telegram<br>发送"注册会员"即可快速注册<br>客服将为您建立专属档案</p>
-</div>
+<h3 id="regh2">📝 注册方式</h3>
+<p id="reginfo" style="text-align:center;color:#cbd5e1;line-height:2">扫描下方二维码添加客服微信或Telegram<br>发送"注册会员"即可快速注册<br>客服将为您建立专属档案</p>
 <div style="background:rgba(102,126,234,.1);padding:25px;border-radius:12px;margin-top:20px">
 <h4 style="color:#4ade80;margin-bottom:15px" id="regform">📝 注册表单</h4>
 <form id="registerForm" style="display:grid;gap:15px">
-<div><input type="text" id="regName" placeholder="姓名 *" required style="width:100%;padding:12px;border-radius:8px;border:1px solid #4ade80;background:rgba(0,0,0,.3);color:#fff;font-size:14px"></div>
-<div><input type="tel" id="regPhone" placeholder="手机号码 *" required style="width:100%;padding:12px;border-radius:8px;border:1px solid #4ade80;background:rgba(0,0,0,.3);color:#fff;font-size:14px"></div>
-<div><input type="email" id="regEmail" placeholder="邮箱" style="width:100%;padding:12px;border-radius:8px;border:1px solid #4ade80;background:rgba(0,0,0,.3);color:#fff;font-size:14px"></div>
-<div><input type="text" id="regCompany" placeholder="公司名称" style="width:100%;padding:12px;border-radius:8px;border:1px solid #4ade80;background:rgba(0,0,0,.3);color:#fff;font-size:14px"></div>
-<div><select id="regService" style="width:100%;padding:12px;border-radius:8px;border:1px solid #4ade80;background:rgba(0,0,0,.3);color:#fff;font-size:14px">
+<input type="text" id="regName" placeholder="姓名 *" required style="width:100%;padding:12px;border-radius:8px;border:1px solid #4ade80;background:rgba(0,0,0,.3);color:#fff;font-size:14px">
+<input type="tel" id="regPhone" placeholder="手机号码 *" required style="width:100%;padding:12px;border-radius:8px;border:1px solid #4ade80;background:rgba(0,0,0,.3);color:#fff;font-size:14px">
+<input type="email" id="regEmail" placeholder="邮箱" style="width:100%;padding:12px;border-radius:8px;border:1px solid #4ade80;background:rgba(0,0,0,.3);color:#fff;font-size:14px">
+<input type="text" id="regCompany" placeholder="公司名称" style="width:100%;padding:12px;border-radius:8px;border:1px solid #4ade80;background:rgba(0,0,0,.3);color:#fff;font-size:14px">
+<select id="regService" style="width:100%;padding:12px;border-radius:8px;border:1px solid #4ade80;background:rgba(0,0,0,.3);color:#fff;font-size:14px">
 <option value="">感兴趣的服务</option>
 <option value="register">公司注册</option>
 <option value="tax">税务咨询</option>
@@ -290,8 +274,8 @@ nav{padding:12px 20px;flex-direction:column;gap:15px}
 <option value="blockchain">区块链咨询</option>
 <option value="usstock">美股开户</option>
 <option value="other">其他服务</option>
-</select></div>
-<div><textarea id="regMessage" placeholder="留言（选填）" rows="3" style="width:100%;padding:12px;border-radius:8px;border:1px solid #4ade80;background:rgba(0,0,0,.3);color:#fff;font-size:14px;resize:vertical"></textarea></div>
+</select>
+<textarea id="regMessage" placeholder="留言（选填）" rows="3" style="width:100%;padding:12px;border-radius:8px;border:1px solid #4ade80;background:rgba(0,0,0,.3);color:#fff;font-size:14px;resize:vertical"></textarea>
 <div style="text-align:center">
 <button type="submit" class="btn btn-primary" id="regSubmit" style="cursor:pointer">提交注册</button>
 </div>
@@ -302,190 +286,73 @@ nav{padding:12px 20px;flex-direction:column;gap:15px}
 </div>
 </section>
 
-<section id="about" class="section section-alt">
-<h2 class="section-title" id="st7">关于我们</h2>
-<div style="max-width:900px;margin:0 auto">
-<p style="color:#cbd5e1;line-height:1.9;margin-bottom:30px;font-size:16px" id="about">海南索拉纳商务咨询中心是一家专注于海南自由贸易港商务服务的专业机构。我们依托海南自贸港独特的政策优势，为国内外企业提供全方位的商务咨询、公司注册、税务筹划、政策申报等专业服务。我们的团队由资深商务顾问、注册会计师、税务师、律师等专业人士组成，秉承"专业、高效、诚信"的服务理念。</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:25px;margin:40px 0">
-<div style="background:rgba(30,41,59,.5);padding:25px;border-radius:15px;text-align:center">
-<div style="font-size:32px;color:#4ade80;font-weight:bold;margin-bottom:8px">500+</div>
-<div style="color:#94a3b8" id="hl1">服务企业</div>
+<section id="about">
+<div class="container">
+<h2 id="st7">关于我们</h2>
+<div class="about-section">
+<p id="about">海南索拉纳商务咨询中心成立于海南自由贸易港建设初期，专注为全球企业和个人提供海南自贸港政策咨询、公司注册、税务筹划等一站式商务服务。我们拥有专业的服务团队，熟悉海南自贸港各项优惠政策，致力于帮助客户充分享受自贸港红利。</p>
 </div>
-<div style="background:rgba(30,41,59,.5);padding:25px;border-radius:15px;text-align:center">
-<div style="font-size:32px;color:#4ade80;font-weight:bold;margin-bottom:8px">98%</div>
-<div style="color:#94a3b8" id="hl2">满意度</div>
+<h3 style="color:#4ade80;margin:40px 0 20px;text-align:center" id="pm">💚 支付方式</h3>
+<div class="payment-grid">
+<div class="payment-item"><h3 id="pmw">✅ 微信支付</h3><img src="wechat_pay.jpg" alt="微信支付"></div>
+<div class="payment-item"><h3 id="pma">✅ 支付宝</h3><img src="alipay.jpg" alt="支付宝"></div>
+<div class="payment-item"><h3 id="pmb">✅ 银行转账</h3><p id="pmbd" style="padding:40px 20px;color:#cbd5e1">账户信息<br>请联系获取</p></div>
 </div>
-<div style="background:rgba(30,41,59,.5);padding:25px;border-radius:15px;text-align:center">
-<div style="font-size:32px;color:#4ade80;font-weight:bold;margin-bottom:8px">5天</div>
-<div style="color:#94a3b8" id="hl3">注册时间</div>
-</div>
-<div style="background:rgba(30,41,59,.5);padding:25px;border-radius:15px;text-align:center">
-<div style="font-size:32px;color:#4ade80;font-weight:bold;margin-bottom:8px">20+</div>
-<div style="color:#94a3b8" id="hl4">专业团队</div>
-</div>
-</div>
-<h3 style="text-align:center;color:#4ade80;margin:50px 0 30px;font-size:28px" id="contact">联系我们</h3>
-<div class="content-grid">
-<div class="card"><h3 id="cw">💬 微信</h3><p id="cwid" style="font-size:16px;font-weight:600;color:#4ade80">kosok_hainan</p><p style="color:#94a3b8;font-size:12px;margin-top:8px" id="cwd">扫码添加</p><img src="wechat_contact.jpg" style="width:120px;height:120px;margin-top:10px;border-radius:8px"></div>
-<div class="card"><h3 id="ctg">✈️ Telegram</h3><p id="ctgid" style="font-size:16px;font-weight:600;color:#4ade80">@KOSOK0898</p><p style="color:#94a3b8;font-size:12px;margin-top:8px" id="ctgd">扫码添加</p><img src="telegram.jpg" style="width:120px;height:120px;margin-top:10px;border-radius:8px"></div>
-<div class="card"><h3 id="ce">📧 邮箱</h3><p style="color:#cbd5e1;font-size:16px;font-weight:600"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="066d6975696d4675696a6768672b6e676f6867682865696b">[email&#160;protected]</a></p><p style="color:#94a3b8;font-size:12px;margin-top:8px" id="cem">可直接复制</p></div>
-<div class="card"><h3 id="ca">📍 地址</h3><p id="cad">海南省海口市美兰区</p><p style="color:#94a3b8;font-size:12px;margin-top:8px" id="cat">(详细地址请联系咨询)</p></div>
-<div class="card"><h3 id="cs">🌐 网站</h3><p><a href="http://www.solana-hainan.com" style="color:#667eea;text-decoration:none">solana-hainan.com</a></p></div>
+<h3 style="color:#4ade80;margin:60px 0 30px;text-align:center" id="contact">联系我们</h3>
+<div class="contact-grid">
+<div class="contact-card"><h3 id="cw">💬 微信</h3><p id="cwid" style="font-weight:600;font-size:18px">kosok_hainan</p><p id="cwd">扫码添加</p><img src="wechat_contact.jpg" alt="微信"></div>
+<div class="contact-card"><h3 id="ctg">✈️ Telegram</h3><p id="ctgid" style="font-weight:600;font-size:18px">@KOSOK0898</p><p id="ctgd">扫码添加</p><img src="telegram.jpg" alt="Telegram"></div>
+<div class="contact-card"><h3 id="ce">📧 邮箱</h3><p style="color:#cbd5e1;font-size:16px;font-weight:600">kosok@solana-hainan.com</p><p style="color:#94a3b8;font-size:12px;margin-top:8px">可直接复制</p></div>
+<div class="contact-card"><h3 id="ca">📍 地址</h3><p id="cad">海南省海口市美兰区</p><p id="cat" style="font-size:13px;color:#94a3b8;margin-top:5px">(详细地址请联系咨询)</p></div>
+<div class="contact-card"><h3 id="cs">🌐 网站</h3><p style="font-weight:600;font-size:16px">solana-hainan.com</p></div>
 </div>
 </div>
 </section>
 
 <footer>
-<p id="copy">© 2025 海南索拉纳商务咨询中心</p>
-<div style="width:80px;height:3px;background:linear-gradient(90deg,#667eea,#4ade80);margin:18px auto;border-radius:2px"></div>
-<p id="license">营业执照：91460100MACP01PC0Q | 注册地址：海南省海口市美兰区</p>
-<p id="slogan">专业的海南自贸港商务服务平台</p>
+<div class="container">
+<p id="footer">© 2025 海南索拉纳商务咨询中心 | 专业 · 高效 · 可信赖</p>
+</div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-let isEn=false;
-const t={zh:{brand:'海南索拉纳',n1:'首页',n2:'服务',n3:'收费',n4:'政策',n5:'新闻',n6:'人物',n7:'风景',n8:'关于',langBtn:'EN',
-title:'海南索拉纳商务咨询中心',subtitle:'您的海南自贸港商务伙伴',desc:'专业提供海南自由贸易港公司注册、税务筹划、政策咨询等一站式服务',
-btn1:'查看收费',btn2:'了解服务',f1t:'快速注册',f1d:'3-7个工作日',f2t:'税收优惠',f2d:'企业所得税15%',f3t:'合规保障',f3d:'专业团队',f4t:'全球服务',f4d:'境内外企业',
-st1:'我们的服务',s1:'🌍 全球企业注册',s1d:'为世界各地企业提供海南自贸港公司注册方案',s2:'🇨🇳 国内企业注册',s2d:'协助国内企业在海南自贸港设立分支机构',
-s3:'💰 税务优惠咨询',s3d:'深度解读海南自贸港税收优惠政策',s4:'📋 政策申报合规',s4d:'协助企业申报各类优惠政策',s5:'🏢 企业托管服务',s5d:'提供全方位企业托管服务',
-s6:'🚀 投资咨询服务',s6d:'提供海南自贸港投资机会分析',s7:'🎨 广告商标设计',s7d:'品牌LOGO设计、VI设计、宣传物料设计',s8:'⛓️ 区块链咨询',s8d:'区块链技术咨询、数字资产合规、Web3项目孵化',s9:'📈 美股开户咨询',s9d:'美股账户开户指导、投资策略咨询、市场分析',st2:'服务收费明细',
-th1:'服务项目',th2:'服务内容说明',th3:'收费标准',th4:'备注',
-pr1:'公司名称核准',pr1d:'提供3-5个名称核名',pr1n:'免费重提一次',
-pr2:'工商注册(基础)',pr2d:'营业执照+刻章+税务登记',pr2n:'客户自备地址',
-pr3:'工商注册(全包)',pr3d:'含挂靠地址一年',pr3n:'适合无址创业',
-pr4:'刻章服务',pr4d:'公章/财务/法人/合同/发票章',pr4n:'全套优惠价',
-pr5:'税务报到',pr5d:'税种核定+发票资格开通',pr5n:'含指导',
-pr6:'发票申领',pr6d:'普票或专票申请',pr6n:'按次收费',
-pr7:'银行开户协助',pr7d:'材料准备+陪同办理',pr7n:'不含银行费用',
-pr8:'社保公积金开户',pr8d:'单位账户设立',pr8n:'含首次增员',
-pr9:'代理记账(零申报)',pr9d:'每月申报',pr9n:'年付1,500元',
-pr10:'代理记账(小规模)',pr10d:'月度报税+建账',pr10n:'年付2,000元',
-pr11:'代理记账(一般纳税人)',pr11d:'增值税+全盘账务',pr11n:'年付5,000元',
-pr12:'公司变更',pr12d:'法人/股东/地址/资本等',pr12n:'多项可打包',
-pr13:'公司注销',pr13d:'税务清算+工商注销',pr13n:'按情况报价',
-pr14:'商标注册',pr14d:'国内商标（1类）',pr14n:'周期6-8个月',
-pr15:'企业年报代报',pr15d:'年度公示系统申报',pr15n:'逾期有风险',
-pr16:'进出口权',pr16d:'进出口经营权+海关备案',pr16n:'全套办理',
-pflow:'服务流程',
-ps1:'免费咨询',ps1d:'微信/电话沟通需求',
-ps2:'方案确认',ps2d:'确定服务内容及价格',
-ps3:'签订合同',ps3d:'双方签署服务协议',
-ps4:'支付定金',ps4d:'支付50%服务费用',
-ps5:'服务执行',ps5d:'专业团队办理业务',
-ps6:'成果交付',ps6d:'交付所有证照材料',
-ps7:'支付余款',ps7d:'验收合格支付尾款',
-ps8:'服务完成',ps8d:'提供后续咨询支持',
-pm:'💚 支付方式',pmw:'✅ 微信支付',pma:'✅ 支付宝',pmb:'✅ 银行转账',pmbd:'账户信息<br>请联系获取',
-polnote:'💡 政策更新请联系管理员添加',st3:'海南优惠政策',
-pol1:'🎯 零关税政策',pol1d:'2025年封关后，岛内企业进口货物全免关税',
-pol2:'💰 低税率优惠',pol2d:'鼓励类企业所得税15%，高端人才个税15%',
-pol3:'🌏 贸易自由便利',pol3d:'"一线放开、二线管住"，境外货物免征进口关税',
-pol4:'💵 投资自由便利',pol4d:'企业开办时间压减90%，材料压减77%',
-pol5:'🔄 跨境资金流动',pol5d:'EF账户上线，跨境收支超1000亿美元',
-pol6:'✈️ 人员进出便利',pol6d:'59国人员免签30天，2024年超35万人次',
-newsnote:'💡 新闻更新请联系管理员添加',st4:'相关新闻',
-news1:'🚀 封关运作倒计时',news1d:'2025年底将如期实现封关运作目标',
-news2:'📈 人才个税延续',news2d:'高端人才税负超15%部分继续免征',
-news3:'🎉 总书记考察',news3d:'习近平强调加快建设世界影响力自贸港',
-news4:'💼 外贸大增',news4d:'2024年前11月增长20.5%，超全国平均',
-n8:'注册',st8:'用户注册',regdesc:'注册成为会员，享受更多优惠和专属服务',regh1:'🎁 会员权益',regb1:'注册服务优惠10%',regb2:'免费政策咨询（每月2次）',regb3:'专属客服一对一服务',regb4:'优先获取政策更新通知',regb5:'免费参加企业培训活动',regh2:'📝 注册方式',reginfo:'扫描下方二维码添加客服微信或Telegram<br>发送"注册会员"即可快速注册<br>客服将为您建立专属档案',regnow:'立即注册',regform:'📝 注册表单',regSubmit:'提交注册',regResult:'✅ 注册信息已提交！我们将尽快通过微信或邮件联系您。',st5:'椰风人物志',
-p1:'海瑞 (1514-1587)',p1d:'明代清官典范，刚正不阿敢骂皇帝，人称"海青天"。去世时家里只有几两银子。',
-p2:'丘濬 (1420-1495)',p2d:'明代大学士、理学家。海南第一位进入内阁的宰相级人物，著有《大学衍义补》160卷。',
-p3:'冼夫人 (约512-602)',p3d:'古代巾帼英雄、岭南圣母。南北朝时期俚族首领，一生经历三个朝代，维护国家统一。',
-p4:'苏东坡 (1037-1101)',p4d:'北宋文豪谪居海南。62岁被贬海南，办学堂教书育人，发明"东坡肉"和"椰子饭"。',
-p5:'白玉蟾 (1194-?)',p5d:'道教南宗五祖、紫清真人。12岁能诗，创立道教南宗，诗词书画样样精通。',
-p6:'张岳崧 (1773-1842)',p6d:'清代海南唯一探花。嘉庆年间考中探花（全国第三名），官至湖北布政使。',
-p7:'宋庆龄 (1893-1981)',p7d:'国家名誉主席，祖籍海南文昌。孙中山先生夫人，二十世纪最伟大女性之一。',
-p8:'张云逸 (1892-1974)',p8d:'开国大将，海南文昌人。从辛亥革命打到解放战争，1955年被授予大将军衔。',
-p9:'符克 (1923-1949)',p9d:'革命烈士，海南文昌人。琼崖革命根据地创建者之一，26岁牺牲。',
-p10:'云光英 (当代)',p10d:'当代企业家代表。新时代海商，为海南自贸港建设贡献力量。',p11:'陈峰 (1953-)',p11d:'海航集团创始人，海南文昌人。白手起家创建世界500强企业。',p12:'王文明 (1894-1930)',p12d:'琼崖革命领导人，海南乐会人。琼崖革命"23年红旗不倒"奠基人。',p13:'冯白驹 (1903-1973)',p13d:'琼崖纵队司令员，海南琼山人。被誉为"琼崖人民的一面旗帜"。',p14:'邢诒孔 (1909-1993)',p14d:'著名华侨领袖，海南文昌人。泰国商业巨子，热心支持祖国建设。',p15:'林毅夫 (1952-)',p15d:'著名经济学家，祖籍海南。世界银行首席经济学家，北大教授。',
-st6:'魅力海南',
-sc1:'🏖️ 亚龙湾',sc1d:'天下第一湾，7.5公里月牙形海滩，沙细水蓝，被称为"东方夏威夷"。',
-sc2:'🏝️ 蜈支洲岛',sc2d:'中国的马尔代夫，海水能见度27米，热带植物2700种，情侣圣地。',
-sc3:'💙 天涯海角',sc3d:'浪漫地标，象征海枯石烂的爱情。苏东坡曾被贬至此。',
-sc4:'🌊 大东海',sc4d:'三亚市区最近的优质海滩，一年四季可游泳，是三亚人的"城市会客厅"。',
-sc5:'🌳 呀诺达雨林',sc5d:'中国唯一热带雨林，天然氧吧，负氧离子爆表。"呀诺达"是黎语"你好"。',
-sc6:'⛰️ 五指山',sc6d:'海南第一高山，主峰1867米。《西游记》里孙悟空被压的五指山原型。',
-sc7:'🌲 尖峰岭',sc7d:'中国现存最大原始热带雨林，保存3500多种植物，是"绿色基因库"。',
-sc8:'🐚 分界洲岛',sc8d:'海南南北气候分界线。有海底邮局，可与海豚一起游泳。',
-sc9:'🏛️ 骑楼老街',sc9d:'海口特色，中西建筑风格，浓浓南洋风情。当年下南洋海南人建造。',
-sc10:'🙏 南山文化旅游区',sc10d:'108米海上观音像，全世界最高海上观音。"福如东海，寿比南山"。',
-sc11:'🌏 博鳌亚洲论坛',sc11d:'国际会议之都，三江汇聚入海。每年各国政要云集。',
-sc12:'🚀 文昌航天发射场',sc12d:'中国最年轻航天发射场，全世界唯一能看海景的航天城。中国航天梦起飞地。',sc13:'🏄 日月湾',sc13d:'中国冲浪圣地，万宁日月湾。常年浪高适中，是国家冲浪队训练基地。',
-st7:'关于我们',
-about:'海南索拉纳商务咨询中心是一家专注于海南自由贸易港商务服务的专业机构。我们依托海南自贸港独特的政策优势，为国内外企业提供全方位的商务咨询、公司注册、税务筹划、政策申报等专业服务。我们的团队由资深商务顾问、注册会计师、税务师、律师等专业人士组成，秉承"专业、高效、诚信"的服务理念。',
-hl1:'服务企业',hl2:'满意度',hl3:'注册时间',hl4:'专业团队',
-contact:'联系我们',cw:'💬 微信',cwid:'kosok_hainan',cwd:'扫码添加',ctg:'✈️ Telegram',ctgid:'@KOSOK0898',ctgd:'扫码添加',ce:'📧 邮箱',ca:'📍 地址',cad:'海南省海口市美兰区',cat:'(详细地址请联系咨询)',cs:'🌐 网站',
-copy:'© 2025 海南索拉纳商务咨询中心',license:'营业执照：91460100MACP01PC0Q | 注册地址：海南省海口市美兰区',slogan:'专业的海南自贸港商务服务平台'},
-en:{brand:'Hainan Solana',n1:'Home',n2:'Services',n3:'Pricing',n4:'Policy',n5:'News',n6:'People',n7:'Scenery',n8:'About',langBtn:'中文',
-title:'Hainan Solana Business Advisory',subtitle:'Your Gateway to Hainan FTP',desc:'Professional one-stop services for company registration, tax planning, and policy consultation',
-btn1:'View Pricing',btn2:'Our Services',f1t:'Fast',f1d:'3-7 days',f2t:'Tax Benefits',f2d:'15% corporate tax',f3t:'Compliance',f3d:'Professional',f4t:'Global',f4d:'Worldwide',
-st1:'Our Services',s1:'🌍 Global Registration',s1d:'Company registration for businesses worldwide',s2:'🇨🇳 Domestic Registration',s2d:'Assistance for domestic enterprises',
-s3:'💰 Tax Consulting',s3d:'Tax incentive policy analysis',s4:'📋 Compliance',s4d:'Policy application assistance',s5:'🏢 Corporate Hosting',s5d:'Comprehensive services',
-s6:'🚀 Investment',s6d:'Investment opportunity analysis',s7:'🎨 Design',s7d:'Brand LOGO, VI design, materials',s8:'⛓️ Blockchain',s8d:'Blockchain consulting, digital assets, Web3',s9:'📈 US Stock',s9d:'US stock guidance, investment strategy',st2:'Pricing',
-th1:'Service',th2:'Description',th3:'Fee',th4:'Notes',
-pr1:'Name Check',pr1d:'3-5 name options',pr1n:'Free retry',
-pr2:'Basic Registration',pr2d:'License+Stamp+Tax',pr2n:'Own address',
-pr3:'Full Package',pr3d:'Include address 1yr',pr3n:'No address',
-pr4:'Stamp',pr4d:'All 5 stamps',pr4n:'Package',
-pr5:'Tax Setup',pr5d:'Tax type+Invoice',pr5n:'With guide',
-pr6:'Invoice',pr6d:'General/Special',pr6n:'Per time',
-pr7:'Bank Account',pr7d:'Prep+Escort',pr7n:'Bank fee excl',
-pr8:'Social Security',pr8d:'Setup account',pr8n:'First member',
-pr9:'Bookkeeping(Zero)',pr9d:'Monthly filing',pr9n:'¥1,500/yr',
-pr10:'Bookkeeping(Small)',pr10d:'Tax+Setup',pr10n:'¥2,000/yr',
-pr11:'Bookkeeping(General)',pr11d:'VAT+Full',pr11n:'¥5,000/yr',
-pr12:'Changes',pr12d:'Legal/Shareholder/Address',pr12n:'Package discount',
-pr13:'Cancellation',pr13d:'Tax+Business',pr13n:'Case by case',
-pr14:'Trademark',pr14d:'Domestic(1 class)',pr14n:'6-8 months',
-pr15:'Annual Report',pr15d:'Annual filing',pr15n:'Risk if late',
-pr16:'Import/Export',pr16d:'Rights+Customs',pr16n:'Full service',
-pflow:'Service Process',
-ps1:'Free Consult',ps1d:'WeChat/Phone',
-ps2:'Confirm',ps2d:'Confirm service',
-ps3:'Contract',ps3d:'Sign agreement',
-ps4:'Deposit',ps4d:'Pay 50%',
-ps5:'Execute',ps5d:'Team handles',
-ps6:'Deliver',ps6d:'All documents',
-ps7:'Balance',ps7d:'Pay remaining',
-ps8:'Complete',ps8d:'Ongoing support',
-pm:'💚 Payment',pmw:'✅ WeChat',pma:'✅ Alipay',pmb:'✅ Bank Transfer',pmbd:'Contact us for<br>account details',
-polnote:'💡 Contact admin for policy updates',st3:'Hainan Policies',
-pol1:'🎯 Zero Tariff',pol1d:'All imports tariff-free after 2025',
-pol2:'💰 Low Tax',pol2d:'15% corporate tax, 15% personal tax',
-pol3:'🌏 Trade Freedom',pol3d:'First-line release, second-line control',
-pol4:'💵 Investment Freedom',pol4d:'Setup 90% faster, 77% less materials',
-pol5:'🔄 Fund Flow',pol5d:'EF account, $100B+ transactions',
-pol6:'✈️ Mobility',pol6d:'59 countries visa-free 30 days',
-newsnote:'💡 Contact admin to add news',st4:'News',
-news1:'🚀 Countdown',news1d:'Closure target by end 2025',
-news2:'📈 Tax Extended',news2d:'High-end talent tax exemption continues',
-news3:'🎉 Inspection',news3d:'President Xi emphasized world-class FTP',
-news4:'💼 Trade Surge',news4d:'20.5% growth in 11 months',
-n8:'Register',st8:'Register',regdesc:'Register as member for more benefits',regh1:'🎁 Benefits',regb1:'10% off',regb2:'Free consultation',regb3:'Dedicated service',regb4:'Priority updates',regb5:'Free training',regh2:'📝 Registration',reginfo:'Scan QR to add contact<br>Send Register to complete',regnow:'Register Now',regform:'📝 Registration Form',regSubmit:'Submit',regResult:'✅ Registration submitted! We will contact you soon via WeChat or email.',st5:'Hainan Figures',
-p1:'Hai Rui (1514-1587)',p1d:'Upright Ming official, dared criticize emperor. Only few taels of silver at death.',
-p2:'Qiu Jun (1420-1495)',p2d:'Ming scholar. First cabinet minister from Hainan, wrote 160-volume treatise.',
-p3:'Lady Xian (512-602)',p3d:'Ancient heroine, Mother of Lingnan. Maintained unity through three dynasties.',
-p4:'Su Dongpo (1037-1101)',p4d:'Song poet exiled at 62. Founded schools, invented Dongpo pork and coconut rice.',
-p5:'Bai Yuchan (1194-?)',p5d:'Taoist master. Child prodigy at 12, founded Southern School of Taoism.',
-p6:'Zhang Yuesong (1773-1842)',p6d:'Only Hainan Tanhua(3rd place). Served as provincial official.',
-p7:'Song Qingling (1893-1981)',p7d:'Honorary President, from Hainan. Wife of Sun Yat-sen, great woman of 20th century.',
-p8:'Zhang Yunyi (1892-1974)',p8d:'Founding General. Fought from revolution to liberation, one of ten marshals.',
-p9:'Fu Ke (1923-1949)',p9d:'Revolutionary martyr. Qiongya base founder, died at 26.',
-p10:'Yun Guangying (Modern)',p10d:'Modern entrepreneur. New-era Hainan business leader.',p11:'Chen Feng (1953-)',p11d:'Founder of HNA Group. Built Fortune 500 company from scratch.',p12:'Wang Wenming (1894-1930)',p12d:'Qiongya revolutionary leader. Founded 23-year red flag legacy.',p13:'Feng Baiju (1903-1973)',p13d:'Qiongya Column Commander. "A banner of Qiongya people".',p14:'Xing Yikong (1909-1993)',p14d:'Overseas Chinese leader. Thailand business magnate, supported motherland.',p15:'Justin Lin (1952-)',p15d:'Renowned economist. World Bank Chief Economist, Peking University professor.',
-st6:'Hainan Charm',
-sc1:'🏖️ Yalong Bay',sc1d:'Best bay, 7.5km crescent beach, called "Oriental Hawaii".',
-sc2:'🏝️ Wuzhizhou',sc2d:'Chinas Maldives, 27m visibility, 2700 species, couples paradise.',
-sc3:'💙 Tianya Haijiao',sc3d:'Romantic landmark, symbol of eternal love. Su Dongpo was exiled here.',
-sc4:'🌊 Dadonghai',sc4d:'Nearest quality beach to Sanya city, year-round swimming.',
-sc5:'🌳 Yanoda',sc5d:'Chinas only tropical rainforest. "Yanoda" means "hello" in Li language.',
-sc6:'⛰️ Wuzhi Mountain',sc6d:'Hainans highest peak, 1867m. Prototype of Journey to the West mountain.',
-sc7:'🌲 Jianfengling',sc7d:'Largest primeval rainforest, 3500 species, "green gene bank".',
-sc8:'🐚 Fenjiezhou',sc8d:'Climate boundary. Underwater post office, swim with dolphins.',
-sc9:'🏛️ Qilou Street',sc9d:'Haikou feature, Chinese-Western style, built by returned overseas Chinese.',
-sc10:'🙏 Nanshan',sc10d:'108m sea Guanyin, worlds tallest. "Blessings and longevity".',
-sc11:'🌏 Boao Forum',sc11d:'International hub, three rivers meet. Annual gathering of world leaders.',
-sc12:'🚀 Wenchang Space',sc12d:'Youngest spaceport, only seaside launch site. Chinas space dream.',sc13:'🏄 Riyue Bay',sc13d:'China surfing paradise, Wanning. Perfect waves year-round, national team training base.',
-st7:'About Us',
-about:'Hainan Solana Business Advisory specializes in Hainan Free Trade Port services. We provide comprehensive business consultation, company registration, tax planning, and pol
+<script>
+let currentLang='zh';
+const zh={brand:'海南索拉纳',title:'海南索拉纳商务咨询中心',subtitle:'您的海南自贸港商务伙伴',desc:'专业提供海南自由贸易港公司注册、税务筹划、政策咨询等一站式服务',btn1:'查看收费',btn2:'了解服务',f1t:'快速注册',f1d:'3-7个工作日',f2t:'税收优惠',f2d:'企业所得税15%',f3t:'合规保障',f3d:'专业团队',f4t:'全球服务',f4d:'境内外企业',n1:'首页',n2:'服务',n3:'收费',n4:'政策',n5:'新闻',n6:'人物',n7:'风景',n8:'注册',n9:'关于',st1:'我们的服务',s1:'🌍 全球企业注册',s1d:'为世界各地企业提供海南自贸港公司注册方案',s2:'🇨🇳 国内企业注册',s2d:'协助国内企业在海南自贸港设立分支机构',s3:'💰 税务优惠咨询',s3d:'深度解读海南自贸港税收优惠政策',s4:'📋 政策申报合规',s4d:'协助企业申报各类优惠政策',s5:'🏢 企业托管服务',s5d:'提供全方位企业托管服务',s6:'🚀 投资咨询服务',s6d:'提供海南自贸港投资机会分析',s7:'🎨 广告商标设计',s7d:'品牌LOGO设计、VI设计、宣传物料设计',s8:'⛓️ 区块链咨询',s8d:'区块链技术咨询、数字资产合规、Web3项目孵化',s9:'📈 美股开户咨询',s9d:'美股账户开户指导、投资策略咨询、市场分析',st2:'收费明细',pr1:'公司名称核准',pr1p:'¥200',pr1n:'1-2个工作日',pr2:'工商注册（基础）',pr2p:'¥800',pr2n:'含营业执照',pr3:'工商注册（全包）',pr3p:'¥1,900',pr3n:'含章、税务、银行',pr4:'刻章服务',pr4p:'¥300',pr4n:'公章、财务章、法人章',pr5:'税务报到',pr5p:'¥500',pr5n:'国地税报到',pr6:'发票申领',pr6p:'¥300/次',pr6n:'增值税发票',pr7:'银行开户协助',pr7p:'¥1,200',pr7n:'预约、陪同',pr8:'社保公积金',pr8p:'¥500',pr8n:'开户设立',pr9:'代理记账（零申报）',pr9p:'¥150/月',pr9n:'小规模',pr10:'代理记账（小规模）',pr10p:'¥200/月',pr10n:'有业务',pr11:'代理记账（一般纳税人）',pr11p:'¥500/月',pr11n:'含报税',pr12:'公司变更',pr12p:'¥600/项',pr12n:'名称、地址等',pr13:'公司注销',pr13p:'¥2,000起',pr13n:'含税务注销',pr14:'商标注册',pr14p:'¥600+¥300',pr14n:'代理费+官费',pr15:'企业年报',pr15p:'¥200/年',pr15n:'工商年检',pr16:'进出口权',pr16p:'¥1,500',pr16n:'海关、商委备案',flow:'服务流程',flow1:'免费咨询',flow1d:'微信/电话沟通',flow2:'方案确认',flow2d:'确定服务和价格',flow3:'签订合同',flow3d:'双方签署协议',flow4:'支付定金',flow4d:'支付50%服务费',flow5:'服务执行',flow5d:'专业团队办理',flow6:'成果交付',flow6d:'交付全部文件',flow7:'支付余款',flow7d:'验收后付尾款',flow8:'服务完成',flow8d:'后续咨询支持',st3:'海南优惠政策',polnote:'💡 政策更新请联系管理员添加',pol1:'🎯 零关税',pol1d:'加工增值30%以上免关税',pol2:'💰 低税率',pol2d:'企业所得税15%，个人所得税15%',pol3:'🌏 贸易自由',pol3d:'货物、服务贸易零关税',pol4:'💵 投资自由',pol4d:'非禁即入，外资准入',pol5:'🔄 跨境资金',pol5d:'资金自由进出',pol6:'✈️ 人员进出',pol6d:'旅游免签、工作许可便利',st4:'相关新闻',newsnote:'💡 新闻更新请联系管理员添加',news1:'🚀 封关运作倒计时',news1d:'2025年底前实现全岛封关运作',news2:'📈 人才个税政策延续',news2d:'高端人才个税超15%部分免征延至2035年',news3:'🎉 总书记考察海南',news3d:'强调加快建设具有世界影响力的自由贸易港',news4:'💼 前11月外贸大增',news4d:'2024年前11月进出口总额增长19.4%',st5:'椰风人物志',p1:'海瑞 (1514-1587)',p1d:'明代清官典范，刚正不阿敢骂皇帝，人称"海青天"。去世时家里只有几两银子。',p2:'丘濬 (1420-1495)',p2d:'明代大学士、理学家。海南第一位进入内阁的宰相级人物，著有《大学衍义补》160卷。',p3:'冼夫人 (约512-602)',p3d:'古代巾帼英雄、岭南圣母。南北朝时期俚族首领，一生经历三个朝代，维护国家统一。',p4:'苏东坡 (1037-1101)',p4d:'北宋文豪谪居海南。62岁被贬海南，办学堂教书育人，发明"东坡肉"和"椰子饭"。',p5:'白玉蟾 (1194-?)',p5d:'道教南宗五祖、紫清真人。12岁能诗，创立道教南宗，诗词书画样样精通。',p6:'张岳崧 (1773-1842)',p6d:'清代海南唯一探花。嘉庆年间考中探花（全国第三名），官至湖北布政使。',p7:'王文明 (1894-1930)',p7d:'琼崖革命领导人，海南乐会人。琼崖革命"23年红旗不倒"奠基人。',p8:'冯白驹 (1903-1973)',p8d:'琼崖纵队司令员，海南琼山人。被誉为"琼崖人民的一面旗帜"。',p9:'邢诒孔 (1909-1993)',p9d:'著名华侨领袖，海南文昌人。泰国商业巨子，热心支持祖国建设。',p10:'宋庆龄 (1893-1981)',p10d:'国家名誉主席，祖籍海南文昌。孙中山先生夫人，二十世纪最伟大女性之一。',p11:'陈峰 (1953-)',p11d:'海航集团创始人，海南文昌人。白手起家创建世界500强企业。',p12:'张云逸 (1892-1974)',p12d:'开国大将，海南文昌人。从辛亥革命打到解放战争，1955年被授予大将军衔。',p13:'符克 (1923-1949)',p13d:'革命烈士，海南文昌人。琼崖革命根据地创建者之一，26岁牺牲。',p14:'林毅夫 (1952-)',p14d:'著名经济学家，祖籍海南。世界银行首席经济学家，北大教授。',p15:'云光英 (当代)',p15d:'当代企业家代表。新时代海商，为海南自贸港建设贡献力量。',st6:'魅力海南',sc1:'🏖️ 亚龙湾',sc1d:'天下第一湾，7公里月牙形海滩，海水清澈见底，被誉为"东方夏威夷"。',sc2:'🏝️ 蜈支洲岛',sc2d:'中国马尔代夫，珊瑚礁保护区，30种珊瑚，热带鱼类丰富。',sc3:'💙 天涯海角',sc3d:'浪漫地标，"天涯""海角"巨石，象征永恒爱情。',sc4:'🌊 大东海',sc4d:'三亚市区海滩，水清沙白，交通便利，适合家庭度假。',sc5:'🌳 呀诺达雨林',sc5d:'海南热带雨林，负氧离子爆表，雨林峡谷徒步，绿色肺部。',sc6:'⛰️ 五指山',sc6d:'海南最高峰，海拔1867米，黎族文化发源地，云雾缭绕。',sc7:'🌲 尖峰岭',sc7d:'中国最大热带原始森林，动植物基因库，被誉为"绿色基因库"。',sc8:'🐚 分界洲岛',sc8d:'南北气候分界线，海底景观丰富，潜水胜地。',sc9:'🏛️ 骑楼老街',sc9d:'海口百年南洋建筑，中西合璧，充满历史韵味。',sc10:'🙏 南山文化旅游区',sc10d:'108米海上观音像，佛教文化圣地，南山长寿文化。',sc11:'🌏 博鳌亚洲论坛',sc11d:'永久会址，国际会议中心，玉带滩奇观。',sc12:'🚀 文昌航天发射场',sc12d:'中国最年轻航天发射场，全世界唯一能看海景的航天城。中国航天梦起飞地。',sc13:'🏄 日月湾',sc13d:'中国冲浪圣地，万宁日月湾。常年浪高适中，是国家冲浪队训练基地。',st7:'关于我们',st8:'用户注册',regdesc:'注册成为会员，享受更多优惠和专属服务',regh1:'🎁 会员权益',regb1:'注册服务优惠10%',regb2:'免费政策咨询（每月2次）',regb3:'专属客服一对一服务',regb4:'优先获取政策更新通知',regb5:'免费参加企业培训活动',regh2:'📝 注册方式',reginfo:'扫描下方二维码添加客服微信或Telegram<br>发送"注册会员"即可快速注册<br>客服将为您建立专属档案',regform:'📝 注册表单',regSubmit:'提交注册',pm:'💚 支付方式',pmw:'✅ 微信支付',pma:'✅ 支付宝',pmb:'✅ 银行转账',pmbd:'账户信息<br>请联系获取',contact:'联系我们',cw:'💬 微信',cwid:'kosok_hainan',cwd:'扫码添加',ctg:'✈️ Telegram',ctgid:'@KOSOK0898',ctgd:'扫码添加',ce:'📧 邮箱',ca:'📍 地址',cad:'海南省海口市美兰区',cat:'(详细地址请联系咨询)',cs:'🌐 网站',footer:'© 2025 海南索拉纳商务咨询中心 | 专业 · 高效 · 可信赖'};
+
+const en={brand:'Hainan Solana',title:'Hainan Solana Business Center',subtitle:'Your Hainan FTP Partner',desc:'Professional services for company registration, tax planning, policy consulting',btn1:'Pricing',btn2:'Services',f1t:'Fast Setup',f1d:'3-7 working days',f2t:'Tax Benefits',f2d:'15% corporate tax',f3t:'Compliance',f3d:'Professional team',f4t:'Global Service',f4d:'Worldwide',n1:'Home',n2:'Services',n3:'Pricing',n4:'Policy',n5:'News',n6:'People',n7:'Scenery',n8:'Register',n9:'About',st1:'Our Services',s1:'🌍 Global Registration',s1d:'Company registration in Hainan Free Trade Port',s2:'🇨🇳 Domestic Registration',s2d:'Assist domestic enterprises in establishing branches',s3:'💰 Tax Consulting',s3d:'In-depth interpretation of tax benefits',s4:'📋 Policy Compliance',s4d:'Assist enterprises in policy application',s5:'🏢 Corporate Hosting',s5d:'Comprehensive enterprise hosting services',s6:'🚀 Investment Consulting',s6d:'Investment opportunity analysis',s7:'🎨 Brand Design',s7d:'Brand LOGO, VI design, promotional materials',s8:'⛓️ Blockchain',s8d:'Blockchain consulting, digital assets, Web3',s9:'📈 US Stock',s9d:'US stock account guidance, investment strategy',st2:'Pricing Details',pr1:'Name Check',pr1p:'¥200',pr1n:'1-2 days',pr2:'Basic Registration',pr2p:'¥800',pr2n:'License included',pr3:'Full Package',pr3p:'¥1,900',pr3n:'Seal, tax, bank',pr4:'Seal Service',pr4p:'¥300',pr4n:'3 seals',pr5:'Tax Registration',pr5p:'¥500',pr5n:'Tax bureau',pr6:'Invoice Application',pr6p:'¥300/time',pr6n:'VAT invoice',pr7:'Bank Account',pr7p:'¥1,200',pr7n:'Appointment & assist',pr8:'Social Security',pr8p:'¥500',pr8n:'Account setup',pr9:'Bookkeeping (Zero)',pr9p:'¥150/mo',pr9n:'Small scale',pr10:'Bookkeeping (Small)',pr10p:'¥200/mo',pr10n:'With business',pr11:'Bookkeeping (General)',pr11p:'¥500/mo',pr11n:'Tax included',pr12:'Changes',pr12p:'¥600/item',pr12n:'Name, address',pr13:'Cancellation',pr13p:'¥2,000+',pr13n:'Tax included',pr14:'Trademark',pr14p:'¥600+¥300',pr14n:'Service + official',pr15:'Annual Report',pr15p:'¥200/yr',pr15n:'Annual filing',pr16:'Import/Export',pr16p:'¥1,500',pr16n:'Customs filing',flow:'Service Process',flow1:'Free Consultation',flow1d:'WeChat/Phone',flow2:'Confirm Plan',flow2d:'Service & price',flow3:'Sign Contract',flow3d:'Agreement',flow4:'Pay Deposit',flow4d:'50% payment',flow5:'Execute Service',flow5d:'Professional team',flow6:'Deliver Results',flow6d:'All documents',flow7:'Pay Balance',flow7d:'After acceptance',flow8:'Complete',flow8d:'Ongoing support',st3:'Hainan Policies',polnote:'💡 Contact admin for policy updates',pol1:'🎯 Zero Tariff',pol1d:'30%+ value-added exempt',pol2:'💰 Low Tax Rate',pol2d:'15% corporate & personal tax',pol3:'🌏 Trade Freedom',pol3d:'Zero tariff for goods & services',pol4:'💵 Investment Freedom',pol4d:'Foreign investment welcome',pol5:'🔄 Capital Flow',pol5d:'Free capital flow',pol6:'✈️ Personnel Movement',pol6d:'Visa-free travel, work permit convenience',st4:'Related News',newsnote:'💡 Contact admin to add news',news1:'🚀 Closure Countdown',news1d:'Island-wide closure by end of 2025',news2:'📈 Talent Tax Extended',news2d:'High-end talent tax benefits extended to 2035',news3:'🎉 President Visit',news3d:'Emphasized building world-class free trade port',news4:'💼 Trade Growth',news4d:'Jan-Nov 2024 trade up 19.4%',st5:'Hainan Figures',p1:'Hai Rui (1514-1587)',p1d:'Upright Ming official, dared criticize emperor. "Hai Qingtian".',p2:'Qiu Jun (1420-1495)',p2d:'Ming scholar. First cabinet minister from Hainan, 160-volume treatise.',p3:'Lady Xian (512-602)',p3d:'Ancient heroine. Maintained unity through three dynasties.',p4:'Su Dongpo (1037-1101)',p4d:'Song poet exiled at 62. Founded schools, invented famous dishes.',p5:'Bai Yuchan (1194-?)',p5d:'Taoist master. Child prodigy, founded Southern School of Taoism.',p6:'Zhang Yuesong (1773-1842)',p6d:'Only Hainan Tanhua (3rd place). Provincial official.',p7:'Wang Wenming (1894-1930)',p7d:'Qiongya revolutionary leader. 23-year red flag legacy.',p8:'Feng Baiju (1903-1973)',p8d:'Qiongya Column Commander. "A banner of Qiongya people".',p9:'Xing Yikong (1909-1993)',p9d:'Overseas Chinese leader. Thailand magnate, supported motherland.',p10:'Song Qingling (1893-1981)',p10d:'Honorary President. Wife of Sun Yat-sen, great 20th century woman.',p11:'Chen Feng (1953-)',p11d:'HNA Group founder. Built Fortune 500 from scratch.',p12:'Zhang Yunyi (1892-1974)',p12d:'Founding General. Fought from revolution to liberation.',p13:'Fu Ke (1923-1949)',p13d:'Revolutionary martyr. Qiongya base founder, died at 26.',p14:'Justin Lin (1952-)',p14d:'Renowned economist. World Bank Chief Economist, Peking U professor.',p15:'Yun Guangying (Modern)',p15d:'Modern entrepreneur. New-era Hainan business leader.',st6:'Hainan Charm',sc1:'🏖️ Yalong Bay',sc1d:'Best Bay. 7km crescent beach, crystal clear, "Oriental Hawaii".',sc2:'🏝️ Wuzhizhou Island',sc2d:'China Maldives. 30+ coral species, abundant fish.',sc3:'💙 Tianya Haijiao',sc3d:'Romantic landmark. "Edge of Sky" rocks, eternal love symbol.',sc4:'🌊 Dadonghai',sc4d:'City beach. Clear water, white sand, family-friendly.',sc5:'🌳 Yanoda Rainforest',sc5d:'Tropical rainforest. High oxygen, canyon hiking, green lung.',sc6:'⛰️ Wuzhi Mountain',sc6d:'Highest peak, 1867m. Li culture origin, misty clouds.',sc7:'🌲 Jianfengling',sc7d:'Largest tropical forest. Biodiversity gene pool.',sc8:'🐚 Fenjiezhou Island',sc8d:'Climate dividing line. Rich underwater scenery, diving paradise.',sc9:'🏛️ Qilou Old Street',sc9d:'Century Nanyang architecture. East-West fusion, historical charm.',sc10:'🙏 Nanshan Culture Zone',sc10d:'108m Guanyin statue. Buddhist holy land, longevity culture.',sc11:'🌏 Boao Forum',sc11d:'Permanent site. International conference center, Yudai Beach.',sc12:'🚀 Wenchang Space',sc12d:'Youngest spaceport, only seaside launch site. China space dream.',sc13:'🏄 Riyue Bay',sc13d:'China surfing paradise. Perfect waves year-round, national team base.',st7:'About Us',st8:'Member Registration',regdesc:'Register for member benefits and exclusive services',regh1:'🎁 Member Benefits',regb1:'10% discount on registration',regb2:'Free consultation (2x/month)',regb3:'Dedicated customer service',regb4:'Priority policy updates',regb5:'Free enterprise training',regh2:'📝 How to Register',reginfo:'Scan QR to add WeChat/Telegram<br>Send "Register" to complete<br>Get exclusive member account',regform:'📝 Registration Form',regSubmit:'Submit',pm:'💚 Payment Methods',pmw:'✅ WeChat Pay',pma:'✅ Alipay',pmb:'✅ Bank Transfer',pmbd:'Contact us for<br>account details',contact:'Contact Us',cw:'💬 WeChat',cwid:'kosok_hainan',cwd:'Scan to add',ctg:'✈️ Telegram',ctgid:'@KOSOK0898',ctgd:'Scan to add',ce:'📧 Email',ca:'📍 Address',cad:'Meilan District, Haikou, Hainan',cat:'(Contact for detailed address)',cs:'🌐 Website',footer:'© 2025 Hainan Solana Business Center | Professional · Efficient · Trustworthy'};
+
+function toggleLang(){
+const lang=currentLang==='zh'?'en':'zh';
+const t=lang==='zh'?zh:en;
+currentLang=lang;
+document.getElementById('langBtn').textContent=lang==='zh'?'EN':'中文';
+Object.keys(t).forEach(key=>{
+const el=document.getElementById(key);
+if(el){
+if(key.includes('d')&&!key.includes('id')&&!key.includes('ad')){
+el.innerHTML=t[key];
+}else{
+el.textContent=t[key];
+}
+}
+});
+}
+
+document.addEventListener('DOMContentLoaded',function(){
+const form=document.getElementById('registerForm');
+if(form){
+form.addEventListener('submit',function(e){
+e.preventDefault();
+const result=document.getElementById('regResult');
+result.style.display='block';
+result.textContent='✅ 注册信息已提交！我们将尽快通过微信或邮件联系您。';
+setTimeout(()=>{
+result.style.display='none';
+form.reset();
+},5000);
+});
+}
+});
+</script>
+</body>
+</html>
