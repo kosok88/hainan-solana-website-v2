@@ -3,18 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hainan Solana Advisory | 海南索拉纳 - Your Gateway to China's Premier Free Trade Port</title>
-    <meta name="description" content="Professional business services for Hainan Free Trade Port. 15% corporate tax, zero tariff, comprehensive solutions.">
+    <title>海南索拉纳商务咨询中心 | Hainan Solana Advisory</title>
     <style>
-        :root {
-            --primary: #0A0E27;
-            --accent: #667eea;
-            --success: #10b981;
-            --text: #e2e8f0;
-            --text-muted: #94a3b8;
-            --border: rgba(255, 255, 255, 0.1);
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -22,651 +12,1023 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, 'PingFang SC', sans-serif;
-            background: var(--primary);
-            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
             overflow-x: hidden;
-            line-height: 1.6;
+            background: #000;
+            color: #fff;
         }
 
-        /* Navigation */
+        /* 海南风景背景 */
+        .hero-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(10, 14, 39, 0.92), rgba(30, 15, 50, 0.88));
+            z-index: 1;
+        }
+
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1920') center/cover fixed;
+            animation: bgZoom 25s ease-in-out infinite alternate;
+            z-index: 0;
+        }
+
+        @keyframes bgZoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.15); }
+        }
+
+        /* 导航栏 - 左上角 LOGO 设计 */
         nav {
             position: fixed;
             top: 0;
+            left: 0;
             width: 100%;
-            padding: 20px 5%;
+            padding: 15px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(10, 14, 39, 0.95);
+            background: linear-gradient(180deg, rgba(10, 14, 39, 0.95) 0%, rgba(10, 14, 39, 0.7) 100%);
             backdrop-filter: blur(20px);
             z-index: 1000;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid rgba(138, 43, 226, 0.3);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
         .logo-section {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 20px;
+        }
+
+        .logo-container {
+            position: relative;
+            width: 80px;
+            height: 80px;
         }
 
         .logo {
-            width: 50px;
-            height: 50px;
+            width: 100%;
+            height: 100%;
             border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid transparent;
+            background: linear-gradient(135deg, #667eea, #764ba2, #f093fb) border-box;
+            animation: logoRotate 20s linear infinite, logoGlow 3s ease-in-out infinite;
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.6);
         }
 
-        .brand-name {
-            font-size: 20px;
-            font-weight: 600;
-            letter-spacing: -0.5px;
+        @keyframes logoRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
-        .nav-links {
+        @keyframes logoGlow {
+            0%, 100% { 
+                box-shadow: 0 0 30px rgba(138, 43, 226, 0.6),
+                            0 0 60px rgba(138, 43, 226, 0.4);
+            }
+            50% { 
+                box-shadow: 0 0 50px rgba(138, 43, 226, 0.9),
+                            0 0 100px rgba(138, 43, 226, 0.6);
+            }
+        }
+
+        .brand-text {
             display: flex;
-            gap: 35px;
-            list-style: none;
+            flex-direction: column;
+            gap: 5px;
         }
 
-        .nav-links a {
-            color: var(--text);
-            text-decoration: none;
-            font-size: 15px;
+        .brand-name-zh {
+            font-size: 22px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+        }
+
+        .brand-name-en {
+            font-size: 14px;
+            color: #4ade80;
             font-weight: 500;
-            transition: color 0.3s;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
-        .nav-links a:hover {
-            color: var(--success);
+        .nav-menu {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            align-items: center;
         }
 
-        .lang-btn {
-            padding: 8px 20px;
-            background: transparent;
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            color: var(--text);
+        .nav-menu a {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #667eea, #4ade80);
+            transition: width 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #4ade80;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .lang-switch {
+            padding: 10px 25px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 25px;
+            color: white;
             cursor: pointer;
             font-size: 14px;
+            font-weight: 600;
             transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
         }
 
-        .lang-btn:hover {
-            border-color: var(--success);
-            color: var(--success);
+        .lang-switch:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(102, 126, 234, 0.6);
         }
 
-        /* Hero Section */
+        /* 首页主区域 */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 100px 5%;
-            background: linear-gradient(135deg, rgba(10, 14, 39, 0.95), rgba(30, 15, 50, 0.95)),
-                        url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1920') center/cover fixed;
+            padding: 120px 50px 50px;
+            position: relative;
         }
 
         .hero-content {
             max-width: 1200px;
             text-align: center;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            padding: 8px 20px;
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            border-radius: 20px;
-            color: var(--success);
-            font-size: 14px;
-            font-weight: 500;
-            margin-bottom: 30px;
+            z-index: 10;
         }
 
         .hero-title {
-            font-size: clamp(40px, 6vw, 72px);
-            font-weight: 700;
-            line-height: 1.1;
+            font-size: 72px;
+            font-weight: 800;
             margin-bottom: 20px;
-            letter-spacing: -2px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 30%, #f093fb 60%, #4ade80 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: titleSlideDown 1s ease-out;
+            line-height: 1.2;
+            text-shadow: 0 0 80px rgba(102, 126, 234, 0.5);
+        }
+
+        @keyframes titleSlideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-80px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero-subtitle {
-            font-size: clamp(18px, 3vw, 24px);
-            color: var(--text-muted);
-            margin-bottom: 40px;
+            font-size: 36px;
+            color: #4ade80;
+            font-weight: 600;
+            margin-bottom: 30px;
+            animation: subtitleSlideUp 1s ease-out 0.3s both;
+            text-shadow: 0 0 30px rgba(74, 222, 128, 0.5);
+            letter-spacing: 2px;
         }
 
-        .cta-group {
+        @keyframes subtitleSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-description {
+            font-size: 22px;
+            color: #cbd5e1;
+            margin-bottom: 50px;
+            line-height: 1.8;
+            animation: fadeIn 1.5s ease-out 0.6s both;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .cta-buttons {
             display: flex;
-            gap: 20px;
+            gap: 25px;
             justify-content: center;
+            animation: fadeIn 2s ease-out 0.9s both;
             flex-wrap: wrap;
-            margin-bottom: 60px;
         }
 
         .btn {
-            padding: 16px 40px;
-            border-radius: 8px;
-            font-size: 16px;
+            padding: 18px 50px;
+            font-size: 18px;
             font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s;
-            cursor: pointer;
             border: none;
+            border-radius: 35px;
+            cursor: pointer;
+            transition: all 0.4s;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
         }
 
         .btn-primary {
-            background: var(--success);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
         }
 
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
         }
 
         .btn-secondary {
             background: transparent;
-            border: 1px solid var(--border);
-            color: var(--text);
+            color: #4ade80;
+            border: 3px solid #4ade80;
+            box-shadow: 0 8px 25px rgba(74, 222, 128, 0.3);
         }
 
         .btn-secondary:hover {
-            border-color: var(--success);
-            color: var(--success);
+            background: #4ade80;
+            color: #0a0e27;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(74, 222, 128, 0.5);
         }
 
-        /* Stats */
-        .stats {
+        /* 特色亮点 */
+        .features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            max-width: 1000px;
-            margin: 0 auto;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 80px;
+            animation: fadeIn 2s ease-out 1.2s both;
         }
 
-        .stat-item {
+        .feature-item {
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            transition: all 0.3s;
             text-align: center;
         }
 
-        .stat-number {
+        .feature-item:hover {
+            transform: translateY(-10px);
+            border-color: #4ade80;
+            box-shadow: 0 20px 40px rgba(74, 222, 128, 0.3);
+        }
+
+        .feature-icon {
             font-size: 48px;
-            font-weight: 700;
-            color: var(--success);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .feature-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #4ade80;
             margin-bottom: 10px;
         }
 
-        .stat-label {
+        .feature-text {
             font-size: 14px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            color: #94a3b8;
+            line-height: 1.6;
         }
 
-        /* Sections */
-        section {
-            padding: 100px 5%;
+        /* 公司简介区域 */
+        .about {
+            padding: 100px 50px;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(10px);
+        }
+
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-text {
+            font-size: 18px;
+            color: #cbd5e1;
+            line-height: 2;
+            margin-bottom: 40px;
+            text-align: justify;
+        }
+
+        .about-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .highlight-item {
+            background: rgba(30, 41, 59, 0.5);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .highlight-number {
+            font-size: 36px;
+            font-weight: bold;
+            color: #4ade80;
+            margin-bottom: 10px;
+        }
+
+        .highlight-label {
+            font-size: 16px;
+            color: #94a3b8;
+        }
+
+        /* 服务区域 */
+        .services {
+            padding: 100px 50px;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(10px);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 52px;
+            font-weight: 800;
+            margin-bottom: 70px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 35px;
             max-width: 1400px;
             margin: 0 auto;
         }
 
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
+        .service-card {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(15px);
+            padding: 40px;
+            border-radius: 25px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            transition: all 0.4s;
+            cursor: pointer;
         }
 
-        .section-tag {
-            color: var(--success);
-            font-size: 14px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
+        .service-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            border-color: #4ade80;
+            box-shadow: 0 25px 50px rgba(102, 126, 234, 0.4);
         }
 
-        .section-title {
-            font-size: clamp(32px, 4vw, 48px);
+        .service-icon {
+            font-size: 56px;
+            margin-bottom: 25px;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-size: 26px;
+            margin-bottom: 18px;
+            color: #4ade80;
             font-weight: 700;
-            margin-bottom: 20px;
-            letter-spacing: -1px;
         }
 
-        .section-desc {
-            font-size: 18px;
-            color: var(--text-muted);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        /* Grid Layouts */
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        /* Card Styles */
-        .card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 35px;
-            transition: all 0.3s;
-        }
-
-        .card:hover {
-            border-color: var(--success);
-            transform: translateY(-5px);
-        }
-
-        .card-icon {
-            font-size: 36px;
+        .service-card p {
+            color: #cbd5e1;
+            line-height: 1.8;
             margin-bottom: 20px;
         }
 
-        .card-title {
-            font-size: 22px;
-            font-weight: 600;
-            margin-bottom: 15px;
+        .service-details {
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .card-desc {
-            color: var(--text-muted);
-            margin-bottom: 20px;
-            line-height: 1.7;
-        }
-
-        .card-list {
+        .service-details ul {
             list-style: none;
             padding: 0;
         }
 
-        .card-list li {
-            padding: 8px 0;
-            color: var(--text-muted);
+        .service-details li {
+            padding: 10px 0;
+            color: #94a3b8;
             position: relative;
-            padding-left: 25px;
+            padding-left: 30px;
+            font-size: 15px;
         }
 
-        .card-list li::before {
+        .service-details li::before {
             content: '✓';
             position: absolute;
             left: 0;
-            color: var(--success);
+            color: #4ade80;
             font-weight: bold;
+            font-size: 18px;
         }
 
-        /* Policy Cards */
-        .policy-card {
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(102, 126, 234, 0.1));
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 30px;
+        /* 联系区域 */
+        .contact {
+            padding: 100px 50px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .contact-card {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(15px);
+            padding: 40px;
+            border-radius: 25px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
             text-align: center;
-            transition: all 0.3s;
+            transition: all 0.4s;
         }
 
-        .policy-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--success);
+        .contact-card:hover {
+            transform: translateY(-10px);
+            border-color: #4ade80;
+            box-shadow: 0 20px 40px rgba(74, 222, 128, 0.3);
         }
 
-        .policy-value {
-            font-size: 42px;
+        .contact-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .contact-card h3 {
+            color: #4ade80;
+            margin-bottom: 15px;
+            font-size: 22px;
             font-weight: 700;
-            color: var(--success);
-            margin: 15px 0;
         }
 
-        /* Collapsible Sections */
-        .collapsible-trigger {
-            display: inline-block;
-            margin: 40px auto;
-            padding: 14px 35px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            color: var(--text);
-            cursor: pointer;
+        .contact-card p {
+            color: #cbd5e1;
             font-size: 16px;
+        }
+
+        .contact-card a {
+            color: #667eea;
+            text-decoration: none;
             font-weight: 600;
             transition: all 0.3s;
         }
 
-        .collapsible-trigger:hover {
-            border-color: var(--success);
-            color: var(--success);
+        .contact-card a:hover {
+            color: #4ade80;
+            text-decoration: underline;
         }
 
-        .collapsible-content {
-            display: none;
-            margin-top: 40px;
-            padding-top: 40px;
-            border-top: 1px solid var(--border);
+        .qr-code {
+            width: 150px;
+            height: 150px;
+            margin-top: 15px;
+            border-radius: 10px;
+            border: 2px solid rgba(74, 222, 128, 0.3);
         }
 
-        .collapsible-content.active {
-            display: block;
+        /* 收款方式区域 */
+        .payment {
+            padding: 100px 50px;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(10px);
         }
 
-        /* Contact */
-        .contact-card {
+        .payment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .payment-card {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(15px);
+            padding: 50px;
+            border-radius: 25px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
             text-align: center;
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border);
-            border-radius: 12px;
+            transition: all 0.4s;
         }
 
-        .contact-card a {
-            color: var(--success);
-            text-decoration: none;
+        .payment-card:hover {
+            transform: translateY(-10px);
+            border-color: #4ade80;
+            box-shadow: 0 20px 40px rgba(74, 222, 128, 0.3);
         }
 
-        /* Footer */
+        .payment-logo {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+
+        .payment-card h3 {
+            color: #4ade80;
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        /* 页脚 */
         footer {
-            text-align: center;
-            padding: 50px 5%;
-            border-top: 1px solid var(--border);
-            color: var(--text-muted);
+            background: rgba(10, 14, 39, 0.95);
+            padding: 50px 50px 30px;
+            border-top: 1px solid rgba(102, 126, 234, 0.3);
         }
 
-        /* Responsive */
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        footer p {
+            color: #94a3b8;
+            margin: 10px 0;
+            font-size: 15px;
+        }
+
+        .footer-divider {
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #4ade80);
+            margin: 20px auto;
+            border-radius: 2px;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 56px;
+            }
+
+            .hero-subtitle {
+                font-size: 28px;
+            }
+        }
+
         @media (max-width: 768px) {
             nav {
+                padding: 15px 20px;
                 flex-direction: column;
                 gap: 20px;
             }
 
-            .nav-links {
+            .logo-container {
+                width: 70px;
+                height: 70px;
+            }
+
+            .brand-name-zh {
+                font-size: 18px;
+            }
+
+            .nav-menu {
                 flex-direction: column;
-                gap: 15px;
+                gap: 20px;
                 text-align: center;
             }
 
-            .stats {
-                grid-template-columns: 1fr 1fr;
+            .hero-title {
+                font-size: 42px;
+            }
+
+            .hero-subtitle {
+                font-size: 22px;
+            }
+
+            .hero-description {
+                font-size: 18px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .section-title {
+                font-size: 38px;
+            }
+
+            .services-grid,
+            .contact-grid,
+            .payment-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
+    <!-- 海南风景背景 -->
+    <div class="hero-bg"></div>
+
+    <!-- 导航栏 - LOGO 在左上角 -->
     <nav>
         <div class="logo-section">
-            <img src="./logo.png.png" alt="Hainan Solana" class="logo">
-            <div class="brand-name" data-zh="海南索拉纳" data-en="Hainan Solana">海南索拉纳</div>
+            <div class="logo-container">
+                <img src="https://i.imgur.com/9KQfZqP.png" alt="Solana Logo" class="logo">
+            </div>
+            <div class="brand-text">
+                <div class="brand-name-zh" data-zh="海南索拉纳" data-en="Hainan Solana">海南索拉纳</div>
+                <div class="brand-name-en">HAINAN SOLANA ADVISORY</div>
+            </div>
         </div>
-        <ul class="nav-links">
+        <ul class="nav-menu">
+            <li><a href="#home" data-zh="首页" data-en="Home">首页</a></li>
+            <li><a href="#about" data-zh="关于我们" data-en="About">关于我们</a></li>
             <li><a href="#services" data-zh="服务" data-en="Services">服务</a></li>
-            <li><a href="#policies" data-zh="政策" data-en="Policies">政策</a></li>
-            <li><a href="#about" data-zh="关于" data-en="About">关于</a></li>
+            <li><a href="#payment" data-zh="收款方式" data-en="Payment">收款方式</a></li>
             <li><a href="#contact" data-zh="联系" data-en="Contact">联系</a></li>
         </ul>
-        <button class="lang-btn" onclick="toggleLang()">EN</button>
+        <button class="lang-switch" onclick="toggleLanguage()">EN</button>
     </nav>
 
-    <section class="hero">
+    <!-- 首页主区域 -->
+    <section id="home" class="hero">
         <div class="hero-content">
-            <div class="hero-badge" data-zh="🇨🇳 中国唯一热带岛屿自贸港" data-en="🇨🇳 China's Only Tropical Island FTP">🇨🇳 中国唯一热带岛屿自贸港</div>
-            <h1 class="hero-title" data-zh="开启海南自贸港商机" data-en="Unlock Hainan FTP Opportunities">开启海南自贸港商机</h1>
-            <p class="hero-subtitle" data-zh="15%企业税率 · 零关税政策 · 一站式专业服务" 
-               data-en="15% Corporate Tax · Zero Tariff · Comprehensive Service">
-                15%企业税率 · 零关税政策 · 一站式专业服务
+            <h1 class="hero-title" data-zh="海南索拉纳商务咨询中心" data-en="Hainan Solana Advisory">海南索拉纳商务咨询中心</h1>
+            <h2 class="hero-subtitle" data-zh="您的海南自贸港商务伙伴" data-en="Your Gateway to Hainan Free Trade Port">您的海南自贸港商务伙伴</h2>
+            <p class="hero-description" data-zh="专业提供海南自由贸易港公司注册、税务筹划、政策咨询等一站式服务，助力企业把握自贸港政策红利，实现业务增长与税务优化" 
+               data-en="Professional one-stop services for company registration, tax planning, and policy consultation in Hainan Free Trade Port, helping enterprises seize policy dividends and achieve business growth">
+                专业提供海南自由贸易港公司注册、税务筹划、政策咨询等一站式服务，助力企业把握自贸港政策红利，实现业务增长与税务优化
             </p>
-            <div class="cta-group">
-                <a href="#contact" class="btn btn-primary" data-zh="立即咨询" data-en="Get Started">立即咨询</a>
-                <a href="#policies" class="btn btn-secondary" data-zh="了解政策" data-en="Explore Policies">了解政策</a>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary" data-zh="立即咨询" data-en="Contact Now">立即咨询</a>
+                <a href="#services" class="btn btn-secondary" data-zh="了解服务" data-en="Learn More">了解服务</a>
             </div>
-            <div class="stats">
-                <div class="stat-item">
-                    <div class="stat-number">15%</div>
-                    <div class="stat-label" data-zh="企业所得税" data-en="Corporate Tax">企业所得税</div>
+
+            <!-- 特色亮点 -->
+            <div class="features">
+                <div class="feature-item">
+                    <span class="feature-icon">⚡</span>
+                    <div class="feature-title" data-zh="快速注册" data-en="Fast Registration">快速注册</div>
+                    <div class="feature-text" data-zh="3-7个工作日完成注册" data-en="Complete in 3-7 business days">3-7个工作日完成注册</div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number">0%</div>
-                    <div class="stat-label" data-zh="进口关税" data-en="Import Tariff">进口关税</div>
+                <div class="feature-item">
+                    <span class="feature-icon">💎</span>
+                    <div class="feature-title" data-zh="税收优惠" data-en="Tax Benefits">税收优惠</div>
+                    <div class="feature-text" data-zh="企业所得税最低15%" data-en="Corporate tax as low as 15%">企业所得税最低15%</div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number">3-7</div>
-                    <div class="stat-label" data-zh="天完成注册" data-en="Days Setup">天完成注册</div>
+                <div class="feature-item">
+                    <span class="feature-icon">🛡️</span>
+                    <div class="feature-title" data-zh="合规保障" data-en="Compliance">合规保障</div>
+                    <div class="feature-text" data-zh="专业团队全程服务" data-en="Professional team support">专业团队全程服务</div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number">100+</div>
-                    <div class="stat-label" data-zh="成功案例" data-en="Success Stories">成功案例</div>
+                <div class="feature-item">
+                    <span class="feature-icon">🌐</span>
+                    <div class="feature-title" data-zh="全球服务" data-en="Global Service">全球服务</div>
+                    <div class="feature-text" data-zh="支持境内外企业注册" data-en="Support domestic & overseas">支持境内外企业注册</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="services">
-        <div class="section-header">
-            <div class="section-tag" data-zh="我们的服务" data-en="OUR SERVICES">我们的服务</div>
-            <h2 class="section-title" data-zh="全方位商务解决方案" data-en="Comprehensive Business Solutions">全方位商务解决方案</h2>
-            <p class="section-desc" data-zh="从公司注册到税务规划，我们提供端到端的专业服务" 
-               data-en="From company registration to tax planning, we provide end-to-end professional services">
-                从公司注册到税务规划，我们提供端到端的专业服务
+    <!-- 公司简介区域 -->
+    <section id="about" class="about">
+        <h2 class="section-title" data-zh="关于我们" data-en="About Us">关于我们</h2>
+        <div class="about-content">
+            <p class="about-text" data-zh="海南索拉纳商务咨询中心是一家专注于海南自由贸易港商务服务的专业机构。我们依托海南自贸港独特的政策优势，为国内外企业提供全方位的商务咨询、公司注册、税务筹划、政策申报等专业服务。自成立以来，我们已成功服务数百家企业，帮助客户充分享受海南自贸港的政策红利，实现企业快速发展与税务优化。" 
+               data-en="Hainan Solana Advisory is a professional institution specializing in business services for Hainan Free Trade Port. We provide comprehensive business consulting, company registration, tax planning, and policy application services for domestic and international enterprises.">
+                海南索拉纳商务咨询中心是一家专注于海南自由贸易港商务服务的专业机构。我们依托海南自贸港独特的政策优势，为国内外企业提供全方位的商务咨询、公司注册、税务筹划、政策申报等专业服务。自成立以来，我们已成功服务数百家企业，帮助客户充分享受海南自贸港的政策红利，实现企业快速发展与税务优化。
             </p>
-        </div>
-        <div class="grid-3">
-            <div class="card">
-                <div class="card-icon">🌍</div>
-                <h3 class="card-title" data-zh="国际企业注册" data-en="International Business Registration">国际企业注册</h3>
-                <p class="card-desc" data-zh="为全球企业提供海南自贸港公司设立服务" 
-                   data-en="Hainan FTP company setup for global enterprises">
-                    为全球企业提供海南自贸港公司设立服务
-                </p>
-                <ul class="card-list">
-                    <li data-zh="外商投资企业设立" data-en="FIE establishment">外商投资企业设立</li>
-                    <li data-zh="跨境投资架构" data-en="Cross-border structure">跨境投资架构</li>
-                    <li data-zh="国际税务咨询" data-en="International tax">国际税务咨询</li>
-                </ul>
-            </div>
-            <div class="card">
-                <div class="card-icon">📊</div>
-                <h3 class="card-title" data-zh="税务优化规划" data-en="Tax Optimization">税务优化规划</h3>
-                <p class="card-desc" data-zh="定制最优税务方案，合法降低税负" 
-                   data-en="Customized tax solutions, legal tax reduction">
-                    定制最优税务方案，合法降低税负
-                </p>
-                <ul class="card-list">
-                    <li data-zh="15%企业所得税申报" data-en="15% corporate tax">15%企业所得税申报</li>
-                    <li data-zh="个税优惠申请" data-en="Personal tax benefits">个税优惠申请</li>
-                    <li data-zh="零关税政策" data-en="Zero tariff policy">零关税政策</li>
-                </ul>
-            </div>
-            <div class="card">
-                <div class="card-icon">🏢</div>
-                <h3 class="card-title" data-zh="企业托管服务" data-en="Corporate Management">企业托管服务</h3>
-                <p class="card-desc" data-zh="全方位企业运营支持服务" 
-                   data-en="Comprehensive operational support">
-                    全方位企业运营支持服务
-                </p>
-                <ul class="card-list">
-                    <li data-zh="注册地址托管" data-en="Address hosting">注册地址托管</li>
-                    <li data-zh="财务记账报税" data-en="Bookkeeping">财务记账报税</li>
-                    <li data-zh="法律顾问服务" data-en="Legal advisory">法律顾问服务</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section id="policies" style="background: rgba(255,255,255,0.02);">
-        <div class="section-header">
-            <div class="section-tag" data-zh="核心政策" data-en="KEY POLICIES">核心政策</div>
-            <h2 class="section-title" data-zh="全球领先的税收优惠" data-en="World-Leading Tax Incentives">全球领先的税收优惠</h2>
-            <p class="section-desc" data-zh="海南自贸港提供全球最具竞争力的税收制度" 
-               data-en="Hainan FTP offers the world's most competitive tax system">
-                海南自贸港提供全球最具竞争力的税收制度
+            <p class="about-text" data-zh="我们的团队由资深商务顾问、注册会计师、税务师、律师等专业人士组成，具备丰富的海南自贸港政策研究经验和实操能力。我们秉承'专业、高效、诚信'的服务理念，致力于为每一位客户提供量身定制的解决方案，成为您在海南自贸港发展道路上最值得信赖的合作伙伴。" 
+               data-en="Our team consists of senior business consultants, certified public accountants, tax advisors, and lawyers with extensive experience in Hainan FTP policies. We are committed to providing customized solutions for every client.">
+                我们的团队由资深商务顾问、注册会计师、税务师、律师等专业人士组成,具备丰富的海南自贸港政策研究经验和实操能力。我们秉承"专业、高效、诚信"的服务理念，致力于为每一位客户提供量身定制的解决方案，成为您在海南自贸港发展道路上最值得信赖的合作伙伴。
             </p>
-        </div>
-        <div class="grid-3">
-            <div class="policy-card">
-                <div class="card-icon">💰</div>
-                <h3 class="card-title" data-zh="企业所得税" data-en="Corporate Tax">企业所得税</h3>
-                <div class="policy-value">15%</div>
-                <p class="card-desc" data-zh="鼓励类产业企业减按15%征收" 
-                   data-en="Encouraged industries taxed at 15%">
-                    鼓励类产业企业减按15%征收
-                </p>
-            </div>
-            <div class="policy-card">
-                <div class="card-icon">👤</div>
-                <h3 class="card-title" data-zh="个人所得税" data-en="Personal Tax">个人所得税</h3>
-                <div class="policy-value">≤15%</div>
-                <p class="card-desc" data-zh="高端人才个税优惠" 
-                   data-en="High-end talents tax benefits">
-                    高端人才个税优惠
-                </p>
-            </div>
-            <div class="policy-card">
-                <div class="card-icon">🚢</div>
-                <h3 class="card-title" data-zh="零关税" data-en="Zero Tariff">零关税</h3>
-                <div class="policy-value">0%</div>
-                <p class="card-desc" data-zh="进口货物零关税" 
-                   data-en="Zero tariff for imports">
-                    进口货物零关税
-                </p>
-            </div>
-        </div>
-    </section>
 
-    <section id="about">
-        <div class="section-header">
-            <div class="section-tag" data-zh="关于海南" data-en="ABOUT HAINAN">关于海南</div>
-            <h2 class="section-title" data-zh="投资海南的理由" data-en="Why Invest in Hainan">投资海南的理由</h2>
-        </div>
-        
-        <div style="text-align: center;">
-            <button class="collapsible-trigger" onclick="toggleSection('advantages')" 
-                    data-zh="🌟 海南核心优势" data-en="🌟 Hainan Advantages">🌟 海南核心优势</button>
-            <button class="collapsible-trigger" onclick="toggleSection('news')" 
-                    data-zh="📰 最新商务动态" data-en="📰 Business News">📰 最新商务动态</button>
-        </div>
-
-        <div id="advantages" class="collapsible-content">
-            <h3 style="text-align: center; font-size: 32px; margin-bottom: 40px; color: var(--success);" 
-                data-zh="海南核心优势" data-en="Core Advantages">海南核心优势</h3>
-            <div class="grid-3">
-                <div class="card">
-                    <div class="card-icon">🌴</div>
-                    <h3 class="card-title" data-zh="独特地理位置" data-en="Strategic Location">独特地理位置</h3>
-                    <p class="card-desc" data-zh="中国唯一热带岛屿省份，连接亚太的国际门户" 
-                       data-en="China's only tropical island, gateway to Asia-Pacific">
-                        中国唯一热带岛屿省份，连接亚太的国际门户
-                    </p>
+            <div class="about-highlights">
+                <div class="highlight-item">
+                    <div class="highlight-number" data-zh="500+" data-en="500+">500+</div>
+                    <div class="highlight-label" data-zh="服务企业" data-en="Clients Served">服务企业</div>
                 </div>
-                <div class="card">
-                    <div class="card-icon">🏭</div>
-                    <h3 class="card-title" data-zh="现代产业体系" data-en="Modern Industries">现代产业体系</h3>
-                    <p class="card-desc" data-zh="四大主导产业占GDP 67%，高新技术产业蓬勃发展" 
-                       data-en="Four major industries account for 67% of GDP">
-                        四大主导产业占GDP 67%，高新技术产业蓬勃发展
-                    </p>
+                <div class="highlight-item">
+                    <div class="highlight-number" data-zh="98%" data-en="98%">98%</div>
+                    <div class="highlight-label" data-zh="客户满意度" data-en="Satisfaction Rate">客户满意度</div>
                 </div>
-                <div class="card">
-                    <div class="card-icon">🚀</div>
-                    <h3 class="card-title" data-zh="优质资源集聚" data-en="Premium Resources">优质资源集聚</h3>
-                    <p class="card-desc" data-zh="文昌航天发射场、博鳌乐城医疗先行区等国家级平台" 
-                       data-en="National-level platforms like Wenchang Space Launch Center">
-                        文昌航天发射场、博鳌乐城医疗先行区等国家级平台
-                    </p>
+                <div class="highlight-item">
+                    <div class="highlight-number" data-zh="5天" data-en="5 Days">5天</div>
+                    <div class="highlight-label" data-zh="平均注册时间" data-en="Avg Registration">平均注册时间</div>
                 </div>
-            </div>
-        </div>
-
-        <div id="news" class="collapsible-content">
-            <h3 style="text-align: center; font-size: 32px; margin-bottom: 40px; color: var(--success);" 
-                data-zh="最新商务动态" data-en="Latest Business News">最新商务动态</h3>
-            <div class="grid-3">
-                <div class="card">
-                    <div class="card-icon">🎯</div>
-                    <h3 class="card-title" data-zh="2025年封关运作准备就绪" data-en="2025 Closure Operation Ready">2025年封关运作准备就绪</h3>
-                    <p class="card-desc" data-zh="31个封关项目全部完成，进入成型起势新阶段" 
-                       data-en="All 31 closure projects completed, entering new phase">
-                        31个封关项目全部完成，进入成型起势新阶段
-                    </p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">💼</div>
-                    <h3 class="card-title" data-zh="2024年招商成果显著" data-en="2024 Investment Success">2024年招商成果显著</h3>
-                    <p class="card-desc" data-zh="全年签约项目464个，签约金额2048亿元" 
-                       data-en="464 projects signed, total value 204.8 billion yuan">
-                        全年签约项目464个，签约金额2048亿元
-                    </p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">📈</div>
-                    <h3 class="card-title" data-zh="贸易增长领跑全国" data-en="Trade Growth Leads Nation">贸易增长领跑全国</h3>
-                    <p class="card-desc" data-zh="货物贸易增长20%，高于全国15个百分点" 
-                       data-en="Goods trade up 20%, 15% higher than national average">
-                        货物贸易增长20%，高于全国15个百分点
-                    </p>
+                <div class="highlight-item">
+                    <div class="highlight-number" data-zh="20+" data-en="20+">20+</div>
+                    <div class="highlight-label" data-zh="专业团队" data-en="Expert Team">专业团队</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" style="background: rgba(255,255,255,0.02);">
-        <div class="section-header">
-            <div class="section-tag" data-zh="联系我们" data-en="CONTACT US">联系我们</div>
-            <h2 class="section-title" data-zh="开启合作之旅" data-en="Start Your Journey">开启合作之旅</h2>
+    <!-- 服务区域 -->
+    <section id="services" class="services">
+        <h2 class="section-title" data-zh="我们的服务" data-en="Our Services">我们的服务</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <span class="service-icon">🌍</span>
+                <h3 data-zh="全球企业注册服务" data-en="Global Business Registration">全球企业注册服务</h3>
+                <p data-zh="为世界各地的企业提供海南自由贸易港公司注册方案，享受中国最优惠的税收政策和营商环境。" 
+                   data-en="Providing Hainan Free Trade Port company registration solutions for businesses worldwide, enjoying China's most favorable tax policies.">
+                    为世界各地的企业提供海南自由贸易港公司注册方案，享受中国最优惠的税收政策和营商环境。
+                </p>
+                <div class="service-details">
+                    <ul>
+                        <li data-zh="离岸公司注册" data-en="Offshore company registration">离岸公司注册</li>
+                        <li data-zh="外资企业设立" data-en="Foreign-invested enterprise establishment">外资企业设立</li>
+                        <li data-zh="跨境投资架构设计" data-en="Cross-border investment structure">跨境投资架构设计</li>
+                        <li data-zh="国际税务筹划" data-en="International tax planning">国际税务筹划</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <span class="service-icon">🇨🇳</span>
+                <h3 data-zh="国内企业注册服务" data-en="Domestic Business Registration">国内企业注册服务</h3>
+                <p data-zh="协助国内企业在海南自贸港设立分支机构或独立法人公司，把握政策红利期。" 
+                   data-en="Assisting domestic enterprises in establishing branches or independent legal entities in Hainan FTP.">
+                    协助国内企业在海南自贸港设立分支机构或独立法人公司，把握政策红利期。
+                </p>
+                <div class="service-details">
+                    <ul>
+                        <li data-zh="有限公司注册" data-en="Limited company registration">有限公司注册</li>
+                        <li data-zh="分公司/子公司设立" data-en="Branch/subsidiary establishment">分公司/子公司设立</li>
+                        <li data-zh="个体工商户注册" data-en="Individual business registration">个体工商户注册</li>
+                        <li data-zh="特殊行业许可申请" data-en="Special industry license">特殊行业许可申请</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <span class="service-icon">💰</span>
+                <h3 data-zh="税务优惠政策咨询" data-en="Tax Incentive Consultation">税务优惠政策咨询</h3>
+                <p data-zh="深度解读海南自贸港税收优惠政策，为企业量身定制最优税务方案，合法合规降低税负。" 
+                   data-en="In-depth interpretation of Hainan FTP tax incentive policies, customizing optimal tax solutions.">
+                    深度解读海南自贸港税收优惠政策，为企业量身定制最优税务方案，合法合规降低税负。
+                </p>
+                <div class="service-details">
+                    <ul>
+                        <li data-zh="企业所得税15%优惠" data-en="15% corporate income tax">企业所得税15%优惠</li>
+                        <li data-zh="个人所得税最高15%" data-en="Personal tax max 15%">个人所得税最高15%</li>
+                        <li data-zh="进口关税零关税政策" data-en="Zero tariff import policy">进口关税零关税政策</li>
+                        <li data-zh="增值税退税政策" data-en="VAT refund policy">增值税退税政策</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <span class="service-icon">📋</span>
+                <h3 data-zh="政策申报与合规" data-en="Policy Application & Compliance">政策申报与合规</h3>
+                <p data-zh="协助企业申报各类优惠政策，确保企业运营合规，规避政策风险。" 
+                   data-en="Assisting enterprises in applying for preferential policies and ensuring compliant operations.">
+                    协助企业申报各类优惠政策，确保企业运营合规，规避政策风险。
+                </p>
+                <div class="service-details">
+                    <ul>
+                        <li data-zh="产业扶持资金申请" data-en="Industrial support fund">产业扶持资金申请</li>
+                        <li data-zh="高新技术企业认定" data-en="High-tech certification">高新技术企业认定</li>
+                        <li data-zh="合规审查与风控" data-en="Compliance review">合规审查与风控</li>
+                        <li data-zh="年度审计报告" data-en="Annual audit report">年度审计报告</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <span class="service-icon">🏢</span>
+                <h3 data-zh="企业托管服务" data-en="Corporate Hosting Service">企业托管服务</h3>
+                <p data-zh="提供注册地址、财务代理、法律咨询等全方位企业托管服务。" 
+                   data-en="Comprehensive corporate hosting services including registered address and financial agency.">
+                    提供注册地址、财务代理、法律咨询等全方位企业托管服务。
+                </p>
+                <div class="service-details">
+                    <ul>
+                        <li data-zh="注册地址托管" data-en="Registered address hosting">注册地址托管</li>
+                        <li data-zh="财务记账报税" data-en="Financial bookkeeping">财务记账报税</li>
+                        <li data-zh="法律顾问服务" data-en="Legal advisory">法律顾问服务</li>
+                        <li data-zh="人力资源外包" data-en="HR outsourcing">人力资源外包</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <span class="service-icon">🚀</span>
+                <h3 data-zh="投资咨询服务" data-en="Investment Consulting">投资咨询服务</h3>
+                <p data-zh="提供海南自贸港投资机会分析、项目对接、商业计划书撰写等服务。" 
+                   data-en="Providing investment opportunity analysis, project matching, and business plan writing services.">
+                    提供海南自贸港投资机会分析、项目对接、商业计划书撰写等服务。
+                </p>
+                <div class="service-details">
+                    <ul>
+                        <li data-zh="产业投资机会分析" data-en="Investment opportunity analysis">产业投资机会分析</li>
+                        <li data-zh="政府项目对接" data-en="Government project matching">政府项目对接</li>
+                        <li data-zh="商业计划书撰写" data-en="Business plan writing">商业计划书撰写</li>
+                        <li data-zh="融资渠道对接" data-en="Financing channel matching">融资渠道对接</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="grid-3">
+    </section>
+
+    <!-- 收款方式区域 -->
+    <section id="payment" class="payment">
+        <h2 class="section-title" data-zh="收款方式" data-en="Payment Methods">收款方式</h2>
+        <div class="payment-grid">
+            <div class="payment-card">
+                <div class="payment-logo">💚</div>
+                <h3 data-zh="微信支付" data-en="WeChat Pay">微信支付</h3>
+                <p data-zh="扫描二维码完成支付" data-en="Scan QR code to pay">扫描二维码完成支付</p>
+                <img src="wechat_pay.jpg" alt="微信收款码" class="qr-code">
+            </div>
+            <div class="payment-card">
+                <div class="payment-logo">💙</div>
+                <h3 data-zh="支付宝" data-en="Alipay">支付宝</h3>
+                <p data-zh="扫描二维码完成支付" data-en="Scan QR code to pay">扫描二维码完成支付</p>
+                <img src="alipay.jpg" alt="支付宝收款码" class="qr-code">
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系区域 -->
+    <section id="contact" class="contact">
+        <h2 class="section-title" data-zh="联系我们" data-en="Contact Us">联系我们</h2>
+        <div class="contact-grid">
             <div class="contact-card">
-                <div class="card-icon">📱</div>
-                <h3 class="card-title" data-zh="电话" data-en="Phone">电话</h3>
-                <p><a href="tel:18117790507">18117790507</a></p>
+                <span class="contact-icon">💬</span>
+                <h3 data-zh="微信咨询" data-en="WeChat">微信咨询</h3>
+                <p data-zh="扫码添加客服微信" data-en="Scan to add WeChat">扫码添加客服微信</p>
+                <img src="wechat_contact.jpg" alt="微信二维码" class="qr-code">
             </div>
             <div class="contact-card">
-                <div class="card-icon">📧</div>
-                <h3 class="card-title" data-zh="邮箱" data-en="Email">邮箱</h3>
-                <p><a href="mailto:kosok@solana-hainan.com">kosok@solana-hainan.com</a></p>
+                <span class="contact-icon">📧</span>
+                <h3 data-zh="邮箱" data-en="Email">邮箱</h3>
+                <p><a href="/cdn-cgi/l/email-protection#22494d514d4962514d4e434c430f4a434b4c434c0c414d4f"><span class="__cf_email__" data-cfemail="99f2f6eaf6f2d9eaf6f5f8f7f8b4f1f8f0f7f8f7b7faf6f4">[email&#160;protected]</span></a></p>
             </div>
             <div class="contact-card">
-                <div class="card-icon">🌐</div>
-                <h3 class="card-title" data-zh="网站" data-en="Website">网站</h3>
-                <p><a href="http://www.solana-hainan.com">www.solana-hainan.com</a></p>
+                <span class="contact-icon">📍</span>
+                <h3 data-zh="地址" data-en="Address">地址</h3>
+                <p data-zh="中国海南省海口市龙华区" data-en="Longhua District, Haikou, Hainan, China">中国海南省海口市龙华区</p>
+            </div>
+            <div class="contact-card">
+                <span class="contact-icon">🌐</span>
+                <h3 data-zh="网站" data-en="Website">网站</h3>
+                <p><a href="http://www.solana-hainan.com" target="_blank">www.solana-hainan.com</a></p>
             </div>
         </div>
     </section>
 
+    <!-- 页脚 -->
     <footer>
-        <p data-zh="© 2025 海南索拉纳商务咨询中心 版权所有" 
-           data-en="© 2025 Hainan Solana Advisory. All rights reserved.">
-            © 2025 海南索拉纳商务咨询中心 版权所有
-        </p>
-        <p style="margin-top: 10px;" data-zh="专业的海南自贸港商务服务平台" 
-           data-en="Professional business service platform for Hainan FTP">
-            专业的海南自贸港商务服务平台
-        </p>
+        <div class="footer-content">
+            <p data-zh="© 2024 海南索拉纳商务咨询中心 版权所有" 
+               data-en="© 2024 Hainan Solana Advisory. All rights reserved.">
+                © 2024 海南索拉纳商务咨询中心 版权所有
+            </p>
+            <div class="footer-divider"></div>
+            <p data-zh="营业执照：91460100MACP01PC0Q | 注册地址：中国海南省海口市龙华区" 
+               data-en="Business License: 91460100MACP01PC0Q | Address: Longhua District, Haikou, Hainan, China">
+                营业执照：91460100MACP01PC0Q | 注册地址：中国海南省海口市龙华区
+            </p>
+            <p data-zh="专业的海南自贸港一站式商务服务平台" 
+               data-en="Professional one-stop business service platform for Hainan Free Trade Port">
+                专业的海南自贸港一站式商务服务平台
+            </p>
+        </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         let isEnglish = false;
 
-        function toggleLang() {
+        function toggleLanguage() {
             isEnglish = !isEnglish;
-            document.querySelectorAll('[data-zh][data-en]').forEach(el => {
+            const elements = document.querySelectorAll('[data-zh][data-en]');
+            
+            elements.forEach(el => {
                 el.textContent = isEnglish ? el.getAttribute('data-en') : el.getAttribute('data-zh');
             });
-            document.querySelector('.lang-btn').textContent = isEnglish ? '中文' : 'EN';
+
+            document.querySelector('.lang-switch').textContent = isEnglish ? '中文' : 'EN';
+            document.documentElement.lang = isEnglish ? 'en' : 'zh-CN';
         }
 
-        function toggleSection(id) {
-            const section = document.getElementById(id);
-            section.classList.toggle('active');
-        }
-
+        // 平滑滚动
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
         });
-    </script>
-</body>
-</html>
+
+        // 滚动动画效果
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // 为所有服务卡片和联系卡片添加观察
+        document.querySelectorAll('.service-card, .contact-card, .payment-card').forEach(card => 
