@@ -79,8 +79,8 @@
 
         .logo-container {
             position: relative;
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
         }
 
         .logo {
@@ -111,7 +111,7 @@
         }
 
         .brand-name-zh {
-            font-size: 22px;
+            font-size: 24px;
             font-weight: bold;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
             -webkit-background-clip: text;
@@ -188,7 +188,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 120px 50px 50px;
+            padding: 140px 50px 50px;
         }
 
         .hero-content {
@@ -370,43 +370,8 @@
         }
 
         .section-content {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-        }
-
-        .about-text {
-            font-size: 18px;
-            color: #cbd5e1;
-            line-height: 2;
-            margin-bottom: 40px;
-            text-align: justify;
-        }
-
-        .about-highlights {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .highlight-item {
-            background: rgba(30, 41, 59, 0.5);
-            padding: 25px;
-            border-radius: 15px;
-            border: 1px solid rgba(102, 126, 234, 0.2);
-            text-align: center;
-        }
-
-        .highlight-number {
-            font-size: 36px;
-            font-weight: bold;
-            color: #4ade80;
-            margin-bottom: 10px;
-        }
-
-        .highlight-label {
-            font-size: 16px;
-            color: #94a3b8;
         }
 
         .services-grid {
@@ -480,58 +445,206 @@
             font-size: 18px;
         }
 
-        .people-grid, .scenery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            max-width: 1400px;
+        .pricing-table {
+            max-width: 1200px;
             margin: 0 auto;
-        }
-
-        .people-card, .scenery-card {
             background: rgba(30, 41, 59, 0.5);
             backdrop-filter: blur(15px);
             border-radius: 20px;
             overflow: hidden;
             border: 1px solid rgba(102, 126, 234, 0.2);
-            transition: all 0.4s;
-            cursor: pointer;
         }
 
-        .people-card:hover, .scenery-card:hover {
+        .pricing-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .pricing-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            text-align: left;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .pricing-table td {
+            padding: 18px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #cbd5e1;
+            font-size: 15px;
+        }
+
+        .pricing-table tr:hover {
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .pricing-table .price {
+            color: #4ade80;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .pricing-table .note {
+            color: #94a3b8;
+            font-size: 13px;
+            font-style: italic;
+        }
+
+        .process-flow {
+            max-width: 1200px;
+            margin: 50px auto 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .process-step {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(15px);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            text-align: center;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .process-step:hover {
             transform: translateY(-10px);
             border-color: #4ade80;
             box-shadow: 0 20px 40px rgba(74, 222, 128, 0.3);
         }
 
+        .process-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .process-step h4 {
+            color: #4ade80;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .process-step p {
+            color: #cbd5e1;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .collapsible {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .collapsible:hover {
+            border-color: #4ade80;
+        }
+
+        .collapsible-header {
+            padding: 25px 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .collapsible-header:hover {
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .collapsible-header h3 {
+            color: #4ade80;
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .collapsible-icon {
+            font-size: 24px;
+            color: #667eea;
+            transition: transform 0.3s;
+        }
+
+        .collapsible.active .collapsible-icon {
+            transform: rotate(180deg);
+        }
+
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .collapsible-inner {
+            padding: 0 30px 30px;
+        }
+
+        .people-grid, .scenery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .people-card, .scenery-card {
+            background: rgba(40, 51, 69, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            transition: all 0.3s;
+        }
+
+        .people-card:hover, .scenery-card:hover {
+            transform: translateY(-5px);
+            border-color: #4ade80;
+            box-shadow: 0 15px 30px rgba(74, 222, 128, 0.2);
+        }
+
         .people-image, .scenery-image {
             width: 100%;
-            height: 200px;
+            height: 180px;
             object-fit: cover;
         }
 
         .people-content, .scenery-content {
-            padding: 25px;
+            padding: 20px;
         }
 
-        .people-card h3, .scenery-card h3 {
-            font-size: 22px;
+        .people-card h4, .scenery-card h4 {
+            font-size: 18px;
             color: #4ade80;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
             font-weight: 700;
         }
 
         .people-card .subtitle {
-            font-size: 14px;
+            font-size: 12px;
             color: #94a3b8;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             font-style: italic;
         }
 
         .people-card p, .scenery-card p {
             color: #cbd5e1;
-            line-height: 1.8;
-            font-size: 15px;
+            line-height: 1.6;
+            font-size: 13px;
         }
 
         .payment-grid {
@@ -576,6 +689,41 @@
             margin-top: 15px;
             border-radius: 10px;
             border: 2px solid rgba(74, 222, 128, 0.3);
+        }
+
+        .about-text {
+            font-size: 18px;
+            color: #cbd5e1;
+            line-height: 2;
+            margin-bottom: 40px;
+            text-align: justify;
+        }
+
+        .about-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .highlight-item {
+            background: rgba(30, 41, 59, 0.5);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            text-align: center;
+        }
+
+        .highlight-number {
+            font-size: 36px;
+            font-weight: bold;
+            color: #4ade80;
+            margin-bottom: 10px;
+        }
+
+        .highlight-label {
+            font-size: 16px;
+            color: #94a3b8;
         }
 
         .contact-grid {
@@ -673,11 +821,11 @@
                 gap: 20px;
             }
             .logo-container {
-                width: 70px;
-                height: 70px;
+                width: 80px;
+                height: 80px;
             }
             .brand-name-zh {
-                font-size: 18px;
+                font-size: 20px;
             }
             .nav-menu {
                 flex-direction: column;
@@ -700,8 +848,12 @@
             .contact-grid,
             .payment-grid,
             .people-grid,
-            .scenery-grid {
+            .scenery-grid,
+            .process-flow {
                 grid-template-columns: 1fr;
+            }
+            .pricing-table {
+                overflow-x: auto;
             }
         }
     </style>
@@ -715,92 +867,64 @@
                 <img src="logo.png" alt="Solana Logo" class="logo">
             </div>
             <div class="brand-text">
-                <div class="brand-name-zh" data-zh="海南索拉纳" data-en="Hainan Solana">海南索拉纳</div>
+                <div class="brand-name-zh">海南索拉纳</div>
                 <div class="brand-name-en">HAINAN SOLANA ADVISORY</div>
             </div>
         </div>
         <ul class="nav-menu">
-            <li><a href="#home" data-zh="首页" data-en="Home">首页</a></li>
-            <li><a href="#about" data-zh="关于" data-en="About">关于</a></li>
-            <li><a href="#services" data-zh="服务" data-en="Services">服务</a></li>
-            <li><a href="#people" data-zh="海南人物" data-en="People">海南人物</a></li>
-            <li><a href="#scenery" data-zh="风景名胜" data-en="Scenery">风景名胜</a></li>
-            <li><a href="#payment" data-zh="收款" data-en="Payment">收款</a></li>
-            <li><a href="#contact" data-zh="联系" data-en="Contact">联系</a></li>
+            <li><a href="#home">首页</a></li>
+            <li><a href="#services">服务</a></li>
+            <li><a href="#pricing">收费</a></li>
+            <li><a href="#people">人物</a></li>
+            <li><a href="#scenery">风景</a></li>
+            <li><a href="#about">关于</a></li>
         </ul>
         <button class="lang-switch" onclick="toggleLanguage()">EN</button>
     </nav>
 
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1 class="hero-title" data-zh="海南索拉纳商务咨询中心" data-en="Hainan Solana Advisory">海南索拉纳商务咨询中心</h1>
-            <h2 class="hero-subtitle" data-zh="您的海南自贸港商务伙伴" data-en="Your Gateway to Hainan FTP">您的海南自贸港商务伙伴</h2>
-            <p class="hero-description" data-zh="专业提供海南自由贸易港公司注册、税务筹划、政策咨询等一站式服务" 
-               data-en="Professional services for Hainan Free Trade Port">
+            <h1 class="hero-title">海南索拉纳商务咨询中心</h1>
+            <h2 class="hero-subtitle">您的海南自贸港商务伙伴</h2>
+            <p class="hero-description">
                 专业提供海南自由贸易港公司注册、税务筹划、政策咨询等一站式服务
             </p>
             <div class="cta-buttons">
-                <a href="#contact" class="btn btn-primary" data-zh="立即咨询" data-en="Contact">立即咨询</a>
-                <a href="#services" class="btn btn-secondary" data-zh="了解服务" data-en="Services">了解服务</a>
+                <a href="#pricing" class="btn btn-primary">查看收费</a>
+                <a href="#services" class="btn btn-secondary">了解服务</a>
             </div>
 
             <div class="features">
                 <div class="feature-item">
                     <span class="feature-icon">⚡</span>
-                    <div class="feature-title" data-zh="快速注册" data-en="Fast">快速注册</div>
-                    <div class="feature-text" data-zh="3-7个工作日完成" data-en="3-7 days">3-7个工作日完成</div>
+                    <div class="feature-title">快速注册</div>
+                    <div class="feature-text">3-7个工作日完成</div>
                 </div>
                 <div class="feature-item">
                     <span class="feature-icon">💎</span>
-                    <div class="feature-title" data-zh="税收优惠" data-en="Tax Benefits">税收优惠</div>
-                    <div class="feature-text" data-zh="企业所得税15%" data-en="15% tax">企业所得税15%</div>
+                    <div class="feature-title">税收优惠</div>
+                    <div class="feature-text">企业所得税15%</div>
                 </div>
                 <div class="feature-item">
                     <span class="feature-icon">🛡️</span>
-                    <div class="feature-title" data-zh="合规保障" data-en="Compliance">合规保障</div>
-                    <div class="feature-text" data-zh="专业团队服务" data-en="Professional">专业团队服务</div>
+                    <div class="feature-title">合规保障</div>
+                    <div class="feature-text">专业团队服务</div>
                 </div>
                 <div class="feature-item">
                     <span class="feature-icon">🌐</span>
-                    <div class="feature-title" data-zh="全球服务" data-en="Global">全球服务</div>
-                    <div class="feature-text" data-zh="境内外企业" data-en="Worldwide">境内外企业</div>
+                    <div class="feature-title">全球服务</div>
+                    <div class="feature-text">境内外企业</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="about" class="section section-alt">
-        <h2 class="section-title" data-zh="关于我们" data-en="About Us">关于我们</h2>
-        <div class="section-content">
-            <p class="about-text">海南索拉纳商务咨询中心是一家专注于海南自由贸易港商务服务的专业机构。我们依托海南自贸港独特的政策优势，为国内外企业提供全方位的商务咨询、公司注册、税务筹划、政策申报等专业服务。</p>
-            <p class="about-text">我们的团队由资深商务顾问、注册会计师、税务师、律师等专业人士组成，具备丰富的海南自贸港政策研究经验和实操能力。</p>
-            <div class="about-highlights">
-                <div class="highlight-item">
-                    <div class="highlight-number">500+</div>
-                    <div class="highlight-label" data-zh="服务企业" data-en="Clients">服务企业</div>
-                </div>
-                <div class="highlight-item">
-                    <div class="highlight-number">98%</div>
-                    <div class="highlight-label" data-zh="满意度" data-en="Satisfaction">满意度</div>
-                </div>
-                <div class="highlight-item">
-                    <div class="highlight-number">5天</div>
-                    <div class="highlight-label" data-zh="注册时间" data-en="Time">注册时间</div>
-                </div>
-                <div class="highlight-item">
-                    <div class="highlight-number">20+</div>
-                    <div class="highlight-label" data-zh="专业团队" data-en="Team">专业团队</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="services" class="section">
-        <h2 class="section-title" data-zh="我们的服务" data-en="Services">我们的服务</h2>
+    <section id="services" class="section section-alt">
+        <h2 class="section-title">我们的服务</h2>
         <div class="services-grid">
             <div class="service-card">
                 <span class="service-icon">🌍</span>
-                <h3 data-zh="全球企业注册" data-en="Global">全球企业注册</h3>
+                <h3>全球企业注册</h3>
                 <p>为世界各地的企业提供海南自由贸易港公司注册方案</p>
                 <div class="service-details">
                     <ul>
@@ -813,7 +937,7 @@
             </div>
             <div class="service-card">
                 <span class="service-icon">🇨🇳</span>
-                <h3 data-zh="国内企业注册" data-en="Domestic">国内企业注册</h3>
+                <h3>国内企业注册</h3>
                 <p>协助国内企业在海南自贸港设立分支机构</p>
                 <div class="service-details">
                     <ul>
@@ -826,7 +950,7 @@
             </div>
             <div class="service-card">
                 <span class="service-icon">💰</span>
-                <h3 data-zh="税务优惠咨询" data-en="Tax">税务优惠咨询</h3>
+                <h3>税务优惠咨询</h3>
                 <p>深度解读海南自贸港税收优惠政策</p>
                 <div class="service-details">
                     <ul>
@@ -839,7 +963,7 @@
             </div>
             <div class="service-card">
                 <span class="service-icon">📋</span>
-                <h3 data-zh="政策申报合规" data-en="Policy">政策申报合规</h3>
+                <h3>政策申报合规</h3>
                 <p>协助企业申报各类优惠政策</p>
                 <div class="service-details">
                     <ul>
@@ -852,7 +976,7 @@
             </div>
             <div class="service-card">
                 <span class="service-icon">🏢</span>
-                <h3 data-zh="企业托管服务" data-en="Hosting">企业托管服务</h3>
+                <h3>企业托管服务</h3>
                 <p>提供全方位企业托管服务</p>
                 <div class="service-details">
                     <ul>
@@ -865,7 +989,7 @@
             </div>
             <div class="service-card">
                 <span class="service-icon">🚀</span>
-                <h3 data-zh="投资咨询服务" data-en="Investment">投资咨询服务</h3>
+                <h3>投资咨询服务</h3>
                 <p>提供海南自贸港投资机会分析</p>
                 <div class="service-details">
                     <ul>
@@ -879,270 +1003,527 @@
         </div>
     </section>
 
+    <section id="pricing" class="section">
+        <h2 class="section-title">服务收费明细</h2>
+        <div class="section-content">
+            <div class="pricing-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">服务项目</th>
+                            <th style="width: 35%;">服务内容说明</th>
+                            <th style="width: 20%;">收费标准</th>
+                            <th style="width: 25%;">备注</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>公司名称核准</td>
+                            <td>提供3-5个名称核名</td>
+                            <td class="price">¥200</td>
+                            <td class="note">免费重提一次</td>
+                        </tr>
+                        <tr>
+                            <td>工商注册(基础)</td>
+                            <td>营业执照+刻章+税务登记</td>
+                            <td class="price">¥800</td>
+                            <td class="note">客户自备地址</td>
+                        </tr>
+                        <tr>
+                            <td>工商注册(全包)</td>
+                            <td>含挂靠地址一年</td>
+                            <td class="price">¥1,900</td>
+                            <td class="note">适合无址创业</td>
+                        </tr>
+                        <tr>
+                            <td>刻章服务</td>
+                            <td>公章/财务/法人/合同/发票章</td>
+                            <td class="price">¥300</td>
+                            <td class="note">全套优惠价</td>
+                        </tr>
+                        <tr>
+                            <td>税务报到</td>
+                            <td>税种核定+发票资格开通</td>
+                            <td class="price">¥500</td>
+                            <td class="note">含指导</td>
+                        </tr>
+                        <tr>
+                            <td>发票申领</td>
+                            <td>普票或专票申请</td>
+                            <td class="price">¥300/次</td>
+                            <td class="note">按次收费</td>
+                        </tr>
+                        <tr>
+                            <td>银行开户协助</td>
+                            <td>材料准备+陪同办理</td>
+                            <td class="price">¥1,200</td>
+                            <td class="note">不含银行费用</td>
+                        </tr>
+                        <tr>
+                            <td>社保公积金开户</td>
+                            <td>单位账户设立</td>
+                            <td class="price">¥500</td>
+                            <td class="note">含首次增员</td>
+                        </tr>
+                        <tr>
+                            <td>代理记账(零申报)</td>
+                            <td>每月申报</td>
+                            <td class="price">¥150/月</td>
+                            <td class="note">年付1,500元</td>
+                        </tr>
+                        <tr>
+                            <td>代理记账(小规模)</td>
+                            <td>月度报税+建账</td>
+                            <td class="price">¥200/月</td>
+                            <td class="note">年付2,000元</td>
+                        </tr>
+                        <tr>
+                            <td>代理记账(一般纳税人)</td>
+                            <td>增值税+全盘账务</td>
+                            <td class="price">¥500/月</td>
+                            <td class="note">年付5,000元</td>
+                        </tr>
+                        <tr>
+                            <td>公司变更</td>
+                            <td>法人/股东/地址/资本等</td>
+                            <td class="price">¥600/项</td>
+                            <td class="note">多项可打包</td>
+                        </tr>
+                        <tr>
+                            <td>公司注销</td>
+                            <td>税务清算+工商注销</td>
+                            <td class="price">¥2,000起</td>
+                            <td class="note">按情况报价</td>
+                        </tr>
+                        <tr>
+                            <td>商标注册</td>
+                            <td>国内商标（1类）</td>
+                            <td class="price">¥600+官费¥300</td>
+                            <td class="note">周期6-8个月</td>
+                        </tr>
+                        <tr>
+                            <td>企业年报代报</td>
+                            <td>年度公示系统申报</td>
+                            <td class="price">¥200/年</td>
+                            <td class="note">逾期有风险</td>
+                        </tr>
+                        <tr>
+                            <td>进出口权</td>
+                            <td>进出口经营权+海关备案</td>
+                            <td class="price">¥1,500</td>
+                            <td class="note">全套办理</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 style="text-align: center; color: #4ade80; margin-top: 80px; margin-bottom: 40px; font-size: 32px;">服务流程</h3>
+            <div class="process-flow">
+                <div class="process-step">
+                    <div class="process-number">1</div>
+                    <h4>免费咨询</h4>
+                    <p>微信/电话沟通需求</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">2</div>
+                    <h4>方案确认</h4>
+                    <p>确定服务内容及价格</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">3</div>
+                    <h4>签订合同</h4>
+                    <p>双方签署服务协议</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">4</div>
+                    <h4>支付定金</h4>
+                    <p>支付50%服务费用</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">5</div>
+                    <h4>服务执行</h4>
+                    <p>专业团队办理业务</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">6</div>
+                    <h4>成果交付</h4>
+                    <p>交付所有证照材料</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">7</div>
+                    <h4>支付余款</h4>
+                    <p>验收合格支付尾款</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">8</div>
+                    <h4>服务完成</h4>
+                    <p>提供后续咨询支持</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 60px; padding: 40px; background: rgba(102, 126, 234, 0.1); border-radius: 20px; border: 1px solid rgba(102, 126, 234, 0.2);">
+                <h4 style="color: #4ade80; font-size: 24px; margin-bottom: 20px;">💚 支付方式</h4>
+                <div style="display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; margin-top: 30px;">
+                    <div>
+                        <p style="color: #cbd5e1; margin-bottom: 15px; font-size: 18px; font-weight: 600;">✅ 微信支付</p>
+                        <img src="wechat_pay.jpg" alt="微信收款码" style="width: 180px; height: 180px; border-radius: 10px; border: 2px solid #4ade80;">
+                    </div>
+                    <div>
+                        <p style="color: #cbd5e1; margin-bottom: 15px; font-size: 18px; font-weight: 600;">✅ 支付宝</p>
+                        <img src="alipay.jpg" alt="支付宝收款码" style="width: 180px; height: 180px; border-radius: 10px; border: 2px solid #4ade80;">
+                    </div>
+                    <div>
+                        <p style="color: #cbd5e1; margin-bottom: 15px; font-size: 18px; font-weight: 600;">🏦 对公转账</p>
+                        <div style="background: rgba(30, 41, 59, 0.5); padding: 20px; border-radius: 10px; min-width: 200px;">
+                            <p style="color: #94a3b8; font-size: 14px; margin: 5px 0;">即将开通</p>
+                            <p style="color: #94a3b8; font-size: 13px; margin: 5px 0;">户名: 海南索拉纳商务咨询中心</p>
+                            <p style="color: #94a3b8; font-size: 13px; margin: 5px 0;">开户行: [待更新]</p>
+                            <p style="color: #94a3b8; font-size: 13px; margin: 5px 0;">账号: [待更新]</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="people" class="section section-alt">
-        <h2 class="section-title" data-zh="海南知名人物" data-en="Famous People">海南知名人物</h2>
-        <div class="people-grid">
-            <div class="people-card">
-                <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=400" alt="海瑞" class="people-image">
-                <div class="people-content">
-                    <h3>海瑞</h3>
-                    <div class="subtitle">明代著名清官</div>
-                    <p>海南琼山人，明代名臣，以刚正不阿、清廉自守著称，被誉为"海青天"。</p>
+        <h2 class="section-title">椰风人物志</h2>
+        <div class="section-content">
+            <div class="collapsible">
+                <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                    <h3>🎭 海南历史名人</h3>
+                    <span class="collapsible-icon">▼</span>
+                </div>
+                <div class="collapsible-content">
+                    <div class="collapsible-inner">
+                        <div class="people-grid">
+                            <div class="people-card">
+                                <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=400" alt="海瑞" class="people-image">
+                                <div class="people-content">
+                                    <h4>海瑞 (1514-1587)</h4>
+                                    <div class="subtitle">明代清官典范</div>
+                                    <p>这位琼山老哥可不得了！当官刚正不阿，敢骂皇帝，人称"海青天"。连嘉靖皇帝都拿他没办法。清廉到什么程度？去世时家里只有几两银子，连棺材都是同僚凑钱买的。现代"反腐先锋"的鼻祖！</p>
+                                </div>
+                            </div>
+                            <div class="people-card">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400" alt="丘濬" class="people-image">
+                                <div class="people-content">
+                                    <h4>丘濬 (1420-1495)</h4>
+                                    <div class="subtitle">明代大学士、理学家</div>
+                                    <p>海南第一位进入内阁的宰相级人物！这位琼山才子不仅官做得大，学问更是了得。写了部《大学衍义补》，洋洋洒洒160卷，从治国理政到经济民生，啥都讲。皇帝们都把他的书当"施政指南"！</p>
+                                </div>
+                            </div>
+                            <div class="people-card">
+                                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400" alt="冼夫人" class="people-image">
+                                <div class="people-content">
+                                    <h4>冼夫人 (约512-602)</h4>
+                                    <div class="subtitle">巾帼英雄、岭南圣母</div>
+                                    <p>这位大姐可是海南的"花木兰"！南北朝时期的俚族首领，一生经历三个朝代，愣是让岭南地区保持了稳定统一。武功高强还懂政治，被封为"谯国夫人"。后人尊称"岭南圣母"，现在海南还有好多冼太庙呢！</p>
+                                </div>
+                            </div>
+                            <div class="people-card">
+                                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400" alt="苏东坡" class="people-image">
+                                <div class="people-content">
+                                    <h4>苏东坡 (1037-1101)</h4>
+                                    <div class="subtitle">北宋文豪（谪居海南）</div>
+                                    <p>这位大文豪62岁被贬到海南，本该郁闷吧？结果他老人家吃嘛嘛香！发明了"东坡肉"还不够，又捣鼓出"椰子饭"。办学堂教书育人，愣是把荒凉的海南搞成了文化热土。离开时当地百姓哭着送行，说"我们终于有文化了"！</p>
+                                </div>
+                            </div>
+                            <div class="people-card">
+                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400" alt="白玉蟾" class="people-image">
+                                <div class="people-content">
+                                    <h4>白玉蟾 (1194-?)</h4>
+                                    <div class="subtitle">道教南宗五祖</div>
+                                    <p>这位琼山道士可神了！不仅道法高深，诗词书画样样精通。12岁就能写诗，被称为"神童"。创立道教南宗，强调"先修性，后修命"，影响了后世无数修道之人。号称"紫清真人"，活脱脱一个得道高人！</p>
+                                </div>
+                            </div>
+                            <div class="people-card">
+                                <img src="https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=400" alt="张岳崧" class="people-image">
+                                <div class="people-content">
+                                    <h4>张岳崧 (1773-1842)</h4>
+                                    <div class="subtitle">清代海南唯一探花</div>
+                                    <p>海南科举史上的"天花板"！清朝嘉庆年间考中探花（全国第三名），打破了海南几百年没出过探花的记录。这位定安才子不仅会考试，当官也有一套，官至湖北布政使。诗文俱佳，被誉为"海南才子第一人"！</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="people-card">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400" alt="丘濬" class="people-image">
-                <div class="people-content">
-                    <h3>丘濬</h3>
-                    <div class="subtitle">明代政治家、理学家</div>
-                    <p>海南琼山人，官至礼部尚书、文渊阁大学士，著有《大学衍义补》等。</p>
+
+            <div class="collapsible">
+                <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                    <h3>🌟 海南近现代名人</h3>
+                    <span class="collapsible-icon">▼</span>
                 </div>
-            </div>
-            <div class="people-card">
-                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400" alt="冼夫人" class="people-image">
-                <div class="people-content">
-                    <h3>冼夫人</h3>
-                    <div class="subtitle">古代巾帼英雄</div>
-                    <p>俚族首领，为维护国家统一和民族团结做出重要贡献，被尊为"岭南圣母"。</p>
-                </div>
-            </div>
-            <div class="people-card">
-                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400" alt="苏东坡" class="people-image">
-                <div class="people-content">
-                    <h3>苏东坡</h3>
-                    <div class="subtitle">北宋文学家（谪居海南）</div>
-                    <p>被贬海南时在此生活三年，对海南文化教育发展影响深远，留下众多诗篇。</p>
-                </div>
-            </div>
-            <div class="people-card">
-                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400" alt="白玉蟾" class="people-image">
-                <div class="people-content">
-                    <h3>白玉蟾</h3>
-                    <div class="subtitle">南宋道教南宗五祖</div>
-                    <p>海南琼山人，道教南宗创始人之一，精通诗词书画，被尊为"紫清真人"。</p>
-                </div>
-            </div>
-            <div class="people-card">
-                <img src="https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=400" alt="王佐" class="people-image">
-                <div class="people-content">
-                    <h3>王佐</h3>
-                    <div class="subtitle">明代诗人</div>
-                    <p>海南临高人，明代著名诗人，与丘濬、海瑞并称"海南三贤"。</p>
-                </div>
-            </div>
-            <div class="people-card">
-                <img src="https://images.unsplash.com/photo-1463453091185-61582044d556?w=400" alt="张岳崧" class="people-image">
-                <div class="people-content">
-                    <h3>张岳崧</h3>
-                    <div class="subtitle">清代海南唯一探花</div>
-                    <p>海南定安人，清代探花，官至湖北布政使，学识渊博，诗文俱佳。</p>
-                </div>
-            </div>
-            <div class="people-card">
-                <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=400" alt="宋庆龄" class="people-image">
-                <div class="people-content">
-                    <h3>宋庆龄</h3>
-                    <div class="subtitle">伟大的爱国主义者（祖籍海南）</div>
-                    <p>祖籍海南文昌，国家名誉主席，为中国革命和建设事业做出杰出贡献。</p>
-                </div>
-            </div>
-            <div class="people-card">
-                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400" alt="宋氏三姐妹" class="people-image">
-                <div class="people-content">
-                    <h3>宋氏三姐妹</h3>
-                    <div class="subtitle">中国近代史上著名姐妹（祖籍海南）</div>
-                    <p>祖籍海南文昌，宋霭龄、宋庆龄、宋美龄在中国近代史上影响深远。</p>
-                </div>
-            </div>
-            <div class="people-card">
-                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400" alt="张云逸" class="people-image">
-                <div class="people-content">
-                    <h3>张云逸</h3>
-                    <div class="subtitle">开国大将</div>
-                    <p>海南文昌人，中国人民解放军开国大将，为中国革命事业建立卓越功勋。</p>
-                </div>
-            </div>
-            <div class="people-card">
-                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400" alt="符克" class="people-image">
-                <div class="people-content">
-                    <h3>符克</h3>
-                    <div class="subtitle">革命烈士</div>
-                    <p>海南文昌人，琼崖革命根据地创建人之一，为海南解放事业献出生命。</p>
-                </div>
-            </div>
-            <div class="people-card">
-                <img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=400" alt="云光英" class="people-image">
-                <div class="people-content">
-                    <h3>云光英</h3>
-                    <div class="subtitle">当代企业家</div>
-                    <p>海南企业家代表，致力于海南经济建设和社会发展事业。</p>
+                <div class="collapsible-content">
+                    <div class="collapsible-inner">
+                        <div class="people-grid">
+                            <div class="people-card">
+                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400" alt="宋庆龄" class="people-image">
+                                <div class="people-content">
+                                    <h4>宋庆龄 (1893-1981)</h4>
+                                    <div class="subtitle">国家名誉主席（祖籍文昌）</div>
+                                    <p>海南文昌走出去的"国母"！孙中山先生的夫人，一生致力于中国革命和建设。虽然出生在上海，但祖籍可是咱海南文昌昌洒村。宋氏三姐妹个个了不得，她最有政治头脑，被誉为"二十世纪最伟大的女性之一"！</p>
+                                </div>
+                            </div>
+                            <div class="people-card">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400" alt="张云逸" class="people-image">
+                                <div class="people-content">
+                                    <h4>张云逸 (1892-1974)</h4>
+                                    <div class="subtitle">开国大将</div>
+                                    <p>海南文昌的"战神"！从辛亥革命打到解放战争，这位老将军参加过的战役数都数不清。1955年被授予大将军衔，是十大开国大将之一。打仗猛、指挥稳，毛主席都称赞他"智勇双全"。海南人的骄傲！</p>
+                                </div>
+                            </div>
+                            <div class="people-card">
+                                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400" alt="符克" class="people-image">
+                                <div class="people-content">
+                                    <h4>符克 (1923-1949)</h4>
+                                    <div class="subtitle">革命烈士</div>
+                                    <p>海南文昌的青年英雄！琼崖革命根据地的创建者之一，26岁就牺牲了。短短一生却战功赫赫，带领游击队跟日本鬼子、国民党斗智斗勇。牺牲前还在指挥作战，真正的革命铁汉！现在文昌有符克烈士纪念碑，永远纪念这位英雄。</p>
+                                </div>
+                            </div>
+                            <div class="people-card">
+                                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400" alt="海商代表" class="people-image">
+                                <div class="people-content">
+                                    <h4>新时代海商</h4>
+                                    <div class="subtitle">当代企业家群体</div>
+                                    <p>海南商人遍布全球！从南洋到硅谷，从传统行业到互联网，海南人的商业头脑可不是盖的。特别是海南自贸港建设以来，一大批"新海商"回乡创业，有搞旅游的、做高科技的、玩金融的...个个都是行业精英，为家乡发展贡献力量！</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="scenery" class="section">
-        <h2 class="section-title" data-zh="海南风景名胜" data-en="Scenery">海南风景名胜</h2>
-        <div class="scenery-grid">
-            <div class="scenery-card">
-                <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600" alt="三亚海滩" class="scenery-image">
-                <div class="scenery-content">
-                    <h3>三亚亚龙湾</h3>
-                    <p>被誉为"天下第一湾"，拥有7公里长的银白色海滩，海水清澈见底，是世界级度假胜地。</p>
+        <h2 class="section-title">魅力海南</h2>
+        <div class="section-content">
+            <div class="collapsible">
+                <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                    <h3>🏖️ 滨海风光</h3>
+                    <span class="collapsible-icon">▼</span>
+                </div>
+                <div class="collapsible-content">
+                    <div class="collapsible-inner">
+                        <div class="scenery-grid">
+                            <div class="scenery-card">
+                                <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600" alt="亚龙湾" class="scenery-image">
+                                <div class="scenery-content">
+                                    <h4>亚龙湾 - 天下第一湾</h4>
+                                    <p>三亚最美的海湾！7.5公里的月牙形海滩，沙子细得像面粉，海水蓝得像宝石。这里的海底世界更是绝了，珊瑚礁群、热带鱼群，潜水爱好者的天堂！难怪被称为"东方夏威夷"。</p>
+                                </div>
+                            </div>
+                            <div class="scenery-card">
+                                <img src="https://images.unsplash.com/photo-1540206395-68808572332f?w=600" alt="蜈支洲岛" class="scenery-image">
+                                <div class="scenery-content">
+                                    <h4>蜈支洲岛 - 中国的马尔代夫</h4>
+                                    <p>这座岛简直是上帝遗落的珍珠！海水清澈到能见度27米，你能看到海底的每一粒沙子。岛上热带植物超过2700种，走着走着就像进了热带雨林。情侣们的最爱，据说在这里求婚成功率99%！</p>
+                                </div>
+                            </div>
+                            <div class="scenery-card">
+                                <img src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=600" alt="天涯海角" class="scenery-image">
+                                <div class="scenery-content">
+                                    <h4>天涯海角 - 浪漫地标</h4>
+                                    <p>古代流放犯人的"天涯"，现在成了浪漫圣地！巨大的礁石上刻着"天涯"和"海角"四个大字，象征着海枯石烂的爱情。来这里的情侣必拍照留念，据说能"爱到天涯海角"。背后的故事更有意思：苏东坡被贬到这，写下"九死南荒吾不恨"！</p>
+                                </div>
+                            </div>
+                            <div class="scenery-card">
+                                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600" alt="大东海" class="scenery-image">
+                                <div class="scenery-content">
+                                    <h4>大东海 - 都市海滩</h4>
+                                    <p>三亚市区最近的优质海滩！不像亚龙湾那么高冷，这里更接地气。周边吃喝玩乐一应俱全，白天游泳晒太阳，晚上夜市撸串喝椰子。海水质量杠杠的，一年四季都能游泳，是三亚人的"城市会客厅"！</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="scenery-card">
-                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600" alt="热带雨林" class="scenery-image">
-                <div class="scenery-content">
-                    <h3>呀诺达热带雨林</h3>
-                    <p>中国唯一的热带雨林，拥有丰富的动植物资源，被称为"天然氧吧"和"绿色基因库"。</p>
+
+            <div class="collapsible">
+                <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                    <h3>🌳 热带秘境</h3>
+                    <span class="collapsible-icon">▼</span>
+                </div>
+                <div class="collapsible-content">
+                    <div class="collapsible-inner">
+                        <div class="scenery-grid">
+                            <div class="scenery-card">
+                                <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600" alt="呀诺达雨林" class="scenery-image">
+                                <div class="scenery-content">
+                                    <h4>呀诺达热带雨林 - 天然氧吧</h4>
+                                    <p>中国唯一的热带雨林！一进去就像开了空调，负氧离子爆表，深呼吸一口神清气爽。雨林里藏着无数奇花异草，走着走着就能碰到珍稀植物。最刺激的是高空滑索和踏瀑戏水，胆子大的来挑战！"呀诺达"是黎语"你好"的意思，这里的黎族小姐姐会用山歌欢迎你~</p>
+                                </div>
+                            </div>
+                            <div class="scenery-card">
+                                <img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=600" alt="五指山" class="scenery-image">
+                                <div class="scenery-content">
+                                    <h4>五指山 - 海南屋脊</h4>
+                                    <p>海南第一高山，主峰海拔1867米！五座山峰就像五根手指直插云霄，壮观得很。这里是黎族文化的发源地，山上还能看到原始的黎寨。云雾缭绕时，感觉自己在仙境。对了，《西游记》里孙悟空被压的五指山原型就是这里哦！</p>
+                                </div>
+                            </div>
+                            <div class="scenery-card">
+                                <img src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=600" alt="尖峰岭" class="scenery-image">
+                                <div class="scenery-content">
+                                    <h4>尖峰岭国家森林公园 - 绿色基因库</h4>
+                                    <p>中国现存最大的原始热带雨林！这里保存着3500多种植物，很多都是活化石级别的。走在雨林栈道上,时不时能看到猴子、孔雀,运气好还能见到黑熊(当然是远远地看)。晚上住在森林里的木屋，听着虫鸣鸟叫入睡，早上被鸟儿叫醒，这才是真正的回归自然!</p>
+                                </div>
+                            </div>
+                            <div class="scenery-card">
+                                <img src="https://images.unsplash.com/photo-1511593358241-7eea1f3c84e5?w=600" alt="分界洲岛" class="scenery-image">
+                                <div class="scenery-content">
+                                    <h4>分界洲岛 - 气候分界线</h4>
+                                    <p>海南南北气候的分界线就在这！岛的北边可能还在下雨，南边已经阳光灿烂。海底世界特别棒，能看到海龟、魔鬼鱼、小丑鱼...还有个海底邮局，可以寄明信片给未来的自己。最酷的是这里有海豚表演，人和海豚一起游泳的体验终身难忘！</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="scenery-card">
-                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600" alt="天涯海角" class="scenery-image">
-                <div class="scenery-content">
-                    <h3>天涯海角</h3>
-                    <p>海南最著名的景点之一，巨石上刻有"天涯"和"海角"，象征着浪漫的爱情和永恒的友谊。</p>
+
+            <div class="collapsible">
+                <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                    <h3>🏛️ 人文古迹</h3>
+                    <span class="collapsible-icon">▼</span>
                 </div>
-            </div>
-            <div class="scenery-card">
-                <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600" alt="蜈支洲岛" class="scenery-image">
-                <div class="scenery-content">
-                    <h3>蜈支洲岛</h3>
-                    <p>被誉为"中国的马尔代夫"，海水能见度高达27米，是潜水和海上运动的天堂。</p>
-                </div>
-            </div>
-            <div class="scenery-card">
-                <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=600" alt="海口骑楼老街" class="scenery-image">
-                <div class="scenery-content">
-                    <h3>海口骑楼老街</h3>
-                    <p>中国历史文化名街，融合了中西建筑风格，展现了海南独特的南洋文化和历史风貌。</p>
-                </div>
-            </div>
-            <div class="scenery-card">
-                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600" alt="五指山" class="scenery-image">
-                <div class="scenery-content">
-                    <h3>五指山</h3>
-                    <p>海南第一高山，因山峰形似五指而得名，是黎族文化的发源地，自然风光壮丽。</p>
-                </div>
-            </div>
-            <div class="scenery-card">
-                <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600" alt="大东海" class="scenery-image">
-                <div class="scenery-content">
-                    <h3>三亚大东海</h3>
-                    <p>三亚著名的海滨浴场，水清沙细，全年适合游泳，是三亚最早开发的海滨度假区。</p>
-                </div>
-            </div>
-            <div class="scenery-card">
-                <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600" alt="南山寺" class="scenery-image">
-                <div class="scenery-content">
-                    <h3>南山文化旅游区</h3>
-                    <p>拥有108米高的海上观音像，是佛教文化圣地，景区内山海相依，风光旖旎。</p>
-                </div>
-            </div>
-            <div class="scenery-card">
-                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600" alt="分界洲岛" class="scenery-image">
-                <div class="scenery-content">
-                    <h3>分界洲岛</h3>
-                    <p>海南南北气候分界线，海洋生态丰富，是观赏海洋生物和体验海岛风情的绝佳之地。</p>
-                </div>
-            </div>
-            <div class="scenery-card">
-                <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=600" alt="博鳌" class="scenery-image">
-                <div class="scenery-content">
-                    <h3>博鳌亚洲论坛</h3>
-                    <p>博鳌亚洲论坛永久会址，江河湖海四水交汇，自然风光独特，是国际会议重要场所。</p>
-                </div>
-            </div>
-            <div class="scenery-card">
-                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600" alt="尖峰岭" class="scenery-image">
-                <div class="scenery-content">
-                    <h3>尖峰岭国家森林公园</h3>
-                    <p>中国现存面积最大、保存最完好的热带原始雨林，生物多样性极其丰富。</p>
-                </div>
-            </div>
-            <div class="scenery-card">
-                <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600" alt="石梅湾" class="scenery-image">
-                <div class="scenery-content">
-                    <h3>石梅湾</h3>
-                    <p>被誉为"海南最美海湾"，青山绿水碧海，沙滩洁白细腻，是度假休闲的理想之地。</p>
+                <div class="collapsible-content">
+                    <div class="collapsible-inner">
+                        <div class="scenery-grid">
+                            <div class="scenery-card">
+                                <img src="https://images.unsplash.com/photo-1464207687429-7505649dae38?w=600" alt="骑楼老街" class="scenery-image">
+                                <div class="scenery-content">
+                                    <h4>海口骑楼老街 - 南洋风情</h4>
+                                    <p>海口最有味道的地方！这些骑楼建于上世纪初,融合了中西建筑风格,一楼骑楼能遮阳避雨。当年下南洋的海南人赚钱回来盖的，带着浓浓的南洋风情。现在这里成了网红打卡地，老爸茶铺、海南粉店、糖水铺...逛一天都不够！记得尝尝海南四大名菜和各种特色小吃~</p>
+                                </div>
+                            </div>
+                            <div class="scenery-card">
+                                <img src="https://images.unsplash.com/photo-1478860409698-8707f313ee8b?w=600" alt="南山寺" class="scenery-image">
+                                <div class="scenery-content">
+                                    <h4>南山文化旅游区 - 佛教圣地</h4>
+                                    <p>震撼的108米海上观音像，是全世界最高的海上观音！三面观音寓意福慧双全。整个景区依山傍海，风水极佳。"福如东海，寿比南山"的南山就是这里。许多人来这祈福，据说特别灵验。景区里的素斋也是一绝，不吃肉却比肉还香！</p>
+                                </div>
+                            </div>
+                            <div class="scenery-card">
+                                <img src="https://images.unsplash.com/photo-1569163139394-de4798aa62b6?w=600" alt="博鳌" class="scenery-image">
+                                <div class="scenery-content">
+                                    <h4>博鳌亚洲论坛 - 国际会议之都</h4>
+                                    <p>这个小渔村摇身一变成了国际会议中心！每年博鳌亚洲论坛在这举行，各国政要云集。最神奇的是这里"江、河、湖、海、山、岭"全都有，万泉河、龙滚河、九曲江三江汇聚，最后流入南海。坐船游览，一路风景美不胜收。难怪被选为论坛永久会址！</p>
+                                </div>
+                            </div>
+                            <div class="scenery-card">
+                                <img src="https://images.unsplash.com/photo-1528127269322-539801943592?w=600" alt="文昌航天城" class="scenery-image">
+                                <div class="scenery-content">
+                                    <h4>文昌航天发射场 - 追梦太空</h4>
+                                    <p>中国最年轻、最先进的航天发射场！这里发射了长征五号、长征七号火箭，还有天舟货运飞船。最酷的是这里离海边只有几百米，全世界唯一能看海景的航天发射场！火箭发射时，整个海南岛都能看到。站在观景台看火箭升空，那种震撼终身难忘。中国航天梦，从这里起飞！</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="payment" class="section section-alt">
-        <h2 class="section-title" data-zh="收款方式" data-en="Payment">收款方式</h2>
-        <div class="payment-grid">
-            <div class="payment-card">
-                <div class="payment-logo">💚</div>
-                <h3 data-zh="微信支付" data-en="WeChat Pay">微信支付</h3>
-                <p data-zh="扫描二维码支付" data-en="Scan to pay">扫描二维码支付</p>
-                <img src="wechat_pay.jpg" alt="微信收款码" class="qr-code">
+    <section id="about" class="section section-alt">
+        <h2 class="section-title">关于我们</h2>
+        <div class="section-content">
+            <p class="about-text">海南索拉纳商务咨询中心是一家专注于海南自由贸易港商务服务的专业机构。我们依托海南自贸港独特的政策优势，为国内外企业提供全方位的商务咨询、公司注册、税务筹划、政策申报等专业服务。</p>
+            <p class="about-text">我们的团队由资深商务顾问、注册会计师、税务师、律师等专业人士组成，具备丰富的海南自贸港政策研究经验和实操能力。我们秉承"专业、高效、诚信"的服务理念，致力于为每一位客户提供量身定制的解决方案。</p>
+            <div class="about-highlights">
+                <div class="highlight-item">
+                    <div class="highlight-number">500+</div>
+                    <div class="highlight-label">服务企业</div>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-number">98%</div>
+                    <div class="highlight-label">满意度</div>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-number">5天</div>
+                    <div class="highlight-label">注册时间</div>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-number">20+</div>
+                    <div class="highlight-label">专业团队</div>
+                </div>
             </div>
-            <div class="payment-card">
-                <div class="payment-logo">💙</div>
-                <h3 data-zh="支付宝" data-en="Alipay">支付宝</h3>
-                <p data-zh="扫描二维码支付" data-en="Scan to pay">扫描二维码支付</p>
-                <img src="alipay.jpg" alt="支付宝收款码" class="qr-code">
-            </div>
-        </div>
-    </section>
 
-    <section id="contact" class="section">
-        <h2 class="section-title" data-zh="联系我们" data-en="Contact">联系我们</h2>
-        <div class="contact-grid">
-            <div class="contact-card">
-                <span class="contact-icon">💬</span>
-                <h3 data-zh="微信咨询" data-en="WeChat">微信咨询</h3>
-                <p data-zh="扫码添加客服" data-en="Scan to add">扫码添加客服</p>
-                <img src="wechat_contact.jpg" alt="微信二维码" class="qr-code" style="width: 150px; height: 150px;">
-            </div>
-            <div class="contact-card">
-                <span class="contact-icon">📧</span>
-                <h3 data-zh="邮箱" data-en="Email">邮箱</h3>
-                <p><a href="mailto:kosok@solana-hainan.com">kosok@solana-hainan.com</a></p>
-            </div>
-            <div class="contact-card">
-                <span class="contact-icon">📍</span>
-                <h3 data-zh="地址" data-en="Address">地址</h3>
-                <p data-zh="海南省海口市美兰区" data-en="Meilan, Haikou">海南省海口市美兰区</p>
-            </div>
-            <div class="contact-card">
-                <span class="contact-icon">🌐</span>
-                <h3 data-zh="网站" data-en="Website">网站</h3>
-                <p><a href="http://www.solana-hainan.com" target="_blank">solana-hainan.com</a></p>
+            <h3 style="text-align: center; color: #4ade80; margin-top: 80px; margin-bottom: 40px; font-size: 32px;">联系我们</h3>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <span class="contact-icon">💬</span>
+                    <h3>微信咨询</h3>
+                    <p>扫码添加客服</p>
+                    <img src="wechat_contact.jpg" alt="微信二维码" class="qr-code" style="width: 150px; height: 150px;">
+                </div>
+                <div class="contact-card">
+                    <span class="contact-icon">📧</span>
+                    <h3>邮箱</h3>
+                    <p><a href="mailto:kosok@solana-hainan.com">kosok@solana-hainan.com</a></p>
+                </div>
+                <div class="contact-card">
+                    <span class="contact-icon">📍</span>
+                    <h3>地址</h3>
+                    <p>海南省海口市美兰区</p>
+                </div>
+                <div class="contact-card">
+                    <span class="contact-icon">🌐</span>
+                    <h3>网站</h3>
+                    <p><a href="http://www.solana-hainan.com" target="_blank">solana-hainan.com</a></p>
+                </div>
             </div>
         </div>
     </section>
 
     <footer>
         <div class="footer-content">
-            <p data-zh="© 2025 海南索拉纳商务咨询中心" data-en="© 2025 Hainan Solana">© 2025 海南索拉纳商务咨询中心</p>
+            <p>© 2025 海南索拉纳商务咨询中心</p>
             <div class="footer-divider"></div>
-            <p data-zh="营业执照：91460100MACP01PC0Q | 注册地址：海南省海口市美兰区" data-en="License: 91460100MACP01PC0Q">营业执照：91460100MACP01PC0Q | 注册地址：海南省海口市美兰区</p>
-            <p data-zh="专业的海南自贸港商务服务平台" data-en="Professional FTP service">专业的海南自贸港商务服务平台</p>
+            <p>营业执照：91460100MACP01PC0Q | 注册地址：海南省海口市美兰区</p>
+            <p>专业的海南自贸港商务服务平台</p>
         </div>
     </footer>
 
     <script>
-        let isEnglish = false;
         function toggleLanguage() {
-            isEnglish = !isEnglish;
-            document.querySelectorAll('[data-zh][data-en]').forEach(el => {
-                el.textContent = isEnglish ? el.getAttribute('data-en') : el.getAttribute('data-zh');
-            });
-            document.querySelector('.lang-switch').textContent = isEnglish ? '中文' : 'EN';
+            alert('语言切换功能开发中...');
         }
 
+        function toggleCollapsible(header) {
+            const collapsible = header.parentElement;
+            const content = collapsible.querySelector('.collapsible-content');
+            const isActive = collapsible.classList.contains('active');
+            
+            // 关闭所有其他折叠项
+            document.querySelectorAll('.collapsible').forEach(item => {
+                if (item !== collapsible) {
+                    item.classList.remove('active');
+                    item.querySelector('.collapsible-content').style.maxHeight = null;
+                }
+            });
+            
+            if (isActive) {
+                collapsible.classList.remove('active');
+                content.style.maxHeight = null;
+            } else {
+                collapsible.classList.add('active');
+                content.style.maxHeight = content.scrollHeight + 'px';
+            }
+        }
+
+        // 平滑滚动
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
             });
         });
 
+        // 滚动动画
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1152,11 +1533,22 @@
             });
         }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-        document.querySelectorAll('.service-card, .contact-card, .payment-card, .people-card, .scenery-card').forEach(card => {
+        document.querySelectorAll('.service-card, .contact-card, .payment-card, .people-card, .scenery-card, .process-step').forEach(card => {
             card.style.opacity = '0';
             card.style.transform = 'translateY(30px)';
             card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(card);
+        });
+
+        // 默认展开第一个折叠项
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const firstCollapsible = document.querySelector('.collapsible');
+                if (firstCollapsible) {
+                    const header = firstCollapsible.querySelector('.collapsible-header');
+                    toggleCollapsible(header);
+                }
+            }, 500);
         });
     </script>
 </body>
