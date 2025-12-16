@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title id="pageTitle">服务详情 - 海南索拉纳商务咨询中心</title>
+<meta name="description" content="海南索拉纳提供全球企业注册、国内企业注册、税务咨询、政策申报等专业服务">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;line-height:1.6;overflow-x:hidden}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+nav{background:rgba(0,0,0,.3);backdrop-filter:blur(10px);position:sticky;top:0;z-index:100;padding:15px 0}
+nav .container{display:flex;justify-content:space-between;align-items:center}
+.brand{display:flex;align-items:center;gap:12px;font-size:24px;font-weight:700;color:#4ade80;text-decoration:none}
+.brand img{height:40px;width:auto}
+.nav-links{display:flex;gap:25px;list-style:none}
+.nav-links a{color:#fff;text-decoration:none;transition:.3s;font-size:15px}
+.nav-links a:hover{color:#4ade80}
+.lang-btn{background:#4ade80;color:#1a1a2e;border:none;padding:8px 16px;border-radius:20px;cursor:pointer;font-weight:600;transition:.3s}
+.lang-btn:hover{transform:scale(1.05)}
+.breadcrumb{padding:30px 0 20px;color:#cbd5e1;font-size:14px}
+.breadcrumb a{color:#4ade80;text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+.page-header{text-align:center;padding:40px 20px}
+h1{font-size:48px;margin-bottom:20px;text-shadow:2px 2px 8px rgba(0,0,0,.3)}
+.page-subtitle{font-size:20px;color:#cbd5e1;max-width:800px;margin:0 auto}
+.service-nav{display:flex;flex-wrap:wrap;gap:15px;justify-content:center;padding:30px 20px;background:rgba(0,0,0,.2);border-radius:16px;margin:20px auto;max-width:1000px}
+.service-nav-btn{background:rgba(74,222,128,.2);color:#fff;border:2px solid #4ade80;padding:10px 20px;border-radius:25px;cursor:pointer;transition:.3s;font-size:14px;font-weight:600}
+.service-nav-btn:hover,.service-nav-btn.active{background:#4ade80;color:#1a1a2e}
+.service-section{background:rgba(0,0,0,.2);backdrop-filter:blur(10px);padding:50px 30px;border-radius:20px;margin:30px auto;max-width:1000px;border:1px solid rgba(255,255,255,.2)}
+.service-section h2{color:#4ade80;font-size:36px;margin-bottom:30px;text-align:center}
+.service-icon{font-size:48px;text-align:center;margin-bottom:20px}
+.service-content{margin-top:30px}
+.content-block{background:rgba(255,255,255,.1);padding:25px;border-radius:12px;margin-bottom:25px;border-left:4px solid #4ade80}
+.content-block h3{color:#4ade80;font-size:22px;margin-bottom:15px}
+.content-block p,.content-block li{color:#e2e8f0;font-size:16px;line-height:1.8;margin-bottom:10px}
+.content-block ul{list-style:none;padding-left:0}
+.content-block li:before{content:'✓ ';color:#4ade80;font-weight:700;margin-right:8px}
+.process-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px;margin:20px 0}
+.process-step{background:rgba(74,222,128,.1);padding:20px;border-radius:12px;text-align:center;position:relative}
+.process-step::after{content:'→';position:absolute;right:-15px;top:50%;transform:translateY(-50%);font-size:24px;color:#4ade80}
+.process-step:last-child::after{display:none}
+.step-number{background:#4ade80;color:#1a1a2e;width:35px;height:35px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-weight:700;font-size:18px}
+.step-title{font-weight:600;color:#4ade80;margin-bottom:5px}
+.step-desc{font-size:14px;color:#cbd5e1}
+.pricing-table{width:100%;border-collapse:collapse;margin:20px 0}
+.pricing-table td{padding:12px;border-bottom:1px solid rgba(255,255,255,.1);color:#e2e8f0}
+.pricing-table td:first-child{color:#4ade80;font-weight:600;width:40%}
+.faq-item{background:rgba(255,255,255,.05);padding:20px;border-radius:12px;margin-bottom:15px}
+.faq-q{color:#4ade80;font-weight:600;font-size:18px;margin-bottom:10px}
+.faq-a{color:#e2e8f0;font-size:16px;line-height:1.8}
+.case-item{background:rgba(74,222,128,.1);padding:15px;border-radius:8px;margin-bottom:10px;color:#e2e8f0}
+.back-home{text-align:center;padding:40px 20px}
+.btn{padding:14px 32px;border-radius:30px;text-decoration:none;font-weight:600;transition:.3s;cursor:pointer;border:none;font-size:16px;display:inline-block}
+.btn-primary{background:#4ade80;color:#1a1a2e}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 10px 25px rgba(74,222,128,.4)}
+.btn-secondary{background:rgba(255,255,255,.1);color:#fff;border:2px solid #fff;margin-left:15px}
+.btn-secondary:hover{background:rgba(255,255,255,.2)}
+footer{background:rgba(0,0,0,.3);backdrop-filter:blur(10px);padding:30px 20px;text-align:center;margin-top:60px}
+footer p{color:#94a3b8;font-size:14px}
+@media (max-width:768px){
+h1{font-size:32px}
+.service-nav{flex-direction:column}
+.service-nav-btn{width:100%}
+.process-steps{grid-template-columns:1fr}
+.process-step::after{display:none}
+.nav-links{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+<div class="container">
+<a href="index.html" class="brand">
+<img src="logo.png" alt="Logo" onerror="this.style.display='none'">
+<span id="brand">海南索拉纳</span>
+</a>
+<ul class="nav-links">
+<li><a href="index.html" id="n1">首页</a></li>
+<li><a href="services.html" id="n2">服务</a></li>
+<li><a href="index.html#pricing" id="n3">收费</a></li>
+<li><a href="policy.html" id="n4">政策</a></li>
+<li><a href="news.html" id="n5">新闻</a></li>
+<li><a href="index.html#about" id="n9">关于</a></li>
+</ul>
+<button class="lang-btn" id="langBtn" onclick="toggleLang()">EN</button>
+</div>
+</nav>
+
+<div class="container">
+<div class="breadcrumb">
+<a href="index.html" id="breadHome">首页</a> / <span id="breadServices">服务详情</span>
+</div>
+
+<div class="page-header">
+<h1 id="pageH1">我们的服务</h1>
+<p class="page-subtitle" id="pageSubtitle">为企业提供海南自贸港全方位专业服务，助力企业发展</p>
+</div>
+
+<div class="service-nav">
+<button class="service-nav-btn active" onclick="scrollToService('service1')" id="navBtn1">全球企业注册</button>
+<button class="service-nav-btn" onclick="scrollToService('service2')" id="navBtn2">国内企业注册</button>
+<button class="service-nav-btn" onclick="scrollToService('service3')" id="navBtn3">税务优惠咨询</button>
+<button class="service-nav-btn" onclick="scrollToService('service4')" id="navBtn4">政策申报合规</button>
+<button class="service-nav-btn" onclick="scrollToService('service5')" id="navBtn5">企业托管服务</button>
+<button class="service-nav-btn" onclick="scrollToService('service6')" id="navBtn6">投资咨询服务</button>
+<button class="service-nav-btn" onclick="scrollToService('service7')" id="navBtn7">广告商标设计</button>
+<button class="service-nav-btn" onclick="scrollToService('service8')" id="navBtn8">区块链咨询</button>
+<button class="service-nav-btn" onclick="scrollToService('service9')" id="navBtn9">美股开户咨询</button>
+</div>
+
+<!-- Service 1 -->
+<div class="service-section" id="service1">
+<div class="service-icon">🌍</div>
+<h2 id="s1Title">全球企业注册</h2>
+<div class="service-content">
+<div class="content-block">
+<h3 id="s1Intro">服务简介</h3>
+<p id="s1IntroText">为世界各地企业提供海南自贸港公司注册一站式服务，帮助国际企业快速进入中国市场，享受自贸港优惠政策。</p>
+</div>
+<div class="content-block">
+<h3 id="s1Target">适用对象</h3>
+<ul>
+<li id="s1T1">海外企业希望在中国设立分支机构</li>
+<li id="s1T2">外籍人士在华创业</li>
+<li id="s1T3">跨国公司拓展中国业务</li>
+<li id="s1T4">国际贸易企业</li>
+</ul>
+</div>
+<div class="content-block">
+<h3 id="s1Process">办理流程</h3>
+<div class="process-steps">
+<div class="process-step"><div class="step-number">1</div><div class="step-title" id="s1P1">初步咨询</div><div class="step-desc" id="s1P1D">了解需求，提供方案</div></div>
+<div class="process-step"><div class="step-number">2</div><div class="step-title" id="s1P2">名称核准</div><div class="step-desc" id="s1P2D">提交3-5个备选名称</div></div>
+<div class="process-step"><div class="step-number">3</div><div class="step-title" id="s1P3">准备材料</div><div class="step-desc" id="s1P3D">协助准备所有文件</div></div>
+<div class="process-step"><div class="step-number">4</div><div class="step-title" id="s1P4">递交申请</div><div class="step-desc" id="s1P4D">向工商部门提交</div></div>
+<div class="process-step"><div class="step-number">5</div><div class="step-title" id="s1P5">领取执照</div><div class="step-desc" id="s1P5D">获得营业执照</div></div>
+<div class="process-step"><div class="step-number">6</div><div class="step-title" id="s1P6">刻制印章</div><div class="step-desc" id="s1P6D">公章、财务章等</div></div>
+<div class="process-step"><div class="step-number">7</div><div class="step-title" id="s1P7">银行开户</div><div class="step-desc" id="s1P7D">协助开设企业账户</div></div>
+<div class="process-step"><div class="step-number">8</div><div class="step-title" id="s1P8">税务登记</div><div class="step-desc" id="s1P8D">完成税务报到</div></div>
+</div>
+</div>
+<div class="content-block">
+<h3 id="s1Docs">所需材料</h3>
+<ul>
+<li id="s1D1">外国公司主体资格证明（需公证认证）</li>
+<li id="s1D2">法定代表人护照及签证</li>
+<li id="s1D3">公司章程</li>
+<li id="s1D4">注册地址证明</li>
+<li id="s1D5">股东决议</li>
+<li id="s1D6">其他政府部门要求材料</li>
+</ul>
+</div>
+<div class="content-block">
+<h3 id="s1Time">办理时间</h3>
+<table class="pricing-table">
+<tr><td id="s1T1L">名称核准</td><td id="s1T1V">1-2个工作日</td></tr>
+<tr><td id="s1T2L">营业执照</td><td id="s1T2V">5-7个工作日</td></tr>
+<tr><td id="s1T3L">全套办理</td><td id="s1T3V">15-20个工作日</td></tr>
+</table>
+</div>
+<div class="content-block">
+<h3 id="s1Price">收费标准</h3>
+<table class="pricing-table">
+<tr><td id="s1Pr1">基础注册服务</td><td>¥1,900</td></tr>
+<tr><td id="s1Pr2">含地址挂靠</td><td>¥3,500/年</td></tr>
+<tr><td id="s1Pr3">全程代理</td><td id="s1Pr3V">¥5,000起</td></tr>
+</table>
+</div>
+<div class="content-block">
+<h3 id="s1FAQ">常见问题</h3>
+<div class="faq-item">
+<div class="faq-q" id="s1Q1">Q: 外资企业可以100%控股吗？</div>
+<div class="faq-a" id="s1A1">A: 在负面清单外的行业可以100%外资控股。</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" id="s1Q2">Q: 注册资本要求多少？</div>
+<div class="faq-a" id="s1A2">A: 一般企业无最低要求，认缴制。</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" id="s1Q3">Q: 需要实际办公地址吗？</div>
+<div class="faq-a" id="s1A3">A: 可以使用我们提供的商务秘书地址。</div>
+</div>
+</div>
+<div class="content-block">
+<h3 id="s1Cases">成功案例</h3>
+<div class="case-item" id="s1C1">美国XX科技公司在海南设立亚太总部</div>
+<div class="case-item" id="s1C2">新加坡XX贸易公司注册海南分公司</div>
+<div class="case-item" id="s1C3">日本XX咨询公司落户海南</div>
+</div>
+</div>
+</div>
+
+<!-- Service 2 -->
+<div class="service-section" id="service2">
+<div class="service-icon">🇨🇳</div>
+<h2 id="s2Title">国内企业注册</h2>
+<div class="service-content">
+<div class="content-block">
+<h3 id="s2Intro">服务简介</h3>
+<p id="s2IntroText">协助国内企业在海南自贸港设立分支机构或独立公司，享受15%企业所得税等优惠政策。</p>
+</div>
+<div class="content-block">
+<h3 id="s2Target">适用对象</h3>
+<ul>
+<li id="s2T1">内地企业设立海南分公司</li>
+<li id="s2T2">个人在海南创业</li>
+<li id="s2T3">企业集团设立海南总部</li>
+<li id="s2T4">高新技术企业落户</li>
+</ul>
+</div>
+<div class="content-block">
+<h3 id="s2Process">办理流程</h3>
+<div class="process-steps">
+<div class="process-step"><div class="step-number">1</div><div class="step-title" id="s2P1">咨询沟通</div><div class="step-desc" id="s2P1D">确定公司类型</div></div>
+<div class="process-step"><div class="step-number">2</div><div class="step-title" id="s2P2">名称预核</div><div class="step-desc" id="s2P2D">在线提交申请</div></div>
+<div class="process-step"><div class="step-number">3</div><div class="step-title" id="s2P3">工商登记</div><div class="step-desc" id="s2P3D">提交注册材料</div></div>
+<div class="process-step"><div class="step-number">4</div><div class="step-title" id="s2P4">领取执照</div><div class="step-desc" id="s2P4D">3-5个工作日</div></div>
+<div class="process-step"><div class="step-number">5</div><div class="step-title" id="s2P5">刻章备案</div><div class="step-desc" id="s2P5D">公安局备案</div></div>
+<div class="process-step"><div class="step-number">6</div><div class="step-title" id="s2P6">银行开户</div><div class="step-desc" id="s2P6D">选择合作银行</div></div>
+<div class="process-step"><div class="step-number">7</div><div class="step-title" id="s2P7">税务报到</div><div class="step-desc" id="s2P7D">核定税种</div></div>
+<div class="process-step"><div class="step-number">8</div><div class="step-title" id="s2P8">社保开户</div><div class="step-desc" id="s2P8D">员工社保设立</div></div>
+</div>
+</div>
+<div class="content-block">
+<h3 id="s2Price">收费标准</h3>
+<table class="pricing-table">
+<tr><td id="s2Pr1">基础套餐</td><td>¥800</td></tr>
+<tr><td id="s2Pr2">标准套餐</td><td>¥1,900</td></tr>
+<tr><td id="s2Pr3">豪华套餐</td><td>¥3,500</td></tr>
+</table>
+</div>
+<div class="content-block">
+<h3 id="s2FAQ">常见问题</h3>
+<div class="faq-item">
+<div class="faq-q" id="s2Q1">Q: 注册海南公司有什么优势？</div>
+<div class="faq-a" id="s2A1">A: 企业所得税15%、个人所得税15%、零关税等优惠政策。</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" id="s2Q2">Q: 可以在其他省市经营吗？</div>
+<div class="faq-a" id="s2A2">A: 可以，在全国范围内经营。</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Service 3 -->
+<div class="service-section" id="service3">
+<div class="service-icon">💰</div>
+<h2 id="s3Title">税务优惠咨询</h2>
+<div class="service-content">
+<div class="content-block">
+<h3 id="s3Intro">服务简介</h3>
+<p id="s3IntroText">深度解读海南自贸港税收优惠政策，为企业量身定制税务筹划方案，合法合规享受政策红利。</p>
+</div>
+<div class="content-block">
+<h3 id="s3Policy">海南税收优惠政策</h3>
+<p id="s3PolicyTitle" style="font-weight:600;color:#4ade80;margin-bottom:10px">企业所得税</p>
+<ul>
+<li id="s3P1">鼓励类企业：15%</li>
+<li id="s3P2">旅游业、现代服务业、高新技术：15%</li>
+<li id="s3P3">新型离岸贸易：实际税负不超过15%</li>
+</ul>
+<p id="s3PolicyTitle2" style="font-weight:600;color:#4ade80;margin:15px 0 10px">个人所得税</p>
+<ul>
+<li id="s3P4">高端人才：实际税负不超过15%</li>
+<li id="s3P5">年收入30万以上部分超15%的免征</li>
+<li id="s3P6">政策延续到2035年</li>
+</ul>
+</div>
+<div class="content-block">
+<h3 id="s3Price">收费标准</h3>
+<table class="pricing-table">
+<tr><td id="s3Pr1">基础咨询</td><td id="s3Pr1V">免费</td></tr>
+<tr><td id="s3Pr2">方案设计</td><td id="s3Pr2V">¥3,000起</td></tr>
+<tr><td id="s3Pr3">年度顾问</td><td id="s3Pr3V">¥10,000起</td></tr>
+</table>
+</div>
+</div>
+</div>
+
+<!-- Service 4 -->
+<div class="service-section" id="service4">
+<div class="service-icon">📋</div>
+<h2 id="s4Title">政策申报合规</h2>
+<div class="service-content">
+<div class="content-block">
+<h3 id="s4Intro">服务简介</h3>
+<p id="s4IntroText">协助企业申报各类优惠政策，确保合规运营，最大化享受自贸港政策红利。</p>
+</div>
+<div class="content-block">
+<h3 id="s4Scope">服务范围</h3>
+<ul>
+<li id="s4S1">高新技术企业认定</li>
+<li id="s4S2">鼓励类企业认定</li>
+<li id="s4S3">人才补贴申请</li>
+<li id="s4S4">产业扶持资金申请</li>
+<li id="s4S5">出口退税办理</li>
+<li id="s4S6">优惠政策备案</li>
+</ul>
+</div>
+</div>
+</div>
+
+<!-- Service 5 -->
+<div class="service-section" id="service5">
+<div class="service-icon">🏢</div>
+<h2 id="s5Title">企业托管服务</h2>
+<div class="service-content">
+<div class="content-block">
+<h3 id="s5Intro">服务简介</h3>
+<p id="s5IntroText">为无实际经营或办公场所的企业提供全方位托管服务，包括地址托管、财务代理、年检年报等。</p>
+</div>
+<div class="content-block">
+<h3 id="s5Content">服务内容</h3>
+<ul>
+<li id="s5C1">注册地址提供</li>
+<li id="s5C2">工商年报代办</li>
+<li id="s5C3">税务申报代理</li>
+<li id="s5C4">证照年审</li>
+<li id="s5C5">信函收发</li>
+<li id="s5C6">电话接听转接</li>
+<li id="s5C7">会议室租用</li>
+</ul>
+</div>
+<div class="content-block">
+<h3 id="s5Price">收费标准</h3>
+<table class="pricing-table">
+<tr><td id="s5Pr1">地址托管</td><td>¥2,000/年</td></tr>
+<tr><td id="s5Pr2">基础托管</td><td>¥3,500/年</td></tr>
+<tr><td id="s5Pr3">全面托管</td><td>¥6,000/年</td></tr>
+</table>
+</div>
+</div>
+</div>
+
+<!-- Service 6 -->
+<div class="service-section" id="service6">
+<div class="service-icon">🚀</div>
+<h2 id="s6Title">投资咨询服务</h2>
+<div class="service-content">
+<div class="content-block">
+<h3 id="s6Intro">服务简介</h3>
+<p id="s6IntroText">提供海南自贸港投资机会分析、项目评估、投资方案设计等专业咨询服务。</p>
+</div>
+<div class="content-block">
+<h3 id="s6Fields">重点领域</h3>
+<ul>
+<li id="s6F1">旅游业</li>
+<li id="s6F2">现代服务业</li>
+<li id="s6F3">高新技术产业</li>
+<li id="s6F4">热带农业</li>
+<li id="s6F5">海洋经济</li>
+<li id="s6F6">数字经济</li>
+</ul>
+</div>
+</div>
+</div>
+
+<!-- Service 7 -->
+<div class="service-section" id="service7">
+<div class="service-icon">🎨</div>
+<h2 id="s7Title">广告商标设计</h2>
+<div class="service-content">
+<div class="content-block">
+<h3 id="s7Intro">服务简介</h3>
+<p id="s7IntroText">提供品牌LOGO设计、VI系统设计、宣传物料设计、商标注册等一站式品牌服务。</p>
+</div>
+<div class="content-block">
+<h3 id="s7Content">服务内容</h3>
+<ul>
+<li id="s7C1">LOGO设计</li>
+<li id="s7C2">VI系统设计</li>
+<li id="s7C3">宣传册设计</li>
+<li id="s7C4">海报设计</li>
+<li id="s7C5">名片设计</li>
+<li id="s7C6">网站UI设计</li>
+<li id="s7C7">商标注册</li>
+<li id="s7C8">版权登记</li>
+</ul>
+</div>
+<div class="content-block">
+<h3 id="s7Price">收费标准</h3>
+<table class="pricing-table">
+<tr><td id="s7Pr1">LOGO设计</td><td id="s7Pr1V">¥800起</td></tr>
+<tr><td id="s7Pr2">VI系统</td><td id="s7Pr2V">¥3,000起</td></tr>
+<tr><td id="s7Pr3">商标注册</td><td id="s7Pr3V">¥600+¥300官费</td></tr>
+<tr><td id="s7Pr4">套餐服务</td><td id="s7Pr4V">¥5,000起</td></tr>
+</table>
+</div>
+</div>
+</div>
+
+<!-- Service 8 -->
+<div class="service-section" id="service8">
+<div class="service-icon">⛓️</div>
+<h2 id="s8Title">区块链咨询</h2>
+<div class="service-content">
+<div class="content-block">
+<h3 id="s8Intro">服务简介</h3>
+<p id="s8IntroText">区块链技术咨询、数字资产合规、Web3项目孵化、NFT发行等专业服务。</p>
+</div>
+<div class="content-block">
+<h3 id="s8Content">服务内容</h3>
+<ul>
+<li id="s8C1">区块链技术咨询</li>
+<li id="s8C2">智能合约开发</li>
+<li id="s8C3">数字资产合规</li>
+<li id="s8C4">NFT项目策划</li>
+<li id="s8C5">Web3应用开发</li>
+<li id="s8C6">元宇宙项目孵化</li>
+<li id="s8C7">区块链培训</li>
+</ul>
+</div>
+<div class="content-block">
+<h3 id="s8Price">收费标准</h3>
+<table class="pricing-table">
+<tr><td id="s8Pr1">技术咨询</td><td>¥500/小时</td></tr>
+<tr><td id="s8Pr2">项目方案</td><td id="s8Pr2V">¥10,000起</td></tr>
+<tr><td id="s8Pr3">开发服务</td><td id="s8Pr3V">面议</td></tr>
+</table>
+</div>
+</div>
+</div>
+
+<!-- Service 9 -->
+<div class="service-section" id="service9">
+<div class="service-icon">📈</div>
+<h2 id="s9Title">美股开户咨询</h2>
+<div class="service-content">
+<div class="content-block">
+<h3 id="s9Intro">服务简介</h3>
+<p id="s9IntroText">美股账户开户指导、投资策略咨询、市场分析等服务，帮助投资者进入美国资本市场。</p>
+</div>
+<div class="content-block">
+<h3 id="s9Process">开户流程</h3>
+<div class="process-steps">
+<div class="process-step"><div class="step-number">1</div><div class="step-title" id="s9P1">券商选择</div></div>
+<div class="process-step"><div class="step-number">2</div><div class="step-title" id="s9P2">资料准备</div></div>
+<div class="process-step"><div class="step-number">3</div><div class="step-title" id="s9P3">在线申请</div></div>
+<div class="process-step"><div class="step-number">4</div><div class="step-title" id="s9P4">身份验证</div></div>
+<div class="process-step"><div class="step-number">5</div><div class="step-title" id="s9P5">银行卡绑定</div></div>
+<div class="process-step"><div class="step-number">6</div><div class="step-title" id="s9P6">入金激活</div></div>
+<div class="process-step"><div class="step-number">7</div><div class="step-title" id="s9P7">开始交易</div></div>
+</div>
+</div>
+<div class="content-block">
+<h3 id="s9Brokers">推荐券商</h3>
+<ul>
+<li id="s9B1">盈透证券（Interactive Brokers）</li>
+<li id="s9B2">嘉信理财（Charles Schwab）</li>
+<li id="s9B3">老虎证券</li>
+<li id="s9B4">富途证券</li>
+</ul>
+</div>
+<div class="content-block">
+<h3 id="s9FAQ">常见问题</h3>
+<div class="faq-item">
+<div class="faq-q" id="s9Q1">Q: 开户需要多少资金？</div>
+<div class="faq-a" id="s9A1">A: 不同券商要求不同，一般$0-$2,000。</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" id="s9Q2">Q: 需要多久可以开户成功？</div>
+<div class="faq-a" id="s9A2">A: 一般3-5个工作日。</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="back-home">
+<a href="index.html" class="btn btn-primary" id="btnHome">返回首页</a>
+<a href="index.html#register" class="btn btn-secondary" id="btnContact">立即咨询</a>
+</div>
+</div>
+
+<footer>
+<div class="container">
+<p id="footerText">© 2025 海南索拉纳商务咨询中心 | 专业 · 高效 · 可信赖</p>
+</div>
+</footer>
+
+<script>
+let currentLang='zh';
+function scrollToService(id){
+document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'});
+document.querySelectorAll('.service-nav-btn').forEach(btn=>btn.classList.remove('active'));
+event.target.classList.add('active');
+}
+const translations={
+zh:{pageTitle:'服务详情 - 海南索拉纳商务咨询中心',brand:'海南索拉纳',n1:'首页',n2:'服务',n3:'收费',n4:'政策',n5:'新闻',n9:'关于',breadHome:'首页',breadServices:'服务详情',pageH1:'我们的服务',pageSubtitle:'为企业提供海南自贸港全方位专业服务，助力企业发展',navBtn1:'全球企业注册',navBtn2:'国内企业注册',navBtn3:'税务优惠咨询',navBtn4:'政策申报合规',navBtn5:'企业托管服务',navBtn6:'投资咨询服务',navBtn7:'广告商标设计',navBtn8:'区块链咨询',navBtn9:'美股开户咨询',s1Title:'全球企业注册',s1Intro:'服务简介',s1IntroText:'为世界各地企业提供海南自贸港公司注册一站式服务，帮助国际企业快速进入中国市场，享受自贸港优惠政策。',s1Target:'适用对象',s1T1:'海外企业希望在中国设立分支机构',s1T2:'外籍人士在华创业',s1T3:'跨国公司拓展中国业务',s1T4:'国际贸易企业',s1Process:'办理流程',s1P1:'初步咨询',s1P1D:'了解需求，提供方案',s1P2:'名称核准',s1P2D:'提交3-5个备选名称',s1P3:'准备材料',s1P3D:'协助准备所有文件',s1P4:'递交申请',s1P4D:'向工商部门提交',s1P5:'领取执照',s1P5D:'获得营业执照',s1P6:'刻制印章',s1P6D:'公章、财务章等',s1P7:'银行开户',s1P7D:'协助开设企业账户',s1P8:'税务登记',s1P8D:'完成税务报到',s1Docs:'所需材料',s1D1:'外国公司主体资格证明（需公证认证）',s1D2:'法定代表人护照及签证',s1D3:'公司章程',s1D4:'注册地址证明',s1D5:'股东决议',s1D6:'其他政府部门要求材料',s1Time:'办理时间',s1T1L:'名称核准',s1T1V:'1-2个工作日',s1T2L:'营业执照',s1T2V:'5-7个工作日',s1T3L:'全套办理',s1T3V:'15-20个工作日',s1Price:'收费标准',s1Pr1:'基础注册服务',s1Pr2:'含地址挂靠',s1Pr3:'全程代理',s1Pr3V:'¥5,000起',s1FAQ:'常见问题',s1Q1:'Q: 外资企业可以100%控股吗？',s1A1:'A: 在负面清单外的行业可以100%外资控股。',s1Q2:'Q: 注册资本要求多少？',s1A2:'A: 一般企业无最低要求，认缴制。',s1Q3:'Q: 需要实际办公地址吗？',s1A3:'A: 可以使用我们提供的商务秘书地址。',s1Cases:'成功案例',s1C1:'美国XX科技公司在海南设立亚太总部',s1C2:'新加坡XX贸易公司注册海南分公司',s1C3:'日本XX咨询公司落户海南',s2Title:'国内企业注册',s2Intro:'服务简介',s2IntroText:'协助国内企业在海南自贸港设立分支机构或独立公司，享受15%企业所得税等优惠政策。',s2Target:'适用对象',s2T1:'内地企业设立海南分公司',s2T2:'个人在海南创业',s2T3:'企业集团设立海南总部',s2T4:'高新技术企业落户',s2Process:'办理流程',s2P1:'咨询沟通',s2P1D:'确定公司类型',s2P2:'名称预核',s2P2D:'在线提交申请',s2P3:'工商登记',s2P3D:'提交注册材料',s2P4:'领取执照',s2P4D:'3-5个工作日',s2P5:'刻章备案',s2P5D:'公安局备案',s2P6:'银行开户',s2P6D:'选择合作银行',s2P7:'税务报到',s2P7D:'核定税种',s2P8:'社保开户',s2P8D:'员工社保设立',s2Price:'收费标准',s2Pr1:'基础套餐',s2Pr2:'标准套餐',s2Pr3:'豪华套餐',s2FAQ:'常见问题',s2Q1:'Q: 注册海南公司有什么优势？',s2A1:'A: 企业所得税15%、个人所得税15%、零关税等优惠政策。',s2Q2:'Q: 可以在其他省市经营吗？',s2A2:'A: 可以，在全国范围内经营。',s3Title:'税务优惠咨询',s3Intro:'服务简介',s3IntroText:'深度解读海南自贸港税收优惠政策，为企业量身定制税务筹划方案，合法合规享受政策红利。',s3Policy:'海南税收优惠政策',s3PolicyTitle:'企业所得税',s3P1:'鼓励类企业：15%',s3P2:'旅游业、现代服务业、高新技术：15%',s3P3:'新型离岸贸易：实际税负不超过15%',s3PolicyTitle2:'个人所得税',s3P4:'高端人才：实际税负不超过15%',s3P5:'年收入30万以上部分超15%的免征',s3P6:'政策延续到2035年',s3Price:'收费标准',s3Pr1:'基础咨询',s3Pr1V:'免费',s3Pr2:'方案设计',s3Pr2V:'¥3,000起',s3Pr3:'年度顾问',s3Pr3V:'¥10,000起',s4Title:'政策申报合规',s4Intro:'服务简介',s4IntroText:'协助企业申报各类优惠政策，确保合规运营，最大化享受自贸港政策红利。',s4Scope:'服务范围',s4S1:'高新技术企业认定',s4S2:'鼓励类企业认定',s4S3:'人才补贴申请',s4S4:'产业扶持资金申请',s4S5:'出口退税办理',s4S6:'优惠政策备案',s5Title:'企业托管服务',s5Intro:'服务简介',s5IntroText:'为无实际经营或办公场所的企业提供全方位托管服务，包括地址托管、财务代理、年检年报等。',s5Content:'服务内容',s5C1:'注册地址提供',s5C2:'工商年报代办',s5C3:'税务申报代理',s5C4:'证照年审',s5C5:'信函收发',s5C6:'电话接听转接',s5C7:'会议室租用',s5Price:'收费标准',s5Pr1:'地址托管',s5Pr2:'基础托管',s5Pr3:'全面托管',s6Title:'投资咨询服务',s6Intro:'服务简介',s6IntroText:'提供海南自贸港投资机会分析、项目评估、投资方案设计等专业咨询服务。',s6Fields:'重点领域',s6F1:'旅游业',s6F2:'现代服务业',s6F3:'高新技术产业',s6F4:'热带农业',s6F5:'海洋经济',s6F6:'数字经济',s7Title:'广告商标设计',s7Intro:'服务简介',s7IntroText:'提供品牌LOGO设计、VI系统设计、宣传物料设计、商标注册等一站式品牌服务。',s7Content:'服务内容',s7C1:'LOGO设计',s7C2:'VI系统设计',s7C3:'宣传册设计',s7C4:'海报设计',s7C5:'名片设计',s7C6:'网站UI设计',s7C7:'商标注册',s7C8:'版权登记',s7Price:'收费标准',s7Pr1:'LOGO设计',s7Pr1V:'¥800起',s7Pr2:'VI系统',s7Pr2V:'¥3,000起',s7Pr3:'商标注册',s7Pr3V:'¥600+¥300官费',s7Pr4:'套餐服务',s7Pr4V:'¥5,000起',s8Title:'区块链咨询',s8Intro:'服务简介',s8IntroText:'区块链技术咨询、数字资产合规、Web3项目孵化、NFT发行等专业服务。',s8Content:'服务内容',s8C1:'区块链技术咨询',s8C2:'智能合约开发',s8C3:'数字资产合规',s8C4:'NFT项目策划',s8C5:'Web3应用开发',s8C6:'元宇宙项目孵化',s8C7:'区块链培训',s8Price:'收费标准',s8Pr1:'技术咨询',s8Pr2:'项目方案',s8Pr2V:'¥10,000起',s8Pr3:'开发服务',s8Pr3V:'面议',s9Title:'美股开户咨询',s9Intro:'服务简介',s9IntroText:'美股账户开户指导、投资策略咨询、市场分析等服务，帮助投资者进入美国资本市场。',s9Process:'开户流程',s9P1:'券商选择',s9P2:'资料准备',s9P3:'在线申请',s9P4:'身份验证',s9P5:'银行卡绑定',s9P6:'入金激活',s9P7:'开始交易',s9Brokers:'推荐券商',s9B1:'盈透证券（Interactive Brokers）',s9B2:'嘉信理财（Charles Schwab）',s9B3:'老虎证券',s9B4:'富途证券',s9FAQ:'常见问题',s9Q1:'Q: 开户需要多少资金？',s9A1:'A: 不同券商要求不同，一般$0-$2,000。',s9Q2:'Q: 需要多久可以开户成功？',s9A2:'A: 一般3-5个工作日。',btnHome:'返回首页',btnContact:'立即咨询',footerText:'© 2025 海南索拉纳商务咨询中心 | 专业 · 高效 · 可信赖'},
+en:{pageTitle:'Services - Hainan Solana Business Center',brand:'Hainan Solana',n1:'Home',n2:'Services',n3:'Pricing',n4:'Policy',n5:'News',n9:'About',breadHome:'Home',breadServices:'Services',pageH1:'Our Services',pageSubtitle:'Comprehensive professional services for Hainan Free Trade Port',navBtn1:'Global Registration',navBtn2:'Domestic Registration',navBtn3:'Tax Consulting',navBtn4:'Policy Compliance',navBtn5:'Corporate Hosting',navBtn6:'Investment Consulting',navBtn7:'Brand Design',navBtn8:'Blockchain',navBtn9:'US Stock Account',s1Title:'Global Company Registration',s1Intro:'Introduction',s1IntroText:'One-stop company registration service for global enterprises in Hainan FTP, helping international companies enter Chinese market.',s1Target:'Target Clients',s1T1:'Overseas companies establishing China branches',s1T2:'Foreign nationals starting business in China',s1T3:'Multinational companies expanding in China',s1T4:'International trade companies',s1Process:'Process',s1P1:'Consultation',s1P1D:'Understand needs',s1P2:'Name Check',s1P2D:'Submit 3-5 names',s1P3:'Prepare Docs',s1P3D:'Assist documentation',s1P4:'Submit',s1P4D:'To authorities',s1P5:'Get License',s1P5D:'Business license',s1P6:'Seal Making',s1P6D:'Company seals',s1P7:'Bank Account',s1P7D:'Assist account opening',s1P8:'Tax Registration',s1P8D:'Tax filing',s1Docs:'Required Documents',s1D1:'Foreign company qualification (notarized)',s1D2:'Legal rep passport & visa',s1D3:'Articles of association',s1D4:'Address proof',s1D5:'Shareholder resolution',s1D6:'Other gov documents',s1Time:'Timeline',s1T1L:'Name check',s1T1V:'1-2 working days',s1T2L:'License',s1T2V:'5-7 working days',s1T3L:'Complete',s1T3V:'15-20 working days',s1Price:'Pricing',s1Pr1:'Basic service',s1Pr2:'With address',s1Pr3:'Full service',s1Pr3V:'From ¥5,000',s1FAQ:'FAQ',s1Q1:'Q: Can foreign companies have 100% ownership?',s1A1:'A: Yes, in industries not on negative list.',s1Q2:'Q: Minimum registered capital?',s1A2:'A: No minimum for most companies.',s1Q3:'Q: Need physical office?',s1A3:'A: Can use our business secretary address.',s1Cases:'Success Cases',s1C1:'US tech company established APAC HQ',s1C2:'Singapore trade company registered',s1C3:'Japan consulting firm settled',s2Title:'Domestic Company Registration',s2Intro:'Introduction',s2IntroText:'Assist domestic companies establishing Hainan branches, enjoying 15% corporate tax benefits.',s2Target:'Target Clients',s2T1:'Mainland companies setting up Hainan branch',s2T2:'Individuals starting business',s2T3:'Corporate groups establishing HQ',s2T4:'High-tech companies',s2Process:'Process',s2P1:'Consultation',s2P1D:'Determine company type',s2P2:'Name Check',s2P2D:'Online submission',s2P3:'Registration',s2P3D:'Submit materials',s2P4:'Get License',s2P4D:'3-5 working days',s2P5:'Seal Making',s2P5D:'Police filing',s2P6:'Bank Account',s2P6D:'Choose bank',s2P7:'Tax Filing',s2P7D:'Tax type approval',s2P8:'Social Security',s2P8D:'Employee setup',s2Price:'Pricing',s2Pr1:'Basic',s2Pr2:'Standard',s2Pr3:'Premium',s2FAQ:'FAQ',s2Q1:'Q: Benefits of Hainan company?',s2A1:'A: 15% corporate tax, 15% personal tax, zero tariff.',s2Q2:'Q: Can operate in other provinces?',s2A2:'A: Yes, nationwide operations.',s3Title:'Tax Consulting',s3Intro:'Introduction',s3IntroText:'In-depth interpretation of Hainan FTP tax policies, customized tax planning solutions.',s3Policy:'Tax Benefits',s3PolicyTitle:'Corporate Income Tax',s3P1:'Encouraged industries: 15%',s3P2:'Tourism, services, high-tech: 15%',s3P3:'Offshore trade: ≤15%',s3PolicyTitle2:'Personal Income Tax',s3P4:'High-end talent: ≤15%',s3P5:'Annual income >300k exempt >15%',s3P6:'Policy until 2035',s3Price:'Pricing',s3Pr1:'Basic consultation',s3Pr1V:'Free',s3Pr2:'Plan design',s3Pr2V:'From ¥3,000',s3Pr3:'Annual advisor',s3Pr3V:'From ¥10,000',s4Title:'Policy Compliance',s4Intro:'Introduction',s4IntroText:'Assist policy application, ensure compliance, maximize FTP benefits.',s4Scope:'Services',s4S1:'High-tech certification',s4S2:'Encouraged industry certification',s4S3:'Talent subsidy',s4S4:'Industry support funds',s4S5:'Export tax refund',s4S6:'Policy filing',s5Title:'Corporate Hosting',s5Intro:'Introduction',s5IntroText:'Comprehensive hosting services including address, accounting, annual reporting.',s5Content:'Services',s5C1:'Registered address',s5C2:'Annual report',s5C3:'Tax filing',s5C4:'License renewal',s5C5:'Mail handling',s5C6:'Phone forwarding',s5C7:'Meeting room',s5Price:'Pricing',s5Pr1:'Address hosting',s5Pr2:'Basic hosting',s5Pr3:'Full hosting',s6Title:'Investment Consulting',s6Intro:'Introduction',s6IntroText:'Investment opportunity analysis, project evaluation, investment planning.',s6Fields:'Key Sectors',s6F1:'Tourism',s6F2:'Modern services',s6F3:'High-tech',s6F4:'Tropical agriculture',s6F5:'Marine economy',s6F6:'Digital economy',s7Title:'Brand Design',s7Intro:'Introduction',s7IntroText:'Brand LOGO, VI system, promotional materials, trademark registration.',s7Content:'Services',s7C1:'LOGO design',s7C2:'VI system',s7C3:'Brochure design',s7C4:'Poster design',s7C5:'Business card',s7C6:'Website UI',s7C7:'Trademark registration',s7C8:'Copyright filing',s7Price:'Pricing',s7Pr1:'LOGO design',s7Pr1V:'From ¥800',s7Pr2:'VI system',s7Pr2V:'From ¥3,000',s7Pr3:'Trademark',s7Pr3V:'¥600+¥300 official',s7Pr4:'Package',s7Pr4V:'From ¥5,000',s8Title:'Blockchain Consulting',s8Intro:'Introduction',s8IntroText:'Blockchain tech, digital asset compliance, Web3 incubation, NFT services.',s8Content:'Services',s8C1:'Blockchain consulting',s8C2:'Smart contract dev',s8C3:'Digital asset compliance',s8C4:'NFT projects',s8C5:'Web3 applications',s8C6:'Metaverse projects',s8C7:'Blockchain training',s8Price:'Pricing',s8Pr1:'Tech consulting',s8Pr2:'Project plan',s8Pr2V:'From ¥10,000',s8Pr3:'Development',s8Pr3V:'Negotiable',s9Title:'US Stock Account',s9Intro:'Introduction',s9IntroText:'US stock account guidance, investment strategy, market analysis.',s9Process:'Process',s9P1:'Choose broker',s9P2:'Prepare docs',s9P3:'Online apply',s9P4:'Verification',s9P5:'Link bank card',s9P6:'Deposit',s9P7:'Start trading',s9Brokers:'Brokers',s9B1:'Interactive Brokers',s9B2:'Charles Schwab',s9B3:'Tiger Brokers',s9B4:'Futu Securities',s9FAQ:'FAQ',s9Q1:'Q: Minimum deposit?',s9A1:'A: Varies by broker, typically $0-$2,000.',s9Q2:'Q: Account opening time?',s9A2:'A: Usually 3-5 working days.',btnHome:'Back Home',btnContact:'Contact Now',footerText:'© 2025 Hainan Solana Business Center | Professional · Efficient · Trustworthy'}
+};
+function toggleLang(){
+currentLang=currentLang==='zh'?'en':'zh';
+const t=translations[currentLang];
+document.getElementById('langBtn').textContent=currentLang==='zh'?'EN':'中文';
+document.title=t.pageTitle;
+for(let key in t){
+const el=document.getElementById(key);
+if(el)el.textContent=t[key];
+}
+}
+</script>
+</body>
+</html>
