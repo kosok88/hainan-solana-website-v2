@@ -453,4 +453,11 @@ form.addEventListener('submit',function(e){
 e.preventDefault();
 const result=document.getElementById('regResult');
 result.style.display='block';
-result.textContent=currentLang==='zh'?'✅ 注册信息已提
+result.textContent=currentLang==='zh'?'✅ 注册信息已提交！我们会尽快联系您':'✅ Registration submitted! We will contact you soon';
+setTimeout(()=>{result.style.display='none';form.reset()},3000);
+});
+}
+});
+</script>
+</body>
+</html>
