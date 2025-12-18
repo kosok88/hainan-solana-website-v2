@@ -515,13 +515,62 @@ setTimeout(()=>{result.style.display='none';form.reset()},3000);
 const allDetails={...peopleDetails,...sceneryDetails};
 let currentDetailLang='zh';
 let currentDetailId=null;
-function openModal(id){const data=allDetails[id];if(!data)return;currentDetailId=id;currentDetailLang='zh';document.getElementById('modalTitle').textContent=data.name;document.getElementById('modalSubtitle').textContent=data.title;document.getElementById('modalContent').textContent=data.intro;document.getElementById('detailModal').style.display='block';document.body.style.overflow='hidden';}
-function closeModal(){document.getElementById('detailModal').style.display='none';document.body.style.overflow='auto';}
+let currentNewsLang='zh';
+let currentPolicyLang='zh';
+
+// 人物和风景的modal函数
+function openModal(id){
+const data=allDetails[id];
+if(!data)return;
+currentDetailId=id;
+currentDetailLang='zh';
+document.getElementById('modalTitle').textContent=data.name;
+document.getElementById('modalSubtitle').textContent=data.title;
+document.getElementById('modalContent').textContent=data.intro;
+document.getElementById('detailModal').style.display='block';
+document.body.style.overflow='hidden';
+}
+
+function closeModal(){
+document.getElementById('detailModal').style.display='none';
+document.body.style.overflow='auto';
+}
+
+// 新闻modal函数
+function openNewsModal(newsId){
+const news=newsData.find(n=>n.id===newsId);
+if(!news)return;
+const lang=currentNewsLang;
+document.getElementById('modalTitle').textContent=lang==='zh'?news.title_zh:news.title_en;
+document.getElementById('modalSubtitle').textContent=news.date;
+document.getElementById('modalContent').textContent=lang==='zh'?news.detail_zh:news.detail_en;
+document.getElementById('detailModal').style.display='block';
+document.body.style.overflow='hidden';
+currentDetailId=newsId;
+currentDetailLang=lang;
+}
+
+// 政策modal函数
+function openPolicyModal(policyId){
+const policy=policyData.find(p=>p.id===policyId);
+if(!policy)return;
+const lang=currentPolicyLang;
+document.getElementById('modalTitle').textContent=lang==='zh'?policy.title_zh:policy.title_en;
+document.getElementById('modalSubtitle').textContent='';
+document.getElementById('modalContent').textContent=lang==='zh'?policy.detail_zh:policy.detail_en;
+document.getElementById('detailModal').style.display='block';
+document.body.style.overflow='hidden';
+currentDetailId=policyId;
+currentDetailLang=lang;
+}
+
+// 语言切换函数
 function switchDetailLang(lang){
 if(!currentDetailId)return;
 currentDetailLang=lang;
 document.querySelectorAll('.lang-btn-modal').forEach(btn=>{btn.classList.remove('active');});
 event.target.classList.add('active');
+
 // 检查是否是新闻
 const news=newsData.find(n=>n.id===currentDetailId);
 if(news){
@@ -536,6 +585,7 @@ document.getElementById('modalContent').textContent=news.detail_en;
 }
 return;
 }
+
 // 检查是否是政策
 const policy=policyData.find(p=>p.id===currentDetailId);
 if(policy){
@@ -550,6 +600,7 @@ document.getElementById('modalContent').textContent=policy.detail_en;
 }
 return;
 }
+
 // 人物或风景详情
 const data=allDetails[currentDetailId];
 if(!data)return;
@@ -563,12 +614,8 @@ document.getElementById('modalSubtitle').textContent=data.titleEn;
 document.getElementById('modalContent').textContent=data.introEn;
 }
 }
-window.onclick=function(event){const modal=document.getElementById('detailModal');if(event.target==modal)closeModal();}
-document.addEventListener('keydown',function(event){if(event.key==='Escape')closeModal();});
 
-// 新闻展开功能
-let currentNewsLang='zh';
-let currentPolicyLang='zh';
+// 新闻渲染函数
 function renderNews(){
 const latest=newsData.slice(0,5);
 const old=newsData.slice(5);
@@ -596,6 +643,8 @@ document.getElementById('newsToggle').style.display='flex';
 document.getElementById('newsToggle').style.display='none';
 }
 }
+
+// 政策渲染函数
 function renderPolicy(){
 const lang=currentLang||'zh';
 currentPolicyLang=lang;
@@ -606,6 +655,8 @@ document.getElementById('policyGrid').innerHTML=policyData.map(p=>`
 </div>
 `).join('');
 }
+
+// 新闻展开函数
 function toggleNews(){
 const oldNews=document.getElementById('newsOld');
 const btn=document.getElementById('newsToggle');
@@ -622,31 +673,23 @@ btn.classList.add('active');
 text.textContent=currentLang==='zh'?'收起':'Collapse';
 }
 }
-function openNewsModal(newsId){
-const news=newsData.find(n=>n.id===newsId);
-if(!news)return;
-const lang=currentNewsLang;
-document.getElementById('modalTitle').textContent=lang==='zh'?news.title_zh:news.title_en;
-document.getElementById('modalSubtitle').textContent=news.date;
-document.getElementById('modalContent').textContent=lang==='zh'?news.detail_zh:news.detail_en;
-document.getElementById('detailModal').style.display='block';
-document.body.style.overflow='hidden';
-currentDetailId=newsId;
-currentDetailLang=lang;
+
+// 页面加载时初始化
+document.addEventListener('DOMContentLoaded',function(){
+renderNews();
+renderPolicy();
+});
+
+// modal外部点击关闭
+window.onclick=function(event){
+const modal=document.getElementById('detailModal');
+if(event.target==modal)closeModal();
 }
-function openPolicyModal(policyId){
-const policy=policyData.find(p=>p.id===policyId);
-if(!policy)return;
-const lang=currentPolicyLang;
-document.getElementById('modalTitle').textContent=lang==='zh'?policy.title_zh:policy.title_en;
-document.getElementById('modalSubtitle').textContent='';
-document.getElementById('modalContent').textContent=lang==='zh'?policy.detail_zh:policy.detail_en;
-document.getElementById('detailModal').style.display='block';
-document.body.style.overflow='hidden';
-currentDetailId=policyId;
-currentDetailLang=lang;
-}
-document.addEventListener('DOMContentLoaded',function(){renderNews();renderPolicy();});
+
+// ESC键关闭
+document.addEventListener('keydown',function(event){
+if(event.key==='Escape')closeModal();
+});
 </script>
 </body>
 </html>
