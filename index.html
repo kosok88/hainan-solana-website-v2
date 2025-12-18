@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
@@ -36,7 +36,7 @@ h1{font-size:56px;margin-bottom:20px;text-shadow:2px 2px 10px rgba(0,0,0,.5);fon
 section{padding:80px 20px}
 h2{font-size:48px;text-align:center;margin-bottom:50px;color:#fff;text-shadow:2px 2px 8px rgba(0,0,0,.4);font-weight:800}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;margin-top:40px}
-.card{background:rgba(255,255,255,.12);backdrop-filter:blur(10px);padding:35px;border-radius:16px;border:1px solid rgba(255,255,255,.25);transition:.3s}
+.card{background:rgba(255,255,255,.12);backdrop-filter:blur(10px);padding:35px;border-radius:16px;border:1px solid rgba(255,255,255,.25);transition:.3s;cursor:pointer}
 .card:hover{transform:translateY(-5px);background:rgba(255,255,255,.18);box-shadow:0 10px 30px rgba(0,0,0,.3)}
 .card h3{color:#4ade80;margin-bottom:15px;font-size:22px;font-weight:700}
 .card p{color:#e2e8f0;font-size:17px;line-height:1.8;font-weight:500}
@@ -92,6 +92,20 @@ h2{font-size:34px}
 .brand img{height:50px}
 }
 .note{background:rgba(74,222,128,.25);padding:18px;border-radius:10px;margin:20px 0;border-left:5px solid #4ade80;font-size:17px;color:#f1f5f9;font-weight:500}
+.modal{display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;background-color:rgba(0,0,0,.7);animation:fadeIn .3s}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.modal-content{background-color:#fefefe;margin:5% auto;padding:0;border-radius:20px;width:90%;max-width:800px;max-height:85vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.5);animation:slideUp .3s}
+@keyframes slideUp{from{transform:translateY(50px);opacity:0}to{transform:translateY(0);opacity:1}}
+.modal-header{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;padding:30px;border-radius:20px 20px 0 0}
+.modal-header h2{margin-bottom:15px;font-size:32px}
+.modal-header .subtitle-text{font-size:18px;opacity:.9}
+.lang-switch{margin-top:20px;display:flex;gap:10px}
+.lang-btn-modal{padding:8px 20px;border:2px solid #fff;background:transparent;color:#fff;border-radius:20px;cursor:pointer;transition:all .3s;font-weight:700}
+.lang-btn-modal.active{background:#fff;color:#667eea}
+.modal-body{padding:40px}
+.modal-body p{line-height:2;font-size:17px;color:#333;text-align:justify;white-space:pre-line}
+.close{color:#fff;float:right;font-size:35px;font-weight:700;cursor:pointer;transition:all .3s;line-height:1}
+.close:hover{transform:rotate(90deg)}
 </style>
 </head>
 <body>
@@ -315,21 +329,21 @@ h2{font-size:34px}
 <div class="container">
 <h2 id="st5">椰风人物志</h2>
 <div class="cards">
-<div class="card"><img src="p1.jpg" alt="海瑞" onerror="this.style.display='none'"><h3 id="p1">海瑞 (1514-1587)</h3><p id="p1d">明代清官典范，刚正不阿敢骂皇帝，人称"海青天"。去世时家里只有几两银子。</p></div>
-<div class="card"><img src="p2.jpg" alt="丘濬" onerror="this.style.display='none'"><h3 id="p2">丘濬 (1420-1495)</h3><p id="p2d">明代大学士、理学家。海南第一位进入内阁的宰相级人物，著有《大学衍义补》160卷。</p></div>
-<div class="card"><img src="p3.jpg" alt="冼夫人" onerror="this.style.display='none'"><h3 id="p3">冼夫人 (约512-602)</h3><p id="p3d">古代巾帼英雄、岭南圣母。南北朝时期俚族首领，一生经历三个朝代，维护国家统一。</p></div>
-<div class="card"><img src="p4.jpg" alt="苏东坡" onerror="this.style.display='none'"><h3 id="p4">苏东坡 (1037-1101)</h3><p id="p4d">北宋文豪谪居海南。62岁被贬海南，办学堂教书育人，发明"东坡肉"和"椰子饭"。</p></div>
-<div class="card"><img src="p5.jpg" alt="白玉蟾" onerror="this.style.display='none'"><h3 id="p5">白玉蟾 (1194-?)</h3><p id="p5d">道教南宗五祖、紫清真人。12岁能诗，创立道教南宗，诗词书画样样精通。</p></div>
-<div class="card"><img src="p6.jpg" alt="张岳崧" onerror="this.style.display='none'"><h3 id="p6">张岳崧 (1773-1842)</h3><p id="p6d">清代海南唯一探花。嘉庆年间考中探花（全国第三名），官至湖北布政使。</p></div>
-<div class="card"><img src="p7.jpg" alt="王文明" onerror="this.style.display='none'"><h3 id="p7">王文明 (1894-1930)</h3><p id="p7d">琼崖革命领导人，海南乐会人。琼崖革命"23年红旗不倒"奠基人。</p></div>
-<div class="card"><img src="p8.jpg" alt="冯白驹" onerror="this.style.display='none'"><h3 id="p8">冯白驹 (1903-1973)</h3><p id="p8d">琼崖纵队司令员，海南琼山人。被誉为"琼崖人民的一面旗帜"。</p></div>
-<div class="card"><img src="p9.jpg" alt="邢诒孔" onerror="this.style.display='none'"><h3 id="p9">邢诒孔 (1909-1993)</h3><p id="p9d">著名华侨领袖，海南文昌人。泰国商业巨子，热心支持祖国建设。</p></div>
-<div class="card"><img src="p10.jpg" alt="宋庆龄" onerror="this.style.display='none'"><h3 id="p10">宋庆龄 (1893-1981)</h3><p id="p10d">国家名誉主席，祖籍海南文昌。孙中山先生夫人，二十世纪最伟大女性之一。</p></div>
-<div class="card"><img src="p11.jpg" alt="陈峰" onerror="this.style.display='none'"><h3 id="p11">陈峰 (1953-)</h3><p id="p11d">海航集团创始人，海南文昌人。白手起家创建世界500强企业。</p></div>
-<div class="card"><img src="p12.jpg" alt="张云逸" onerror="this.style.display='none'"><h3 id="p12">张云逸 (1892-1974)</h3><p id="p12d">开国大将，海南文昌人。从辛亥革命打到解放战争，1955年被授予大将军衔。</p></div>
-<div class="card"><img src="p13.jpg" alt="符克" onerror="this.style.display='none'"><h3 id="p13">符克 (1923-1949)</h3><p id="p13d">革命烈士，海南文昌人。琼崖革命根据地创建者之一，26岁牺牲。</p></div>
-<div class="card"><img src="p14.jpg" alt="林毅夫" onerror="this.style.display='none'"><h3 id="p14">林毅夫 (1952-)</h3><p id="p14d">著名经济学家，祖籍海南。世界银行首席经济学家，北大教授。</p></div>
-<div class="card"><img src="p15.jpg" alt="云光英" onerror="this.style.display='none'"><h3 id="p15">云光英 (当代)</h3><p id="p15d">当代企业家代表。新时代海商，为海南自贸港建设贡献力量。</p></div>
+<div class="card" onclick="openModal('p1')"><img src="p1.jpg" alt="海瑞" onerror="this.style.display='none'"><h3 id="p1">海瑞 (1514-1587)</h3><p id="p1d">明代清官典范，刚正不阿敢骂皇帝，人称"海青天"。去世时家里只有几两银子。</p></div>
+<div class="card" onclick="openModal('p2')"><img src="p2.jpg" alt="丘濬" onerror="this.style.display='none'"><h3 id="p2">丘濬 (1420-1495)</h3><p id="p2d">明代大学士、理学家。海南第一位进入内阁的宰相级人物，著有《大学衍义补》160卷。</p></div>
+<div class="card" onclick="openModal('p3')"><img src="p3.jpg" alt="冼夫人" onerror="this.style.display='none'"><h3 id="p3">冼夫人 (约512-602)</h3><p id="p3d">古代巾帼英雄、岭南圣母。南北朝时期俚族首领，一生经历三个朝代，维护国家统一。</p></div>
+<div class="card" onclick="openModal('p4')"><img src="p4.jpg" alt="苏东坡" onerror="this.style.display='none'"><h3 id="p4">苏东坡 (1037-1101)</h3><p id="p4d">北宋文豪谪居海南。62岁被贬海南，办学堂教书育人，发明"东坡肉"和"椰子饭"。</p></div>
+<div class="card" onclick="openModal('p5')"><img src="p5.jpg" alt="白玉蟾" onerror="this.style.display='none'"><h3 id="p5">白玉蟾 (1194-?)</h3><p id="p5d">道教南宗五祖、紫清真人。12岁能诗，创立道教南宗，诗词书画样样精通。</p></div>
+<div class="card" onclick="openModal('p6')"><img src="p6.jpg" alt="张岳崧" onerror="this.style.display='none'"><h3 id="p6">张岳崧 (1773-1842)</h3><p id="p6d">清代海南唯一探花。嘉庆年间考中探花（全国第三名），官至湖北布政使。</p></div>
+<div class="card" onclick="openModal('p7')"><img src="p7.jpg" alt="王文明" onerror="this.style.display='none'"><h3 id="p7">王文明 (1894-1930)</h3><p id="p7d">琼崖革命领导人，海南乐会人。琼崖革命"23年红旗不倒"奠基人。</p></div>
+<div class="card" onclick="openModal('p8')"><img src="p8.jpg" alt="冯白驹" onerror="this.style.display='none'"><h3 id="p8">冯白驹 (1903-1973)</h3><p id="p8d">琼崖纵队司令员，海南琼山人。被誉为"琼崖人民的一面旗帜"。</p></div>
+<div class="card" onclick="openModal('p9')"><img src="p9.jpg" alt="邢诒孔" onerror="this.style.display='none'"><h3 id="p9">邢诒孔 (1909-1993)</h3><p id="p9d">著名华侨领袖，海南文昌人。泰国商业巨子，热心支持祖国建设。</p></div>
+<div class="card" onclick="openModal('p10')"><img src="p10.jpg" alt="宋庆龄" onerror="this.style.display='none'"><h3 id="p10">宋庆龄 (1893-1981)</h3><p id="p10d">国家名誉主席，祖籍海南文昌。孙中山先生夫人，二十世纪最伟大女性之一。</p></div>
+<div class="card" onclick="openModal('p11')"><img src="p11.jpg" alt="陈峰" onerror="this.style.display='none'"><h3 id="p11">陈峰 (1953-)</h3><p id="p11d">海航集团创始人，海南文昌人。白手起家创建世界500强企业。</p></div>
+<div class="card" onclick="openModal('p12')"><img src="p12.jpg" alt="张云逸" onerror="this.style.display='none'"><h3 id="p12">张云逸 (1892-1974)</h3><p id="p12d">开国大将，海南文昌人。从辛亥革命打到解放战争，1955年被授予大将军衔。</p></div>
+<div class="card" onclick="openModal('p13')"><img src="p13.jpg" alt="符克" onerror="this.style.display='none'"><h3 id="p13">符克 (1923-1949)</h3><p id="p13d">革命烈士，海南文昌人。琼崖革命根据地创建者之一，26岁牺牲。</p></div>
+<div class="card" onclick="openModal('p14')"><img src="p14.jpg" alt="林毅夫" onerror="this.style.display='none'"><h3 id="p14">林毅夫 (1952-)</h3><p id="p14d">著名经济学家，祖籍海南。世界银行首席经济学家，北大教授。</p></div>
+<div class="card" onclick="openModal('p15')"><img src="p15.jpg" alt="云光英" onerror="this.style.display='none'"><h3 id="p15">云光英 (当代)</h3><p id="p15d">当代企业家代表。新时代海商，为海南自贸港建设贡献力量。</p></div>
 </div>
 </div>
 </section>
@@ -338,19 +352,19 @@ h2{font-size:34px}
 <div class="container">
 <h2 id="st6">魅力海南</h2>
 <div class="cards">
-<div class="card"><img src="sc1.jpg" alt="亚龙湾" onerror="this.style.display='none'"><h3 id="sc1">🏖️ 亚龙湾</h3><p id="sc1d">天下第一湾，7公里月牙形海滩，海水清澈见底，被誉为"东方夏威夷"。</p></div>
-<div class="card"><img src="sc2.jpg" alt="蜈支洲岛" onerror="this.style.display='none'"><h3 id="sc2">🏝️ 蜈支洲岛</h3><p id="sc2d">中国马尔代夫，珊瑚礁保护区，30种珊瑚，热带鱼类丰富。</p></div>
-<div class="card"><img src="sc3.jpg" alt="天涯海角" onerror="this.style.display='none'"><h3 id="sc3">💙 天涯海角</h3><p id="sc3d">浪漫地标，"天涯""海角"巨石，象征永恒爱情。</p></div>
-<div class="card"><img src="sc4.jpg" alt="大东海" onerror="this.style.display='none'"><h3 id="sc4">🌊 大东海</h3><p id="sc4d">三亚市区海滩，水清沙白，交通便利，适合家庭度假。</p></div>
-<div class="card"><img src="sc5.jpg" alt="呀诺达" onerror="this.style.display='none'"><h3 id="sc5">🌳 呀诺达雨林</h3><p id="sc5d">海南热带雨林，负氧离子爆表，雨林峡谷徒步，绿色肺部。</p></div>
-<div class="card"><img src="sc6.jpg" alt="五指山" onerror="this.style.display='none'"><h3 id="sc6">⛰️ 五指山</h3><p id="sc6d">海南最高峰，海拔1867米，黎族文化发源地，云雾缭绕。</p></div>
-<div class="card"><img src="sc7.jpg" alt="尖峰岭" onerror="this.style.display='none'"><h3 id="sc7">🌲 尖峰岭</h3><p id="sc7d">中国最大热带原始森林，动植物基因库，被誉为"绿色基因库"。</p></div>
-<div class="card"><img src="sc8.jpg" alt="分界洲岛" onerror="this.style.display='none'"><h3 id="sc8">🐚 分界洲岛</h3><p id="sc8d">南北气候分界线，海底景观丰富，潜水胜地。</p></div>
-<div class="card"><img src="sc9.jpg" alt="骑楼老街" onerror="this.style.display='none'"><h3 id="sc9">🏛️ 骑楼老街</h3><p id="sc9d">海口百年南洋建筑，中西合璧，充满历史韵味。</p></div>
-<div class="card"><img src="sc10.jpg" alt="南山" onerror="this.style.display='none'"><h3 id="sc10">🙏 南山文化旅游区</h3><p id="sc10d">108米海上观音像，佛教文化圣地，南山长寿文化。</p></div>
-<div class="card"><img src="sc11.jpg" alt="博鳌" onerror="this.style.display='none'"><h3 id="sc11">🌏 博鳌亚洲论坛</h3><p id="sc11d">永久会址，国际会议中心，玉带滩奇观。</p></div>
-<div class="card"><img src="sc12.jpg" alt="文昌航天" onerror="this.style.display='none'"><h3 id="sc12">🚀 文昌航天发射场</h3><p id="sc12d">中国最年轻航天发射场，全世界唯一能看海景的航天城。中国航天梦起飞地。</p></div>
-<div class="card"><img src="sc13.jpg" alt="日月湾" onerror="this.style.display='none'"><h3 id="sc13">🏄 日月湾</h3><p id="sc13d">中国冲浪圣地，万宁日月湾。常年浪高适中，是国家冲浪队训练基地。</p></div>
+<div class="card" onclick="openModal('sc1')"><img src="sc1.jpg" alt="亚龙湾" onerror="this.style.display='none'"><h3 id="sc1">🏖️ 亚龙湾</h3><p id="sc1d">天下第一湾，7公里月牙形海滩，海水清澈见底，被誉为"东方夏威夷"。</p></div>
+<div class="card" onclick="openModal('sc2')"><img src="sc2.jpg" alt="蜈支洲岛" onerror="this.style.display='none'"><h3 id="sc2">🏝️ 蜈支洲岛</h3><p id="sc2d">中国马尔代夫，珊瑚礁保护区，30种珊瑚，热带鱼类丰富。</p></div>
+<div class="card" onclick="openModal('sc3')"><img src="sc3.jpg" alt="天涯海角" onerror="this.style.display='none'"><h3 id="sc3">💙 天涯海角</h3><p id="sc3d">浪漫地标，"天涯""海角"巨石，象征永恒爱情。</p></div>
+<div class="card" onclick="openModal('sc4')"><img src="sc4.jpg" alt="大东海" onerror="this.style.display='none'"><h3 id="sc4">🌊 大东海</h3><p id="sc4d">三亚市区海滩，水清沙白，交通便利，适合家庭度假。</p></div>
+<div class="card" onclick="openModal('sc5')"><img src="sc5.jpg" alt="呀诺达" onerror="this.style.display='none'"><h3 id="sc5">🌳 呀诺达雨林</h3><p id="sc5d">海南热带雨林，负氧离子爆表，雨林峡谷徒步，绿色肺部。</p></div>
+<div class="card" onclick="openModal('sc6')"><img src="sc6.jpg" alt="五指山" onerror="this.style.display='none'"><h3 id="sc6">⛰️ 五指山</h3><p id="sc6d">海南最高峰，海拔1867米，黎族文化发源地，云雾缭绕。</p></div>
+<div class="card" onclick="openModal('sc7')"><img src="sc7.jpg" alt="尖峰岭" onerror="this.style.display='none'"><h3 id="sc7">🌲 尖峰岭</h3><p id="sc7d">中国最大热带原始森林，动植物基因库，被誉为"绿色基因库"。</p></div>
+<div class="card" onclick="openModal('sc8')"><img src="sc8.jpg" alt="分界洲岛" onerror="this.style.display='none'"><h3 id="sc8">🐚 分界洲岛</h3><p id="sc8d">南北气候分界线，海底景观丰富，潜水胜地。</p></div>
+<div class="card" onclick="openModal('sc9')"><img src="sc9.jpg" alt="骑楼老街" onerror="this.style.display='none'"><h3 id="sc9">🏛️ 骑楼老街</h3><p id="sc9d">海口百年南洋建筑，中西合璧，充满历史韵味。</p></div>
+<div class="card" onclick="openModal('sc10')"><img src="sc10.jpg" alt="南山" onerror="this.style.display='none'"><h3 id="sc10">🙏 南山文化旅游区</h3><p id="sc10d">108米海上观音像，佛教文化圣地，南山长寿文化。</p></div>
+<div class="card" onclick="openModal('sc11')"><img src="sc11.jpg" alt="博鳌" onerror="this.style.display='none'"><h3 id="sc11">🌏 博鳌亚洲论坛</h3><p id="sc11d">永久会址，国际会议中心，玉带滩奇观。</p></div>
+<div class="card" onclick="openModal('sc12')"><img src="sc12.jpg" alt="文昌航天" onerror="this.style.display='none'"><h3 id="sc12">🚀 文昌航天发射场</h3><p id="sc12d">中国最年轻航天发射场，全世界唯一能看海景的航天城。中国航天梦起飞地。</p></div>
+<div class="card" onclick="openModal('sc13')"><img src="sc13.jpg" alt="日月湾" onerror="this.style.display='none'"><h3 id="sc13">🏄 日月湾</h3><p id="sc13d">中国冲浪圣地，万宁日月湾。常年浪高适中，是国家冲浪队训练基地。</p></div>
 </div>
 </div>
 </section>
@@ -427,6 +441,23 @@ h2{font-size:34px}
 </div>
 </footer>
 
+<div id="detailModal" class="modal">
+<div class="modal-content">
+<div class="modal-header">
+<span class="close" onclick="closeModal()">&times;</span>
+<h2 id="modalTitle"></h2>
+<div class="subtitle-text" id="modalSubtitle"></div>
+<div class="lang-switch">
+<button class="lang-btn-modal active" onclick="switchDetailLang('zh')">中文</button>
+<button class="lang-btn-modal" onclick="switchDetailLang('en')">English</button>
+</div>
+</div>
+<div class="modal-body">
+<p id="modalContent"></p>
+</div>
+</div>
+</div>
+
 <script>
 let currentLang='zh';
 const translations={
@@ -464,5 +495,18 @@ setTimeout(()=>{result.style.display='none';form.reset()},3000);
 }
 });
 </script>
+
+<script src="people_details.js"></script>
+<script src="scenery_details.js"></script>
+<script>
+const allDetails={...peopleDetails,...sceneryDetails};
+let currentDetailLang='zh';
+let currentDetailId=null;
+function openModal(id){const data=allDetails[id];if(!data)return;currentDetailId=id;currentDetailLang='zh';document.getElementById('modalTitle').textContent=data.name;document.getElementById('modalSubtitle').textContent=data.title;document.getElementById('modalContent').textContent=data.intro;document.getElementById('detailModal').style.display='block';document.body.style.overflow='hidden';}
+function closeModal(){document.getElementById('detailModal').style.display='none';document.body.style.overflow='auto';}
+function switchDetailLang(lang){if(!currentDetailId)return;const data=allDetails[currentDetailId];currentDetailLang=lang;document.querySelectorAll('.lang-btn-modal').forEach(btn=>{btn.classList.remove('active');});event.target.classList.add('active');if(lang==='zh'){document.getElementById('modalTitle').textContent=data.name;document.getElementById('modalSubtitle').textContent=data.title;document.getElementById('modalContent').textContent=data.intro;}else{document.getElementById('modalTitle').textContent=data.nameEn;document.getElementById('modalSubtitle').textContent=data.titleEn;document.getElementById('modalContent').textContent=data.introEn;}}
+window.onclick=function(event){const modal=document.getElementById('detailModal');if(event.target==modal)closeModal();}
+document.addEventListener('keydown',function(event){if(event.key==='Escape')closeModal();});
+</script>
 </body>
-</html> 
+</html>
