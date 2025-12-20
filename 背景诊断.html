@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>背景图诊断</title>
+<style>
+body{margin:0;padding:20px;font-family:Arial}
+.test{
+    width:100%;
+    height:400px;
+    border:2px solid red;
+    margin:20px 0;
+}
+.test1{
+    background:url('sc1.jpg');
+    background-size:cover;
+}
+.test2{
+    background:url('sc1.jpg?v=2');
+    background-size:cover;
+}
+.test3{
+    background:url('sc1.jpg?t=20251220');
+    background-size:cover;
+}
+</style>
+</head>
+<body>
+<h1>背景图诊断页面</h1>
+
+<h2>测试1：普通路径 url('sc1.jpg')</h2>
+<div class="test test1"></div>
+
+<h2>测试2：添加?v=2  url('sc1.jpg?v=2')</h2>
+<div class="test test2"></div>
+
+<h2>测试3：添加?t=20251220  url('sc1.jpg?t=20251220')</h2>
+<div class="test test3"></div>
+
+<hr>
+<h2>直接访问图片测试</h2>
+<p>点击下面的链接，如果能看到亚龙湾图片，说明文件存在：</p>
+<ul>
+<li><a href="sc1.jpg" target="_blank">sc1.jpg</a></li>
+<li><a href="sc1.jpg?v=2" target="_blank">sc1.jpg?v=2</a></li>
+<li><a href="sc1.jpg?t=20251220" target="_blank">sc1.jpg?t=20251220</a></li>
+</ul>
+
+<hr>
+<h2>图片标签测试</h2>
+<img src="sc1.jpg" style="width:100%;max-width:600px" alt="亚龙湾">
+
+</body>
+</html>
