@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>测试页面 - 海南索拉纳</title>
+<style>
+body{margin:0;padding:20px;font-family:Arial;background:#f0f0f0}
+.test{margin:20px 0;padding:20px;background:white;border:2px solid #333;border-radius:8px}
+h1{color:#333}
+.success{color:green;font-weight:bold}
+.error{color:red;font-weight:bold}
+img{max-width:100%;height:auto;border:2px solid #ccc}
+.bg-test{width:100%;height:300px;background-size:cover;background-position:center;border:3px solid red;margin:10px 0}
+</style>
+</head>
+<body>
+
+<h1>🔍 海南索拉纳网站测试页面</h1>
+
+<div class="test">
+<h2>测试1：这个页面能显示吗？</h2>
+<p class="success">✅ 如果你看到这段文字，说明Vercel部署成功了！</p>
+</div>
+
+<div class="test">
+<h2>测试2：背景图文件存在吗？</h2>
+<p>尝试加载 sc1.jpg：</p>
+<div class="bg-test" style="background-image:url('sc1.jpg')"></div>
+<p>👆 如果上面的框里有亚龙湾图片，说明sc1.jpg存在</p>
+<p>👆 如果上面的框是空白，说明sc1.jpg不存在</p>
+</div>
+
+<div class="test">
+<h2>测试3：用img标签加载图片</h2>
+<p>直接显示 sc1.jpg：</p>
+<img src="sc1.jpg" alt="亚龙湾" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+<p class="error" style="display:none">❌ 图片加载失败！sc1.jpg不存在或路径错误</p>
+</div>
+
+<div class="test">
+<h2>测试4：王文明图片</h2>
+<p>直接显示 p7.jpg：</p>
+<img src="p7.jpg" alt="王文明" style="max-width:200px" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+<p class="error" style="display:none">❌ 图片加载失败！p7.jpg不存在或路径错误</p>
+</div>
+
+<div class="test">
+<h2>测试5：主页文件</h2>
+<p><a href="index.html" style="color:blue;text-decoration:underline">点击访问 index.html</a></p>
+<p>如果点击后显示完整网站，说明index.html存在</p>
+<p>如果显示404，说明index.html没有上传</p>
+</div>
+
+<div class="test">
+<h2>📋 诊断结果</h2>
+<p><strong>如果测试2和3都显示图片：</strong></p>
+<p class="success">→ sc1.jpg文件存在，主页不显示是CSS或缓存问题</p>
+
+<p><strong>如果测试2和3都是空白/失败：</strong></p>
+<p class="error">→ sc1.jpg文件不存在，必须上传！</p>
+
+<p><strong>如果测试5点击后404：</strong></p>
+<p class="error">→ index.html没有上传到Vercel</p>
+</div>
+
+<div class="test">
+<h2>🔧 文件列表检查</h2>
+<p>请确认以下文件都已上传到GitHub仓库根目录：</p>
+<ul>
+<li>✅ index.html</li>
+<li>✅ sc1.jpg（238KB）</li>
+<li>✅ p7.jpg（6KB）</li>
+<li>✅ vercel.json</li>
+<li>✅ test.html（本页面）</li>
+</ul>
+</div>
+
+<div class="test">
+<h2>💡 下一步</h2>
+<p><strong>根据上面的测试结果：</strong></p>
+<ol>
+<li>截图保存测试结果</li>
+<li>告诉我看到了什么</li>
+<li>我会给出精准的解决方案</li>
+</ol>
+</div>
+
+<div class="test">
+<p style="text-align:center;color:#666">
+海南索拉纳商务咨询中心 | 测试页面 v1.0
+</p>
+</div>
+
+</body>
+</html>
