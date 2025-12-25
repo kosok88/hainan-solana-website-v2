@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>设计服务协议 - 海南索拉纳</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Microsoft YaHei',sans-serif;background:#f5f5f5;padding:20px}
+.container{max-width:900px;margin:0 auto;background:#fff;padding:40px;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,0.1)}
+.lang-switch{position:absolute;top:20px;right:20px;background:#667eea;color:#fff;padding:8px 15px;border-radius:5px;text-decoration:none;font-size:14px;cursor:pointer}
+.lang-switch:hover{background:#5568d3}
+h1{color:#667eea;text-align:center;margin-bottom:10px;font-size:28px}
+.subtitle{text-align:center;color:#666;margin-bottom:30px}
+.user-info-box{background:#e7f3ff;padding:20px;border-radius:5px;margin-bottom:30px;border-left:4px solid #667eea}
+.user-info-box h3{color:#667eea;margin-bottom:15px}
+.user-info{display:grid;grid-template-columns:120px 1fr;gap:10px;margin-bottom:10px}
+.user-info label{font-weight:bold;color:#555}
+.user-info span{color:#333}
+.section{margin-bottom:30px}
+.section h2{color:#333;font-size:20px;margin-bottom:15px;padding-bottom:10px;border-bottom:2px solid #667eea}
+.section-content{line-height:1.8;color:#555}
+.section-content ol,.section-content ul{margin-left:20px}
+.section-content li{margin-bottom:8px}
+table{width:100%;border-collapse:collapse;margin:15px 0}
+table th,table td{border:1px solid #ddd;padding:12px;text-align:left}
+table th{background:#667eea;color:#fff}
+.highlight{background:#fff3cd;padding:15px;border-radius:5px;border-left:4px solid #ffc107;margin:20px 0}
+.agreement-box{background:#f8f9fa;padding:20px;border-radius:5px;margin:30px 0}
+.agreement-checkbox{display:flex;align-items:flex-start;margin-bottom:20px}
+.agreement-checkbox input[type="checkbox"]{width:20px;height:20px;margin-right:10px;margin-top:3px;cursor:pointer;flex-shrink:0}
+.agreement-checkbox label{font-size:16px;font-weight:bold;cursor:pointer;line-height:1.6}
+.btn-group{text-align:center;margin-top:30px}
+.btn{padding:15px 40px;font-size:16px;border:none;border-radius:30px;cursor:pointer;transition:0.3s;margin:0 10px}
+.btn-primary{background:#667eea;color:#fff}
+.btn-primary:hover{background:#5568d3;transform:scale(1.05)}
+.btn-primary:disabled{background:#ccc;cursor:not-allowed;transform:scale(1)}
+.btn-secondary{background:#6c757d;color:#fff}
+.btn-secondary:hover{background:#5a6268}
+.notice{background:#d4edda;border:1px solid #c3e6cb;color:#155724;padding:15px;border-radius:5px;margin:20px 0}
+.order-no{background:#667eea;color:#fff;padding:10px 20px;border-radius:5px;display:inline-block;font-size:18px;font-weight:bold;margin-bottom:20px}
+@media (max-width:768px){
+.btn{display:block;width:100%;margin:10px 0}
+.user-info{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+<a href="#" class="lang-switch" onclick="switchLanguage();return false" id="langBtn">English</a>
+
+<h1 id="pageTitle">🎨 海南索拉纳设计服务协议</h1>
+<p class="subtitle" id="subtitle">Design Service Agreement</p>
+
+<div style="text-align:center;margin-bottom:30px">
+<span class="order-no" id="orderDisplay">订单编号：加载中...</span>
+</div>
+
+<div class="user-info-box" id="userInfoBox">
+<h3 id="userInfoTitle">👤 用户信息（自动关联）</h3>
+<div class="user-info">
+<label id="nameLabel">姓名/公司：</label>
+<span id="userName">未登录</span>
+</div>
+<div class="user-info">
+<label id="phoneLabel">联系电话：</label>
+<span id="userPhone">-</span>
+</div>
+<div class="user-info">
+<label id="emailLabel">邮箱：</label>
+<span id="userEmail">-</span>
+</div>
+<div class="user-info">
+<label id="serviceLabel">服务项目：</label>
+<span id="serviceType">-</span>
+</div>
+<div class="user-info">
+<label id="feeLabel">服务费用：</label>
+<span id="totalFee">-</span>
+</div>
+</div>
+
+<div class="section">
+<h2 id="sec1Title">一、服务内容与费用</h2>
+<div class="section-content">
+<table>
+<tr>
+<th id="th1">项目</th>
+<th id="th2">金额</th>
+</tr>
+<tr>
+<td id="td1">服务费用</td>
+<td id="fee1">-</td>
+</tr>
+<tr style="background:#f8f9fa">
+<td id="td2"><strong>定金（50%）</strong></td>
+<td id="deposit1"><strong>-</strong></td>
+</tr>
+<tr style="background:#f8f9fa">
+<td id="td3"><strong>尾款（50%）</strong></td>
+<td id="balance1"><strong>-</strong></td>
+</tr>
+</table>
+</div>
+</div>
+
+<div class="section">
+<h2 id="sec2Title">二、服务流程</h2>
+<div class="section-content">
+<ol id="processList">
+<li><strong>签订协议</strong> - 双方确认服务内容和价格</li>
+<li><strong>支付定金50%</strong> - 甲方支付定金后服务开始</li>
+<li><strong>开始设计</strong> - 乙方提供设计方案</li>
+<li><strong>反馈修改</strong> - 根据甲方反馈修改完善</li>
+<li><strong>客户验收</strong> - 甲方确认满意</li>
+<li><strong>支付尾款50%</strong> - 甲方支付剩余费用</li>
+<li><strong>交付文件</strong> - 乙方交付全部设计文件</li>
+<li><strong>完成服务</strong> - 7天内免费微调</li>
+</ol>
+</div>
+</div>
+
+<div class="section">
+<h2 id="sec3Title">三、交付时间与修改次数</h2>
+<div class="section-content">
+<table>
+<tr>
+<th id="th3">档次</th>
+<th id="th4">交付时间</th>
+<th id="th5">免费修改次数</th>
+</tr>
+<tr>
+<td id="td4">基础版</td>
+<td id="td5">3-5个工作日</td>
+<td id="td6">2次</td>
+</tr>
+<tr>
+<td id="td7">标准版</td>
+<td id="td8">2-4个工作日</td>
+<td id="td9">5次</td>
+</tr>
+<tr>
+<td id="td10">高级版</td>
+<td id="td11">1-3个工作日</td>
+<td id="td12">10次</td>
+</tr>
+</table>
+<p style="margin-top:15px" id="extraFee">超出免费修改次数：¥200/次（$30/次）</p>
+</div>
+</div>
+
+<div class="section">
+<h2 id="sec4Title">四、双方权利义务</h2>
+<div class="section-content" id="rightsContent">
+<p><strong>甲方权利：</strong></p>
+<ul>
+<li>获得约定的设计文件</li>
+<li>在规定次数内要求修改</li>
+<li>验收不满意可要求重做（限1次）</li>
+</ul>
+<p><strong>甲方义务：</strong></p>
+<ul>
+<li>按时支付定金和尾款</li>
+<li>及时提供所需资料</li>
+<li>及时反馈修改意见（3天内）</li>
+</ul>
+<p><strong>乙方权利：</strong></p>
+<ul>
+<li>收取约定的服务费用</li>
+<li>要求甲方及时提供资料</li>
+<li>拒绝超出范围的修改要求</li>
+</ul>
+<p><strong>乙方义务：</strong></p>
+<ul>
+<li>按时交付设计作品</li>
+<li>提供约定次数的修改服务</li>
+<li>交付后7天内免费微调</li>
+</ul>
+</div>
+</div>
+
+<div class="section">
+<h2 id="sec5Title">五、退款说明</h2>
+<div class="section-content">
+<table>
+<tr>
+<th id="th6">情况</th>
+<th id="th7">退款规则</th>
+</tr>
+<tr>
+<td id="td13">定金支付后，设计未开始</td>
+<td id="td14">可退80%定金</td>
+</tr>
+<tr>
+<td id="td15">已提供初稿</td>
+<td id="td16">不予退款</td>
+</tr>
+<tr>
+<td id="td17">甲方原因终止</td>
+<td id="td18">定金不退</td>
+</tr>
+<tr>
+<td id="td19">乙方原因终止</td>
+<td id="td20">全额退款</td>
+</tr>
+</table>
+</div>
+</div>
+
+<div class="section">
+<h2 id="sec6Title">六、违约责任</h2>
+<div class="section-content" id="violationContent">
+<ul>
+<li><strong>乙方延期交付：</strong>每延期1天，退还5%服务费</li>
+<li><strong>甲方拖欠尾款：</strong>超过7天，不再提供售后服务</li>
+<li><strong>严重违约：</strong>守约方有权解除协议</li>
+</ul>
+</div>
+</div>
+
+<div class="highlight" id="importantNotice">
+<p><strong>⚡ 重要提示：</strong></p>
+<ul style="margin-top:10px" id="noticeList">
+<li>本协议自双方确认之日起生效</li>
+<li>点击"同意协议"即视为接受全部条款</li>
+<li>协议与您的注册信息自动关联</li>
+<li>有任何疑问请在签署前咨询清楚</li>
+</ul>
+</div>
+
+<div class="agreement-box">
+<div class="agreement-checkbox">
+<input type="checkbox" id="agreeCheck">
+<label for="agreeCheck" id="agreeLabel">☑️ 我已仔细阅读并完全理解以上协议内容，自愿接受全部条款约束。点击同意后，本协议立即生效。</label>
+</div>
+
+<div class="notice" id="nextSteps">
+<p><strong>✅ 同意协议后的下一步：</strong></p>
+<p id="step1">1. 我们将发送定金支付信息到您的微信/邮箱</p>
+<p id="step2">2. 请在24小时内支付定金（服务费的50%）</p>
+<p id="step3">3. 定金到账后，我们将在1-2个工作日内开始设计</p>
+<p id="step4">4. 全程保持沟通，确保您满意</p>
+</div>
+</div>
+
+<div class="btn-group">
+<button class="btn btn-secondary" onclick="window.history.back()" id="backBtn">返回修改</button>
+<button class="btn btn-primary" id="submitBtn" disabled onclick="submitAgreement()">同意协议并提交</button>
+</div>
+
+</div>
+
+<script>
+// 语言切换
+let currentLang='zh';
+const translations={
+zh:{
+pageTitle:'🎨 海南索拉纳设计服务协议',
+subtitle:'Design Service Agreement',
+userInfoTitle:'👤 用户信息（自动关联）',
+nameLabel:'姓名/公司：',
+phoneLabel:'联系电话：',
+emailLabel:'邮箱：',
+serviceLabel:'服务项目：',
+feeLabel:'服务费用：',
+sec1Title:'一、服务内容与费用',
+th1:'项目',th2:'金额',
+td1:'服务费用',td2:'定金（50%）',td3:'尾款（50%）',
+sec2Title:'二、服务流程',
+processList:[
+'<strong>签订协议</strong> - 双方确认服务内容和价格',
+'<strong>支付定金50%</strong> - 甲方支付定金后服务开始',
+'<strong>开始设计</strong> - 乙方提供设计方案',
+'<strong>反馈修改</strong> - 根据甲方反馈修改完善',
+'<strong>客户验收</strong> - 甲方确认满意',
+'<strong>支付尾款50%</strong> - 甲方支付剩余费用',
+'<strong>交付文件</strong> - 乙方交付全部设计文件',
+'<strong>完成服务</strong> - 7天内免费微调'
+],
+sec3Title:'三、交付时间与修改次数',
+th3:'档次',th4:'交付时间',th5:'免费修改次数',
+td4:'基础版',td5:'3-5个工作日',td6:'2次',
+td7:'标准版',td8:'2-4个工作日',td9:'5次',
+td10:'高级版',td11:'1-3个工作日',td12:'10次',
+extraFee:'超出免费修改次数：¥200/次（$30/次）',
+sec4Title:'四、双方权利义务',
+sec5Title:'五、退款说明',
+th6:'情况',th7:'退款规则',
+td13:'定金支付后，设计未开始',td14:'可退80%定金',
+td15:'已提供初稿',td16:'不予退款',
+td17:'甲方原因终止',td18:'定金不退',
+td19:'乙方原因终止',td20:'全额退款',
+sec6Title:'六、违约责任',
+agreeLabel:'☑️ 我已仔细阅读并完全理解以上协议内容，自愿接受全部条款约束。点击同意后，本协议立即生效。',
+backBtn:'返回修改',
+submitBtn:'同意协议并提交',
+step1:'1. 我们将发送定金支付信息到您的微信/邮箱',
+step2:'2. 请在24小时内支付定金（服务费的50%）',
+step3:'3. 定金到账后，我们将在1-2个工作日内开始设计',
+step4:'4. 全程保持沟通，确保您满意'
+},
+en:{
+pageTitle:'🎨 Hainan Solana Design Service Agreement',
+subtitle:'设计服务协议',
+userInfoTitle:'👤 User Information (Auto-linked)',
+nameLabel:'Name/Company:',
+phoneLabel:'Phone:',
+emailLabel:'Email:',
+serviceLabel:'Service:',
+feeLabel:'Fee:',
+sec1Title:'1. Service Content & Fee',
+th1:'Item',th2:'Amount',
+td1:'Service Fee',td2:'Deposit (50%)',td3:'Balance (50%)',
+sec2Title:'2. Service Process',
+processList:[
+'<strong>Sign Agreement</strong> - Confirm service content and price',
+'<strong>Pay 50% Deposit</strong> - Service starts after deposit',
+'<strong>Start Design</strong> - Provider delivers design options',
+'<strong>Feedback & Revisions</strong> - Revise based on feedback',
+'<strong>Client Acceptance</strong> - Client confirms satisfaction',
+'<strong>Pay 50% Balance</strong> - Client pays remaining fee',
+'<strong>Deliver Files</strong> - Provider delivers all design files',
+'<strong>Complete Service</strong> - Free minor adjustments within 7 days'
+],
+sec3Title:'3. Delivery Time & Revisions',
+th3:'Package',th4:'Delivery Time',th5:'Free Revisions',
+td4:'Basic',td5:'3-5 business days',td6:'2 times',
+td7:'Standard',td8:'2-4 business days',td9:'5 times',
+td10:'Premium',td11:'1-3 business days',td12:'10 times',
+extraFee:'Extra revisions: ¥200/time ($30/time)',
+sec4Title:'4. Rights & Obligations',
+sec5Title:'5. Refund Policy',
+th6:'Situation',th7:'Refund Rule',
+td13:'Deposit paid, design not started',td14:'80% refund',
+td15:'Initial draft provided',td16:'No refund',
+td17:'Terminated by client',td18:'No deposit refund',
+td19:'Terminated by provider',td20:'Full refund',
+sec6Title:'6. Breach of Contract',
+agreeLabel:'☑️ I have carefully read and fully understand the above agreement and voluntarily accept all terms. By clicking agree, this agreement takes effect immediately.',
+backBtn:'Go Back',
+submitBtn:'Agree & Submit',
+step1:'1. We will send deposit payment info to your WeChat/Email',
+step2:'2. Please pay the deposit (50% of service fee) within 24 hours',
+step3:'3. Design will start within 1-2 business days after deposit',
+step4:'4. We will maintain communication to ensure your satisfaction'
+}
+};
+
+function switchLanguage(){
+currentLang=currentLang==='zh'?'en':'zh';
+const t=translations[currentLang];
+document.getElementById('langBtn').textContent=currentLang==='zh'?'English':'中文';
+document.getElementById('pageTitle').textContent=t.pageTitle;
+document.getElementById('subtitle').textContent=t.subtitle;
+document.getElementById('userInfoTitle').textContent=t.userInfoTitle;
+document.getElementById('nameLabel').textContent=t.nameLabel;
+document.getElementById('phoneLabel').textContent=t.phoneLabel;
+document.getElementById('emailLabel').textContent=t.emailLabel;
+document.getElementById('serviceLabel').textContent=t.serviceLabel;
+document.getElementById('feeLabel').textContent=t.feeLabel;
+document.getElementById('sec1Title').textContent=t.sec1Title;
+document.getElementById('th1').textContent=t.th1;
+document.getElementById('th2').textContent=t.th2;
+document.getElementById('td1').textContent=t.td1;
+document.getElementById('td2').innerHTML='<strong>'+t.td2+'</strong>';
+document.getElementById('td3').innerHTML='<strong>'+t.td3+'</strong>';
+document.getElementById('sec2Title').textContent=t.sec2Title;
+let processList='';
+t.processList.forEach(item=>processList+='<li>'+item+'</li>');
+document.getElementById('processList').innerHTML=processList;
+document.getElementById('sec3Title').textContent=t.sec3Title;
+document.getElementById('th3').textContent=t.th3;
+document.getElementById('th4').textContent=t.th4;
+document.getElementById('th5').textContent=t.th5;
+document.getElementById('td4').textContent=t.td4;
+document.getElementById('td5').textContent=t.td5;
+document.getElementById('td6').textContent=t.td6;
+document.getElementById('td7').textContent=t.td7;
+document.getElementById('td8').textContent=t.td8;
+document.getElementById('td9').textContent=t.td9;
+document.getElementById('td10').textContent=t.td10;
+document.getElementById('td11').textContent=t.td11;
+document.getElementById('td12').textContent=t.td12;
+document.getElementById('extraFee').textContent=t.extraFee;
+document.getElementById('sec4Title').textContent=t.sec4Title;
+document.getElementById('sec5Title').textContent=t.sec5Title;
+document.getElementById('th6').textContent=t.th6;
+document.getElementById('th7').textContent=t.th7;
+document.getElementById('td13').textContent=t.td13;
+document.getElementById('td14').textContent=t.td14;
+document.getElementById('td15').textContent=t.td15;
+document.getElementById('td16').textContent=t.td16;
+document.getElementById('td17').textContent=t.td17;
+document.getElementById('td18').textContent=t.td18;
+document.getElementById('td19').textContent=t.td19;
+document.getElementById('td20').textContent=t.td20;
+document.getElementById('sec6Title').textContent=t.sec6Title;
+document.getElementById('agreeLabel').textContent=t.agreeLabel;
+document.getElementById('backBtn').textContent=t.backBtn;
+document.getElementById('submitBtn').textContent=t.submitBtn;
+document.getElementById('step1').textContent=t.step1;
+document.getElementById('step2').textContent=t.step2;
+document.getElementById('step3').textContent=t.step3;
+document.getElementById('step4').textContent=t.step4;
+}
+
+// 生成订单编号
+function generateOrderNo(){
+const date=new Date();
+const y=date.getFullYear();
+const m=String(date.getMonth()+1).padStart(2,'0');
+const d=String(date.getDate()).padStart(2,'0');
+const random=Math.floor(Math.random()*10000).toString().padStart(4,'0');
+return `DS${y}${m}${d}${random}`;
+}
+
+// 从localStorage获取用户注册信息
+function loadUserInfo(){
+try{
+// 尝试从localStorage获取注册信息
+const regName=localStorage.getItem('regName')||'';
+const regPhone=localStorage.getItem('regPhone')||'';
+const regEmail=localStorage.getItem('regEmail')||'';
+
+// 从URL获取服务信息
+const params=new URLSearchParams(window.location.search);
+const service=params.get('service')||'LOGO设计';
+const level=params.get('level')||'标准版';
+const fee=params.get('fee')||'¥800 / $115';
+
+// 填充用户信息
+if(regName){
+document.getElementById('userName').textContent=regName;
+}
+if(regPhone){
+document.getElementById('userPhone').textContent=regPhone;
+}
+if(regEmail){
+document.getElementById('userEmail').textContent=regEmail;
+}
+
+// 填充服务信息
+document.getElementById('serviceType').textContent=service+(level?' - '+level:'');
+document.getElementById('totalFee').textContent=fee;
+document.getElementById('fee1').textContent=fee;
+
+// 计算定金和尾款
+const feeNum=parseInt(fee.replace(/[^0-9]/g,''));
+const deposit=feeNum/2;
+const currency=fee.includes('¥')?'¥':'$';
+const currencyPos=fee.indexOf(currency);
+const usdPart=fee.includes('/')?fee.substring(fee.indexOf('/')+1).trim():'';
+const usdNum=usdPart?parseInt(usdPart.replace(/[^0-9]/g,'')):0;
+const usdDeposit=usdNum?usdNum/2:0;
+
+let depositText='';
+if(usdPart){
+depositText=`<strong>¥${deposit} / $${usdDeposit}</strong>`;
+}else{
+depositText=`<strong>${currency}${deposit}</strong>`;
+}
+
+document.getElementById('deposit1').innerHTML=depositText;
+document.getElementById('balance1').innerHTML=depositText;
+
+}catch(e){
+console.error('加载用户信息失败:',e);
+}
+}
+
+// 初始化
+document.addEventListener('DOMContentLoaded',function(){
+// 生成订单号
+const orderNo=generateOrderNo();
+const lang=currentLang==='zh'?'订单编号：':'Order No: ';
+document.getElementById('orderDisplay').textContent=lang+orderNo;
+
+// 加载用户信息
+loadUserInfo();
+});
+
+// 同意协议checkbox
+document.getElementById('agreeCheck').addEventListener('change',function(){
+document.getElementById('submitBtn').disabled=!this.checked;
+});
+
+// 提交协议
+function submitAgreement(){
+const agreed=document.getElementById('agreeCheck').checked;
+const userName=document.getElementById('userName').textContent;
+
+if(!agreed){
+alert(currentLang==='zh'?'请先阅读并同意协议条款':'Please read and agree to the terms first');
+return;
+}
+
+if(userName==='未登录'||userName==='Not logged in'){
+alert(currentLang==='zh'?'请先注册账户':'Please register first');
+window.location.href='index.html#register';
+return;
+}
+
+// 保存协议签署记录
+const orderNo=document.getElementById('orderDisplay').textContent;
+const serviceType=document.getElementById('serviceType').textContent;
+const totalFee=document.getElementById('totalFee').textContent;
+const agreementData={
+orderNo:orderNo,
+userName:userName,
+userPhone:document.getElementById('userPhone').textContent,
+userEmail:document.getElementById('userEmail').textContent,
+serviceType:serviceType,
+totalFee:totalFee,
+agreedDate:new Date().toISOString(),
+status:'agreed'
+};
+
+// 保存到localStorage
+try{
+localStorage.setItem('agreement_'+orderNo,JSON.stringify(agreementData));
+// 也可以发送到服务器
+// sendToServer(agreementData);
+}catch(e){
+console.error('保存协议失败:',e);
+}
+
+// 确认提交
+const msg=currentLang==='zh'?
+`协议提交成功！\n\n${orderNo}\n服务项目：${serviceType}\n服务费用：${totalFee}\n\n我们将在10分钟内通过微信/邮箱发送定金支付信息。\n请注意查收！`:
+`Agreement submitted successfully!\n\n${orderNo}\nService: ${serviceType}\nFee: ${totalFee}\n\nWe will send deposit payment info within 10 minutes.\nPlease check your WeChat/Email!`;
+
+alert(msg);
+
+// 跳转到联系页面
+window.location.href='design-services.html#contact';
+}
+</script>
+
+</body>
+</html>

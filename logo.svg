@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="60" viewBox="0 0 200 60">
+  <!-- 背景 -->
+  <rect width="200" height="60" fill="#667eea" rx="5"/>
+  
+  <!-- 椰树图标 -->
+  <g transform="translate(15,15)">
+    <!-- 树干 -->
+    <rect x="12" y="15" width="6" height="20" fill="#8B4513"/>
+    <!-- 椰子叶 -->
+    <ellipse cx="15" cy="10" rx="15" ry="8" fill="#228B22"/>
+    <ellipse cx="15" cy="12" rx="12" ry="6" fill="#32CD32"/>
+  </g>
+  
+  <!-- 文字 -->
+  <text x="50" y="25" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white">
+    Hainan Solana
+  </text>
+  <text x="50" y="42" font-family="Arial, sans-serif" font-size="12" fill="#E0E0E0">
+    海南索拉纳
+  </text>
+</svg>
