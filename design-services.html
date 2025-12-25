@@ -15,8 +15,9 @@ header .logo span{font-size:24px;font-weight:bold}
 header h1{font-size:48px;margin-bottom:10px}
 header p{font-size:20px;opacity:0.9}
 nav{background:#333;padding:15px 0;position:sticky;top:0;z-index:100}
-nav .container{display:flex;justify-content:space-between;align-items:center}
-nav a{color:#fff;text-decoration:none;padding:10px 20px;transition:0.3s}
+nav .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+nav .nav-links{display:flex;gap:10px;flex-wrap:wrap}
+nav a{color:#fff;text-decoration:none;padding:10px 15px;transition:0.3s;white-space:nowrap}
 nav a:hover{background:#667eea;border-radius:5px}
 .lang-switch{background:#667eea;color:#fff;padding:8px 15px;border-radius:5px;text-decoration:none;font-size:14px}
 .lang-switch:hover{background:#5568d3}
@@ -30,19 +31,24 @@ nav a:hover{background:#667eea;border-radius:5px}
 .service-card ul{list-style:none;margin:20px 0}
 .service-card li{padding:8px 0;border-bottom:1px solid #e0e0e0}
 .service-card li:before{content:"✓ ";color:#4ade80;font-weight:bold}
+.btn-view-agreement{display:inline-block;margin-top:15px;padding:10px 20px;background:#667eea;color:#fff;text-decoration:none;border-radius:5px;font-size:14px;transition:0.3s}
+.btn-view-agreement:hover{background:#5568d3;transform:scale(1.05)}
 .package-card{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;padding:40px;border-radius:10px;box-shadow:0 5px 20px rgba(0,0,0,0.2)}
 .package-card h3{font-size:28px;margin-bottom:10px}
 .package-card .badge{background:#4ade80;color:#333;padding:5px 15px;border-radius:20px;font-size:14px;display:inline-block;margin-bottom:15px}
 .package-card .price{font-size:42px;font-weight:bold;margin:20px 0}
 .package-card .save{background:rgba(255,255,255,0.2);padding:10px 20px;border-radius:5px;display:inline-block;margin-top:15px}
+.package-card .btn-view-agreement{background:#fff;color:#667eea;font-weight:bold}
+.package-card .btn-view-agreement:hover{background:#f0f0f0}
 .feature-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;margin:40px 0}
 .feature-item{background:#fff;padding:30px;border-radius:10px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,0.05)}
 .feature-item .icon{font-size:48px;margin-bottom:15px}
 .feature-item h4{color:#667eea;margin-bottom:10px}
 .cta{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;text-align:center;padding:80px 20px;margin-top:60px}
 .cta h2{font-size:36px;margin-bottom:20px}
-.cta .btn{background:#4ade80;color:#333;padding:15px 40px;font-size:18px;border:none;border-radius:30px;cursor:pointer;text-decoration:none;display:inline-block;margin-top:20px;transition:0.3s}
+.cta .btn{background:#4ade80;color:#333;padding:15px 40px;font-size:18px;border:none;border-radius:30px;cursor:pointer;text-decoration:none;display:inline-block;margin:10px;transition:0.3s}
 .cta .btn:hover{background:#fff;transform:scale(1.05)}
+.cta .btn-secondary{background:#fff;color:#667eea}
 .comparison-table{width:100%;border-collapse:collapse;margin:40px 0;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,0.1)}
 .comparison-table th,.comparison-table td{padding:15px;text-align:left;border-bottom:1px solid #e0e0e0}
 .comparison-table th{background:#667eea;color:#fff;font-weight:bold}
@@ -55,6 +61,9 @@ header h1{font-size:32px}
 .service-grid{grid-template-columns:1fr}
 .package-card .price{font-size:32px}
 header .logo{position:static;justify-content:center;margin-bottom:20px}
+nav .container{justify-content:center}
+nav .nav-links{justify-content:center;width:100%}
+.cta .btn{display:block;width:90%;margin:10px auto}
 }
 </style>
 </head>
@@ -62,7 +71,7 @@ header .logo{position:static;justify-content:center;margin-bottom:20px}
 
 <header>
 <div class="logo">
-<img src="logo.png" alt="海南索拉纳Logo" onerror="this.style.display='none'">
+<img src="logo.svg" alt="海南索拉纳Logo" onerror="this.style.display='none'">
 <span>🌴 海南索拉纳</span>
 </div>
 <h1>🎨 设计服务</h1>
@@ -71,17 +80,17 @@ header .logo{position:static;justify-content:center;margin-bottom:20px}
 
 <nav>
 <div class="container">
-<div>
+<div class="nav-links">
 <a href="index.html">返回首页</a>
-<a href="index.html#services">商务服务</a>
+<a href="services.html">商务服务</a>
 <a href="#packages">套餐优惠</a>
+<a href="agreement-system.html">查看协议</a>
 <a href="#contact">联系我们</a>
 </div>
 <a href="design-services-en.html" class="lang-switch">English</a>
 </div>
 </nav>
 
-<!-- 优势介绍 -->
 <div class="section">
 <div class="container">
 <h2 class="section-title">为什么选择我们？</h2>
@@ -89,16 +98,16 @@ header .logo{position:static;justify-content:center;margin-bottom:20px}
 <div class="feature-item">
 <div class="icon">⚡</div>
 <h4>快速交付</h4>
-<p>1-3天完成设计<br>比传统快3倍</p>
+<p>1-3天完成<br>比传统快3倍</p>
 </div>
 <div class="feature-item">
 <div class="icon">💎</div>
 <h4>专业品质</h4>
-<p>AI辅助+专业眼光<br>多方案选择</p>
+<p>AI辅助+专业筛选<br>多个方案选择</p>
 </div>
 <div class="feature-item">
 <div class="icon">💰</div>
-<h4>实惠价格</h4>
+<h4>价格实惠</h4>
 <p>比传统便宜50%<br>套餐更优惠</p>
 </div>
 <div class="feature-item">
@@ -110,7 +119,6 @@ header .logo{position:static;justify-content:center;margin-bottom:20px}
 </div>
 </div>
 
-<!-- LOGO设计 -->
 <div class="section" style="background:#f8f9fa">
 <div class="container">
 <h2 class="section-title">🎨 LOGO设计</h2>
@@ -124,6 +132,7 @@ header .logo{position:static;justify-content:center;margin-bottom:20px}
 <li>PNG + JPG 格式</li>
 <li>2-3个工作日交付</li>
 </ul>
+<a href="agreement-system.html?service=LOGO设计&level=基础版&fee=¥400 / $55" class="btn-view-agreement">查看协议</a>
 </div>
 <div class="service-card" style="border:3px solid #667eea">
 <h3>标准版 <span class="star">⭐</span></h3>
@@ -135,6 +144,7 @@ header .logo{position:static;justify-content:center;margin-bottom:20px}
 <li>黑白版本</li>
 <li>1-2个工作日交付</li>
 </ul>
+<a href="agreement-system.html?service=LOGO设计&level=标准版&fee=¥800 / $115" class="btn-view-agreement">查看协议</a>
 </div>
 <div class="service-card">
 <h3>高级版</h3>
@@ -147,12 +157,12 @@ header .logo{position:static;justify-content:center;margin-bottom:20px}
 <li>24小时内交付</li>
 <li>品牌使用建议</li>
 </ul>
+<a href="agreement-system.html?service=LOGO设计&level=高级版&fee=¥1,200 / $170" class="btn-view-agreement">查看协议</a>
 </div>
 </div>
 </div>
 </div>
 
-<!-- 名片设计 -->
 <div class="section">
 <div class="container">
 <h2 class="section-title">💼 名片设计</h2>
@@ -161,35 +171,37 @@ header .logo{position:static;justify-content:center;margin-bottom:20px}
 <h3>单面名片</h3>
 <div class="price">¥200 / $30</div>
 <ul>
-<li>3个方案选择</li>
+<li>3个设计方案</li>
 <li>2次修改机会</li>
 <li>提供设计文件</li>
 </ul>
+<a href="agreement-system.html?service=名片设计&level=单面&fee=¥200 / $30" class="btn-view-agreement">查看协议</a>
 </div>
 <div class="service-card" style="border:3px solid #667eea">
 <h3>双面名片 <span class="star">⭐</span></h3>
 <div class="price">¥300 / $45</div>
 <ul>
-<li>5个方案选择</li>
+<li>5个设计方案</li>
 <li>3次修改机会</li>
 <li>提供设计文件</li>
 </ul>
+<a href="agreement-system.html?service=名片设计&level=双面&fee=¥300 / $45" class="btn-view-agreement">查看协议</a>
 </div>
 <div class="service-card">
 <h3>设计+印刷</h3>
 <div class="price">¥700 / $100</div>
 <ul>
-<li>双面名片设计</li>
+<li>双面设计</li>
 <li>印刷250张</li>
-<li>优质纸张</li>
-<li>包邮到海南</li>
+<li>高档纸张</li>
+<li>海南地区免费配送</li>
 </ul>
+<a href="agreement-system.html?service=名片设计&level=设计+印刷&fee=¥700 / $100" class="btn-view-agreement">查看协议</a>
 </div>
 </div>
 </div>
 </div>
 
-<!-- 网站设计 -->
 <div class="section" style="background:#f8f9fa">
 <div class="container">
 <h2 class="section-title">🌐 网站设计</h2>
@@ -203,9 +215,10 @@ header .logo{position:static;justify-content:center;margin-bottom:20px}
 <li>基础功能</li>
 <li>3-5个工作日</li>
 </ul>
+<a href="agreement-system.html?service=网站设计&level=单页&fee=¥1,000 / $145" class="btn-view-agreement">查看协议</a>
 </div>
 <div class="service-card">
-<h3>多页网站(3-5页)</h3>
+<h3>多页网站（3-5页）</h3>
 <div class="price">¥2,000 / $285</div>
 <ul>
 <li>响应式设计</li>
@@ -213,22 +226,23 @@ header .logo{position:static;justify-content:center;margin-bottom:20px}
 <li>联系表单</li>
 <li>5-7个工作日</li>
 </ul>
+<a href="agreement-system.html?service=网站设计&level=多页&fee=¥2,000 / $285" class="btn-view-agreement">查看协议</a>
 </div>
 <div class="service-card">
-<h3>完整网站(5-10页)</h3>
+<h3>完整网站（5-10页）</h3>
 <div class="price">¥4,000 / $570</div>
 <ul>
 <li>全功能网站</li>
-<li>高级SEO</li>
+<li>高级SEO优化</li>
 <li>所有功能</li>
 <li>7-10个工作日</li>
 </ul>
+<a href="agreement-system.html?service=网站设计&level=完整&fee=¥4,000 / $570" class="btn-view-agreement">查看协议</a>
 </div>
 </div>
 </div>
 </div>
 
-<!-- 社交媒体 -->
 <div class="section">
 <div class="container">
 <h2 class="section-title">📱 社交媒体设计</h2>
@@ -237,34 +251,36 @@ header .logo{position:static;justify-content:center;margin-bottom:20px}
 <h3>基础包</h3>
 <div class="price">¥250 / $35</div>
 <ul>
-<li>5张社交媒体图片</li>
+<li>5张社媒图片</li>
 <li>微信尺寸</li>
 <li>统一风格</li>
 </ul>
+<a href="agreement-system.html?service=社媒设计&level=基础包&fee=¥250 / $35" class="btn-view-agreement">查看协议</a>
 </div>
 <div class="service-card" style="border:3px solid #667eea">
 <h3>标准包 <span class="star">⭐</span></h3>
 <div class="price">¥500 / $70</div>
 <ul>
-<li>10张社交媒体图片</li>
+<li>10张社媒图片</li>
 <li>多平台尺寸</li>
 <li>品牌一致性</li>
 </ul>
+<a href="agreement-system.html?service=社媒设计&level=标准包&fee=¥500 / $70" class="btn-view-agreement">查看协议</a>
 </div>
 <div class="service-card">
-<h3>月度套餐</h3>
-<div class="price">¥1,000/月 / $145/mo</div>
+<h3>月度包</h3>
+<div class="price">¥1,000 / $145/月</div>
 <ul>
-<li>20张图片/月</li>
-<li>所有平台覆盖</li>
-<li>节日促销设计</li>
+<li>每月20张图片</li>
+<li>覆盖所有平台</li>
+<li>包含节日设计</li>
 </ul>
+<a href="agreement-system.html?service=社媒设计&level=月度包&fee=¥1,000 / $145" class="btn-view-agreement">查看协议</a>
 </div>
 </div>
 </div>
 </div>
 
-<!-- 品牌套餐 -->
 <div class="section" id="packages" style="background:linear-gradient(135deg,#667eea20 0%,#764ba220 100%)">
 <div class="container">
 <h2 class="section-title">🎁 品牌套餐（超值优惠）</h2>
@@ -276,10 +292,11 @@ header .logo{position:static;justify-content:center;margin-bottom:20px}
 <ul style="list-style:none">
 <li>✓ LOGO设计（标准版）</li>
 <li>✓ 双面名片设计</li>
-<li>✓ 5张社交媒体图片</li>
+<li>✓ 5张社媒图片</li>
 <li>✓ 统一品牌风格</li>
 </ul>
 <div class="save">单买 ¥2,000 / $285 | 节省 ¥500 / $70</div>
+<a href="agreement-system.html?service=品牌套餐&level=创业入门包&fee=¥1,500 / $215" class="btn-view-agreement">查看协议</a>
 </div>
 <div class="package-card">
 <span class="badge">⭐⭐ 推荐</span>
@@ -289,35 +306,36 @@ header .logo{position:static;justify-content:center;margin-bottom:20px}
 <li>✓ LOGO设计（高级版）</li>
 <li>✓ 双面名片设计</li>
 <li>✓ 单页网站</li>
-<li>✓ 10张社交媒体图片</li>
+<li>✓ 10张社媒图片</li>
 </ul>
 <div class="save">单买 ¥4,000 / $570 | 节省 ¥1,000 / $145</div>
+<a href="agreement-system.html?service=品牌套餐&level=成长套餐&fee=¥3,000 / $430" class="btn-view-agreement">查看协议</a>
 </div>
 <div class="package-card">
-<span class="badge">⭐ 全套方案</span>
+<span class="badge">⭐ 完整方案</span>
 <h3>全套品牌包</h3>
 <div class="price">¥6,000 / $855</div>
 <ul style="list-style:none">
 <li>✓ LOGO设计（高级版）</li>
 <li>✓ 名片设计</li>
 <li>✓ 多页网站（3-5页）</li>
-<li>✓ 20张社交媒体图片</li>
+<li>✓ 20张社媒图片</li>
 <li>✓ 3张海报设计</li>
-<li>✓ 简单品牌指南</li>
+<li>✓ 简易品牌手册</li>
 </ul>
 <div class="save">单买 ¥8,000+ / $1,145+ | 节省 ¥2,000+ / $285+</div>
+<a href="agreement-system.html?service=品牌套餐&level=全套品牌包&fee=¥6,000 / $855" class="btn-view-agreement">查看协议</a>
 </div>
 </div>
 </div>
 </div>
 
-<!-- 价格对比表 -->
 <div class="section">
 <div class="container">
 <h2 class="section-title">📊 服务对比</h2>
 <table class="comparison-table">
 <tr>
-<th>服务项目</th>
+<th>服务</th>
 <th>基础版</th>
 <th>标准版 ⭐</th>
 <th>高级版</th>
@@ -347,18 +365,27 @@ header .logo{position:static;justify-content:center;margin-bottom:20px}
 <td>¥1,000 / $145/月（20张）</td>
 </tr>
 <tr style="background:#667eea20">
-<td><strong>创业套餐</strong></td>
-<td colspan="3"><strong>¥1,500 / $215</strong> - LOGO+名片+5张社媒图（省¥500）</td>
+<td><strong>创业入门包</strong></td>
+<td colspan="3"><strong>¥1,500 / $215</strong> - LOGO+名片+5张社媒图（节省¥500 / $70）</td>
 </tr>
 </table>
 </div>
 </div>
 
-<!-- CTA -->
 <div class="cta" id="contact">
 <div class="container">
 <h2>准备好开始了吗？</h2>
 <p style="font-size:20px;margin:20px 0">立即联系我们，获取免费咨询和专业建议</p>
-<p style="font-size:18px;margin:10px 0">📧 邮箱：<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="bfd4d0ccd0d4ffccd0d3ded1de92d7ded6d1ded191dcd0d2">[email&#160;protected]</a></p>
+<p style="font-size:18px;margin:10px 0">📧 邮箱：kosok@solana-hainan.com</p>
 <p style="font-size:18px;margin:10px 0">🌐 网站：https://hainan-solana-website-v2.vercel.app</p>
-<a href="/cdn-cgi/l/email-protection#b0dbdfc3dfdbf0c3dfdcd1ded19dd8d1d9ded1de9e
+<a href="#contact" class="btn" onclick="alert('联系我们：\n\n📧 邮箱：kosok@solana-hainan.com\n💬 微信：kosok_hainan\n✈️ Telegram：@KOSOK0898\n\n我们将在30分钟内回复！');return false">免费咨询</a>
+<a href="agreement-system.html" class="btn btn-secondary">查看协议</a>
+</div>
+</div>
+
+<footer>
+<p>© 2025 海南索拉纳商务咨询中心 | 专业 · 高效 · 可信赖</p>
+</footer>
+
+</body>
+</html>

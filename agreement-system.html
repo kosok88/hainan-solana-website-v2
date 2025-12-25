@@ -446,19 +446,35 @@ document.getElementById('totalFee').textContent=fee;
 document.getElementById('fee1').textContent=fee;
 
 // 计算定金和尾款
-const feeNum=parseInt(fee.replace(/[^0-9]/g,''));
-const deposit=feeNum/2;
-const currency=fee.includes('¥')?'¥':'$';
-const currencyPos=fee.indexOf(currency);
-const usdPart=fee.includes('/')?fee.substring(fee.indexOf('/')+1).trim():'';
-const usdNum=usdPart?parseInt(usdPart.replace(/[^0-9]/g,'')):0;
-const usdDeposit=usdNum?usdNum/2:0;
+// 分离人民币和美元价格
+let cnyAmount=0;
+let usdAmount=0;
+
+if(fee.includes('/')){
+// 格式：¥800 / $115
+const parts=fee.split('/');
+const cnyPart=parts[0].trim();
+const usdPart=parts[1].trim();
+cnyAmount=parseInt(cnyPart.replace(/[^0-9]/g,''));
+usdAmount=parseInt(usdPart.replace(/[^0-9]/g,''));
+}else if(fee.includes('¥')){
+// 只有人民币
+cnyAmount=parseInt(fee.replace(/[^0-9]/g,''));
+}else if(fee.includes('$')){
+// 只有美元
+usdAmount=parseInt(fee.replace(/[^0-9]/g,''));
+}
+
+const cnyDeposit=cnyAmount/2;
+const usdDeposit=usdAmount/2;
 
 let depositText='';
-if(usdPart){
-depositText=`<strong>¥${deposit} / $${usdDeposit}</strong>`;
-}else{
-depositText=`<strong>${currency}${deposit}</strong>`;
+if(cnyAmount>0&&usdAmount>0){
+depositText=`<strong>¥${cnyDeposit} / $${usdDeposit}</strong>`;
+}else if(cnyAmount>0){
+depositText=`<strong>¥${cnyDeposit}</strong>`;
+}else if(usdAmount>0){
+depositText=`<strong>$${usdDeposit}</strong>`;
 }
 
 document.getElementById('deposit1').innerHTML=depositText;
