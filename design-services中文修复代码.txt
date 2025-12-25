@@ -1,0 +1,68 @@
+# design-services.html 修复要点
+
+## 1. 添加样式
+
+在</style>之前添加按钮样式：
+
+```css
+.btn-view-agreement{display:inline-block;margin-top:15px;padding:10px 20px;background:#667eea;color:#fff;text-decoration:none;border-radius:5px;font-size:14px;transition:0.3s}
+.btn-view-agreement:hover{background:#5568d3;transform:scale(1.05)}
+.package-card .btn-view-agreement{background:#fff;color:#667eea;font-weight:bold}
+.package-card .btn-view-agreement:hover{background:#f0f0f0}
+nav .nav-links{display:flex;gap:10px;flex-wrap:wrap}
+```
+
+## 2. 修改导航栏
+
+将原来的导航栏修改为：
+
+```html
+<nav>
+<div class="container">
+<div class="nav-links">
+<a href="index.html">返回首页</a>
+<a href="services.html">商务服务</a>
+<a href="#packages">套餐优惠</a>
+<a href="agreement-system.html">查看协议</a>
+<a href="#contact">联系我们</a>
+</div>
+<a href="design-services-en.html" class="lang-switch">English</a>
+</div>
+</nav>
+```
+
+## 3. 在每个服务卡片添加按钮
+
+示例（LOGO标准版）：
+
+```html
+<div class="service-card" style="border:3px solid #667eea">
+<h3>标准版 <span class="star">⭐</span></h3>
+<div class="price">¥800 / $115</div>
+<ul>
+<li>10个AI生成方案</li>
+<li>5次修改机会</li>
+<li>PNG + JPG + 矢量文件</li>
+<li>黑白版本</li>
+<li>1-2个工作日交付</li>
+</ul>
+<a href="agreement-system.html?service=LOGO设计&level=标准版&fee=¥800 / $115" class="btn-view-agreement">查看协议</a>
+</div>
+```
+
+## 4. 修改CTA按钮
+
+将原来的CTA区域修改为：
+
+```html
+<div class="cta" id="contact">
+<div class="container">
+<h2>准备好开始了吗？</h2>
+<p style="font-size:20px;margin:20px 0">立即联系我们，获取免费咨询和专业建议</p>
+<p style="font-size:18px;margin:10px 0">📧 邮箱：kosok@solana-hainan.com</p>
+<p style="font-size:18px;margin:10px 0">🌐 网站：https://hainan-solana-website-v2.vercel.app</p>
+<a href="#contact" class="btn" onclick="alert('联系我们：\n\n邮箱：kosok@solana-hainan.com\n微信：kosok_hainan\nTelegram：@KOSOK0898\n\n30分钟内回复！');return false">免费咨询</a>
+<a href="agreement-system.html" class="btn" style="background:#fff;color:#667eea;margin-left:10px">查看协议</a>
+</div>
+</div>
+```

@@ -15,8 +15,9 @@ header .logo span{font-size:24px;font-weight:bold}
 header h1{font-size:48px;margin-bottom:10px}
 header p{font-size:20px;opacity:0.9}
 nav{background:#333;padding:15px 0;position:sticky;top:0;z-index:100}
-nav .container{display:flex;justify-content:space-between;align-items:center}
-nav a{color:#fff;text-decoration:none;padding:10px 20px;transition:0.3s}
+nav .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+nav .nav-links{display:flex;gap:10px;flex-wrap:wrap}
+nav a{color:#fff;text-decoration:none;padding:10px 15px;transition:0.3s;white-space:nowrap}
 nav a:hover{background:#667eea;border-radius:5px}
 .lang-switch{background:#667eea;color:#fff;padding:8px 15px;border-radius:5px;text-decoration:none;font-size:14px}
 .lang-switch:hover{background:#5568d3}
@@ -30,19 +31,24 @@ nav a:hover{background:#667eea;border-radius:5px}
 .service-card ul{list-style:none;margin:20px 0}
 .service-card li{padding:8px 0;border-bottom:1px solid #e0e0e0}
 .service-card li:before{content:"✓ ";color:#4ade80;font-weight:bold}
+.service-card .btn-view-agreement{display:inline-block;margin-top:15px;padding:10px 20px;background:#667eea;color:#fff;text-decoration:none;border-radius:5px;font-size:14px;transition:0.3s}
+.service-card .btn-view-agreement:hover{background:#5568d3;transform:scale(1.05)}
 .package-card{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;padding:40px;border-radius:10px;box-shadow:0 5px 20px rgba(0,0,0,0.2)}
 .package-card h3{font-size:28px;margin-bottom:10px}
 .package-card .badge{background:#4ade80;color:#333;padding:5px 15px;border-radius:20px;font-size:14px;display:inline-block;margin-bottom:15px}
 .package-card .price{font-size:42px;font-weight:bold;margin:20px 0}
 .package-card .save{background:rgba(255,255,255,0.2);padding:10px 20px;border-radius:5px;display:inline-block;margin-top:15px}
+.package-card .btn-view-agreement{display:inline-block;margin-top:15px;padding:10px 20px;background:#fff;color:#667eea;text-decoration:none;border-radius:5px;font-size:14px;font-weight:bold;transition:0.3s}
+.package-card .btn-view-agreement:hover{background:#f0f0f0;transform:scale(1.05)}
 .feature-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;margin:40px 0}
 .feature-item{background:#fff;padding:30px;border-radius:10px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,0.05)}
 .feature-item .icon{font-size:48px;margin-bottom:15px}
 .feature-item h4{color:#667eea;margin-bottom:10px}
 .cta{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;text-align:center;padding:80px 20px;margin-top:60px}
 .cta h2{font-size:36px;margin-bottom:20px}
-.cta .btn{background:#4ade80;color:#333;padding:15px 40px;font-size:18px;border:none;border-radius:30px;cursor:pointer;text-decoration:none;display:inline-block;margin-top:20px;transition:0.3s}
+.cta .btn{background:#4ade80;color:#333;padding:15px 40px;font-size:18px;border:none;border-radius:30px;cursor:pointer;text-decoration:none;display:inline-block;margin:10px;transition:0.3s}
 .cta .btn:hover{background:#fff;transform:scale(1.05)}
+.cta .btn-secondary{background:#fff;color:#667eea}
 .comparison-table{width:100%;border-collapse:collapse;margin:40px 0;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,0.1)}
 .comparison-table th,.comparison-table td{padding:15px;text-align:left;border-bottom:1px solid #e0e0e0}
 .comparison-table th{background:#667eea;color:#fff;font-weight:bold}
@@ -55,6 +61,9 @@ header h1{font-size:32px}
 .service-grid{grid-template-columns:1fr}
 .package-card .price{font-size:32px}
 header .logo{position:static;justify-content:center;margin-bottom:20px}
+nav .container{justify-content:center}
+nav .nav-links{justify-content:center;width:100%}
+.cta .btn{display:block;width:90%;margin:10px auto}
 }
 </style>
 </head>
@@ -62,7 +71,7 @@ header .logo{position:static;justify-content:center;margin-bottom:20px}
 
 <header>
 <div class="logo">
-<img src="logo.png" alt="Hainan Solana Logo" onerror="this.style.display='none'">
+<img src="logo.svg" alt="Hainan Solana Logo" onerror="this.style.display='none'">
 <span>🌴 Hainan Solana</span>
 </div>
 <h1>🎨 Design Services</h1>
@@ -71,10 +80,11 @@ header .logo{position:static;justify-content:center;margin-bottom:20px}
 
 <nav>
 <div class="container">
-<div>
+<div class="nav-links">
 <a href="index.html">Home</a>
 <a href="services.html">Business Services</a>
 <a href="#packages">Packages</a>
+<a href="agreement-system.html">View Agreement</a>
 <a href="#contact">Contact</a>
 </div>
 <a href="design-services.html" class="lang-switch">中文</a>
@@ -124,6 +134,7 @@ header .logo{position:static;justify-content:center;margin-bottom:20px}
 <li>PNG + JPG formats</li>
 <li>2-3 business days</li>
 </ul>
+<a href="agreement-system.html?service=LOGO Design&level=Basic&fee=¥400 / $55" class="btn-view-agreement">View Agreement</a>
 </div>
 <div class="service-card" style="border:3px solid #667eea">
 <h3>Standard <span class="star">⭐</span></h3>
@@ -135,6 +146,7 @@ header .logo{position:static;justify-content:center;margin-bottom:20px}
 <li>Black & white version</li>
 <li>1-2 business days</li>
 </ul>
+<a href="agreement-system.html?service=LOGO Design&level=Standard&fee=¥800 / $115" class="btn-view-agreement">View Agreement</a>
 </div>
 <div class="service-card">
 <h3>Premium</h3>
@@ -147,6 +159,7 @@ header .logo{position:static;justify-content:center;margin-bottom:20px}
 <li>24-hour delivery</li>
 <li>Brand usage guidelines</li>
 </ul>
+<a href="agreement-system.html?service=LOGO Design&level=Premium&fee=¥1,200 / $170" class="btn-view-agreement">View Agreement</a>
 </div>
 </div>
 </div>
@@ -165,6 +178,7 @@ header .logo{position:static;justify-content:center;margin-bottom:20px}
 <li>2 revisions</li>
 <li>Design files provided</li>
 </ul>
+<a href="agreement-system.html?service=Business Card&level=Single-sided&fee=¥200 / $30" class="btn-view-agreement">View Agreement</a>
 </div>
 <div class="service-card" style="border:3px solid #667eea">
 <h3>Double-sided <span class="star">⭐</span></h3>
@@ -174,6 +188,7 @@ header .logo{position:static;justify-content:center;margin-bottom:20px}
 <li>3 revisions</li>
 <li>Design files provided</li>
 </ul>
+<a href="agreement-system.html?service=Business Card&level=Double-sided&fee=¥300 / $45" class="btn-view-agreement">View Agreement</a>
 </div>
 <div class="service-card">
 <h3>Design + Print</h3>
@@ -184,6 +199,7 @@ header .logo{position:static;justify-content:center;margin-bottom:20px}
 <li>Premium paper</li>
 <li>Free shipping to Hainan</li>
 </ul>
+<a href="agreement-system.html?service=Business Card&level=Design+Print&fee=¥700 / $100" class="btn-view-agreement">View Agreement</a>
 </div>
 </div>
 </div>
@@ -203,6 +219,7 @@ header .logo{position:static;justify-content:center;margin-bottom:20px}
 <li>Basic features</li>
 <li>3-5 business days</li>
 </ul>
+<a href="agreement-system.html?service=Website&level=Single Page&fee=¥1,000 / $145" class="btn-view-agreement">View Agreement</a>
 </div>
 <div class="service-card">
 <h3>Multi-page (3-5 pages)</h3>
@@ -213,6 +230,7 @@ header .logo{position:static;justify-content:center;margin-bottom:20px}
 <li>Contact form</li>
 <li>5-7 business days</li>
 </ul>
+<a href="agreement-system.html?service=Website&level=Multi-page&fee=¥2,000 / $285" class="btn-view-agreement">View Agreement</a>
 </div>
 <div class="service-card">
 <h3>Complete (5-10 pages)</h3>
@@ -223,6 +241,7 @@ header .logo{position:static;justify-content:center;margin-bottom:20px}
 <li>All features</li>
 <li>7-10 business days</li>
 </ul>
+<a href="agreement-system.html?service=Website&level=Complete&fee=¥4,000 / $570" class="btn-view-agreement">View Agreement</a>
 </div>
 </div>
 </div>
@@ -241,6 +260,7 @@ header .logo{position:static;justify-content:center;margin-bottom:20px}
 <li>WeChat sizes</li>
 <li>Unified style</li>
 </ul>
+<a href="agreement-system.html?service=Social Media&level=Basic&fee=¥250 / $35" class="btn-view-agreement">View Agreement</a>
 </div>
 <div class="service-card" style="border:3px solid #667eea">
 <h3>Standard Package <span class="star">⭐</span></h3>
@@ -250,6 +270,7 @@ header .logo{position:static;justify-content:center;margin-bottom:20px}
 <li>Multi-platform sizes</li>
 <li>Brand consistency</li>
 </ul>
+<a href="agreement-system.html?service=Social Media&level=Standard&fee=¥500 / $70" class="btn-view-agreement">View Agreement</a>
 </div>
 <div class="service-card">
 <h3>Monthly Package</h3>
@@ -259,6 +280,7 @@ header .logo{position:static;justify-content:center;margin-bottom:20px}
 <li>All platforms covered</li>
 <li>Holiday designs included</li>
 </ul>
+<a href="agreement-system.html?service=Social Media&level=Monthly&fee=¥1,000 / $145" class="btn-view-agreement">View Agreement</a>
 </div>
 </div>
 </div>
@@ -280,6 +302,7 @@ header .logo{position:static;justify-content:center;margin-bottom:20px}
 <li>✓ Unified Brand Style</li>
 </ul>
 <div class="save">Regular ¥2,000 / $285 | Save ¥500 / $70</div>
+<a href="agreement-system.html?service=Brand Package&level=Startup&fee=¥1,500 / $215" class="btn-view-agreement">View Agreement</a>
 </div>
 <div class="package-card">
 <span class="badge">⭐⭐ Recommended</span>
@@ -292,6 +315,7 @@ header .logo{position:static;justify-content:center;margin-bottom:20px}
 <li>✓ 10 Social Media Graphics</li>
 </ul>
 <div class="save">Regular ¥4,000 / $570 | Save ¥1,000 / $145</div>
+<a href="agreement-system.html?service=Brand Package&level=Growth&fee=¥3,000 / $430" class="btn-view-agreement">View Agreement</a>
 </div>
 <div class="package-card">
 <span class="badge">⭐ Complete Solution</span>
@@ -306,6 +330,7 @@ header .logo{position:static;justify-content:center;margin-bottom:20px}
 <li>✓ Simple Brand Guidelines</li>
 </ul>
 <div class="save">Regular ¥8,000+ / $1,145+ | Save ¥2,000+ / $285+</div>
+<a href="agreement-system.html?service=Brand Package&level=Complete&fee=¥6,000 / $855" class="btn-view-agreement">View Agreement</a>
 </div>
 </div>
 </div>
@@ -361,8 +386,8 @@ header .logo{position:static;justify-content:center;margin-bottom:20px}
 <p style="font-size:20px;margin:20px 0">Contact us now for free consultation and professional advice</p>
 <p style="font-size:18px;margin:10px 0">📧 Email: kosok@solana-hainan.com</p>
 <p style="font-size:18px;margin:10px 0">🌐 Website: https://hainan-solana-website-v2.vercel.app</p>
-<a href="mailto:kosok@solana-hainan.com" class="btn">Free Consultation</a>
-<a href="agreement-en.html" class="btn" style="background:#fff;color:#667eea;margin-left:10px">View Agreement</a>
+<a href="#contact" class="btn" onclick="alert('Please contact us via:\n\nEmail: kosok@solana-hainan.com\nWeChat: kosok_hainan\nTelegram: @KOSOK0898\n\nWe will respond within 30 minutes!');return false">Free Consultation</a>
+<a href="agreement-system.html" class="btn btn-secondary">View Agreement</a>
 </div>
 </div>
 
