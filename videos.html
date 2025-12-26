@@ -1,1 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>琼岛影像志 - 海南索拉纳商务咨询中心</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Microsoft YaHei',sans-serif;line-height:1.6;color:#333;background:#f5f5f5}
+.container{max-width:1200px;margin:0 auto;padding:20px}
+header{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;padding:60px 20px;text-align:center}
+header h1{font-size:42px;margin-bottom:10px}
+header p{font-size:18px;opacity:0.9}
+nav{background:#333;padding:15px 0;position:sticky;top:0;z-index:100}
+nav .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+nav a{color:#fff;text-decoration:none;padding:10px 15px;transition:0.3s}
+nav a:hover{background:#667eea;border-radius:5px}
+.lang-switch{background:#667eea;color:#fff;padding:8px 15px;border-radius:5px;text-decoration:none;font-size:14px;cursor:pointer}
+.lang-switch:hover{background:#5568d3}
+.section{padding:60px 20px;background:#fff;margin:20px 0;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,0.1)}
+.section-title{text-align:center;font-size:36px;margin-bottom:40px;color:#667eea}
+.video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:30px}
+.video-card{background:#f8f9fa;border-radius:10px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.1);transition:0.3s}
+.video-card:hover{transform:translateY(-5px);box-shadow:0 5px 20px rgba(0,0,0,0.15)}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;background:#000}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%}
+.video-info{padding:20px}
+.video-info h3{color:#667eea;margin-bottom:10px;font-size:20px}
+.video-info p{color:#666;font-size:14px;line-height:1.5}
+.video-source{display:inline-block;margin-top:10px;padding:5px 10px;background:#667eea;color:#fff;border-radius:5px;font-size:12px}
+.video-link{display:inline-block;margin-top:10px;padding:8px 15px;background:#4ade80;color:#fff;text-decoration:none;border-radius:5px;font-size:14px;transition:0.3s}
+.video-link:hover{background:#3bc970;transform:scale(1.05)}
+footer{background:#333;color:#fff;text-align:center;padding:30px 20px;margin-top:40px}
+.notice{background:#fff3cd;border:1px solid #ffc107;border-radius:5px;padding:15px;margin:20px 0;color:#856404}
+@media (max-width:768px){
+header h1{font-size:32px}
+.section-title{font-size:28px}
+.video-grid{grid-template-columns:1fr}
+nav .container{justify-content:center}
+}
+</style>
+</head>
+<body>
 
+<header>
+<h1>🎬 琼岛影像志</h1>
+<p id="headerDesc">用镜头讲述海南故事，用影像展现自贸港魅力</p>
+</header>
+
+<nav>
+<div class="container">
+<div>
+<a href="index.html" id="nav1">返回首页</a>
+<a href="services.html" id="nav2">商务服务</a>
+<a href="design-services.html" id="nav3">设计服务</a>
+<a href="#contact" id="nav4">联系我们</a>
+</div>
+<span class="lang-switch" onclick="toggleLang()" id="langBtn">English</span>
+</div>
+</nav>
+
+<div class="container">
+
+<div class="notice" id="notice">
+💡 <strong>提示：</strong>视频来源于YouTube（CGTN官方）和B站（央视、新华社等官方频道）。中国大陆用户建议访问B站观看，海外用户可直接观看YouTube视频。
+</div>
+
+<div class="section">
+<h2 class="section-title" id="mainTitle">海南自贸港视频精选</h2>
+<div class="video-grid">
+
+<!-- 视频1：海南自贸港封关运作 -->
+<div class="video-card">
+<div class="video-wrapper">
+<iframe 
+  src="https://www.youtube.com/embed/aFu_SKmNUs8" 
+  frameborder="0" 
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+  allowfullscreen>
+</iframe>
+</div>
+<div class="video-info">
+<h3 id="v1title">海南自贸港全岛封关运作</h3>
+<p id="v1desc">2024年12月，海南自贸港正式启动全岛封关运作，标志着中国开放进入新阶段。了解"一线放开、二线管住"的创新监管模式。</p>
+<span class="video-source">YouTube - 官方</span>
+<a href="https://www.bilibili.com/video/search?keyword=海南自贸港全岛封关" target="_blank" class="video-link" id="v1link">B站搜索同类视频</a>
+</div>
+</div>
+
+<!-- 视频2：CGTN海南自贸港报道 -->
+<div class="video-card">
+<div class="video-wrapper">
+<iframe 
+  src="https://www.youtube.com/embed/search?q=Hainan+Free+Trade+Port+CGTN+2024" 
+  frameborder="0" 
+  allowfullscreen>
+</iframe>
+</div>
+<div class="video-info">
+<h3 id="v2title">海南自贸港国际报道</h3>
+<p id="v2desc">CGTN深度报道海南自贸港的发展历程、政策优势和未来规划。了解国际视角下的海南机遇。</p>
+<span class="video-source">YouTube - CGTN</span>
+<a href="https://www.bilibili.com/video/search?keyword=央视财经+海南自贸港" target="_blank" class="video-link" id="v2link">B站搜索同类视频</a>
+</div>
+</div>
+
+<!-- 视频3：海南风景航拍 -->
+<div class="video-card">
+<div class="video-wrapper">
+<iframe 
+  src="https://www.youtube.com/embed/search?q=Hainan+China+4K+aerial+view" 
+  frameborder="0" 
+  allowfullscreen>
+</iframe>
+</div>
+<div class="video-info">
+<h3 id="v3title">海南风光4K航拍</h3>
+<p id="v3desc">从空中俯瞰海南的壮丽景色，碧海蓝天、椰林沙滩、热带雨林，感受中国最美海岛的魅力。</p>
+<span class="video-source">YouTube - 4K</span>
+<a href="https://www.bilibili.com/video/search?keyword=海南航拍+4K" target="_blank" class="video-link" id="v3link">B站搜索同类视频</a>
+</div>
+</div>
+
+<!-- 视频4：海南投资环境 -->
+<div class="video-card">
+<div class="video-wrapper">
+<iframe 
+  src="https://www.youtube.com/embed/search?q=Hainan+investment+business+environment" 
+  frameborder="0" 
+  allowfullscreen>
+</iframe>
+</div>
+<div class="video-info">
+<h3 id="v4title">海南投资创业环境</h3>
+<p id="v4desc">了解海南的营商环境、产业布局、投资机遇。从政策扶持到基础设施，全方位展示海南的投资优势。</p>
+<span class="video-source">YouTube - 专题</span>
+<a href="https://www.bilibili.com/video/search?keyword=新华社+海南投资" target="_blank" class="video-link" id="v4link">B站搜索同类视频</a>
+</div>
+</div>
+
+<!-- 视频5：海南美食文化 -->
+<div class="video-card">
+<div class="video-wrapper">
+<iframe 
+  src="https://www.youtube.com/embed/search?q=Hainan+food+culture+cuisine" 
+  frameborder="0" 
+  allowfullscreen>
+</iframe>
+</div>
+<div class="video-info">
+<h3 id="v5title">海南美食文化之旅</h3>
+<p id="v5desc">品味海南四大名菜：文昌鸡、加积鸭、和乐蟹、东山羊。探索海南独特的饮食文化和热带风味。</p>
+<span class="video-source">YouTube - 美食</span>
+<a href="https://www.bilibili.com/video/search?keyword=海南美食+四大名菜" target="_blank" class="video-link" id="v5link">B站搜索同类视频</a>
+</div>
+</div>
+
+<!-- 视频6：海南生活方式 -->
+<div class="video-card">
+<div class="video-wrapper">
+<iframe 
+  src="https://www.youtube.com/embed/search?q=Living+in+Hainan+expat" 
+  frameborder="0" 
+  allowfullscreen>
+</iframe>
+</div>
+<div class="video-info">
+<h3 id="v6title">海南生活体验</h3>
+<p id="v6desc">探访在海南工作生活的外国人和创业者，了解真实的海南生活。气候宜人、国际化、创业机会多。</p>
+<span class="video-source">YouTube - 纪实</span>
+<a href="https://www.bilibili.com/video/search?keyword=海南生活+外国人" target="_blank" class="video-link" id="v6link">B站搜索同类视频</a>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- CGTN专题推荐 -->
+<div class="section">
+<h2 class="section-title" id="cgtnTitle">CGTN官方专题</h2>
+<div style="text-align:center;padding:20px">
+<p id="cgtnDesc" style="font-size:18px;margin-bottom:20px">更多海南自贸港官方视频，请访问CGTN专题页面</p>
+<a href="https://www.cgtn.com/specials/2025/hainan-free-trade-port.html" target="_blank" 
+   style="display:inline-block;padding:15px 40px;background:#667eea;color:#fff;text-decoration:none;border-radius:30px;font-size:18px;transition:0.3s"
+   onmouseover="this.style.background='#5568d3'" 
+   onmouseout="this.style.background='#667eea'"
+   id="cgtnLink">
+  访问CGTN海南专题
+</a>
+</div>
+</div>
+
+</div>
+
+<footer id="contact">
+<div class="container">
+<p>© 2025 海南索拉纳商务咨询中心 | 专业 · 高效 · 可信赖</p>
+<p style="margin-top:10px">📧 kosok@solana-hainan.com | 💬 微信：kosok_hainan | ✈️ Telegram：@KOSOK0898</p>
+</div>
+</footer>
+
+<script>
+let currentLang='zh';
+const translations={
+zh:{
+headerDesc:'用镜头讲述海南故事，用影像展现自贸港魅力',
+nav1:'返回首页',
+nav2:'商务服务',
+nav3:'设计服务',
+nav4:'联系我们',
+notice:'💡 <strong>提示：</strong>视频来源于YouTube（CGTN官方）和B站（央视、新华社等官方频道）。中国大陆用户建议访问B站观看，海外用户可直接观看YouTube视频。',
+mainTitle:'海南自贸港视频精选',
+v1title:'海南自贸港全岛封关运作',
+v1desc:'2024年12月，海南自贸港正式启动全岛封关运作，标志着中国开放进入新阶段。了解"一线放开、二线管住"的创新监管模式。',
+v1link:'B站搜索同类视频',
+v2title:'海南自贸港国际报道',
+v2desc:'CGTN深度报道海南自贸港的发展历程、政策优势和未来规划。了解国际视角下的海南机遇。',
+v2link:'B站搜索同类视频',
+v3title:'海南风光4K航拍',
+v3desc:'从空中俯瞰海南的壮丽景色，碧海蓝天、椰林沙滩、热带雨林，感受中国最美海岛的魅力。',
+v3link:'B站搜索同类视频',
+v4title:'海南投资创业环境',
+v4desc:'了解海南的营商环境、产业布局、投资机遇。从政策扶持到基础设施，全方位展示海南的投资优势。',
+v4link:'B站搜索同类视频',
+v5title:'海南美食文化之旅',
+v5desc:'品味海南四大名菜：文昌鸡、加积鸭、和乐蟹、东山羊。探索海南独特的饮食文化和热带风味。',
+v5link:'B站搜索同类视频',
+v6title:'海南生活体验',
+v6desc:'探访在海南工作生活的外国人和创业者，了解真实的海南生活。气候宜人、国际化、创业机会多。',
+v6link:'B站搜索同类视频',
+cgtnTitle:'CGTN官方专题',
+cgtnDesc:'更多海南自贸港官方视频，请访问CGTN专题页面',
+cgtnLink:'访问CGTN海南专题'
+},
+en:{
+headerDesc:'Telling Hainan Stories Through Lens, Showcasing FTP Charm Through Images',
+nav1:'Home',
+nav2:'Business Services',
+nav3:'Design Services',
+nav4:'Contact',
+notice:'💡 <strong>Notice:</strong> Videos from YouTube (CGTN Official) and Bilibili (CCTV, Xinhua, etc.). China mainland users: Bilibili recommended. International users: YouTube available.',
+mainTitle:'Hainan Free Trade Port Videos',
+v1title:'Hainan FTP Island-wide Customs Operation',
+v1desc:'In December 2024, Hainan Free Trade Port officially launched island-wide customs operations, marking a new phase in China\'s opening-up. Learn about the innovative "freer at first line, regulated at second line" supervision model.',
+v1link:'Search on Bilibili',
+v2title:'Hainan FTP International Coverage',
+v2desc:'CGTN in-depth coverage of Hainan FTP development, policy advantages, and future plans. International perspective on Hainan opportunities.',
+v2link:'Search on Bilibili',
+v3title:'Hainan Scenery 4K Aerial View',
+v3desc:'Aerial view of Hainan\'s magnificent scenery: blue sea and sky, palm beaches, tropical rainforests. Experience the charm of China\'s most beautiful island.',
+v3link:'Search on Bilibili',
+v4title:'Hainan Investment Environment',
+v4desc:'Understand Hainan\'s business environment, industrial layout, and investment opportunities. Comprehensive showcase of investment advantages from policy support to infrastructure.',
+v4link:'Search on Bilibili',
+v5title:'Hainan Food Culture Journey',
+v5desc:'Taste Hainan\'s four famous dishes: Wenchang Chicken, Jiaji Duck, Hele Crab, Dongshan Lamb. Explore unique culinary culture and tropical flavors.',
+v5link:'Search on Bilibili',
+v6title:'Living in Hainan',
+v6desc:'Visit foreigners and entrepreneurs working and living in Hainan. Real life in Hainan: pleasant climate, internationalization, abundant opportunities.',
+v6link:'Search on Bilibili',
+cgtnTitle:'CGTN Official Coverage',
+cgtnDesc:'For more official Hainan Free Trade Port videos, visit CGTN special page',
+cgtnLink:'Visit CGTN Hainan Page'
+}
+};
+
+function toggleLang(){
+currentLang=currentLang==='zh'?'en':'zh';
+const t=translations[currentLang];
+document.getElementById('langBtn').textContent=currentLang==='zh'?'English':'中文';
+document.getElementById('headerDesc').textContent=t.headerDesc;
+document.getElementById('nav1').textContent=t.nav1;
+document.getElementById('nav2').textContent=t.nav2;
+document.getElementById('nav3').textContent=t.nav3;
+document.getElementById('nav4').textContent=t.nav4;
+document.getElementById('notice').innerHTML=t.notice;
+document.getElementById('mainTitle').textContent=t.mainTitle;
+document.getElementById('v1title').textContent=t.v1title;
+document.getElementById('v1desc').textContent=t.v1desc;
+document.getElementById('v1link').textContent=t.v1link;
+document.getElementById('v2title').textContent=t.v2title;
+document.getElementById('v2desc').textContent=t.v2desc;
+document.getElementById('v2link').textContent=t.v2link;
+document.getElementById('v3title').textContent=t.v3title;
+document.getElementById('v3desc').textContent=t.v3desc;
+document.getElementById('v3link').textContent=t.v3link;
+document.getElementById('v4title').textContent=t.v4title;
+document.getElementById('v4desc').textContent=t.v4desc;
+document.getElementById('v4link').textContent=t.v4link;
+document.getElementById('v5title').textContent=t.v5title;
+document.getElementById('v5desc').textContent=t.v5desc;
+document.getElementById('v5link').textContent=t.v5link;
+document.getElementById('v6title').textContent=t.v6title;
+document.getElementById('v6desc').textContent=t.v6desc;
+document.getElementById('v6link').textContent=t.v6link;
+document.getElementById('cgtnTitle').textContent=t.cgtnTitle;
+document.getElementById('cgtnDesc').textContent=t.cgtnDesc;
+document.getElementById('cgtnLink').textContent=t.cgtnLink;
+}
+</script>
+
+</body>
+</html>
