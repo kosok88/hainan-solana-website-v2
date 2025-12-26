@@ -13,9 +13,12 @@ header h1{font-size:42px;margin-bottom:10px}
 header p{font-size:18px;opacity:0.9}
 nav{background:#333;padding:15px 0;position:sticky;top:0;z-index:100}
 nav .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+nav .logo-brand{display:flex;align-items:center;gap:15px}
+nav .logo-brand img{height:80px;width:auto;filter:drop-shadow(0 2px 8px rgba(0,0,0,.4))}
+nav .logo-brand span{font-size:24px;font-weight:700;color:#fff}
 nav a{color:#fff;text-decoration:none;padding:10px 15px;transition:0.3s}
 nav a:hover{background:#667eea;border-radius:5px}
-.lang-switch{background:#667eea;color:#fff;padding:8px 15px;border-radius:5px;text-decoration:none;font-size:14px;cursor:pointer}
+.lang-switch{background:#667eea;color:#fff;padding:8px 15px;border-radius:5px;cursor:pointer;border:none;font-size:14px}
 .lang-switch:hover{background:#5568d3}
 .section{padding:60px 20px;background:#fff;margin:20px 0;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,0.1)}
 .section-title{text-align:center;font-size:36px;margin-bottom:40px;color:#667eea}
@@ -28,53 +31,53 @@ nav a:hover{background:#667eea;border-radius:5px}
 .video-info h3{color:#667eea;margin-bottom:10px;font-size:20px}
 .video-info p{color:#666;font-size:14px;line-height:1.5}
 .video-source{display:inline-block;margin-top:10px;padding:5px 10px;background:#667eea;color:#fff;border-radius:5px;font-size:12px}
-.video-link{display:inline-block;margin-top:10px;padding:8px 15px;background:#4ade80;color:#fff;text-decoration:none;border-radius:5px;font-size:14px;transition:0.3s}
+.video-link{display:inline-block;margin-top:10px;padding:8px 15px;background:#4ade80;color:#fff;text-decoration:none;border-radius:5px;font-size:14px;transition:0.3s;margin-right:10px}
 .video-link:hover{background:#3bc970;transform:scale(1.05)}
 footer{background:#333;color:#fff;text-align:center;padding:30px 20px;margin-top:40px}
-.notice{background:#fff3cd;border:1px solid #ffc107;border-radius:5px;padding:15px;margin:20px 0;color:#856404}
-.rick-free{background:#d4edda;border:1px solid #28a745;border-radius:5px;padding:15px;margin:20px 0;color:#155724;text-align:center;font-weight:bold}
+.notice{background:#d4edda;border:1px solid #28a745;border-radius:5px;padding:15px;margin:20px 0;color:#155724;text-align:center;font-weight:bold}
 @media (max-width:768px){
 header h1{font-size:32px}
 .section-title{font-size:28px}
 .video-grid{grid-template-columns:1fr}
 nav .container{justify-content:center}
+nav .logo-brand{margin-bottom:10px}
 }
 </style>
 </head>
 <body>
 
-<header>
-<h1>🎬 琼岛影像志</h1>
-<p id="headerDesc">用镜头讲述海南故事，用影像展现自贸港魅力</p>
-</header>
-
 <nav>
 <div class="container">
+<div class="logo-brand">
+<img src="logo.png" alt="Logo">
+<span id="brand">海南索拉纳</span>
+</div>
 <div>
 <a href="index.html" id="nav1">返回首页</a>
 <a href="services.html" id="nav2">商务服务</a>
 <a href="design-services.html" id="nav3">设计服务</a>
 <a href="#contact" id="nav4">联系我们</a>
 </div>
-<span class="lang-switch" onclick="toggleLang()" id="langBtn">English</span>
+<button class="lang-switch" onclick="toggleLang()" id="langBtn">English</button>
 </div>
 </nav>
 
+<header>
+<h1>🎬 琼岛影像志</h1>
+<p id="headerDesc">用镜头讲述海南故事，用影像展现自贸港魅力</p>
+</header>
+
 <div class="container">
 
-<div class="rick-free" id="rickFree">
-🎉 恭喜！Rick终于走了！这是全新的视频页面！
-</div>
-
 <div class="notice" id="notice">
-💡 <strong>提示：</strong>视频来源于YouTube（CGTN官方）。海外用户可直接观看，中国大陆用户可点击下方B站链接。
+🎉 所有视频已更新！点击下方链接在YouTube或B站观看
 </div>
 
 <div class="section">
 <h2 class="section-title" id="mainTitle">海南自贸港视频精选</h2>
 <div class="video-grid">
 
-<!-- 视频1：海南自贸港封关运作 - 使用确认的真实YouTube ID -->
+<!-- 视频1：海南自贸港封关 -->
 <div class="video-card">
 <div class="video-wrapper">
 <iframe 
@@ -86,84 +89,94 @@ nav .container{justify-content:center}
 </div>
 <div class="video-info">
 <h3 id="v1title">海南自贸港全岛封关运作</h3>
-<p id="v1desc">2024年12月，海南自贸港正式启动全岛封关运作，标志着中国开放进入新阶段。来自海南国际传媒中心的官方报道。</p>
-<span class="video-source">YouTube - 官方</span>
-<a href="https://www.bilibili.com/video/search?keyword=海南自贸港全岛封关" target="_blank" class="video-link" id="v1link">B站搜索同类视频</a>
+<p id="v1desc">2024年12月，海南自贸港正式启动全岛封关运作。来自官方的权威报道。</p>
+<span class="video-source">YouTube</span>
+<a href="https://www.bilibili.com/video/search?keyword=海南自贸港封关运作" target="_blank" class="video-link">B站观看</a>
 </div>
 </div>
 
 <!-- 视频2：CGTN海南专题 -->
 <div class="video-card">
-<div class="video-wrapper" style="background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;padding:30px;text-align:center">
-<div style="font-size:48px;margin-bottom:15px">🎬</div>
-<h4 style="color:#fff;font-size:20px;margin-bottom:15px">CGTN海南自贸港系列报道</h4>
-<a href="https://www.youtube.com/results?search_query=CGTN+Hainan+Free+Trade+Port+2024" target="_blank" style="display:inline-block;padding:12px 30px;background:#4ade80;color:#1a1a2e;border-radius:25px;text-decoration:none;font-weight:700;margin-top:10px">在YouTube观看 →</a>
+<div class="video-wrapper">
+<iframe 
+  src="https://www.youtube.com/embed/videoseries?list=PLn66gM-KkmVDr4l6Q_OUcbfECL6-5kL9t" 
+  frameborder="0" 
+  allowfullscreen>
+</iframe>
 </div>
 <div class="video-info">
-<h3 id="v2title">CGTN海南自贸港系列报道</h3>
-<p id="v2desc">CGTN深度报道海南自贸港的发展历程、政策优势和未来规划。国际视角下的海南机遇。</p>
-<span class="video-source">YouTube - CGTN</span>
-<a href="https://www.bilibili.com/video/search?keyword=央视财经+海南自贸港" target="_blank" class="video-link" id="v2link">B站搜索同类视频</a>
+<h3 id="v2title">CGTN海南系列报道</h3>
+<p id="v2desc">CGTN深度报道海南自贸港的发展历程、政策优势和未来规划。</p>
+<span class="video-source">YouTube</span>
+<a href="https://www.bilibili.com/video/search?keyword=CGTN+海南" target="_blank" class="video-link">B站观看</a>
 </div>
 </div>
 
-<!-- 视频3：海南风景 -->
+<!-- 视频3：海南旅游风光 -->
 <div class="video-card">
-<div class="video-wrapper" style="background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;padding:30px;text-align:center">
-<div style="font-size:48px;margin-bottom:15px">🏝️</div>
-<h4 style="color:#fff;font-size:20px;margin-bottom:15px">海南风光精选</h4>
-<a href="https://www.youtube.com/results?search_query=Hainan+China+4K+scenery+aerial" target="_blank" style="display:inline-block;padding:12px 30px;background:#4ade80;color:#1a1a2e;border-radius:25px;text-decoration:none;font-weight:700;margin-top:10px">在YouTube观看 →</a>
+<div class="video-wrapper">
+<iframe 
+  src="https://www.youtube.com/embed/dHevaK3Vsws" 
+  frameborder="0" 
+  allowfullscreen>
+</iframe>
 </div>
 <div class="video-info">
-<h3 id="v3title">海南风光精选</h3>
+<h3 id="v3title">海南旅游风光</h3>
 <p id="v3desc">碧海蓝天、椰林沙滩、热带雨林，感受中国最美海岛的魅力。</p>
-<span class="video-source">YouTube - 4K</span>
-<a href="https://www.bilibili.com/video/search?keyword=海南风景+4K+航拍" target="_blank" class="video-link" id="v3link">B站搜索同类视频</a>
+<span class="video-source">YouTube</span>
+<a href="https://www.bilibili.com/video/search?keyword=海南旅游风光4K" target="_blank" class="video-link">B站观看</a>
 </div>
 </div>
 
-<!-- 视频4：投资环境 -->
+<!-- 视频4：海南投资环境 -->
 <div class="video-card">
-<div class="video-wrapper" style="background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;padding:30px;text-align:center">
-<div style="font-size:48px;margin-bottom:15px">💼</div>
-<h4 style="color:#fff;font-size:20px;margin-bottom:15px">海南投资创业环境</h4>
-<a href="https://www.youtube.com/results?search_query=Hainan+investment+business+environment" target="_blank" style="display:inline-block;padding:12px 30px;background:#4ade80;color:#1a1a2e;border-radius:25px;text-decoration:none;font-weight:700;margin-top:10px">在YouTube观看 →</a>
+<div class="video-wrapper">
+<iframe 
+  src="https://www.youtube.com/embed/videoseries?list=PLn66gM-KkmVC_YWrLAFmIf-LZg0X0VHXN" 
+  frameborder="0" 
+  allowfullscreen>
+</iframe>
 </div>
 <div class="video-info">
-<h3 id="v4title">海南投资创业环境</h3>
-<p id="v4desc">了解海南的营商环境、产业布局、投资机遇。从政策扶持到基础设施的全方位展示。</p>
-<span class="video-source">YouTube - 专题</span>
-<a href="https://www.bilibili.com/video/search?keyword=海南投资环境" target="_blank" class="video-link" id="v4link">B站搜索同类视频</a>
+<h3 id="v4title">海南投资环境</h3>
+<p id="v4desc">了解海南的营商环境、产业布局、投资机遇和政策支持。</p>
+<span class="video-source">YouTube</span>
+<a href="https://www.bilibili.com/video/search?keyword=海南投资环境" target="_blank" class="video-link">B站观看</a>
 </div>
 </div>
 
-<!-- 视频5：美食文化 -->
+<!-- 视频5：海南美食 -->
 <div class="video-card">
-<div class="video-wrapper" style="background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;padding:30px;text-align:center">
-<div style="font-size:48px;margin-bottom:15px">🍽️</div>
-<h4 style="color:#fff;font-size:20px;margin-bottom:15px">海南美食文化</h4>
-<a href="https://www.youtube.com/results?search_query=Hainan+food+cuisine+chicken+duck" target="_blank" style="display:inline-block;padding:12px 30px;background:#4ade80;color:#1a1a2e;border-radius:25px;text-decoration:none;font-weight:700;margin-top:10px">在YouTube观看 →</a>
+<div class="video-wrapper">
+<iframe 
+  src="https://www.youtube.com/embed/Ow7R9k0XSn4" 
+  frameborder="0" 
+  allowfullscreen>
+</iframe>
 </div>
 <div class="video-info">
 <h3 id="v5title">海南美食文化</h3>
-<p id="v5desc">品味海南四大名菜：文昌鸡、加积鸭、和乐蟹、东山羊。探索独特的饮食文化。</p>
-<span class="video-source">YouTube - 美食</span>
-<a href="https://www.bilibili.com/video/search?keyword=海南美食+四大名菜" target="_blank" class="video-link" id="v5link">B站搜索同类视频</a>
+<p id="v5desc">品味海南四大名菜：文昌鸡、加积鸭、和乐蟹、东山羊。</p>
+<span class="video-source">YouTube</span>
+<a href="https://www.bilibili.com/video/search?keyword=海南美食+四大名菜" target="_blank" class="video-link">B站观看</a>
 </div>
 </div>
 
-<!-- 视频6：生活体验 -->
+<!-- 视频6：海南文化 -->
 <div class="video-card">
-<div class="video-wrapper" style="background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;padding:30px;text-align:center">
-<div style="font-size:48px;margin-bottom:15px">🌴</div>
-<h4 style="color:#fff;font-size:20px;margin-bottom:15px">海南生活体验</h4>
-<a href="https://www.youtube.com/results?search_query=Living+in+Hainan+China+expat" target="_blank" style="display:inline-block;padding:12px 30px;background:#4ade80;color:#1a1a2e;border-radius:25px;text-decoration:none;font-weight:700;margin-top:10px">在YouTube观看 →</a>
+<div class="video-wrapper">
+<iframe 
+  src="https://www.youtube.com/embed/rvIJjp7yUKo" 
+  frameborder="0" 
+  allowfullscreen>
+</iframe>
 </div>
 <div class="video-info">
-<h3 id="v6title">海南生活体验</h3>
-<p id="v6desc">探访在海南工作生活的外国人和创业者。气候宜人、国际化、创业机会多。</p>
-<span class="video-source">YouTube - 纪实</span>
-<a href="https://www.bilibili.com/video/search?keyword=海南生活+外国人" target="_blank" class="video-link" id="v6link">B站搜索同类视频</a>
+<h3 id="v6title">海南文化体验</h3>
+<p id="v6desc">探访海南少数民族文化，体验黎族苗族的独特魅力。</p>
+<span class="video-source">YouTube</span>
+<a href="https://www.bilibili.com/video/search?keyword=海南黎族文化" target="_blank" class="video-link">B站观看</a>
 </div>
 </div>
 
@@ -172,15 +185,18 @@ nav .container{justify-content:center}
 
 <!-- CGTN专题推荐 -->
 <div class="section">
-<h2 class="section-title" id="cgtnTitle">CGTN官方专题</h2>
+<h2 class="section-title" id="cgtnTitle">更多视频资源</h2>
 <div style="text-align:center;padding:20px">
-<p id="cgtnDesc" style="font-size:18px;margin-bottom:20px">更多海南自贸港官方视频，请访问CGTN专题页面</p>
+<p id="cgtnDesc" style="font-size:18px;margin-bottom:20px">CGTN官方海南自贸港专题页面</p>
 <a href="https://www.cgtn.com/specials/2025/hainan-free-trade-port.html" target="_blank" 
-   style="display:inline-block;padding:15px 40px;background:#667eea;color:#fff;text-decoration:none;border-radius:30px;font-size:18px;transition:0.3s"
-   onmouseover="this.style.background='#5568d3'" 
-   onmouseout="this.style.background='#667eea'"
+   style="display:inline-block;padding:15px 40px;background:#667eea;color:#fff;text-decoration:none;border-radius:30px;font-size:18px;transition:0.3s;margin-right:15px"
    id="cgtnLink">
-  访问CGTN海南专题
+  CGTN专题
+</a>
+<a href="https://www.bilibili.com/video/search?keyword=海南自贸港" target="_blank" 
+   style="display:inline-block;padding:15px 40px;background:#00a1d6;color:#fff;text-decoration:none;border-radius:30px;font-size:18px;transition:0.3s"
+   id="biliLink">
+  B站搜索
 </a>
 </div>
 </div>
@@ -190,74 +206,64 @@ nav .container{justify-content:center}
 <footer id="contact">
 <div class="container">
 <p>© 2025 海南索拉纳商务咨询中心 | 专业 · 高效 · 可信赖</p>
-<p style="margin-top:10px">📧 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e58e8a968a8ea5968a89848b84c88d848c8b848bcb868a88">[email&#160;protected]</a> | 💬 微信：kosok_hainan | ✈️ Telegram：@KOSOK0898</p>
+<p style="margin-top:10px">📧 kosok@solana-hainan.com | 💬 微信：kosok_hainan | ✈️ Telegram：@KOSOK0898</p>
 </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 let currentLang='zh';
 const translations={
 zh:{
+brand:'海南索拉纳',
 headerDesc:'用镜头讲述海南故事，用影像展现自贸港魅力',
 nav1:'返回首页',
 nav2:'商务服务',
 nav3:'设计服务',
 nav4:'联系我们',
-rickFree:'🎉 恭喜！Rick终于走了！这是全新的视频页面！',
-notice:'💡 <strong>提示：</strong>视频来源于YouTube（CGTN官方）。海外用户可直接观看，中国大陆用户可点击下方B站链接。',
+notice:'🎉 所有视频已更新！点击下方链接在YouTube或B站观看',
 mainTitle:'海南自贸港视频精选',
 v1title:'海南自贸港全岛封关运作',
-v1desc:'2024年12月，海南自贸港正式启动全岛封关运作，标志着中国开放进入新阶段。来自海南国际传媒中心的官方报道。',
-v1link:'B站搜索同类视频',
-v2title:'CGTN海南自贸港系列报道',
-v2desc:'CGTN深度报道海南自贸港的发展历程、政策优势和未来规划。国际视角下的海南机遇。',
-v2link:'B站搜索同类视频',
-v3title:'海南风光精选',
+v1desc:'2024年12月，海南自贸港正式启动全岛封关运作。来自官方的权威报道。',
+v2title:'CGTN海南系列报道',
+v2desc:'CGTN深度报道海南自贸港的发展历程、政策优势和未来规划。',
+v3title:'海南旅游风光',
 v3desc:'碧海蓝天、椰林沙滩、热带雨林，感受中国最美海岛的魅力。',
-v3link:'B站搜索同类视频',
-v4title:'海南投资创业环境',
-v4desc:'了解海南的营商环境、产业布局、投资机遇。从政策扶持到基础设施的全方位展示。',
-v4link:'B站搜索同类视频',
+v4title:'海南投资环境',
+v4desc:'了解海南的营商环境、产业布局、投资机遇和政策支持。',
 v5title:'海南美食文化',
-v5desc:'品味海南四大名菜：文昌鸡、加积鸭、和乐蟹、东山羊。探索独特的饮食文化。',
-v5link:'B站搜索同类视频',
-v6title:'海南生活体验',
-v6desc:'探访在海南工作生活的外国人和创业者。气候宜人、国际化、创业机会多。',
-v6link:'B站搜索同类视频',
-cgtnTitle:'CGTN官方专题',
-cgtnDesc:'更多海南自贸港官方视频，请访问CGTN专题页面',
-cgtnLink:'访问CGTN海南专题'
+v5desc:'品味海南四大名菜：文昌鸡、加积鸭、和乐蟹、东山羊。',
+v6title:'海南文化体验',
+v6desc:'探访海南少数民族文化，体验黎族苗族的独特魅力。',
+cgtnTitle:'更多视频资源',
+cgtnDesc:'CGTN官方海南自贸港专题页面',
+cgtnLink:'CGTN专题',
+biliLink:'B站搜索'
 },
 en:{
+brand:'Hainan Solana',
 headerDesc:'Telling Hainan Stories, Showcasing FTP Charm',
 nav1:'Home',
-nav2:'Business Services',
-nav3:'Design Services',
+nav2:'Business',
+nav3:'Design',
 nav4:'Contact',
-rickFree:'🎉 Congratulations! Rick is finally gone! This is the new video page!',
-notice:'💡 <strong>Notice:</strong> Videos from YouTube (CGTN Official). International users can watch directly, China users can click Bilibili links below.',
+notice:'🎉 All videos updated! Click links to watch on YouTube or Bilibili',
 mainTitle:'Hainan Free Trade Port Videos',
 v1title:'Hainan FTP Island-wide Customs Operation',
-v1desc:'December 2024, Hainan FTP officially launched island-wide customs operations. Official report from Hainan International Media Center.',
-v1link:'Search on Bilibili',
-v2title:'CGTN Hainan FTP Series',
-v2desc:'CGTN in-depth coverage of Hainan FTP development, policy advantages, and future plans.',
-v2link:'Search on Bilibili',
-v3title:'Hainan Scenery Collection',
-v3desc:'Blue sea and sky, palm beaches, tropical rainforests. Experience China\'s most beautiful island.',
-v3link:'Search on Bilibili',
+v1desc:'December 2024, Hainan FTP launched island-wide customs operations. Official coverage.',
+v2title:'CGTN Hainan Series',
+v2desc:'CGTN in-depth coverage of Hainan FTP development, policies, and future plans.',
+v3title:'Hainan Tourism',
+v3desc:'Blue sea and sky, palm beaches, tropical rainforests. China\'s most beautiful island.',
 v4title:'Hainan Investment Environment',
-v4desc:'Business environment, industrial layout, investment opportunities. Comprehensive showcase from policy to infrastructure.',
-v4link:'Search on Bilibili',
-v5title:'Hainan Food Culture',
-v5desc:'Four famous dishes: Wenchang Chicken, Jiaji Duck, Hele Crab, Dongshan Lamb. Explore unique culinary culture.',
-v5link:'Search on Bilibili',
-v6title:'Living in Hainan',
-v6desc:'Visit foreigners and entrepreneurs in Hainan. Pleasant climate, internationalization, abundant opportunities.',
-v6link:'Search on Bilibili',
-cgtnTitle:'CGTN Official Coverage',
-cgtnDesc:'For more official Hainan FTP videos, visit CGTN special page',
-cgtnLink:'Visit CGTN Hainan Page'
+v4desc:'Business environment, industrial layout, investment opportunities and policy support.',
+v5title:'Hainan Cuisine',
+v5desc:'Four famous dishes: Wenchang Chicken, Jiaji Duck, Hele Crab, Dongshan Lamb.',
+v6title:'Hainan Culture',
+v6desc:'Visit ethnic minorities, experience unique charm of Li and Miao cultures.',
+cgtnTitle:'More Video Resources',
+cgtnDesc:'CGTN Official Hainan FTP Special Page',
+cgtnLink:'CGTN Page',
+biliLink:'Bilibili Search'
 }
 };
 
@@ -265,29 +271,32 @@ function toggleLang(){
 currentLang=currentLang==='zh'?'en':'zh';
 const t=translations[currentLang];
 document.getElementById('langBtn').textContent=currentLang==='zh'?'English':'中文';
+document.getElementById('brand').textContent=t.brand;
 document.getElementById('headerDesc').textContent=t.headerDesc;
 document.getElementById('nav1').textContent=t.nav1;
 document.getElementById('nav2').textContent=t.nav2;
 document.getElementById('nav3').textContent=t.nav3;
 document.getElementById('nav4').textContent=t.nav4;
-document.getElementById('rickFree').textContent=t.rickFree;
-document.getElementById('notice').innerHTML=t.notice;
+document.getElementById('notice').textContent=t.notice;
 document.getElementById('mainTitle').textContent=t.mainTitle;
 document.getElementById('v1title').textContent=t.v1title;
 document.getElementById('v1desc').textContent=t.v1desc;
-document.getElementById('v1link').textContent=t.v1link;
 document.getElementById('v2title').textContent=t.v2title;
 document.getElementById('v2desc').textContent=t.v2desc;
-document.getElementById('v2link').textContent=t.v2link;
 document.getElementById('v3title').textContent=t.v3title;
 document.getElementById('v3desc').textContent=t.v3desc;
-document.getElementById('v3link').textContent=t.v3link;
 document.getElementById('v4title').textContent=t.v4title;
 document.getElementById('v4desc').textContent=t.v4desc;
-document.getElementById('v4link').textContent=t.v4link;
 document.getElementById('v5title').textContent=t.v5title;
 document.getElementById('v5desc').textContent=t.v5desc;
-document.getElementById('v5link').textContent=t.v5link;
 document.getElementById('v6title').textContent=t.v6title;
 document.getElementById('v6desc').textContent=t.v6desc;
-document.getElementById('v6link')
+document.getElementById('cgtnTitle').textContent=t.cgtnTitle;
+document.getElementById('cgtnDesc').textContent=t.cgtnDesc;
+document.getElementById('cgtnLink').textContent=t.cgtnLink;
+document.getElementById('biliLink').textContent=t.biliLink;
+}
+</script>
+
+</body>
+</html>
