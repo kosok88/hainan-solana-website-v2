@@ -1,0 +1,3 @@
+Deployment trigger for December 28, 2025 launch
+   Force Vercel to redeploy with latest index.html
+   Time: 2025-12-27 22:00
