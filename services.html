@@ -231,18 +231,79 @@ h1{font-size:32px}
 </ul>
 </div>
 <div class="agreement-box">
-<h4 onclick="toggleAgreement('agreement2')">📋 服务协议 Service Agreement <span class="agreement-toggle" id="toggle2">▼</span></h4>
+<h4 onclick="toggleAgreement('agreement2')">📋 《国内企业注册服务协议》点击查看完整协议<br>Domestic Company Registration Service Agreement - Click to View <span class="agreement-toggle" id="toggle2">▼</span></h4>
 <div class="agreement-content" id="agreement2">
-<p>服务内容、权利义务、收费标准等条款与全球企业注册协议基本一致。</p>
-<p><strong>联系方式 Contact: 微信 kosok_hainan | Telegram @KOSOK0898</strong></p>
+<h5>甲方 Party A: 海南索拉纳商务咨询中心 Hainan Solana Business Consulting Center</h5>
+<h5>乙方 Party B: 委托注册企业（客户）Client</h5>
+
+<h5>一、服务内容 I. Service Content</h5>
+<p>甲方为乙方提供国内企业在海南自贸港注册服务，包括：<br>Party A provides domestic enterprise registration services in Hainan FTP:</p>
+<ul>
+<li>注册类型咨询（分公司、子公司、独资企业）Registration type consultation</li>
+<li>政策解读及优惠方案设计 Policy interpretation and preferential plan design</li>
+<li>注册地址提供（按年收费，费用另计）Registered address (annual fee, charged separately)</li>
+<li>全套工商注册手续办理 Complete business registration</li>
+<li>公司印章刻制（公章、财务章、法人章）Company seals making</li>
+<li>税务登记及税务报到 Tax registration and reporting</li>
+<li>银行开户及社保公积金开户协助 Bank and social security account opening assistance</li>
+</ul>
+
+<h5>二、收费标准 II. Fee Schedule</h5>
+<ul>
+<li><strong>分公司注册 Branch:</strong> 人民币4,000-8,000元 RMB 4,000-8,000</li>
+<li><strong>子公司注册 Subsidiary:</strong> 人民币5,000-12,000元 RMB 5,000-12,000</li>
+<li><strong>独资企业 Sole Proprietorship:</strong> 人民币3,000-6,000元 RMB 3,000-6,000</li>
+<li><strong>注册地址 Registered Address:</strong> 人民币3,000-8,000元/年 RMB 3,000-8,000/year</li>
+</ul>
+<p><strong>付款方式 Payment:</strong> 签约后50%，执照办理完成后50% | 50% upon signing, 50% upon license completion</p>
+
+<h5>三、双方权利与义务 III. Rights and Obligations</h5>
+<p><strong>甲方 Party A:</strong></p>
+<ul>
+<li>按时按质完成注册服务 Complete services on time with quality</li>
+<li>提供真实准确的政策信息 Provide accurate policy information</li>
+<li>保护乙方商业和个人信息 Protect Party B's business and personal information</li>
+<li>提供一年期免费咨询 Provide one-year free consultation</li>
+</ul>
+
+<p><strong>乙方 Party B:</strong></p>
+<ul>
+<li>提供真实合法有效的资料 Provide authentic, legal materials</li>
+<li>按时支付服务费用 Pay fees on time</li>
+<li>配合办理相关手续 Cooperate in procedures</li>
+<li>遵守相关法律法规 Comply with laws and regulations</li>
+</ul>
+
+<h5>四、违约责任 IV. Liability for Breach</h5>
+<p><strong>4.1 甲方延期 Party A Delay:</strong><br>
+如甲方未按约定完成服务，每延期1天，罚款服务费的<strong>1%</strong>。延期超过15天，乙方可解除协议并要求全额退款。<br>
+Penalty of <strong>1% per day</strong> delayed. If >15 days, Party B may terminate and request full refund.</p>
+
+<p><strong>4.2 乙方拖欠 Party B Payment Delay:</strong><br>
+如乙方拖欠尾款，每拖欠1天，罚款拖欠部分的<strong>1%</strong>。拖欠超过30天，甲方可暂停服务并追究法律责任。<br>
+Penalty of <strong>1% of outstanding amount per day</strong>. If >30 days, Party A may suspend services.</p>
+
+<p><strong>4.3 虚假资料 False Information:</strong><br>
+如因乙方提供虚假资料导致问题，甲方不承担责任，费用不退。<br>
+Party A bears no responsibility if issues arise from false information. No refund.</p>
+
+<h5>五、保密条款 V. Confidentiality</h5>
+<p>甲方对乙方资料承担保密义务，未经书面同意不得泄露。保密期限为服务期间及结束后5年。<br>
+Party A maintains confidentiality. No disclosure without consent. Period: during service and 5 years after.</p>
+
+<h5>六、争议解决 VI. Dispute Resolution</h5>
+<p>争议应协商解决；协商不成提交海口仲裁委员会仲裁。<br>
+Disputes resolved through negotiation; if failed, Haikou Arbitration Commission.</p>
+
+<p style="margin-top:20px"><strong>联系方式 Contact: 微信 kosok_hainan | Telegram @KOSOK0898</strong></p>
 </div>
 <div class="agreement-actions">
 <div class="agreement-checkbox">
 <input type="checkbox" id="agree2" onchange="toggleAgree('agree2','btn2','status2')">
-<label for="agree2">我已阅读并同意 I agree</label>
+<label for="agree2">✓ 我已阅读并同意协议 I have read and agree to the agreement</label>
 </div>
-<button class="btn-agree" id="btn2" disabled onclick="signAgreement('国内企业注册','status2')">点击签约 Sign</button>
-<span class="agreement-status" id="status2">✓ 已签约</span>
+<button class="btn-agree" id="btn2" disabled onclick="signAgreement('国内企业注册 Domestic Registration','status2')">点击签约 Sign</button>
+<span class="agreement-status" id="status2">✓ 已签约 Signed</span>
 </div>
 </div>
 </div>
@@ -493,77 +554,142 @@ h1{font-size:32px}
 <h3>海南自贸港11个重点园区 Hainan FTP 11 Key Parks</h3>
 <div class="park-grid">
 <div class="park-card">
-<h4>1. 洋浦经济开发区</h4>
+<h4>1. 洋浦经济开发区<br><span style="font-size:14px;color:#4ade80">Yangpu Economic Development Zone</span></h4>
 <div class="park-row"><span class="park-label">📍 位置</span><span class="park-value">海南省儋州市洋浦半岛</span></div>
 <div class="park-row"><span class="park-label">🏭 产业</span><span class="park-value"><strong>石化新材料</strong>（千亿级）、港航物流</span></div>
 <div class="park-row"><span class="park-label">💰 优惠</span><span class="park-value">企业所得税<strong>15%</strong>、零关税、加工增值<strong>30%+免关税</strong></span></div>
 </div>
 <div class="park-card">
-<h4>2. 博鳌乐城医疗旅游先行区</h4>
+<h4>2. 博鳌乐城医疗旅游先行区<br><span style="font-size:14px;color:#4ade80">Boao Lecheng International Medical Tourism Pilot Zone</span></h4>
 <div class="park-row"><span class="park-label">📍 位置</span><span class="park-value">海南省琼海市博鳌镇</span></div>
 <div class="park-row"><span class="park-label">🏭 产业</span><span class="park-value"><strong>国际医疗</strong>、医疗科研</span></div>
 <div class="park-row"><span class="park-label">💰 优惠</span><span class="park-value">特许医疗、<strong>360种</strong>创新药械</span></div>
 </div>
 <div class="park-card">
-<h4>3. 海口江东新区</h4>
+<h4>3. 海口江东新区<br><span style="font-size:14px;color:#4ade80">Haikou Jiangdong New Area</span></h4>
 <div class="park-row"><span class="park-label">📍 位置</span><span class="park-value">海口东海岸 <strong>298km²</strong></span></div>
 <div class="park-row"><span class="park-label">🏭 产业</span><span class="park-value"><strong>总部经济</strong>、金融服务</span></div>
 <div class="park-row"><span class="park-label">💰 优惠</span><span class="park-value">企业所得税<strong>15%</strong>、租金补贴<strong>50%</strong></span></div>
 </div>
 <div class="park-card">
-<h4>4. 海口国家高新区</h4>
+<h4>4. 海口国家高新区<br><span style="font-size:14px;color:#4ade80">Haikou National High-tech Industrial Development Zone</span></h4>
 <div class="park-row"><span class="park-label">🏭 产业</span><span class="park-value"><strong>生物医药</strong>、医疗器械</span></div>
 <div class="park-row"><span class="park-label">💰 优惠</span><span class="park-value">研发加计扣除<strong>75%-100%</strong></span></div>
 </div>
 <div class="park-card">
-<h4>5. 海口综合保税区</h4>
+<h4>5. 海口综合保税区<br><span style="font-size:14px;color:#4ade80">Haikou Comprehensive Bonded Zone</span></h4>
 <div class="park-row"><span class="park-label">🏭 产业</span><span class="park-value"><strong>保税物流</strong>、保税加工</span></div>
 <div class="park-row"><span class="park-label">💰 优惠</span><span class="park-value"><strong>零关税</strong>、保税仓储</span></div>
 </div>
 <div class="park-card">
-<h4>6. 三亚崖州湾科技城</h4>
+<h4>6. 三亚崖州湾科技城<br><span style="font-size:14px;color:#4ade80">Sanya Yazhou Bay Science and Technology City</span></h4>
 <div class="park-row"><span class="park-label">🏭 产业</span><span class="park-value"><strong>深海科技</strong>、南繁科研</span></div>
 <div class="park-row"><span class="park-label">💰 优惠</span><span class="park-value">住房补贴<strong>最高100万</strong></span></div>
 </div>
 <div class="park-card">
-<h4>7. 三亚中央商务区</h4>
+<h4>7. 三亚中央商务区<br><span style="font-size:14px;color:#4ade80">Sanya Central Business District</span></h4>
 <div class="park-row"><span class="park-label">🏭 产业</span><span class="park-value"><strong>总部经济</strong>、现代金融</span></div>
 <div class="park-row"><span class="park-label">💰 优惠</span><span class="park-value">落地奖励<strong>最高500万</strong></span></div>
 </div>
 <div class="park-card">
-<h4>8. 文昌国际航天城</h4>
+<h4>8. 文昌国际航天城<br><span style="font-size:14px;color:#4ade80">Wenchang International Aerospace City</span></h4>
 <div class="park-row"><span class="park-label">🏭 产业</span><span class="park-value"><strong>航天科技</strong>、卫星应用</span></div>
 <div class="park-row"><span class="park-label">💰 优惠</span><span class="park-value">航天产业专项扶持</span></div>
 </div>
 <div class="park-card">
-<h4>9. 陵水国际教育创新区</h4>
+<h4>9. 陵水国际教育创新区<br><span style="font-size:14px;color:#4ade80">Lingshui International Education Innovation Zone</span></h4>
 <div class="park-row"><span class="park-label">🏭 产业</span><span class="park-value"><strong>国际教育</strong>、中外合作</span></div>
 <div class="park-row"><span class="park-label">💰 优惠</span><span class="park-value"><strong>22所</strong>高校已入驻</span></div>
 </div>
 <div class="park-card">
-<h4>10. 海南生态软件园</h4>
+<h4>10. 海南生态软件园<br><span style="font-size:14px;color:#4ade80">Hainan Ecological Software Park</span></h4>
 <div class="park-row"><span class="park-label">🏭 产业</span><span class="park-value"><strong>互联网</strong>、数字经济</span></div>
 <div class="park-row"><span class="park-label">💰 优惠</span><span class="park-value"><strong>4800+</strong>企业已入驻</span></div>
 </div>
 <div class="park-card">
-<h4>11. 海口复兴城互联网园</h4>
+<h4>11. 海口复兴城互联网园<br><span style="font-size:14px;color:#4ade80">Haikou Fuxingcheng Internet Information Industry Park</span></h4>
 <div class="park-row"><span class="park-label">🏭 产业</span><span class="park-value"><strong>数字贸易</strong>、金融科技</span></div>
 <div class="park-row"><span class="park-label">💰 优惠</span><span class="park-value">落地奖励<strong>200万</strong></span></div>
 </div>
 </div>
 </div>
 <div class="agreement-box">
-<h4 onclick="toggleAgreement('agreement9')">📋 园区入驻服务协议 <span class="agreement-toggle" id="toggle9">▼</span></h4>
+<h4 onclick="toggleAgreement('agreement9')">📋 《园区入驻服务协议》点击查看完整协议<br>Park Entry Service Agreement - Click to View <span class="agreement-toggle" id="toggle9">▼</span></h4>
 <div class="agreement-content" id="agreement9">
-<p>协助企业办理海南自贸港重点园区入驻手续。联系: 微信 kosok_hainan</p>
+<h5>甲方 Party A: 海南索拉纳商务咨询中心 Hainan Solana Business Consulting Center</h5>
+<h5>乙方 Party B: 入驻企业（客户）Entry Enterprise (Client)</h5>
+
+<h5>一、服务内容 I. Service Content</h5>
+<p>甲方为乙方提供海南自贸港重点园区入驻全程服务：<br>Party A provides comprehensive park entry services:</p>
+<ul>
+<li>园区政策解读和匹配分析 Park policy interpretation and matching analysis</li>
+<li>入驻申请材料准备和审核 Entry application materials preparation and review</li>
+<li>园区管委会对接和沟通 Liaison with park management committee</li>
+<li>入驻申请提交和跟踪 Application submission and follow-up</li>
+<li>优惠政策申请协助 Policy benefit application assistance</li>
+<li>后续服务支持（工商注册、税务登记等）Follow-up services (registration, tax filing, etc.)</li>
+</ul>
+
+<h5>二、双方权利与义务 II. Rights and Obligations</h5>
+<p><strong>甲方义务 Party A's Obligations:</strong></p>
+<ul>
+<li>提供真实准确的园区政策信息 Provide accurate park policy information</li>
+<li>协助准备完整规范的申请材料 Assist in preparing complete application materials</li>
+<li>及时跟踪入驻申请进度 Timely track application progress</li>
+<li>保护乙方商业信息和个人隐私 Protect Party B's business and personal information</li>
+<li>提供一年期免费政策咨询服务 Provide one-year free policy consulting</li>
+</ul>
+
+<p><strong>乙方义务 Party B's Obligations:</strong></p>
+<ul>
+<li>提供真实、合法、完整的企业资料 Provide authentic, legal, complete enterprise materials</li>
+<li>按时支付服务费用 Pay service fees on time</li>
+<li>配合办理相关手续 Cooperate in handling procedures</li>
+<li>遵守园区管理规定 Comply with park management regulations</li>
+</ul>
+
+<h5>三、收费标准 III. Fee Schedule</h5>
+<p>根据目标园区和服务内容确定：<br>Determined by target park and service content:</p>
+<ul>
+<li><strong>标准服务费 Standard Service:</strong> 人民币10,000-30,000元 RMB 10,000-30,000</li>
+<li><strong>含政策申报 Including Policy Application:</strong> 人民币20,000-50,000元 RMB 20,000-50,000</li>
+<li><strong>全托管服务 Full Service:</strong> 人民币30,000-100,000元 RMB 30,000-100,000</li>
+</ul>
+
+<p><strong>付款方式 Payment Terms:</strong> 签约后支付50%，入驻成功后支付剩余50%<br>50% upon signing, 50% balance upon successful entry</p>
+
+<h5>四、违约责任 IV. Liability for Breach</h5>
+<p><strong>4.1 甲方延期交付 Party A Delay:</strong><br>
+如甲方未能按约定时间完成服务，每延期1天，罚款服务费的<strong>1%</strong>。延期超过15天的，乙方有权解除协议并要求全额退款。<br>
+If Party A fails to complete services within agreed timeline, penalty of <strong>1% of service fee per day</strong> delayed. If delay exceeds 15 days, Party B may terminate and request full refund.</p>
+
+<p><strong>4.2 乙方拖欠尾款 Party B Payment Delay:</strong><br>
+如乙方未按约定时间支付尾款，每拖欠1天，罚款拖欠部分的<strong>1%</strong>。拖欠超过30天的，甲方有权暂停服务并追究法律责任。<br>
+If Party B fails to pay balance, penalty of <strong>1% of outstanding amount per day</strong> delayed. If delay exceeds 30 days, Party A may suspend services and pursue legal action.</p>
+
+<p><strong>4.3 入驻失败责任 Entry Failure Liability:</strong><br>
+如因园区政策变化或企业条件不符导致入驻失败，甲方退还50%服务费。如因甲方原因导致失败，全额退款。<br>
+If entry fails due to policy changes or unmet qualifications, Party A refunds 50% fee. If failure due to Party A's fault, full refund.</p>
+
+<h5>五、保密条款 V. Confidentiality</h5>
+<p>双方对合作过程中获知的商业秘密、客户信息等承担保密义务，未经书面同意不得向第三方披露。保密期限为协议终止后3年。<br>
+Both parties maintain confidentiality of trade secrets and client information. No disclosure without written consent. Confidentiality period: 3 years after termination.</p>
+
+<h5>六、争议解决 VI. Dispute Resolution</h5>
+<p>因本协议引起的争议，双方应友好协商解决；协商不成的，提交海口仲裁委员会仲裁。<br>
+Disputes shall be resolved through negotiation; if negotiation fails, submit to Haikou Arbitration Commission.</p>
+
+<p style="margin-top:25px;padding-top:20px;border-top:2px solid rgba(74,222,128,.3)"><strong>联系方式 Contact Information:</strong></p>
+<p><strong>微信 WeChat:</strong> kosok_hainan</p>
+<p><strong>Telegram:</strong> @KOSOK0898</p>
 </div>
 <div class="agreement-actions">
 <div class="agreement-checkbox">
 <input type="checkbox" id="agree9" onchange="toggleAgree('agree9','btn9','status9')">
-<label for="agree9">同意</label>
+<label for="agree9">✓ 我已仔细阅读并完全同意以上协议所有条款<br>I have carefully read and fully agree to all terms above</label>
 </div>
-<button class="btn-agree" id="btn9" disabled onclick="signAgreement('园区入驻','status9')">签约</button>
-<span class="agreement-status" id="status9">✓ 已签约</span>
+<button class="btn-agree" id="btn9" disabled onclick="signAgreement('园区入驻服务 Park Entry Service','status9')">点击签署协议 Sign Agreement</button>
+<span class="agreement-status" id="status9">✓ 已签约 Signed</span>
 </div>
 </div>
 </div>
@@ -669,11 +795,21 @@ h1{font-size:32px}
 <p><strong>付款方式 Payment Terms:</strong> 签订协议后支付50%定金，营业执照办理完成后支付剩余50%<br>50% deposit upon agreement signing, 50% balance upon business license completion</p>
 
 <h5>四、违约责任 IV. Liability for Breach</h5>
-<p>4.1 如因甲方原因导致注册失败（非政府政策变化原因），甲方应全额退还已收取的服务费用<br>If registration fails due to Party A's fault (excluding government policy changes), Party A shall refund all service fees collected</p>
+<p><strong>4.1 甲方延期交付 Party A Delay:</strong><br>
+如甲方未能按约定时间完成服务，每延期1天，罚款服务费的<strong>1%</strong>。延期超过15天的，乙方有权解除协议并要求全额退款。<br>
+If Party A fails to complete services within agreed timeline, penalty of <strong>1% of service fee per day</strong> delayed. If delay exceeds 15 days, Party B may terminate agreement and request full refund.</p>
 
-<p>4.2 如因乙方提供虚假资料、隐瞒重要信息导致注册失败或后续法律问题，甲方不承担责任，已收取费用不予退还<br>If registration fails or legal issues arise due to Party B providing false information or concealing important details, Party A bears no responsibility and fees are non-refundable</p>
+<p><strong>4.2 乙方拖欠尾款 Party B Payment Delay:</strong><br>
+如乙方未按约定时间支付尾款，每拖欠1天，罚款拖欠部分的<strong>1%</strong>。拖欠超过30天的，甲方有权暂停服务并追究法律责任。<br>
+If Party B fails to pay balance within agreed timeline, penalty of <strong>1% of outstanding amount per day</strong> delayed. If delay exceeds 30 days, Party A may suspend services and pursue legal action.</p>
 
-<p>4.3 如遇政府政策调整、不可抗力等因素导致无法完成注册，双方协商解决，甲方退还未完成部分的费用<br>In case of government policy changes or force majeure preventing completion, parties shall negotiate and Party A shall refund fees for uncompleted services</p>
+<p><strong>4.3 乙方提供虚假资料 Party B False Information:</strong><br>
+如因乙方提供虚假资料、隐瞒重要信息导致注册失败或后续法律问题，甲方不承担责任，已收取费用不予退还，造成的一切后果由乙方承担。<br>
+If registration fails or legal issues arise due to Party B providing false information or concealing important details, Party A bears no responsibility, fees are non-refundable, and Party B bears all consequences.</p>
+
+<p><strong>4.4 政策变化或不可抗力 Policy Changes or Force Majeure:</strong><br>
+如遇政府政策调整、不可抗力等因素导致无法完成注册，双方协商解决，甲方退还未完成部分的费用。<br>
+In case of government policy changes or force majeure preventing completion, parties shall negotiate and Party A shall refund fees for uncompleted services.</p>
 
 <h5>五、保密条款 V. Confidentiality</h5>
 <p>甲方对乙方提供的所有资料、商业信息、个人隐私承担保密义务，未经乙方书面同意，不得向任何第三方泄露。保密期限为服务期间及服务结束后5年。<br>Party A undertakes confidentiality obligations for all materials, business information, and personal privacy provided by Party B. Without written consent, no disclosure to third parties. Confidentiality period: during service and 5 years after completion.</p>
@@ -748,7 +884,44 @@ h1{font-size:32px}
 </ul>
 
 <h5>三、双方权利义务 III. Rights and Obligations</h5>
-<p>与《全球企业注册服务协议》基本一致，具体参照该协议相关条款。<br>Consistent with Global Company Registration Service Agreement. Refer to relevant clauses therein.</p>
+<p><strong>甲方义务 Party A's Obligations:</strong></p>
+<ul>
+<li>按时按质完成注册服务 Complete registration services on time with quality</li>
+<li>提供真实准确的政策信息和办理指导 Provide accurate policy information and guidance</li>
+<li>保护乙方商业信息和个人信息 Protect Party B's business and personal information</li>
+<li>协助办理后续税务、银行开户等事宜 Assist with subsequent tax and bank account matters</li>
+<li>提供一年期免费工商咨询服务 Provide one-year free business consultation</li>
+</ul>
+
+<p><strong>乙方义务 Party B's Obligations:</strong></p>
+<ul>
+<li>提供真实、合法、有效的注册资料 Provide authentic, legal, valid registration materials</li>
+<li>按约定时间支付服务费用 Pay service fees as agreed</li>
+<li>积极配合办理相关手续 Actively cooperate in handling procedures</li>
+<li>遵守中华人民共和国相关法律法规 Comply with relevant PRC laws and regulations</li>
+<li>如实告知公司经营范围及业务性质 Truthfully disclose business scope and nature</li>
+</ul>
+
+<h5>四、违约责任 IV. Liability for Breach</h5>
+<p><strong>4.1 甲方延期交付 Party A Delay:</strong><br>
+如甲方未能按约定时间完成服务，每延期1天，罚款服务费的<strong>1%</strong>。延期超过15天的，乙方有权解除协议并要求全额退款。<br>
+If Party A fails to complete services within agreed timeline, penalty of <strong>1% of service fee per day</strong> delayed. If delay exceeds 15 days, Party B may terminate and request full refund.</p>
+
+<p><strong>4.2 乙方拖欠尾款 Party B Payment Delay:</strong><br>
+如乙方未按约定时间支付尾款，每拖欠1天，罚款拖欠部分的<strong>1%</strong>。拖欠超过30天的，甲方有权暂停服务并追究法律责任。<br>
+If Party B fails to pay balance, penalty of <strong>1% of outstanding amount per day</strong> delayed. If delay exceeds 30 days, Party A may suspend services and pursue legal action.</p>
+
+<p><strong>4.3 乙方提供虚假资料 Party B False Information:</strong><br>
+如因乙方提供虚假资料导致问题，甲方不承担责任，已收费用不予退还。<br>
+If issues arise from Party B's false information, Party A bears no responsibility and fees are non-refundable.</p>
+
+<h5>五、保密条款 V. Confidentiality</h5>
+<p>甲方对乙方提供的所有资料、商业信息、个人隐私承担保密义务，未经乙方书面同意不得向第三方泄露。保密期限为服务期间及服务结束后5年。<br>
+Party A undertakes confidentiality obligations for all materials provided by Party B. No disclosure without written consent. Period: during service and 5 years after.</p>
+
+<h5>六、争议解决 VI. Dispute Resolution</h5>
+<p>本协议履行过程中如发生争议，双方应友好协商解决；协商不成的，提交海口仲裁委员会仲裁。<br>
+Disputes shall be resolved through friendly negotiation; if negotiation fails, submit to Haikou Arbitration Commission.</p>
 
 <h5>四、协议签署与生效 IV. Agreement Execution and Effectiveness</h5>
 <p>本协议采用电子签署方式。乙方点击下方"同意协议"并点击"签署"按钮，即视为乙方已仔细阅读、充分理解并完全同意本协议的所有条款，与纸质签字盖章具有同等法律效力。<br>Electronic signature applies. Clicking "Agree" and "Sign" button below indicates Party B has carefully read, understood, and agreed to all terms, with same legal effect as paper signature.</p>
