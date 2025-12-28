@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>服务详情 - 海南索拉纳商务咨询中心</title>
+<title id="pageTitle">服务详情 - 海南索拉纳商务咨询中心</title>
 <meta name="description" content="海南索拉纳提供全球企业注册、税务咨询、美股上链、园区入驻等专业服务">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -20,14 +20,15 @@ nav .container{display:flex;justify-content:space-between;align-items:center}
 .lang-btn:hover{transform:scale(1.05)}
 .breadcrumb{padding:30px 0 20px;color:#cbd5e1;font-size:14px}
 .breadcrumb a{color:#4ade80;text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
 .page-header{text-align:center;padding:40px 20px}
 h1{font-size:48px;margin-bottom:20px;text-shadow:2px 2px 8px rgba(0,0,0,.6)}
 .page-subtitle{font-size:20px;color:#e2e8f0;max-width:800px;margin:0 auto;text-shadow:0 2px 4px rgba(0,0,0,.4)}
-.service-nav{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;padding:30px 20px;background:rgba(0,0,0,.25);border-radius:16px;margin:20px auto;max-width:1200px}
-.service-nav-btn{background:rgba(74,222,128,.25);color:#fff;border:2px solid rgba(74,222,128,.6);padding:10px 20px;border-radius:25px;cursor:pointer;transition:.3s;font-size:14px;font-weight:600;text-decoration:none;display:inline-block;text-shadow:0 2px 4px rgba(0,0,0,.3)}
+.service-nav{display:flex;flex-wrap:wrap;gap:15px;justify-content:center;padding:30px 20px;background:rgba(0,0,0,.25);border-radius:16px;margin:20px auto;max-width:1200px}
+.service-nav-btn{background:rgba(74,222,128,.25);color:#fff;border:2px solid rgba(74,222,128,.6);padding:12px 24px;border-radius:25px;cursor:pointer;transition:.3s;font-size:15px;font-weight:600;text-decoration:none;display:inline-block;text-shadow:0 2px 4px rgba(0,0,0,.3)}
 .service-nav-btn:hover{background:rgba(74,222,128,.4);border-color:#4ade80;transform:translateY(-2px)}
 .service-nav-btn.priority{background:linear-gradient(135deg,rgba(251,191,36,.25),rgba(245,158,11,.25));border:2px solid rgba(251,191,36,.7);box-shadow:0 0 20px rgba(251,191,36,.25);animation:glow 3s ease-in-out infinite}
-.service-nav-btn.priority:hover{background:linear-gradient(135deg,rgba(251,191,36,.35),rgba(245,158,11,.35));border-color:#fbbf24}
+.service-nav-btn.priority:hover{background:linear-gradient(135deg,rgba(251,191,36,.35),rgba(245,158,11,.35));border-color:#fbbf24;transform:translateY(-2px) scale(1.02)}
 @keyframes glow{0%,100%{box-shadow:0 0 15px rgba(251,191,36,.3)}50%{box-shadow:0 0 25px rgba(251,191,36,.5)}}
 .service-section{background:rgba(0,0,0,.25);backdrop-filter:blur(15px);padding:50px 35px;border-radius:20px;margin:30px auto;max-width:1000px;border:1px solid rgba(255,255,255,.25)}
 .service-section.priority{border:2px solid rgba(251,191,36,.6);background:linear-gradient(135deg,rgba(251,191,36,.08),rgba(245,158,11,.08));box-shadow:0 8px 32px rgba(251,191,36,.12)}
@@ -50,30 +51,26 @@ h1{font-size:48px;margin-bottom:20px;text-shadow:2px 2px 8px rgba(0,0,0,.6)}
 .park-card .park-label{color:#4ade80;font-size:15px;font-weight:700;min-width:85px;flex-shrink:0;text-shadow:0 2px 4px rgba(0,0,0,.3)}
 .park-card .park-value{color:#f5f7fa;font-size:15px;line-height:1.8;flex:1;text-shadow:0 1px 3px rgba(0,0,0,.4)}
 .park-card .park-value strong{color:#fff;font-weight:700;text-shadow:0 2px 4px rgba(0,0,0,.5)}
-.agreement-box{background:rgba(74,222,128,.15);padding:25px;border-radius:14px;margin:30px 0;border:2px solid #4ade80;backdrop-filter:blur(10px)}
-.agreement-box h4{color:#4ade80;font-size:20px;margin-bottom:15px;font-weight:700;text-shadow:0 2px 4px rgba(0,0,0,.3);cursor:pointer;display:flex;align-items:center;justify-content:space-between;user-select:none}
+.agreement-box{background:rgba(74,222,128,.15);padding:25px;border-radius:14px;margin:25px 0;border:2px solid #4ade80;backdrop-filter:blur(10px)}
+.agreement-box h4{color:#4ade80;font-size:19px;margin-bottom:15px;font-weight:700;text-shadow:0 2px 4px rgba(0,0,0,.3);cursor:pointer;display:flex;align-items:center;justify-content:space-between}
 .agreement-box h4:hover{color:#5ef595}
 .agreement-toggle{font-size:24px;transition:.3s}
 .agreement-toggle.open{transform:rotate(180deg)}
-.agreement-content{background:rgba(0,0,0,.35);padding:30px;border-radius:12px;margin:15px 0;max-height:500px;overflow-y:auto;color:#e2e8f0;font-size:15px;line-height:1.9;text-shadow:0 1px 2px rgba(0,0,0,.3);display:none}
-.agreement-content.show{display:block;animation:slideDown .3s ease}
-@keyframes slideDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
-.agreement-content h5{color:#4ade80;font-size:18px;margin:20px 0 12px;font-weight:700;border-bottom:2px solid rgba(74,222,128,.3);padding-bottom:8px}
+.agreement-content{background:rgba(0,0,0,.3);padding:25px;border-radius:10px;margin:15px 0;max-height:400px;overflow-y:auto;color:#e2e8f0;font-size:15px;line-height:1.8;text-shadow:0 1px 2px rgba(0,0,0,.3);display:none}
+.agreement-content.show{display:block}
+.agreement-content h5{color:#4ade80;font-size:17px;margin:18px 0 12px;font-weight:700}
 .agreement-content p{margin-bottom:12px;color:#f0f4f8}
-.agreement-content strong{color:#fbbf24;font-weight:700}
-.agreement-content ol,.agreement-content ul{margin-left:25px;margin-bottom:12px}
-.agreement-content li{margin-bottom:8px;color:#e2e8f0}
-.agreement-actions{display:flex;gap:15px;margin-top:20px;align-items:center;flex-wrap:wrap}
-.agreement-checkbox{display:flex;align-items:center;gap:10px;cursor:pointer;padding:12px;background:rgba(255,255,255,.1);border-radius:8px;transition:.3s}
-.agreement-checkbox:hover{background:rgba(255,255,255,.15)}
+.agreement-content ol,.agreement-content ul{margin-left:20px;margin-bottom:12px}
+.agreement-content li{margin-bottom:8px}
+.agreement-actions{display:flex;gap:15px;margin-top:15px;align-items:center;flex-wrap:wrap}
+.agreement-checkbox{display:flex;align-items:center;gap:8px;cursor:pointer}
 .agreement-checkbox input{width:20px;height:20px;cursor:pointer}
-.agreement-checkbox label{color:#f0f4f8;font-size:16px;cursor:pointer;user-select:none;font-weight:600}
-.btn-agree{background:#4ade80;color:#1a1a2e;padding:14px 32px;border-radius:25px;border:none;font-weight:700;font-size:16px;cursor:pointer;transition:.3s;box-shadow:0 4px 15px rgba(74,222,128,.4)}
+.agreement-checkbox label{color:#f0f4f8;font-size:15px;cursor:pointer;user-select:none}
+.btn-agree{background:#4ade80;color:#1a1a2e;padding:12px 28px;border-radius:25px;border:none;font-weight:700;font-size:15px;cursor:pointer;transition:.3s;box-shadow:0 4px 15px rgba(74,222,128,.4)}
 .btn-agree:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 6px 20px rgba(74,222,128,.5)}
 .btn-agree:disabled{opacity:.4;cursor:not-allowed}
-.agreement-status{background:rgba(74,222,128,.5);color:#fff;padding:12px 24px;border-radius:20px;font-size:15px;font-weight:700;display:none}
-.agreement-status.show{display:inline-block;animation:fadeIn .5s ease}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.agreement-status{background:rgba(74,222,128,.4);color:#fff;padding:10px 20px;border-radius:20px;font-size:14px;font-weight:600;display:none}
+.agreement-status.show{display:inline-block}
 .back-home{text-align:center;padding:50px 20px}
 .btn{padding:16px 36px;border-radius:30px;text-decoration:none;font-weight:700;transition:.3s;cursor:pointer;border:none;font-size:17px;display:inline-block;text-shadow:0 2px 4px rgba(0,0,0,.3)}
 .btn-primary{background:#4ade80;color:#1a1a2e;box-shadow:0 4px 15px rgba(74,222,128,.4)}
@@ -81,26 +78,23 @@ h1{font-size:48px;margin-bottom:20px;text-shadow:2px 2px 8px rgba(0,0,0,.6)}
 .btn-secondary{background:rgba(255,255,255,.15);color:#fff;border:2px solid rgba(255,255,255,.6);margin-left:15px}
 .btn-secondary:hover{background:rgba(255,255,255,.25);border-color:#fff}
 footer{background:rgba(0,0,0,.35);backdrop-filter:blur(15px);padding:35px 20px;text-align:center;margin-top:60px;box-shadow:0 -2px 20px rgba(0,0,0,.3)}
-footer p{color:#cbd5e1;font-size:15px;font-weight:500}
+footer p{color:#cbd5e1;font-size:15px;font-weight:500;text-shadow:0 1px 2px rgba(0,0,0,.3)}
 .modal{display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,.85);backdrop-filter:blur(8px)}
-.modal.show{display:flex;align-items:center;justify-content:center;animation:fadeIn .3s ease}
-.modal-content{background:linear-gradient(135deg,rgba(102,126,234,.98),rgba(118,75,162,.98));backdrop-filter:blur(20px);padding:40px;border-radius:20px;max-width:600px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,.5);border:2px solid rgba(74,222,128,.3);animation:slideUp .3s ease}
-@keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.modal.show{display:flex;align-items:center;justify-content:center}
+.modal-content{background:linear-gradient(135deg,rgba(102,126,234,.98),rgba(118,75,162,.98));backdrop-filter:blur(20px);padding:40px;border-radius:20px;max-width:600px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,.5);border:2px solid rgba(74,222,128,.3)}
 .modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px}
-.modal-header h3{color:#4ade80;font-size:28px}
+.modal-header h3{color:#4ade80;font-size:26px}
 .modal-close{background:none;border:none;color:#fff;font-size:36px;cursor:pointer;line-height:1;transition:.3s}
 .modal-close:hover{color:#4ade80;transform:rotate(90deg)}
 .modal-body{color:#e2e8f0;font-size:17px;line-height:1.8}
-.modal-body strong{color:#4ade80;font-size:20px}
+.modal-body strong{color:#4ade80;font-size:19px}
 @media (max-width:768px){
 h1{font-size:32px}
 .service-nav{flex-direction:column}
-.service-nav-btn{width:100%;font-size:13px;padding:10px 15px}
+.service-nav-btn{width:100%}
 .park-grid{grid-template-columns:1fr}
 .nav-links{display:none}
-.agreement-actions{flex-direction:column;align-items:stretch}
-.agreement-checkbox{width:100%}
-.btn-agree{width:100%}
+.agreement-actions{flex-direction:column;align-items:flex-start}
 }
 </style>
 </head>
@@ -145,371 +139,799 @@ h1{font-size:32px}
 <a href="#service10" class="service-nav-btn">政策申报合规</a>
 <a href="#service11" class="service-nav-btn">企业托管服务</a>
 <a href="#service12" class="service-nav-btn">投资咨询服务</a>
-<a href="#service13" class="service-nav-btn priority">⭐ 全托管策划服务</a>
 </div>
 
 <!-- 服务1：全球企业注册 -->
 <div class="service-section priority" id="service1">
-<div style="text-align:center"><span class="priority-badge">⭐ 早期重点服务</span></div>
+<div style="text-align:center"><span class="priority-badge">⭐ 早期重点服务 Early Priority Service</span></div>
 <div class="service-icon">🌍</div>
-<h2>全球企业注册</h2>
+<h2>全球企业注册 / Global Company Registration</h2>
 <div class="service-content">
 <div class="content-block">
-<h3>服务介绍</h3>
-<p>为全球各地企业提供海南自由贸易港公司注册服务，享受零关税、低税率、贸易投资便利化等政策红利。我们拥有丰富的注册经验和专业团队，可为您提供一站式注册服务。</p>
+<h3>服务介绍 Service Introduction</h3>
+<p>为全球各地企业提供海南自由贸易港公司注册服务，享受零关税、低税率、贸易投资便利化等政策红利。这是我们的核心服务之一，拥有丰富经验和专业团队。</p>
+<p>Provide company registration services in Hainan Free Trade Port for global enterprises, enjoying zero tariffs, low tax rates, and trade facilitation.</p>
 </div>
 <div class="content-block">
-<h3>服务内容</h3>
+<h3>服务内容 Services</h3>
 <ul>
-<li>公司名称核准及备选方案（免费提供3个备选名称）</li>
-<li>注册地址提供（一年免费，商务地址或虚拟地址可选）</li>
-<li>营业执照办理（3-7个工作日快速办理）</li>
-<li>公章、财务章、法人章刻制（含备案）</li>
-<li>税务登记及开户许可证办理</li>
-<li>银行开户协助（全程陪同，协助对接银行）</li>
+<li>公司名称核准及备选方案 / Company name verification and alternatives</li>
+<li>注册地址提供（一年免费）/ Registered address (1 year free)</li>
+<li>营业执照办理（3-7工作日）/ Business license (3-7 working days)</li>
+<li>公章、财务章、法人章刻制 / Official seals making</li>
+<li>税务登记及开户许可 / Tax registration and permits</li>
+<li>银行开户协助（全程陪同）/ Bank account assistance (full support)</li>
 </ul>
 </div>
 <div class="agreement-box">
-<h4 onclick="toggleAgreement('agreement1')">📋 《全球企业注册服务协议》点击查看详情 <span class="agreement-toggle" id="toggle1">▼</span></h4>
+<h4 onclick="toggleAgreement('agreement1')">📋 企业注册服务协议 Registration Service Agreement <span class="agreement-toggle" id="toggle1">▼</span></h4>
 <div class="agreement-content" id="agreement1">
-<h5>甲方：海南索拉纳商务咨询中心</h5>
-<h5>乙方：委托注册企业（客户）</h5>
-
-<h5>一、服务内容</h5>
-<p>1.1 甲方为乙方提供海南自由贸易港企业注册全套服务，包括但不限于：</p>
-<ul>
-<li>公司名称核准服务（提供3个备选名称）</li>
-<li>注册地址提供（商务地址或虚拟地址，有效期一年）</li>
-<li>营业执照办理（包括三证合一）</li>
-<li>公司印章刻制（公章、财务章、法人章，含公安备案）</li>
-<li>税务登记及税务报到</li>
-<li>银行开户许可证办理协助</li>
-</ul>
-<p>1.2 注册时间：自资料齐全之日起3-7个工作日完成（特殊情况除外，如政府部门审核延迟）</p>
-<p>1.3 交付文件：营业执照正副本、公章、财务章、法人章、章程、股东会决议等全套文件</p>
-
-<h5>二、双方权利与义务</h5>
+<h5>一、服务内容 Service Content</h5>
+<p>1. 甲方（海南索拉纳商务咨询中心）为乙方提供海南自贸港企业注册全套服务</p>
+<p>2. 服务包括：公司名称核准、注册地址（一年）、营业执照办理、刻章（公章、财务章、法人章）、税务登记、银行开户协助</p>
+<p>3. 注册时间：3-7个工作日（特殊情况除外）</p>
+<h5>二、双方权利义务 Rights and Obligations</h5>
 <p><strong>甲方义务：</strong></p>
 <ul>
-<li>按时按质完成注册服务</li>
-<li>提供真实准确的政策信息和办理指导</li>
-<li>对乙方提供的商业信息、个人信息严格保密</li>
-<li>协助办理后续银行开户、税务报到等事宜</li>
-<li>提供一年期的工商变更免费咨询服务</li>
+<li>按时完成注册服务</li>
+<li>提供真实准确的政策信息</li>
+<li>保守客户商业秘密</li>
+<li>协助办理后续银行开户等事宜</li>
 </ul>
 <p><strong>乙方义务：</strong></p>
 <ul>
-<li>提供真实、合法、有效的注册资料</li>
-<li>按约定时间支付服务费用</li>
-<li>积极配合办理相关手续（如需本人签字或到场的情况）</li>
-<li>遵守中华人民共和国相关法律法规</li>
-<li>如实告知公司经营范围及业务性质</li>
+<li>提供真实合法的注册资料</li>
+<li>按时支付服务费用</li>
+<li>配合办理相关手续</li>
+<li>遵守中国法律法规</li>
 </ul>
-
-<h5>三、收费标准</h5>
-<p>根据公司类型、注册资本及服务内容确定，具体费用详见报价单：</p>
+<h5>三、收费标准 Fee Standard</h5>
+<p>根据公司类型和注册资本确定，具体费用详见报价单。一般情况下：</p>
 <ul>
-<li><strong>有限责任公司：</strong>人民币5,000-10,000元（注册资本100万以内）</li>
-<li><strong>股份有限公司：</strong>人民币10,000-20,000元</li>
-<li><strong>外商独资企业：</strong>人民币15,000-30,000元</li>
-<li><strong>个体工商户：</strong>人民币2,000-5,000元</li>
+<li>有限责任公司：人民币5,000-10,000元</li>
+<li>股份有限公司：人民币10,000-20,000元</li>
+<li>外商独资企业：人民币15,000-30,000元</li>
 </ul>
-<p><strong>付款方式：</strong>签订协议后支付50%定金，营业执照办理完成后支付剩余50%</p>
-
-<h5>四、违约责任</h5>
-<p>4.1 如因甲方原因导致注册失败（非政府政策变化原因），甲方应全额退还已收取的服务费用</p>
-<p>4.2 如因乙方提供虚假资料、隐瞒重要信息导致注册失败或后续法律问题，甲方不承担责任，已收取费用不予退还</p>
-<p>4.3 如遇政府政策调整、不可抗力等因素导致无法完成注册，双方协商解决，甲方退还未完成部分的费用</p>
-
-<h5>五、保密条款</h5>
-<p>甲方对乙方提供的所有资料、商业信息、个人隐私承担保密义务，未经乙方书面同意，不得向任何第三方泄露。保密期限为服务期间及服务结束后5年。</p>
-
-<h5>六、争议解决</h5>
-<p>本协议履行过程中如发生争议，双方应友好协商解决；协商不成的，提交海口仲裁委员会仲裁。</p>
-
-<h5>七、其他条款</h5>
-<p>7.1 本协议自双方签署之日起生效，服务完成并交付全部文件后自动终止</p>
-<p>7.2 协议一式两份，甲乙双方各执一份，具有同等法律效力</p>
-<p>7.3 未尽事宜，双方可另行签订补充协议</p>
-
-<p style="margin-top:25px;padding-top:20px;border-top:2px solid rgba(74,222,128,.3)"><strong>联系方式：</strong></p>
-<p><strong>微信 WeChat:</strong> kosok_hainan</p>
-<p><strong>Telegram:</strong> @KOSOK0898</p>
-<p><strong>办公地址:</strong> 海南省海口市（具体地址签约时提供）</p>
+<h5>四、违约责任 Liability</h5>
+<p>如因甲方原因导致注册失败，全额退款；如因乙方提供虚假资料导致失败，不予退款。</p>
+<h5>五、其他条款 Other Terms</h5>
+<p>本协议自双方签署之日起生效，服务完成后自动终止。争议解决：友好协商，协商不成提交海口仲裁委员会仲裁。</p>
+<p style="margin-top:20px"><strong>联系方式 Contact: 微信 WeChat kosok_hainan | Telegram @KOSOK0898</strong></p>
 </div>
 <div class="agreement-actions">
 <div class="agreement-checkbox">
 <input type="checkbox" id="agree1" onchange="toggleAgree('agree1','btn1','status1')">
-<label for="agree1">✓ 我已仔细阅读并完全同意以上协议条款</label>
+<label for="agree1">我已阅读并同意该协议 I have read and agree to the agreement</label>
 </div>
-<button class="btn-agree" id="btn1" disabled onclick="signAgreement('全球企业注册服务','status1')">点击签署协议</button>
-<span class="agreement-status" id="status1">✓ 协议已签署</span>
-</div>
-</div>
-</div>
-</div>
-
-<!-- 服务2-12 继续，由于字数限制，我会创建完整版本... -->
-<!-- 为节省空间，我先展示几个重点服务的完整内容 -->
-
-<!-- 服务13：全托管策划服务（新增重点服务）-->
-<div class="service-section priority" id="service13">
-<div style="text-align:center"><span class="priority-badge">⭐ 新推出·全托管服务</span></div>
-<div class="service-icon">🎯</div>
-<h2>全托管策划服务 / Full-Service Planning</h2>
-<div class="service-content">
-<div class="content-block">
-<h3>🌟 服务核心理念</h3>
-<p><strong style="font-size:20px;color:#fbbf24">您不用来海南，我们代办一切！</strong></p>
-<p style="font-size:18px;margin-top:15px">从公司注册到运营管理，从政策申请到盈利实现，我们提供全流程托管服务。您只需提供基本信息和授权，其余一切由我们专业团队完成。<strong>您只管获取收益，无需操心任何事务！</strong></p>
-</div>
-<div class="content-block">
-<h3>📋 全托管服务内容</h3>
-<ul>
-<li><strong>公司注册全托管：</strong>名称核准、注册地址、营业执照、印章刻制、税务登记、银行开户，全程代办</li>
-<li><strong>政策策划与申请：</strong>深度分析海南自贸港政策，为您量身定制最优税务筹划方案，代理申请各类优惠政策</li>
-<li><strong>园区入驻对接：</strong>根据您的行业特点，推荐最适合的园区，代办入驻手续，争取最大优惠</li>
-<li><strong>日常运营托管：</strong>代理记账报税、工商年报、社保缴纳、发票管理等所有日常事务</li>
-<li><strong>合规管理：</strong>确保公司运营符合中国法律法规，规避法律风险</li>
-<li><strong>盈利规划：</strong>利用海南政策优势，设计合法合规的盈利模式，最大化您的收益</li>
-<li><strong>年度总结汇报：</strong>每年提供详细的经营报告和收益分析</li>
-</ul>
-</div>
-<div class="content-block">
-<h3>💡 服务优势</h3>
-<ul>
-<li><strong>零到场：</strong>您无需来海南，全程远程办理，节省时间成本</li>
-<li><strong>零操心：</strong>专业团队全托管，您只需定期查看收益报表</li>
-<li><strong>政策最大化：</strong>深度利用海南自贸港政策，合法节税、合规盈利</li>
-<li><strong>一对一服务：</strong>配备专属客户经理，随时响应您的需求</li>
-<li><strong>透明可查：</strong>所有财务、运营数据实时可查，确保透明</li>
-</ul>
-</div>
-<div class="content-block">
-<h3>🎯 适合对象</h3>
-<ul>
-<li>希望在海南注册公司但无暇打理的企业家</li>
-<li>想利用海南政策优势但不熟悉流程的投资者</li>
-<li>需要专业团队管理公司日常事务的忙碌人士</li>
-<li>寻求合法节税、优化财务结构的企业主</li>
-</ul>
-</div>
-<div class="agreement-box">
-<h4 onclick="toggleAgreement('agreement13')">📋 《全托管策划服务协议》点击查看完整协议 <span class="agreement-toggle" id="toggle13">▼</span></h4>
-<div class="agreement-content" id="agreement13">
-<h5>甲方：海南索拉纳商务咨询中心</h5>
-<h5>乙方：委托企业（客户）</h5>
-
-<h5>一、服务内容</h5>
-<p>1.1 <strong>公司注册全托管服务</strong></p>
-<ul>
-<li>公司名称核准（提供多个备选方案）</li>
-<li>注册地址提供（商务地址，长期有效）</li>
-<li>营业执照办理（全程代办，无需乙方到场）</li>
-<li>印章刻制及备案</li>
-<li>税务登记及银行开户</li>
-<li>时间：5-10个工作日完成全部手续</li>
-</ul>
-
-<p>1.2 <strong>政策策划与申请服务</strong></p>
-<ul>
-<li>深度分析海南自贸港税收优惠政策（企业所得税15%、个人所得税优惠等）</li>
-<li>为乙方量身定制税务筹划方案，合法合规节税</li>
-<li>代理申请高新技术企业认定、科技型中小企业等资质</li>
-<li>协助申请政府补贴、专项扶持资金</li>
-<li>提供年度税务规划建议</li>
-</ul>
-
-<p>1.3 <strong>园区入驻对接服务</strong></p>
-<ul>
-<li>根据乙方行业特点，推荐最适合的重点园区（11个园区可选）</li>
-<li>代办园区入驻申请手续</li>
-<li>争取园区优惠政策（租金补贴、落地奖励、税收返还等）</li>
-<li>协助对接园区资源（政府部门、合作伙伴等）</li>
-</ul>
-
-<p>1.4 <strong>日常运营托管服务</strong></p>
-<ul>
-<li>代理记账报税（每月按时申报，零罚款）</li>
-<li>工商年报、税务年报代办</li>
-<li>社保公积金代缴</li>
-<li>发票管理（代开发票、发票认证等）</li>
-<li>合同审核及法律风险提示</li>
-<li>证照年检及变更登记</li>
-</ul>
-
-<p>1.5 <strong>盈利规划服务</strong></p>
-<ul>
-<li>利用海南自贸港政策优势，设计合法盈利模式</li>
-<li>提供业务拓展建议（如跨境贸易、离岸业务等）</li>
-<li>协助对接优质合作资源</li>
-<li>每季度提供经营分析报告</li>
-</ul>
-
-<h5>二、甲方权利与义务</h5>
-<p><strong>甲方权利：</strong></p>
-<ul>
-<li>按约定收取服务费用</li>
-<li>要求乙方提供真实、完整的资料和信息</li>
-<li>在乙方违反协议或法律时，有权终止服务</li>
-</ul>
-<p><strong>甲方义务：</strong></p>
-<ul>
-<li>按时按质完成约定的各项服务</li>
-<li>对乙方的商业信息、财务数据严格保密</li>
-<li>及时向乙方汇报公司运营情况</li>
-<li>确保所有操作合法合规，规避法律风险</li>
-<li>配备专属客户经理，提供一对一服务</li>
-</ul>
-
-<h5>三、乙方权利与义务</h5>
-<p><strong>乙方权利：</strong></p>
-<ul>
-<li>随时查询公司财务、运营数据</li>
-<li>要求甲方提供服务进度汇报</li>
-<li>对服务不满意时，有权要求改进或终止协议</li>
-<li>享有公司最终决策权和收益权</li>
-</ul>
-<p><strong>乙方义务：</strong></p>
-<ul>
-<li>提供真实、合法的身份信息和授权文件</li>
-<li>按时支付服务费用</li>
-<li>配合甲方办理必要手续（如需本人签字或授权）</li>
-<li>遵守中国法律法规，不从事违法业务</li>
-</ul>
-
-<h5>四、收费标准</h5>
-<p><strong>全托管服务套餐（按年收费）：</strong></p>
-<ul>
-<li><strong>基础套餐：</strong>人民币36,000元/年（包含公司注册+基础运营托管）</li>
-<li><strong>标准套餐：</strong>人民币60,000元/年（包含公司注册+运营托管+政策申请+园区入驻）</li>
-<li><strong>高级套餐：</strong>人民币100,000元/年（包含全部服务+盈利规划+年度税务筹划）</li>
-<li><strong>定制套餐：</strong>根据具体需求定制，价格面议</li>
-</ul>
-<p><strong>付款方式：</strong></p>
-<ul>
-<li>签约时支付50%服务费</li>
-<li>公司注册完成后支付30%</li>
-<li>服务满6个月后支付剩余20%</li>
-</ul>
-<p><strong>特别说明：</strong>如乙方提前终止协议，已支付费用按实际服务时间折算，未服务部分退还。</p>
-
-<h5>五、保密条款</h5>
-<p>5.1 甲方对乙方的所有信息承担严格保密义务，包括但不限于：</p>
-<ul>
-<li>个人身份信息、联系方式</li>
-<li>公司财务数据、经营状况</li>
-<li>商业计划、合作伙伴信息</li>
-<li>其他乙方要求保密的信息</li>
-</ul>
-<p>5.2 保密期限：服务期间及服务结束后10年</p>
-<p>5.3 如因甲方泄密造成乙方损失，甲方承担全部赔偿责任</p>
-
-<h5>六、违约责任</h5>
-<p>6.1 甲方违约：</p>
-<ul>
-<li>未按时完成约定服务，每延迟一天赔偿服务费的1%</li>
-<li>因甲方过失导致乙方公司被罚款，甲方承担全部罚款</li>
-<li>泄露乙方商业秘密，赔偿损失并支付违约金（服务费的3倍）</li>
-</ul>
-<p>6.2 乙方违约：</p>
-<ul>
-<li>未按时支付服务费，甲方有权暂停服务</li>
-<li>提供虚假信息导致法律问题，乙方承担全部责任</li>
-<li>从事违法业务，甲方有权立即终止协议，已付费用不退</li>
-</ul>
-
-<h5>七、服务期限与终止</h5>
-<p>7.1 服务期限：自协议签署之日起一年（可续签）</p>
-<p>7.2 协议终止情形：</p>
-<ul>
-<li>服务期满，双方不再续约</li>
-<li>双方协商一致终止</li>
-<li>一方严重违约，另一方有权单方终止</li>
-<li>因不可抗力无法继续履行</li>
-</ul>
-<p>7.3 协议终止后，甲方应协助办理交接手续，移交所有文件资料</p>
-
-<h5>八、争议解决</h5>
-<p>本协议履行过程中如发生争议，双方应友好协商解决；协商不成的，提交海口仲裁委员会仲裁。仲裁费用由败诉方承担。</p>
-
-<h5>九、其他条款</h5>
-<p>9.1 本协议一式两份，甲乙双方各执一份，具有同等法律效力</p>
-<p>9.2 本协议未尽事宜，双方可另行签订补充协议</p>
-<p>9.3 补充协议与本协议具有同等效力</p>
-
-<p style="margin-top:30px;padding-top:20px;border-top:2px solid rgba(251,191,36,.5)"><strong style="font-size:19px;color:#fbbf24">联系我们开启全托管服务：</strong></p>
-<p style="font-size:17px"><strong>微信 WeChat:</strong> kosok_hainan</p>
-<p style="font-size:17px"><strong>Telegram:</strong> @KOSOK0898</p>
-<p style="font-size:17px"><strong>咨询电话:</strong> 签约时提供</p>
-<p style="margin-top:15px;color:#cbd5e1">我们承诺：专业、高效、保密，让您无忧创业，安心盈利！</p>
-</div>
-<div class="agreement-actions">
-<div class="agreement-checkbox">
-<input type="checkbox" id="agree13" onchange="toggleAgree('agree13','btn13','status13')">
-<label for="agree13">✓ 我已仔细阅读并完全同意《全托管策划服务协议》的所有条款</label>
-</div>
-<button class="btn-agree" id="btn13" disabled onclick="signAgreement('全托管策划服务','status13')">点击签署协议 开启全托管服务</button>
-<span class="agreement-status" id="status13">✓ 协议已签署 我们将尽快联系您</span>
+<button class="btn-agree" id="btn1" disabled onclick="signAgreement('企业注册服务','status1')">点击签约 Sign Agreement</button>
+<span class="agreement-status" id="status1">✓ 已签约 Signed</span>
 </div>
 </div>
 </div>
 </div>
 
-<!-- 其他服务2-12简化版（点击展开有详情）-->
+<!-- 服务2：国内企业注册 -->
 <div class="service-section" id="service2">
 <div class="service-icon">🇨🇳</div>
-<h2>国内企业注册</h2>
+<h2>国内企业注册 / Domestic Company Registration</h2>
 <div class="service-content">
 <div class="content-block">
-<h3>服务内容</h3>
+<h3>服务介绍 Introduction</h3>
+<p>协助国内企业在海南自贸港设立分支机构或新公司，充分利用自贸港政策优势，拓展业务版图。</p>
+<p>Assist domestic enterprises in establishing branches or new companies in Hainan FTP.</p>
+</div>
+<div class="content-block">
+<h3>服务内容 Services</h3>
 <ul>
-<li>注册类型咨询（分公司、子公司、独资企业）</li>
-<li>政策解读及优惠方案设计</li>
-<li>全套工商注册服务</li>
-<li>税务登记及报到</li>
-<li>银行开户及社保公积金开户</li>
+<li>注册类型咨询（分公司、子公司、独资企业）/ Registration type consultation</li>
+<li>政策解读及优惠方案设计 / Policy interpretation and preferential plan design</li>
+<li>全套工商注册服务 / Complete business registration service</li>
+<li>税务登记及报到 / Tax registration and reporting</li>
+<li>银行开户及社保公积金开户 / Bank and social security account opening</li>
 </ul>
 </div>
 <div class="agreement-box">
-<h4 onclick="toggleAgreement('agreement2')">📋 《国内企业注册服务协议》<span class="agreement-toggle" id="toggle2">▼</span></h4>
+<h4 onclick="toggleAgreement('agreement2')">📋 服务协议 Service Agreement <span class="agreement-toggle" id="toggle2">▼</span></h4>
 <div class="agreement-content" id="agreement2">
-<p>协议内容与全球企业注册基本一致，专注服务国内企业。联系：微信 kosok_hainan</p>
+<p>服务内容、权利义务、收费标准等条款与全球企业注册协议基本一致。</p>
+<p><strong>联系方式 Contact: 微信 kosok_hainan | Telegram @KOSOK0898</strong></p>
 </div>
 <div class="agreement-actions">
 <div class="agreement-checkbox">
 <input type="checkbox" id="agree2" onchange="toggleAgree('agree2','btn2','status2')">
-<label for="agree2">✓ 同意协议</label>
+<label for="agree2">我已阅读并同意 I agree</label>
 </div>
-<button class="btn-agree" id="btn2" disabled onclick="signAgreement('国内企业注册','status2')">签署</button>
-<span class="agreement-status" id="status2">✓ 已签署</span>
+<button class="btn-agree" id="btn2" disabled onclick="signAgreement('国内企业注册','status2')">点击签约 Sign</button>
+<span class="agreement-status" id="status2">✓ 已签约</span>
 </div>
 </div>
 </div>
 </div>
 
-<!-- 由于篇幅限制，其他服务按相同格式继续... -->
+<!-- 服务3：税务优惠咨询 -->
+<div class="service-section" id="service3">
+<div class="service-icon">💰</div>
+<h2>税务优惠咨询 / Tax Consulting Services</h2>
+<div class="service-content">
+<div class="content-block">
+<h3>服务介绍 Introduction</h3>
+<p>深度解读海南自贸港税收优惠政策，为企业量身定制税务筹划方案，合法合规享受政策红利。</p>
+<p>In-depth interpretation of Hainan FTP tax policies and customized tax planning.</p>
+</div>
+<div class="content-block">
+<h3>核心优惠政策 Core Tax Benefits</h3>
+<ul>
+<li>企业所得税：符合条件的企业减按<strong>15%</strong>征收 / Corporate tax: <strong>15%</strong> for qualified enterprises</li>
+<li>个人所得税：高端人才实际税负超15%部分免征 / Personal tax: Exemption over 15% for talents</li>
+<li>进口税收：生产设备零关税 / Import tax: Zero tariff for production equipment</li>
+<li>增值税：部分行业享受优惠税率 / VAT: Preferential rates for certain industries</li>
+</ul>
+</div>
+<div class="agreement-box">
+<h4 onclick="toggleAgreement('agreement3')">📋 咨询服务协议 <span class="agreement-toggle" id="toggle3">▼</span></h4>
+<div class="agreement-content" id="agreement3">
+<h5>服务内容</h5>
+<p>提供税务政策解读、税务筹划方案设计、税务申报指导等专业咨询服务。</p>
+<p><strong>联系: 微信 kosok_hainan | Telegram @KOSOK0898</strong></p>
+</div>
+<div class="agreement-actions">
+<div class="agreement-checkbox">
+<input type="checkbox" id="agree3" onchange="toggleAgree('agree3','btn3','status3')">
+<label for="agree3">我已阅读并同意 I agree</label>
+</div>
+<button class="btn-agree" id="btn3" disabled onclick="signAgreement('税务优惠咨询','status3')">点击签约</button>
+<span class="agreement-status" id="status3">✓ 已签约</span>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 服务4：美股上链咨询 -->
+<div class="service-section priority" id="service4">
+<div style="text-align:center"><span class="priority-badge">⭐ 早期重点服务</span></div>
+<div class="service-icon">🔗</div>
+<h2>美股上链咨询 / US Stock On-Chain Consulting</h2>
+<div class="service-content">
+<div class="content-block">
+<h3>🌟 个人投资者服务 Individual Investor Services</h3>
+<p><strong>我们为个人投资者提供美股资产上链交易的全流程咨询服务。一对一专业指导，确保安全合规。</strong></p>
+<ul>
+<li>个人美股资产代币化方案咨询 / Personal asset tokenization consulting</li>
+<li>链上交易账户开设指导 / On-chain account setup guidance</li>
+<li>数字钱包设置及安全管理 / Digital wallet security management</li>
+<li>链上交易操作培训（一对一）/ Trading training (1-on-1)</li>
+<li>资产转换流程全程协助 / Asset conversion full assistance</li>
+<li>交易平台选择及对比 / Platform selection and analysis</li>
+<li>税务合规咨询（跨境资产申报）/ Tax compliance consulting</li>
+<li>风险评估及投资建议 / Risk assessment and investment advice</li>
+</ul>
+</div>
+<div class="content-block">
+<h3>机构服务内容 Institutional Services</h3>
+<p>为投资机构、基金公司提供美股资产代币化、链上交易结算、Web3资产管理等创新金融服务。</p>
+<ul>
+<li>美股资产代币化方案设计 / Asset tokenization design</li>
+<li>链上交易结算系统搭建 / On-chain settlement system</li>
+<li>Web3资产管理平台开发 / Web3 asset management platform</li>
+<li>合规性审查及法律咨询 / Compliance review and legal consulting</li>
+</ul>
+</div>
+<div class="agreement-box">
+<h4 onclick="toggleAgreement('agreement4')">📋 区块链咨询服务协议 Blockchain Consulting Agreement <span class="agreement-toggle" id="toggle4">▼</span></h4>
+<div class="agreement-content" id="agreement4">
+<h5>一、服务内容 Service Content</h5>
+<p>1. 甲方为乙方提供美股资产上链咨询服务，包括但不限于资产代币化方案、交易指导、安全管理、合规咨询等</p>
+<p>2. 服务方式：一对一专业咨询，线上或线下均可，提供中英文双语服务</p>
+<h5>二、保密条款 Confidentiality</h5>
+<p>甲方承诺对乙方的资产信息、交易数据、个人隐私严格保密，未经授权不得泄露给任何第三方。保密期限为服务期间及服务结束后5年。</p>
+<h5>三、风险提示 Risk Warning</h5>
+<p><strong>重要提示：</strong>区块链投资存在较高风险，包括但不限于市场波动风险、技术风险、政策风险等。乙方应充分了解并自行承担投资风险。甲方仅提供咨询服务，不承担投资损失责任，不保证投资收益。</p>
+<h5>四、知识产权 Intellectual Property</h5>
+<p>咨询方案、技术文档等的知识产权归甲方所有。乙方获得使用权，但不得擅自传播、复制或用于商业用途。</p>
+<h5>五、收费标准 Fee Standard</h5>
+<p>根据服务内容和时长确定：</p>
+<ul>
+<li>个人咨询：人民币5,000-20,000元/次</li>
+<li>机构咨询：人民币50,000-200,000元/项目</li>
+</ul>
+<p><strong>联系方式 Contact: 微信 WeChat kosok_hainan | Telegram @KOSOK0898</strong></p>
+</div>
+<div class="agreement-actions">
+<div class="agreement-checkbox">
+<input type="checkbox" id="agree4" onchange="toggleAgree('agree4','btn4','status4')">
+<label for="agree4">我已阅读并同意该协议，理解投资风险 I agree and understand the risks</label>
+</div>
+<button class="btn-agree" id="btn4" disabled onclick="signAgreement('美股上链咨询服务','status4')">点击签约 Sign Agreement</button>
+<span class="agreement-status" id="status4">✓ 已签约 Signed</span>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 服务5-7简化版 -->
+<div class="service-section" id="service5">
+<div class="service-icon">📈</div>
+<h2>美股开户咨询 / US Stock Account Consulting</h2>
+<div class="service-content">
+<div class="content-block">
+<h3>服务内容</h3>
+<ul>
+<li>券商选择及对比分析 / Broker selection and comparison</li>
+<li>开户流程指导及协助 / Account opening guidance</li>
+<li>投资策略制定 / Investment strategy development</li>
+<li>市场分析及行情解读 / Market analysis</li>
+<li>风险管理咨询 / Risk management consulting</li>
+</ul>
+</div>
+<div class="agreement-box">
+<h4 onclick="toggleAgreement('agreement5')">📋 服务协议 <span class="agreement-toggle" id="toggle5">▼</span></h4>
+<div class="agreement-content" id="agreement5">
+<p>提供专业的美股开户咨询服务。联系: 微信 kosok_hainan | Telegram @KOSOK0898</p>
+</div>
+<div class="agreement-actions">
+<div class="agreement-checkbox">
+<input type="checkbox" id="agree5" onchange="toggleAgree('agree5','btn5','status5')">
+<label for="agree5">我已阅读并同意</label>
+</div>
+<button class="btn-agree" id="btn5" disabled onclick="signAgreement('美股开户咨询','status5')">点击签约</button>
+<span class="agreement-status" id="status5">✓ 已签约</span>
+</div>
+</div>
+</div>
+</div>
+
+<div class="service-section" id="service6">
+<div class="service-icon">⛓️</div>
+<h2>区块链咨询 / Blockchain Consulting</h2>
+<div class="service-content">
+<div class="content-block">
+<h3>服务内容</h3>
+<ul>
+<li>区块链技术方案设计 / Blockchain solution design</li>
+<li>智能合约开发及审计 / Smart contract development and audit</li>
+<li>数字资产合规咨询 / Digital asset compliance</li>
+<li>Web3项目孵化 / Web3 project incubation</li>
+<li>NFT项目策划及运营 / NFT project planning</li>
+</ul>
+</div>
+<div class="agreement-box">
+<h4 onclick="toggleAgreement('agreement6')">📋 服务协议 <span class="agreement-toggle" id="toggle6">▼</span></h4>
+<div class="agreement-content" id="agreement6">
+<p>提供区块链技术咨询服务。联系: 微信 kosok_hainan</p>
+</div>
+<div class="agreement-actions">
+<div class="agreement-checkbox">
+<input type="checkbox" id="agree6" onchange="toggleAgree('agree6','btn6','status6')">
+<label for="agree6">同意</label>
+</div>
+<button class="btn-agree" id="btn6" disabled onclick="signAgreement('区块链咨询','status6')">签约</button>
+<span class="agreement-status" id="status6">✓ 已签约</span>
+</div>
+</div>
+</div>
+</div>
+
+<div class="service-section" id="service7">
+<div class="service-icon">💻</div>
+<h2>网站制作 / Website Development</h2>
+<div class="service-content">
+<div class="content-block">
+<h3>服务内容</h3>
+<ul>
+<li>企业官网设计开发 / Corporate website development</li>
+<li>响应式网站制作 / Responsive website</li>
+<li>电商平台搭建 / E-commerce platform</li>
+<li>网站SEO优化 / SEO optimization</li>
+<li>网站维护及升级 / Maintenance and upgrade</li>
+</ul>
+</div>
+<div class="agreement-box">
+<h4 onclick="toggleAgreement('agreement7')">📋 服务协议 <span class="agreement-toggle" id="toggle7">▼</span></h4>
+<div class="agreement-content" id="agreement7">
+<p>提供专业网站开发服务。联系: 微信 kosok_hainan</p>
+</div>
+<div class="agreement-actions">
+<div class="agreement-checkbox">
+<input type="checkbox" id="agree7" onchange="toggleAgree('agree7','btn7','status7')">
+<label for="agree7">同意</label>
+</div>
+<button class="btn-agree" id="btn7" disabled onclick="signAgreement('网站制作','status7')">签约</button>
+<span class="agreement-status" id="status7">✓ 已签约</span>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 服务8：设计服务 -->
+<div class="service-section priority" id="service8">
+<div style="text-align:center"><span class="priority-badge">⭐ 早期重点服务</span></div>
+<div class="service-icon">🎨</div>
+<h2>设计服务 / Design Services</h2>
+<div class="service-content">
+<div class="content-block">
+<h3>服务内容</h3>
+<ul>
+<li>LOGO设计及VI系统（品牌全案）/ LOGO & VI system</li>
+<li>品牌视觉形象设计 / Brand visual identity</li>
+<li>网站UI/UX设计（响应式）/ Website UI/UX</li>
+<li>宣传物料设计（名片、海报、手册）/ Marketing materials</li>
+<li>商标注册设计（符合商标法）/ Trademark design</li>
+</ul>
+</div>
+<div class="agreement-box">
+<h4 onclick="toggleAgreement('agreement8')">📋 设计服务协议 Design Service Agreement <span class="agreement-toggle" id="toggle8">▼</span></h4>
+<div class="agreement-content" id="agreement8">
+<h5>一、服务内容</h5>
+<p>甲方为乙方提供专业设计服务，包括LOGO、VI、网站UI/UX、宣传物料等。</p>
+<h5>二、交付标准</h5>
+<p>设计周期：7-15个工作日（根据项目复杂度）</p>
+<p>交付文件：AI/PSD源文件 + JPG/PNG成品文件</p>
+<h5>三、知识产权</h5>
+<p>设计作品知识产权在乙方支付全款后归乙方所有。甲方承诺设计为原创，不侵犯第三方权益。</p>
+<h5>四、修改条款</h5>
+<p>免费提供3次修改机会，超出部分按小时收费（人民币500元/小时）。</p>
+<p><strong>联系: 微信 kosok_hainan | Telegram @KOSOK0898</strong></p>
+</div>
+<div class="agreement-actions">
+<div class="agreement-checkbox">
+<input type="checkbox" id="agree8" onchange="toggleAgree('agree8','btn8','status8')">
+<label for="agree8">我已阅读并同意该协议 I agree to the agreement</label>
+</div>
+<button class="btn-agree" id="btn8" disabled onclick="signAgreement('设计服务','status8')">点击签约 Sign Agreement</button>
+<span class="agreement-status" id="status8">✓ 已签约 Signed</span>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 服务9：园区入驻（包含11个园区详情）-->
+<div class="service-section" id="service9">
+<div class="service-icon">🏢</div>
+<h2>园区入驻服务 / Park Entry Services</h2>
+<div class="service-content">
+<div class="content-block">
+<h3>海南自贸港11个重点园区 Hainan FTP 11 Key Parks</h3>
+<div class="park-grid">
+<div class="park-card">
+<h4>1. 洋浦经济开发区</h4>
+<div class="park-row"><span class="park-label">📍 位置</span><span class="park-value">海南省儋州市洋浦半岛</span></div>
+<div class="park-row"><span class="park-label">🏭 产业</span><span class="park-value"><strong>石化新材料</strong>（千亿级）、港航物流</span></div>
+<div class="park-row"><span class="park-label">💰 优惠</span><span class="park-value">企业所得税<strong>15%</strong>、零关税、加工增值<strong>30%+免关税</strong></span></div>
+</div>
+<div class="park-card">
+<h4>2. 博鳌乐城医疗旅游先行区</h4>
+<div class="park-row"><span class="park-label">📍 位置</span><span class="park-value">海南省琼海市博鳌镇</span></div>
+<div class="park-row"><span class="park-label">🏭 产业</span><span class="park-value"><strong>国际医疗</strong>、医疗科研</span></div>
+<div class="park-row"><span class="park-label">💰 优惠</span><span class="park-value">特许医疗、<strong>360种</strong>创新药械</span></div>
+</div>
+<div class="park-card">
+<h4>3. 海口江东新区</h4>
+<div class="park-row"><span class="park-label">📍 位置</span><span class="park-value">海口东海岸 <strong>298km²</strong></span></div>
+<div class="park-row"><span class="park-label">🏭 产业</span><span class="park-value"><strong>总部经济</strong>、金融服务</span></div>
+<div class="park-row"><span class="park-label">💰 优惠</span><span class="park-value">企业所得税<strong>15%</strong>、租金补贴<strong>50%</strong></span></div>
+</div>
+<div class="park-card">
+<h4>4. 海口国家高新区</h4>
+<div class="park-row"><span class="park-label">🏭 产业</span><span class="park-value"><strong>生物医药</strong>、医疗器械</span></div>
+<div class="park-row"><span class="park-label">💰 优惠</span><span class="park-value">研发加计扣除<strong>75%-100%</strong></span></div>
+</div>
+<div class="park-card">
+<h4>5. 海口综合保税区</h4>
+<div class="park-row"><span class="park-label">🏭 产业</span><span class="park-value"><strong>保税物流</strong>、保税加工</span></div>
+<div class="park-row"><span class="park-label">💰 优惠</span><span class="park-value"><strong>零关税</strong>、保税仓储</span></div>
+</div>
+<div class="park-card">
+<h4>6. 三亚崖州湾科技城</h4>
+<div class="park-row"><span class="park-label">🏭 产业</span><span class="park-value"><strong>深海科技</strong>、南繁科研</span></div>
+<div class="park-row"><span class="park-label">💰 优惠</span><span class="park-value">住房补贴<strong>最高100万</strong></span></div>
+</div>
+<div class="park-card">
+<h4>7. 三亚中央商务区</h4>
+<div class="park-row"><span class="park-label">🏭 产业</span><span class="park-value"><strong>总部经济</strong>、现代金融</span></div>
+<div class="park-row"><span class="park-label">💰 优惠</span><span class="park-value">落地奖励<strong>最高500万</strong></span></div>
+</div>
+<div class="park-card">
+<h4>8. 文昌国际航天城</h4>
+<div class="park-row"><span class="park-label">🏭 产业</span><span class="park-value"><strong>航天科技</strong>、卫星应用</span></div>
+<div class="park-row"><span class="park-label">💰 优惠</span><span class="park-value">航天产业专项扶持</span></div>
+</div>
+<div class="park-card">
+<h4>9. 陵水国际教育创新区</h4>
+<div class="park-row"><span class="park-label">🏭 产业</span><span class="park-value"><strong>国际教育</strong>、中外合作</span></div>
+<div class="park-row"><span class="park-label">💰 优惠</span><span class="park-value"><strong>22所</strong>高校已入驻</span></div>
+</div>
+<div class="park-card">
+<h4>10. 海南生态软件园</h4>
+<div class="park-row"><span class="park-label">🏭 产业</span><span class="park-value"><strong>互联网</strong>、数字经济</span></div>
+<div class="park-row"><span class="park-label">💰 优惠</span><span class="park-value"><strong>4800+</strong>企业已入驻</span></div>
+</div>
+<div class="park-card">
+<h4>11. 海口复兴城互联网园</h4>
+<div class="park-row"><span class="park-label">🏭 产业</span><span class="park-value"><strong>数字贸易</strong>、金融科技</span></div>
+<div class="park-row"><span class="park-label">💰 优惠</span><span class="park-value">落地奖励<strong>200万</strong></span></div>
+</div>
+</div>
+</div>
+<div class="agreement-box">
+<h4 onclick="toggleAgreement('agreement9')">📋 园区入驻服务协议 <span class="agreement-toggle" id="toggle9">▼</span></h4>
+<div class="agreement-content" id="agreement9">
+<p>协助企业办理海南自贸港重点园区入驻手续。联系: 微信 kosok_hainan</p>
+</div>
+<div class="agreement-actions">
+<div class="agreement-checkbox">
+<input type="checkbox" id="agree9" onchange="toggleAgree('agree9','btn9','status9')">
+<label for="agree9">同意</label>
+</div>
+<button class="btn-agree" id="btn9" disabled onclick="signAgreement('园区入驻','status9')">签约</button>
+<span class="agreement-status" id="status9">✓ 已签约</span>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 服务10-12简化版 -->
+<div class="service-section" id="service10">
+<div class="service-icon">📋</div>
+<h2>政策申报合规</h2>
+<div class="service-content">
+<p style="text-align:center;color:#cbd5e1;padding:30px">协助企业申报各类优惠政策，确保合规经营。<br>联系: 微信 kosok_hainan | Telegram @KOSOK0898</p>
+</div>
+</div>
+
+<div class="service-section" id="service11">
+<div class="service-icon">🏭</div>
+<h2>企业托管服务</h2>
+<div class="service-content">
+<p style="text-align:center;color:#cbd5e1;padding:30px">提供全方位企业托管服务，代理记账、工商年报等。<br>联系: 微信 kosok_hainan | Telegram @KOSOK0898</p>
+</div>
+</div>
+
+<div class="service-section" id="service12">
+<div class="service-icon">🚀</div>
+<h2>投资咨询服务</h2>
+<div class="service-content">
+<p style="text-align:center;color:#cbd5e1;padding:30px">提供海南自贸港投资机会分析、项目评估等服务。<br>联系: 微信 kosok_hainan | Telegram @KOSOK0898</p>
+</div>
+</div>
+
+
+<div class="service-section priority" id="service1">
+<div style="text-align:center"><span class="priority-badge">⭐ 早期重点服务 Early Priority Service</span></div>
+<div class="service-icon">🌍</div>
+<h2>全球企业注册 Global Company Registration</h2>
+<div class="service-content">
+<div class="content-block">
+<h3>服务介绍 Service Introduction</h3>
+<p>为全球各地企业提供海南自由贸易港公司注册服务，享受零关税、低税率、贸易投资便利化等政策红利。我们拥有丰富的注册经验和专业团队，可为您提供一站式注册服务。</p>
+<p>We provide company registration services in Hainan Free Trade Port for global enterprises, enjoying zero tariffs, low tax rates, and trade facilitation benefits. With extensive experience and professional team, we offer one-stop registration services.</p>
+</div>
+<div class="content-block">
+<h3>服务内容 Service Details</h3>
+<ul>
+<li>公司名称核准及备选方案（免费提供3个备选名称）<br>Company name verification with alternatives (3 options free)</li>
+<li>注册地址提供（商务地址或虚拟地址，按年收费）<br>Registered address provision (commercial or virtual, annual fee applies)</li>
+<li>营业执照办理（3-7个工作日快速办理）<br>Business license processing (3-7 working days)</li>
+<li>公章、财务章、法人章刻制（含备案）<br>Official seals making (including registration)</li>
+<li>税务登记及开户许可证办理<br>Tax registration and account opening permit</li>
+<li>银行开户协助（全程陪同，协助对接银行）<br>Bank account opening assistance (full support)</li>
+</ul>
+</div>
+<div class="agreement-box">
+<h4 onclick="toggleAgreement('agreement1')">📋 《全球企业注册服务协议》点击查看完整协议<br>Global Company Registration Service Agreement - Click to View <span class="agreement-toggle" id="toggle1">▼</span></h4>
+<div class="agreement-content" id="agreement1">
+<h5>甲方 Party A: 海南索拉纳商务咨询中心 Hainan Solana Business Consulting Center</h5>
+<h5>乙方 Party B: 委托注册企业（客户）Client</h5>
+
+<h5>一、服务内容 I. Service Content</h5>
+<p>1.1 甲方为乙方提供海南自由贸易港企业注册全套服务，包括但不限于：<br>Party A provides comprehensive company registration services in Hainan FTP, including but not limited to:</p>
+<ul>
+<li>公司名称核准服务（提供3个备选名称）<br>Company name verification (3 alternatives provided)</li>
+<li>注册地址提供（商务地址或虚拟地址，按年收费，费用另计）<br>Registered address provision (commercial or virtual, annual fee applies, charged separately)</li>
+<li>营业执照办理（包括三证合一）<br>Business license processing (unified certificate)</li>
+<li>公司印章刻制（公章、财务章、法人章，含公安备案）<br>Company seals making (official, financial, legal representative seals with police registration)</li>
+<li>税务登记及税务报到<br>Tax registration and reporting</li>
+<li>银行开户许可证办理协助<br>Bank account opening permit assistance</li>
+</ul>
+
+<p>1.2 注册时间：自资料齐全之日起3-7个工作日完成（特殊情况除外，如政府部门审核延迟）<br>Processing time: 3-7 working days from receipt of complete documentation (except special circumstances such as government review delays)</p>
+
+<p>1.3 交付文件：营业执照正副本、公章、财务章、法人章、章程、股东会决议等全套文件<br>Deliverables: Business license originals and copies, seals, articles of association, shareholders' resolutions, and complete documentation</p>
+
+<h5>二、双方权利与义务 II. Rights and Obligations</h5>
+<p><strong>甲方义务 Party A's Obligations:</strong></p>
+<ul>
+<li>按时按质完成注册服务 Complete registration services on time and with quality</li>
+<li>提供真实准确的政策信息和办理指导 Provide accurate policy information and guidance</li>
+<li>对乙方提供的商业信息、个人信息严格保密 Strictly protect client's business and personal information</li>
+<li>协助办理后续银行开户、税务报到等事宜 Assist with subsequent bank account opening and tax reporting</li>
+<li>提供一年期的工商变更免费咨询服务 Provide one-year free consultation on business changes</li>
+</ul>
+
+<p><strong>乙方义务 Party B's Obligations:</strong></p>
+<ul>
+<li>提供真实、合法、有效的注册资料 Provide authentic, legal, and valid registration materials</li>
+<li>按约定时间支付服务费用 Pay service fees as agreed</li>
+<li>积极配合办理相关手续（如需本人签字或到场的情况）<br>Actively cooperate in handling procedures (when personal signature or presence required)</li>
+<li>遵守中华人民共和国相关法律法规 Comply with relevant PRC laws and regulations</li>
+<li>如实告知公司经营范围及业务性质 Truthfully disclose business scope and nature</li>
+</ul>
+
+<h5>三、收费标准 III. Fee Schedule</h5>
+<p>根据公司类型、注册资本及服务内容确定，具体费用详见报价单：<br>Fees determined by company type, registered capital, and services. See quotation for details:</p>
+<ul>
+<li><strong>有限责任公司 Limited Liability Company:</strong> 人民币5,000-10,000元 RMB 5,000-10,000 (registered capital within 1M)</li>
+<li><strong>股份有限公司 Joint Stock Company:</strong> 人民币10,000-20,000元 RMB 10,000-20,000</li>
+<li><strong>外商独资企业 Wholly Foreign-Owned Enterprise:</strong> 人民币15,000-30,000元 RMB 15,000-30,000</li>
+<li><strong>个体工商户 Individual Business:</strong> 人民币2,000-5,000元 RMB 2,000-5,000</li>
+<li><strong>注册地址费用 Registered Address Fee:</strong> 人民币3,000-8,000元/年 RMB 3,000-8,000/year (charged separately)</li>
+</ul>
+
+<p><strong>付款方式 Payment Terms:</strong> 签订协议后支付50%定金，营业执照办理完成后支付剩余50%<br>50% deposit upon agreement signing, 50% balance upon business license completion</p>
+
+<h5>四、违约责任 IV. Liability for Breach</h5>
+<p>4.1 如因甲方原因导致注册失败（非政府政策变化原因），甲方应全额退还已收取的服务费用<br>If registration fails due to Party A's fault (excluding government policy changes), Party A shall refund all service fees collected</p>
+
+<p>4.2 如因乙方提供虚假资料、隐瞒重要信息导致注册失败或后续法律问题，甲方不承担责任，已收取费用不予退还<br>If registration fails or legal issues arise due to Party B providing false information or concealing important details, Party A bears no responsibility and fees are non-refundable</p>
+
+<p>4.3 如遇政府政策调整、不可抗力等因素导致无法完成注册，双方协商解决，甲方退还未完成部分的费用<br>In case of government policy changes or force majeure preventing completion, parties shall negotiate and Party A shall refund fees for uncompleted services</p>
+
+<h5>五、保密条款 V. Confidentiality</h5>
+<p>甲方对乙方提供的所有资料、商业信息、个人隐私承担保密义务，未经乙方书面同意，不得向任何第三方泄露。保密期限为服务期间及服务结束后5年。<br>Party A undertakes confidentiality obligations for all materials, business information, and personal privacy provided by Party B. Without written consent, no disclosure to third parties. Confidentiality period: during service and 5 years after completion.</p>
+
+<h5>六、争议解决 VI. Dispute Resolution</h5>
+<p>本协议履行过程中如发生争议，双方应友好协商解决；协商不成的，提交海口仲裁委员会仲裁。<br>Disputes arising from this agreement shall be resolved through friendly negotiation; if negotiation fails, submit to Haikou Arbitration Commission for arbitration.</p>
+
+<h5>七、协议签署与生效 VII. Agreement Execution and Effectiveness</h5>
+<p><strong>重要声明 Important Notice:</strong></p>
+<p>本协议采用电子签署方式。乙方点击下方"我已阅读并同意协议"并点击"点击签署协议"按钮，即视为乙方已仔细阅读、充分理解并完全同意本协议的所有条款，与纸质签字盖章具有同等法律效力。<br>This agreement adopts electronic signature. By clicking "I have read and agree" and "Sign Agreement" button below, Party B is deemed to have carefully read, fully understood, and completely agreed to all terms of this agreement, which has the same legal effect as paper signature and seal.</p>
+
+<p>协议自乙方点击签署之时起生效，服务完成并交付全部文件后自动终止。<br>The agreement takes effect upon Party B's click to sign and automatically terminates upon completion of services and delivery of all documents.</p>
+
+<p style="margin-top:25px;padding-top:20px;border-top:2px solid rgba(74,222,128,.3)"><strong>联系方式 Contact Information:</strong></p>
+<p><strong>微信 WeChat:</strong> kosok_hainan</p>
+<p><strong>Telegram:</strong> @KOSOK0898</p>
+<p><strong>办公地址 Office Address:</strong> 海南省海口市 Haikou, Hainan Province, China（具体地址签约后提供 Detailed address provided upon signing）</p>
+</div>
+<div class="agreement-actions">
+<div class="agreement-checkbox">
+<input type="checkbox" id="agree1" onchange="toggleAgree('agree1','btn1','status1')">
+<label for="agree1">✓ 我已仔细阅读并完全同意以上协议所有条款<br>I have carefully read and fully agree to all terms above</label>
+</div>
+<button class="btn-agree" id="btn1" disabled onclick="signAgreement('全球企业注册服务 Global Registration Service','status1')">点击签署协议 Sign Agreement</button>
+<span class="agreement-status" id="status1">✓ 协议已签署 Agreement Signed</span>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 服务2：国内企业注册 -->
+<div class="service-section" id="service2">
+<div class="service-icon">🇨🇳</div>
+<h2>国内企业注册 Domestic Company Registration</h2>
+<div class="service-content">
+<div class="content-block">
+<h3>服务介绍 Service Introduction</h3>
+<p>协助国内企业在海南自贸港设立分支机构或新公司，充分利用自贸港政策优势，拓展业务版图。<br>Assist domestic enterprises in establishing branches or new companies in Hainan FTP to fully leverage policy advantages and expand business.</p>
+</div>
+<div class="content-block">
+<h3>服务内容 Service Details</h3>
+<ul>
+<li>注册类型咨询（分公司、子公司、独资企业）<br>Registration type consultation (branch, subsidiary, sole proprietorship)</li>
+<li>政策解读及优惠方案设计<br>Policy interpretation and preferential plan design</li>
+<li>全套工商注册服务<br>Complete business registration service</li>
+<li>税务登记及报到<br>Tax registration and reporting</li>
+<li>银行开户及社保公积金开户<br>Bank account and social security/housing fund account opening</li>
+</ul>
+</div>
+<div class="agreement-box">
+<h4 onclick="toggleAgreement('agreement2')">📋 《国内企业注册服务协议》点击查看完整协议<br>Domestic Company Registration Service Agreement - Click to View <span class="agreement-toggle" id="toggle2">▼</span></h4>
+<div class="agreement-content" id="agreement2">
+<h5>甲方 Party A: 海南索拉纳商务咨询中心 Hainan Solana Business Consulting Center</h5>
+<h5>乙方 Party B: 委托注册企业（客户）Client</h5>
+
+<h5>一、服务内容 I. Service Content</h5>
+<p>甲方为乙方提供海南自贸港国内企业注册服务，包括但不限于：<br>Party A provides domestic company registration services in Hainan FTP, including but not limited to:</p>
+<ul>
+<li>注册类型咨询与方案设计（分公司、子公司、独资企业等）<br>Registration type consultation and plan design (branch, subsidiary, sole proprietorship, etc.)</li>
+<li>注册地址提供（按年收费，费用另计）<br>Registered address provision (annual fee, charged separately)</li>
+<li>全套工商注册手续办理 Complete business registration procedures</li>
+<li>税务登记及税务报到 Tax registration and reporting</li>
+<li>银行开户及社保公积金开户协助<br>Bank account and social security/housing fund account opening assistance</li>
+</ul>
+
+<h5>二、收费标准 II. Fee Schedule</h5>
+<ul>
+<li><strong>分公司注册 Branch Registration:</strong> 人民币4,000-8,000元 RMB 4,000-8,000</li>
+<li><strong>子公司注册 Subsidiary Registration:</strong> 人民币5,000-12,000元 RMB 5,000-12,000</li>
+<li><strong>独资企业注册 Sole Proprietorship:</strong> 人民币3,000-6,000元 RMB 3,000-6,000</li>
+<li><strong>注册地址费用 Registered Address:</strong> 人民币3,000-8,000元/年 RMB 3,000-8,000/year</li>
+</ul>
+
+<h5>三、双方权利义务 III. Rights and Obligations</h5>
+<p>与《全球企业注册服务协议》基本一致，具体参照该协议相关条款。<br>Consistent with Global Company Registration Service Agreement. Refer to relevant clauses therein.</p>
+
+<h5>四、协议签署与生效 IV. Agreement Execution and Effectiveness</h5>
+<p>本协议采用电子签署方式。乙方点击下方"同意协议"并点击"签署"按钮，即视为乙方已仔细阅读、充分理解并完全同意本协议的所有条款，与纸质签字盖章具有同等法律效力。<br>Electronic signature applies. Clicking "Agree" and "Sign" button below indicates Party B has carefully read, understood, and agreed to all terms, with same legal effect as paper signature.</p>
+
+<p style="margin-top:20px"><strong>联系方式 Contact:</strong> 微信 WeChat kosok_hainan | Telegram @KOSOK0898</p>
+</div>
+<div class="agreement-actions">
+<div class="agreement-checkbox">
+<input type="checkbox" id="agree2" onchange="toggleAgree('agree2','btn2','status2')">
+<label for="agree2">✓ 我已阅读并同意协议 I agree to the agreement</label>
+</div>
+<button class="btn-agree" id="btn2" disabled onclick="signAgreement('国内企业注册服务 Domestic Registration','status2')">签署 Sign</button>
+<span class="agreement-status" id="status2">✓ 已签署 Signed</span>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 服务13：全托管策划服务 -->
+<div class="service-section priority" id="service13">
+<div style="text-align:center"><span class="priority-badge">⭐ 新推出·全托管服务 New Launch·Full-Service</span></div>
+<div class="service-icon">🎯</div>
+<h2>全托管策划服务 Full-Service Planning & Management</h2>
+<div class="service-content">
+<div class="content-block">
+<h3>🌟 服务核心理念 Core Service Philosophy</h3>
+<p><strong style="font-size:20px;color:#fbbf24">您不用来海南，我们代办一切！<br>You Don't Need to Come to Hainan - We Handle Everything!</strong></p>
+<p style="font-size:18px;margin-top:15px">从公司注册到运营管理，从政策申请到盈利实现，我们提供全流程托管服务。您只需提供基本信息和授权，其余一切由我们专业团队完成。<strong>您只管获取收益，无需操心任何事务！</strong><br>From company registration to operations management, from policy application to profit realization, we provide full-process hosting services. You only need to provide basic information and authorization, and our professional team handles everything else. <strong>You just enjoy the benefits without any worries!</strong></p>
+</div>
+<div class="content-block">
+<h3>📋 全托管服务内容 Full-Service Details</h3>
+<ul>
+<li><strong>公司注册全托管 Complete Registration Hosting:</strong> 名称核准、注册地址（含年费）、营业执照、印章刻制、税务登记、银行开户，全程代办<br>Name verification, registered address (with annual fee), business license, seals, tax registration, bank account - all handled remotely</li>
+<li><strong>政策策划与申请 Policy Planning & Application:</strong> 深度分析海南自贸港政策，量身定制最优税务筹划方案，代理申请各类优惠政策<br>In-depth Hainan FTP policy analysis, customized tax planning, and policy application agency</li>
+<li><strong>园区入驻对接 Park Entry Coordination:</strong> 根据行业特点推荐最适合园区，代办入驻手续，争取最大优惠<br>Recommend suitable parks based on industry, handle entry procedures, and secure maximum benefits</li>
+<li><strong>日常运营托管 Daily Operations Hosting:</strong> 代理记账报税、工商年报、社保缴纳、发票管理等所有日常事务<br>Bookkeeping, tax filing, annual reports, social security, invoice management - all daily operations</li>
+<li><strong>合规管理 Compliance Management:</strong> 确保公司运营符合中国法律法规，规避法律风险<br>Ensure operations comply with PRC laws and regulations, avoiding legal risks</li>
+<li><strong>盈利规划 Profit Planning:</strong> 利用海南政策优势，设计合法合规的盈利模式，最大化收益<br>Leverage Hainan policy advantages to design legal profit models and maximize returns</li>
+<li><strong>年度总结汇报 Annual Reports:</strong> 每年提供详细的经营报告和收益分析<br>Provide detailed annual operation reports and profit analysis</li>
+</ul>
+</div>
+<div class="content-block">
+<h3>💡 服务优势 Service Advantages</h3>
+<ul>
+<li><strong>零到场 Zero Presence Required:</strong> 您无需来海南，全程远程办理，节省时间成本<br>No need to visit Hainan - fully remote handling saves time and costs</li>
+<li><strong>零操心 Zero Worry:</strong> 专业团队全托管，您只需定期查看收益报表<br>Professional team handles everything - you only check profit statements</li>
+<li><strong>政策最大化 Policy Maximization:</strong> 深度利用海南自贸港政策，合法节税、合规盈利<br>Fully leverage Hainan FTP policies for legal tax savings and compliant profits</li>
+<li><strong>一对一服务 One-on-One Service:</strong> 配备专属客户经理，随时响应需求<br>Dedicated account manager for instant response to your needs</li>
+<li><strong>透明可查 Transparent & Accessible:</strong> 所有财务、运营数据实时可查，确保透明<br>All financial and operational data accessible in real-time for transparency</li>
+</ul>
+</div>
+<div class="agreement-box">
+<h4 onclick="toggleAgreement('agreement13')">📋 《全托管策划服务协议》点击查看完整协议<br>Full-Service Planning & Management Agreement - Click to View <span class="agreement-toggle" id="toggle13">▼</span></h4>
+<div class="agreement-content" id="agreement13">
+<h5>甲方 Party A: 海南索拉纳商务咨询中心 Hainan Solana Business Consulting Center</h5>
+<h5>乙方 Party B: 委托企业（客户）Client</h5>
+
+<h5>一、服务内容 I. Service Content</h5>
+<p>甲方为乙方提供全托管策划服务，包括但不限于：<br>Party A provides full-service planning and management, including but not limited to:</p>
+
+<p><strong>1.1 公司注册全托管服务 Complete Registration Hosting</strong></p>
+<ul>
+<li>公司名称核准 Company name verification</li>
+<li>注册地址提供（商务地址，包含在服务费中）<br>Registered address provision (commercial address, included in service fee)</li>
+<li>营业执照办理（全程代办，乙方无需到场）<br>Business license processing (fully handled, Party B presence not required)</li>
+<li>印章刻制及备案 Seals making and registration</li>
+<li>税务登记及银行开户 Tax registration and bank account opening</li>
+<li>时间：5-10个工作日 Processing time: 5-10 working days</li>
+</ul>
+
+<p><strong>1.2 政策策划与申请服务 Policy Planning & Application</strong></p>
+<ul>
+<li>深度分析海南自贸港税收优惠政策（企业所得税15%、个人所得税优惠等）<br>In-depth analysis of Hainan FTP tax policies (15% corporate tax, personal tax benefits, etc.)</li>
+<li>为乙方量身定制税务筹划方案，合法合规节税<br>Customized tax planning for legal tax savings and compliance</li>
+<li>代理申请高新技术企业认定等资质<br>Apply for hi-tech enterprise certification and other qualifications</li>
+<li>协助申请政府补贴、专项扶持资金<br>Assist in applying for government subsidies and special support funds</li>
+</ul>
+
+<p><strong>1.3 日常运营托管服务 Daily Operations Hosting</strong></p>
+<ul>
+<li>代理记账报税（每月按时申报）Monthly bookkeeping and tax filing</li>
+<li>工商年报、税务年报代办 Annual business and tax reports</li>
+<li>社保公积金代缴 Social security and housing fund payment</li>
+<li>发票管理（代开发票、发票认证等）Invoice management</li>
+<li>合同审核及法律风险提示 Contract review and legal risk alerts</li>
+</ul>
+
+<h5>二、收费标准 II. Fee Schedule</h5>
+<p><strong>全托管服务套餐（按年收费）Annual Full-Service Packages:</strong></p>
+<ul>
+<li><strong>基础套餐 Basic Package:</strong> 人民币36,000元/年 RMB 36,000/year<br>（包含公司注册+基础运营托管+注册地址费用 Includes registration + basic operations hosting + registered address fee）</li>
+<li><strong>标准套餐 Standard Package:</strong> 人民币60,000元/年 RMB 60,000/year<br>（包含公司注册+运营托管+政策申请+园区入驻+注册地址费用 Includes registration + operations + policy application + park entry + address fee）</li>
+<li><strong>高级套餐 Premium Package:</strong> 人民币100,000元/年 RMB 100,000/year<br>（包含全部服务+盈利规划+年度税务筹划+注册地址费用 Includes all services + profit planning + annual tax planning + address fee）</li>
+<li><strong>定制套餐 Customized Package:</strong> 根据具体需求定制，价格面议<br>Customized based on specific needs, price negotiable</li>
+</ul>
+
+<p><strong>付款方式 Payment Terms:</strong></p>
+<ul>
+<li>签约时支付50%服务费 50% upon signing</li>
+<li>公司注册完成后支付30% 30% upon registration completion</li>
+<li>服务满6个月后支付剩余20% Remaining 20% after 6 months of service</li>
+</ul>
+
+<p><strong>说明 Note:</strong> 如乙方提前终止协议，已支付费用按实际服务时间折算，未服务部分退还。<br>If Party B terminates early, fees are calculated based on actual service time, with unserviced portion refunded.</p>
+
+<h5>三、双方权利与义务 III. Rights and Obligations</h5>
+<p><strong>甲方权利与义务 Party A's Rights and Obligations:</strong></p>
+<ul>
+<li>按时按质完成约定的各项服务 Complete all agreed services on time and with quality</li>
+<li>对乙方的商业信息、财务数据严格保密（保密期10年）<br>Strictly protect Party B's business information and financial data (10-year confidentiality)</li>
+<li>及时向乙方汇报公司运营情况 Promptly report company operations to Party B</li>
+<li>确保所有操作合法合规，规避法律风险<br>Ensure all operations are legal and compliant, avoiding legal risks</li>
+<li>配备专属客户经理，提供一对一服务<br>Assign dedicated account manager for one-on-one service</li>
+</ul>
+
+<p><strong>乙方权利与义务 Party B's Rights and Obligations:</strong></p>
+<ul>
+<li>随时查询公司财务、运营数据 Access company financial and operational data anytime</li>
+<li>提供真实、合法的身份信息和授权文件<br>Provide authentic, legal identity information and authorization documents</li>
+<li>按时支付服务费用 Pay service fees on time</li>
+<li>遵守中国法律法规，不从事违法业务<br>Comply with PRC laws and regulations, not engage in illegal business</li>
+</ul>
+
+<h5>四、保密条款 IV. Confidentiality</h5>
+<p>甲方对乙方的所有信息承担严格保密义务。保密期限：服务期间及服务结束后10年。<br>Party A undertakes strict confidentiality obligations. Confidentiality period: during service and 10 years after completion.</p>
+
+<h5>五、违约责任 V. Liability for Breach</h5>
+<p><strong>甲方违约 Party A Breach:</strong></p>
+<ul>
+<li>未按时完成约定服务，每延迟一天赔偿服务费的1%<br>Failure to complete services on time: 1% of service fee per day of delay</li>
+<li>因甲方过失导致乙方公司被罚款，甲方承担全部罚款<br>If Party A's fault causes fines, Party A bears all penalties</li>
+<li>泄露乙方商业秘密，赔偿损失并支付违约金（服务费的3倍）<br>Breach of confidentiality: compensate damages and pay penalty (3x service fee)</li>
+</ul>
+
+<p><strong>乙方违约 Party B Breach:</strong></p>
+<ul>
+<li>未按时支付服务费，甲方有权暂停服务<br>Failure to pay fees on time: Party A may suspend services</li>
+<li>提供虚假信息导致法律问题，乙方承担全部责任<br>Providing false information causing legal issues: Party B bears all responsibility</li>
+<li>从事违法业务，甲方有权立即终止协议，已付费用不退<br>Engaging in illegal business: Party A may terminate immediately, fees non-refundable</li>
+</ul>
+
+<h5>六、协议签署与生效 VI. Agreement Execution and Effectiveness</h5>
+<p><strong>重要声明 Important Notice:</strong></p>
+<p>本协议采用电子签署方式。乙方点击下方"我已阅读并同意协议"并点击"点击签署协议"按钮，即视为乙方已仔细阅读、充分理解并完全同意本协议的所有条款，与纸质签字盖章具有同等法律效力。<br>Electronic signature applies. By clicking "I agree" and "Sign Agreement" button below, Party B is deemed to have carefully read, fully understood, and agreed to all terms, with same legal effect as paper signature and seal.</p>
+
+<p>协议自签署之日起一年有效（可续签），服务期满双方不再续约或一方终止协议时自动失效。<br>Agreement valid for one year from signing (renewable). Automatically terminates upon expiration or termination by either party.</p>
+
+<p style="margin-top:30px;padding-top:20px;border-top:2px solid rgba(251,191,36,.5)"><strong style="font-size:19px;color:#fbbf24">联系我们开启全托管服务 Contact Us to Start Full-Service:</strong></p>
+<p style="font-size:17px"><strong>微信 WeChat:</strong> kosok_hainan</p>
+<p style="font-size:17px"><strong>Telegram:</strong> @KOSOK0898</p>
+<p style="margin-top:15px;color:#cbd5e1">我们承诺：专业、高效、保密，让您无忧创业，安心盈利！<br>We promise: Professional, Efficient, Confidential - Worry-free entrepreneurship, Profitable peace of mind!</p>
+</div>
+<div class="agreement-actions">
+<div class="agreement-checkbox">
+<input type="checkbox" id="agree13" onchange="toggleAgree('agree13','btn13','status13')">
+<label for="agree13">✓ 我已仔细阅读并完全同意《全托管策划服务协议》的所有条款<br>I have carefully read and fully agree to all terms of Full-Service Agreement</label>
+</div>
+<button class="btn-agree" id="btn13" disabled onclick="signAgreement('全托管策划服务 Full-Service Planning','status13')">点击签署协议 开启全托管服务<br>Sign Agreement - Start Full-Service</button>
+<span class="agreement-status" id="status13">✓ 协议已签署 我们将尽快联系您<br>Agreement Signed - We Will Contact You Soon</span>
+</div>
+</div>
+</div>
 
 <div class="back-home">
-<a href="index.html" class="btn btn-primary">返回首页</a>
-<a href="index.html#pricing" class="btn btn-secondary">查看收费</a>
+<a href="index.html" class="btn btn-primary">返回首页 Back to Home</a>
+<a href="index.html#pricing" class="btn btn-secondary">查看收费 Pricing</a>
 </div>
 
 </div>
 
+<!-- 签约成功弹窗 -->
 <div class="modal" id="signModal">
 <div class="modal-content">
 <div class="modal-header">
-<h3>✓ 签约成功！</h3>
+<h3>✓ 签约成功 Agreement Signed</h3>
 <button class="modal-close" onclick="closeModal()">&times;</button>
 </div>
 <div class="modal-body">
-<p>恭喜！您已成功签署 <strong id="serviceName"></strong> 协议！</p>
-<p style="margin-top:20px">我们的专属客户经理将在<strong style="color:#fbbf24">24小时内</strong>通过以下方式联系您：</p>
+<p>您已成功签署 <strong id="serviceName"></strong> 协议！</p>
+<p style="margin-top:20px">我们将尽快通过以下方式联系您：</p>
 <p style="margin-top:15px;font-size:18px"><strong style="color:#4ade80">微信 WeChat: kosok_hainan</strong></p>
 <p style="font-size:18px"><strong style="color:#4ade80">Telegram: @KOSOK0898</strong></p>
-<p style="margin-top:20px;color:#cbd5e1">感谢您的信任！我们将竭诚为您服务！</p>
-<button class="btn-agree" style="margin-top:30px;width:100%" onclick="closeModal()">确定</button>
+<button class="btn-agree" style="margin-top:30px;width:100%" onclick="closeModal()">确定 OK</button>
 </div>
 </div>
 </div>
@@ -528,7 +950,9 @@ content.classList.toggle('show');
 toggle.classList.toggle('open');
 }
 function toggleAgree(checkId,btnId,statusId){
-document.getElementById(btnId).disabled=!document.getElementById(checkId).checked;
+const check=document.getElementById(checkId);
+const btn=document.getElementById(btnId);
+btn.disabled=!check.checked;
 }
 function signAgreement(serviceName,statusId){
 document.getElementById('serviceName').textContent=serviceName;
@@ -537,6 +961,10 @@ document.getElementById(statusId).classList.add('show');
 }
 function closeModal(){
 document.getElementById('signModal').classList.remove('show');
+}
+let currentLang='zh';
+function toggleLang(){
+currentLang=currentLang==='zh'?'en':'zh';
 }
 </script>
 
