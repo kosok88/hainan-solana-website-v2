@@ -27,14 +27,14 @@ h1{font-size:48px;margin-bottom:20px;text-shadow:2px 2px 8px rgba(0,0,0,.6)}
 .service-nav{display:flex;flex-wrap:wrap;gap:15px;justify-content:center;padding:30px 20px;background:rgba(0,0,0,.25);border-radius:16px;margin:20px auto;max-width:1200px}
 .service-nav-btn{background:rgba(74,222,128,.25);color:#fff;border:2px solid rgba(74,222,128,.6);padding:12px 24px;border-radius:25px;cursor:pointer;transition:.3s;font-size:15px;font-weight:600;text-decoration:none;display:inline-block;text-shadow:0 2px 4px rgba(0,0,0,.3)}
 .service-nav-btn:hover{background:rgba(74,222,128,.4);border-color:#4ade80;transform:translateY(-2px)}
-.service-nav-btn.priority{background:linear-gradient(135deg,rgba(255,138,101,.3),rgba(255,114,94,.3));border:2px solid rgba(255,138,101,.8);box-shadow:0 0 20px rgba(255,138,101,.3);animation:glow 3s ease-in-out infinite}
-.service-nav-btn.priority:hover{background:linear-gradient(135deg,rgba(255,138,101,.4),rgba(255,114,94,.4));border-color:#ff8a65;transform:translateY(-2px) scale(1.02)}
-@keyframes glow{0%,100%{box-shadow:0 0 15px rgba(255,138,101,.4)}50%{box-shadow:0 0 25px rgba(255,138,101,.6)}}
+.service-nav-btn.priority{background:linear-gradient(135deg,rgba(251,191,36,.25),rgba(245,158,11,.25));border:2px solid rgba(251,191,36,.7);box-shadow:0 0 20px rgba(251,191,36,.25);animation:glow 3s ease-in-out infinite}
+.service-nav-btn.priority:hover{background:linear-gradient(135deg,rgba(251,191,36,.35),rgba(245,158,11,.35));border-color:#fbbf24;transform:translateY(-2px) scale(1.02)}
+@keyframes glow{0%,100%{box-shadow:0 0 15px rgba(251,191,36,.3)}50%{box-shadow:0 0 25px rgba(251,191,36,.5)}}
 .service-section{background:rgba(0,0,0,.25);backdrop-filter:blur(15px);padding:50px 35px;border-radius:20px;margin:30px auto;max-width:1000px;border:1px solid rgba(255,255,255,.25)}
-.service-section.priority{border:2px solid rgba(255,138,101,.6);background:linear-gradient(135deg,rgba(255,138,101,.08),rgba(255,114,94,.08));box-shadow:0 8px 32px rgba(255,138,101,.15)}
+.service-section.priority{border:2px solid rgba(251,191,36,.6);background:linear-gradient(135deg,rgba(251,191,36,.08),rgba(245,158,11,.08));box-shadow:0 8px 32px rgba(251,191,36,.12)}
 .service-section h2{color:#4ade80;font-size:36px;margin-bottom:30px;text-align:center;text-shadow:0 2px 8px rgba(0,0,0,.4)}
-.service-section.priority h2{color:#ff8a65}
-.priority-badge{background:linear-gradient(135deg,#ff8a65,#ff7261);color:#fff;padding:8px 20px;border-radius:25px;font-size:15px;font-weight:700;display:inline-block;margin-bottom:20px;box-shadow:0 4px 15px rgba(255,138,101,.4);text-shadow:0 2px 4px rgba(0,0,0,.3)}
+.service-section.priority h2{color:#fbbf24}
+.priority-badge{background:linear-gradient(135deg,#fbbf24,#f59e0b);color:#1a1a2e;padding:8px 20px;border-radius:25px;font-size:15px;font-weight:700;display:inline-block;margin-bottom:20px;box-shadow:0 4px 15px rgba(251,191,36,.3);text-shadow:none}
 .service-icon{font-size:48px;text-align:center;margin-bottom:20px}
 .service-content{margin-top:30px}
 .content-block{background:rgba(255,255,255,.12);padding:28px;border-radius:14px;margin-bottom:25px;border-left:4px solid #4ade80;backdrop-filter:blur(10px)}
@@ -51,10 +51,21 @@ h1{font-size:48px;margin-bottom:20px;text-shadow:2px 2px 8px rgba(0,0,0,.6)}
 .park-card .park-label{color:#4ade80;font-size:15px;font-weight:700;min-width:85px;flex-shrink:0;text-shadow:0 2px 4px rgba(0,0,0,.3)}
 .park-card .park-value{color:#f5f7fa;font-size:15px;line-height:1.8;flex:1;text-shadow:0 1px 3px rgba(0,0,0,.4)}
 .park-card .park-value strong{color:#fff;font-weight:700;text-shadow:0 2px 4px rgba(0,0,0,.5)}
-.agreement-note{background:rgba(74,222,128,.18);padding:25px;border-radius:14px;margin:25px 0;border-left:5px solid #4ade80;backdrop-filter:blur(10px)}
-.agreement-note h4{color:#4ade80;font-size:19px;margin-bottom:12px;font-weight:700;text-shadow:0 2px 4px rgba(0,0,0,.3)}
-.agreement-note p{color:#f0f4f8;font-size:16px;line-height:1.9;margin-bottom:10px;text-shadow:0 1px 3px rgba(0,0,0,.3)}
-.agreement-note strong{color:#fff;font-weight:700}
+.agreement-box{background:rgba(74,222,128,.18);padding:25px;border-radius:14px;margin:25px 0;border:2px solid #4ade80;backdrop-filter:blur(10px)}
+.agreement-box h4{color:#4ade80;font-size:19px;margin-bottom:15px;font-weight:700;text-shadow:0 2px 4px rgba(0,0,0,.3)}
+.agreement-content{background:rgba(255,255,255,.1);padding:20px;border-radius:10px;margin:15px 0;max-height:300px;overflow-y:auto;color:#e2e8f0;font-size:14px;line-height:1.7;text-shadow:0 1px 2px rgba(0,0,0,.3)}
+.agreement-content h5{color:#4ade80;font-size:16px;margin:15px 0 10px;font-weight:700}
+.agreement-content p{margin-bottom:10px}
+.agreement-content ol,.agreement-content ul{margin-left:20px;margin-bottom:10px}
+.agreement-actions{display:flex;gap:15px;margin-top:15px;align-items:center}
+.agreement-checkbox{display:flex;align-items:center;gap:8px;cursor:pointer}
+.agreement-checkbox input{width:18px;height:18px;cursor:pointer}
+.agreement-checkbox label{color:#f0f4f8;font-size:15px;cursor:pointer}
+.btn-agree{background:#4ade80;color:#1a1a2e;padding:12px 28px;border-radius:25px;border:none;font-weight:700;font-size:15px;cursor:pointer;transition:.3s;box-shadow:0 4px 15px rgba(74,222,128,.4)}
+.btn-agree:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 6px 20px rgba(74,222,128,.5)}
+.btn-agree:disabled{opacity:.5;cursor:not-allowed}
+.agreement-status{background:rgba(74,222,128,.3);color:#fff;padding:10px 20px;border-radius:20px;font-size:14px;font-weight:600;display:none}
+.agreement-status.show{display:inline-block}
 .back-home{text-align:center;padding:50px 20px}
 .btn{padding:16px 36px;border-radius:30px;text-decoration:none;font-weight:700;transition:.3s;cursor:pointer;border:none;font-size:17px;display:inline-block;text-shadow:0 2px 4px rgba(0,0,0,.3)}
 .btn-primary{background:#4ade80;color:#1a1a2e;box-shadow:0 4px 15px rgba(74,222,128,.4)}
@@ -63,12 +74,20 @@ h1{font-size:48px;margin-bottom:20px;text-shadow:2px 2px 8px rgba(0,0,0,.6)}
 .btn-secondary:hover{background:rgba(255,255,255,.25);border-color:#fff}
 footer{background:rgba(0,0,0,.35);backdrop-filter:blur(15px);padding:35px 20px;text-align:center;margin-top:60px;box-shadow:0 -2px 20px rgba(0,0,0,.3)}
 footer p{color:#cbd5e1;font-size:15px;font-weight:500;text-shadow:0 1px 2px rgba(0,0,0,.3)}
+.modal{display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,.8);backdrop-filter:blur(5px)}
+.modal.show{display:flex;align-items:center;justify-content:center}
+.modal-content{background:linear-gradient(135deg,rgba(102,126,234,.95),rgba(118,75,162,.95));backdrop-filter:blur(20px);padding:40px;border-radius:20px;max-width:600px;width:90%;max-height:80vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.5);border:2px solid rgba(74,222,128,.3)}
+.modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.modal-header h3{color:#4ade80;font-size:24px}
+.modal-close{background:none;border:none;color:#fff;font-size:32px;cursor:pointer;line-height:1}
+.modal-close:hover{color:#4ade80}
 @media (max-width:768px){
 h1{font-size:32px}
 .service-nav{flex-direction:column}
 .service-nav-btn{width:100%}
 .park-grid{grid-template-columns:1fr}
 .nav-links{display:none}
+.agreement-actions{flex-direction:column}
 }
 </style>
 </head>
@@ -101,14 +120,14 @@ h1{font-size:32px}
 </div>
 
 <div class="service-nav">
-<a href="#service1" class="service-nav-btn priority" id="navBtn1">🌟 全球企业注册</a>
+<a href="#service1" class="service-nav-btn priority" id="navBtn1">⭐ 全球企业注册</a>
 <a href="#service2" class="service-nav-btn" id="navBtn2">国内企业注册</a>
 <a href="#service3" class="service-nav-btn" id="navBtn3">税务优惠咨询</a>
-<a href="#service4" class="service-nav-btn priority" id="navBtn4">🌟 美股上链咨询</a>
+<a href="#service4" class="service-nav-btn priority" id="navBtn4">⭐ 美股上链咨询</a>
 <a href="#service5" class="service-nav-btn" id="navBtn5">美股开户咨询</a>
 <a href="#service6" class="service-nav-btn" id="navBtn6">区块链咨询</a>
 <a href="#service7" class="service-nav-btn" id="navBtn7">网站制作</a>
-<a href="#service8" class="service-nav-btn priority" id="navBtn8">🌟 设计服务</a>
+<a href="#service8" class="service-nav-btn priority" id="navBtn8">⭐ 设计服务</a>
 <a href="#service9" class="service-nav-btn" id="navBtn9">园区入驻服务</a>
 <a href="#service10" class="service-nav-btn" id="navBtn10">政策申报合规</a>
 <a href="#service11" class="service-nav-btn" id="navBtn11">企业托管服务</a>
@@ -117,309 +136,293 @@ h1{font-size:32px}
 
 <!-- 服务1：全球企业注册 -->
 <div class="service-section priority" id="service1">
-<div style="text-align:center"><span class="priority-badge" id="badge1">🌟 早期重点服务 Early Priority Service</span></div>
+<div style="text-align:center"><span class="priority-badge" id="badge1">⭐ 早期重点服务 Early Priority Service</span></div>
 <div class="service-icon">🌍</div>
 <h2 id="s1title">全球企业注册 / Global Company Registration</h2>
 <div class="service-content">
 <div class="content-block">
 <h3 id="s1h1">服务介绍 Service Introduction</h3>
 <p id="s1p1">为全球各地企业提供海南自由贸易港公司注册服务，享受零关税、低税率、贸易投资便利化等政策红利。这是我们的核心服务之一，拥有丰富经验和专业团队。</p>
-<p id="s1p1en">Provide company registration services in Hainan Free Trade Port for global enterprises, enjoying zero tariffs, low tax rates, and trade facilitation. This is one of our core services with extensive experience and professional team.</p>
+<p id="s1p1en">Provide company registration services in Hainan Free Trade Port for global enterprises, enjoying zero tariffs, low tax rates, and trade facilitation.</p>
 </div>
 <div class="content-block">
 <h3 id="s1h2">服务内容 Services</h3>
 <ul>
-<li id="s1li1">公司名称核准及备选方案 / Company name verification and alternatives</li>
-<li id="s1li2">注册地址提供（一年免费）/ Registered address (1 year free)</li>
-<li id="s1li3">营业执照办理（3-7工作日）/ Business license (3-7 working days)</li>
-<li id="s1li4">公章、财务章、法人章刻制 / Official seals making</li>
-<li id="s1li5">税务登记及开户许可 / Tax registration and permits</li>
-<li id="s1li6">银行开户协助（全程陪同）/ Bank account assistance (full support)</li>
+<li>公司名称核准及备选方案 / Company name verification and alternatives</li>
+<li>注册地址提供（一年免费）/ Registered address (1 year free)</li>
+<li>营业执照办理（3-7工作日）/ Business license (3-7 working days)</li>
+<li>公章、财务章、法人章刻制 / Official seals making</li>
+<li>税务登记及开户许可 / Tax registration and permits</li>
+<li>银行开户协助（全程陪同）/ Bank account assistance</li>
 </ul>
 </div>
-<div class="agreement-note">
-<h4 id="s1agh">📋 服务协议 Service Agreement</h4>
-<p id="s1agp">我们提供标准化的企业注册服务协议，保障双方权益。协议包含服务内容、收费标准、服务期限、违约责任等条款。</p>
-<p id="s1agpen">We provide standardized registration service agreements to protect both parties. The agreement includes service content, fee standards, service period, and liability terms.</p>
-<p id="s1agp2"><strong>获取方式 How to Get:</strong> 微信 WeChat: <strong>kosok_hainan</strong> | Telegram: <strong>@KOSOK0898</strong></p>
+<div class="agreement-box">
+<h4>📋 企业注册服务协议 Registration Service Agreement</h4>
+<div class="agreement-content">
+<h5>一、服务内容 Service Content</h5>
+<p>1. 甲方（海南索拉纳商务咨询中心）为乙方提供海南自贸港企业注册全套服务</p>
+<p>2. 服务包括：公司名称核准、注册地址、营业执照办理、刻章、税务登记、银行开户协助</p>
+<p>3. 注册时间：3-7个工作日（特殊情况除外）</p>
+<h5>二、双方权利义务 Rights and Obligations</h5>
+<p>甲方义务：按时完成注册、提供真实准确信息、保守客户商业秘密</p>
+<p>乙方义务：提供真实合法资料、按时支付服务费用、配合办理相关手续</p>
+<h5>三、收费标准 Fee Standard</h5>
+<p>根据公司类型和注册资本确定，具体费用详见报价单</p>
+<h5>四、违约责任 Liability</h5>
+<p>如因甲方原因导致注册失败，全额退款；如因乙方提供虚假资料导致失败，不予退款</p>
+<h5>五、其他条款 Other Terms</h5>
+<p>本协议自双方签署之日起生效，服务完成后自动终止</p>
+<p><strong>联系方式 Contact: 微信 kosok_hainan | Telegram @KOSOK0898</strong></p>
+</div>
+<div class="agreement-actions">
+<div class="agreement-checkbox">
+<input type="checkbox" id="agree1" onchange="toggleAgree('agree1','btn1','status1')">
+<label for="agree1">我已阅读并同意该协议 I agree to the terms</label>
+</div>
+<button class="btn-agree" id="btn1" disabled onclick="signAgreement('企业注册服务','status1')">点击签约 Sign Agreement</button>
+<span class="agreement-status" id="status1">✓ 已签约 Signed</span>
+</div>
 </div>
 </div>
 </div>
 
 <!-- 服务4：美股上链咨询 -->
 <div class="service-section priority" id="service4">
-<div style="text-align:center"><span class="priority-badge" id="badge4">🌟 早期重点服务 Early Priority Service</span></div>
+<div style="text-align:center"><span class="priority-badge">⭐ 早期重点服务 Early Priority Service</span></div>
 <div class="service-icon">🔗</div>
-<h2 id="s4title">美股上链咨询 / US Stock On-Chain Consulting</h2>
+<h2>美股上链咨询 / US Stock On-Chain Consulting</h2>
 <div class="service-content">
 <div class="content-block">
-<h3 id="s4h1">🌟 个人投资者服务 Individual Investor Services</h3>
-<p id="s4p1"><strong>我们为个人投资者提供美股资产上链交易的全流程咨询服务，让您轻松实现传统股票资产的数字化转型。一对一专业指导，确保安全合规。</strong></p>
-<p id="s4p1en"><strong>We provide comprehensive on-chain trading consultation for individual investors to digitize traditional stock assets. One-on-one professional guidance ensuring safety and compliance.</strong></p>
+<h3>🌟 个人投资者服务 Individual Services</h3>
+<p><strong>我们为个人投资者提供美股资产上链交易的全流程咨询服务。一对一专业指导，确保安全合规。</strong></p>
 <ul>
-<li id="s4li1">个人美股资产代币化方案咨询 / Personal asset tokenization consulting</li>
-<li id="s4li2">链上交易账户开设指导 / On-chain account setup guidance</li>
-<li id="s4li3">数字钱包设置及安全管理培训 / Digital wallet security management</li>
-<li id="s4li4">链上交易操作培训（一对一专业指导）/ Trading training (1-on-1 professional)</li>
-<li id="s4li5">资产转换流程全程协助 / Asset conversion full assistance</li>
-<li id="s4li6">交易平台选择及对比分析 / Platform selection and analysis</li>
-<li id="s4li7">税务合规咨询（跨境资产申报指导）/ Tax compliance (cross-border)</li>
-<li id="s4li8">风险评估及投资建议 / Risk assessment and advice</li>
+<li>个人美股资产代币化方案咨询 / Personal asset tokenization</li>
+<li>链上交易账户开设指导 / On-chain account setup</li>
+<li>数字钱包设置及安全管理 / Digital wallet security</li>
+<li>链上交易操作培训（一对一）/ Trading training (1-on-1)</li>
+<li>资产转换流程全程协助 / Asset conversion assistance</li>
+<li>交易平台选择及对比 / Platform selection</li>
+<li>税务合规咨询（跨境资产申报）/ Tax compliance</li>
+<li>风险评估及投资建议 / Risk assessment</li>
 </ul>
 </div>
-<div class="content-block">
-<h3 id="s4h2">机构服务内容 Institutional Services</h3>
-<p id="s4p2">为投资机构、基金公司提供美股资产代币化、链上交易结算、Web3资产管理等创新金融服务。</p>
-<p id="s4p2en">Provide tokenization, on-chain settlement, and Web3 asset management for institutions and fund companies.</p>
+<div class="agreement-box">
+<h4>📋 区块链咨询服务协议 Blockchain Consulting Agreement</h4>
+<div class="agreement-content">
+<h5>一、服务内容 Service Content</h5>
+<p>1. 甲方为乙方提供美股资产上链咨询服务，包括但不限于资产代币化方案、交易指导、安全管理等</p>
+<p>2. 服务方式：一对一专业咨询，线上或线下均可</p>
+<h5>二、保密条款 Confidentiality</h5>
+<p>甲方承诺对乙方的资产信息、交易数据严格保密，未经授权不得泄露</p>
+<h5>三、风险提示 Risk Warning</h5>
+<p>区块链投资存在风险，乙方应充分了解并自行承担投资风险</p>
+<p>甲方仅提供咨询服务，不承担投资损失责任</p>
+<h5>四、知识产权 Intellectual Property</h5>
+<p>咨询方案的知识产权归甲方所有，乙方不得擅自传播或用于商业用途</p>
+<h5>五、收费标准 Fee Standard</h5>
+<p>根据服务内容和时长确定，具体费用详见报价单</p>
+<p><strong>联系方式 Contact: 微信 kosok_hainan | Telegram @KOSOK0898</strong></p>
 </div>
-<div class="agreement-note">
-<h4 id="s4agh">📋 服务协议 Service Agreement</h4>
-<p id="s4agp">区块链咨询服务涉及技术、法律、合规等多个方面，我们提供详细的服务协议保障您的权益。协议包含保密条款、知识产权归属、服务标准等。</p>
-<p id="s4agpen">Blockchain consulting involves technology, legal, and compliance. We provide detailed agreements including confidentiality, IP ownership, and service standards.</p>
-<p id="s4agp2"><strong>获取方式 Contact:</strong> 微信 WeChat: <strong>kosok_hainan</strong> | Telegram: <strong>@KOSOK0898</strong></p>
+<div class="agreement-actions">
+<div class="agreement-checkbox">
+<input type="checkbox" id="agree4" onchange="toggleAgree('agree4','btn4','status4')">
+<label for="agree4">我已阅读并同意该协议 I agree to the terms</label>
+</div>
+<button class="btn-agree" id="btn4" disabled onclick="signAgreement('区块链咨询服务','status4')">点击签约 Sign Agreement</button>
+<span class="agreement-status" id="status4">✓ 已签约 Signed</span>
+</div>
 </div>
 </div>
 </div>
 
 <!-- 服务8：设计服务 -->
 <div class="service-section priority" id="service8">
-<div style="text-align:center"><span class="priority-badge" id="badge8">🌟 早期重点服务 Early Priority Service</span></div>
+<div style="text-align:center"><span class="priority-badge">⭐ 早期重点服务 Early Priority Service</span></div>
 <div class="service-icon">🎨</div>
-<h2 id="s8title">设计服务 / Design Services</h2>
+<h2>设计服务 / Design Services</h2>
 <div class="service-content">
 <div class="content-block">
-<h3 id="s8h1">服务介绍 Introduction</h3>
-<p id="s8p1">提供LOGO设计、VI设计、网站设计、品牌套餐、广告商标设计等专业设计服务。我们的设计团队拥有丰富的品牌设计经验，助力企业打造专业形象。</p>
-<p id="s8p1en">Provide LOGO, VI, website, branding, and advertising design services. Our design team has extensive brand design experience to help build professional corporate image.</p>
-</div>
-<div class="content-block">
-<h3 id="s8h2">服务内容 Services</h3>
+<h3>服务介绍 Introduction</h3>
+<p>提供LOGO设计、VI设计、网站设计、品牌套餐、广告商标设计等专业设计服务。</p>
 <ul>
-<li id="s8li1">LOGO设计及VI系统（品牌全案）/ LOGO & VI system (full branding)</li>
-<li id="s8li2">品牌视觉形象设计 / Brand visual identity design</li>
-<li id="s8li3">网站UI/UX设计（响应式）/ Website UI/UX (responsive)</li>
-<li id="s8li4">宣传物料设计（名片、海报、手册等）/ Marketing materials</li>
-<li id="s8li5">商标注册设计（符合商标法规范）/ Trademark design (compliant)</li>
+<li>LOGO设计及VI系统（品牌全案）/ LOGO & VI system</li>
+<li>品牌视觉形象设计 / Brand visual identity</li>
+<li>网站UI/UX设计（响应式）/ Website UI/UX</li>
+<li>宣传物料设计 / Marketing materials</li>
+<li>商标注册设计 / Trademark design</li>
 </ul>
 </div>
-<div class="agreement-note">
-<h4 id="s8agh">📋 服务协议 Service Agreement</h4>
-<p id="s8agp">设计服务协议明确设计交付标准、修改次数、知识产权归属、源文件交付等重要事项。我们承诺原创设计，保证您的品牌独特性。</p>
-<p id="s8agpen">Design agreement specifies delivery standards, revision rounds, IP ownership, and source file delivery. We promise original design ensuring brand uniqueness.</p>
-<p id="s8agp2"><strong>获取方式 Contact:</strong> 微信 WeChat: <strong>kosok_hainan</strong> | Telegram: <strong>@KOSOK0898</strong></p>
+<div class="agreement-box">
+<h4>📋 设计服务协议 Design Service Agreement</h4>
+<div class="agreement-content">
+<h5>一、服务内容 Service Content</h5>
+<p>1. 甲方为乙方提供专业设计服务，包括LOGO、VI、网站、宣传物料等</p>
+<p>2. 设计风格：根据乙方需求定制，提供3轮修改机会</p>
+<h5>二、交付标准 Delivery Standard</h5>
+<p>设计周期：7-15个工作日（根据项目复杂度）</p>
+<p>交付文件：AI/PSD源文件 + JPG/PNG成品文件</p>
+<h5>三、知识产权 Intellectual Property</h5>
+<p>设计作品知识产权在乙方支付全款后归乙方所有</p>
+<p>甲方承诺设计为原创，不侵犯第三方权益</p>
+<h5>四、修改条款 Revision Terms</h5>
+<p>免费提供3次修改，超出部分按小时收费</p>
+<h5>五、收费标准 Fee Standard</h5>
+<p>根据设计项目类型确定，具体费用详见报价单</p>
+<p><strong>联系方式 Contact: 微信 kosok_hainan | Telegram @KOSOK0898</strong></p>
+</div>
+<div class="agreement-actions">
+<div class="agreement-checkbox">
+<input type="checkbox" id="agree8" onchange="toggleAgree('agree8','btn8','status8')">
+<label for="agree8">我已阅读并同意该协议 I agree to the terms</label>
+</div>
+<button class="btn-agree" id="btn8" disabled onclick="signAgreement('设计服务','status8')">点击签约 Sign Agreement</button>
+<span class="agreement-status" id="status8">✓ 已签约 Signed</span>
+</div>
 </div>
 </div>
 </div>
 
-<!-- 服务9：园区入驻服务 -->
+<!-- 服务9：园区入驻 - 简化版，包含11个园区 -->
 <div class="service-section" id="service9">
 <div class="service-icon">🏢</div>
-<h2 id="s9title">园区入驻服务 / Park Entry Services</h2>
+<h2>园区入驻服务 / Park Entry Services</h2>
 <div class="service-content">
 <div class="content-block">
-<h3 id="s9h1">服务介绍 Introduction</h3>
-<p id="s9p1">协助企业入驻海南自贸港11个重点园区，对接园区资源，申请政策优惠，提供一站式入驻服务。我们与各大园区建立了良好的合作关系，能够为您争取最优惠的政策。</p>
-<p id="s9p1en">Assist enterprises in entering Hainan FTP 11 key parks, connecting resources, applying for policies, and providing one-stop entry services. We have established good relationships with major parks to secure best policies for you.</p>
-</div>
-<div class="content-block">
-<h3 id="s9h3">海南自贸港11个重点园区 Hainan FTP 11 Key Parks</h3>
+<h3>海南自贸港11个重点园区 Hainan FTP 11 Key Parks</h3>
 <div class="park-grid">
-
 <div class="park-card">
-<h4 id="park1name">1. 洋浦经济开发区 Yangpu Economic Development Zone</h4>
-<div class="park-row"><span class="park-label" id="park1l1">📍 位置</span><span class="park-value" id="park1v1">海南省儋州市洋浦半岛（国家级开发区）Yangpu Peninsula, Danzhou, Hainan (National-level)</span></div>
-<div class="park-row"><span class="park-label" id="park1l2">🏭 主导产业</span><span class="park-value" id="park1v2"><strong>石化新材料</strong>（千亿级产业集群）、港航物流、高端制造业<br><strong>Petrochemical</strong> (100-billion cluster), Port Logistics, Manufacturing</span></div>
-<div class="park-row"><span class="park-label" id="park1l3">💰 核心优惠</span><span class="park-value" id="park1v3">企业所得税<strong>15%</strong>、零关税政策、加工增值<strong>30%以上免关税</strong>、"中国洋浦港"船籍港政策<br>Corporate tax <strong>15%</strong>, Zero tariff, Processing value-added <strong>30%+ exemption</strong></span></div>
-<div class="park-row"><span class="park-label" id="park1l4">🎯 适合企业</span><span class="park-value" id="park1v4">石化企业、物流企业、进出口贸易企业、高端制造企业<br>Petrochemical, Logistics, Trade, Manufacturing companies</span></div>
+<h4>1. 洋浦经济开发区 Yangpu Zone</h4>
+<div class="park-row"><span class="park-label">📍 位置</span><span class="park-value">海南省儋州市洋浦半岛 Danzhou</span></div>
+<div class="park-row"><span class="park-label">🏭 产业</span><span class="park-value"><strong>石化新材料</strong>（千亿级）、港航物流 Petrochemical, Logistics</span></div>
+<div class="park-row"><span class="park-label">💰 优惠</span><span class="park-value">企业所得税<strong>15%</strong>、零关税、加工增值<strong>30%+免关税</strong> Corporate tax <strong>15%</strong>, Zero tariff</span></div>
 </div>
-
 <div class="park-card">
-<h4 id="park2name">2. 博鳌乐城国际医疗旅游先行区 Boao Lecheng Medical Tourism Zone</h4>
-<div class="park-row"><span class="park-label" id="park2l1">📍 位置</span><span class="park-value" id="park2v1">海南省琼海市博鳌镇（国家级先行区）Boao Town, Qionghai (National Pilot Zone)</span></div>
-<div class="park-row"><span class="park-label" id="park2l2">🏭 主导产业</span><span class="park-value" id="park2v2"><strong>国际医疗服务</strong>、医疗科研、健康管理、医美抗衰<br><strong>International Medical</strong>, Research, Health Management, Medical Aesthetics</span></div>
-<div class="park-row"><span class="park-label" id="park2l3">💰 核心优惠</span><span class="park-value" id="park2v3">特许医疗政策、药械"<strong>三同步</strong>"（与国际先进水平同步）、医疗器械零关税、<strong>已引进360种</strong>国际创新药械<br>Special medical license, "<strong>Three Simultaneous</strong>", Zero tariff, <strong>360 innovative drugs/devices</strong> introduced</span></div>
-<div class="park-row"><span class="park-label" id="park2l4">🎯 适合企业</span><span class="park-value" id="park2v4">医疗机构、医疗器械企业、医药研发企业、健康旅游企业<br>Medical institutions, Device companies, R&D, Health tourism</span></div>
+<h4>2. 博鳌乐城医疗旅游先行区 Boao Lecheng</h4>
+<div class="park-row"><span class="park-label">📍 位置</span><span class="park-value">海南省琼海市博鳌镇 Qionghai</span></div>
+<div class="park-row"><span class="park-label">🏭 产业</span><span class="park-value"><strong>国际医疗</strong>、医疗科研、健康管理 Medical, Research</span></div>
+<div class="park-row"><span class="park-label">💰 优惠</span><span class="park-value">特许医疗、药械"<strong>三同步</strong>"、<strong>360种</strong>创新药械 Special license, 360 drugs</span></div>
 </div>
-
 <div class="park-card">
-<h4 id="park3name">3. 海口江东新区 Haikou Jiangdong New Area</h4>
-<div class="park-row"><span class="park-label" id="park3l1">📍 位置</span><span class="park-value" id="park3v1">海南省海口市东海岸，总面积<strong>298平方公里</strong><br>East Coast, Haikou, Total area <strong>298 km²</strong></span></div>
-<div class="park-row"><span class="park-label" id="park3l2">🏭 主导产业</span><span class="park-value" id="park3v2"><strong>总部经济</strong>（千亿级产业集群）、金融服务、临空经济、数字贸易<br><strong>HQ Economy</strong> (100-billion cluster), Finance, Airport Economy, Digital Trade</span></div>
-<div class="park-row"><span class="park-label" id="park3l3">💰 核心优惠</span><span class="park-value" id="park3v3">企业所得税<strong>15%</strong>、高端人才个税优惠（超15%部分免征）、办公租金<strong>最高50%补贴</strong><br>Corporate tax <strong>15%</strong>, Talent tax benefits, Rent subsidy <strong>up to 50%</strong></span></div>
-<div class="park-row"><span class="park-label" id="park3l4">🎯 适合企业</span><span class="park-value" id="park3v4">总部企业、金融机构、航空公司、国际贸易企业、科技企业<br>Headquarters, Financial institutions, Airlines, Trade, Tech companies</span></div>
+<h4>3. 海口江东新区 Jiangdong New Area</h4>
+<div class="park-row"><span class="park-label">📍 位置</span><span class="park-value">海口市东海岸 <strong>298km²</strong></span></div>
+<div class="park-row"><span class="park-label">🏭 产业</span><span class="park-value"><strong>总部经济</strong>（千亿级）、金融、临空经济 HQ Economy, Finance</span></div>
+<div class="park-row"><span class="park-label">💰 优惠</span><span class="park-value">企业所得税<strong>15%</strong>、租金补贴<strong>最高50%</strong> Tax 15%, Rent subsidy 50%</span></div>
 </div>
-
 <div class="park-card">
-<h4 id="park4name">4. 海口国家高新技术产业开发区 Haikou National Hi-tech Zone</h4>
-<div class="park-row"><span class="park-label" id="park4l1">📍 位置</span><span class="park-value" id="park4v1">海南省海口市（国家级高新区，成立于1991年）<br>Haikou City (National Hi-tech Zone, Est. 1991)</span></div>
-<div class="park-row"><span class="park-label" id="park4l2">🏭 主导产业</span><span class="park-value" id="park4v2"><strong>生物医药</strong>（500亿级产业集群）、医疗器械、高端低碳制造<br><strong>Biopharmaceuticals</strong> (50-billion cluster), Medical Devices, Manufacturing</span></div>
-<div class="park-row"><span class="park-label" id="park4l3">💰 核心优惠</span><span class="park-value" id="park4v3">企业所得税<strong>15%</strong>、研发费用<strong>加计扣除75%-100%</strong>、高新技术企业认定<br>Corporate tax <strong>15%</strong>, R&D deduction <strong>75%-100%</strong>, Hi-tech certification</span></div>
+<h4>4. 海口国家高新区 Hi-tech Zone</h4>
+<div class="park-row"><span class="park-label">🏭 产业</span><span class="park-value"><strong>生物医药</strong>（500亿级）、医疗器械 Biopharm, Devices</span></div>
+<div class="park-row"><span class="park-label">💰 优惠</span><span class="park-value">企业所得税<strong>15%</strong>、研发加计扣除<strong>75%-100%</strong></span></div>
 </div>
-
 <div class="park-card">
-<h4 id="park5name">5. 海口综合保税区 Haikou Comprehensive Bonded Zone</h4>
-<div class="park-row"><span class="park-label" id="park5l1">📍 位置</span><span class="park-value" id="park5v1">海南省海口市（海南唯一综合保税区）<br>Haikou (Only Bonded Zone in Hainan)</span></div>
-<div class="park-row"><span class="park-label" id="park5l2">🏭 主导产业</span><span class="park-value" id="park5v2"><strong>保税物流</strong>、保税加工、保税服务、国际贸易<br><strong>Bonded Logistics</strong>, Processing, Services, International Trade</span></div>
-<div class="park-row"><span class="park-label" id="park5l3">💰 核心优惠</span><span class="park-value" id="park5v3">海关特殊监管、<strong>零关税</strong>、保税仓储、税收递延、<strong>区内货物自由流转</strong><br>Customs supervision, <strong>Zero tariff</strong>, Bonded storage, Tax deferral</span></div>
+<h4>5. 海口综合保税区 Bonded Zone</h4>
+<div class="park-row"><span class="park-label">🏭 产业</span><span class="park-value"><strong>保税物流</strong>、保税加工、国际贸易</span></div>
+<div class="park-row"><span class="park-label">💰 优惠</span><span class="park-value"><strong>零关税</strong>、保税仓储、区内自由流转</span></div>
 </div>
-
 <div class="park-card">
-<h4 id="park6name">6. 三亚崖州湾科技城 Sanya Yazhou Bay Sci-Tech City</h4>
-<div class="park-row"><span class="park-label" id="park6l1">📍 位置</span><span class="park-value" id="park6v1">海南省三亚市西部，规划面积<strong>26.1平方公里</strong><br>West Sanya, Area <strong>26.1 km²</strong></span></div>
-<div class="park-row"><span class="park-label" id="park6l2">🏭 主导产业</span><span class="park-value" id="park6v2"><strong>深海科技</strong>、南繁科研（种业硅谷）、热带农业、大学城<br><strong>Deep Sea Tech</strong>, Seed R&D (Seed Silicon Valley), Agriculture, University Town</span></div>
-<div class="park-row"><span class="park-label" id="park6l3">💰 核心优惠</span><span class="park-value" id="park6v3">企业所得税<strong>15%</strong>、科研设备零关税、人才<strong>住房补贴最高100万</strong><br>Corporate tax <strong>15%</strong>, Equipment zero tariff, Housing subsidy <strong>up to 1M CNY</strong></span></div>
+<h4>6. 三亚崖州湾科技城 Yazhou Bay</h4>
+<div class="park-row"><span class="park-label">🏭 产业</span><span class="park-value"><strong>深海科技</strong>、南繁科研、热带农业</span></div>
+<div class="park-row"><span class="park-label">💰 优惠</span><span class="park-value">企业所得税<strong>15%</strong>、住房补贴<strong>最高100万</strong></span></div>
 </div>
-
 <div class="park-card">
-<h4 id="park7name">7. 三亚中央商务区 Sanya Central Business District</h4>
-<div class="park-row"><span class="park-label" id="park7l1">📍 位置</span><span class="park-value" id="park7v1">海南省三亚市（现代服务业重点园区）<br>Sanya City (Modern Service Industry Focus)</span></div>
-<div class="park-row"><span class="park-label" id="park7l2">🏭 主导产业</span><span class="park-value" id="park7v2"><strong>总部经济</strong>、现代金融（千亿级）、国际贸易、专业服务<br><strong>HQ Economy</strong>, Finance (100-billion), Trade, Professional Services</span></div>
-<div class="park-row"><span class="park-label" id="park7l3">💰 核心优惠</span><span class="park-value" id="park7v3">企业所得税<strong>15%</strong>、落地奖励<strong>最高500万</strong>、租金补贴<strong>50%-100%</strong><br>Corporate tax <strong>15%</strong>, Landing reward <strong>up to 5M CNY</strong>, Rent subsidy <strong>50%-100%</strong></span></div>
+<h4>7. 三亚中央商务区 Sanya CBD</h4>
+<div class="park-row"><span class="park-label">🏭 产业</span><span class="park-value"><strong>总部经济</strong>、现代金融、国际贸易</span></div>
+<div class="park-row"><span class="park-label">💰 优惠</span><span class="park-value">落地奖励<strong>最高500万</strong>、租金补贴<strong>100%</strong></span></div>
 </div>
-
 <div class="park-card">
-<h4 id="park8name">8. 文昌国际航天城 Wenchang International Space City</h4>
-<div class="park-row"><span class="park-label" id="park8l1">📍 位置</span><span class="park-value" id="park8v1">海南省文昌市（中国最年轻的航天发射场）<br>Wenchang City (China's Youngest Spaceport)</span></div>
-<div class="park-row"><span class="park-label" id="park8l2">🏭 主导产业</span><span class="park-value" id="park8v2"><strong>航天科技</strong>、卫星应用、航天旅游、航天数据、新能源<br><strong>Space Technology</strong>, Satellite, Space Tourism, Data, New Energy</span></div>
-<div class="park-row"><span class="park-label" id="park8l3">💰 核心优惠</span><span class="park-value" id="park8v3">企业所得税<strong>15%</strong>、航天产业专项扶持资金、科研设备零关税<br>Corporate tax <strong>15%</strong>, Special space industry fund, Equipment zero tariff</span></div>
+<h4>8. 文昌国际航天城 Space City</h4>
+<div class="park-row"><span class="park-label">🏭 产业</span><span class="park-value"><strong>航天科技</strong>、卫星应用、航天旅游</span></div>
+<div class="park-row"><span class="park-label">💰 优惠</span><span class="park-value">航天产业专项扶持、设备零关税</span></div>
 </div>
-
 <div class="park-card">
-<h4 id="park9name">9. 陵水黎安国际教育创新试验区 Lingshui Li'an Education Zone</h4>
-<div class="park-row"><span class="park-label" id="park9l1">📍 位置</span><span class="park-value" id="park9v1">海南省陵水县（国家级教育创新示范区）<br>Lingshui County (National Education Innovation Zone)</span></div>
-<div class="park-row"><span class="park-label" id="park9l2">🏭 主导产业</span><span class="park-value" id="park9v2"><strong>国际教育</strong>、中外合作办学、教育服务贸易、教育科技<br><strong>International Education</strong>, Joint Programs, Education Services, EdTech</span></div>
-<div class="park-row"><span class="park-label" id="park9l3">💰 核心优惠</span><span class="park-value" id="park9v3">教育消费回流政策、<strong>境外高校独立办学</strong>（中国首个）、<strong>已引进22所</strong>国内外高校<br>Education consumption return, <strong>Foreign independent schools</strong> (China's first), <strong>22 universities</strong> introduced</span></div>
+<h4>9. 陵水国际教育创新区 Education Zone</h4>
+<div class="park-row"><span class="park-label">🏭 产业</span><span class="park-value"><strong>国际教育</strong>、中外合作办学</span></div>
+<div class="park-row"><span class="park-label">💰 优惠</span><span class="park-value"><strong>境外高校独立办学</strong>、<strong>22所</strong>高校已入驻</span></div>
 </div>
-
 <div class="park-card">
-<h4 id="park10name">10. 海南生态软件园 Hainan Ecological Software Park</h4>
-<div class="park-row"><span class="park-label" id="park10l1">📍 位置</span><span class="park-value" id="park10v1">海南省澄迈县老城镇盈滨半岛（国家级科技企业孵化器）<br>Laocheng, Chengmai (National Tech Incubator)</span></div>
-<div class="park-row"><span class="park-label" id="park10l2">🏭 主导产业</span><span class="park-value" id="park10v2"><strong>互联网信息</strong>、数字经济（千亿级）、游戏动漫、企业孵化<br><strong>Internet</strong>, Digital Economy (100-billion), Gaming, Incubation</span></div>
-<div class="park-row"><span class="park-label" id="park10l3">💰 核心优惠</span><span class="park-value" id="park10v3">企业所得税<strong>15%</strong>、数字服务出口税收优惠、<strong>已入驻4800+家</strong>企业<br>Corporate tax <strong>15%</strong>, Digital export benefits, <strong>4800+ companies</strong> settled</span></div>
+<h4>10. 海南生态软件园 Software Park</h4>
+<div class="park-row"><span class="park-label">🏭 产业</span><span class="park-value"><strong>互联网</strong>、数字经济（千亿级）、游戏</span></div>
+<div class="park-row"><span class="park-label">💰 优惠</span><span class="park-value">企业所得税<strong>15%</strong>、<strong>4800+</strong>企业已入驻</span></div>
 </div>
-
 <div class="park-card">
-<h4 id="park11name">11. 海口复兴城互联网信息产业园 Haikou Fuxingcheng Internet Park</h4>
-<div class="park-row"><span class="park-label" id="park11l1">📍 位置</span><span class="park-value" id="park11v1">海南省海口市（一区创业基地+二区西海岸总部基地）<br>Haikou (Zone 1 Startup + Zone 2 West Coast HQ Base)</span></div>
-<div class="park-row"><span class="park-label" id="park11l2">🏭 主导产业</span><span class="park-value" id="park11v2"><strong>数字贸易</strong>、智能物联、金融科技、国际离岸创新<br><strong>Digital Trade</strong>, IoT, Fintech, International Innovation</span></div>
-<div class="park-row"><span class="park-label" id="park11l3">💰 核心优惠</span><span class="park-value" id="park11v3"><strong>税收要素奖励</strong>、落地奖励<strong>最高200万</strong>、租金补贴<strong>100%</strong>、购房补贴<strong>最高100万</strong><br>Tax rewards, Landing <strong>up to 2M CNY</strong>, Rent subsidy <strong>100%</strong>, Housing <strong>up to 1M CNY</strong></span></div>
-</div>
-
-</div>
-</div>
-
-<div class="agreement-note">
-<h4 id="s9agh">📋 服务协议 Service Agreement</h4>
-<p id="s9agp">园区入驻服务协议包含园区选择建议、入驻申请协助、政策申请代理、后续服务支持等内容。我们承诺提供真实准确的园区信息，协助您选择最适合的园区并成功入驻。</p>
-<p id="s9agpen">Park entry service agreement includes park selection advice, entry application assistance, policy application agency, and follow-up support. We promise to provide accurate park information to help you choose the most suitable park and successfully settle in.</p>
-<p id="s9agp2"><strong>获取方式 Contact:</strong> 微信 WeChat: <strong>kosok_hainan</strong> | Telegram: <strong>@KOSOK0898</strong></p>
+<h4>11. 海口复兴城互联网产业园</h4>
+<div class="park-row"><span class="park-label">🏭 产业</span><span class="park-value"><strong>数字贸易</strong>、金融科技、智能物联</span></div>
+<div class="park-row"><span class="park-label">💰 优惠</span><span class="park-value">落地奖励<strong>最高200万</strong>、购房补贴<strong>100万</strong></span></div>
 </div>
 </div>
 </div>
-
-<!-- 其他服务 -->
-<div class="service-section" id="service2">
-<div class="service-icon">🇨🇳</div>
-<h2 id="s2title">国内企业注册 / Domestic Registration</h2>
-<div class="service-content">
-<div class="agreement-note">
-<h4>📋 服务协议 Service Agreement</h4>
-<p>详情请联系 Contact: 微信 WeChat <strong>kosok_hainan</strong> | Telegram <strong>@KOSOK0898</strong></p>
+<div class="agreement-box">
+<h4>📋 园区入驻服务协议 Park Entry Agreement</h4>
+<div class="agreement-content">
+<h5>一、服务内容</h5>
+<p>甲方协助乙方办理海南自贸港重点园区入驻手续，包括园区选择、申请材料准备、政策申请等</p>
+<h5>二、服务承诺</h5>
+<p>提供真实准确的园区信息，协助对接园区招商部门，争取最优惠政策</p>
+<p><strong>联系: 微信 kosok_hainan | Telegram @KOSOK0898</strong></p>
+</div>
+<div class="agreement-actions">
+<div class="agreement-checkbox">
+<input type="checkbox" id="agree9" onchange="toggleAgree('agree9','btn9','status9')">
+<label for="agree9">我已阅读并同意 I agree</label>
+</div>
+<button class="btn-agree" id="btn9" disabled onclick="signAgreement('园区入驻','status9')">点击签约 Sign</button>
+<span class="agreement-status" id="status9">✓ 已签约</span>
+</div>
 </div>
 </div>
 </div>
 
-<div class="service-section" id="service3">
-<div class="service-icon">💰</div>
-<h2 id="s3title">税务优惠咨询 / Tax Consulting</h2>
-<div class="service-content">
-<div class="agreement-note">
-<h4>📋 服务协议 Service Agreement</h4>
-<p>详情请联系 Contact: 微信 WeChat <strong>kosok_hainan</strong> | Telegram <strong>@KOSOK0898</strong></p>
-</div>
-</div>
-</div>
-
-<div class="service-section" id="service5">
-<div class="service-icon">📈</div>
-<h2 id="s5title">美股开户咨询 / US Stock Account</h2>
-<div class="service-content">
-<div class="agreement-note">
-<h4>📋 服务协议 Service Agreement</h4>
-<p>详情请联系 Contact: 微信 WeChat <strong>kosok_hainan</strong> | Telegram <strong>@KOSOK0898</strong></p>
-</div>
-</div>
-</div>
-
-<div class="service-section" id="service6">
-<div class="service-icon">⛓️</div>
-<h2 id="s6title">区块链咨询 / Blockchain Consulting</h2>
-<div class="service-content">
-<div class="agreement-note">
-<h4>📋 服务协议 Service Agreement</h4>
-<p>详情请联系 Contact: 微信 WeChat <strong>kosok_hainan</strong> | Telegram <strong>@KOSOK0898</strong></p>
-</div>
-</div>
-</div>
-
-<div class="service-section" id="service7">
-<div class="service-icon">💻</div>
-<h2 id="s7title">网站制作 / Website Development</h2>
-<div class="service-content">
-<div class="agreement-note">
-<h4>📋 服务协议 Service Agreement</h4>
-<p>详情请联系 Contact: 微信 WeChat <strong>kosok_hainan</strong> | Telegram <strong>@KOSOK0898</strong></p>
-</div>
-</div>
-</div>
-
-<div class="service-section" id="service10">
-<div class="service-icon">📋</div>
-<h2 id="s10title">政策申报合规 / Policy Compliance</h2>
-<div class="service-content">
-<div class="agreement-note">
-<h4>📋 服务协议 Service Agreement</h4>
-<p>详情请联系 Contact: 微信 WeChat <strong>kosok_hainan</strong> | Telegram <strong>@KOSOK0898</strong></p>
-</div>
-</div>
-</div>
-
-<div class="service-section" id="service11">
-<div class="service-icon">🏭</div>
-<h2 id="s11title">企业托管服务 / Corporate Hosting</h2>
-<div class="service-content">
-<div class="agreement-note">
-<h4>📋 服务协议 Service Agreement</h4>
-<p>详情请联系 Contact: 微信 WeChat <strong>kosok_hainan</strong> | Telegram <strong>@KOSOK0898</strong></p>
-</div>
-</div>
-</div>
-
-<div class="service-section" id="service12">
-<div class="service-icon">🚀</div>
-<h2 id="s12title">投资咨询服务 / Investment Consulting</h2>
-<div class="service-content">
-<div class="agreement-note">
-<h4>📋 服务协议 Service Agreement</h4>
-<p>详情请联系 Contact: 微信 WeChat <strong>kosok_hainan</strong> | Telegram <strong>@KOSOK0898</strong></p>
-</div>
-</div>
-</div>
+<!-- 其他服务简化版 -->
+<div class="service-section" id="service2"><div class="service-icon">🇨🇳</div><h2>国内企业注册</h2><p style="text-align:center;color:#cbd5e1">详情请联系：微信 kosok_hainan | Telegram @KOSOK0898</p></div>
+<div class="service-section" id="service3"><div class="service-icon">💰</div><h2>税务优惠咨询</h2><p style="text-align:center;color:#cbd5e1">详情请联系：微信 kosok_hainan | Telegram @KOSOK0898</p></div>
+<div class="service-section" id="service5"><div class="service-icon">📈</div><h2>美股开户咨询</h2><p style="text-align:center;color:#cbd5e1">详情请联系：微信 kosok_hainan | Telegram @KOSOK0898</p></div>
+<div class="service-section" id="service6"><div class="service-icon">⛓️</div><h2>区块链咨询</h2><p style="text-align:center;color:#cbd5e1">详情请联系：微信 kosok_hainan | Telegram @KOSOK0898</p></div>
+<div class="service-section" id="service7"><div class="service-icon">💻</div><h2>网站制作</h2><p style="text-align:center;color:#cbd5e1">详情请联系：微信 kosok_hainan | Telegram @KOSOK0898</p></div>
+<div class="service-section" id="service10"><div class="service-icon">📋</div><h2>政策申报合规</h2><p style="text-align:center;color:#cbd5e1">详情请联系：微信 kosok_hainan | Telegram @KOSOK0898</p></div>
+<div class="service-section" id="service11"><div class="service-icon">🏭</div><h2>企业托管服务</h2><p style="text-align:center;color:#cbd5e1">详情请联系：微信 kosok_hainan | Telegram @KOSOK0898</p></div>
+<div class="service-section" id="service12"><div class="service-icon">🚀</div><h2>投资咨询服务</h2><p style="text-align:center;color:#cbd5e1">详情请联系：微信 kosok_hainan | Telegram @KOSOK0898</p></div>
 
 <div class="back-home">
-<a href="index.html" class="btn btn-primary" id="backBtn">返回首页 Back to Home</a>
-<a href="index.html#pricing" class="btn btn-secondary" id="pricingBtn">查看收费 View Pricing</a>
+<a href="index.html" class="btn btn-primary">返回首页 Back to Home</a>
+<a href="index.html#pricing" class="btn btn-secondary">查看收费 View Pricing</a>
 </div>
 
+</div>
+
+<!-- 签约确认弹窗 -->
+<div class="modal" id="signModal">
+<div class="modal-content">
+<div class="modal-header">
+<h3>✓ 签约成功 Agreement Signed</h3>
+<button class="modal-close" onclick="closeModal()">&times;</button>
+</div>
+<p style="font-size:18px;line-height:1.8;color:#e2e8f0">您已成功签署<strong id="serviceName" style="color:#4ade80"></strong>协议！</p>
+<p style="font-size:16px;color:#cbd5e1;margin-top:15px">我们将尽快通过以下方式联系您：</p>
+<p style="font-size:16px;color:#4ade80;margin-top:10px"><strong>微信 WeChat: kosok_hainan</strong></p>
+<p style="font-size:16px;color:#4ade80"><strong>Telegram: @KOSOK0898</strong></p>
+<button class="btn-agree" style="margin-top:25px;width:100%" onclick="closeModal()">确定 OK</button>
+</div>
 </div>
 
 <footer>
 <div class="container">
-<p id="footerText">© 2025 海南索拉纳商务咨询中心 Hainan Solana Business Center | 专业 · 高效 · 可信赖 Professional · Efficient · Trustworthy</p>
+<p>© 2025 海南索拉纳商务咨询中心 Hainan Solana Business Center | 专业·高效·可信赖 Professional·Efficient·Trustworthy</p>
 </div>
 </footer>
 
 <script>
+function toggleAgree(checkId,btnId,statusId){
+const check=document.getElementById(checkId);
+const btn=document.getElementById(btnId);
+btn.disabled=!check.checked;
+}
+function signAgreement(serviceName,statusId){
+document.getElementById('serviceName').textContent=serviceName;
+document.getElementById('signModal').classList.add('show');
+document.getElementById(statusId).classList.add('show');
+}
+function closeModal(){
+document.getElementById('signModal').classList.remove('show');
+}
 let currentLang='zh';
 function toggleLang(){
 currentLang=currentLang==='zh'?'en':'zh';
