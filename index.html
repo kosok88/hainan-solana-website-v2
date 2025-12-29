@@ -12,7 +12,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 nav{background:rgba(0,0,0,.5);backdrop-filter:blur(15px);position:sticky;top:0;z-index:100;padding:25px 0;box-shadow:0 2px 20px rgba(0,0,0,.4)}
 nav .container{display:flex;justify-content:space-between;align-items:center}
 .brand{display:flex;align-items:center;justify-content:flex-start}
-.brand img{height:60px;width:auto;filter:drop-shadow(0 3px 6px rgba(0,0,0,.4));border-radius:8px;object-fit:cover}
+.brand img{height:80px;width:auto;filter:drop-shadow(0 3px 8px rgba(0,0,0,.5));border-radius:10px;object-fit:cover}
 .nav-links{display:flex;gap:35px;list-style:none}
 .nav-links a{color:#ffffff;text-decoration:none;transition:.3s;font-size:19px;font-weight:600;text-shadow:0 1px 3px rgba(0,0,0,.4)}
 .nav-links a:hover{color:#4ade80;text-shadow:0 2px 6px rgba(74,222,128,.6)}
@@ -23,10 +23,7 @@ h1{font-size:48px;margin-bottom:25px;text-shadow:2px 2px 12px rgba(0,0,0,.7);fon
 h1 .title-prefix{font-size:0.65em;font-weight:500;color:rgba(255,255,255,0.85);display:inline-block;margin-bottom:8px}
 h1 .title-core{font-size:1em;font-weight:800;color:#4ade80;text-shadow:0 3px 15px rgba(74,222,128,.6);display:inline-block;letter-spacing:1px;margin:12px 0}
 h1 .title-suffix{font-size:0.65em;font-weight:500;color:rgba(255,255,255,0.85);display:inline-block;margin-top:8px}
-.subtitle{font-size:16px;margin-bottom:40px;color:rgba(255,255,255,0.85);font-weight:500;text-shadow:0 2px 6px rgba(0,0,0,.5);letter-spacing:0.5px}
-.desc{font-size:22px;max-width:800px;margin:0 auto 50px;color:#ffffff;line-height:1.9;text-shadow:0 2px 8px rgba(0,0,0,.6);font-weight:400}
-.hero-logo{margin-bottom:50px}
-.hero-logo img{height:80px;width:auto;filter:drop-shadow(0 4px 12px rgba(0,0,0,.5));border-radius:12px}
+.subtitle{font-size:19px;margin-bottom:40px;margin-top:30px;color:rgba(255,255,255,0.9);font-weight:500;text-shadow:0 2px 6px rgba(0,0,0,.5);letter-spacing:0.5px}
 .btn-group{display:flex;gap:0;justify-content:space-between;flex-wrap:wrap;max-width:600px;margin:0 auto;margin-top:60px}
 .btn{padding:16px 40px;border-radius:30px;text-decoration:none;font-weight:700;transition:.3s;cursor:pointer;border:none;font-size:17px;box-shadow:0 4px 15px rgba(0,0,0,.3);min-width:200px}
 .btn-primary{background:#4ade80;color:#1a1a2e}
@@ -104,14 +101,13 @@ h1 .title-suffix{font-size:0.6em;margin-top:6px}
 h2{font-size:34px}
 .nav-links{display:none}
 .hero{padding:80px 20px 100px;min-height:70vh}
-.hero-logo img{height:60px}
-.subtitle{font-size:14px}
+.subtitle{font-size:16px;margin-top:20px}
 .features{flex-direction:column;align-items:center;gap:15px;margin:40px auto -60px}
 .feature{width:auto;max-width:300px}
 .cards,.pricing-grid{grid-template-columns:1fr}
 .pricing-table{font-size:15px}
 .pricing-table th,.pricing-table td{padding:12px 10px}
-.brand img{height:45px}
+.brand img{height:60px}
 .btn-group{flex-direction:column;gap:15px;margin-top:40px}
 .btn{min-width:auto;width:100%}
 }
@@ -172,9 +168,6 @@ h2{font-size:34px}
 
 <div class="hero" id="home">
 <div class="container">
-<div class="hero-logo">
-<img src="logo.png" alt="海南索拉纳" onerror="this.style.display='none'">
-</div>
 <h1>
 <span class="title-prefix" id="desc-prefix">提供海南自贸港</span><br>
 <span class="title-core" id="desc-core">公司注册、税务筹划、政策咨询</span><br>
@@ -190,8 +183,6 @@ h2{font-size:34px}
 
 <div class="features">
 <div class="feature"><div class="feature-title" id="f1t">快速注册</div><p id="f1d">3-7个工作日</p></div>
-<div class="feature"><div class="feature-title" id="f2t">税收优惠</div><p id="f2d">企业所得税15%</p></div>
-<div class="feature"><div class="feature-title" id="f3t">合规保障</div><p id="f3d">专业团队</p></div>
 <div class="feature"><div class="feature-title" id="f4t">全球服务</div><p id="f4d">境内外企业</p></div>
 </div>
 
