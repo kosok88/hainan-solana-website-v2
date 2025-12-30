@@ -547,14 +547,14 @@ h2{font-size:34px}
 <div style="text-align:left;margin-top:5px">
 <label style="display:flex;align-items:center;gap:8px;cursor:pointer;color:#fff">
 <input type="checkbox" id="agreeTerms" required style="width:16px;height:16px;cursor:pointer">
-<span style="font-size:14px">我同意接受服务并遵守相关条款</span>
+<span style="font-size:14px">我已阅读并同意 <a href="#" onclick="showAgreement(event)" style="color:#4ade80;text-decoration:underline;font-weight:600">《服务协议》</a></span>
 </label>
 </div>
 <div style="text-align:center">
 <button type="submit" class="btn btn-primary" id="regSubmit" style="cursor:pointer">提交注册</button>
 </div>
 </form>
-<p id="regResult" style="color:#4ade80;text-align:center;margin-top:15px;display:none"></p>
+<p id="regResult" style="display:none;margin-top:20px;padding:20px;background:rgba(74,222,128,.2);border:2px solid #4ade80;border-radius:12px;color:#fff;font-size:16px;line-height:1.8;text-align:left"></p>
 </div>
 </div>
 </div>
@@ -588,6 +588,77 @@ h2{font-size:34px}
 <p id="footerText">© 2025 海南索拉纳商务咨询中心 | 专业 · 高效 · 可信赖</p>
 </div>
 </footer>
+
+<!-- 服务条款弹窗 -->
+<div id="agreementModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.8);z-index:10000;overflow-y:auto">
+<div style="max-width:900px;margin:40px auto;background:linear-gradient(135deg,#667eea,#764ba2);border-radius:20px;padding:40px;position:relative">
+<button onclick="closeAgreement()" style="position:absolute;right:20px;top:20px;background:rgba(255,255,255,.2);border:none;color:#fff;font-size:30px;width:40px;height:40px;border-radius:50%;cursor:pointer;font-weight:300;line-height:1">&times;</button>
+
+<h2 style="color:#4ade80;text-align:center;margin-bottom:30px;font-size:32px">服务协议</h2>
+
+<div style="background:rgba(0,0,0,.3);backdrop-filter:blur(15px);padding:30px;border-radius:15px;color:#fff;max-height:60vh;overflow-y:auto">
+
+<h3 style="color:#4ade80;margin:20px 0 15px">一、服务说明</h3>
+<p style="line-height:1.8;margin-bottom:15px">海南索拉纳商务咨询中心（以下简称"本公司"）为客户提供海南自贸港公司注册、税务筹划、政策咨询、商标注册、设计服务、网站制作等一站式商务服务。</p>
+
+<h3 style="color:#4ade80;margin:20px 0 15px">二、客户权利与义务</h3>
+<p style="line-height:1.8;margin-bottom:10px"><strong style="color:#4ade80">客户权利：</strong></p>
+<ul style="margin-left:20px;line-height:1.8;margin-bottom:15px">
+<li>了解服务内容、收费标准和办理流程</li>
+<li>要求本公司按约定时间完成服务</li>
+<li>对服务质量提出意见和建议</li>
+</ul>
+
+<p style="line-height:1.8;margin-bottom:10px"><strong style="color:#4ade80">客户义务：</strong></p>
+<ul style="margin-left:20px;line-height:1.8;margin-bottom:15px">
+<li>提供真实、完整、合法的资料和信息</li>
+<li>按照约定支付服务费用</li>
+<li>配合本公司完成服务所需的必要程序</li>
+<li>遵守国家相关法律法规</li>
+</ul>
+
+<h3 style="color:#4ade80;margin:20px 0 15px">三、收费与付款</h3>
+<p style="line-height:1.8;margin-bottom:15px">本公司的收费标准在官网明码标示，具体费用以双方签订的服务合同为准。标准付款流程：定金50%，完成后支付尾款50%。</p>
+
+<h3 style="color:#4ade80;margin:20px 0 15px">四、保密条款</h3>
+<p style="line-height:1.8;margin-bottom:15px">本公司承诺对客户个人身份信息、公司商业信息、技术秘密等严格保密。未经客户书面同意，不向第三方披露客户信息。</p>
+
+<h3 style="color:#4ade80;margin:20px 0 15px">五、退款政策</h3>
+<p style="line-height:1.8;margin-bottom:10px"><strong style="color:#4ade80">可全额退款：</strong></p>
+<ul style="margin-left:20px;line-height:1.8;margin-bottom:15px">
+<li>服务尚未开始，客户提出取消</li>
+<li>本公司无法提供约定服务</li>
+</ul>
+
+<p style="line-height:1.8;margin-bottom:10px"><strong style="color:#4ade80">不予退款：</strong></p>
+<ul style="margin-left:20px;line-height:1.8;margin-bottom:15px">
+<li>服务已完成并交付</li>
+<li>政府规费等已实际发生的费用</li>
+</ul>
+
+<h3 style="color:#4ade80;margin:20px 0 15px">六、免责声明</h3>
+<p style="line-height:1.8;margin-bottom:15px">因政府政策调整、不可抗力、客户自身原因导致的服务延迟或无法完成，本公司不承担责任。本公司提供的政策咨询、税务建议等仅供参考，不构成法律意见。</p>
+
+<h3 style="color:#4ade80;margin:20px 0 15px">七、争议解决</h3>
+<p style="line-height:1.8;margin-bottom:15px">双方在履行协议过程中发生争议，应首先通过友好协商解决。如协商不成，任何一方可向本公司所在地人民法院提起诉讼。</p>
+
+<div style="background:rgba(74,222,128,.15);padding:20px;border-radius:10px;margin-top:30px;border:2px solid #4ade80">
+<p style="text-align:center;margin:0;font-size:16px"><strong style="color:#4ade80">联系我们</strong></p>
+<p style="text-align:center;margin:10px 0 0;line-height:1.8">
+📧 [email protected]<br>
+💬 微信：kosok_hainan<br>
+✈️ Telegram：@KOSOK0898
+</p>
+</div>
+
+</div>
+
+<div style="text-align:center;margin-top:30px">
+<button onclick="agreeAndClose()" style="padding:15px 50px;background:linear-gradient(135deg,#4ade80,#22c55e);color:#fff;border:none;border-radius:50px;font-size:18px;font-weight:700;cursor:pointer;box-shadow:0 4px 15px rgba(74,222,128,.4)">我已阅读并同意</button>
+</div>
+
+</div>
+</div>
 
 <div id="detailModal" class="modal">
 <div class="modal-content">
@@ -848,14 +919,30 @@ submitBtn.textContent='提交中...';
 // 显示成功消息
 setTimeout(()=>{
 resultDiv.style.display='block';
-resultDiv.style.color='#4ade80';
-resultDiv.innerHTML='✅ 提交成功！<br><br>您的信息：<br>姓名：'+formData.name+'<br>手机：'+formData.phone+'<br><br>我们的客服将尽快通过以下方式联系您：<br>📱 微信：kosok_hainan<br>✈️ Telegram：@KOSOK0898<br><br>如需紧急咨询，也可主动添加客服微信。';
+resultDiv.innerHTML='<div style="text-align:center;margin-bottom:20px;font-size:20px">✅ <strong>提交成功！</strong></div><div style="background:rgba(0,0,0,.3);padding:20px;border-radius:10px;margin:15px 0"><p style="margin:10px 0;font-size:16px"><strong style="color:#4ade80">您的信息：</strong></p><p style="margin:8px 0">📝 姓名：<strong>'+formData.name+'</strong></p><p style="margin:8px 0">📱 手机：<strong>'+formData.phone+'</strong></p>'+(formData.email?'<p style="margin:8px 0">📧 邮箱：<strong>'+formData.email+'</strong></p>':'')+(formData.company?'<p style="margin:8px 0">🏢 公司：<strong>'+formData.company+'</strong></p>':'')+(formData.service&&formData.service!=='感兴趣的服务'?'<p style="margin:8px 0">🎯 服务：<strong>'+formData.service+'</strong></p>':'')+'</div><div style="background:rgba(74,222,128,.15);padding:20px;border-radius:10px;border:2px solid #4ade80"><p style="margin:10px 0;font-size:16px"><strong style="color:#4ade80">我们将尽快通过以下方式联系您：</strong></p><p style="margin:10px 0;font-size:16px">💬 微信：<strong>kosok_hainan</strong></p><p style="margin:10px 0;font-size:16px">✈️ Telegram：<strong>@KOSOK0898</strong></p><p style="margin:15px 0 5px;font-size:14px;opacity:0.9">如需紧急咨询，也可主动添加客服微信</p></div>';
 document.getElementById('registerForm').reset();
 document.getElementById('agreeTerms').checked=false;
 submitBtn.disabled=false;
 submitBtn.textContent='提交注册';
+// 滚动到结果
+resultDiv.scrollIntoView({behavior:'smooth',block:'center'});
 },800);
 });
+
+// 服务条款弹窗控制
+function showAgreement(e){
+e.preventDefault();
+document.getElementById('agreementModal').style.display='block';
+document.body.style.overflow='hidden';
+}
+function closeAgreement(){
+document.getElementById('agreementModal').style.display='none';
+document.body.style.overflow='auto';
+}
+function agreeAndClose(){
+document.getElementById('agreeTerms').checked=true;
+closeAgreement();
+}
 </script>
 </body>
 </html>
