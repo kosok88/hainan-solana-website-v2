@@ -1095,7 +1095,9 @@ const newsData=[
 ];
 
 function toggleLang(){
+console.log('toggleLang called, current:', currentLang);
 currentLang=currentLang==='zh'?'en':'zh';
+console.log('Switched to:', currentLang);
 const t=translations[currentLang];
 document.getElementById('langBtn').textContent=currentLang==='zh'?'EN':'中文';
 document.title=t.pageTitle;
@@ -1113,6 +1115,7 @@ document.getElementById('regCompany').placeholder=t.regCompanyPh;
 document.getElementById('regMessage').placeholder=t.regMessagePh;
 renderNews();
 renderPolicy();
+console.log('Language switch complete');
 }
 document.addEventListener('DOMContentLoaded',function(){
 const form=document.getElementById('registerForm');
@@ -1238,17 +1241,20 @@ document.getElementById('modalContent').textContent=data.introEn;
 
 // 新闻渲染函数
 function renderNews(){
+console.log('renderNews called');
 const latest=newsData.slice(0,5);
 const old=newsData.slice(5);
 const lang=currentLang||'zh';
 currentNewsLang=lang;
-document.getElementById('newsLatest').innerHTML=latest.map(n=>`
+const html=latest.map(n=>`
 <div class="news-item" onclick="openNewsModal('${n.id}')">
 <h3>${lang==='zh'?n.title_zh:n.title_en}</h3>
 <div class="date">${n.date}</div>
 <p>${lang==='zh'?n.summary_zh:n.summary_en}</p>
 </div>
 `).join('');
+document.getElementById('newsLatest').innerHTML=html;
+console.log('News rendered:', latest.length, 'items, HTML length:', html.length);
 if(old.length>0){
 document.getElementById('newsOld').innerHTML=old.map(n=>`
 <div class="news-item" onclick="openNewsModal('${n.id}')">
@@ -1265,14 +1271,17 @@ document.getElementById('newsToggle').style.display='none';
 
 // 政策渲染函数
 function renderPolicy(){
+console.log('renderPolicy called');
 const lang=currentLang||'zh';
 currentPolicyLang=lang;
-document.getElementById('policyGrid').innerHTML=policyData.map(p=>`
+const html=policyData.map(p=>`
 <div class="policy-item" onclick="openPolicyModal('${p.id}')">
 <h3>${lang==='zh'?p.title_zh:p.title_en}</h3>
 <p>${lang==='zh'?p.summary_zh:p.summary_en}</p>
 </div>
 `).join('');
+document.getElementById('policyGrid').innerHTML=html;
+console.log('Policy rendered:', policyData.length, 'items, HTML length:', html.length);
 }
 
 // 新闻展开函数
@@ -1295,8 +1304,14 @@ text.textContent=currentLang==='zh'?'收起':'Collapse';
 
 // 页面加载时初始化
 document.addEventListener('DOMContentLoaded',function(){
+console.log('=== DOM LOADED ===');
+console.log('policyData length:', policyData.length);
+console.log('newsData length:', newsData.length);
+console.log('policyGrid element:', document.getElementById('policyGrid'));
+console.log('newsLatest element:', document.getElementById('newsLatest'));
 renderNews();
 renderPolicy();
+console.log('=== RENDER COMPLETE ===');
 });
 
 // modal外部点击关闭
