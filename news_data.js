@@ -1,18 +1,18 @@
 const newsData = [
   {
-    id: 'news1',
-    title_zh: '🚀 封关运作倒计时',
-    title_en: '🚀 Closure Countdown',
+    id: 'news_closure1',
+    title_zh: '🎯 历史性时刻！海南全岛封关正式启动',
+    title_en: '🎯 Historic Moment! Island-wide Closure Launched',
     date: '2025-12-18',
-    content_zh: '海南自贸港将于2025年底前实现全岛封关运作，标志着自贸港建设进入新阶段。',
-    content_en: 'Hainan FTP will achieve island-wide closure by end of 2025, marking a new stage.',
-    detail_zh: '根据《海南自由贸易港建设总体方案》，海南将于2025年前实现全岛封关运作。封关后，海南将在国境之内、关境之外，实施更加开放的贸易投资政策。届时，货物、资金、人员等要素将更加自由流动，企业将享受到更多政策红利。目前，各项准备工作正在有序推进中。',
-    detail_en: 'According to the Master Plan for Hainan Free Trade Port, the island-wide closure will be achieved by 2025. After closure, Hainan will implement more open trade and investment policies with freer flow of goods, capital, and personnel.',
-    tags_zh: ['政策', '封关', '自贸港'],
-    tags_en: ['Policy', 'Closure', 'FTP']
+    content_zh: '2025年12月18日，海南自由贸易港正式启动全岛封关，中国对外开放迎来里程碑时刻。3万多平方公里的海南岛正式成为海关监管特殊区域。',
+    content_en: 'On December 18, 2025, Hainan Free Trade Port officially launched island-wide closure. The 30,000+ sq km island became a special customs supervision zone.',
+    detail_zh: '2025年12月18日，海南自由贸易港正式启动全岛封关，中国对外开放迎来里程碑时刻。3万多平方公里的海南岛正式成为海关监管特殊区域，"一线放开、二线管住、岛内自由"的新篇章就此开启。封关运作标志着海南自贸港建设从"逐步探索"迈入"全面运行"新阶段，成为引领我国新时代对外开放的重要门户。封关首日，洋浦港、三亚凤凰国际机场等口岸集中进口原油、医疗设备、航材、食品原料等"零关税"货物，总货值超5亿元。',
+    detail_en: 'On December 18, 2025, Hainan FTP officially launched island-wide closure operation, marking a milestone in China\'s opening-up. The 30,000+ sq km island officially became a special customs supervision zone, opening a new chapter of "first-line liberalization, second-line management, free flow within the island". On closure day, Yangpu Port and Sanya Phoenix Airport imported crude oil, medical equipment, aviation materials with total value exceeding 500 million yuan.',
+    tags_zh: ['封关', '自贸港', '开放'],
+    tags_en: ['Closure', 'FTP', 'Opening']
   },
   {
-    id: 'news2',
+    id: 'news1',
     title_zh: '📈 人才个税政策延续',
     title_en: '📈 Talent Tax Extended',
     date: '2025-12-15',
@@ -24,7 +24,7 @@ const newsData = [
     tags_en: ['Tax', 'Talent', 'Benefits']
   },
   {
-    id: 'news3',
+    id: 'news2',
     title_zh: '🎉 总书记考察海南',
     title_en: '🎉 President Visit',
     date: '2025-12-10',
@@ -36,7 +36,7 @@ const newsData = [
     tags_en: ['Visit', 'FTP', 'Development']
   },
   {
-    id: 'news4',
+    id: 'news3',
     title_zh: '💼 前11月外贸大增',
     title_en: '💼 Trade Growth',
     date: '2025-12-05',
@@ -48,7 +48,7 @@ const newsData = [
     tags_en: ['Trade', 'Data', 'Growth']
   },
   {
-    id: 'news5',
+    id: 'news4',
     title_zh: '🏢 新增企业突破10万家',
     title_en: '🏢 100K+ New Enterprises',
     date: '2025-11-28',
@@ -60,7 +60,7 @@ const newsData = [
     tags_en: ['Enterprise', 'Registration', 'Market']
   },
   {
-    id: 'news6',
+    id: 'news5',
     title_zh: '✈️ 开放第七航权',
     title_en: '✈️ 7th Freedom Rights',
     date: '2020-06-10',
