@@ -58,5 +58,17 @@ const newsData = [
     detail_en: 'As of end of November 2025, over 100,000 new market entities were added in Hainan, up 15.3% YoY, including 68,000 enterprises and 32,000 individual businesses.',
     tags_zh: ['企业', '注册', '市场主体'],
     tags_en: ['Enterprise', 'Registration', 'Market']
+  },
+  {
+    id: 'news6',
+    title_zh: '✈️ 开放第七航权',
+    title_en: '✈️ 7th Freedom Rights',
+    date: '2020-06-10',
+    content_zh: '海南自贸港试点开放第七航权，这是我国民航史上最大力度航权开放。',
+    content_en: 'Hainan FTP pilots 7th freedom rights, China\'s highest-level aviation opening.',
+    detail_zh: '民航局印发《海南自由贸易港试点开放第七航权实施方案》，明确鼓励、支持外航在海南经营客、货运第七航权。这是我国民航首次同时试点开放客运和货运第七航权，是我国在航权方面的最高水平开放，也是世界范围内自贸港航权开放的最高水平。第七航权指完全第三国运输权，外国航空公司可在境外两国间载运客货，而不用返回本国。2025年12月，三亚至布拉格航线成为海南自贸港首条投入运营的第七航权航线。',
+    detail_en: 'CAAC issued the Implementation Plan for Pilot Opening of 7th Freedom Rights in Hainan FTP, encouraging foreign airlines to operate passenger and cargo 7th freedom rights in Hainan. This is China\'s first simultaneous pilot opening of both passenger and cargo 7th freedom rights, representing the highest level of aviation rights opening in China and globally among free trade ports. The 7th freedom right allows foreign airlines to carry passengers and cargo between two foreign countries without returning to their home country. In December 2025, the Sanya-Prague route became Hainan FTP\'s first operational 7th freedom rights route.',
+    tags_zh: ['航权', '开放', '民航'],
+    tags_en: ['Aviation Rights', 'Opening', 'Aviation']
   }
 ];
