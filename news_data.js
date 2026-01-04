@@ -1,5 +1,41 @@
 const newsData = [
   {
+    id: 'news_policy2025',
+    title_zh: '💰 零关税商品扩至74%税目',
+    title_en: '💰 Zero-Tariff Goods Expand to 74%',
+    date: '2025-12-28',
+    content_zh: '封关运作后，零关税商品范围由21%跃升至74%，覆盖约6600个税目，企业进口成本节省约20%。',
+    content_en: 'After closure, zero-tariff goods expanded from 21% to 74%, covering 6,600 tax items, saving companies ~20% import costs.',
+    detail_zh: '海南自贸港封关运作超十日，多项升级版政策相继落地。零关税商品税目比例从封关前的1900个扩大至约6600个，约占全部商品税目的74%。享惠主体从独立法人扩展到各类企事业单位，政策门槛更低。加工增值达30%的货物可免关税销往内地。首批零关税科研设备已投入使用，北大口腔医院三亚医院进口设备总值100万元，免税额度达12%。海南炼化与伟达化工达成合作，开启从原料到加工到增值的合作链条。',
+    detail_en: 'Over 10 days after Hainan FTP closure, multiple upgraded policies have been implemented. Zero-tariff goods expanded from 1,900 to 6,600 tax items, covering 74% of all categories. Eligible entities expanded from independent legal persons to various institutions. Goods with 30% value-added can enter mainland duty-free. First batch of zero-tariff research equipment deployed at Peking University Dental Hospital Sanya, with 12% tax savings on 1 million yuan equipment.',
+    tags_zh: ['零关税', '政策升级', '封关运作'],
+    tags_en: ['Zero Tariff', 'Policy Upgrade', 'Closure']
+  },
+  {
+    id: 'news_investment2025',
+    title_zh: '📈 前三季度外资增长超40%',
+    title_en: '📈 Q1-Q3 FDI Up 40%+',
+    date: '2025-12-24',
+    content_zh: '2025年前三季度，海南新设外资企业1513家，实际使用外资同比增长超40%，开放水平持续提升。',
+    content_en: 'In Q1-Q3 2025, Hainan added 1,513 foreign enterprises, with actual FDI up 40%+ YoY, opening level continues rising.',
+    detail_zh: '2025年前三季度，海南13个重点园区实现营收19924.51亿元，增长4.1%。新设外资企业1513家，实际使用外资同比增长超四成。服务贸易进出口总额407.19亿元，增长26.2%，其中服务出口总额272.09亿元，增长60.7%。前10个月，全省新增对外投资备案企业296家，同比增长43%；实际对外投资额31.7亿美元，同比增长42.6%。176个国家和地区在琼投资，经济外向度提高到35%。海南成为吸引全球优质资源要素的强磁场。',
+    detail_en: 'In Q1-Q3 2025, Hainan\'s 13 key parks achieved revenue of 1,992.451 billion yuan, up 4.1%. 1,513 new foreign enterprises established, with actual FDI up over 40% YoY. Service trade totaled 40.719 billion yuan, up 26.2%, with service exports at 27.209 billion yuan, up 60.7%. In first 10 months, 296 new outbound investment enterprises registered, up 43%; actual outbound investment $3.17 billion, up 42.6%. 176 countries/regions invested in Hainan, economic openness reached 35%.',
+    tags_zh: ['外资', '投资', '经济增长'],
+    tags_en: ['FDI', 'Investment', 'Economic Growth']
+  },
+  {
+    id: 'news_industry2025',
+    title_zh: '🚀 三大未来产业加速发展',
+    title_en: '🚀 Three Future Industries Accelerate',
+    date: '2025-12-20',
+    content_zh: '南繁种业产值突破180亿元，海洋生产总值突破2700亿元，商业航天发射场具备高密度发射能力。',
+    content_en: 'Nanfan seed industry output exceeded 18 billion yuan, marine GDP topped 270 billion yuan, commercial spaceport ready for high-frequency launches.',
+    detail_zh: '海南加快构建"4+3+3"现代化产业体系。三大未来产业蓬勃发展：南繁种业产值突破180亿元，致力打造保障国家粮食安全的"种业硅谷"；海洋生产总值突破2700亿元，向深海科技、海洋药物等蓝色经济进军；全国首个商业航天发射场在文昌建成，具备高密度常态化发射能力，带动"火箭链、卫星链、数据链"产业集群发展。星际荣耀已在文昌建起中国首家运载火箭"复用工厂"。封关带来的国际交流便利和先进设备、技术进口成本降低，为前沿领域研究与产业化注入强劲动力。',
+    detail_en: 'Hainan accelerates building "4+3+3" modern industrial system. Three future industries thrive: Nanfan seed industry output exceeds 18 billion yuan, building "Seed Silicon Valley" for national food security; marine GDP tops 270 billion yuan, advancing deep-sea tech and marine pharmaceuticals; China\'s first commercial spaceport in Wenchang operational with high-frequency launch capability, driving rocket-satellite-data chain clusters. Interstellar Glory built China\'s first reusable rocket factory in Wenchang. Closure brings international exchange facilitation and lower import costs for advanced equipment.',
+    tags_zh: ['未来产业', '种业', '航天', '海洋'],
+    tags_en: ['Future Industries', 'Seeds', 'Aerospace', 'Marine']
+  },
+  {
     id: 'news_closure1',
     title_zh: '🎯 历史性时刻！海南全岛封关正式启动',
     title_en: '🎯 Historic Moment! Island-wide Closure Launched',
