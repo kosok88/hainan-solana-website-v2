@@ -1337,15 +1337,15 @@ submitBtn.textContent='提交中...';
 try{
 // 方案1: Google Forms (推荐 - 免费且可靠)
 // 替换为您的Google Form预填充URL
-const googleFormUrl='https://docs.google.com/forms/d/e/YOUR_GOOGLE_FORM_ID/formResponse';
+const googleFormUrl='https://docs.google.com/forms/d/e/1FAIpQLSfNE90RFCpLLmZv7Iz2BKEpELRNyAHBTDcmNY7FVH6YzfpZgw/formResponse';
 const googleFormData=new FormData();
 // 替换entry.XXXXX为您的Google Form字段ID
-googleFormData.append('entry.1234567890',formData.name); // 姓名
-googleFormData.append('entry.0987654321',formData.phone); // 手机
-googleFormData.append('entry.1111111111',formData.email); // 邮箱
-googleFormData.append('entry.2222222222',formData.company); // 公司
-googleFormData.append('entry.3333333333',formData.service); // 服务
-googleFormData.append('entry.4444444444',formData.message); // 留言
+googleFormData.append('entry.15560788',formData.name); // 姓名
+googleFormData.append('entry.1126556175',formData.phone); // 手机
+googleFormData.append('entry.422491319',formData.email); // 邮箱
+googleFormData.append('entry.801618940',formData.company); // 公司
+googleFormData.append('entry.1553974069',formData.service); // 服务
+googleFormData.append('entry.2116107810',formData.message); // 留言
 
 // 发送到Google Forms
 await fetch(googleFormUrl,{
