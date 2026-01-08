@@ -1,0 +1,279 @@
+===============================================
+修复后的浮动按钮代码（支持中英文切换）
+===============================================
+
+找到您刚才添加的浮动按钮代码，用下面这个替换：
+
+<!-- ============================================ -->
+<!-- 🚀 超强浮动联系按钮 - 支持中英文切换 -->
+<!-- ============================================ -->
+
+<div id="floatingContactBtn" style="position:fixed;bottom:30px;right:30px;z-index:99999;">
+  <div id="mainContactBtn" style="width:60px;height:60px;background:linear-gradient(135deg,#059669,#10b981);border-radius:50%;box-shadow:0 8px 25px rgba(5,150,105,.4);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;animation:floatPulse 2s infinite;" onclick="toggleContactMenu()">
+    <span style="font-size:28px;">📞</span>
+  </div>
+  
+  <div id="contactMenu" style="position:absolute;bottom:75px;right:0;background:rgba(0,0,0,.95);backdrop-filter:blur(20px);border-radius:20px;padding:15px;display:none;flex-direction:column;gap:12px;min-width:200px;box-shadow:0 10px 40px rgba(0,0,0,.5);border:2px solid rgba(74,222,128,.3);">
+    
+    <a href="tel:18117790507" style="display:flex;align-items:center;gap:12px;padding:12px 15px;background:rgba(74,222,128,.15);border-radius:12px;text-decoration:none;transition:.3s;border:1px solid rgba(74,222,128,.3);" onmouseover="this.style.background='rgba(74,222,128,.25)'" onmouseout="this.style.background='rgba(74,222,128,.15)'">
+      <span style="font-size:24px;">📱</span>
+      <div>
+        <div id="floatPhoneLabel" style="color:#4ade80;font-size:12px;font-weight:600;">咨询热线</div>
+        <div style="color:#fff;font-size:14px;font-weight:700;">181-1779-0507</div>
+      </div>
+    </a>
+    
+    <div onclick="showWeChatQR()" style="display:flex;align-items:center;gap:12px;padding:12px 15px;background:rgba(74,222,128,.15);border-radius:12px;cursor:pointer;transition:.3s;border:1px solid rgba(74,222,128,.3);" onmouseover="this.style.background='rgba(74,222,128,.25)'" onmouseout="this.style.background='rgba(74,222,128,.15)'">
+      <span style="font-size:24px;">💬</span>
+      <div>
+        <div id="floatWechatLabel" style="color:#4ade80;font-size:12px;font-weight:600;">微信咨询</div>
+        <div style="color:#fff;font-size:14px;font-weight:700;">kosok_hainan</div>
+      </div>
+    </div>
+    
+    <a href="https://t.me/KOSOK0898" target="_blank" style="display:flex;align-items:center;gap:12px;padding:12px 15px;background:rgba(74,222,128,.15);border-radius:12px;text-decoration:none;transition:.3s;border:1px solid rgba(74,222,128,.3);" onmouseover="this.style.background='rgba(74,222,128,.25)'" onmouseout="this.style.background='rgba(74,222,128,.15)'">
+      <span style="font-size:24px;">✈️</span>
+      <div>
+        <div style="color:#4ade80;font-size:12px;font-weight:600;">Telegram</div>
+        <div style="color:#fff;font-size:14px;font-weight:700;">@KOSOK0898</div>
+      </div>
+    </a>
+    
+    <div onclick="toggleContactMenu()" style="text-align:center;padding:8px;color:#999;font-size:12px;cursor:pointer;border-top:1px solid rgba(255,255,255,.1);margin-top:5px;" onmouseover="this.style.color='#4ade80'" onmouseout="this.style.color='#999'">
+      <span id="floatCloseText">收起</span> ▼
+    </div>
+  </div>
+</div>
+
+<div id="wechatModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.85);z-index:999999;align-items:center;justify-content:center;" onclick="hideWeChatQR()">
+  <div style="background:linear-gradient(135deg,#667eea,#764ba2);border-radius:25px;padding:40px;max-width:400px;text-align:center;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.5);" onclick="event.stopPropagation()">
+    <div onclick="hideWeChatQR()" style="position:absolute;top:15px;right:15px;width:35px;height:35px;background:rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:20px;color:#fff;font-weight:300;transition:.3s;" onmouseover="this.style.background='rgba(255,255,255,.3)'" onmouseout="this.style.background='rgba(255,255,255,.2)'">×</div>
+    
+    <h3 id="wechatModalTitle" style="color:#fff;font-size:24px;margin-bottom:10px;font-weight:700;">💬 添加微信咨询</h3>
+    <p id="wechatModalDesc" style="color:rgba(255,255,255,.9);margin-bottom:25px;font-size:14px;">扫描二维码或复制微信号添加</p>
+    
+    <div style="background:#fff;padding:20px;border-radius:15px;margin-bottom:25px;box-shadow:0 5px 20px rgba(0,0,0,.2);">
+      <img src="wechat_contact.jpg" alt="微信二维码" style="width:220px;height:auto;display:block;margin:0 auto;border-radius:10px;">
+    </div>
+    
+    <div style="background:rgba(255,255,255,.15);padding:15px 20px;border-radius:12px;margin-bottom:20px;backdrop-filter:blur(10px);">
+      <div id="wechatIdLabel" style="color:rgba(255,255,255,.8);font-size:12px;margin-bottom:5px;">微信号</div>
+      <div style="color:#fff;font-size:20px;font-weight:700;letter-spacing:1px;">kosok_hainan</div>
+    </div>
+    
+    <button onclick="copyWeChatID()" id="wechatCopyBtn" style="width:100%;padding:15px;background:linear-gradient(135deg,#4ade80,#22c55e);color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;transition:.3s;box-shadow:0 4px 15px rgba(74,222,128,.4);" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(74,222,128,.5)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 15px rgba(74,222,128,.4)'">
+      📋 复制微信号
+    </button>
+    
+    <p id="wechatModalTips" style="color:rgba(255,255,255,.7);font-size:12px;margin-top:15px;line-height:1.6;">
+      📱 手机端可长按二维码识别<br>
+      💻 电脑端可扫描二维码添加
+    </p>
+  </div>
+</div>
+
+<style>
+@keyframes floatPulse {
+  0%, 100% { 
+    transform: translateY(0) scale(1); 
+    box-shadow: 0 8px 25px rgba(5,150,105,.4); 
+  }
+  50% { 
+    transform: translateY(-5px) scale(1.05); 
+    box-shadow: 0 12px 35px rgba(5,150,105,.6); 
+  }
+}
+
+#mainContactBtn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 12px 35px rgba(5,150,105,.6);
+}
+
+@media (max-width: 768px) {
+  #floatingContactBtn {
+    bottom: 20px;
+    right: 20px;
+  }
+  #mainContactBtn {
+    width: 55px;
+    height: 55px;
+  }
+  #contactMenu {
+    min-width: 180px;
+    right: -10px;
+  }
+}
+
+.copy-success {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(74, 222, 128, 0.95);
+  color: #fff;
+  padding: 15px 30px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  z-index: 9999999;
+  box-shadow: 0 10px 30px rgba(74, 222, 128, 0.5);
+  animation: fadeInOut 2s ease-in-out;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translate(-50%, -60px); }
+  20% { opacity: 1; transform: translate(-50%, -50%); }
+  80% { opacity: 1; transform: translate(-50%, -50%); }
+  100% { opacity: 0; transform: translate(-50%, -40px); }
+}
+</style>
+
+<script>
+function toggleContactMenu() {
+  const menu = document.getElementById('contactMenu');
+  if (menu.style.display === 'none' || menu.style.display === '') {
+    menu.style.display = 'flex';
+  } else {
+    menu.style.display = 'none';
+  }
+}
+
+function showWeChatQR() {
+  const modal = document.getElementById('wechatModal');
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  const menuBtn = document.getElementById('contactMenu');
+  if (menuBtn && menuBtn.style.display === 'flex') {
+    toggleContactMenu();
+  }
+}
+
+function hideWeChatQR() {
+  document.getElementById('wechatModal').style.display = 'none';
+  document.body.style.overflow = 'auto';
+}
+
+function copyWeChatID() {
+  const wechatID = 'kosok_hainan';
+  const tempInput = document.createElement('input');
+  tempInput.value = wechatID;
+  document.body.appendChild(tempInput);
+  tempInput.select();
+  
+  try {
+    document.execCommand('copy');
+    showCopySuccess();
+  } catch (err) {
+    alert('复制失败，请手动复制：' + wechatID);
+  }
+  
+  document.body.removeChild(tempInput);
+}
+
+function showCopySuccess() {
+  const toast = document.createElement('div');
+  toast.className = 'copy-success';
+  const lang = currentLang || 'zh';
+  toast.textContent = lang === 'zh' ? '✅ 微信号已复制！' : '✅ WeChat ID Copied!';
+  document.body.appendChild(toast);
+  
+  setTimeout(() => {
+    if (document.body.contains(toast)) {
+      document.body.removeChild(toast);
+    }
+  }, 2000);
+}
+
+document.addEventListener('click', function(event) {
+  const btn = document.getElementById('floatingContactBtn');
+  const menu = document.getElementById('contactMenu');
+  if (btn && menu && !btn.contains(event.target) && menu.style.display === 'flex') {
+    toggleContactMenu();
+  }
+});
+
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape') {
+    hideWeChatQR();
+  }
+});
+
+// 更新浮动按钮文本的函数（在 toggleLang 函数中调用）
+function updateFloatingButtonLang() {
+  const lang = currentLang || 'zh';
+  const floatTexts = {
+    zh: {
+      phoneLabel: '咨询热线',
+      wechatLabel: '微信咨询',
+      closeText: '收起',
+      modalTitle: '💬 添加微信咨询',
+      modalDesc: '扫描二维码或复制微信号添加',
+      wechatIdLabel: '微信号',
+      copyBtn: '📋 复制微信号',
+      modalTips: '📱 手机端可长按二维码识别<br>💻 电脑端可扫描二维码添加'
+    },
+    en: {
+      phoneLabel: 'Hotline',
+      wechatLabel: 'WeChat',
+      closeText: 'Close',
+      modalTitle: '💬 Add WeChat',
+      modalDesc: 'Scan QR code or copy WeChat ID',
+      wechatIdLabel: 'WeChat ID',
+      copyBtn: '📋 Copy WeChat ID',
+      modalTips: '📱 Long press to scan on mobile<br>💻 Scan QR code on desktop'
+    }
+  };
+  
+  const t = floatTexts[lang];
+  const phoneLabel = document.getElementById('floatPhoneLabel');
+  const wechatLabel = document.getElementById('floatWechatLabel');
+  const closeText = document.getElementById('floatCloseText');
+  const modalTitle = document.getElementById('wechatModalTitle');
+  const modalDesc = document.getElementById('wechatModalDesc');
+  const wechatIdLabel = document.getElementById('wechatIdLabel');
+  const copyBtn = document.getElementById('wechatCopyBtn');
+  const modalTips = document.getElementById('wechatModalTips');
+  
+  if (phoneLabel) phoneLabel.textContent = t.phoneLabel;
+  if (wechatLabel) wechatLabel.textContent = t.wechatLabel;
+  if (closeText) closeText.textContent = t.closeText;
+  if (modalTitle) modalTitle.textContent = t.modalTitle;
+  if (modalDesc) modalDesc.textContent = t.modalDesc;
+  if (wechatIdLabel) wechatIdLabel.textContent = t.wechatIdLabel;
+  if (copyBtn) copyBtn.innerHTML = t.copyBtn;
+  if (modalTips) modalTips.innerHTML = t.modalTips;
+}
+</script>
+
+===============================================
+重要：在原来的 toggleLang() 函数末尾添加
+===============================================
+
+找到您网站中的 toggleLang() 函数（大约在 script 标签里），
+在函数的最后，添加这一行：
+
+function toggleLang(){
+  // ... 原有的代码 ...
+  
+  renderNews();
+  renderPolicy();
+  
+  // 👇 添加这一行
+  updateFloatingButtonLang();
+  
+  console.log('Language switch complete');
+}
+
+===============================================
+完成！
+===============================================
+
+保存后，浮动按钮会随着页面语言自动切换：
+
+中文时：
+📱 咨询热线 | 💬 微信咨询 | 收起
+
+英文时：
+📱 Hotline | 💬 WeChat | Close
+
+微信弹窗也会切换语言！
