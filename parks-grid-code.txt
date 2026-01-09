@@ -1,7 +1,7 @@
 <!-- ============================================ -->
 <!-- 🏢 替换原来的园区入驻服务卡片 -->
 <!-- 找到这段代码并替换： -->
-<!-- <div class="card" onclick="showParkDetail('park01')" style="cursor:pointer"> -->
+<!-- <div class="card" onclick="showParkGrid()" style="cursor:pointer"> -->
 <!-- ============================================ -->
 
 <div class="card" onclick="showParksGrid()" style="cursor:pointer;transition:.3s;" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 10px 25px rgba(5,150,105,.2)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow=''">
@@ -127,3 +127,4 @@ function closeParksGrid() {
   document.body.style.overflow = 'auto';
 }
 </script>
+
