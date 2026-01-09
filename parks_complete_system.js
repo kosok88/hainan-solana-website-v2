@@ -3,7 +3,7 @@
 // 用于网站园区详情弹窗展示
 // ===================================================
 
-const parksDetailData = {
+const parksData = {
   park01: {
     id: 'park01',
     name_zh: '海口江东新区',
@@ -1180,7 +1180,7 @@ const parksDetailData = {
 
 // 弹窗显示函数
 function showParkDetail(parkId) {
-  const park = parksDetailData[parkId];
+  const park = parksData[parkId];
   if (!park) {
     console.error('园区数据未找到:', parkId);
     return;
