@@ -1,0 +1,426 @@
+// 海南13个重点园区详细数据 - 第2部分（Park 06-09）
+// Hainan 13 Key Parks Detailed Data - Part 2 (Park 06-09)
+// 仅包含园区信息和地址，不含联系方式
+
+const parksDataPart2 = {
+  park06: {
+    name_zh: '博鳌乐城国际医疗旅游先行区',
+    name_en: 'Boao Lecheng International Medical Tourism Pilot Zone',
+    subtitle_zh: '国家唯一国际医疗旅游先行区',
+    subtitle_en: "China's Only International Medical Tourism Pilot Zone",
+    detail_zh: `
+<h3>📍 园区定位</h3>
+<p>国家唯一的国际医疗旅游先行区，享有"国九条"特殊政策，可以使用国际最新药品和医疗器械，比内地提前5-10年。规划面积20.14平方公里。</p>
+
+<h3>🏢 园区地址</h3>
+<p><strong>详细地址：</strong>海南省琼海市博鳌镇乐城岛</p>
+<p><strong>管理局地址：</strong>琼海市博鳌镇乐城路1号先行区管理局</p>
+<p><strong>邮政编码：</strong>571434</p>
+<p><strong>交通位置：</strong>距博鳌机场15分钟车程，距海口美兰机场80公里</p>
+<p><strong>园区官网：</strong>www.hnboacxq.com</p>
+
+<h3>💰 优惠政策</h3>
+<ul>
+<li><strong>"国九条"特权：</strong>进口药械特许准入，无需国内注册</li>
+<li><strong>零关税：</strong>医疗设备、药品、耗材零关税进口</li>
+<li><strong>先行先试：</strong>可使用未在内地上市的国际新药、新器械</li>
+<li><strong>真实世界数据：</strong>临床真实世界数据可用于药械注册</li>
+<li><strong>企业所得税：</strong>15%税率（医疗企业）</li>
+<li><strong>人才补贴：</strong>顶级医疗专家最高500万安家费</li>
+<li><strong>医保跨省：</strong>部分项目纳入医保跨省结算</li>
+</ul>
+
+<h3>🏭 重点产业</h3>
+<ul>
+<li><strong>高端医疗：</strong>特许医疗、国际医疗、精准医疗</li>
+<li><strong>康养旅游：</strong>健康管理、康复疗养、医疗旅游</li>
+<li><strong>医美抗衰：</strong>医疗美容、抗衰老治疗、再生医学</li>
+<li><strong>新药研发：</strong>临床试验、真实世界研究</li>
+<li><strong>干细胞治疗：</strong>干细胞治疗、细胞免疫治疗</li>
+</ul>
+
+<h3>✅ 入驻条件</h3>
+<ul>
+<li><strong>医疗资质：</strong>具有医疗机构执业许可证</li>
+<li><strong>技术水平：</strong>三级甲等医院或国际JCI认证医院优先</li>
+<li><strong>专家团队：</strong>拥有高水平医疗专家团队</li>
+<li><strong>投资规模：</strong>医疗机构投资不低于1亿元</li>
+<li><strong>设备先进：</strong>引进国际先进医疗设备</li>
+</ul>
+
+<h3>🎯 招商对象</h3>
+<ul>
+<li>国际知名医疗机构、医院集团</li>
+<li>国内三甲医院、专科医院</li>
+<li>医疗美容机构、抗衰老中心</li>
+<li>医药研发企业、CRO公司</li>
+<li>干细胞、基因治疗等前沿医疗企业</li>
+</ul>
+`,
+    detail_en: `
+<h3>📍 Positioning</h3>
+<p>China's only international medical tourism pilot zone with "Nine National Policies", allowing use of latest international drugs and medical devices 5-10 years ahead of mainland China. Planned area of 20.14 sq km.</p>
+
+<h3>🏢 Address</h3>
+<p><strong>Address:</strong> Lecheng Island, Boao Town, Qionghai City, Hainan Province</p>
+<p><strong>Admin Office:</strong> No.1 Lecheng Road, Boao Town, Qionghai City, Pilot Zone Administration</p>
+<p><strong>Postal Code:</strong> 571434</p>
+<p><strong>Location:</strong> 15 minutes from Boao Airport, 80km from Haikou Meilan Airport</p>
+<p><strong>Official Website:</strong> www.hnboacxq.com</p>
+
+<h3>💰 Preferential Policies</h3>
+<ul>
+<li><strong>Nine National Policies:</strong> Special access for imported drugs/devices without domestic registration</li>
+<li><strong>Zero Tariff:</strong> Medical equipment, drugs, consumables imported duty-free</li>
+<li><strong>Pilot Programs:</strong> Use of unapproved international new drugs and devices</li>
+<li><strong>Real-World Data:</strong> Clinical real-world data can be used for drug/device registration</li>
+<li><strong>Corporate Income Tax:</strong> 15% for medical enterprises</li>
+<li><strong>Talent Subsidy:</strong> Up to ¥5M settlement allowance for top medical experts</li>
+<li><strong>Cross-Provincial Medical Insurance:</strong> Some services covered by cross-provincial medical insurance settlement</li>
+</ul>
+
+<h3>🏭 Key Industries</h3>
+<ul>
+<li><strong>High-End Medical Care:</strong> Licensed medical care, international healthcare, precision medicine</li>
+<li><strong>Health & Wellness Tourism:</strong> Health management, rehabilitation, medical tourism</li>
+<li><strong>Medical Aesthetics & Anti-Aging:</strong> Cosmetic medicine, anti-aging treatment, regenerative medicine</li>
+<li><strong>New Drug R&D:</strong> Clinical trials, real-world studies</li>
+<li><strong>Stem Cell Therapy:</strong> Stem cell therapy, cellular immunotherapy</li>
+</ul>
+
+<h3>✅ Entry Requirements</h3>
+<ul>
+<li><strong>Medical Qualification:</strong> Medical institution practice license required</li>
+<li><strong>Technical Level:</strong> Priority for Grade 3A hospitals or JCI-accredited international hospitals</li>
+<li><strong>Expert Team:</strong> High-level medical expert team required</li>
+<li><strong>Investment Scale:</strong> Minimum ¥100M investment for medical institutions</li>
+<li><strong>Advanced Equipment:</strong> Introduction of advanced international medical equipment</li>
+</ul>
+
+<h3>🎯 Target Investment</h3>
+<ul>
+<li>Internationally renowned medical institutions, hospital groups</li>
+<li>Domestic Grade 3A hospitals, specialized hospitals</li>
+<li>Medical aesthetics institutions, anti-aging centers</li>
+<li>Pharmaceutical R&D enterprises, CRO companies</li>
+<li>Cutting-edge medical enterprises in stem cells, gene therapy</li>
+</ul>
+`
+  },
+
+  park07: {
+    name_zh: '海口国家高新技术产业开发区',
+    name_en: 'Haikou National High-Tech Industrial Development Zone',
+    subtitle_zh: '国家级高新技术产业开发区',
+    subtitle_en: 'National High-Tech Industrial Development Zone',
+    detail_zh: `
+<h3>📍 园区定位</h3>
+<p>国家级高新技术产业开发区，规划面积26.6平方公里，重点发展生物医药、新能源、新材料、人工智能等高新技术产业。</p>
+
+<h3>🏢 园区地址</h3>
+<p><strong>详细地址：</strong>海南省海口市秀英区药谷一横路1号</p>
+<p><strong>管委会地址：</strong>海口市秀英区药谷工业园管委会大楼</p>
+<p><strong>邮政编码：</strong>570311</p>
+<p><strong>交通位置：</strong>距海口市中心10公里，临近绕城高速</p>
+<p><strong>园区官网：</strong>www.hkhtp.com</p>
+
+<h3>💰 优惠政策</h3>
+<ul>
+<li><strong>高新企业税率：</strong>15%企业所得税率（正常25%）</li>
+<li><strong>研发费用加计扣除：</strong>100%（即研发费用200%抵扣）</li>
+<li><strong>专利补贴：</strong>发明专利授权奖励10万元/件</li>
+<li><strong>高企认定奖励：</strong>通过高新技术企业认定奖励30万元</li>
+<li><strong>人才补贴：</strong>博士50万，硕士30万，本科10万安家费</li>
+<li><strong>厂房补贴：</strong>标准厂房租金前2年减免50%</li>
+<li><strong>设备补贴：</strong>研发设备购置补贴30%</li>
+</ul>
+
+<h3>🏭 重点产业</h3>
+<ul>
+<li><strong>生物医药：</strong>创新药、仿制药、生物制品、医疗器械</li>
+<li><strong>新能源：</strong>光伏发电、风力发电、储能技术</li>
+<li><strong>新材料：</strong>石墨烯、纳米材料、复合材料</li>
+<li><strong>人工智能：</strong>AI芯片、机器学习、计算机视觉</li>
+<li><strong>电子信息：</strong>集成电路、传感器、物联网</li>
+</ul>
+
+<h3>✅ 入驻条件</h3>
+<ul>
+<li><strong>行业要求：</strong>属于国家高新技术领域</li>
+<li><strong>研发投入：</strong>研发费用占销售收入5%以上</li>
+<li><strong>知识产权：</strong>拥有自主知识产权或核心技术</li>
+<li><strong>人才比例：</strong>科技人员占职工总数30%以上</li>
+<li><strong>注册资本：</strong>一般企业100万以上，制造业500万以上</li>
+</ul>
+
+<h3>🎯 招商对象</h3>
+<ul>
+<li>高新技术企业、科技型中小企业</li>
+<li>生物医药、医疗器械研发企业</li>
+<li>新能源、新材料企业</li>
+<li>人工智能、大数据企业</li>
+<li>科研院所、技术研发机构</li>
+</ul>
+`,
+    detail_en: `
+<h3>📍 Positioning</h3>
+<p>National High-Tech Industrial Development Zone, with a planned area of 26.6 sq km, focusing on biopharmaceuticals, new energy, new materials, artificial intelligence and other high-tech industries.</p>
+
+<h3>🏢 Address</h3>
+<p><strong>Address:</strong> No.1 Yaogu 1st Horizontal Road, Xiuying District, Haikou City, Hainan Province</p>
+<p><strong>Admin Office:</strong> Yaogu Industrial Park Administrative Committee Building, Xiuying District, Haikou</p>
+<p><strong>Postal Code:</strong> 570311</p>
+<p><strong>Location:</strong> 10km from downtown Haikou, near Ring Expressway</p>
+<p><strong>Official Website:</strong> www.hkhtp.com</p>
+
+<h3>💰 Preferential Policies</h3>
+<ul>
+<li><strong>High-Tech Tax Rate:</strong> 15% corporate income tax (normal rate 25%)</li>
+<li><strong>R&D Additional Deduction:</strong> 100% (total 200% deduction for R&D expenses)</li>
+<li><strong>Patent Subsidy:</strong> ¥100K reward per granted invention patent</li>
+<li><strong>High-Tech Recognition Reward:</strong> ¥300K for high-tech enterprise certification</li>
+<li><strong>Talent Subsidy:</strong> ¥500K for PhDs, ¥300K for Masters, ¥100K for Bachelors</li>
+<li><strong>Factory Subsidy:</strong> 50% rent reduction for standard factories for first 2 years</li>
+<li><strong>Equipment Subsidy:</strong> 30% subsidy on R&D equipment purchase</li>
+</ul>
+
+<h3>🏭 Key Industries</h3>
+<ul>
+<li><strong>Biopharmaceuticals:</strong> Innovative drugs, generic drugs, biologics, medical devices</li>
+<li><strong>New Energy:</strong> Solar power, wind power, energy storage technology</li>
+<li><strong>New Materials:</strong> Graphene, nanomaterials, composite materials</li>
+<li><strong>Artificial Intelligence:</strong> AI chips, machine learning, computer vision</li>
+<li><strong>Electronic Information:</strong> Integrated circuits, sensors, Internet of Things</li>
+</ul>
+
+<h3>✅ Entry Requirements</h3>
+<ul>
+<li><strong>Industry Requirements:</strong> Must be in national high-tech fields</li>
+<li><strong>R&D Investment:</strong> R&D expenses ≥5% of sales revenue</li>
+<li><strong>Intellectual Property:</strong> Own intellectual property or core technology</li>
+<li><strong>Talent Ratio:</strong> Technical staff ≥30% of total employees</li>
+<li><strong>Registered Capital:</strong> Minimum ¥1M for general enterprises, ¥5M for manufacturing</li>
+</ul>
+
+<h3>🎯 Target Investment</h3>
+<ul>
+<li>High-tech enterprises, technology-oriented SMEs</li>
+<li>Biopharmaceutical, medical device R&D enterprises</li>
+<li>New energy, new materials enterprises</li>
+<li>Artificial intelligence, big data enterprises</li>
+<li>Research institutes, technology R&D institutions</li>
+</ul>
+`
+  },
+
+  park08: {
+    name_zh: '三亚崖州湾科技城',
+    name_en: 'Sanya Yazhou Bay Science & Technology City',
+    subtitle_zh: '南繁科技创新高地、深海科技城',
+    subtitle_en: 'Nanfan Sci-Tech Innovation Highland, Deep-Sea Tech City',
+    detail_zh: `
+<h3>📍 园区定位</h3>
+<p>国家南繁科研育种基地和深海科技创新中心，规划面积26.1平方公里，是国家"南繁硅谷"和"深海科技城"核心区。</p>
+
+<h3>🏢 园区地址</h3>
+<p><strong>详细地址：</strong>海南省三亚市崖州区崖州湾科技城</p>
+<p><strong>管理局地址：</strong>三亚市崖州区崖州湾科技城管理局大楼</p>
+<p><strong>邮政编码：</strong>572025</p>
+<p><strong>交通位置：</strong>距三亚凤凰机场30公里，距三亚市区20公里</p>
+<p><strong>园区官网：</strong>www.synanfan.com</p>
+
+<h3>💰 优惠政策</h3>
+<ul>
+<li><strong>科研设备零关税：</strong>进口科研设备、实验用品零关税</li>
+<li><strong>企业所得税：</strong>15%税率（科技企业）</li>
+<li><strong>人才补贴：</strong>院士团队最高2000万，优秀人才200万</li>
+<li><strong>科研经费配套：</strong>国家级科研项目配套50%经费</li>
+<li><strong>成果转化奖励：</strong>科技成果转化奖励最高500万元</li>
+<li><strong>住房补贴：</strong>提供人才公寓，购房最高补贴100万</li>
+<li><strong>办公租金：</strong>前3年免租，后2年减半</li>
+</ul>
+
+<h3>🏭 重点产业</h3>
+<ul>
+<li><strong>南繁育种：</strong>种业创新、种质资源保护、生物育种</li>
+<li><strong>深海科技：</strong>深海装备、海洋观测、深海养殖</li>
+<li><strong>热带农业：</strong>热带作物、农业科技、智慧农业</li>
+<li><strong>海洋渔业：</strong>深海捕捞、水产养殖、海洋生物</li>
+<li><strong>科研教育：</strong>科研院所、高等院校、研究中心</li>
+</ul>
+
+<h3>✅ 入驻条件</h3>
+<ul>
+<li><strong>行业限制：</strong>南繁育种、深海科技、热带农业相关</li>
+<li><strong>科研能力：</strong>具有独立研发能力和科研团队</li>
+<li><strong>投资规模：</strong>科研机构不低于1000万，企业不低于500万</li>
+<li><strong>学科背景：</strong>农学、海洋科学、生物技术等相关专业</li>
+</ul>
+
+<h3>🎯 招商对象</h3>
+<ul>
+<li>种业企业、育种研发机构</li>
+<li>深海装备、海洋科技企业</li>
+<li>农业科技、智慧农业企业</li>
+<li>科研院所、高等院校</li>
+<li>海洋生物、水产养殖企业</li>
+</ul>
+`,
+    detail_en: `
+<h3>📍 Positioning</h3>
+<p>National Nanfan breeding research base and deep-sea technology innovation center, with a planned area of 26.1 sq km, core area of national "Nanfan Silicon Valley" and "Deep-Sea Tech City".</p>
+
+<h3>🏢 Address</h3>
+<p><strong>Address:</strong> Yazhou Bay Science & Technology City, Yazhou District, Sanya City, Hainan Province</p>
+<p><strong>Admin Office:</strong> Yazhou Bay Sci-Tech City Administration Building, Yazhou District, Sanya</p>
+<p><strong>Postal Code:</strong> 572025</p>
+<p><strong>Location:</strong> 30km from Sanya Phoenix Airport, 20km from downtown Sanya</p>
+<p><strong>Official Website:</strong> www.synanfan.com</p>
+
+<h3>💰 Preferential Policies</h3>
+<ul>
+<li><strong>Zero Tariff on Research Equipment:</strong> Imported research equipment and experimental supplies duty-free</li>
+<li><strong>Corporate Income Tax:</strong> 15% for technology enterprises</li>
+<li><strong>Talent Subsidy:</strong> Up to ¥20M for academician teams, ¥2M for outstanding talents</li>
+<li><strong>Research Funding Match:</strong> 50% matching funds for national-level research projects</li>
+<li><strong>Tech Transfer Reward:</strong> Up to ¥5M reward for technology commercialization</li>
+<li><strong>Housing Subsidy:</strong> Talent apartments provided, up to ¥1M home purchase subsidy</li>
+<li><strong>Office Rent:</strong> 3 years rent-free, 50% discount years 4-5</li>
+</ul>
+
+<h3>🏭 Key Industries</h3>
+<ul>
+<li><strong>Nanfan Breeding:</strong> Seed industry innovation, germplasm resource conservation, bio-breeding</li>
+<li><strong>Deep-Sea Technology:</strong> Deep-sea equipment, ocean observation, deep-sea aquaculture</li>
+<li><strong>Tropical Agriculture:</strong> Tropical crops, agricultural technology, smart farming</li>
+<li><strong>Marine Fishery:</strong> Deep-sea fishing, aquaculture, marine biology</li>
+<li><strong>Research & Education:</strong> Research institutes, universities, research centers</li>
+</ul>
+
+<h3>✅ Entry Requirements</h3>
+<ul>
+<li><strong>Industry Restrictions:</strong> Related to Nanfan breeding, deep-sea technology, tropical agriculture</li>
+<li><strong>Research Capability:</strong> Independent R&D capability and research team required</li>
+<li><strong>Investment Scale:</strong> Minimum ¥10M for research institutes, ¥5M for enterprises</li>
+<li><strong>Discipline Background:</strong> Agronomy, marine science, biotechnology and related majors</li>
+</ul>
+
+<h3>🎯 Target Investment</h3>
+<ul>
+<li>Seed industry enterprises, breeding R&D institutions</li>
+<li>Deep-sea equipment, marine technology enterprises</li>
+<li>Agricultural technology, smart farming enterprises</li>
+<li>Research institutes, universities</li>
+<li>Marine biology, aquaculture enterprises</li>
+</ul>
+`
+  },
+
+  park09: {
+    name_zh: '海口综合保税区',
+    name_en: 'Haikou Comprehensive Bonded Zone',
+    subtitle_zh: '海南首个综合保税区',
+    subtitle_en: "Hainan's First Comprehensive Bonded Zone",
+    detail_zh: `
+<h3>📍 园区定位</h3>
+<p>海南首个综合保税区，规划面积4.57平方公里，实行"境内关外"管理模式，享有保税区、出口加工区、保税物流区等多重优惠政策。</p>
+
+<h3>🏢 园区地址</h3>
+<p><strong>详细地址：</strong>海南省海口市秀英区海盛路综合保税区</p>
+<p><strong>管委会地址：</strong>海口市秀英区海盛路1号综保区管理局</p>
+<p><strong>邮政编码：</strong>570311</p>
+<p><strong>交通位置：</strong>距海口港5公里，距美兰机场25公里</p>
+<p><strong>园区官网：</strong>www.hkbsq.com</p>
+
+<h3>💰 优惠政策</h3>
+<ul>
+<li><strong>保税仓储：</strong>货物长期保税存储，无时间限制</li>
+<li><strong>出口退税：</strong>即征即退，当日可完成退税</li>
+<li><strong>进口免税：</strong>区内企业设备、原材料进口免税</li>
+<li><strong>加工增值免税：</strong>保税加工，增值部分免税</li>
+<li><strong>货物自由流动：</strong>区内货物自由流动，无需报关</li>
+<li><strong>企业所得税：</strong>15%税率（保税物流企业）</li>
+<li><strong>租金优惠：</strong>标准仓库租金低于市场价30%</li>
+</ul>
+
+<h3>🏭 重点产业</h3>
+<ul>
+<li><strong>保税物流：</strong>国际中转、分拨配送、供应链管理</li>
+<li><strong>国际贸易：</strong>离岸贸易、转口贸易、大宗商品交易</li>
+<li><strong>跨境电商：</strong>跨境电商保税备货、海外仓</li>
+<li><strong>保税加工：</strong>进料加工、来料加工、保税维修</li>
+<li><strong>展示交易：</strong>保税展示、保税销售</li>
+</ul>
+
+<h3>✅ 入驻条件</h3>
+<ul>
+<li><strong>企业类型：</strong>从事国际贸易、物流、加工等业务</li>
+<li><strong>注册资本：</strong>贸易企业不低于500万，物流企业不低于300万</li>
+<li><strong>海关信用：</strong>海关信用等级B级以上</li>
+<li><strong>仓储要求：</strong>租赁或自建符合海关监管要求的仓库</li>
+</ul>
+
+<h3>🎯 招商对象</h3>
+<ul>
+<li>国际贸易公司、进出口企业</li>
+<li>物流企业、货运代理</li>
+<li>跨境电商平台、供应链公司</li>
+<li>加工制造企业、保税维修企业</li>
+<li>大宗商品交易商</li>
+</ul>
+`,
+    detail_en: `
+<h3>📍 Positioning</h3>
+<p>Hainan's first comprehensive bonded zone, with a planned area of 4.57 sq km, implementing "inside territory, outside customs" management model, enjoying multiple preferential policies of bonded zone, export processing zone, and bonded logistics zone.</p>
+
+<h3>🏢 Address</h3>
+<p><strong>Address:</strong> Haisheng Road Comprehensive Bonded Zone, Xiuying District, Haikou City, Hainan Province</p>
+<p><strong>Admin Office:</strong> No.1 Haisheng Road, Xiuying District, Haikou, CBZ Administration</p>
+<p><strong>Postal Code:</strong> 570311</p>
+<p><strong>Location:</strong> 5km from Haikou Port, 25km from Meilan Airport</p>
+<p><strong>Official Website:</strong> www.hkbsq.com</p>
+
+<h3>💰 Preferential Policies</h3>
+<ul>
+<li><strong>Bonded Warehousing:</strong> Long-term bonded storage with no time limit</li>
+<li><strong>Export Tax Rebate:</strong> Immediate rebate, same-day processing available</li>
+<li><strong>Import Tax Exemption:</strong> Equipment and raw materials imported by zone enterprises tax-free</li>
+<li><strong>Value-Added Tax Exemption:</strong> Bonded processing, value-added portion tax-free</li>
+<li><strong>Free Goods Movement:</strong> Free circulation of goods within zone without customs declaration</li>
+<li><strong>Corporate Income Tax:</strong> 15% for bonded logistics enterprises</li>
+<li><strong>Rent Discount:</strong> Standard warehouse rent 30% below market rate</li>
+</ul>
+
+<h3>🏭 Key Industries</h3>
+<ul>
+<li><strong>Bonded Logistics:</strong> International transit, distribution and delivery, supply chain management</li>
+<li><strong>International Trade:</strong> Offshore trade, entrepot trade, bulk commodity trading</li>
+<li><strong>Cross-Border E-Commerce:</strong> Cross-border e-commerce bonded inventory, overseas warehouses</li>
+<li><strong>Bonded Processing:</strong> Import processing, contract processing, bonded repair</li>
+<li><strong>Display & Trading:</strong> Bonded display, bonded sales</li>
+</ul>
+
+<h3>✅ Entry Requirements</h3>
+<ul>
+<li><strong>Enterprise Type:</strong> Engaged in international trade, logistics, processing businesses</li>
+<li><strong>Registered Capital:</strong> Minimum ¥5M for trading enterprises, ¥3M for logistics enterprises</li>
+<li><strong>Customs Credit:</strong> Customs credit rating Grade B or above</li>
+<li><strong>Warehousing Requirements:</strong> Lease or build warehouses meeting customs supervision requirements</li>
+</ul>
+
+<h3>🎯 Target Investment</h3>
+<ul>
+<li>International trading companies, import-export enterprises</li>
+<li>Logistics enterprises, freight forwarders</li>
+<li>Cross-border e-commerce platforms, supply chain companies</li>
+<li>Processing and manufacturing enterprises, bonded repair enterprises</li>
+<li>Bulk commodity traders</li>
+</ul>
+`
+  }
+};
+
+// 导出数据
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = parksDataPart2;
+}
