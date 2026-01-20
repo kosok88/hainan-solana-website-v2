@@ -503,14 +503,11 @@ const parksData = {
 <li>Domestic Project 985 and 211 key universities</li>
 <li>International education groups, training institutions</li>
 <li>Research institutes, technology R&D institutions</li>
-<li>Education technology enterprises, online education platforms</li>
-</ul>
 `
   }
-};
 
-}
-// 海南13个重点园区详细数据 - 第2部分（Park 06-09）
+,
+
   park06: {
     name_zh: '博鳌乐城国际医疗旅游先行区',
     name_en: 'Boao Lecheng International Medical Tourism Pilot Zone',
@@ -926,10 +923,9 @@ const parksData = {
 </ul>
 `
   }
-};
 
-}
-// 海南13个重点园区详细数据 - 第3部分（Park 10-13）
+,
+
   park10: {
     name_zh: '海南生态软件园',
     name_en: 'Hainan Ecological Software Park',
@@ -1341,8 +1337,8 @@ const parksData = {
 </ul>
 `
   }
-};
 
+};
 // 导出数据
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = parksData;
