@@ -305,7 +305,6 @@ const parksData = {
 </ul>
 `
   },
-
   park04: {
     name_zh: '海口复兴城互联网信息产业园',
     name_en: 'Haikou Fuxingcheng Internet Information Industry Park',
@@ -313,99 +312,141 @@ const parksData = {
     subtitle_en: 'Internet Innovation & Entrepreneurship Demonstration Park',
     detail_zh: `
 <h3>📍 园区定位</h3>
-<p>海南首个互联网创新创业园区，是海南发展互联网产业的重要平台，已吸引腾讯、华为、百度、阿里巴巴等互联网巨头入驻。</p>
+<p>海南自由贸易港13个重点园区之一，海南首个千亿级数字经济产业园区。园区定位为打造海南自由贸易港先行区、国际总部集聚区和数据跨境流动示范区，已吸引阿里巴巴、字节跳动、小米集团、施耐德、特斯拉等世界500强企业入驻。</p>
 
 <h3>🏢 园区地址</h3>
-<p><strong>详细地址：</strong>海南省海口市美兰区海秀东路39号复兴城</p>
-<p><strong>管理中心：</strong>复兴城西海岸互联网总部基地A1栋</p>
-<p><strong>邮政编码：</strong>570203</p>
-<p><strong>交通位置：</strong>距海口市中心5公里，临近海秀快速路</p>
-<p><strong>园区官网：</strong>www.fuxingcheng.com</p>
+<p><strong>一区（互联网创新创业基地）：</strong>海南省海口市龙华区滨海大道32号</p>
+<p style="color:#94a3b8;font-size:14px;margin-left:20px">位于万绿园、世纪公园、滨海公园三园交汇核心位置，占地78.6亩，建筑面积8万㎡</p>
+
+<p style="margin-top:15px"><strong>二区（国际数字港）：</strong>海南省海口市西海岸南片区（市政府南片区）</p>
+<p style="color:#94a3b8;font-size:14px;margin-left:20px">规划面积256.8亩，总建筑面积约90万㎡，计划总投资100亿元</p>
+
+<p style="margin-top:15px"><strong>园区官网：</strong>www.fullsing.cn（复兴城官网）</p>
+<p><strong>联系电话：</strong>0898-36661888</p>
 
 <h3>💰 优惠政策</h3>
 <ul>
-<li><strong>企业所得税：</strong>15%税率（互联网企业）</li>
+<li><strong>企业所得税：</strong>鼓励类企业15%税率（vs 内地25%）</li>
+<li><strong>个人所得税：</strong>高端人才实际税负不超过15%</li>
 <li><strong>免租政策：</strong>前3年免租金，第4-5年减半</li>
 <li><strong>创业补贴：</strong>初创企业最高50万元</li>
 <li><strong>人才补贴：</strong>技术骨干每月2000-5000元住房补贴</li>
 <li><strong>研发补贴：</strong>研发费用补贴20%</li>
 <li><strong>上市奖励：</strong>企业上市最高奖励500万元</li>
+<li><strong>零关税：</strong>符合条件的进口设备、原材料免征关税</li>
 </ul>
 
-<h3>🏭 重点产业</h3>
+<h3>🎯 重点产业</h3>
 <ul>
-<li><strong>互联网+：</strong>移动互联网、产业互联网</li>
-<li><strong>电子商务：</strong>跨境电商、社交电商</li>
-<li><strong>数字文创：</strong>网络游戏、动漫设计、短视频</li>
-<li><strong>软件开发：</strong>企业软件、移动应用、SaaS服务</li>
-<li><strong>人工智能：</strong>AI应用、机器学习、大数据分析</li>
+<li><strong>数字贸易：</strong>跨境数据流动、跨境电商、游戏出海、来数加工</li>
+<li><strong>智能物联：</strong>集成电路、大模型、人工智能、智慧城市</li>
+<li><strong>国际总部：</strong>中国企业走出去总部、国际企业走进来总部、贸易总部</li>
+<li><strong>专业服务：</strong>金融投资、法律会计、人力资源、创新孵化</li>
+<li><strong>互联网+：</strong>软件开发、区块链、电子商务、游戏动漫</li>
+</ul>
+
+<h3>🏆 园区荣誉</h3>
+<ul>
+<li>国家级科技企业孵化器</li>
+<li>国家文化出口基地</li>
+<li>国家海外人才离岸创新创业基地</li>
+<li>全国创业孵化示范基地</li>
+<li>中国（海南）人力资源服务产业园海口分园</li>
+<li>中国（海口）留学回国人员创业园</li>
+</ul>
+
+<h3>📊 发展成就</h3>
+<ul>
+<li><strong>2024年营收：</strong>突破1600亿元，同比增长15%</li>
+<li><strong>入驻企业：</strong>超过7000家企业</li>
+<li><strong>世界500强：</strong>阿里巴巴、小米、特斯拉、施耐德等</li>
+<li><strong>税收贡献：</strong>2023年税收超过85亿元</li>
 </ul>
 
 <h3>✅ 入驻条件</h3>
 <ul>
-<li><strong>行业限制：</strong>互联网、软件、数字文创等行业</li>
-<li><strong>注册资本：</strong>初创企业不限，成长企业不低于100万</li>
-<li><strong>团队要求：</strong>核心团队至少3人，有互联网从业经验</li>
-<li><strong>创新性：</strong>具有创新商业模式或技术优势</li>
+<li>符合园区产业定位的数字经济企业</li>
+<li>互联网、软件、人工智能、大数据等科技企业</li>
+<li>有实际经营计划和团队</li>
+<li>承诺在园区实质性运营</li>
 </ul>
 
-<h3>🎯 招商对象</h3>
+<h3>🎁 配套服务</h3>
 <ul>
-<li>互联网创业团队、初创公司</li>
-<li>软件开发、移动应用企业</li>
-<li>电商平台、跨境电商</li>
-<li>网络游戏、数字文娱公司</li>
-<li>AI、大数据、云计算企业</li>
+<li>路演厅、会议室、咖啡厅、创业餐厅等设施齐全</li>
+<li>企业服务部、国际招商部提供一站式服务</li>
+<li>投融资对接、政策申报、法律咨询等增值服务</li>
+<li>人才公寓、子女入学等生活配套完善</li>
 </ul>
 `,
     detail_en: `
-<h3>📍 Positioning</h3>
-<p>Hainan's first internet innovation and entrepreneurship park, an important platform for developing internet industry. Major companies like Tencent, Huawei, Baidu, Alibaba have established presence here.</p>
+<h3>📍 Park Positioning</h3>
+<p>One of Hainan Free Trade Port's 13 key parks, Hainan's first 100-billion-yuan digital economy park. Positioned as FTP pioneer zone, international headquarters cluster, and cross-border data flow demonstration zone. Home to world's top 500 companies including Alibaba, ByteDance, Xiaomi, Schneider, and Tesla.</p>
 
-<h3>🏢 Address</h3>
-<p><strong>Address:</strong> No.39 Haixiu East Road, Meilan District, Haikou City, Hainan Province, Fuxingcheng</p>
-<p><strong>Management Center:</strong> Building A1, West Coast Internet Headquarters Base, Fuxingcheng</p>
-<p><strong>Postal Code:</strong> 570203</p>
-<p><strong>Location:</strong> 5km from downtown Haikou, near Haixiu Expressway</p>
-<p><strong>Official Website:</strong> www.fuxingcheng.com</p>
+<h3>🏢 Park Address</h3>
+<p><strong>Zone 1 (Internet Innovation Base):</strong> No.32 Binhai Avenue, Longhua District, Haikou, Hainan</p>
+<p style="color:#94a3b8;font-size:14px;margin-left:20px">Located at the core intersection of Wanlv Park, Century Park, and Binhai Park. 78.6 acres, 80,000㎡ building area</p>
+
+<p style="margin-top:15px"><strong>Zone 2 (International Digital Port):</strong> West Coast South Area (south of municipal government), Haikou, Hainan</p>
+<p style="color:#94a3b8;font-size:14px;margin-left:20px">Planned area 256.8 acres, total building area 900,000㎡, total investment 10 billion yuan</p>
+
+<p style="margin-top:15px"><strong>Official Website:</strong> www.fullsing.cn</p>
+<p><strong>Contact:</strong> 0898-36661888</p>
 
 <h3>💰 Preferential Policies</h3>
 <ul>
-<li><strong>Corporate Income Tax:</strong> 15% for internet companies</li>
-<li><strong>Rent-Free Policy:</strong> 3 years rent-free, 50% discount years 4-5</li>
-<li><strong>Startup Subsidy:</strong> Up to ¥500K for startup enterprises</li>
-<li><strong>Talent Subsidy:</strong> ¥2K-5K per month housing subsidy for technical backbone staff</li>
-<li><strong>R&D Subsidy:</strong> 20% subsidy on R&D expenses</li>
-<li><strong>Listing Reward:</strong> Up to ¥5M reward for listed companies</li>
+<li><strong>Corporate Income Tax:</strong> 15% for encouraged industries (vs 25% mainland)</li>
+<li><strong>Personal Income Tax:</strong> Max 15% effective rate for high-end talent</li>
+<li><strong>Rent-Free:</strong> First 3 years free, 50% off years 4-5</li>
+<li><strong>Startup Subsidy:</strong> Up to 500,000 yuan</li>
+<li><strong>Talent Subsidy:</strong> 2,000-5,000 yuan/month housing allowance</li>
+<li><strong>R&D Subsidy:</strong> 20% of R&D expenses</li>
+<li><strong>IPO Reward:</strong> Up to 5 million yuan for listed companies</li>
+<li><strong>Zero Tariff:</strong> Duty-free for qualified imported equipment & materials</li>
 </ul>
 
-<h3>🏭 Key Industries</h3>
+<h3>🎯 Key Industries</h3>
 <ul>
-<li><strong>Internet+:</strong> Mobile internet, industrial internet</li>
-<li><strong>E-Commerce:</strong> Cross-border e-commerce, social commerce</li>
-<li><strong>Digital Creative:</strong> Online games, animation design, short videos</li>
-<li><strong>Software Development:</strong> Enterprise software, mobile applications, SaaS services</li>
-<li><strong>Artificial Intelligence:</strong> AI applications, machine learning, big data analytics</li>
+<li><strong>Digital Trade:</strong> Cross-border data, e-commerce, game export, data processing</li>
+<li><strong>Smart IoT:</strong> IC design, AI models, smart city</li>
+<li><strong>International HQ:</strong> Chinese companies going global HQ, foreign companies entering China HQ</li>
+<li><strong>Professional Services:</strong> Finance, legal, HR, innovation incubation</li>
+<li><strong>Internet+:</strong> Software, blockchain, e-commerce, gaming</li>
+</ul>
+
+<h3>🏆 Park Honors</h3>
+<ul>
+<li>National Technology Business Incubator</li>
+<li>National Cultural Export Base</li>
+<li>National Overseas Talent Innovation & Entrepreneurship Base</li>
+<li>National Entrepreneurship Incubation Demonstration Base</li>
+<li>China (Hainan) Human Resources Service Industry Park Haikou Branch</li>
+</ul>
+
+<h3>📊 Achievements</h3>
+<ul>
+<li><strong>2024 Revenue:</strong> Over 160 billion yuan, +15% YoY</li>
+<li><strong>Companies:</strong> Over 7,000 enterprises</li>
+<li><strong>Fortune 500:</strong> Alibaba, Xiaomi, Tesla, Schneider, etc.</li>
+<li><strong>Tax Contribution:</strong> Over 8.5 billion yuan in 2023</li>
 </ul>
 
 <h3>✅ Entry Requirements</h3>
 <ul>
-<li><strong>Industry Restrictions:</strong> Internet, software, digital creative industries</li>
-<li><strong>Registered Capital:</strong> No limit for startups, minimum ¥1M for growing companies</li>
-<li><strong>Team Requirements:</strong> Core team of at least 3 people with internet industry experience</li>
-<li><strong>Innovation:</strong> Innovative business model or technological advantages required</li>
+<li>Digital economy enterprises aligned with park's positioning</li>
+<li>Internet, software, AI, big data tech companies</li>
+<li>Actual operation plan and team</li>
+<li>Commitment to substantive operations in the park</li>
 </ul>
 
-<h3>🎯 Target Investment</h3>
+<h3>🎁 Supporting Services</h3>
 <ul>
-<li>Internet startup teams, startup companies</li>
-<li>Software development, mobile application enterprises</li>
-<li>E-commerce platforms, cross-border e-commerce</li>
-<li>Online games, digital entertainment companies</li>
-<li>AI, big data, cloud computing enterprises</li>
+<li>Complete facilities: presentation halls, meeting rooms, cafes, restaurants</li>
+<li>One-stop service from enterprise service & international investment departments</li>
+<li>Value-added services: financing, policy application, legal consulting</li>
+<li>Living support: talent apartments, children's education</li>
 </ul>
 `
-  },
 
   park05: {
     name_zh: '陵水黎安国际教育创新试验区',
