@@ -1350,7 +1350,9 @@ function renderParks() {
 }
 
 // 打开园区详情弹窗
-function openParkDetail(parkId) {
+function openParkDetail(parkId, event) {
+  if (event) event.stopPropagation();
+  
   console.log('打开园区详情:', parkId);
   
   const park = parksData[parkId];
@@ -1369,16 +1371,17 @@ function openParkDetail(parkId) {
   document.getElementById('parkModalContent').innerHTML = lang === 'zh' ? park.detail_zh : park.detail_en;
   
   // 显示弹窗
-  document.getElementById('parkDetailModal').style.display = 'flex';
+  const modal = document.getElementById('parkDetailModal');
+  modal.style.display = 'flex';
   document.body.style.overflow = 'hidden';
+  
+  console.log('✅ 弹窗已显示');
 }
-
 // 关闭园区详情弹窗
 function closeParkDetail() {
   document.getElementById('parkDetailModal').style.display = 'none';
   document.body.style.overflow = 'auto';
 }
-
 // 语言切换函数
 function switchDetailLang(lang){
 if(!currentDetailId)return;
