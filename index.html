@@ -1333,7 +1333,7 @@ function renderParks() {
     const subtitle = lang === 'zh' ? park.subtitle_zh : park.subtitle_en;
     
     return `
-      <div class="card" onclick="openParkDetail('${park.id}')" style="cursor:pointer;transition:all .3s">
+      <div class="card" onclick="openParkDetail('${park.id}', event)" style="cursor:pointer;transition:all .3s">
         <h3 style="font-size:18px;line-height:1.4;min-height:50px">${name}</h3>
         <p style="font-size:14px;color:rgba(255,255,255,0.9);margin-top:10px;line-height:1.6">${subtitle}</p>
         <div style="margin-top:15px;padding-top:15px;border-top:1px solid rgba(255,255,255,.2);text-align:center">
