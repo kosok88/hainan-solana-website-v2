@@ -1,39 +1,13 @@
 # robots.txt for www.solana-hainan.com
+# 海南省索拉纳商务咨询中心
 
-# 允许所有搜索引擎爬虫访问所有内容
 User-agent: *
 Allow: /
 
-# 特别允许百度爬虫
-User-agent: Baiduspider
-Allow: /
-
-# 特别允许Google爬虫
-User-agent: Googlebot
-Allow: /
-
-# 特别允许必应爬虫
-User-agent: Bingbot
-Allow: /
-
-# 特别允许搜狗爬虫
-User-agent: Sogou web spider
-Allow: /
-
-# 特别允许360爬虫
-User-agent: 360Spider
-Allow: /
-
-# 不允许爬取的内容（如果有的话）
-# Disallow: /admin/
-# Disallow: /private/
-
-# Sitemap位置
+# 站点地图位置
 Sitemap: https://www.solana-hainan.com/sitemap.xml
 
-# 爬虫访问延迟（秒）
+# 抓取延迟
 Crawl-delay: 1
 
-# 备注
-# 最后更新：2025-01-06
-# 本网站欢迎所有搜索引擎爬虫访问和索引
+# 最后更新：2026-01-28
