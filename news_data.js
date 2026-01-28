@@ -1,4 +1,43 @@
 const newsData = [
+  // ========== 封关一个月成果新闻（2026年1月18日官方数据）==========
+  {
+    id: 'news_closure_month1',
+    title_zh: '🎯 封关首月"零关税"货值7.53亿元 减免税款1.09亿元',
+    title_en: '🎯 First Month: Zero-Tariff Goods 753M Yuan, Tax Savings 109M Yuan',
+    date: '2026-01-18',
+    content_zh: '封关首月"零关税"政策开展业务53票，货值7.53亿元，同比增长38.9%，减免税款1.09亿元，增长194.6%。',
+    content_en: 'First month zero-tariff policy: 53 transactions, 753M yuan value (up 38.9% YoY), 109M yuan tax savings (up 194.6%).',
+    detail_zh: '2025年12月18日至2026年1月18日，海南自贸港封关首月运行成效显著。"零关税"政策开展业务53票，货值7.53亿元，同比增长38.9%，减免税款1.09亿元，增长194.6%。加工增值免关税政策开展业务214票，增长37.2%，货值8586.68万元，减免关税331.83万元。禁限清单政策完成首票业务，货值34.7万元。平均通关时间压缩27%，对外开放口岸货物进出口总值163.68亿元，增长3.6%。政策红利从"纸面"落到"地面"，真正转化为市场主体和老百姓"真金白银"的获得感。',
+    detail_en: 'From Dec 18, 2025 to Jan 18, 2026, Hainan FTP\'s first month post-closure showed significant results. Zero-tariff policy: 53 transactions worth 753M yuan (up 38.9% YoY), tax savings 109M yuan (up 194.6%). Value-added processing duty-free policy: 214 transactions (up 37.2%), value 85.87M yuan, duty savings 3.32M yuan. First transaction under prohibited/restricted list completed, value 347K yuan. Average customs clearance time reduced 27%. Total import/export value at open ports: 16.37B yuan (up 3.6%). Policy benefits transformed into tangible gains for businesses and citizens.',
+    tags_zh: ['封关成果', '零关税', '政策红利'],
+    tags_en: ['Closure Results', 'Zero Tariff', 'Policy Benefits']
+  },
+  {
+    id: 'news_closure_month2',
+    title_zh: '📈 封关首月新增经营主体2.68万户 离岛免税销售额48.6亿元',
+    title_en: '📈 First Month: 26.8K New Entities, Duty-Free Sales 4.86B Yuan',
+    date: '2026-01-18',
+    content_zh: '首月新增各类经营主体2.68万户，新增企业2.1万户，同比增长16.42%。新增外资企业331户，同比增长13%。',
+    content_en: 'First month: 26,800 new market entities, 21,000 new enterprises (up 16.42% YoY), 331 new foreign enterprises (up 13%).',
+    detail_zh: '封关政策有效激发市场投资创业热情，首月新增各类经营主体2.68万户，其中新增企业2.1万户，同比增长16.42%。企业增量占总量比例从封关前的42%提高到近80%，结构优化趋势进一步凸显。新增外资企业331户，同比增长13%。各类经营主体的创新活力与发展热情全面激发，为海南自贸港建设注入强劲新生力量。离岛免税市场持续火热，首月销售金额48.6亿元，同比增长46.8%；购物人数74.5万人次，同比增长30.2%；购物件数349.4万件，同比增长14.6%。',
+    detail_en: 'Closure policies effectively stimulated market vitality. First month: 26,800 new market entities total, including 21,000 new enterprises (up 16.42% YoY). Enterprise proportion rose from 42% pre-closure to nearly 80%, showing optimized structure. 331 new foreign enterprises (up 13%). Offshore duty-free market remained hot: sales 4.86B yuan (up 46.8%), shoppers 745K (up 30.2%), items 3.494M (up 14.6%). Innovation vitality fully activated, injecting strong momentum into Hainan FTP construction.',
+    tags_zh: ['市场主体', '外资', '离岛免税'],
+    tags_en: ['Market Entities', 'FDI', 'Duty-Free']
+  },
+  {
+    id: 'news_closure_month3',
+    title_zh: '✈️ 通关效率提升27% 免签入境外国人增长64%',
+    title_en: '✈️ Clearance Efficiency +27%, Visa-Free Foreigners +64%',
+    date: '2026-01-18',
+    content_zh: '平均通关时间压缩27%，首月进出境旅客28.91万人次，日均0.93万人次，增长31.3%。',
+    content_en: 'Average clearance time reduced 27%. First month: 289,100 border crossers, daily avg 9,300 (up 31.3%).',
+    detail_zh: '海关优化升级监管模式，对符合条件的保税及"零关税"货物实施"径予放行"，平均通关时间压缩27%。首月对外开放口岸货物进出口总值163.68亿元，增长3.6%。进出境旅客28.91万人次，日均0.93万人次，增长31.3%，其中免签入境外国人数日均0.26万人次，增长64.3%。海南自贸港内的企业、医院、研究机构可使用"零关税"物资及设备，旅游、运输等企业可享受"零关税"营运用飞机、船舶和汽车，政策红利直达市场主体。风险预警、研判、处置机制运转有效，整体风险可防可控，封关运作在安全轨道上平稳推进。',
+    detail_en: 'Customs upgraded supervision model, implementing "immediate release" for eligible bonded and zero-tariff goods, reducing average clearance time by 27%. First month: total import/export value 16.37B yuan (up 3.6%). Border crossers: 289,100 total, daily avg 9,300 (up 31.3%), including visa-free foreigners daily avg 2,600 (up 64.3%). Enterprises, hospitals, research institutions within Hainan FTP can access zero-tariff materials and equipment. Tourism and transport companies enjoy zero-tariff aircraft, vessels, and vehicles. Risk warning and response mechanisms operate effectively, overall risks controllable, closure operation advancing smoothly.',
+    tags_zh: ['通关效率', '免签', '风险防控'],
+    tags_en: ['Clearance', 'Visa-Free', 'Risk Control']
+  },
+
+  // ========== 原有新闻 ==========
   {
     id: 'news_policy2025',
     title_zh: '💰 零关税商品扩至74%税目',
