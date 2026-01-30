@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>工商财税服务协议 - 海南索拉纳</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 20px;
+  line-height: 1.8;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding-bottom: 30px;
+  border-bottom: 3px solid #4ade80;
+}
+
+.header h1 {
+  font-size: 32px;
+  color: #1f2937;
+  margin-bottom: 10px;
+}
+
+.header .subtitle {
+  font-size: 18px;
+  color: #6b7280;
+}
+
+.lang-switch {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.lang-btn {
+  background: #4ade80;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 25px;
+  cursor: pointer;
+  margin: 0 5px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.lang-btn:hover {
+  background: #22c55e;
+  transform: translateY(-2px);
+}
+
+.lang-btn.active {
+  background: #059669;
+}
+
+.content {
+  color: #374151;
+}
+
+.section {
+  margin-bottom: 30px;
+}
+
+.section-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 15px;
+  padding-left: 15px;
+  border-left: 5px solid #4ade80;
+}
+
+.section-content {
+  padding-left: 20px;
+  margin-bottom: 15px;
+}
+
+.section-content p {
+  margin-bottom: 12px;
+}
+
+.section-content ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.section-content li {
+  padding: 8px 0;
+  padding-left: 25px;
+  position: relative;
+}
+
+.section-content li:before {
+  content: "•";
+  position: absolute;
+  left: 10px;
+  color: #4ade80;
+  font-weight: bold;
+}
+
+.important {
+  background: rgba(74, 222, 128, 0.1);
+  padding: 15px;
+  border-radius: 10px;
+  border-left: 4px solid #4ade80;
+  margin: 15px 0;
+}
+
+.footer {
+  margin-top: 50px;
+  padding-top: 30px;
+  border-top: 2px solid #e5e7eb;
+  text-align: center;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.close-btn {
+  display: block;
+  margin: 30px auto 0;
+  padding: 15px 40px;
+  background: linear-gradient(135deg, #4ade80, #22c55e);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(74, 222, 128, 0.4);
+  transition: all 0.3s;
+}
+
+.close-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(74, 222, 128, 0.6);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 25px;
+  }
+  
+  .header h1 {
+    font-size: 24px;
+  }
+  
+  .section-title {
+    font-size: 18px;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1 id="mainTitle">工商财税服务协议</h1>
+    <p class="subtitle" id="subtitle">Fiscal & Tax Services Agreement</p>
+  </div>
+
+  <div class="lang-switch">
+    <button class="lang-btn active" onclick="switchLang('zh')" id="btnZh">中文</button>
+    <button class="lang-btn" onclick="switchLang('en')" id="btnEn">English</button>
+  </div>
+
+  <div class="content" id="contentZh">
+    <div class="section">
+      <h2 class="section-title">一、协议双方</h2>
+      <div class="section-content">
+        <p><strong>甲方（服务提供方）：</strong>海南省索拉纳商务咨询中心</p>
+        <p><strong>乙方（客户）：</strong>订单提交时填写的客户信息</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">二、服务范围</h2>
+      <div class="section-content">
+        <p>本协议适用于以下工商财税类服务：</p>
+        <ul>
+          <li>公司注册服务（含名称核准、营业执照办理、刻章、税务登记等）</li>
+          <li>代理记账服务（零申报、小规模纳税人、一般纳税人）</li>
+          <li>税务咨询服务（基础咨询、深度税务筹划）</li>
+          <li>商标注册服务</li>
+          <li>公司变更服务（法人、股东、地址、资本等变更）</li>
+          <li>公司注销服务</li>
+          <li>银行开户协助服务</li>
+          <li>进出口权办理</li>
+          <li>其他相关工商财税服务</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">三、甲方权利与义务</h2>
+      <div class="section-content">
+        <p><strong>3.1 甲方权利：</strong></p>
+        <ul>
+          <li>有权要求乙方提供真实、完整、合法的资料</li>
+          <li>有权拒绝乙方提出的违法违规要求</li>
+          <li>有权按协议约定收取服务费用</li>
+        </ul>
+        
+        <p><strong>3.2 甲方义务：</strong></p>
+        <ul>
+          <li>按照约定的服务内容和标准提供专业服务</li>
+          <li>保护乙方商业秘密和个人信息</li>
+          <li>及时向乙方反馈办理进度</li>
+          <li>因甲方原因导致服务延误的，应承担相应责任</li>
+          <li>妥善保管乙方提供的资料和证件</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">四、乙方权利与义务</h2>
+      <div class="section-content">
+        <p><strong>4.1 乙方权利：</strong></p>
+        <ul>
+          <li>有权了解服务办理进度</li>
+          <li>有权要求甲方按约定提供服务</li>
+          <li>有权对服务质量提出意见和建议</li>
+        </ul>
+        
+        <p><strong>4.2 乙方义务：</strong></p>
+        <ul>
+          <li>提供真实、完整、合法的资料和信息</li>
+          <li>按约定支付服务费用</li>
+          <li>配合甲方完成服务所需的各项工作</li>
+          <li>对甲方的专业建议给予必要的重视和配合</li>
+          <li>及时告知可能影响服务的重要事项</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">五、服务费用与支付</h2>
+      <div class="section-content">
+        <p><strong>5.1 费用构成：</strong></p>
+        <ul>
+          <li>服务费：甲方提供专业服务的费用</li>
+          <li>政府规费：工商、税务等政府部门收取的法定费用（如有）</li>
+          <li>第三方费用：如刻章费、快递费等必要的第三方费用（如有）</li>
+        </ul>
+        
+        <p><strong>5.2 支付方式：</strong></p>
+        <ul>
+          <li>小额服务（¥2,000以下）：一次性付清</li>
+          <li>中额服务（¥2,000-¥10,000）：50%定金 + 50%尾款（完成时）</li>
+          <li>大额服务（¥10,000以上）：30%定金 + 40%中期款 + 30%尾款</li>
+        </ul>
+        
+        <p><strong>5.3 支付账户：</strong></p>
+        <p>支付宝/微信/银行转账（具体账户信息由甲方提供）</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">六、服务期限</h2>
+      <div class="section-content">
+        <p>各项服务的具体办理时限以订单确认时约定的时间为准。如遇以下情况，办理时限可合理顺延：</p>
+        <ul>
+          <li>政府部门系统升级、节假日等不可抗力因素</li>
+          <li>乙方未及时提供完整资料或配合办理</li>
+          <li>政策调整导致办理流程变化</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">七、保密条款</h2>
+      <div class="section-content">
+        <p>双方应对在履行本协议过程中知悉的对方商业秘密、技术信息、客户资料等保密信息承担保密义务。未经对方书面同意，任何一方不得向第三方披露、传播或使用该保密信息。</p>
+        <div class="important">
+          <p><strong>⚠️ 重要提示：</strong>甲方承诺对乙方的以下信息严格保密：</p>
+          <ul>
+            <li>个人身份信息</li>
+            <li>财务数据</li>
+            <li>商业计划</li>
+            <li>其他涉及商业秘密的信息</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">八、退款政策</h2>
+      <div class="section-content">
+        <p><strong>8.1 可全额退款情形：</strong></p>
+        <ul>
+          <li>服务尚未开始，且乙方提出退款要求</li>
+          <li>因甲方原因无法提供服务</li>
+        </ul>
+        
+        <p><strong>8.2 部分退款情形：</strong></p>
+        <ul>
+          <li>服务已部分完成的，扣除已完成部分费用后退还余款</li>
+          <li>因政府政策调整导致无法继续服务的，扣除已发生费用后退还余款</li>
+        </ul>
+        
+        <p><strong>8.3 不予退款情形：</strong></p>
+        <ul>
+          <li>服务已全部完成</li>
+          <li>因乙方原因（如提供虚假资料、拒绝配合等）导致无法继续服务</li>
+          <li>已支付的政府规费和第三方费用</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">九、免责声明</h2>
+      <div class="section-content">
+        <p>以下情况造成的损失，甲方不承担责任：</p>
+        <ul>
+          <li>因不可抗力（如自然灾害、战争、政府行为等）导致无法履行协议</li>
+          <li>因政府政策调整、法律法规变化导致服务内容或流程变化</li>
+          <li>因乙方提供虚假、不完整资料导致的后果</li>
+          <li>因乙方未按要求配合导致的服务延误或失败</li>
+          <li>第三方（如政府部门、银行等）的原因导致的延误或拒绝</li>
+        </ul>
+        <div class="important">
+          <p><strong>⚠️ 特别提示：</strong></p>
+          <p>甲方提供的税务筹划建议仅供参考，乙方应根据自身实际情况决策。最终税务处理结果由税务机关认定，甲方不对税务机关的认定结果承担责任。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">十、违约责任</h2>
+      <div class="section-content">
+        <p><strong>10.1 乙方违约：</strong></p>
+        <ul>
+          <li>未按约定支付费用的，甲方有权暂停服务，直至乙方付清费用</li>
+          <li>提供虚假资料导致的一切后果由乙方承担</li>
+        </ul>
+        
+        <p><strong>10.2 甲方违约：</strong></p>
+        <ul>
+          <li>因甲方原因导致服务严重延误的，应退还相应费用或提供补偿</li>
+          <li>泄露乙方保密信息的，应承担法律责任并赔偿损失</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">十一、争议解决</h2>
+      <div class="section-content">
+        <p>双方在履行本协议过程中发生争议的，应首先通过友好协商解决。协商不成的，任何一方均可向甲方所在地人民法院提起诉讼。</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">十二、其他约定</h2>
+      <div class="section-content">
+        <ul>
+          <li>本协议自双方签署（乙方在线勾选同意）之日起生效</li>
+          <li>本协议未尽事宜，双方可另行协商补充</li>
+          <li>本协议的修改和补充协议与本协议具有同等法律效力</li>
+          <li>甲方有权根据法律法规变化和业务调整对本协议进行修订，修订后的协议将在官网公布</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="content" id="contentEn" style="display:none;">
+    <div class="section">
+      <h2 class="section-title">I. Parties to the Agreement</h2>
+      <div class="section-content">
+        <p><strong>Party A (Service Provider):</strong> Hainan Solana Business Consulting Center</p>
+        <p><strong>Party B (Client):</strong> Customer information provided at order submission</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">II. Scope of Services</h2>
+      <div class="section-content">
+        <p>This agreement applies to the following fiscal and tax services:</p>
+        <ul>
+          <li>Company registration services (including name verification, business license, seal engraving, tax registration, etc.)</li>
+          <li>Bookkeeping services (zero filing, small-scale taxpayer, general taxpayer)</li>
+          <li>Tax consulting services (basic consulting, in-depth tax planning)</li>
+          <li>Trademark registration services</li>
+          <li>Company change services (legal representative, shareholder, address, capital changes, etc.)</li>
+          <li>Company deregistration services</li>
+          <li>Bank account opening assistance</li>
+          <li>Import/export rights processing</li>
+          <li>Other related fiscal and tax services</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">III. Rights and Obligations of Party A</h2>
+      <div class="section-content">
+        <p><strong>3.1 Rights of Party A:</strong></p>
+        <ul>
+          <li>Right to request authentic, complete, and legal materials from Party B</li>
+          <li>Right to refuse illegal or irregular requests from Party B</li>
+          <li>Right to collect service fees as agreed</li>
+        </ul>
+        
+        <p><strong>3.2 Obligations of Party A:</strong></p>
+        <ul>
+          <li>Provide professional services according to agreed content and standards</li>
+          <li>Protect Party B's business secrets and personal information</li>
+          <li>Promptly update Party B on processing progress</li>
+          <li>Bear corresponding responsibility for delays caused by Party A</li>
+          <li>Properly keep materials and documents provided by Party B</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">IV. Rights and Obligations of Party B</h2>
+      <div class="section-content">
+        <p><strong>4.1 Rights of Party B:</strong></p>
+        <ul>
+          <li>Right to know service processing progress</li>
+          <li>Right to request Party A provide services as agreed</li>
+          <li>Right to provide opinions and suggestions on service quality</li>
+        </ul>
+        
+        <p><strong>4.2 Obligations of Party B:</strong></p>
+        <ul>
+          <li>Provide authentic, complete, and legal materials and information</li>
+          <li>Pay service fees as agreed</li>
+          <li>Cooperate with Party A to complete work required for services</li>
+          <li>Give necessary attention and cooperation to Party A's professional advice</li>
+          <li>Promptly inform of important matters that may affect services</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">V. Service Fees and Payment</h2>
+      <div class="section-content">
+        <p><strong>5.1 Fee Structure:</strong></p>
+        <ul>
+          <li>Service Fee: Fee for professional services provided by Party A</li>
+          <li>Government Fees: Legal fees charged by government departments (if any)</li>
+          <li>Third-party Fees: Necessary third-party fees such as seal engraving, courier (if any)</li>
+        </ul>
+        
+        <p><strong>5.2 Payment Method:</strong></p>
+        <ul>
+          <li>Small services (under ¥2,000): Pay in full</li>
+          <li>Medium services (¥2,000-¥10,000): 50% deposit + 50% balance (upon completion)</li>
+          <li>Large services (over ¥10,000): 30% deposit + 40% interim payment + 30% balance</li>
+        </ul>
+        
+        <p><strong>5.3 Payment Account:</strong></p>
+        <p>Alipay/WeChat/Bank Transfer (specific account information provided by Party A)</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">VI. Service Period</h2>
+      <div class="section-content">
+        <p>The specific processing time for each service is subject to the time agreed upon order confirmation. The processing time may be reasonably extended in the following situations:</p>
+        <ul>
+          <li>Force majeure factors such as government system upgrades, holidays</li>
+          <li>Party B fails to provide complete materials or cooperate in a timely manner</li>
+          <li>Policy adjustments leading to changes in processing procedures</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">VII. Confidentiality</h2>
+      <div class="section-content">
+        <p>Both parties shall maintain confidentiality obligations regarding business secrets, technical information, customer data, and other confidential information learned during the performance of this agreement. Without written consent from the other party, neither party shall disclose, disseminate, or use such confidential information to third parties.</p>
+        <div class="important">
+          <p><strong>⚠️ Important Notice:</strong> Party A commits to strictly protect the following information of Party B:</p>
+          <ul>
+            <li>Personal identity information</li>
+            <li>Financial data</li>
+            <li>Business plans</li>
+            <li>Other information involving business secrets</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">VIII. Refund Policy</h2>
+      <div class="section-content">
+        <p><strong>8.1 Full Refund Situations:</strong></p>
+        <ul>
+          <li>Service has not started and Party B requests refund</li>
+          <li>Unable to provide service due to Party A's reasons</li>
+        </ul>
+        
+        <p><strong>8.2 Partial Refund Situations:</strong></p>
+        <ul>
+          <li>Service partially completed: refund balance after deducting completed portion</li>
+          <li>Unable to continue service due to government policy changes: refund balance after deducting incurred costs</li>
+        </ul>
+        
+        <p><strong>8.3 No Refund Situations:</strong></p>
+        <ul>
+          <li>Service fully completed</li>
+          <li>Unable to continue service due to Party B's reasons (false materials, refusal to cooperate, etc.)</li>
+          <li>Government fees and third-party fees already paid</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">IX. Disclaimer</h2>
+      <div class="section-content">
+        <p>Party A is not responsible for losses caused by the following situations:</p>
+        <ul>
+          <li>Force majeure (natural disasters, war, government actions, etc.) preventing agreement performance</li>
+          <li>Government policy adjustments or legal changes causing service content or process changes</li>
+          <li>Consequences of Party B providing false or incomplete materials</li>
+          <li>Service delays or failures due to Party B's non-cooperation</li>
+          <li>Delays or rejections due to third parties (government departments, banks, etc.)</li>
+        </ul>
+        <div class="important">
+          <p><strong>⚠️ Special Note:</strong></p>
+          <p>Tax planning advice provided by Party A is for reference only. Party B should make decisions based on their actual situation. Final tax treatment results are determined by tax authorities. Party A is not responsible for tax authority determinations.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">X. Breach of Contract</h2>
+      <div class="section-content">
+        <p><strong>10.1 Party B Breach:</strong></p>
+        <ul>
+          <li>Failure to pay fees as agreed: Party A has the right to suspend services until Party B pays in full</li>
+          <li>All consequences of providing false materials shall be borne by Party B</li>
+        </ul>
+        
+        <p><strong>10.2 Party A Breach:</strong></p>
+        <ul>
+          <li>Serious service delays due to Party A's reasons: shall refund corresponding fees or provide compensation</li>
+          <li>Disclosure of Party B's confidential information: shall bear legal liability and compensate for losses</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">XI. Dispute Resolution</h2>
+      <div class="section-content">
+        <p>Disputes arising during the performance of this agreement shall first be resolved through friendly negotiation. If negotiation fails, either party may file a lawsuit with the people's court where Party A is located.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">XII. Other Provisions</h2>
+      <div class="section-content">
+        <ul>
+          <li>This agreement takes effect from the date both parties sign (Party B checks agreement online)</li>
+          <li>Matters not covered in this agreement may be supplemented through separate negotiation</li>
+          <li>Amendments and supplements to this agreement have the same legal effect as this agreement</li>
+          <li>Party A has the right to revise this agreement according to legal changes and business adjustments. Revised agreements will be published on the official website</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p><strong>海南省索拉纳商务咨询中心</strong></p>
+    <p>Hainan Solana Business Consulting Center</p>
+    <p style="margin-top:10px;">微信 WeChat: kosok_hainan | Telegram: @KOSOK0898</p>
+    <p>邮箱 Email: kosok@solana-hainan.com | 电话 Tel: 18117790507</p>
+    <p style="margin-top:15px; font-size:12px;">协议版本：v1.0 | 生效日期：2026年1月30日</p>
+  </div>
+
+  <button class="close-btn" onclick="window.close()" id="closeBtn">我已阅读并理解</button>
+</div>
+
+<script>
+let currentLang = 'zh';
+
+function switchLang(lang) {
+  currentLang = lang;
+  
+  // 更新按钮状态
+  document.getElementById('btnZh').classList.toggle('active', lang === 'zh');
+  document.getElementById('btnEn').classList.toggle('active', lang === 'en');
+  
+  // 切换内容
+  document.getElementById('contentZh').style.display = lang === 'zh' ? 'block' : 'none';
+  document.getElementById('contentEn').style.display = lang === 'en' ? 'block' : 'none';
+  
+  // 更新按钮文字
+  document.getElementById('closeBtn').textContent = lang === 'zh' ? '我已阅读并理解' : 'I have read and understood';
+}
+</script>
+
+</body>
+</html>
+```
+
