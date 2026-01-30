@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>咨询顾问服务协议 - 海南索拉纳</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+  min-height: 100vh;
+  padding: 20px;
+  line-height: 1.8;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding-bottom: 30px;
+  border-bottom: 3px solid #8b5cf6;
+}
+
+.header h1 {
+  font-size: 32px;
+  color: #1f2937;
+  margin-bottom: 10px;
+}
+
+.header .subtitle {
+  font-size: 18px;
+  color: #6b7280;
+}
+
+.lang-switch {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.lang-btn {
+  background: #8b5cf6;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 25px;
+  cursor: pointer;
+  margin: 0 5px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.lang-btn:hover {
+  background: #7c3aed;
+  transform: translateY(-2px);
+}
+
+.lang-btn.active {
+  background: #6d28d9;
+}
+
+.content {
+  color: #374151;
+}
+
+.section {
+  margin-bottom: 30px;
+}
+
+.section-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 15px;
+  padding-left: 15px;
+  border-left: 5px solid #8b5cf6;
+}
+
+.section-content {
+  padding-left: 20px;
+  margin-bottom: 15px;
+}
+
+.section-content p {
+  margin-bottom: 12px;
+}
+
+.section-content ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.section-content li {
+  padding: 8px 0;
+  padding-left: 25px;
+  position: relative;
+}
+
+.section-content li:before {
+  content: "•";
+  position: absolute;
+  left: 10px;
+  color: #8b5cf6;
+  font-weight: bold;
+}
+
+.important {
+  background: rgba(139, 92, 246, 0.1);
+  padding: 15px;
+  border-radius: 10px;
+  border-left: 4px solid #8b5cf6;
+  margin: 15px 0;
+}
+
+.footer {
+  margin-top: 50px;
+  padding-top: 30px;
+  border-top: 2px solid #e5e7eb;
+  text-align: center;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.close-btn {
+  display: block;
+  margin: 30px auto 0;
+  padding: 15px 40px;
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+  transition: all 0.3s;
+}
+
+.close-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.6);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 25px;
+  }
+  
+  .header h1 {
+    font-size: 24px;
+  }
+  
+  .section-title {
+    font-size: 18px;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1 id="mainTitle">咨询顾问服务协议</h1>
+    <p class="subtitle" id="subtitle">Consulting Services Agreement</p>
+  </div>
+
+  <div class="lang-switch">
+    <button class="lang-btn active" onclick="switchLang('zh')" id="btnZh">中文</button>
+    <button class="lang-btn" onclick="switchLang('en')" id="btnEn">English</button>
+  </div>
+
+  <div class="content" id="contentZh">
+    <div class="section">
+      <h2 class="section-title">一、协议双方</h2>
+      <div class="section-content">
+        <p><strong>甲方（服务提供方）：</strong>海南省索拉纳商务咨询中心</p>
+        <p><strong>乙方（客户）：</strong>订单提交时填写的客户信息</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">二、服务范围</h2>
+      <div class="section-content">
+        <p>本协议适用于以下咨询顾问类服务：</p>
+        <ul>
+          <li>区块链咨询服务（基础咨询、年度顾问）</li>
+          <li>美股开户咨询服务</li>
+          <li>美股投资策略咨询服务</li>
+          <li>美股上链咨询服务</li>
+          <li>园区入驻咨询服务（基础、全套）</li>
+          <li>政策申报服务</li>
+          <li>投资咨询服务</li>
+          <li>企业托管服务</li>
+          <li>其他相关商业咨询服务</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">三、甲方权利与义务</h2>
+      <div class="section-content">
+        <p><strong>3.1 甲方权利：</strong></p>
+        <ul>
+          <li>有权要求乙方如实提供企业经营状况、财务数据等必要信息</li>
+          <li>有权拒绝乙方提出的违法违规咨询要求</li>
+          <li>有权按协议约定收取咨询服务费用</li>
+          <li>有权根据实际情况调整咨询方案和建议</li>
+        </ul>
+        
+        <p><strong>3.2 甲方义务：</strong></p>
+        <ul>
+          <li>按照行业专业标准提供咨询服务</li>
+          <li>基于乙方实际情况提供客观、中立的专业建议</li>
+          <li>保护乙方的商业秘密和敏感信息</li>
+          <li>及时向乙方反馈咨询进展和阶段性成果</li>
+          <li>对咨询建议的合法性、合规性负责</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">四、乙方权利与义务</h2>
+      <div class="section-content">
+        <p><strong>4.1 乙方权利：</strong></p>
+        <ul>
+          <li>有权获得专业、客观的咨询建议</li>
+          <li>有权了解咨询服务的进展情况</li>
+          <li>有权对咨询方案提出意见和建议</li>
+          <li>有权要求甲方对咨询建议进行解释和说明</li>
+        </ul>
+        
+        <p><strong>4.2 乙方义务：</strong></p>
+        <ul>
+          <li>如实提供企业经营状况、财务数据等必要信息</li>
+          <li>按约定支付咨询服务费用</li>
+          <li>配合甲方完成信息调研、现场考察等工作</li>
+          <li>对甲方的专业建议给予必要的重视</li>
+          <li>自行判断并承担采纳咨询建议的决策责任</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">五、咨询服务方式</h2>
+      <div class="section-content">
+        <p><strong>5.1 基础咨询服务：</strong></p>
+        <ul>
+          <li>线上咨询（微信、电话、视频会议）</li>
+          <li>1-2次深度沟通（每次1-2小时）</li>
+          <li>提供书面咨询报告</li>
+          <li>后续问题解答（限定时间内）</li>
+        </ul>
+        
+        <p><strong>5.2 年度顾问服务：</strong></p>
+        <ul>
+          <li>定期沟通（每月至少1次）</li>
+          <li>不限次数的临时咨询</li>
+          <li>重大事项专项分析</li>
+          <li>年度咨询报告</li>
+          <li>行业资源对接</li>
+        </ul>
+        
+        <p><strong>5.3 项目制咨询服务：</strong></p>
+        <ul>
+          <li>根据具体项目制定服务方案</li>
+          <li>可能包括现场调研、专家访谈等</li>
+          <li>提供完整的项目咨询报告</li>
+          <li>项目实施过程跟踪指导</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">六、服务费用与支付</h2>
+      <div class="section-content">
+        <p><strong>6.1 费用构成：</strong></p>
+        <ul>
+          <li>咨询服务费：甲方提供专业咨询的费用</li>
+          <li>调研费用：如需现场调研、专家访谈等产生的交通、住宿等费用（如有）</li>
+          <li>第三方费用：如需委托第三方机构进行专业评估等费用（如有）</li>
+        </ul>
+        
+        <p><strong>6.2 支付方式：</strong></p>
+        <ul>
+          <li>基础咨询（单次）：100%预付</li>
+          <li>项目制咨询：50%定金 + 50%尾款（报告交付后）</li>
+          <li>年度顾问：按季度或年度预付</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">七、交付成果</h2>
+      <div class="section-content">
+        <p>根据具体服务内容，甲方向乙方交付以下成果：</p>
+        <ul>
+          <li>咨询报告（书面或电子版）</li>
+          <li>可行性分析报告</li>
+          <li>投资建议书</li>
+          <li>政策申报材料</li>
+          <li>实施方案</li>
+          <li>其他约定的咨询成果</li>
+        </ul>
+        <div class="important">
+          <p><strong>⚠️ 重要说明：</strong></p>
+          <p>咨询报告和建议仅供乙方决策参考，不构成投资建议或承诺。最终决策由乙方自行判断和承担责任。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">八、服务期限</h2>
+      <div class="section-content">
+        <p>各项咨询服务的具体期限以订单确认时约定的时间为准：</p>
+        <ul>
+          <li>基础咨询：通常在1-2周内完成</li>
+          <li>项目制咨询：根据项目复杂程度确定，通常1-3个月</li>
+          <li>年度顾问：服务期限1年，可续约</li>
+        </ul>
+        <p>如遇以下情况，服务期限可合理顺延：</p>
+        <ul>
+          <li>乙方未及时提供必要信息和资料</li>
+          <li>政策调整导致咨询方案需要重新评估</li>
+          <li>不可抗力因素</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">九、保密条款</h2>
+      <div class="section-content">
+        <p><strong>9.1 保密范围：</strong></p>
+        <p>双方应对以下信息承担保密义务：</p>
+        <ul>
+          <li>企业经营数据、财务数据</li>
+          <li>商业计划、投资计划</li>
+          <li>技术方案、业务模式</li>
+          <li>客户信息、供应商信息</li>
+          <li>咨询报告和建议</li>
+          <li>其他标注为保密的信息</li>
+        </ul>
+        
+        <p><strong>9.2 保密期限：</strong></p>
+        <p>保密义务自知悉保密信息之日起生效，至该信息公开披露之日或双方另行约定之日止，但不得少于3年。</p>
+        
+        <p><strong>9.3 例外情况：</strong></p>
+        <p>以下情况不受保密约束：</p>
+        <ul>
+          <li>信息已公开或已为公众所知</li>
+          <li>依法律法规要求必须披露</li>
+          <li>经对方书面同意披露</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">十、免责声明</h2>
+      <div class="section-content">
+        <p>以下情况造成的损失，甲方不承担责任：</p>
+        <ul>
+          <li>因不可抗力导致无法履行协议</li>
+          <li>因政策调整、市场变化导致咨询建议失效</li>
+          <li>因乙方提供虚假、不完整信息导致的咨询偏差</li>
+          <li>因乙方未按建议执行或执行不当导致的损失</li>
+          <li>因第三方（如政府部门、金融机构等）的原因导致的损失</li>
+          <li>投资市场固有风险导致的投资损失</li>
+        </ul>
+        
+        <div class="important">
+          <p><strong>⚠️ 特别声明：</strong></p>
+          <ul>
+            <li><strong>区块链咨询：</strong>区块链技术和数字资产市场波动巨大，投资风险极高。甲方提供的咨询建议仅供参考，不构成投资建议。乙方应充分评估风险，自行决策。</li>
+            <li><strong>美股投资咨询：</strong>证券投资存在市场风险，投资需谨慎。甲方提供的投资策略和个股分析仅供参考，不构成买卖建议。最终投资决策和投资盈亏由乙方自行承担。</li>
+            <li><strong>政策申报：</strong>政策申报结果由政府部门审批决定，甲方不保证申报成功。甲方仅提供专业指导和材料准备服务。</li>
+            <li><strong>园区入驻：</strong>园区入驻条件由园区管委会确定，甲方不保证入驻成功。甲方仅提供咨询和对接服务。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">十一、知识产权</h2>
+      <div class="section-content">
+        <p><strong>11.1 咨询成果归属：</strong></p>
+        <ul>
+          <li>甲方提供的咨询报告、分析方案等成果归乙方所有</li>
+          <li>乙方有权在企业内部使用咨询成果</li>
+          <li>未经甲方同意，乙方不得向第三方转让或公开发布咨询成果</li>
+        </ul>
+        
+        <p><strong>11.2 方法论和工具：</strong></p>
+        <ul>
+          <li>甲方使用的咨询方法论、分析工具等知识产权归甲方所有</li>
+          <li>乙方不得将甲方的方法论和工具用于其他商业目的</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">十二、退款政策</h2>
+      <div class="section-content">
+        <p><strong>12.1 可全额退款情形：</strong></p>
+        <ul>
+          <li>咨询服务尚未开始，且乙方提出退款要求</li>
+          <li>因甲方原因无法提供服务</li>
+        </ul>
+        
+        <p><strong>12.2 部分退款情形：</strong></p>
+        <ul>
+          <li>咨询服务已部分完成的，扣除已完成部分费用后退还余款</li>
+          <li>年度顾问服务提前终止的，按实际服务时间结算，退还余款</li>
+        </ul>
+        
+        <p><strong>12.3 不予退款情形：</strong></p>
+        <ul>
+          <li>咨询服务已全部完成并交付成果</li>
+          <li>因乙方原因（如提供虚假信息、拒绝配合等）导致无法继续服务</li>
+          <li>因乙方主观判断与咨询建议不符导致的不满意（咨询本身无质量问题）</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">十三、违约责任</h2>
+      <div class="section-content">
+        <p><strong>13.1 乙方违约：</strong></p>
+        <ul>
+          <li>未按约定支付费用的，甲方有权暂停咨询服务</li>
+          <li>提供虚假信息导致咨询偏差的，由乙方承担一切后果</li>
+          <li>泄露甲方商业秘密的，应承担法律责任并赔偿损失</li>
+        </ul>
+        
+        <p><strong>13.2 甲方违约：</strong></p>
+        <ul>
+          <li>严重延期交付咨询成果的，应退还部分费用或提供补偿</li>
+          <li>泄露乙方商业秘密的，应承担法律责任并赔偿损失</li>
+          <li>提供的咨询建议存在明显违法违规内容的，应承担相应责任</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">十四、争议解决</h2>
+      <div class="section-content">
+        <p>双方在履行本协议过程中发生争议的，应首先通过友好协商解决。协商不成的，任何一方均可向甲方所在地人民法院提起诉讼。</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">十五、其他约定</h2>
+      <div class="section-content">
+        <ul>
+          <li>本协议自双方签署（乙方在线勾选同意）之日起生效</li>
+          <li>本协议未尽事宜，双方可另行协商补充</li>
+          <li>本协议的修改和补充协议与本协议具有同等法律效力</li>
+          <li>甲方有权根据法律法规变化和业务调整对本协议进行修订</li>
+          <li>咨询服务不构成法律建议、会计建议或投资建议，具体事项请咨询专业机构</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="content" id="contentEn" style="display:none;">
+    <div class="section">
+      <h2 class="section-title">I. Parties to the Agreement</h2>
+      <div class="section-content">
+        <p><strong>Party A (Service Provider):</strong> Hainan Solana Business Consulting Center</p>
+        <p><strong>Party B (Client):</strong> Customer information provided at order submission</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">II. Scope of Services</h2>
+      <div class="section-content">
+        <p>This agreement applies to the following consulting services:</p>
+        <ul>
+          <li>Blockchain consulting services (Basic, Annual advisor)</li>
+          <li>US stock account opening consulting services</li>
+          <li>US stock investment strategy consulting services</li>
+          <li>US stock tokenization consulting services</li>
+          <li>Industrial park entry consulting services (Basic, Full service)</li>
+          <li>Policy application services</li>
+          <li>Investment consulting services</li>
+          <li>Corporate trusteeship services</li>
+          <li>Other related business consulting services</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">III. Rights and Obligations of Party A</h2>
+      <div class="section-content">
+        <p><strong>3.1 Rights of Party A:</strong></p>
+        <ul>
+          <li>Right to request Party B provide truthful business operations, financial data, and other necessary information</li>
+          <li>Right to refuse illegal or irregular consulting requests from Party B</li>
+          <li>Right to collect consulting service fees as agreed</li>
+          <li>Right to adjust consulting plans and recommendations based on actual circumstances</li>
+        </ul>
+        
+        <p><strong>3.2 Obligations of Party A:</strong></p>
+        <ul>
+          <li>Provide consulting services according to industry professional standards</li>
+          <li>Provide objective and neutral professional advice based on Party B's actual situation</li>
+          <li>Protect Party B's business secrets and sensitive information</li>
+          <li>Promptly update Party B on consulting progress and phased results</li>
+          <li>Responsible for legality and compliance of consulting recommendations</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">IV. Rights and Obligations of Party B</h2>
+      <div class="section-content">
+        <p><strong>4.1 Rights of Party B:</strong></p>
+        <ul>
+          <li>Right to receive professional and objective consulting advice</li>
+          <li>Right to know consulting service progress</li>
+          <li>Right to provide opinions and suggestions on consulting plans</li>
+          <li>Right to request Party A explain and clarify consulting recommendations</li>
+        </ul>
+        
+        <p><strong>4.2 Obligations of Party B:</strong></p>
+        <ul>
+          <li>Truthfully provide business operations, financial data, and other necessary information</li>
+          <li>Pay consulting service fees as agreed</li>
+          <li>Cooperate with Party A to complete information research, site visits, etc.</li>
+          <li>Give necessary attention to Party A's professional advice</li>
+          <li>Independently judge and bear decision-making responsibility for adopting consulting advice</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">V. Consulting Service Methods</h2>
+      <div class="section-content">
+        <p><strong>5.1 Basic Consulting Services:</strong></p>
+        <ul>
+          <li>Online consulting (WeChat, phone, video conference)</li>
+          <li>1-2 in-depth communications (1-2 hours each)</li>
+          <li>Provide written consulting report</li>
+          <li>Follow-up question answering (within limited time)</li>
+        </ul>
+        
+        <p><strong>5.2 Annual Advisor Services:</strong></p>
+        <ul>
+          <li>Regular communication (at least once per month)</li>
+          <li>Unlimited ad-hoc consultations</li>
+          <li>Special analysis for major matters</li>
+          <li>Annual consulting report</li>
+          <li>Industry resource networking</li>
+        </ul>
+        
+        <p><strong>5.3 Project-based Consulting Services:</strong></p>
+        <ul>
+          <li>Develop service plan according to specific project</li>
+          <li>May include on-site research, expert interviews, etc.</li>
+          <li>Provide complete project consulting report</li>
+          <li>Project implementation process tracking and guidance</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">VI. Service Fees and Payment</h2>
+      <div class="section-content">
+        <p><strong>6.1 Fee Structure:</strong></p>
+        <ul>
+          <li>Consulting Service Fee: Fee for professional consulting provided by Party A</li>
+          <li>Research Fees: Travel, accommodation expenses for on-site research, expert interviews, etc. (if applicable)</li>
+          <li>Third-party Fees: Fees for professional assessment by third-party agencies (if applicable)</li>
+        </ul>
+        
+        <p><strong>6.2 Payment Method:</strong></p>
+        <ul>
+          <li>Basic consulting (one-time): 100% prepayment</li>
+          <li>Project-based consulting: 50% deposit + 50% balance (after report delivery)</li>
+          <li>Annual advisor: Prepaid quarterly or annually</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">VII. Deliverables</h2>
+      <div class="section-content">
+        <p>According to specific service content, Party A delivers following results to Party B:</p>
+        <ul>
+          <li>Consulting report (written or electronic)</li>
+          <li>Feasibility analysis report</li>
+          <li>Investment recommendation</li>
+          <li>Policy application materials</li>
+          <li>Implementation plan</li>
+          <li>Other agreed consulting results</li>
+        </ul>
+        <div class="important">
+          <p><strong>⚠️ Important Note:</strong></p>
+          <p>Consulting reports and recommendations are for Party B's decision-making reference only and do not constitute investment advice or commitments. Final decisions are made by Party B independently with responsibility.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">VIII. Service Period</h2>
+      <div class="section-content">
+        <p>Specific period for each consulting service subject to time agreed upon order confirmation:</p>
+        <ul>
+          <li>Basic consulting: Usually completed within 1-2 weeks</li>
+          <li>Project-based consulting: Determined by project complexity, usually 1-3 months</li>
+          <li>Annual advisor: Service period 1 year, renewable</li>
+        </ul>
+        <p>Service period may be reasonably extended in following situations:</p>
+        <ul>
+          <li>Party B fails to provide necessary information and materials in timely manner</li>
+          <li>Policy adjustments require consulting plan reassessment</li>
+          <li>Force majeure factors</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">IX. Confidentiality</h2>
+      <div class="section-content">
+        <p><strong>9.1 Confidentiality Scope:</strong></p>
+        <p>Both parties shall maintain confidentiality obligations for following information:</p>
+        <ul>
+          <li>Business operation data, financial data</li>
+          <li>Business plans, investment plans</li>
+          <li>Technical solutions, business models</li>
+          <li>Customer information, supplier information</li>
+          <li>Consulting reports and recommendations</li>
+          <li>Other information marked as confidential</li>
+        </ul>
+        
+        <p><strong>9.2 Confidentiality Period:</strong></p>
+        <p>Confidentiality obligation takes effect from date of learning confidential information until information is publicly disclosed or otherwise agreed by both parties, but not less than 3 years.</p>
+        
+        <p><strong>9.3 Exceptions:</strong></p>
+        <p>Following situations not subject to confidentiality constraints:</p>
+        <ul>
+          <li>Information already public or known to public</li>
+          <li>Disclosure required by laws and regulations</li>
+          <li>Disclosure with written consent from other party</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">X. Disclaimer</h2>
+      <div class="section-content">
+        <p>Party A is not responsible for losses caused by following situations:</p>
+        <ul>
+          <li>Force majeure preventing agreement performance</li>
+          <li>Consulting advice becoming invalid due to policy adjustments or market changes</li>
+          <li>Consulting deviations due to false or incomplete information provided by Party B</li>
+          <li>Losses due to Party B not following recommendations or improper execution</li>
+          <li>Losses due to third parties (government departments, financial institutions, etc.)</li>
+          <li>Investment losses due to inherent investment market risks</li>
+        </ul>
+        
+        <div class="important">
+          <p><strong>⚠️ Special Declarations:</strong></p>
+          <ul>
+            <li><strong>Blockchain Consulting:</strong> Blockchain technology and digital asset markets are highly volatile with extremely high investment risks. Party A's consulting advice is for reference only and does not constitute investment advice. Party B should fully assess risks and make independent decisions.</li>
+            <li><strong>US Stock Investment Consulting:</strong> Securities investment involves market risks. Investment requires caution. Party A's investment strategies and stock analysis are for reference only and do not constitute buy/sell recommendations. Final investment decisions and profit/loss are Party B's responsibility.</li>
+            <li><strong>Policy Application:</strong> Policy application results are determined by government department approval. Party A does not guarantee application success. Party A only provides professional guidance and material preparation services.</li>
+            <li><strong>Park Entry:</strong> Park entry conditions determined by park management committee. Party A does not guarantee successful entry. Party A only provides consulting and coordination services.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">XI. Intellectual Property</h2>
+      <div class="section-content">
+        <p><strong>11.1 Consulting Results Ownership:</strong></p>
+        <ul>
+          <li>Consulting reports, analysis plans, and other results provided by Party A belong to Party B</li>
+          <li>Party B has right to use consulting results internally</li>
+          <li>Without Party A's consent, Party B shall not transfer or publicly release consulting results to third parties</li>
+        </ul>
+        
+        <p><strong>11.2 Methodology and Tools:</strong></p>
+        <ul>
+          <li>Consulting methodologies, analysis tools, etc. used by Party A's intellectual property belongs to Party A</li>
+          <li>Party B shall not use Party A's methodologies and tools for other commercial purposes</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">XII. Refund Policy</h2>
+      <div class="section-content">
+        <p><strong>12.1 Full Refund Situations:</strong></p>
+        <ul>
+          <li>Consulting service has not started and Party B requests refund</li>
+          <li>Unable to provide service due to Party A's reasons</li>
+        </ul>
+        
+        <p><strong>12.2 Partial Refund Situations:</strong></p>
+        <ul>
+          <li>Consulting service partially completed: refund balance after deducting completed portion</li>
+          <li>Annual advisor service terminated early: settled according to actual service time, refund balance</li>
+        </ul>
+        
+        <p><strong>12.3 No Refund Situations:</strong></p>
+        <ul>
+          <li>Consulting service fully completed and results delivered</li>
+          <li>Unable to continue service due to Party B's reasons (false information, refusal to cooperate, etc.)</li>
+          <li>Dissatisfaction due to Party B's subjective judgment differing from consulting advice (consulting itself has no quality issues)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">XIII. Breach of Contract</h2>
+      <div class="section-content">
+        <p><strong>13.1 Party B Breach:</strong></p>
+        <ul>
+          <li>Failure to pay as agreed: Party A has right to suspend consulting services</li>
+          <li>Providing false information causing consulting deviation: Party B bears all consequences</li>
+          <li>Disclosure of Party A's business secrets: shall bear legal liability and compensate for losses</li>
+        </ul>
+        
+        <p><strong>13.2 Party A Breach:</strong></p>
+        <ul>
+          <li>Serious delay in delivering consulting results: shall refund partial fees or provide compensation</li>
+          <li>Disclosure of Party B's business secrets: shall bear legal liability and compensate for losses</li>
+          <li>Consulting advice contains obvious illegal or irregular content: shall bear corresponding responsibility</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">XIV. Dispute Resolution</h2>
+      <div class="section-content">
+        <p>Disputes arising during performance of this agreement shall first be resolved through friendly negotiation. If negotiation fails, either party may file lawsuit with people's court where Party A is located.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">XV. Other Provisions</h2>
+      <div class="section-content">
+        <ul>
+          <li>This agreement takes effect from date both parties sign (Party B checks agreement online)</li>
+          <li>Matters not covered may be supplemented through separate negotiation</li>
+          <li>Amendments and supplements to this agreement have same legal effect</li>
+          <li>Party A has right to revise this agreement according to legal changes and business adjustments</li>
+          <li>Consulting services do not constitute legal advice, accounting advice, or investment advice. Please consult professional agencies for specific matters</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p><strong>海南省索拉纳商务咨询中心</strong></p>
+    <p>Hainan Solana Business Consulting Center</p>
+    <p style="margin-top:10px;">微信 WeChat: kosok_hainan | Telegram: @KOSOK0898</p>
+    <p>邮箱 Email: kosok@solana-hainan.com | 电话 Tel: 18117790507</p>
+    <p style="margin-top:15px; font-size:12px;">协议版本：v1.0 | 生效日期：2026年1月30日</p>
+  </div>
+
+  <button class="close-btn" onclick="window.close()" id="closeBtn">我已阅读并理解</button>
+</div>
+
+<script>
+let currentLang = 'zh';
+
+function switchLang(lang) {
+  currentLang = lang;
+  
+  document.getElementById('btnZh').classList.toggle('active', lang === 'zh');
+  document.getElementById('btnEn').classList.toggle('active', lang === 'en');
+  
+  document.getElementById('contentZh').style.display = lang === 'zh' ? 'block' : 'none';
+  document.getElementById('contentEn').style.display = lang === 'en' ? 'block' : 'none';
+  
+  document.getElementById('closeBtn').textContent = lang === 'zh' ? '我已阅读并理解' : 'I have read and understood';
+}
+</script>
+
+</body>
+</html>
+```
+
+---
