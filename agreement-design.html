@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>设计制作服务协议 - 海南索拉纳</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  min-height: 100vh;
+  padding: 20px;
+  line-height: 1.8;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding-bottom: 30px;
+  border-bottom: 3px solid #f59e0b;
+}
+
+.header h1 {
+  font-size: 32px;
+  color: #1f2937;
+  margin-bottom: 10px;
+}
+
+.header .subtitle {
+  font-size: 18px;
+  color: #6b7280;
+}
+
+.lang-switch {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.lang-btn {
+  background: #f59e0b;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 25px;
+  cursor: pointer;
+  margin: 0 5px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.lang-btn:hover {
+  background: #d97706;
+  transform: translateY(-2px);
+}
+
+.lang-btn.active {
+  background: #b45309;
+}
+
+.content {
+  color: #374151;
+}
+
+.section {
+  margin-bottom: 30px;
+}
+
+.section-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 15px;
+  padding-left: 15px;
+  border-left: 5px solid #f59e0b;
+}
+
+.section-content {
+  padding-left: 20px;
+  margin-bottom: 15px;
+}
+
+.section-content p {
+  margin-bottom: 12px;
+}
+
+.section-content ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.section-content li {
+  padding: 8px 0;
+  padding-left: 25px;
+  position: relative;
+}
+
+.section-content li:before {
+  content: "•";
+  position: absolute;
+  left: 10px;
+  color: #f59e0b;
+  font-weight: bold;
+}
+
+.important {
+  background: rgba(245, 158, 11, 0.1);
+  padding: 15px;
+  border-radius: 10px;
+  border-left: 4px solid #f59e0b;
+  margin: 15px 0;
+}
+
+.footer {
+  margin-top: 50px;
+  padding-top: 30px;
+  border-top: 2px solid #e5e7eb;
+  text-align: center;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.close-btn {
+  display: block;
+  margin: 30px auto 0;
+  padding: 15px 40px;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+  transition: all 0.3s;
+}
+
+.close-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.6);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 25px;
+  }
+  
+  .header h1 {
+    font-size: 24px;
+  }
+  
+  .section-title {
+    font-size: 18px;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1 id="mainTitle">设计制作服务协议</h1>
+    <p class="subtitle" id="subtitle">Design & Creative Services Agreement</p>
+  </div>
+
+  <div class="lang-switch">
+    <button class="lang-btn active" onclick="switchLang('zh')" id="btnZh">中文</button>
+    <button class="lang-btn" onclick="switchLang('en')" id="btnEn">English</button>
+  </div>
+
+  <div class="content" id="contentZh">
+    <div class="section">
+      <h2 class="section-title">一、协议双方</h2>
+      <div class="section-content">
+        <p><strong>甲方（服务提供方）：</strong>海南省索拉纳商务咨询中心</p>
+        <p><strong>乙方（客户）：</strong>订单提交时填写的客户信息</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">二、服务范围</h2>
+      <div class="section-content">
+        <p>本协议适用于以下设计制作类服务：</p>
+        <ul>
+          <li>LOGO设计服务（基础版、高级版）</li>
+          <li>VI设计服务（基础版、全套版）</li>
+          <li>名片设计服务</li>
+          <li>宣传册设计服务</li>
+          <li>海报设计服务</li>
+          <li>网站设计服务（企业官网、电商平台、落地页）</li>
+          <li>品牌全案设计服务</li>
+          <li>包装设计服务</li>
+          <li>其他相关创意设计服务</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">三、甲方权利与义务</h2>
+      <div class="section-content">
+        <p><strong>3.1 甲方权利：</strong></p>
+        <ul>
+          <li>有权要求乙方明确设计需求和使用场景</li>
+          <li>有权在约定的修改次数内拒绝不合理的修改要求</li>
+          <li>有权按协议约定收取设计费用</li>
+          <li>有权展示设计作品作为案例（需隐去乙方敏感信息）</li>
+        </ul>
+        
+        <p><strong>3.2 甲方义务：</strong></p>
+        <ul>
+          <li>按照约定的设计风格和标准提供专业设计服务</li>
+          <li>在约定时间内提交设计初稿</li>
+          <li>提供约定次数的免费修改服务</li>
+          <li>保护乙方的商业秘密和品牌信息</li>
+          <li>交付完整的设计源文件和使用授权</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">四、乙方权利与义务</h2>
+      <div class="section-content">
+        <p><strong>4.1 乙方权利：</strong></p>
+        <ul>
+          <li>有权获得符合约定标准的设计作品</li>
+          <li>有权在约定次数内要求修改设计</li>
+          <li>有权获得设计作品的完整版权（付清全款后）</li>
+          <li>有权了解设计进度</li>
+        </ul>
+        
+        <p><strong>4.2 乙方义务：</strong></p>
+        <ul>
+          <li>明确提出设计需求、风格偏好、使用场景等信息</li>
+          <li>按约定支付设计费用</li>
+          <li>及时反馈设计稿件的意见和修改建议</li>
+          <li>提供必要的品牌资料、参考案例等素材</li>
+          <li>在约定的修改次数内提出修改要求</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">五、设计流程</h2>
+      <div class="section-content">
+        <p><strong>5.1 需求沟通：</strong></p>
+        <p>甲方与乙方进行详细的需求沟通，明确设计风格、应用场景、交付时间等要求。</p>
+        
+        <p><strong>5.2 初稿设计：</strong></p>
+        <p>甲方根据乙方需求提供约定数量的设计初稿（具体数量见订单确认）。</p>
+        
+        <p><strong>5.3 修改完善：</strong></p>
+        <p>乙方在收到初稿后，可在约定次数内提出修改意见。甲方根据意见进行修改。</p>
+        
+        <p><strong>5.4 定稿交付：</strong></p>
+        <p>设计稿件经乙方确认后，甲方交付最终设计文件，包括源文件和常用格式文件。</p>
+        
+        <div class="important">
+          <p><strong>⚠️ 重要提示：</strong></p>
+          <ul>
+            <li>修改次数以订单确认时的约定为准</li>
+            <li>超出约定修改次数的，每次修改加收费用（LOGO/VI设计：¥200/次，其他设计：¥100/次）</li>
+            <li>重大修改（如推翻原设计方案）视为新的设计需求，需另行收费</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">六、知识产权归属</h2>
+      <div class="section-content">
+        <p><strong>6.1 设计版权：</strong></p>
+        <ul>
+          <li>在乙方付清全部费用后，设计作品的知识产权归乙方所有</li>
+          <li>乙方有权对设计作品进行使用、修改、传播等</li>
+          <li>甲方保留将设计作品作为案例展示的权利（需隐去乙方敏感信息）</li>
+        </ul>
+        
+        <p><strong>6.2 素材版权：</strong></p>
+        <ul>
+          <li>设计中使用的付费素材（如字体、图片等）版权归原作者所有</li>
+          <li>如需使用付费素材，费用由乙方承担，或由甲方代为购买并收取相应费用</li>
+          <li>乙方应确保提供的素材不侵犯第三方知识产权</li>
+        </ul>
+        
+        <p><strong>6.3 侵权责任：</strong></p>
+        <ul>
+          <li>因乙方提供的素材侵权导致的法律责任由乙方承担</li>
+          <li>因甲方设计侵权（如抄袭他人作品）导致的法律责任由甲方承担</li>
+        </ul>
+        
+        <div class="important">
+          <p><strong>⚠️ 特别声明：</strong></p>
+          <p>设计作品版权转让以乙方付清全款为前提。在乙方付清全款前，设计作品的知识产权归甲方所有，乙方不得擅自使用。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">七、服务费用与支付</h2>
+      <div class="section-content">
+        <p><strong>7.1 费用构成：</strong></p>
+        <ul>
+          <li>设计服务费：甲方提供创意设计的费用</li>
+          <li>素材费用：如需购买付费字体、图片等素材的费用（如有）</li>
+          <li>印刷费用：如需印刷实物的费用（如有，由乙方与印刷厂直接结算）</li>
+        </ul>
+        
+        <p><strong>7.2 支付方式：</strong></p>
+        <ul>
+          <li>小额设计（¥2,000以下）：50%定金 + 50%尾款（定稿后）</li>
+          <li>中额设计（¥2,000-¥10,000）：50%定金 + 50%尾款（定稿后）</li>
+          <li>大额设计（¥10,000以上）：30%定金 + 40%中期款（初稿后）+ 30%尾款（定稿后）</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">八、交付标准</h2>
+      <div class="section-content">
+        <p>甲方向乙方交付以下设计文件：</p>
+        
+        <p><strong>8.1 LOGO设计：</strong></p>
+        <ul>
+          <li>源文件（AI、PSD格式）</li>
+          <li>常用格式（PNG、JPG、SVG）</li>
+          <li>黑白版、彩色版、反白版</li>
+          <li>LOGO使用规范说明</li>
+        </ul>
+        
+        <p><strong>8.2 VI设计：</strong></p>
+        <ul>
+          <li>完整VI手册（PDF格式）</li>
+          <li>所有设计应用的源文件</li>
+          <li>VI应用规范说明</li>
+        </ul>
+        
+        <p><strong>8.3 网站设计：</strong></p>
+        <ul>
+          <li>完整网站源代码</li>
+          <li>后台管理系统（如有）</li>
+          <li>域名和服务器信息</li>
+          <li>网站使用培训</li>
+        </ul>
+        
+        <p><strong>8.4 其他设计：</strong></p>
+        <ul>
+          <li>设计源文件</li>
+          <li>印刷文件（300dpi高清）</li>
+          <li>常用格式文件</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">九、服务期限</h2>
+      <div class="section-content">
+        <p>各项设计服务的具体制作时限以订单确认时约定的时间为准。如遇以下情况，制作时限可合理顺延：</p>
+        <ul>
+          <li>乙方未及时提供完整的设计需求和素材</li>
+          <li>乙方反复修改需求导致设计方向变化</li>
+          <li>不可抗力因素（如自然灾害、疫情等）</li>
+          <li>乙方要求暂停设计的时间</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">十、验收标准</h2>
+      <div class="section-content">
+        <p><strong>10.1 验收方式：</strong></p>
+        <p>乙方收到设计稿件后，应在3个工作日内提出验收意见。超过3个工作日未提出异议的，视为验收合格。</p>
+        
+        <p><strong>10.2 验收标准：</strong></p>
+        <ul>
+          <li>设计风格符合约定要求</li>
+          <li>设计质量达到行业专业标准</li>
+          <li>文件格式完整、清晰</li>
+          <li>无明显设计错误或瑕疵</li>
+        </ul>
+        
+        <p><strong>10.3 不合格处理：</strong></p>
+        <p>如设计作品确实存在明显质量问题，甲方应免费修改直至合格。</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">十一、退款政策</h2>
+      <div class="section-content">
+        <p><strong>11.1 可全额退款情形：</strong></p>
+        <ul>
+          <li>设计尚未开始，且乙方提出退款要求</li>
+          <li>因甲方原因无法提供服务</li>
+        </ul>
+        
+        <p><strong>11.2 部分退款情形：</strong></p>
+        <ul>
+          <li>初稿已提交但未定稿的，退还50%费用</li>
+          <li>因乙方原因中途取消的，扣除已完成工作量的费用</li>
+        </ul>
+        
+        <p><strong>11.3 不予退款情形：</strong></p>
+        <ul>
+          <li>设计已定稿并交付源文件</li>
+          <li>乙方已开始使用设计作品</li>
+          <li>因乙方主观审美偏好导致的不满意（设计本身无质量问题）</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">十二、保密条款</h2>
+      <div class="section-content">
+        <p>双方应对在设计过程中知悉的对方商业秘密、品牌信息、设计方案等保密信息承担保密义务。未经对方书面同意，任何一方不得向第三方披露。</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">十三、免责声明</h2>
+      <div class="section-content">
+        <p>以下情况造成的损失，甲方不承担责任：</p>
+        <ul>
+          <li>因不可抗力导致无法履行协议</li>
+          <li>因乙方提供的素材侵权导致的法律纠纷</li>
+          <li>因乙方未按要求配合导致的设计延误</li>
+          <li>乙方擅自修改设计作品导致的效果问题</li>
+          <li>印刷厂、第三方服务商的原因导致的质量问题</li>
+        </ul>
+        <div class="important">
+          <p><strong>⚠️ 特别提示：</strong></p>
+          <p>设计是创意性工作，存在主观审美差异。甲方保证设计作品符合专业标准，但不保证符合所有人的审美偏好。乙方应在设计过程中及时沟通需求，避免定稿后因审美问题要求退款。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">十四、违约责任</h2>
+      <div class="section-content">
+        <p><strong>14.1 乙方违约：</strong></p>
+        <ul>
+          <li>未按约定支付费用的，甲方有权暂停设计工作</li>
+          <li>擅自使用未付款的设计作品的，应支付双倍设计费</li>
+        </ul>
+        
+        <p><strong>14.2 甲方违约：</strong></p>
+        <ul>
+          <li>严重延期交付的，应退还部分费用或提供补偿</li>
+          <li>设计作品抄袭他人的，应承担法律责任并全额退款</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">十五、争议解决</h2>
+      <div class="section-content">
+        <p>双方在履行本协议过程中发生争议的，应首先通过友好协商解决。协商不成的，任何一方均可向甲方所在地人民法院提起诉讼。</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">十六、其他约定</h2>
+      <div class="section-content">
+        <ul>
+          <li>本协议自双方签署（乙方在线勾选同意）之日起生效</li>
+          <li>本协议未尽事宜，双方可另行协商补充</li>
+          <li>本协议的修改和补充协议与本协议具有同等法律效力</li>
+          <li>甲方有权根据业务调整对本协议进行修订，修订后的协议将在官网公布</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="content" id="contentEn" style="display:none;">
+    <div class="section">
+      <h2 class="section-title">I. Parties to the Agreement</h2>
+      <div class="section-content">
+        <p><strong>Party A (Service Provider):</strong> Hainan Solana Business Consulting Center</p>
+        <p><strong>Party B (Client):</strong> Customer information provided at order submission</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">II. Scope of Services</h2>
+      <div class="section-content">
+        <p>This agreement applies to the following design and creative services:</p>
+        <ul>
+          <li>LOGO design services (Basic, Advanced)</li>
+          <li>VI design services (Basic, Complete)</li>
+          <li>Business card design services</li>
+          <li>Brochure design services</li>
+          <li>Poster design services</li>
+          <li>Website design services (Corporate, E-commerce, Landing page)</li>
+          <li>Complete brand package design services</li>
+          <li>Packaging design services</li>
+          <li>Other related creative design services</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">III. Rights and Obligations of Party A</h2>
+      <div class="section-content">
+        <p><strong>3.1 Rights of Party A:</strong></p>
+        <ul>
+          <li>Right to request Party B clarify design requirements and usage scenarios</li>
+          <li>Right to refuse unreasonable revision requests within agreed revision limit</li>
+          <li>Right to collect design fees as agreed</li>
+          <li>Right to showcase design works as portfolio cases (with Party B's sensitive information removed)</li>
+        </ul>
+        
+        <p><strong>3.2 Obligations of Party A:</strong></p>
+        <ul>
+          <li>Provide professional design services according to agreed style and standards</li>
+          <li>Submit design drafts within agreed timeframe</li>
+          <li>Provide agreed number of free revisions</li>
+          <li>Protect Party B's business secrets and brand information</li>
+          <li>Deliver complete design source files and usage authorization</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">IV. Rights and Obligations of Party B</h2>
+      <div class="section-content">
+        <p><strong>4.1 Rights of Party B:</strong></p>
+        <ul>
+          <li>Right to receive design works meeting agreed standards</li>
+          <li>Right to request design revisions within agreed number of times</li>
+          <li>Right to obtain complete copyright of design works (after full payment)</li>
+          <li>Right to know design progress</li>
+        </ul>
+        
+        <p><strong>4.2 Obligations of Party B:</strong></p>
+        <ul>
+          <li>Clearly state design requirements, style preferences, usage scenarios, etc.</li>
+          <li>Pay design fees as agreed</li>
+          <li>Provide timely feedback on design drafts and revision suggestions</li>
+          <li>Provide necessary brand materials, reference cases, and other materials</li>
+          <li>Submit revision requests within agreed number of revisions</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">V. Design Process</h2>
+      <div class="section-content">
+        <p><strong>5.1 Requirements Communication:</strong></p>
+        <p>Party A and Party B conduct detailed requirements communication to clarify design style, application scenarios, delivery time, etc.</p>
+        
+        <p><strong>5.2 Initial Draft Design:</strong></p>
+        <p>Party A provides agreed number of initial design drafts based on Party B's requirements.</p>
+        
+        <p><strong>5.3 Revisions:</strong></p>
+        <p>After receiving initial drafts, Party B may provide revision feedback within agreed number of times. Party A revises accordingly.</p>
+        
+        <p><strong>5.4 Final Delivery:</strong></p>
+        <p>After Party B confirms design, Party A delivers final design files including source files and common format files.</p>
+        
+        <div class="important">
+          <p><strong>⚠️ Important Notice:</strong></p>
+          <ul>
+            <li>Number of revisions subject to order confirmation</li>
+            <li>Revisions beyond agreed number incur additional fees (LOGO/VI: ¥200/revision, other designs: ¥100/revision)</li>
+            <li>Major revisions (such as complete redesign) are considered new design requirements and require separate fees</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">VI. Intellectual Property Rights</h2>
+      <div class="section-content">
+        <p><strong>6.1 Design Copyright:</strong></p>
+        <ul>
+          <li>After Party B pays in full, intellectual property rights of design works belong to Party B</li>
+          <li>Party B has the right to use, modify, and distribute design works</li>
+          <li>Party A retains the right to showcase design works as portfolio cases (with Party B's sensitive information removed)</li>
+        </ul>
+        
+        <p><strong>6.2 Material Copyright:</strong></p>
+        <ul>
+          <li>Copyright of paid materials used in design (fonts, images, etc.) belongs to original authors</li>
+          <li>If paid materials are needed, costs borne by Party B, or Party A purchases on behalf and charges accordingly</li>
+          <li>Party B shall ensure materials provided do not infringe third-party intellectual property rights</li>
+        </ul>
+        
+        <p><strong>6.3 Infringement Liability:</strong></p>
+        <ul>
+          <li>Legal liability due to infringement of materials provided by Party B shall be borne by Party B</li>
+          <li>Legal liability due to design infringement by Party A (plagiarism) shall be borne by Party A</li>
+        </ul>
+        
+        <div class="important">
+          <p><strong>⚠️ Special Declaration:</strong></p>
+          <p>Design copyright transfer is subject to Party B paying in full. Before full payment, intellectual property rights of design works belong to Party A, and Party B shall not use without authorization.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">VII. Service Fees and Payment</h2>
+      <div class="section-content">
+        <p><strong>7.1 Fee Structure:</strong></p>
+        <ul>
+          <li>Design Service Fee: Fee for creative design services provided by Party A</li>
+          <li>Material Fees: Fees for purchasing paid fonts, images, etc. (if applicable)</li>
+          <li>Printing Fees: Fees for printing physical items (if applicable, settled directly between Party B and printer)</li>
+        </ul>
+        
+        <p><strong>7.2 Payment Method:</strong></p>
+        <ul>
+          <li>Small designs (under ¥2,000): 50% deposit + 50% balance (after finalization)</li>
+          <li>Medium designs (¥2,000-¥10,000): 50% deposit + 50% balance (after finalization)</li>
+          <li>Large designs (over ¥10,000): 30% deposit + 40% interim payment (after draft) + 30% balance (after finalization)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">VIII. Delivery Standards</h2>
+      <div class="section-content">
+        <p>Party A delivers the following design files to Party B:</p>
+        
+        <p><strong>8.1 LOGO Design:</strong></p>
+        <ul>
+          <li>Source files (AI, PSD format)</li>
+          <li>Common formats (PNG, JPG, SVG)</li>
+          <li>Black & white, color, inverted versions</li>
+          <li>LOGO usage guidelines</li>
+        </ul>
+        
+        <p><strong>8.2 VI Design:</strong></p>
+        <ul>
+          <li>Complete VI manual (PDF format)</li>
+          <li>Source files for all design applications</li>
+          <li>VI application guidelines</li>
+        </ul>
+        
+        <p><strong>8.3 Website Design:</strong></p>
+        <ul>
+          <li>Complete website source code</li>
+          <li>Backend management system (if applicable)</li>
+          <li>Domain and server information</li>
+          <li>Website usage training</li>
+        </ul>
+        
+        <p><strong>8.4 Other Designs:</strong></p>
+        <ul>
+          <li>Design source files</li>
+          <li>Print files (300dpi high resolution)</li>
+          <li>Common format files</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">IX. Service Period</h2>
+      <div class="section-content">
+        <p>Specific production time for each design service is subject to time agreed upon order confirmation. Production time may be reasonably extended in following situations:</p>
+        <ul>
+          <li>Party B fails to provide complete design requirements and materials in timely manner</li>
+          <li>Party B repeatedly changes requirements causing design direction changes</li>
+          <li>Force majeure factors (natural disasters, epidemics, etc.)</li>
+          <li>Time during which Party B requests design suspension</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">X. Acceptance Standards</h2>
+      <div class="section-content">
+        <p><strong>10.1 Acceptance Method:</strong></p>
+        <p>Party B should provide acceptance feedback within 3 working days after receiving design. If no objections raised after 3 working days, deemed accepted.</p>
+        
+        <p><strong>10.2 Acceptance Standards:</strong></p>
+        <ul>
+          <li>Design style meets agreed requirements</li>
+          <li>Design quality meets industry professional standards</li>
+          <li>File formats complete and clear</li>
+          <li>No obvious design errors or defects</li>
+        </ul>
+        
+        <p><strong>10.3 Non-conformance Handling:</strong></p>
+        <p>If design work has obvious quality issues, Party A shall revise free of charge until qualified.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">XI. Refund Policy</h2>
+      <div class="section-content">
+        <p><strong>11.1 Full Refund Situations:</strong></p>
+        <ul>
+          <li>Design has not started and Party B requests refund</li>
+          <li>Unable to provide service due to Party A's reasons</li>
+        </ul>
+        
+        <p><strong>11.2 Partial Refund Situations:</strong></p>
+        <ul>
+          <li>Initial draft submitted but not finalized: refund 50%</li>
+          <li>Cancellation due to Party B's reasons: deduct completed work fees</li>
+        </ul>
+        
+        <p><strong>11.3 No Refund Situations:</strong></p>
+        <ul>
+          <li>Design finalized and source files delivered</li>
+          <li>Party B has started using design works</li>
+          <li>Dissatisfaction due to Party B's subjective aesthetic preferences (design itself has no quality issues)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">XII. Confidentiality</h2>
+      <div class="section-content">
+        <p>Both parties shall maintain confidentiality obligations regarding business secrets, brand information, design proposals, and other confidential information learned during design process. Without written consent from other party, neither party shall disclose to third parties.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">XIII. Disclaimer</h2>
+      <div class="section-content">
+        <p>Party A is not responsible for losses caused by following situations:</p>
+        <ul>
+          <li>Force majeure preventing agreement performance</li>
+          <li>Legal disputes due to infringement of materials provided by Party B</li>
+          <li>Design delays due to Party B's non-cooperation</li>
+          <li>Effect issues due to Party B's unauthorized modification of design works</li>
+          <li>Quality issues due to printers or third-party service providers</li>
+        </ul>
+        <div class="important">
+          <p><strong>⚠️ Special Note:</strong></p>
+          <p>Design is creative work with subjective aesthetic differences. Party A guarantees design works meet professional standards but does not guarantee they meet everyone's aesthetic preferences. Party B should communicate requirements promptly during design process to avoid refund requests after finalization due to aesthetic issues.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">XIV. Breach of Contract</h2>
+      <div class="section-content">
+        <p><strong>14.1 Party B Breach:</strong></p>
+        <ul>
+          <li>Failure to pay as agreed: Party A has right to suspend design work</li>
+          <li>Unauthorized use of unpaid design works: shall pay double design fee</li>
+        </ul>
+        
+        <p><strong>14.2 Party A Breach:</strong></p>
+        <ul>
+          <li>Serious delivery delay: shall refund partial fees or provide compensation</li>
+          <li>Design work plagiarizes others: shall bear legal liability and full refund</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">XV. Dispute Resolution</h2>
+      <div class="section-content">
+        <p>Disputes arising during performance of this agreement shall first be resolved through friendly negotiation. If negotiation fails, either party may file lawsuit with people's court where Party A is located.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">XVI. Other Provisions</h2>
+      <div class="section-content">
+        <ul>
+          <li>This agreement takes effect from date both parties sign (Party B checks agreement online)</li>
+          <li>Matters not covered may be supplemented through separate negotiation</li>
+          <li>Amendments and supplements to this agreement have same legal effect</li>
+          <li>Party A has right to revise this agreement according to business adjustments. Revised agreement will be published on official website</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p><strong>海南省索拉纳商务咨询中心</strong></p>
+    <p>Hainan Solana Business Consulting Center</p>
+    <p style="margin-top:10px;">微信 WeChat: kosok_hainan | Telegram: @KOSOK0898</p>
+    <p>邮箱 Email: kosok@solana-hainan.com | 电话 Tel: 18117790507</p>
+    <p style="margin-top:15px; font-size:12px;">协议版本：v1.0 | 生效日期：2026年1月30日</p>
+  </div>
+
+  <button class="close-btn" onclick="window.close()" id="closeBtn">我已阅读并理解</button>
+</div>
+
+<script>
+let currentLang = 'zh';
+
+function switchLang(lang) {
+  currentLang = lang;
+  
+  document.getElementById('btnZh').classList.toggle('active', lang === 'zh');
+  document.getElementById('btnEn').classList.toggle('active', lang === 'en');
+  
+  document.getElementById('contentZh').style.display = lang === 'zh' ? 'block' : 'none';
+  document.getElementById('contentEn').style.display = lang === 'en' ? 'block' : 'none';
+  
+  document.getElementById('closeBtn').textContent = lang === 'zh' ? '我已阅读并理解' : 'I have read and understood';
+}
+</script>
+
+</body>
+</html>
+```
+
