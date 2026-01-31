@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>订单查询 - 海南索拉纳商务咨询中心</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 20px;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  color: white;
+  margin-bottom: 40px;
+}
+
+.header h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.header p {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+.lang-switch {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  background: rgba(255,255,255,0.95);
+  border-radius: 50px;
+  padding: 5px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.lang-btn {
+  background: transparent;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  color: #666;
+}
+
+.lang-btn.active {
+  background: linear-gradient(135deg, #4ade80, #22c55e);
+  color: white;
+}
+
+.search-box {
+  background: rgba(255,255,255,0.95);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  margin-bottom: 30px;
+}
+
+.search-box h2 {
+  font-size: 24px;
+  color: #1f2937;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.search-input-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.search-input-group input {
+  width: 100%;
+  padding: 15px 20px;
+  border: 2px solid #e5e7eb;
+  border-radius: 50px;
+  font-size: 18px;
+  transition: all 0.3s;
+}
+
+.search-input-group input:focus {
+  outline: none;
+  border-color: #4ade80;
+  box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.1);
+}
+
+.search-input-group input::placeholder {
+  color: #9ca3af;
+}
+
+.search-btn {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, #4ade80, #22c55e);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(74, 222, 128, 0.4);
+}
+
+.search-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(74, 222, 128, 0.6);
+}
+
+.example-orders {
+  text-align: center;
+  color: #6b7280;
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+.example-orders a {
+  color: #4ade80;
+  text-decoration: none;
+  font-weight: 600;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.example-orders a:hover {
+  text-decoration: underline;
+}
+
+.result-box {
+  background: rgba(255,255,255,0.95);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  display: none;
+  animation: fadeIn 0.5s;
+}
+
+.result-box.show {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.status-pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status-confirmed {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.status-processing {
+  background: #fed7aa;
+  color: #9a3412;
+}
+
+.status-completed {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.status-cancelled {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.order-info {
+  margin-bottom: 30px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+.info-label {
+  color: #6b7280;
+  font-weight: 600;
+}
+
+.info-value {
+  color: #1f2937;
+  font-weight: 600;
+  text-align: right;
+}
+
+.timeline {
+  margin-top: 30px;
+}
+
+.timeline h3 {
+  font-size: 20px;
+  color: #1f2937;
+  margin-bottom: 20px;
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 30px;
+  padding-bottom: 20px;
+}
+
+.timeline-item:before {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 8px;
+  bottom: -12px;
+  width: 2px;
+  background: #e5e7eb;
+}
+
+.timeline-item:last-child:before {
+  display: none;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 0;
+  top: 5px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #d1d5db;
+}
+
+.timeline-item.active .timeline-dot {
+  background: #4ade80;
+  box-shadow: 0 0 0 4px rgba(74, 222, 128, 0.2);
+}
+
+.timeline-content {
+  background: #f9fafb;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.timeline-title {
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 5px;
+}
+
+.timeline-time {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.btn {
+  flex: 1;
+  padding: 15px;
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-secondary {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.btn-secondary:hover {
+  background: #e5e7eb;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #4ade80, #22c55e);
+  color: white;
+  box-shadow: 0 4px 15px rgba(74, 222, 128, 0.4);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(74, 222, 128, 0.6);
+}
+
+.error-box {
+  background: #fee2e2;
+  border: 2px solid #ef4444;
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  display: none;
+}
+
+.error-box.show {
+  display: block;
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  75% { transform: translateX(10px); }
+}
+
+.error-icon {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.error-message {
+  color: #991b1b;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.contact-info {
+  margin-top: 30px;
+  padding: 20px;
+  background: #fef3c7;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.contact-info h4 {
+  color: #92400e;
+  margin-bottom: 10px;
+}
+
+.contact-info p {
+  color: #78350f;
+  margin: 5px 0;
+}
+
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 28px;
+  }
+  
+  .search-box, .result-box {
+    padding: 25px;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+  }
+  
+  .info-row {
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .info-value {
+    text-align: left;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="lang-switch">
+  <button class="lang-btn active" onclick="switchLang('zh')" id="btnZh">中文</button>
+  <button class="lang-btn" onclick="switchLang('en')" id="btnEn">EN</button>
+</div>
+
+<div class="container">
+  <div class="header">
+    <h1 id="pageTitle">订单查询</h1>
+    <p id="pageSubtitle">输入订单号查询进度</p>
+  </div>
+
+  <div class="search-box">
+    <h2 id="searchTitle">请输入订单号</h2>
+    
+    <div class="search-input-group">
+      <input 
+        type="text" 
+        id="orderNumInput" 
+        placeholder="SLN-20260130-001"
+        maxlength="20"
+      >
+    </div>
+
+    <button class="search-btn" onclick="searchOrder()" id="btnSearch">查询订单</button>
+
+    <div class="example-orders">
+      <span id="exampleLabel">示例订单号：</span>
+      <a onclick="fillExample('SLN-20260130-001')">SLN-20260130-001</a>
+      <a onclick="fillExample('SLN-20260130-002')">SLN-20260130-002</a>
+    </div>
+  </div>
+
+  <!-- 错误提示 -->
+  <div class="error-box" id="errorBox">
+    <div class="error-icon">❌</div>
+    <div class="error-message" id="errorMessage">订单号不存在</div>
+  </div>
+
+  <!-- 查询结果 -->
+  <div class="result-box" id="resultBox">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+      <h2 id="resultTitle">订单详情</h2>
+      <span class="status-badge" id="statusBadge">🟡 待确认</span>
+    </div>
+
+    <div class="order-info">
+      <div class="info-row">
+        <span class="info-label" id="labelOrderNum">订单号</span>
+        <span class="info-value" id="orderNum">-</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label" id="labelService">服务项目</span>
+        <span class="info-value" id="serviceName">-</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label" id="labelContact">联系方式</span>
+        <span class="info-value" id="contactInfo">-</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label" id="labelPrice">服务费用</span>
+        <span class="info-value" id="priceInfo">-</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label" id="labelSubmitTime">提交时间</span>
+        <span class="info-value" id="submitTime">-</span>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <h3 id="timelineTitle">📋 办理进度</h3>
+      
+      <div class="timeline-item active">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-title" id="timeline1Title">订单已提交</div>
+          <div class="timeline-time" id="timeline1Time">2026-01-30 10:30</div>
+        </div>
+      </div>
+
+      <div class="timeline-item" id="timeline2">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-title" id="timeline2Title">订单已确认</div>
+          <div class="timeline-time" id="timeline2Time">等待确认</div>
+        </div>
+      </div>
+
+      <div class="timeline-item" id="timeline3">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-title" id="timeline3Title">正在办理</div>
+          <div class="timeline-time" id="timeline3Time">等待开始</div>
+        </div>
+      </div>
+
+      <div class="timeline-item" id="timeline4">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-title" id="timeline4Title">办理完成</div>
+          <div class="timeline-time" id="timeline4Time">等待完成</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-info">
+      <h4 id="needHelpTitle">💬 需要帮助？</h4>
+      <p>微信 WeChat: kosok_hainan</p>
+      <p>Telegram: @KOSOK0898</p>
+      <p>邮箱 Email: kosok@solana-hainan.com</p>
+    </div>
+
+    <div class="action-buttons">
+      <button class="btn btn-secondary" onclick="resetSearch()" id="btnReset">重新查询</button>
+      <button class="btn btn-primary" onclick="window.location.href='order.html'" id="btnNewOrder">新建订单</button>
+    </div>
+  </div>
+</div>
+
+<script>
+let currentLang = 'zh';
+
+// 语言切换
+function switchLang(lang) {
+  currentLang = lang;
+  document.getElementById('btnZh').classList.toggle('active', lang === 'zh');
+  document.getElementById('btnEn').classList.toggle('active', lang === 'en');
+  updateLanguage();
+}
+
+// 更新语言
+function updateLanguage() {
+  const t = currentLang === 'zh' ? {
+    pageTitle: '订单查询',
+    pageSubtitle: '输入订单号查询进度',
+    searchTitle: '请输入订单号',
+    btnSearch: '查询订单',
+    exampleLabel: '示例订单号：',
+    resultTitle: '订单详情',
+    labelOrderNum: '订单号',
+    labelService: '服务项目',
+    labelContact: '联系方式',
+    labelPrice: '服务费用',
+    labelSubmitTime: '提交时间',
+    timelineTitle: '📋 办理进度',
+    timeline1Title: '订单已提交',
+    timeline2Title: '订单已确认',
+    timeline3Title: '正在办理',
+    timeline4Title: '办理完成',
+    needHelpTitle: '💬 需要帮助？',
+    btnReset: '重新查询',
+    btnNewOrder: '新建订单',
+    errorNotFound: '订单号不存在',
+    errorInvalid: '请输入正确的订单号格式'
+  } : {
+    pageTitle: 'Track Order',
+    pageSubtitle: 'Enter order number to check status',
+    searchTitle: 'Enter Order Number',
+    btnSearch: 'Search',
+    exampleLabel: 'Example:',
+    resultTitle: 'Order Details',
+    labelOrderNum: 'Order No.',
+    labelService: 'Service',
+    labelContact: 'Contact',
+    labelPrice: 'Price',
+    labelSubmitTime: 'Submit Time',
+    timelineTitle: '📋 Progress',
+    timeline1Title: 'Order Submitted',
+    timeline2Title: 'Order Confirmed',
+    timeline3Title: 'Processing',
+    timeline4Title: 'Completed',
+    needHelpTitle: '💬 Need Help?',
+    btnReset: 'New Search',
+    btnNewOrder: 'New Order',
+    errorNotFound: 'Order not found',
+    errorInvalid: 'Invalid order number format'
+  };
+  
+  Object.keys(t).forEach(key => {
+    const el = document.getElementById(key);
+    if (el) el.textContent = t[key];
+  });
+  
+  // 更新placeholder
+  document.getElementById('orderNumInput').placeholder = 
+    currentLang === 'zh' ? 'SLN-20260130-001' : 'SLN-20260130-001';
+}
+
+// 填充示例订单号
+function fillExample(orderNum) {
+  document.getElementById('orderNumInput').value = orderNum;
+  searchOrder();
+}
+
+// 查询订单
+function searchOrder() {
+  const orderNum = document.getElementById('orderNumInput').value.trim();
+  
+  if (!orderNum) {
+    showError(currentLang === 'zh' ? '请输入订单号' : 'Please enter order number');
+    return;
+  }
+  
+  if (!orderNum.match(/^SLN-\d{8}-\d{3}$/)) {
+    showError(currentLang === 'zh' ? '请输入正确的订单号格式' : 'Invalid order number format');
+    return;
+  }
+  
+  // 模拟查询（实际应该从Google Sheets读取）
+  const mockOrders = {
+    'SLN-20260130-001': {
+      service: currentLang === 'zh' ? '公司注册（全包套餐）' : 'Company Registration (Full)',
+      contact: '138****8000',
+      price: '¥1,900',
+      submitTime: '2026-01-30 10:30',
+      status: 'confirmed',
+      timeline: [
+        { title: currentLang === 'zh' ? '订单已提交' : 'Submitted', time: '2026-01-30 10:30', active: true },
+        { title: currentLang === 'zh' ? '订单已确认' : 'Confirmed', time: '2026-01-30 14:20', active: true },
+        { title: currentLang === 'zh' ? '正在办理' : 'Processing', time: currentLang === 'zh' ? '等待开始' : 'Waiting', active: false },
+        { title: currentLang === 'zh' ? '办理完成' : 'Completed', time: currentLang === 'zh' ? '等待完成' : 'Pending', active: false }
+      ]
+    },
+    'SLN-20260130-002': {
+      service: currentLang === 'zh' ? 'LOGO设计（高级）' : 'LOGO Design (Advanced)',
+      contact: 'test***@example.com',
+      price: '¥3,000',
+      submitTime: '2026-01-30 15:45',
+      status: 'processing',
+      timeline: [
+        { title: currentLang === 'zh' ? '订单已提交' : 'Submitted', time: '2026-01-30 15:45', active: true },
+        { title: currentLang === 'zh' ? '订单已确认' : 'Confirmed', time: '2026-01-30 16:10', active: true },
+        { title: currentLang === 'zh' ? '正在办理' : 'Processing', time: '2026-01-31 09:00', active: true },
+        { title: currentLang === 'zh' ? '办理完成' : 'Completed', time: currentLang === 'zh' ? '预计2月5日' : 'Est. Feb 5', active: false }
+      ]
+    }
+  };
+  
+  const order = mockOrders[orderNum];
+  
+  if (!order) {
+    showError(currentLang === 'zh' ? '订单号不存在，请检查后重试' : 'Order not found');
+    return;
+  }
+  
+  // 显示结果
+  showResult(orderNum, order);
+}
+
+// 显示错误
+function showError(message) {
+  document.getElementById('errorMessage').textContent = message;
+  document.getElementById('errorBox').classList.add('show');
+  document.getElementById('resultBox').classList.remove('show');
+  
+  setTimeout(() => {
+    document.getElementById('errorBox').classList.remove('show');
+  }, 3000);
+}
+
+// 显示结果
+function showResult(orderNum, order) {
+  document.getElementById('errorBox').classList.remove('show');
+  
+  // 订单信息
+  document.getElementById('orderNum').textContent = orderNum;
+  document.getElementById('serviceName').textContent = order.service;
+  document.getElementById('contactInfo').textContent = order.contact;
+  document.getElementById('priceInfo').textContent = order.price;
+  document.getElementById('submitTime').textContent = order.submitTime;
+  
+  // 状态标签
+  const statusBadge = document.getElementById('statusBadge');
+  const statusMap = {
+    pending: { text: currentLang === 'zh' ? '🟡 待确认' : '🟡 Pending', class: 'status-pending' },
+    confirmed: { text: currentLang === 'zh' ? '🔵 已确认' : '🔵 Confirmed', class: 'status-confirmed' },
+    processing: { text: currentLang === 'zh' ? '🟠 办理中' : '🟠 Processing', class: 'status-processing' },
+    completed: { text: currentLang === 'zh' ? '🟢 已完成' : '🟢 Completed', class: 'status-completed' },
+    cancelled: { text: currentLang === 'zh' ? '🔴 已取消' : '🔴 Cancelled', class: 'status-cancelled' }
+  };
+  
+  statusBadge.textContent = statusMap[order.status].text;
+  statusBadge.className = 'status-badge ' + statusMap[order.status].class;
+  
+  // 时间轴
+  order.timeline.forEach((item, index) => {
+    const timelineItem = document.getElementById('timeline' + (index + 1));
+    if (timelineItem) {
+      timelineItem.classList.toggle('active', item.active);
+      timelineItem.querySelector('.timeline-title').textContent = item.title;
+      timelineItem.querySelector('.timeline-time').textContent = item.time;
+    }
+  });
+  
+  document.getElementById('resultBox').classList.add('show');
+}
+
+// 重新查询
+function resetSearch() {
+  document.getElementById('orderNumInput').value = '';
+  document.getElementById('resultBox').classList.remove('show');
+  document.getElementById('orderNumInput').focus();
+}
+
+// 回车查询
+document.getElementById('orderNumInput').addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') {
+    searchOrder();
+  }
+});
+</script>
+
+</body>
+</html>
+```
+
+---
