@@ -58,8 +58,10 @@ const packages = {
   'brand-building': { id: 'brand-building', services: ['logo-advanced', 'vi-basic', 'website-corporate', 'business-card', 'brochure'], original_price: 15500, package_price: 10000, savings: 5500, name_zh: '品牌建设包', name_en: 'Brand Building', description_zh: 'LOGO+VI+网站+名片+宣传册', description_en: 'LOGO+VI+website+card+brochure' },
   'park-entry': { id: 'park-entry', services: ['park-full', 'reg-full', 'policy-application'], original_price: 9900, package_price: 7000, savings: 2900, name_zh: '园区入驻全套', name_en: 'Park Entry Complete', description_zh: '园区咨询+注册+政策', description_en: 'Park consulting + registration + policy' }
 };
-
+// 暴露到全局
+if (typeof window !== 'undefined') {
+  window.serviceCategories = serviceCategories;
+  window.services = services;
+  window.packages = packages;
+}
 console.log('✅ Order data loaded: 36 services + 5 packages');
-```
-
----
