@@ -63,7 +63,3 @@ console.log('✅ Order data loaded: 36 services + 5 packages');
 ```
 
 ---
-
-**4. Commit message：**
-```
-🔧 修复 order-data.js 语法错误
