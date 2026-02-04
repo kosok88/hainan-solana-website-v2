@@ -1209,13 +1209,33 @@ async function submitOrder() {
     
     // 显示成功页面
     document.getElementById('orderNumValue').textContent = orderNum;
-    document.querySelectorAll('.step-content').forEach(el => el.classList.remove('active'));
+   document.querySelectorAll('.step-content').forEach(el => el.classList.remove('active'));
     document.getElementById('stepSuccess').classList.add('active');
   } catch (error) {
     console.error('提交失败:', error);
     alert(currentLang === 'zh' ? '提交失败，请稍后重试' : 'Submission failed, please try again');
   }
 }
+
+// 生成订单号
+function generateOrderNumber() {
+  const date = new Date();
+  const dateStr = date.getFullYear() + 
+    String(date.getMonth() + 1).padStart(2, '0') + 
+    String(date.getDate()).padStart(2, '0');
+  const num = String(Math.floor(Math.random() * 999) + 1).padStart(3, '0');
+  return 'SLN-' + dateStr + '-' + num;
+}
+
+// 初始化
+document.addEventListener('DOMContentLoaded', function() {
+  renderServices();
+});
+</script>
+
+</body>
+</html>
 ```
 
 ---
+
