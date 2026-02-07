@@ -85,37 +85,21 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#ffffff;line-height:1.8;overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 .container{max-width:1200px;margin:0 auto;padding:0 20px}
-nav{
-background:white;
-position:sticky;
-top:0;
-z-index:100;
-box-shadow:0 2px 10px rgba(0,0,0,0.1);
-border-bottom:1px solid #e5e7eb
-}
-nav .container{padding:0 20px}
-.nav-wrapper{display:flex;justify-content:space-between;align-items:center;padding:20px 0 10px}
-.brand{display:flex;align-items:center;justify-content:flex-start}
-.brand img{height:80px;width:auto;filter:drop-shadow(0 3px 8px rgba(0,0,0,.5));border-radius:10px;object-fit:cover}
-.main-nav{display:flex;gap:20px;list-style:none;align-items:center}
-..nav-primary{
-color:#1f2937;
-text-decoration:none;
-transition:.3s;
-font-size:18px;
-font-weight:700;
-padding:10px 20px;
-border-radius:25px;
-text-shadow:none;
-position:relative
-}
-.nav-primary:hover{
-background:rgba(139,92,246,.1);
-color:#8b5cf6
-}
-.secondary-nav{display:flex;gap:15px;list-style:none;padding:10px 0;border-top:1px solid rgba(255,255,255,.15);justify-content:center}
-.nav-secondary{color:rgba(255,255,255,.75);text-decoration:none;transition:.3s;font-size:14px;font-weight:400;padding:8px 15px;border-radius:20px}
-.nav-secondary:hover{color:#4ade80;background:rgba(255,255,255,.05)}
+nav{background:white;position:sticky;top:0;z-index:100;border-top:3px double #e5e7eb;border-bottom:3px double #e5e7eb;box-shadow:0 4px 15px rgba(0,0,0,0.08)}
+nav .container{max-width:1400px;margin:0 auto;padding:0 40px}
+.nav-wrapper{display:flex;justify-content:space-between;align-items:center;padding:18px 0;gap:40px}
+.brand{display:flex;align-items:center;gap:15px;flex-shrink:0}
+.brand img{height:55px;width:auto;transition:transform 0.3s}
+.brand img:hover{transform:scale(1.05)}
+.brand-text{font-size:16px;font-weight:700;background:linear-gradient(135deg,#8b5cf6,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px}
+.main-nav{display:flex;gap:8px;list-style:none;margin:0;padding:0;align-items:center;flex-wrap:wrap}
+.nav-primary{color:#475569;text-decoration:none;font-weight:600;font-size:15px;padding:10px 18px;border-radius:8px;transition:all 0.3s;display:flex;align-items:center;gap:6px}
+.nav-primary:hover{background:linear-gradient(135deg,#f0f0ff,#faf5ff);color:#8b5cf6;transform:translateY(-2px);box-shadow:0 4px 12px rgba(139,92,246,0.15)}
+.btn-primary{background:linear-gradient(135deg,#8b5cf6,#3b82f6);color:white !important;padding:10px 24px;border-radius:25px;box-shadow:0 4px 12px rgba(139,92,246,0.3);margin-left:12px;text-decoration:none;font-weight:700;font-size:15px;display:flex;align-items:center;gap:6px;transition:all 0.3s}
+.btn-primary:hover{background:linear-gradient(135deg,#7c3aed,#2563eb);transform:translateY(-3px);box-shadow:0 6px 20px rgba(139,92,246,0.4)}
+.secondary-nav{display:flex;gap:8px;list-style:none;margin:0;padding:12px 0 10px;border-top:1px solid #f1f5f9;justify-content:center;flex-wrap:wrap}
+.nav-secondary{color:#64748b;text-decoration:none;font-size:13px;font-weight:500;padding:6px 14px;border-radius:6px;transition:all 0.3s}
+.nav-secondary:hover{color:#8b5cf6;background:#f8f9ff}
 .lang-btn{background:#4ade80;color:#1a1a2e;border:none;padding:12px 24px;border-radius:25px;cursor:pointer;font-weight:700;font-size:18px;transition:.3s;box-shadow:0 4px 15px rgba(74,222,128,.4)}
 .lang-btn:hover{transform:scale(1.08);box-shadow:0 6px 20px rgba(74,222,128,.6)}
 .hero{text-align:center;padding:140px 20px 120px;background:linear-gradient(rgba(0,0,0,0.15),rgba(0,0,0,0.25)),url('hainan-bridge.png');background-size:cover;background-position:center;background-attachment:fixed;min-height:85vh;display:flex;align-items:center;justify-content:center}
@@ -328,40 +312,32 @@ h2{font-size:34px}
 </style>
 </head>
 <body>
-
 <nav>
 <div class="container">
 <div class="nav-wrapper">
 <div class="brand">
-<img src="logo-solana.webp"
-     alt="海南索拉纳商务咨询中心" 
-     style="height:auto;
-       width:200px;
-       max-width:100%;
-       border-radius:12px;
-       box-shadow:0 4px 12px rgba(0,0,0,.15);">
-  </div>
+<img src="logo-solana.webp" alt="海南索拉纳商务咨询中心">
+<span class="brand-text">商务咨询中心</span>
+</div>
 <ul class="main-nav">
-<li><a href="#home" class="nav-primary" id="n1">🏠 首页</a></li>
-<li><a href="services.html" class="nav-primary" id="n2">💼 商务服务</a></li>
-<li><a href="design-services.html" class="nav-primary" id="n11">🎨 设计服务</a></li>
-<li><a href="#pricing" class="nav-primary" id="n3">💰 收费</a></li>
-<li><a href="#register" class="nav-primary" id="n8">📝 注册</a></li>
+<li><a href="#home" class="nav-primary">🏠 首页</a></li>
+<li><a href="services.html" class="nav-primary">💼 商务服务</a></li>
+<li><a href="design-services.html" class="nav-primary">🎨 设计服务</a></li>
+<li><a href="#pricing" class="nav-primary">💰 收费</a></li>
+<li><a href="#register" class="nav-primary">📝 注册</a></li>
+<li><a href="order.html" class="btn-primary">🛒 在线下单</a></li>
 </ul>
-<button class="lang-btn" id="langBtn" onclick="toggleLang()">EN</button>
 </div>
 <ul class="secondary-nav">
-<li><a href="#policy" class="nav-secondary" id="n4">政策</a></li>
-<li><a href="#visa" class="nav-secondary" id="nvs">免签</a></li>
-<li><a href="#news" class="nav-secondary" id="n5">新闻</a></li>
-<li><a href="#people" class="nav-secondary" id="n6">人物</a></li>
-<li><a href="#scenery" class="nav-secondary" id="n7">风景</a></li>
-<li><a href="hainan-videos.html" class="nav-secondary" id="n10">视频</a></li>
-<li><a href="#about" class="nav-secondary" id="n9">关于</a></li>
+<li><a href="#visa" class="nav-secondary">🌴 免签政策</a></li>
+<li><a href="#news" class="nav-secondary">📰 封关新闻</a></li>
+<li><a href="hainan-videos.html" class="nav-secondary">📹 视频介绍</a></li>
+<li><a href="#about" class="nav-secondary">ℹ️ 关于我们</a></li>
+<li><a href="#contact" class="nav-secondary">📞 联系方式</a></li>
+<li><a href="#payment" class="nav-secondary">💳 支付方式</a></li>
 </ul>
 </div>
 </nav>
-
 <div class="hero" id="home">
 <div class="container">
 <h1>
