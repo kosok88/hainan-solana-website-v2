@@ -3,203 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solana Hainan | 2026 自贸港 Web3 跨境金融门户</title>
+    <title>Solana Hainan | 2026 自贸港 Web3 金融门户</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
-        
-        :root {
-            --solana-purple: #9945FF;
-            --solana-green: #14F195;
-        }
-
-        body { 
-            background-color: #050505; 
-            color: #f4f4f4; 
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            overflow-x: hidden;
-        }
-
-        /* 渐变与特效 */
-        .solana-gradient { background: linear-gradient(90deg, var(--solana-purple) 0%, var(--solana-green) 100%); }
-        .text-gradient { background: linear-gradient(180deg, #FFFFFF 0%, rgba(255,255,255,0.7) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        
-        /* 玻璃拟态卡片 */
-        .glass-card { 
-            background: rgba(255, 255, 255, 0.02); 
-            backdrop-filter: blur(12px); 
-            border: 1px solid rgba(255, 255, 255, 0.08); 
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
-        }
-        .glass-card:hover { 
-            border-color: var(--solana-green); 
-            background: rgba(255, 255, 255, 0.05); 
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-        }
-
-        /* 背景流光 */
-        .hero-mesh { 
-            background-image: 
-                radial-gradient(at 0% 0%, rgba(153, 69, 255, 0.1) 0, transparent 40%), 
-                radial-gradient(at 100% 100%, rgba(20, 241, 149, 0.1) 0, transparent 40%); 
-        }
-
-        .btn-glow { transition: 0.3s; }
-        .btn-glow:hover { box-shadow: 0 0 25px rgba(20, 241, 149, 0.4); transform: scale(1.05); }
-
-        /* 响应式调整 */
-        @media (max-width: 768px) {
-            .hero-title { font-size: 2.5rem !important; }
-        }
+        body { background-color: #030303; color: #f4f4f4; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        .solana-gradient { background: linear-gradient(90deg, #9945FF 0%, #14F195 100%); }
+        .text-gradient { background: linear-gradient(180deg, #FFFFFF 0%, rgba(255,255,255,0.6) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .glass-card { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.4s ease; }
+        .glass-card:hover { border-color: #14F195; background: rgba(255, 255, 255, 0.05); transform: translateY(-5px); }
+        .hero-mesh { background-image: radial-gradient(at 0% 0%, rgba(153, 69, 255, 0.12) 0, transparent 40%), radial-gradient(at 100% 100%, rgba(20, 241, 149, 0.12) 0, transparent 40%); }
+        /* 超级椭圆效果 */
+        .squircle { border-radius: 40%; }
     </style>
 </head>
 <body class="hero-mesh min-h-screen">
 
-    <nav class="fixed w-full z-50 px-6 py-4 border-b border-white/5 bg-[#050505]/80 backdrop-blur-md">
+    <nav class="fixed w-full z-50 px-6 py-4 border-b border-white/5 bg-[#030303]/80 backdrop-blur-lg">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center gap-5">
-    <div class="relative group">
-        <div class="absolute -inset-1.5 bg-gradient-to-r from-[#9945FF] to-[#14F195] rounded-[200%] blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
-        
-        <div class="relative h-16 w-16 bg-[#0a0a0a] rounded-[40%] border border-white/10 flex items-center justify-center overflow-hidden shadow-2xl">
-            <img src="logo-solana.webp" alt="Solana Hainan" 
-                 class="h-12 w-12 object-contain transform group-hover:scale-110 transition duration-500">
-        </div>
-    </div>
+                <div class="relative group">
+                    <div class="absolute -inset-1.5 bg-gradient-to-r from-[#9945FF] to-[#14F195] squircle blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+                    <div class="relative h-14 w-14 bg-black squircle border border-white/10 flex items-center justify-center overflow-hidden">
+                        <img src="logo-solana.webp" alt="Logo" class="h-10 w-10 object-contain group-hover:scale-110 transition duration-500">
+                    </div>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-white font-black tracking-tighter text-2xl leading-none italic">SOLANA <span class="text-[#14F195]">HAINAN</span></span>
+                    <span class="text-[10px] text-gray-500 font-bold tracking-[0.3em] mt-1.5 uppercase leading-none">海南省索拉纳商务咨询</span>
+                </div>
+            </div>
 
-    <div class="flex flex-col">
-        <span class="text-white font-black tracking-tighter text-2xl leading-none italic">
-            SOLANA <span class="text-[#14F195]">HAINAN</span>
-        </span>
-        <div class="flex items-center gap-2 mt-1.5">
-            <span class="h-[1px] w-4 bg-[#14F195]"></span>
-            <span class="text-[10px] text-gray-500 font-bold tracking-[0.3em] uppercase">海南省索拉纳商务咨询</span>
-        </div>
-    </div>
-</div>
-            
-            <div class="hidden md:flex gap-10 text-[12px] uppercase tracking-[0.2em] font-medium text-gray-400">
+            <div class="hidden md:flex gap-10 text-[11px] uppercase tracking-widest font-bold text-gray-400">
                 <a href="#compliance" class="hover:text-[#14F195] transition">政策合规</a>
                 <a href="#assets" class="hover:text-[#14F195] transition">资产上链</a>
                 <a href="#web3" class="hover:text-[#14F195] transition">Web3 枢纽</a>
             </div>
 
-            <div class="flex items-center gap-6">
-                <button onclick="switchLang()" id="langBtn" class="text-[11px] font-bold border border-white/20 px-3 py-1 rounded-md hover:bg-white/5 transition tracking-tighter">EN / 中文</button>
-                <a href="tel:18117790507" class="solana-gradient text-black px-6 py-2 rounded-full text-[13px] font-black uppercase tracking-wider btn-glow">立即咨询</a>
+            <div class="flex items-center gap-4">
+                <button class="text-[11px] font-bold border border-white/20 px-3 py-1 rounded hover:bg-white/5 transition">EN</button>
+                <a href="tel:18117790507" class="solana-gradient text-black px-6 py-2 rounded-full text-xs font-black uppercase tracking-widest shadow-lg shadow-[#14F195]/20 hover:scale-105 transition">立即咨询</a>
             </div>
         </div>
     </nav>
 
-    <header class="relative pt-56 pb-32 px-6 overflow-hidden">
-        <div class="max-w-7xl mx-auto text-center relative z-10">
-            <div class="inline-flex items-center gap-3 px-5 py-2 border border-white/10 rounded-full bg-white/5 text-white/80 text-[11px] mb-12 font-bold uppercase tracking-[0.3em]">
-                <span class="relative flex h-2.5 w-2.5">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#14F195] opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#14F195]"></span>
-                </span>
+    <header class="pt-56 pb-32 px-6">
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 border border-[#14F195]/20 rounded-full bg-[#14F195]/5 text-[#14F195] text-[10px] mb-12 font-bold uppercase tracking-[0.4em] animate-pulse">
                 2026 海南封关新纪元
             </div>
-
-            <h1 class="hero-title text-5xl md:text-7xl font-black mb-12 leading-[1.1] tracking-tight">
+            <h1 class="text-4xl md:text-7xl font-black mb-12 leading-[1.1] tracking-tight">
                 <span class="text-gradient">连接实体经济</span> <br>
-                <span class="text-sm md:text-xl font-light tracking-[0.6em] text-white/30 block my-6 uppercase">Intersecting With</span>
-                <span class="text-transparent bg-clip-text solana-gradient italic">Web3 全球流动性</span>
+                <span class="text-sm md:text-lg font-light tracking-[0.6em] text-white/30 block my-6 uppercase">Syncing with</span>
+                <span class="text-transparent bg-clip-text solana-gradient italic font-black">Web3 全球流动性</span>
             </h1>
-
-            <p class="text-gray-500 text-base md:text-xl max-w-3xl mx-auto mb-16 leading-relaxed font-light">
-                深耕海南自贸港，依托 Solana 高性能公链架构 <br class="hidden md:block">
-                为全球企业提供 <span class="text-gray-300 font-medium">15% 所得税筹划、RWA 资产代币化及跨境合规方案</span>
+            <p class="text-gray-500 text-base md:text-lg max-w-3xl mx-auto mb-16 leading-relaxed">
+                为高净值人士提供 <span class="text-gray-200">自贸港准入 · 15%税收减免 · 资产代币化方案</span> <br>
+                助力传统资产在 Solana 链上实现全球即时结算。
             </p>
-
-            <div class="flex flex-col sm:flex-row justify-center gap-8 items-center">
-                <button class="solana-gradient text-black px-12 py-5 rounded-full font-black text-sm uppercase tracking-widest btn-glow transition w-72 sm:w-auto">
-                    免费税收测算
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <button class="solana-gradient text-black px-12 py-4 rounded-full font-black text-sm uppercase tracking-widest hover:opacity-90 transition shadow-xl shadow-[#14F195]/10">
+                    税收政策测算
                 </button>
-                <button class="bg-white/5 border border-white/10 text-white px-12 py-5 rounded-full font-black text-sm uppercase tracking-widest hover:bg-white/10 transition w-72 sm:w-auto">
-                    获取 RWA 白皮书
+                <button class="bg-white/5 border border-white/10 px-12 py-4 rounded-full font-black text-sm uppercase tracking-widest hover:bg-white/10 transition">
+                    RWA 落地白皮书
                 </button>
             </div>
         </div>
     </header>
 
-    <section class="py-24 px-6 max-w-7xl mx-auto relative">
-        <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-10">
-            <div class="glass-card p-10 rounded-[40px]">
-                <div class="text-[#14F195] text-4xl mb-10"><i class="fa-solid fa-building-columns"></i></div>
-                <h3 class="text-2xl font-bold mb-4 tracking-tight">自贸港合规落地</h3>
-                <p class="text-gray-500 text-sm leading-relaxed mb-10 font-light">
-                    利用封关红利，实现 15% 企业与个人所得税优惠，搭建 EF 账户，开启跨境资金自由往来窗口。
-                </p>
-                <div class="h-[1px] w-full bg-white/5 mb-8"></div>
-                <ul class="text-[12px] text-gray-400 space-y-4 uppercase tracking-wider font-semibold">
-                    <li><i class="fa-solid fa-circle-check text-[#14F195]/50 mr-3"></i> 离岸贸易公司架构</li>
-                    <li><i class="fa-solid fa-circle-check text-[#14F195]/50 mr-3"></i> 园区牌照申请与落户</li>
-                </ul>
-            </div>
+    <section class="py-20 px-6 max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+        <div class="glass-card p-10 rounded-[40px]">
+            <i class="fa-solid fa-building-columns text-3xl text-[#14F195] mb-8"></i>
+            <h3 class="text-xl font-bold mb-4">自贸港落地</h3>
+            <p class="text-gray-500 text-sm leading-relaxed mb-6 font-light">
+                针对 2026 封关政策，提供 EF 账户开设、15% 所得税优惠、以及跨境资金自由化合规架构设计。
+            </p>
+            <ul class="text-[10px] text-gray-400 space-y-2 uppercase tracking-widest">
+                <li><i class="fa-solid fa-check text-[#14F195] mr-2"></i> 离岸贸易公司注册</li>
+                <li><i class="fa-solid fa-check text-[#14F195] mr-2"></i> 跨境支付合规白皮书</li>
+            </ul>
+        </div>
 
-            <div class="glass-card p-10 rounded-[40px] border-[#9945FF]/30">
-                <div class="text-[#9945FF] text-4xl mb-10"><i class="fa-solid fa-link"></i></div>
-                <h3 class="text-2xl font-bold mb-4 tracking-tight">RWA 资产代币化</h3>
-                <p class="text-gray-500 text-sm leading-relaxed mb-10 font-light">
-                    连接实体资产与 Solana 生态。提供不动产、收益权及美股资产代币化发行方案，获取全球流动性。
-                </p>
-                <div class="h-[1px] w-full bg-white/5 mb-8"></div>
-                <ul class="text-[12px] text-gray-400 space-y-4 uppercase tracking-wider font-semibold">
-                    <li><i class="fa-solid fa-circle-check text-[#9945FF]/50 mr-3"></i> 链上合规结算系统</li>
-                    <li><i class="fa-solid fa-circle-check text-[#9945FF]/50 mr-3"></i> 跨境资产上链策划</li>
-                </ul>
-            </div>
+        <div class="glass-card p-10 rounded-[40px]">
+            <i class="fa-solid fa-link text-3xl text-[#9945FF] mb-8"></i>
+            <h3 class="text-xl font-bold mb-4">RWA 资产上链</h3>
+            <p class="text-gray-500 text-sm leading-relaxed mb-6 font-light">
+                将海南实物资产（商办、酒店、贸易单据）转化为代币化资产，在 Solana 生态中获取全球资本支持。
+            </p>
+            <ul class="text-[10px] text-gray-400 space-y-2 uppercase tracking-widest">
+                <li><i class="fa-solid fa-check text-[#9945FF] mr-2"></i> 代币经济模型设计</li>
+                <li><i class="fa-solid fa-check text-[#9945FF] mr-2"></i> 链上合规结算系统</li>
+            </ul>
+        </div>
 
-            <div class="glass-card p-10 rounded-[40px]">
-                <div class="text-white text-4xl mb-10"><i class="fa-brands fa-ethereum"></i></div>
-                <h3 class="text-2xl font-bold mb-4 tracking-tight">Solana 枢纽服务</h3>
-                <p class="text-gray-500 text-sm leading-relaxed mb-10 font-light">
-                    作为 Solana 开发者社区与海南的桥梁，提供技术对接、节点运营、Token 经济设计及孵化咨询。
-                </p>
-                <div class="h-[1px] w-full bg-white/5 mb-8"></div>
-                <ul class="text-[12px] text-gray-400 space-y-4 uppercase tracking-wider font-semibold">
-                    <li><i class="fa-solid fa-circle-check text-white/30 mr-3"></i> 智能合约安全审计</li>
-                    <li><i class="fa-solid fa-circle-check text-white/30 mr-3"></i> 全球 Web3 资源链接</li>
-                </ul>
-            </div>
+        <div class="glass-card p-10 rounded-[40px]">
+            <i class="fa-brands fa-ethereum text-3xl text-white mb-8"></i>
+            <h3 class="text-xl font-bold mb-4">Web3 生态咨询</h3>
+            <p class="text-gray-500 text-sm leading-relaxed mb-6 font-light">
+                连接 Solana 开发者与海南园区，提供技术审计、流动性引导及全球 Web3 社区资源对接。
+            </p>
+            <ul class="text-[10px] text-gray-400 space-y-2 uppercase tracking-widest">
+                <li><i class="fa-solid fa-check text-white/50 mr-2"></i> 智能合约安全开发</li>
+                <li><i class="fa-solid fa-check text-white/50 mr-2"></i> 全球节点代运营</li>
+            </ul>
         </div>
     </section>
 
-    <footer class="py-24 border-t border-white/5 text-center">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-col items-center gap-6 mb-12">
-                <img src="logo-solana.webp" alt="Logo" class="h-10 w-auto opacity-50 grayscale hover:grayscale-0 transition cursor-pointer">
-                <div class="text-gray-600 text-[11px] tracking-[0.3em] uppercase space-y-2 font-bold">
-                    <p>© 2026 海南省索拉纳商务咨询中心</p>
-                    <p>统一社会信用代码：91460000MAK2R66B75</p>
-                </div>
-            </div>
-            <div class="flex justify-center gap-8 text-gray-700 text-[10px] font-mono uppercase tracking-[0.2em]">
-                <span>Infrastructure: Solana Network</span>
-                <span>AI Strategy: Gemini Pro 3.0</span>
-                <span>Jurisdiction: Hainan FTP</span>
-            </div>
-        </div>
+    <footer class="py-20 border-t border-white/5 text-center px-6">
+        <p class="text-gray-600 text-[10px] tracking-[0.3em] uppercase mb-4">
+            © 2026 海南省索拉纳商务咨询中心 | 代码：91460000MAK2R66B75
+        </p>
+        <p class="text-gray-800 text-[9px] font-mono">
+            STRATEGY BY GEMINI AI | POWERED BY SOLANA BLOCKCHAIN
+        </p>
     </footer>
 
-    <script>
-        function switchLang() {
-            // 后续接入翻译字典
-            alert("多语言智能引擎正在加载中...\nMultilingual engine loading for Global Compliance.");
-        }
-
-        // 简单的视差或平滑滚动逻辑预留
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
 </body>
 </html>
