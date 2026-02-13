@@ -41,32 +41,21 @@ body {
   opacity: 0.9;
 }
 
-.lang-switch {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 1000;
-  background: rgba(255,255,255,0.95);
-  border-radius: 50px;
-  padding: 5px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-}
-
-.lang-btn {
-  background: transparent;
-  border: none;
-  padding: 8px 20px;
-  border-radius: 50px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: all 0.3s;
-  color: #666;
-}
-
-.lang-btn.active {
-  background: linear-gradient(135deg, #4ade80, #22c55e);
-  color: white;
-}
+nav{background:white;position:sticky;top:0;z-index:100;border-top:3px double #e5e7eb;border-bottom:3px double #e5e7eb;box-shadow:0 4px 15px rgba(0,0,0,0.08)}
+nav .container{max-width:1400px;margin:0 auto;padding:0 40px}
+.nav-wrapper{display:flex;justify-content:space-between;align-items:center;padding:18px 0;gap:40px}
+.brand{display:flex;align-items:center;gap:15px;flex-shrink:0}
+.brand img{height:55px;width:auto;transition:transform 0.3s}
+.brand img:hover{transform:scale(1.05)}
+.brand-text{font-size:15px;font-weight:700;background:linear-gradient(135deg,#8b5cf6,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px}
+.main-nav{display:flex;gap:8px;list-style:none;margin:0;padding:0;align-items:center;flex-wrap:wrap}
+.nav-primary{background:linear-gradient(135deg,#8b5cf6,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;font-weight:600;font-size:16px;padding:10px 18px;border-radius:8px;transition:all 0.3s;display:flex;align-items:center;gap:6px}
+.nav-primary:hover{background:linear-gradient(135deg,#f0f0ff,#faf5ff);-webkit-background-clip:initial;-webkit-text-fill-color:initial;color:#8b5cf6;transform:translateY(-2px);box-shadow:0 4px 12px rgba(139,92,246,0.15)}
+.btn-primary{background:linear-gradient(135deg,#8b5cf6,#3b82f6);color:white !important;padding:10px 24px;border-radius:25px;box-shadow:0 4px 12px rgba(139,92,246,0.3);margin-left:12px;text-decoration:none;font-weight:700;font-size:16px;display:flex;align-items:center;gap:6px;transition:all 0.3s}
+.btn-primary:hover{background:linear-gradient(135deg,#7c3aed,#2563eb);transform:translateY(-3px);box-shadow:0 6px 20px rgba(139,92,246,0.4)}
+.secondary-nav{display:flex;gap:8px;list-style:none;margin:0;padding:12px 0 10px;border-top:2px solid #e5e7eb;justify-content:center;flex-wrap:wrap}
+.nav-secondary{background:linear-gradient(135deg,#8b5cf6,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;font-size:14px;font-weight:600;padding:6px 14px;border-radius:6px;transition:all 0.3s}
+.nav-secondary:hover{background:#f8f9ff;-webkit-background-clip:initial;-webkit-text-fill-color:initial;color:#8b5cf6}
 
 .progress-bar {
   display: flex;
@@ -593,35 +582,34 @@ body {
 </style>
 </head>
 <body>
-
-<div class="lang-switch">
-  <button class="lang-btn active" onclick="switchLang('zh')" id="btnZh">中文</button>
-  <button class="lang-btn" onclick="switchLang('en')" id="btnEn">EN</button>
+<nav>
+<div class="container">
+<div class="nav-wrapper">
+<div class="brand">
+<img src="logo-solana.webp" alt="海南索拉纳商务咨询中心">
+<span class="brand-text">海南省索拉纳商务咨询中心</span>
 </div>
+<ul class="main-nav">
+<li><a href="index.html" class="nav-primary">🏠 首页</a></li>
+<li><a href="services.html" class="nav-primary">💼 商务服务</a></li>
+<li><a href="design-services.html" class="nav-primary">🎨 设计服务</a></li>
+<li><a href="index.html#pricing" class="nav-primary">💰 收费</a></li>
+<li><a href="index.html#register" class="nav-primary">📝 注册</a></li>
+<li><a href="order.html" class="btn-primary">🛒 在线下单</a></li>
+</ul>
+</div>
+<ul class="secondary-nav">
+<li><a href="index.html#visa" class="nav-secondary">🌴 免签政策</a></li>
+<li><a href="index.html#news" class="nav-secondary">📰 封关新闻</a></li>
+<li><a href="hainan-videos.html" class="nav-secondary">📹 视频介绍</a></li>
+<li><a href="index.html#about" class="nav-secondary">ℹ️ 关于我们</a></li>
+<li><a href="index.html#contact" class="nav-secondary">📞 联系方式</a></li>
+<li><a href="index.html#payment" class="nav-secondary">💳 支付方式</a></li>
+</ul>
+</div>
+</nav>
 
 <div class="container">
-  <!-- 返回首页按钮 -->
-  <div style="margin-bottom: 20px;">
-    <a href="index.html" style="
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 24px;
-      background: rgba(255,255,255,0.15);
-      backdrop-filter: blur(10px);
-      color: #fff;
-      text-decoration: none;
-      border-radius: 25px;
-      font-weight: 600;
-      border: 2px solid rgba(255,255,255,0.3);
-      transition: all 0.3s;
-    "
-    onmouseover="this.style.background='rgba(255,255,255,0.25)'"
-    onmouseout="this.style.background='rgba(255,255,255,0.15)'">
-      <span>←</span>
-      <span>返回首页</span>
-    </a>
-  </div>
   
   <div class="header">
     <h1 id="pageTitle">在线下单</h1>
