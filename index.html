@@ -548,7 +548,7 @@ h2{font-size:34px}
 </section>
 <!-- ==================== 园区板块结束 ==================== -->
 
-<section id="pricing">
+<section id="pricing" style="scroll-margin-top:150px">
 <div class="container">
 <h2 id="st2">收费明细</h2>
 <div style="overflow-x:auto">
@@ -1405,6 +1405,9 @@ function openParkDetail(parkId, event) {
   modal.style.display = 'flex';
   document.body.style.overflow = 'hidden';
   
+// 滚动到页面顶部，确保弹窗可见
+window.scrollTo({ top: 0, behavior: 'smooth' });
+
   console.log('✅ 弹窗已显示');
 }
 // 关闭园区详情弹窗
