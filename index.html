@@ -59,18 +59,26 @@
 
     <nav class="fixed w-full z-50 px-6 py-4 border-b border-white/5 bg-[#050505]/80 backdrop-blur-md">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="flex items-center gap-4">
-                <div class="relative p-1">
-                    <img src="logo-solana.webp" alt="Solana Hainan Logo" 
-                         class="h-14 w-14 object-contain rounded-2xl shadow-lg shadow-[#14F195]/20 border border-white/10 bg-black/40">
-                    <div class="absolute inset-0 bg-[#14F195]/10 blur-xl rounded-full -z-10"></div>
-                </div>
-                <div class="hidden sm:block h-10 w-[1px] bg-white/10 mx-2"></div>
-                <div class="flex flex-col justify-center text-left">
-                    <span class="text-white font-black tracking-[0.1em] text-xl leading-none italic">SOLANA HAINAN</span>
-                    <span class="text-[10px] text-gray-500 font-bold tracking-[0.2em] mt-1.5 uppercase">海南省索拉纳商务咨询</span>
-                </div>
-            </div>
+            <div class="flex items-center gap-5">
+    <div class="relative group">
+        <div class="absolute -inset-1.5 bg-gradient-to-r from-[#9945FF] to-[#14F195] rounded-[200%] blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+        
+        <div class="relative h-16 w-16 bg-[#0a0a0a] rounded-[40%] border border-white/10 flex items-center justify-center overflow-hidden shadow-2xl">
+            <img src="logo-solana.webp" alt="Solana Hainan" 
+                 class="h-12 w-12 object-contain transform group-hover:scale-110 transition duration-500">
+        </div>
+    </div>
+
+    <div class="flex flex-col">
+        <span class="text-white font-black tracking-tighter text-2xl leading-none italic">
+            SOLANA <span class="text-[#14F195]">HAINAN</span>
+        </span>
+        <div class="flex items-center gap-2 mt-1.5">
+            <span class="h-[1px] w-4 bg-[#14F195]"></span>
+            <span class="text-[10px] text-gray-500 font-bold tracking-[0.3em] uppercase">海南省索拉纳商务咨询</span>
+        </div>
+    </div>
+</div>
             
             <div class="hidden md:flex gap-10 text-[12px] uppercase tracking-[0.2em] font-medium text-gray-400">
                 <a href="#compliance" class="hover:text-[#14F195] transition">政策合规</a>
