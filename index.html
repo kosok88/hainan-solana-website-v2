@@ -9,126 +9,146 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
         
-        body { 
+        /* 1. 基础修正：确保页面不会横向滚动 */
+        html, body { 
             background-color: #080808; 
             color: #f4f4f4; 
             font-family: 'Inter', sans-serif; 
+            margin: 0;
+            padding: 0;
             overflow-x: hidden; 
+            width: 100%;
         }
 
-        /* 深度流光背景：复刻图中那种星云感 */
+        /* 2. 背景修正：流光背景层级 */
         .nebula-bg {
-            background: 
-                radial-gradient(circle at 10% 20%, rgba(153, 69, 255, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(20, 241, 149, 0.15) 0%, transparent 40%),
-                url('https://www.transparenttextures.com/patterns/stardust.png'); /* 增加一点噪点质感 */
+            position: relative;
+            background: radial-gradient(circle at 10% 20%, rgba(153, 69, 255, 0.15) 0%, transparent 40%),
+                        radial-gradient(circle at 90% 80%, rgba(20, 241, 149, 0.15) 0%, transparent 40%);
         }
 
+        /* 3. LOGO 修正：纯白圆润底座 */
+        .logo-capsule {
+            background: white;
+            border-radius: 999px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 20px;
+        }
+
+        /* 渐变与文字特效 */
         .solana-gradient { background: linear-gradient(90deg, #9945FF 0%, #14F195 100%); }
-        .text-gradient { background: linear-gradient(180deg, #FFFFFF 0%, rgba(255,255,255,0.7) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        
-        /* 玻璃卡片：图中下方的入口样式 */
+        .text-gradient { 
+            background: linear-gradient(180deg, #FFFFFF 0%, rgba(255,255,255,0.7) 100%); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+        }
+
+        /* 4. 卡片修正：确保响应式布局 */
         .glass-card { 
             background: rgba(255, 255, 255, 0.03); 
             backdrop-filter: blur(20px); 
             border: 1px solid rgba(255, 255, 255, 0.1); 
-            border-radius: 30px;
+            border-radius: 32px;
             transition: all 0.4s ease;
+            height: 100%; /* 统一高度 */
         }
         .glass-card:hover { 
             border-color: #14F195; 
-            background: rgba(20, 241, 149, 0.05); 
-            transform: translateY(-10px); 
+            transform: translateY(-8px); 
         }
 
-        /* LOGO 胶囊底座 */
-        .logo-capsule {
-            background: white;
-            border-radius: 50px;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        /* 针对超大标题的手机端优化 */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 3rem !important; line-height: 1.1 !important; }
         }
     </style>
 </head>
-<body class="nebula-bg min-h-screen">
+<body class="nebula-bg">
 
-    <nav class="fixed w-full z-50 px-8 py-5 bg-[#080808]/60 backdrop-blur-xl border-b border-white/5">
+    <nav class="fixed w-full z-[100] px-6 py-4 bg-[#080808]/80 backdrop-blur-xl border-b border-white/5">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             
-            <div class="flex items-center gap-6">
-                <div class="logo-capsule px-4 py-2 flex items-center justify-center">
-                    <img src="logo-solana.webp" alt="Logo" class="h-10 w-auto">
+            <div class="flex items-center gap-4">
+                <div class="logo-capsule">
+                    <img src="logo-solana.webp" alt="Logo" class="h-8 md:h-10 w-auto object-contain">
                 </div>
-                <div class="flex flex-col">
-                    <span class="text-white font-black tracking-tighter text-3xl italic leading-none">
+                <div class="hidden sm:flex flex-col">
+                    <span class="text-white font-black tracking-tighter text-2xl italic leading-none">
                         SOLANA <span class="text-[#14F195]">HAINAN</span>
                     </span>
-                    <span class="text-[10px] text-gray-500 font-bold tracking-[0.3em] uppercase mt-1">海南省索拉纳商务咨询</span>
+                    <span class="text-[9px] text-gray-500 font-bold tracking-[0.2em] uppercase mt-1">海南省索拉纳商务咨询</span>
                 </div>
             </div>
 
-            <div class="hidden md:flex gap-10 text-[12px] font-bold uppercase tracking-widest text-gray-300">
-                <a href="#" class="hover:text-white transition">政策合规</a>
-                <a href="#" class="hover:text-white transition">资产上链</a>
-                <a href="#" class="hover:text-white transition">Web3 枢纽</a>
+            <div class="flex items-center gap-4 md:gap-8">
+                <div class="hidden md:flex gap-8 text-[11px] font-bold uppercase tracking-widest text-gray-400">
+                    <a href="#" class="hover:text-white transition">政策</a>
+                    <a href="#" class="hover:text-white transition">RWA</a>
+                    <a href="#" class="hover:text-white transition">Web3</a>
+                </div>
+                <a href="tel:18117790507" class="solana-gradient text-black px-6 py-2 rounded-full text-xs font-black uppercase tracking-wider hover:scale-105 transition shadow-lg">
+                    立即咨询
+                </a>
             </div>
-
-            <a href="tel:18117790507" class="bg-gradient-to-r from-[#14F195] to-[#40A9FF] text-black px-8 py-2.5 rounded-full text-sm font-black uppercase tracking-wider hover:scale-105 transition shadow-lg">
-                立即咨询
-            </a>
         </div>
     </nav>
 
-    <header class="pt-64 pb-32 px-8">
-        <div class="max-w-7xl mx-auto">
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 border border-[#14F195]/30 rounded-full bg-[#14F195]/10 text-[#14F195] text-[11px] mb-12 font-bold uppercase tracking-[0.4em]">
+    <header class="relative pt-48 pb-24 px-6">
+        <div class="max-w-7xl mx-auto text-left md:text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 border border-[#14F195]/30 rounded-full bg-[#14F195]/10 text-[#14F195] text-[10px] mb-8 font-bold uppercase tracking-[0.3em]">
                 ✦ 2026 海南自贸港新纪元
             </div>
             
-            <h1 class="text-6xl md:text-[100px] font-black leading-[0.9] tracking-tighter mb-12">
+            <h1 class="hero-title text-5xl md:text-[90px] font-black leading-[0.95] tracking-tighter mb-10">
                 <span class="text-white">连接实体经济</span> <br>
-                <span class="text-sm md:text-xl font-light tracking-[0.8em] text-white/40 block my-8 uppercase italic">Syncing Seamlessly with</span>
-                <span class="text-transparent bg-clip-text solana-gradient italic">WEB3 全球流动性</span>
+                <div class="my-4 md:my-8">
+                    <span class="text-sm md:text-xl font-light tracking-[0.5em] text-white/30 uppercase italic">Syncing Seamlessly with</span>
+                </div>
+                <span class="text-transparent bg-clip-text solana-gradient italic font-black">WEB3 全球流动性</span>
             </h1>
 
-            <p class="text-gray-400 text-xl md:text-2xl max-w-4xl leading-relaxed mb-16 font-light">
-                深耕海南政策沃土，助力 Solana 生态落地。 <br>
-                提供 <span class="text-white font-bold">15% 所得税筹划</span> 与 <span class="text-[#14F195] font-bold italic">RWA 资产代币化方案</span>。
+            <p class="text-gray-400 text-lg md:text-2xl max-w-4xl md:mx-auto leading-relaxed mb-16 font-light">
+                深耕海南政策沃土，助力 Solana 生态落地。 <br class="hidden md:block">
+                提供 <span class="text-white font-bold italic">15% 所得税筹划</span> 与 <span class="text-[#14F195] font-black">RWA 资产代币化方案</span>。
             </p>
 
-            <div class="grid md:grid-cols-4 gap-6 mt-24">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-20">
                 <div class="glass-card p-8">
                     <div class="text-[#14F195] text-3xl mb-6 font-black italic">5+29</div>
                     <div class="text-white font-bold mb-2">政策落地咨询</div>
-                    <div class="text-gray-500 text-xs tracking-tighter uppercase leading-tight">Policy Compliance</div>
-                </div>
-                <div class="glass-card p-8 border-[#9945FF]/30">
-                    <div class="text-[#9945FF] text-3xl mb-6 font-black italic">7+15</div>
-                    <div class="text-white font-bold mb-2">资产上链服务</div>
-                    <div class="text-gray-500 text-xs tracking-tighter uppercase leading-tight">RWA Tokenization</div>
+                    <div class="text-gray-500 text-[10px] tracking-widest uppercase">Policy Compliance</div>
                 </div>
                 <div class="glass-card p-8">
+                    <div class="text-[#9945FF] text-3xl mb-6 font-black italic">7+15</div>
+                    <div class="text-white font-bold mb-2">资产上链服务</div>
+                    <div class="text-gray-500 text-[10px] tracking-widest uppercase">RWA Tokenization</div>
+                </div>
+                <div class="glass-card p-8 border-[#14F195]/20">
                     <div class="text-blue-400 text-3xl mb-6 font-black italic">5+65</div>
                     <div class="text-white font-bold mb-2">生态资源对接</div>
-                    <div class="text-gray-500 text-xs tracking-tighter uppercase leading-tight">Ecosystem Match</div>
+                    <div class="text-gray-500 text-[10px] tracking-widest uppercase">Ecosystem Match</div>
                 </div>
                 <div class="glass-card p-8">
                     <div class="text-white text-3xl mb-6 font-black italic">2+45</div>
                     <div class="text-white font-bold mb-2">全球支付方案</div>
-                    <div class="text-gray-500 text-xs tracking-tighter uppercase leading-tight">Global Payment</div>
+                    <div class="text-gray-500 text-[10px] tracking-widest uppercase">Global Payment</div>
                 </div>
             </div>
         </div>
     </header>
 
-    <footer class="py-20 border-t border-white/5 bg-black/40">
-        <div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-8">
+    <footer class="py-20 border-t border-white/5 bg-black/20 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
             <div class="text-left font-mono">
-                <p class="text-gray-500 text-[10px] uppercase tracking-widest mb-2">index:html apo</p>
-                <p class="text-gray-400 text-xs italic">© 2026 海南省索拉纳商务咨询中心 | 91460000MAK2R6B75</p>
+                <p class="text-gray-600 text-[10px] uppercase tracking-widest mb-2 italic">index:html / global deployment</p>
+                <p class="text-gray-400 text-xs">© 2026 海南省索拉纳商务咨询中心 | 91460000MAK2R6B75</p>
             </div>
-            <div class="flex gap-4">
-                <div class="h-8 w-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-gray-500"><i class="fa-brands fa-github"></i></div>
-                <div class="h-8 w-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-gray-500"><i class="fa-brands fa-twitter"></i></div>
+            <div class="flex gap-6 text-gray-600">
+                <i class="fa-brands fa-github hover:text-[#14F195] transition cursor-pointer text-xl"></i>
+                <i class="fa-brands fa-twitter hover:text-[#9945FF] transition cursor-pointer text-xl"></i>
             </div>
         </div>
     </footer>
