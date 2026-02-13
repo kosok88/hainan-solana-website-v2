@@ -309,6 +309,18 @@ h2{font-size:34px}
 .cards{grid-template-columns:1fr;gap:15px}
 .visa-countries{columns:1}
 }
+  
+/* 园区详情弹窗样式 - 确保flex布局生效 */
+#parkDetailModal {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+#parkDetailModal[style*="display: none"],
+#parkDetailModal[style*="display:none"] {
+  display: none !important;
+}
+
 </style>
 </head>
 <body>
