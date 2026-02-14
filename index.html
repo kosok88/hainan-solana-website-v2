@@ -9,17 +9,19 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
         html, body { background-color: #080808; color: #f4f4f4; font-family: 'Inter', sans-serif; margin: 0; padding: 0; overflow-x: hidden; width: 100%; }
-        /* 动态背景 */
         .nebula-bg { position: relative; background: radial-gradient(circle at 10% 20%, rgba(153, 69, 255, 0.15) 0%, transparent 40%), radial-gradient(circle at 90% 80%, rgba(20, 241, 149, 0.15) 0%, transparent 40%); }
-        /* 样式组件 */
         .logo-capsule { background: white; border-radius: 999px; box-shadow: 0 0 15px rgba(255, 255, 255, 0.3); display: flex; align-items: center; justify-content: center; padding: 8px 20px; }
         .solana-gradient { background: linear-gradient(90deg, #9945FF 0%, #14F195 100%); }
-        .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 32px; transition: all 0.4s ease; }
-        .glass-card:hover { transform: translateY(-5px); border-color: #14F195; box-shadow: 0 10px 30px -10px rgba(20, 241, 149, 0.1); }
+        .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 32px; transition: all 0.4s ease; cursor: pointer; }
+        .glass-card:hover { transform: translateY(-5px); border-color: #14F195; }
         
-        /* 弹窗样式 */
-        #taxModal { display: none; position: fixed; inset: 0; z-index: 999; background: rgba(0,0,0,0.9); backdrop-filter: blur(15px); align-items: center; justify-content: center; }
-        .modal-content { background: #000; border: 1px solid #333; border-radius: 30px; width: 95%; max-width: 500px; padding: 40px; position: relative; box-shadow: 0 0 50px rgba(20, 241, 149, 0.1); }
+        /* 弹窗通用样式 */
+        .modal-overlay { display: none; position: fixed; inset: 0; z-index: 999; background: rgba(0,0,0,0.9); backdrop-filter: blur(15px); align-items: center; justify-content: center; }
+        .modal-content { background: #000; border: 1px solid #333; border-radius: 30px; width: 95%; max-width: 550px; padding: 40px; position: relative; }
+        
+        /* 隐藏表单步骤 */
+        .form-step { display: none; }
+        .form-step.active { display: block; }
     </style>
 </head>
 <body class="nebula-bg">
@@ -41,11 +43,10 @@
         <div class="max-w-7xl mx-auto text-left md:text-center">
             <h1 class="text-5xl md:text-[80px] font-black leading-[1] tracking-tighter mb-10">
                 <span class="text-white">连接实体经济</span> <br>
-                <span class="text-transparent bg-clip-text solana-gradient italic uppercase">Web3 全球流动性</span>
+                <span class="text-transparent bg-clip-text solana-gradient italic uppercase font-black">Web3 全球流动性</span>
             </h1>
-            
             <div class="flex flex-col sm:flex-row justify-center gap-6 mt-12">
-                <button onclick="toggleModal(true)" class="solana-gradient text-black px-12 py-4 rounded-full font-black text-sm uppercase tracking-widest hover:scale-105 transition shadow-2xl">
+                <button onclick="openModal('taxModal')" class="solana-gradient text-black px-12 py-4 rounded-full font-black text-sm uppercase tracking-widest hover:scale-105 transition shadow-2xl">
                     免费税收测算
                 </button>
             </div>
@@ -54,155 +55,122 @@
 
     <section class="py-12 px-6 max-w-7xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="glass-card p-10 flex flex-col justify-between border-l-4 border-l-[#14F195]">
+            <div onclick="openModal('applyModal')" class="glass-card p-10 flex flex-col justify-between border-l-4 border-l-[#14F195]">
                 <div>
-                    <div class="text-[#14F195] font-black text-xs uppercase tracking-[0.3em] mb-4">Foundation Service</div>
+                    <div class="text-[#14F195] font-black text-xs uppercase tracking-[0.3em] mb-4">Immediate Access</div>
                     <h2 class="text-3xl font-black mb-4 italic uppercase">公司注册与入驻</h2>
-                    <p class="text-gray-400 leading-relaxed mb-6 font-light">
-                        海南自贸港内资/外资公司快速注册、地址挂靠。协助企业获取 15% 企业所得税优惠门票。
-                    </p>
+                    <p class="text-gray-400 leading-relaxed mb-6 font-light">点击开启海南自贸港准入通道。内资/外资极速注册，锁定 15% 所得税红利。</p>
                 </div>
-                <div class="flex gap-3">
-                    <span class="bg-white/5 px-3 py-1 rounded text-[10px] text-gray-400 font-bold">自贸港准入</span>
-                    <span class="bg-white/5 px-3 py-1 rounded text-[10px] text-gray-400 font-bold">EF账户</span>
+                <div class="flex gap-3 text-[10px] font-bold text-[#14F195]">
+                    <span>点击开始在线办理 →</span>
                 </div>
             </div>
 
             <div class="glass-card p-10 flex flex-col justify-between border-l-4 border-l-[#9945FF]">
                 <div>
-                    <div class="text-[#9945FF] font-black text-xs uppercase tracking-[0.3em] mb-4">Advanced Strategy</div>
+                    <div class="text-[#9945FF] font-black text-xs uppercase tracking-[0.3em] mb-4">Capital Flow</div>
                     <h2 class="text-3xl font-black mb-4 italic uppercase">RWA 资产全球化</h2>
-                    <p class="text-gray-400 leading-relaxed mb-6 font-light">
-                        依托 Solana 公链，将实物资产代币化。实现资产跨境高效结算与全球流动性注入。
-                    </p>
+                    <p class="text-gray-400 leading-relaxed mb-6 font-light">依托 Solana 生态，实现资产跨境高效结算与流动性注入。</p>
                 </div>
-                <div class="flex gap-3">
-                    <span class="bg-white/5 px-3 py-1 rounded text-[10px] text-gray-400 font-bold">Tokenomics</span>
-                    <span class="bg-white/5 px-3 py-1 rounded text-[10px] text-gray-400 font-bold">合规审计</span>
-                </div>
+                <div class="text-[10px] font-bold text-[#9945FF]">查看 RWA 价值矩阵 ↓</div>
             </div>
         </div>
     </section>
 
     <section class="py-24 px-6 max-w-7xl mx-auto border-t border-white/5 mt-12">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-6xl font-black italic uppercase solana-gradient bg-clip-text text-transparent mb-4">
-                RWA Value Matrix
-            </h2>
-            <p class="text-gray-500 tracking-[0.3em] uppercase text-sm font-bold">连接物理世界与数字金融的终极方案</p>
-        </div>
-
+        <div class="text-center mb-16 text-4xl md:text-6xl font-black italic uppercase solana-gradient bg-clip-text text-transparent">RWA Value Matrix</div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="glass-card p-10">
-                <div class="flex items-start gap-6">
-                    <div class="h-14 w-14 rounded-2xl bg-[#9945FF]/20 flex items-center justify-center text-[#9945FF] text-2xl">
-                        <i class="fa-solid fa-earth-americas"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-black mb-2 italic">全球流动性注入</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">突破地域限制，基于 Solana PayFi，将商办地产连接至全球 Web3 流动性池。</p>
-                    </div>
-                </div>
+            <div class="glass-card p-10 flex items-start gap-6">
+                <div class="h-12 w-12 rounded-xl bg-[#9945FF]/20 flex items-center justify-center text-[#9945FF]"><i class="fa-solid fa-earth-americas"></i></div>
+                <div><h3 class="font-black italic mb-2 text-xl italic uppercase">流动性注入</h3><p class="text-gray-500 text-sm">连接全球 Web3 资本，提升资产周转效率。</p></div>
             </div>
-
-            <div class="glass-card p-10">
-                <div class="flex items-start gap-6">
-                    <div class="h-14 w-14 rounded-2xl bg-[#14F195]/20 flex items-center justify-center text-[#14F195] text-2xl">
-                        <i class="fa-solid fa-scale-balanced"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-black mb-2 italic">合规法律架构</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">搭建 SPV 法律架构，提供法律意见书，严控 AML/KYC，确保资产合规。</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="glass-card p-10">
-                <div class="flex items-start gap-6">
-                    <div class="h-14 w-14 rounded-2xl bg-white/10 flex items-center justify-center text-white text-2xl">
-                        <i class="fa-solid fa-microchip"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-black mb-2 italic">全流程上链</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">资产评估 -> 数字化 -> 流通。提供智能合约审计与全透明数据展示。</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="glass-card p-10">
-                <div class="flex items-start gap-6">
-                    <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-[#14F195] to-[#9945FF] flex items-center justify-center text-white text-2xl">
-                        <i class="fa-solid fa-percent"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-black mb-2 italic">15% 税收筹划</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">量化节税效果。锁定海南自贸港 15% 企业与个人所得税双重优惠。</p>
-                    </div>
-                </div>
+            <div class="glass-card p-10 flex items-start gap-6">
+                <div class="h-12 w-12 rounded-xl bg-[#14F195]/20 flex items-center justify-center text-[#14F195]"><i class="fa-solid fa-scale-balanced"></i></div>
+                <div><h3 class="font-black italic mb-2 text-xl italic uppercase">合规 SPV 架构</h3><p class="text-gray-500 text-sm">专业的法律意见书与跨境合规路径设计。</p></div>
             </div>
         </div>
     </section>
 
-    <footer class="py-20 border-t border-white/5 bg-black/20 px-6 mt-12">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-            <div class="text-left font-mono">
-                <p class="text-gray-600 text-[10px] uppercase tracking-widest mb-2 italic">index:html / global deployment</p>
-                <p class="text-gray-400 text-xs">© 2026 海南省索拉纳商务咨询中心 | 91460000MAK2R6B75</p>
-            </div>
-            <div class="flex gap-6 text-gray-600">
-                <i class="fa-brands fa-github hover:text-[#14F195] transition cursor-pointer text-xl"></i>
-                <i class="fa-brands fa-twitter hover:text-[#9945FF] transition cursor-pointer text-xl"></i>
-            </div>
-        </div>
-    </footer>
-
-    <div id="taxModal" onclick="if(event.target==this) toggleModal(false)">
+    <div id="applyModal" class="modal-overlay" onclick="if(event.target==this) closeModal('applyModal')">
         <div class="modal-content" onclick="event.stopPropagation()">
-            <button onclick="toggleModal(false)" class="absolute top-6 right-6 text-gray-500 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
-            <h3 class="text-2xl font-black mb-1 solana-gradient bg-clip-text text-transparent italic uppercase tracking-tighter">Savings Calculator</h3>
-            <p class="text-gray-500 text-[10px] mb-8 uppercase tracking-widest font-bold">海南自贸港 15% 税收优惠测算</p>
+            <button onclick="closeModal('applyModal')" class="absolute top-6 right-6 text-gray-500 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
+            <h3 class="text-2xl font-black mb-1 solana-gradient bg-clip-text text-transparent italic uppercase tracking-tighter">Onboarding Application</h3>
+            <p class="text-gray-500 text-[10px] mb-8 uppercase tracking-widest font-bold">2026 海南自贸港准入申请</p>
             
-            <div class="space-y-6">
-                <div>
-                    <label class="block text-[10px] font-black text-gray-400 mb-3 uppercase tracking-widest">预估个人年收入 (CNY)</label>
-                    <input type="number" id="annualIncome" placeholder="请输入数字，如 1500000" 
-                           class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 focus:border-[#14F195] focus:outline-none transition text-2xl font-mono text-white">
+            <form id="applyForm">
+                <div class="form-step active" id="step1">
+                    <div class="space-y-4">
+                        <label class="block text-[10px] font-black text-gray-400 uppercase tracking-widest">拟定公司名称 / 行业赛道</label>
+                        <input type="text" placeholder="例如：海南索拉纳科技有限公司 / Web3 研发" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 focus:border-[#14F195] outline-none text-white text-sm">
+                        <label class="block text-[10px] font-black text-gray-400 uppercase tracking-widest mt-6">预计注册资本 (万元)</label>
+                        <input type="number" placeholder="例如：100" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 focus:border-[#14F195] outline-none text-white text-sm">
+                    </div>
+                    <button type="button" onclick="nextStep(2)" class="w-full mt-8 bg-white text-black py-4 rounded-xl font-black uppercase text-xs tracking-widest hover:bg-[#14F195] transition">下一步</button>
                 </div>
-                <button onclick="runCalculation()" class="w-full solana-gradient text-black py-5 rounded-2xl font-black uppercase tracking-widest text-sm shadow-xl">点击获取对比报告</button>
-                
-                <div id="resultArea" class="hidden space-y-4 pt-8 border-t border-white/10">
-                    <div class="flex justify-between items-center bg-white/5 p-4 rounded-xl">
-                        <span class="text-xs text-gray-400 font-bold">内地普通个税估计:</span>
-                        <span id="mainlandTax" class="font-mono text-red-400 font-bold">¥0</span>
+
+                <div class="form-step" id="step2">
+                    <div class="space-y-6">
+                        <div class="flex items-center justify-between p-4 bg-white/5 rounded-xl border border-white/10">
+                            <span class="text-sm font-bold text-gray-300">需要开立 EF 账户?</span>
+                            <input type="checkbox" class="accent-[#14F195] w-5 h-5">
+                        </div>
+                        <div class="flex items-center justify-between p-4 bg-white/5 rounded-xl border border-white/10">
+                            <span class="text-sm font-bold text-gray-300">需要 15% 节税辅导?</span>
+                            <input type="checkbox" checked class="accent-[#14F195] w-5 h-5">
+                        </div>
+                        <input type="text" id="userContact" placeholder="您的微信号 或 手机号" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 focus:border-[#14F195] outline-none text-white text-sm">
                     </div>
-                    <div class="flex justify-between items-center bg-[#14F195]/5 p-4 rounded-xl border border-[#14F195]/20">
-                        <span class="text-xs text-[#14F195] font-bold">海南 15% 封顶:</span>
-                        <span id="hainanTax" class="font-mono text-[#14F195] font-black">¥0</span>
-                    </div>
-                    <div class="p-4 text-center">
-                        <div class="text-[10px] text-gray-500 font-bold uppercase mb-2">预计为您节省</div>
-                        <div id="taxSavings" class="text-4xl font-black text-white">¥0</div>
+                    <div class="flex gap-4 mt-8">
+                        <button type="button" onclick="nextStep(1)" class="w-1/3 text-gray-500 font-bold text-[10px] uppercase">返回</button>
+                        <button type="button" onclick="submitForm()" class="w-2/3 solana-gradient text-black py-4 rounded-xl font-black uppercase text-xs tracking-widest shadow-xl shadow-[#14F195]/20">提交申请</button>
                     </div>
                 </div>
+
+                <div class="form-step text-center py-10" id="step3">
+                    <div class="text-[#14F195] text-5xl mb-6"><i class="fa-solid fa-circle-check"></i></div>
+                    <h4 class="text-2xl font-black text-white italic mb-2 uppercase tracking-tighter">Submitted Successfully</h4>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed">申请已同步至我们的咨询系统。<br>专属顾问将在 12 小时内与您联系。</p>
+                    <button type="button" onclick="closeModal('applyModal')" class="mt-8 text-gray-500 text-[10px] font-bold uppercase tracking-widest border-b border-gray-800 pb-1">关闭窗口</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="taxModal" class="modal-overlay" onclick="if(event.target==this) closeModal('taxModal')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <h3 class="text-2xl font-black mb-8 solana-gradient bg-clip-text text-transparent italic uppercase">Savings Calc</h3>
+            <input type="number" id="annualIncome" placeholder="输入年收入" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 outline-none text-white mb-6">
+            <button onclick="runCalculation()" class="w-full solana-gradient text-black py-4 rounded-xl font-black uppercase text-xs">开始测算</button>
+            <div id="resultArea" class="hidden mt-6 p-4 bg-white/5 rounded-xl space-y-2 text-sm">
+                <div class="flex justify-between text-gray-400 font-bold"><span>内地缴税:</span><span id="mainlandTax"></span></div>
+                <div class="flex justify-between text-[#14F195] font-black"><span>海南 15%:</span><span id="hainanTax"></span></div>
             </div>
         </div>
     </div>
 
     <script>
-        function toggleModal(show) { document.getElementById('taxModal').style.display = show ? 'flex' : 'none'; }
+        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+        
+        function nextStep(step) {
+            document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+            document.getElementById('step' + step).classList.add('active');
+        }
+
+        function submitForm() {
+            const contact = document.getElementById('userContact').value;
+            if(!contact) { alert("请留下联系方式，以便我们为您服务"); return; }
+            nextStep(3); // 进入成功页面
+            console.log("Form Submitted! Sending notification to consultant...");
+        }
+
         function runCalculation() {
             const income = parseFloat(document.getElementById('annualIncome').value);
-            if (!income || income <= 0) { alert("请输入正确的收入金额"); return; }
-            let mainlandTax = 0;
-            if (income > 960000) mainlandTax = income * 0.45 - 181920;
-            else if (income > 660000) mainlandTax = income * 0.35 - 85920;
-            else if (income > 420000) mainlandTax = income * 0.30 - 52920;
-            else mainlandTax = income * 0.20;
-            const hainanTax = income * 0.15;
-            const savings = mainlandTax - hainanTax;
-            document.getElementById('mainlandTax').innerText = "¥ " + Math.round(mainlandTax).toLocaleString();
-            document.getElementById('hainanTax').innerText = "¥ " + Math.round(hainanTax).toLocaleString();
-            document.getElementById('taxSavings').innerText = "¥ " + Math.round(savings > 0 ? savings : 0).toLocaleString();
+            if (!income) return;
+            const mainland = income * 0.45 - 181920; 
+            const hainan = income * 0.15;
+            document.getElementById('mainlandTax').innerText = "¥" + Math.round(mainland).toLocaleString();
+            document.getElementById('hainanTax').innerText = "¥" + Math.round(hainan).toLocaleString();
             document.getElementById('resultArea').classList.remove('hidden');
         }
     </script>
