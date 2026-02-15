@@ -6,79 +6,63 @@
     <title>海南省索拉纳商务咨询中心 | Solana Hainan Business Consulting Center</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Sans+SC:wght@300;400;700&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        solana: { green: '#14F195', purple: '#9945FF', dark: '#0B0B0B' }
-                    },
-                    fontFamily: { sans: ['Inter', 'Noto Sans SC', 'sans-serif'] }
-                }
-            }
-        }
-    </script>
     <style>
         body { background-color: #050505; color: white; font-family: 'Inter', 'Noto Sans SC', sans-serif; }
-        .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
         .gradient-text { background: linear-gradient(to right, #14F195, #9945FF); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .poster-glow { animation: pulse-glow 4s infinite; }
         @keyframes pulse-glow {
             0%, 100% { box-shadow: 0 0 20px rgba(20, 241, 149, 0.1); }
             50% { box-shadow: 0 0 40px rgba(153, 69, 255, 0.2); }
         }
-        .lang-en.hidden, .lang-cn.hidden { display: none; }
+        .hidden { display: none !important; }
     </style>
 </head>
 <body class="antialiased">
 
-    <nav class="fixed w-full z-50 top-0 bg-black/90 backdrop-blur-md border-b border-white/5">
-        <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
-            
-            <div class="flex items-center gap-2">
-                <svg width="28" height="28" viewBox="0 0 397 311" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M64.6 237.9c-2.4 2.4-6 2.4-8.4 0l-51-51c-2.4-2.4-2.4-6 0-8.4l252-252c2.4-2.4 6-2.4 8.4 0l51 51c2.4 2.4 2.4 6 0 8.4l-252 252z" fill="#14F195"/>
-                    <path d="M252.5 306.4c-2.4 2.4-6 2.4-8.4 0l-51-51c-2.4-2.4-2.4-6 0-8.4l252-252c2.4-2.4 6-2.4 8.4 0l51 51c2.4 2.4 2.4 6 0 8.4l-252 252z" fill="#9945FF"/>
-                </svg>
-                <div class="flex flex-col border-l border-white/20 pl-3">
-                    <span class="font-bold tracking-tight text-sm md:text-base lang-cn">海南省索拉纳商务咨询中心</span>
+    <nav class="fixed w-full z-50 top-0 bg-black/95 border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <img src="logo.jpg" alt="Logo" class="h-12 w-auto rounded" onerror="this.src='高清晰3.jpg'">
+                <div class="flex flex-col border-l border-white/20 pl-4">
+                    <span class="font-bold tracking-tight text-sm md:text-lg lang-cn">海南省索拉纳商务咨询中心</span>
                     <span class="font-bold tracking-tight text-xs md:text-sm lang-en hidden">Solana Hainan Business Consulting Center</span>
                 </div>
             </div>
             
             <div class="flex items-center gap-6">
-                <a href="tel:18117790507" class="hidden md:flex items-center gap-2 text-sm font-semibold hover:text-solana-green transition-all">
-                    <div class="w-1.5 h-1.5 rounded-full bg-solana-green animate-pulse"></div>
+                <a href="tel:18117790507" class="hidden lg:flex items-center gap-2 text-sm font-bold text-solana-green">
                     <span class="text-gray-500 font-normal lang-cn">咨询热线:</span>
                     <span class="text-gray-500 font-normal lang-en hidden">Hotline:</span>
-                    <span class="tracking-wider">181-1779-0507</span>
+                    <span>181-1779-0507</span>
                 </a>
-                <button onclick="toggleLang()" class="px-3 py-1 rounded-full border border-white/20 text-[10px] font-bold hover:bg-white/10 transition-all uppercase">
-                    <span id="lang-btn">EN / 中文</span>
+                <button id="lang-toggle-btn" onclick="toggleLang()" class="px-4 py-1.5 rounded-full border border-solana-purple/50 text-xs font-black hover:bg-solana-purple transition-all">
+                    EN / 中文
                 </button>
             </div>
         </div>
     </nav>
 
-    <header class="relative pt-40 pb-20 px-6 text-center overflow-hidden">
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-solana-purple/10 rounded-full blur-[120px] -z-10"></div>
+    <header class="relative pt-48 pb-24 px-6 text-center">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-solana-green/5 rounded-full blur-[120px] -z-10"></div>
         <div class="max-w-4xl mx-auto">
             <h1 class="text-5xl md:text-7xl font-extrabold tracking-tighter mb-8 leading-tight">
                 <span class="lang-cn">2026 封关运作<br><span class="gradient-text">Web3 离岸合规门户</span></span>
                 <span class="lang-en hidden">2026 Customs Closure<br><span class="gradient-text">Web3 Offshore Gateway</span></span>
             </h1>
-            <p class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto font-light">
-                <span class="lang-cn">专注海南自贸港 EF 账户开立、RWA 资产架构及 15% 优惠所得税政策咨询。</span>
-                <span class="lang-en hidden">Expertise in EF Accounts, RWA structuring, and 15% tax optimization in Hainan Free Trade Port.</span>
-            </p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <button onclick="scrollToSection('poster-section')" class="px-10 py-4 bg-white text-black font-bold rounded-full hover:scale-105 transition-transform">
+            
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button onclick="scrollToSection('poster-section')" class="px-8 py-4 bg-white text-black font-bold rounded-full hover:scale-105 transition-all">
                     <span class="lang-cn">获取 2026 内参</span>
                     <span class="lang-en hidden">Get 2026 Guide</span>
                 </button>
-                <button onclick="scrollToSection('contact-footer')" class="px-10 py-4 glass-card text-white font-bold rounded-full hover:bg-white/10 transition-all">
-                    <span class="lang-cn">立即预约评估</span>
-                    <span class="lang-en hidden">Book Compliance Audit</span>
+                <button onclick="scrollToSection('tax-test')" class="px-8 py-4 bg-solana-green text-black font-bold rounded-full hover:scale-105 transition-all shadow-[0_0_20px_rgba(20,241,149,0.3)]">
+                    <span class="lang-cn">15% 免税资格测试</span>
+                    <span class="lang-en hidden">Tax Incentive Test</span>
+                </button>
+                <button onclick="scrollToSection('contact-footer')" class="px-8 py-4 glass-card text-white font-bold rounded-full hover:bg-white/10 transition-all">
+                    <span class="lang-cn">预约评估</span>
+                    <span class="lang-en hidden">Book Audit</span>
                 </button>
             </div>
         </div>
@@ -88,69 +72,105 @@
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
             <div class="glass-card p-10 rounded-3xl">
                 <h3 class="text-2xl font-bold mb-4 text-solana-green">EF Accounts</h3>
-                <p class="text-gray-400 leading-relaxed mb-6">
-                    <span class="lang-cn">电子围栏账户：实现“境内关外”资金自由划转，解决 Web3 企业结汇与薪酬合规。</span>
-                    <span class="lang-en hidden">Electronic Fence Accounts: Facilitating seamless cross-border capital flows for Web3 compliance.</span>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    <span class="lang-cn">电子围栏账户：实现“境内关外”资金自由划转，解决 Web3 企业出金、薪酬发放与全球清算痛点。</span>
+                    <span class="lang-en hidden">Electronic Fence Accounts: Facilitating seamless cross-border capital flow for Web3 compliant fiat ramps.</span>
                 </p>
-                <ul class="text-xs text-gray-500 space-y-2 uppercase tracking-widest">
-                    <li>✔ Offshore Capital Identity</li>
-                    <li>✔ Compliant Fiat Ramps</li>
-                </ul>
             </div>
-            
-            <div class="glass-card p-10 rounded-3xl border-solana-purple/20">
+            <div class="glass-card p-10 rounded-3xl border-solana-purple/30">
                 <h3 class="text-2xl font-bold mb-4 text-solana-purple">15% Tax Policy</h3>
-                <p class="text-gray-400 leading-relaxed mb-6">
-                    <span class="lang-cn">实质性运营筹划：协助企业锁定海南 15% 所得税优惠，降低项目综合运营成本。</span>
-                    <span class="lang-en hidden">Substantial Operations: Helping firms secure 15% CIT and PIT incentives in Hainan.</span>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    <span class="lang-cn">实质性运营筹划：深度对接海南所得税优惠政策。企业所得税（CIT）与个人所得税（PIT）双重 15% 封顶。</span>
+                    <span class="lang-en hidden">15% Tax Incentives: Comprehensive planning for Substantial Operations to secure 15% CIT and PIT caps.</span>
                 </p>
-                <ul class="text-xs text-gray-500 space-y-2 uppercase tracking-widest">
-                    <li>✔ CIT/PIT Optimization</li>
-                    <li>✔ Sandbox Integration</li>
-                </ul>
             </div>
-
             <div class="glass-card p-10 rounded-3xl">
                 <h3 class="text-2xl font-bold mb-4 text-white">RWA Infra</h3>
-                <p class="text-gray-400 leading-relaxed mb-6">
-                    <span class="lang-cn">资产上链咨询：在海南监管框架下，为房地产、碳信用等 RWA 项目提供确权服务。</span>
-                    <span class="lang-en hidden">Real World Assets: Legal and financial structuring for asset tokenization in the FTP.</span>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    <span class="lang-cn">资产上链咨询：在海南自贸港监管沙盒框架内，为房地产、碳信用等 RWA 项目提供合规确权与技术架构建议。</span>
+                    <span class="lang-en hidden">RWA Infrastructure: Legal and financial structuring for asset tokenization under the FTP regulatory sandbox.</span>
                 </p>
-                <ul class="text-xs text-gray-500 space-y-2 uppercase tracking-widest">
-                    <li>✔ Legal Confirmation</li>
-                    <li>✔ Tokenization Strategy</li>
-                </ul>
             </div>
         </div>
     </section>
 
-    <section id="poster-section" class="py-24 px-6 text-center bg-black">
-        <div class="max-w-3xl mx-auto">
-            <p class="text-solana-green text-xs font-bold uppercase tracking-[0.3em] mb-8">
-                <span class="lang-cn">官方内参 · 2026 封关运作指南</span>
-                <span class="lang-en hidden">Official Guide · 2026 Customs Closure</span>
+    <section id="tax-test" class="py-24 px-6 bg-gradient-to-b from-black to-[#0a0a0a]">
+        <div class="max-w-4xl mx-auto glass-card p-12 rounded-[40px] text-center border-solana-green/20">
+            <h2 class="text-3xl font-bold mb-6">
+                <span class="lang-cn">15% 所得税优惠资格预检</span>
+                <span class="lang-en hidden">15% Tax Incentive Eligibility Pre-check</span>
+            </h2>
+            <p class="text-gray-400 mb-10">
+                <span class="lang-cn">只需 30 秒，评估您的项目是否符合海南“实质性运营”标准。</span>
+                <span class="lang-en hidden">Take 30s to evaluate if your project meets Hainan's "Substantial Operation" standards.</span>
             </p>
-            <img src="poster.jpg" alt="2026 Hainan Guide" class="w-full rounded-3xl shadow-2xl border border-white/10 poster-glow hover:scale-[1.01] transition-all duration-700 cursor-pointer" onclick="scrollToSection('contact-footer')">
-            <p class="mt-6 text-gray-500 text-sm italic lang-cn">点击图片预约完整版 PDF 内容</p>
-            <p class="mt-6 text-gray-500 text-sm italic lang-en hidden">Click to request full PDF guidebook</p>
+            <button onclick="scrollToSection('contact-footer')" class="px-12 py-5 border-2 border-solana-green text-solana-green font-black rounded-xl hover:bg-solana-green hover:text-black transition-all text-lg">
+                <span class="lang-cn">开始免费测试</span>
+                <span class="lang-en hidden">Start Free Test</span>
+            </button>
         </div>
     </section>
 
-    <footer id="contact-footer" class="py-24 border-t border-white/5 bg-[#050505]">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold mb-12">
-                <span class="lang-cn">开始您的海南合规之旅</span>
-                <span class="lang-en hidden">Start Your Compliance Journey</span>
+    <section id="poster-section" class="py-24 px-6 text-center">
+        <div class="max-w-3xl mx-auto">
+            <p class="text-solana-green text-xs font-bold uppercase tracking-[0.4em] mb-10">Official Guide · 2026</p>
+            <img src="poster.jpg" alt="Hainan 2026" class="w-full rounded-3xl shadow-2xl border border-white/10 poster-glow cursor-pointer hover:scale-[1.01] transition-all" onclick="scrollToSection('contact-footer')">
+        </div>
+    </section>
+
+    <footer id="contact-footer" class="py-24 border-t border-white/5 bg-black">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-16">
+                <span class="lang-cn">即刻开启合规咨询</span>
+                <span class="lang-en hidden">Start Your Consultation</span>
             </h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="p-8 glass-card rounded-2xl">
-                    <p class="text-gray-500 text-[10px] mb-3 uppercase tracking-widest">Email</p>
-                    <p class="font-bold text-sm">kosok@solana-hainan.com</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="glass-card p-8 rounded-2xl">
+                    <p class="text-gray-500 text-xs mb-3 uppercase tracking-widest">Phone / WhatsApp</p>
+                    <p class="font-bold text-xl text-solana-green">181-1779-0507</p>
                 </div>
-                <div class="p-8 glass-card rounded-2xl border-solana-green/20">
-                    <p class="text-gray-500 text-[10px] mb-3 uppercase tracking-widest">Hotline / WhatsApp</p>
-                    <p class="font-bold text-lg text-solana-green">181-1779-0507</p>
+                <div class="glass-card p-8 rounded-2xl">
+                    <p class="text-gray-500 text-xs mb-3 uppercase tracking-widest">Email</p>
+                    <p class="font-bold">kosok@solana-hainan.com</p>
                 </div>
-                <div class="p-8 glass-card rounded-2xl border-solana-purple/20">
-                    <p class="text-gray-500 text-[10px] mb-3 uppercase tracking-widest">TG / WeChat</p>
-                    <p class="font-bold text-sm text
+                <div class="glass-card p-8 rounded-2xl">
+                    <p class="text-gray-500 text-xs mb-3 uppercase tracking-widest">TG / WeChat</p>
+                    <p class="font-bold text-solana-purple">@SolanaHainan</p>
+                </div>
+            </div>
+            <p class="mt-24 text-gray-800 text-[10px] tracking-[0.5em] uppercase">
+                &copy; 2026 Solana Hainan Business Consulting Center. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // 1. 语言切换逻辑 (修复版)
+        let isCN = true;
+        function toggleLang() {
+            isCN = !isCN;
+            const cns = document.querySelectorAll('.lang-cn');
+            const ens = document.querySelectorAll('.lang-en');
+            const btn = document.getElementById('lang-toggle-btn');
+
+            if (isCN) {
+                cns.forEach(el => el.classList.remove('hidden'));
+                ens.forEach(el => el.classList.add('hidden'));
+                btn.innerText = 'EN / 中文';
+            } else {
+                cns.forEach(el => el.classList.add('hidden'));
+                ens.forEach(el => el.classList.remove('hidden'));
+                btn.innerText = '中文 / EN';
+            }
+        }
+
+        // 2. 平滑滚动逻辑 (修复版)
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    </script>
+</body>
+</html>
