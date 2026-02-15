@@ -3,180 +3,270 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="海南省索拉纳商务咨询中心 - 2026封关元年Web3金融门户，提供跨境结算、RWA资产配置及企业合规落地服务。">
     <title>海南省索拉纳商务咨询中心 | 2026 封关元年 Web3 旗舰门户</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+SC:wght@400;700;900&display=swap');
-        html, body { background-color: #080808; color: #f4f4f4; font-family: 'Inter', 'Noto Sans SC', sans-serif; margin: 0; padding: 0; scroll-behavior: smooth; }
-        .nebula-bg { position: relative; background: radial-gradient(circle at 10% 20%, rgba(153, 69, 255, 0.1) 0%, transparent 40%), radial-gradient(circle at 90% 80%, rgba(20, 241, 149, 0.1) 0%, transparent 40%); }
+        html, body { background-color: #050505; color: #f4f4f4; font-family: 'Inter', 'Noto Sans SC', sans-serif; margin: 0; padding: 0; scroll-behavior: smooth; }
+        
+        /* 视觉背景：更深邃的星云感，突出高端 */
+        .nebula-bg { 
+            position: relative; 
+            background: 
+                radial-gradient(circle at 15% 25%, rgba(153, 69, 255, 0.08) 0%, transparent 45%), 
+                radial-gradient(circle at 85% 75%, rgba(20, 241, 149, 0.08) 0%, transparent 45%); 
+        }
+        
         .solana-gradient { background: linear-gradient(90deg, #9945FF 0%, #14F195 100%); }
-        .glass-card { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 24px; transition: all 0.4s ease; }
-        .glass-card:hover { border-color: #14F195; background: rgba(255, 255, 255, 0.05); }
-        .modal-overlay { display: none; position: fixed; inset: 0; z-index: 999; background: rgba(0,0,0,0.9); backdrop-filter: blur(20px); align-items: center; justify-content: center; }
+        
+        /* 卡片玻璃态：增加质感，减少廉价反光 */
+        .glass-card { 
+            background: rgba(255, 255, 255, 0.02); 
+            backdrop-filter: blur(24px); 
+            border: 1px solid rgba(255, 255, 255, 0.06); 
+            border-radius: 24px; 
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+        .glass-card:hover { 
+            border-color: #14F195; 
+            background: rgba(255, 255, 255, 0.04); 
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -15px rgba(20, 241, 149, 0.15);
+        }
+        
+        .modal-overlay { display: none; position: fixed; inset: 0; z-index: 999; background: rgba(0,0,0,0.92); backdrop-filter: blur(15px); align-items: center; justify-content: center; }
         .form-step { display: none; }
-        .form-step.active { display: block; }
-        /* Logo 容器放大及悬停效果 */
-        .logo-box { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .logo-box:hover { transform: scale(1.08) translateY(-2px); box-shadow: 0 10px 30px rgba(20, 241, 149, 0.2); }
+        .form-step.active { display: block; animation: fadeIn 0.5s ease; }
+        
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* Logo 交互微动效 */
+        .logo-box { transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .logo-box:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(153, 69, 255, 0.3); }
     </style>
 </head>
 <body class="nebula-bg">
 
-    <nav class="fixed w-full z-[100] px-6 py-5 bg-[#080808]/90 backdrop-blur-xl border-b border-white/5">
+    <nav class="fixed w-full z-[100] px-6 py-5 bg-[#050505]/90 backdrop-blur-xl border-b border-white/5">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center gap-5">
                 <div class="logo-box bg-white rounded-2xl p-2.5">
-                    <img src="logo-solana.webp" alt="Logo" class="h-10 md:h-16 w-auto"> 
+                    <img src="logo-solana.webp" alt="Logo" class="h-10 md:h-14 w-auto"> 
                 </div>
-                <div class="flex flex-col">
-                    <h1 class="text-white font-black tracking-tighter text-lg md:text-2xl leading-none">海南省索拉纳商务咨询中心</h1>
-                    <span class="text-[9px] text-gray-500 font-bold uppercase tracking-[0.4em] mt-2 opacity-60">Solana Hainan Business Consulting Center</span>
+                <div class="flex flex-col justify-center">
+                    <h1 class="text-white font-black tracking-tight text-lg md:text-2xl leading-none">海南省索拉纳商务咨询中心</h1>
+                    <span class="text-[9px] text-gray-500 font-bold uppercase tracking-[0.4em] mt-2 opacity-60 hidden md:block">Solana Hainan Business Consulting Center</span>
                 </div>
             </div>
             <div class="flex items-center">
-                <a href="tel:18117790507" class="solana-gradient text-black px-8 py-3 rounded-full text-[11px] font-black uppercase tracking-wider shadow-lg hover:shadow-[#14F195]/30 transition-all">
+                <a href="tel:18117790507" class="solana-gradient text-black px-8 py-3 rounded-full text-[11px] font-black uppercase tracking-wider shadow-lg hover:shadow-[#14F195]/30 transition-all cursor-pointer">
                     <i class="fa-solid fa-phone mr-2"></i>181-1779-0507
                 </a>
             </div>
         </div>
     </nav>
 
-   <header class="pt-64 pb-20 px-6 text-center">
-        <div class="max-w-4xl mx-auto">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#14F195]/30 bg-[#14F195]/5 text-[#14F195] text-[10px] font-black uppercase tracking-widest mb-10">
-                海南自贸港封关运作已开启 <span id="opDays" class="text-white ml-2 text-xs italic"></span> DAYS
+    <header class="pt-60 pb-24 px-6 text-center">
+        <div class="max-w-5xl mx-auto">
+            <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-[#14F195]/20 bg-[#14F195]/5 text-[#14F195] text-[10px] font-black uppercase tracking-widest mb-12">
+                <span class="animate-pulse w-2 h-2 bg-[#14F195] rounded-full"></span>
+                海南自贸港封关运作已开启 <span id="opDays" class="text-white ml-2 text-xs italic font-mono"></span> DAYS
             </div>
             
-            <h1 class="text-6xl md:text-[88px] font-black tracking-tighter mb-8 leading-none">
-                2026 封关元年 
-                <span class="block mt-6 text-transparent bg-clip-text solana-gradient italic uppercase">
+            <h1 class="text-6xl md:text-[90px] font-black tracking-tighter mb-10 leading-none text-white">
+                2026 封关元年
+                <span class="block mt-6 md:mt-10 text-transparent bg-clip-text solana-gradient italic uppercase drop-shadow-2xl">
                     Web3 金融新纪元
                 </span>
             </h1>
             
-            <p class="text-gray-400 text-lg md:text-xl font-light mb-12 max-w-2xl mx-auto leading-relaxed italic">
-                “境内关外”模式下，连接物理资产与数字金融的桥梁。
+            <p class="text-gray-400 text-lg md:text-xl font-light mb-14 max-w-2xl mx-auto leading-relaxed text-opacity-80">
+                在“境内关外”特殊监管区，为您搭建<br class="hidden md:block">连接物理世界资产 (RWA) 与链上金融的合规桥梁。
             </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-5">
-                <button onclick="openModal('applyModal')" class="solana-gradient text-black px-12 py-5 rounded-full font-black text-xs uppercase tracking-widest shadow-2xl hover:scale-105 transition">启动入驻申请</button>
-                <button onclick="openModal('taxModal')" class="bg-white/5 border border-white/10 text-white px-12 py-5 rounded-full font-black text-xs uppercase tracking-widest hover:bg-white/10 transition">税收政策测算</button>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <button onclick="openModal('applyModal')" class="solana-gradient text-black px-12 py-5 rounded-full font-black text-xs uppercase tracking-widest shadow-[0_0_40px_-10px_rgba(20,241,149,0.3)] hover:scale-105 transition transform">
+                    启动入驻申请
+                </button>
+                <button onclick="openModal('taxModal')" class="bg-white/5 border border-white/10 text-white px-12 py-5 rounded-full font-black text-xs uppercase tracking-widest hover:bg-white/10 transition flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-calculator text-gray-500"></i> 税收测算
+                </button>
             </div>
         </div>
     </header>
 
     <section class="py-24 px-6 max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
-            <div class="glass-card p-10 flex flex-col justify-between border-b-4 border-b-gray-800">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-black italic uppercase mb-3">2026 封关首航计划</h2>
+            <div class="h-1 w-16 bg-[#14F195] mx-auto rounded-full"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="glass-card p-10 flex flex-col justify-between border-t-4 border-t-gray-700">
                 <div>
-                    <h4 class="text-2xl font-black italic mb-2 text-gray-400">游民合规版</h4>
-                    <div class="text-3xl font-black text-white mb-8">¥4,999 <span class="text-xs text-gray-500 font-normal">/ 首年</span></div>
-                    <ul class="text-sm text-gray-500 space-y-4 mb-10">
-                        <li class="flex items-start gap-3"><i class="fa-solid fa-check text-[#14F195] mt-1"></i>15% 个税优惠认定</li>
-                        <li class="flex items-start gap-3"><i class="fa-solid fa-check text-[#14F195] mt-1"></i>合规办公地址挂靠</li>
+                    <h4 class="text-2xl font-black italic mb-2 text-gray-400">NOMAD / 游民版</h4>
+                    <div class="text-4xl font-black text-white mb-8 tracking-tight">¥4,999 <span class="text-xs text-gray-500 font-normal tracking-normal">/ 年</span></div>
+                    <ul class="text-sm text-gray-400 space-y-5 mb-10">
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check text-[#14F195] mt-1"></i>15% 个人所得税优惠认定</li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check text-[#14F195] mt-1"></i>远程办公地址合规挂靠</li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check text-[#14F195] mt-1"></i>数字游民社群准入</li>
                     </ul>
                 </div>
-                <button onclick="openModal('applyModal')" class="w-full py-4 rounded-2xl border border-white/10 text-[10px] font-black uppercase tracking-widest hover:bg-white/5 transition">选择 Nomad</button>
+                <button onclick="openModal('applyModal')" class="w-full py-4 rounded-xl border border-white/10 text-[11px] font-black uppercase tracking-widest hover:bg-white/5 transition text-gray-300">选择此方案</button>
             </div>
-            <div class="glass-card p-10 flex flex-col justify-between border-b-4 border-b-[#14F195] relative overflow-hidden">
-                <div class="absolute top-0 right-0 bg-[#14F195] text-black text-[9px] font-black px-6 py-2 uppercase tracking-tighter transform rotate-45 translate-x-5 translate-y-3">Recommended</div>
+            
+            <div class="glass-card p-10 flex flex-col justify-between border-t-4 border-t-[#14F195] relative bg-gradient-to-b from-[#14F195]/5 to-transparent">
+                <div class="absolute top-5 right-5 bg-[#14F195] text-black text-[9px] font-black px-3 py-1 uppercase tracking-wider rounded-sm">Most Popular</div>
                 <div>
-                    <h4 class="text-2xl font-black italic mb-2 text-[#14F195]">封关实体版</h4>
-                    <div class="text-3xl font-black text-white mb-8">¥12,800 <span class="text-xs text-gray-500 font-normal">/ 首年</span></div>
-                    <ul class="text-sm text-gray-200 space-y-4 mb-10">
-                        <li class="flex items-start gap-3"><i class="fa-solid fa-check text-[#14F195] mt-1"></i>实体公司注册 + 地址</li>
-                        <li class="flex items-start gap-3"><i class="fa-solid fa-check text-[#14F195] mt-1"></i>EF 电子围栏账户开立</li>
+                    <h4 class="text-2xl font-black italic mb-2 text-[#14F195]">ENTITY / 封关实体版</h4>
+                    <div class="text-4xl font-black text-white mb-8 tracking-tight">¥12,800 <span class="text-xs text-gray-500 font-normal tracking-normal">/ 年</span></div>
+                    <ul class="text-sm text-gray-200 space-y-5 mb-10 font-medium">
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check text-[#14F195] mt-1"></i>全资子公司注册 + 实体地址</li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check text-[#14F195] mt-1"></i>EF 电子围栏账户开立协助</li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check text-[#14F195] mt-1"></i>“零关税”设备进口申报</li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check text-[#14F195] mt-1"></i>银行对公户加急预约</li>
                     </ul>
                 </div>
-                <button onclick="openModal('applyModal')" class="w-full py-4 rounded-2xl bg-[#14F195] text-black text-[10px] font-black uppercase tracking-widest shadow-xl shadow-[#14F195]/20 hover:scale-105 transition">选择 Pioneer</button>
+                <button onclick="openModal('applyModal')" class="w-full py-4 rounded-xl bg-[#14F195] text-black text-[11px] font-black uppercase tracking-widest shadow-lg shadow-[#14F195]/20 hover:scale-105 transition">立即签约入驻</button>
             </div>
-            <div class="glass-card p-10 flex flex-col justify-between border-b-4 border-b-[#9945FF]">
+            
+            <div class="glass-card p-10 flex flex-col justify-between border-t-4 border-t-[#9945FF]">
                 <div>
-                    <h4 class="text-2xl font-black italic mb-2 text-[#9945FF]">Solana 生态版</h4>
-                    <div class="text-3xl font-black text-white mb-8 italic">定制化咨询</div>
-                    <ul class="text-sm text-gray-500 space-y-4 mb-10">
-                        <li class="flex items-start gap-3"><i class="fa-solid fa-check text-[#9945FF] mt-1"></i>RWA 跨境架构法律意见</li>
-                        <li class="flex items-start gap-3"><i class="fa-solid fa-check text-[#9945FF] mt-1"></i>验证节点托管与运维</li>
+                    <h4 class="text-2xl font-black italic mb-2 text-[#9945FF]">ECO / 生态定制版</h4>
+                    <div class="text-4xl font-black text-white mb-8 tracking-tight italic">Talk to Us</div>
+                    <ul class="text-sm text-gray-400 space-y-5 mb-10">
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check text-[#9945FF] mt-1"></i>RWA 跨境法律架构设计</li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check text-[#9945FF] mt-1"></i>Solana 验证节点代运维</li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check text-[#9945FF] mt-1"></i>基金会 Grants 申请辅导</li>
                     </ul>
                 </div>
-                <button onclick="openModal('applyModal')" class="w-full py-4 rounded-2xl border border-[#9945FF]/30 text-[10px] font-black uppercase tracking-widest text-[#9945FF] hover:bg-[#9945FF]/10 transition">联系专家</button>
+                <button onclick="openModal('applyModal')" class="w-full py-4 rounded-xl border border-[#9945FF]/30 text-[11px] font-black uppercase tracking-widest text-[#9945FF] hover:bg-[#9945FF]/10 transition">预约专家咨询</button>
             </div>
         </div>
     </section>
 
-    <footer class="py-24 border-t border-white/5 bg-black/80 px-6">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16 text-left">
+    <footer class="py-20 border-t border-white/5 bg-black/60 px-6 backdrop-blur-lg">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 text-left">
             <div class="space-y-6">
                 <div class="flex items-center gap-3">
-                    <div class="bg-white rounded-xl p-2 w-fit"><img src="logo-solana.webp" alt="Logo" class="h-8 w-auto"></div>
-                    <span class="text-white font-black tracking-tighter text-xl leading-none">海南省索拉纳<br>商务咨询中心</span>
+                    <div class="bg-white rounded-lg p-1.5 w-fit"><img src="logo-solana.webp" alt="Logo" class="h-6 w-auto"></div>
+                    <span class="text-white font-bold tracking-tight text-lg">海南省索拉纳<br>商务咨询中心</span>
                 </div>
-                <p class="text-gray-500 text-xs leading-relaxed max-w-xs font-light">助力 Web3 企业在“境内关外”模式下合规增长。</p>
+                <p class="text-gray-500 text-xs leading-relaxed max-w-xs">
+                    专注于自贸港封关运作后的数字经济合规落地。
+                </p>
             </div>
-            <div class="space-y-6">
-                <h5 class="text-white text-[10px] font-black uppercase tracking-[0.4em] mb-8">Contact / 联系方式</h5>
-                <div class="space-y-5">
-                    <a href="tel:18117790507" class="flex items-center gap-5 text-gray-400 hover:text-[#14F195] transition">
-                        <div class="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-lg"><i class="fa-solid fa-phone"></i></div>
-                        <div><p class="text-[10px] uppercase font-bold text-gray-600 mb-0.5">Business Call</p><p class="font-mono text-white">181 1779 0507</p></div>
-                    </a>
-                    <a href="mailto:kosok@solana-hainan.com" class="flex items-center gap-5 text-gray-400 hover:text-[#9945FF] transition">
-                        <div class="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-lg"><i class="fa-solid fa-envelope"></i></div>
-                        <div><p class="text-[10px] uppercase font-bold text-gray-600 mb-0.5">Email</p><p class="font-mono text-white underline decoration-dotted">kosok@solana-hainan.com</p></div>
-                    </a>
+            
+            <div class="space-y-4">
+                <h5 class="text-gray-400 text-[10px] font-bold uppercase tracking-widest mb-4">联系方式</h5>
+                <a href="tel:18117790507" class="flex items-center gap-3 text-gray-300 hover:text-[#14F195] transition w-fit">
+                    <i class="fa-solid fa-phone text-sm"></i> <span class="font-mono">181 1779 0507</span>
+                </a>
+                <a href="mailto:kosok@solana-hainan.com" class="flex items-center gap-3 text-gray-300 hover:text-[#9945FF] transition w-fit">
+                    <i class="fa-solid fa-envelope text-sm"></i> <span class="font-mono">kosok@solana-hainan.com</span>
+                </a>
+            </div>
+            
+            <div class="space-y-4">
+                <h5 class="text-gray-400 text-[10px] font-bold uppercase tracking-widest mb-4">企业资质</h5>
+                <div class="text-[11px] text-gray-500 font-mono space-y-1">
+                    <p>统一社会信用代码</p>
+                    <p class="text-gray-300">91460000MAK2R6B75</p>
                 </div>
-            </div>
-            <div class="space-y-6 text-[12px] text-gray-500 font-medium">
-                <h5 class="text-white text-[10px] font-black uppercase tracking-[0.4em] mb-8">Corporate</h5>
-                <p class="text-gray-300 uppercase">海南省索拉纳商务咨询中心</p>
-                <p class="font-mono tracking-tighter">代码: 91460000MAK2R6B75</p>
-                <p class="pt-6"><span class="px-3 py-1 bg-white/5 rounded-full text-[9px] uppercase tracking-widest border border-white/5">Hainan 2026</span></p>
+                <p class="text-[10px] text-gray-600 mt-4 uppercase">© 2026 Hainan Solana Consulting</p>
             </div>
         </div>
     </footer>
 
     <div id="applyModal" class="modal-overlay" onclick="if(event.target==this) closeModal('applyModal')">
-        <div class="modal-content bg-black border border-white/10 p-12 rounded-[40px] w-full max-w-lg relative" onclick="event.stopPropagation()">
-            <button onclick="closeModal('applyModal')" class="absolute top-8 right-8 text-gray-500 hover:text-white transition"><i class="fa-solid fa-xmark text-2xl"></i></button>
+        <div class="modal-content bg-[#0a0a0a] border border-white/10 p-10 rounded-[30px] w-full max-w-md relative shadow-2xl shadow-[#14F195]/10">
+            <button onclick="closeModal('applyModal')" class="absolute top-6 right-6 text-gray-600 hover:text-white transition"><i class="fa-solid fa-xmark text-xl"></i></button>
+            
             <div class="form-step active" id="step1">
-                <h2 class="text-3xl font-black italic uppercase solana-gradient bg-clip-text text-transparent mb-8">Apply</h2>
-                <input type="text" placeholder="您的企业名称/所属行业" class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 outline-none text-white text-sm focus:border-[#14F195] mb-6">
-                <button onclick="nextStep(2)" class="w-full bg-white text-black py-5 rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-[#14F195] transition">下一步</button>
+                <h2 class="text-2xl font-black italic uppercase text-white mb-2">Application</h2>
+                <p class="text-gray-500 text-xs mb-8">请填写主体信息以匹配最佳落地政策</p>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-gray-500 text-[10px] uppercase font-bold mb-1">Entity Name / 公司或项目名</label>
+                        <input type="text" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none text-white text-sm focus:border-[#14F195] transition">
+                    </div>
+                    <div>
+                        <label class="block text-gray-500 text-[10px] uppercase font-bold mb-1">Segment / 赛道 (e.g. DeFi, RWA)</label>
+                        <input type="text" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none text-white text-sm focus:border-[#14F195] transition">
+                    </div>
+                </div>
+                <button onclick="nextStep(2)" class="w-full bg-white text-black py-4 rounded-xl font-bold uppercase text-xs tracking-widest hover:bg-[#14F195] transition mt-8">下一步</button>
             </div>
+            
             <div class="form-step" id="step2">
-                <h2 class="text-3xl font-black italic uppercase text-[#14F195] mb-8">Connect</h2>
-                <input type="text" id="finalContact" placeholder="手机/微信/Telegram" class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 outline-none text-white text-sm focus:border-[#14F195] mb-6">
-                <button onclick="submitFinal()" class="w-full solana-gradient text-black py-5 rounded-2xl font-black uppercase text-xs tracking-widest">完成申请</button>
+                <h2 class="text-2xl font-black italic uppercase text-white mb-2">Contact</h2>
+                <p class="text-gray-500 text-xs mb-8">资深顾问将在 12 小时内与您联系</p>
+                <div>
+                    <label class="block text-gray-500 text-[10px] uppercase font-bold mb-1">Mobile or WeChat / 联系方式</label>
+                    <input type="text" id="finalContact" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none text-white text-sm focus:border-[#14F195] transition">
+                </div>
+                <button onclick="submitFinal()" class="w-full solana-gradient text-black py-4 rounded-xl font-bold uppercase text-xs tracking-widest shadow-lg hover:shadow-[#14F195]/30 transition mt-8">确认提交</button>
             </div>
-            <div class="form-step text-center py-10" id="step3">
-                <div class="text-[#14F195] text-7xl mb-6 animate-bounce"><i class="fa-solid fa-circle-check"></i></div>
-                <h3 class="text-2xl font-black text-white italic uppercase">Success</h3>
-                <p class="text-gray-500 text-sm mt-3">顾问将在 12 小时内主动联系您。</p>
+            
+            <div class="form-step text-center py-8" id="step3">
+                <div class="w-16 h-16 bg-[#14F195]/10 rounded-full flex items-center justify-center mx-auto mb-6 text-[#14F195] text-2xl">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2">提交成功</h3>
+                <p class="text-gray-500 text-xs">我们已收到您的入驻意向。</p>
             </div>
         </div>
     </div>
 
     <div id="taxModal" class="modal-overlay" onclick="if(event.target==this) closeModal('taxModal')">
-        <div class="modal-content bg-black border border-white/10 p-12 rounded-[40px] w-full max-w-lg relative">
-            <button onclick="closeModal('taxModal')" class="absolute top-8 right-8 text-gray-500 hover:text-white transition"><i class="fa-solid fa-xmark text-2xl"></i></button>
-            <h3 class="text-white font-black mb-10 uppercase tracking-tighter text-2xl">海南 15% 节税测算</h3>
-            <input type="number" id="taxIncome" placeholder="输入预计年收入 (CNY)" class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 outline-none text-white mb-8 text-xl font-mono">
-            <button onclick="alert('测算已同步，请在申请表单留下联系方式以获取完整报告。')" class="w-full solana-gradient text-black py-5 rounded-2xl font-black uppercase text-xs tracking-widest">获取对比分析</button>
+        <div class="modal-content bg-[#0a0a0a] border border-white/10 p-10 rounded-[30px] w-full max-w-md relative">
+            <button onclick="closeModal('taxModal')" class="absolute top-6 right-6 text-gray-600 hover:text-white transition"><i class="fa-solid fa-xmark text-xl"></i></button>
+            <h3 class="text-white font-bold mb-8 uppercase tracking-wider text-lg">节税计算器 (2026版)</h3>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-gray-500 text-[10px] uppercase font-bold mb-1">Annual Income / 预计年收入 (CNY)</label>
+                    <input type="number" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none text-white font-mono text-lg focus:border-[#14F195]">
+                </div>
+            </div>
+            <button onclick="alert('数据模型已调用。请在入驻通道留下联系方式，我们将为您发送完整的《海南自贸港 vs 香港/新加坡 税筹对比报告》。')" class="w-full solana-gradient text-black py-4 rounded-xl font-bold uppercase text-xs tracking-widest mt-8">生成对比报告</button>
         </div>
     </div>
 
     <script>
+        // 核心逻辑：倒计时与弹窗控制
         const launchDate = new Date("Dec 18, 2025").getTime();
         function updateOpDays() {
             const now = new Date().getTime();
-            document.getElementById("opDays").innerText = Math.floor((now - launchDate)/(1000*60*60*24));
+            const days = Math.floor((now - launchDate)/(1000*60*60*24));
+            document.getElementById("opDays").innerText = days;
         }
         updateOpDays();
-        setInterval(updateOpDays, 3600000);
+        
         function openModal(id) { document.getElementById(id).style.display = 'flex'; }
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
-        function nextStep(n) { document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active')); document.getElementById('step'+n).classList.add('active'); }
-        function submitFinal() { if(document.getElementById('finalContact').value) nextStep(3); }
+        
+        function nextStep(n) { 
+            document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active')); 
+            document.getElementById('step'+n).classList.add('active'); 
+        }
+        
+        function submitFinal() { 
+            const contact = document.getElementById('finalContact').value;
+            if(contact) {
+                // 模拟数据提交延迟，增加真实感
+                const btn = event.target;
+                const originalText = btn.innerText;
+                btn.innerText = "Processing...";
+                setTimeout(() => {
+                    nextStep(3);
+                    btn.innerText = originalText;
+                }, 800);
+            } else {
+                alert("请输入联系方式以便顾问联系您");
+            }
+        }
     </script>
 </body>
 </html>
