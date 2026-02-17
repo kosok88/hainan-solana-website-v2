@@ -2,67 +2,24 @@
 <html lang="zh-CN" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>海南省索拉纳商务咨询中心 | Solana Hainan Consulting</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        /* 1. 系统级视觉基调：深邃宇宙 + 极光 */
-        body { 
-            background-color: #050505; 
-            background-image: 
-                radial-gradient(circle at 50% 0%, #1a103c 0%, transparent 60%),
-                radial-gradient(circle at 100% 50%, rgba(20, 241, 149, 0.05) 0%, transparent 40%);
-            color: white; 
-            font-family: 'Inter', 'Noto Sans SC', sans-serif; 
-            overflow-x: hidden; /* 防止横向滚动条 */
-        }
-
-        /* 2. 玻璃拟态卡片系统：统一的质感 */
-        .glass-card { 
-            background: rgba(255, 255, 255, 0.03); 
-            backdrop-filter: blur(16px); 
-            border: 1px solid rgba(255, 255, 255, 0.1); 
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        /* 悬停交互反馈 */
-        .glass-card:hover { 
-            background: rgba(255, 255, 255, 0.06); 
-            border-color: rgba(20, 241, 149, 0.3);
-            transform: translateY(-4px);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-        }
-
-        /* 3. 品牌色渐变文字 */
-        .gradient-text { 
-            background: linear-gradient(135deg, #14F195 0%, #9945FF 100%); 
-            -webkit-background-clip: text; 
-            -webkit-text-fill-color: transparent; 
-        }
-
-        /* 4. 辅助工具类 */
-        .hidden { display: none !important; }
-        /* 解决锚点定位被导航栏遮挡的问题 */
-        .scroll-offset { scroll-margin-top: 100px; }
-    </style>
-<head>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
     <title>海南省索拉纳商务咨询中心 | Solana Hainan | 2026 Web3 合规门户</title>
     <meta name="description" content="2026 海南封关运作 Web3 官方合规门户。提供 EF 电子围栏账户开立、RWA 资产上链架构及 15% 双重所得税优惠筹划服务。">
     <meta name="keywords" content="海南Web3, Solana Hainan, 海南自贸港, EF账户, 15%所得税, RWA, 离岸金融, 数字游民">
     <meta name="author" content="Solana Hainan Business Consulting Center">
-
+    
     <meta property="og:type" content="website">
     <meta property="og:title" content="海南省索拉纳商务咨询中心 | 2026 Web3 合规门户">
     <meta property="og:description" content="深耕海南自贸港，提供 EF 账户、RWA 架构及 15% 税务筹划全流程落地解决方案。">
-    <meta property="og:image" content="poster.jpg"> <meta property="og:url" content="https://www.solana-hainan.com"> <script src="https://cdn.tailwindcss.com"></script>
+    <meta property="og:image" content="poster.jpg">
+    <meta property="og:url" content="https://www.solana-hainan.com">
+
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+SC:wght@300;500;700&display=swap" rel="stylesheet">
 
     <style>
-        /* 基础环境 */
+        /* 基础环境：深邃宇宙背景 */
         body { 
             background-color: #050505; 
             background-image: 
@@ -70,18 +27,20 @@
                 radial-gradient(circle at 90% 90%, rgba(20, 241, 149, 0.03) 0%, transparent 40%);
             color: white; 
             font-family: 'Inter', 'Noto Sans SC', sans-serif; 
-            overflow-x: hidden; /* 防止移动端横向抖动 */
-            -webkit-font-smoothing: antialiased; /* 文字抗锯齿，更清晰 */
+            overflow-x: hidden; 
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* 玻璃拟态系统 */
+        /* 玻璃拟态卡片系统 */
         .glass-card { 
             background: rgba(255, 255, 255, 0.03); 
             backdrop-filter: blur(16px); 
-            -webkit-backdrop-filter: blur(16px); /* 兼容 Safari */
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.1); 
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
+        
+        /* 交互反馈 */
         .glass-card:hover { 
             background: rgba(255, 255, 255, 0.06); 
             border-color: rgba(20, 241, 149, 0.3);
@@ -89,18 +48,74 @@
             box-shadow: 0 10px 40px rgba(0,0,0,0.5);
         }
 
-        /* 品牌色系统 */
+        /* 品牌色渐变 */
         .gradient-text { 
             background: linear-gradient(135deg, #14F195 0%, #9945FF 100%); 
             -webkit-background-clip: text; 
             -webkit-text-fill-color: transparent; 
         }
 
-        /* 功能类 */
+        /* 工具类 */
         .hidden { display: none !important; }
-        .scroll-offset { scroll-margin-top: 100px; } /* 锚点定位修正 */
+        .scroll-offset { scroll-margin-top: 100px; }
     </style>
 </head>
+<body class="antialiased selection:bg-[#14F195] selection:text-black">
+
+    <nav class="fixed w-full z-50 top-0 bg-black/80 backdrop-blur-xl border-b border-white/5 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="flex items-center gap-4 cursor-pointer" onclick="window.scrollTo(0,0)">
+                <img src="高清晰3.jpg" alt="Solana Hainan Logo" class="h-10 md:h-12 w-auto rounded-lg shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+                <div class="flex flex-col border-l border-white/20 pl-4">
+                    <span class="font-bold tracking-tight text-sm md:text-base lang-cn text-gray-100">海南省索拉纳商务咨询中心</span>
+                    <span class="font-bold tracking-tight text-xs md:text-sm lang-en hidden text-gray-300">Solana Hainan Business Consulting Center</span>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-4 md:gap-8">
+                <a href="tel:18117790507" class="group flex items-center gap-2 transition-all">
+                    <div class="p-2 bg-white/5 rounded-full group-hover:bg-[#14F195] transition-colors">
+                        <svg class="w-4 h-4 text-[#14F195] group-hover:text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                    </div>
+                    <span class="hidden md:block font-bold text-[#14F195] text-lg group-hover:text-white transition-colors">181-1779-0507</span>
+                </a>
+                <button onclick="toggleLang()" class="px-4 py-1.5 rounded-full border border-white/20 text-xs font-bold hover:bg-white hover:text-black transition-all text-gray-300 tracking-wider">
+                    <span id="btn-text">EN / 中文</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative pt-40 pb-20 px-6 text-center">
+        <div class="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-[#9945FF]/20 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
+
+        <div class="max-w-5xl mx-auto relative z-10">
+            <div class="inline-block px-4 py-1.5 mb-8 rounded-full border border-[#14F195]/30 bg-[#14F195]/10 text-[#14F195] text-xs font-bold tracking-[0.2em] uppercase">
+                Official Compliance Partner
+            </div>
+            <h1 class="text-5xl md:text-8xl font-extrabold mb-8 leading-tight tracking-tighter text-white">
+                <span class="lang-cn">2026 封关运作<br><span class="gradient-text">Web3 离岸合规门户</span></span>
+                <span class="lang-en hidden">2026 Customs Closure<br><span class="gradient-text">Web3 Offshore Gateway</span></span>
+            </h1>
+            
+            <p class="text-lg md:text-xl text-gray-400 mb-12 max-w-3xl mx-auto font-light leading-relaxed">
+                <span class="lang-cn">深耕海南自贸港，提供 <strong class="text-white">EF 电子围栏账户</strong>、<strong class="text-white">RWA 资产架构</strong> 及 <strong class="text-white">15% 税务筹划</strong> 全流程落地解决方案。</span>
+                <span class="lang-en hidden">Providing end-to-end solutions for EF Accounts, RWA Structuring, and 15% Tax Optimization in Hainan Free Trade Port.</span>
+            </p>
+
+            <div class="flex flex-col sm:flex-row justify-center gap-5">
+                <button onclick="scrollToId('services')" class="px-10 py-5 bg-white text-black font-bold rounded-full hover:bg-gray-200 transition-all shadow-lg">
+                    <span class="lang-cn">探索核心业务</span>
+                    <span class="lang-en hidden">Explore Services</span>
+                </button>
+                <button onclick="scrollToId('tax-test')" class="px-10 py-5 bg-[#14F195] text-black font-bold rounded-full hover:scale-105 transition-all shadow-[0_0_25px_rgba(20,241,149,0.3)]">
+                    <span class="lang-cn">15% 免税资格测试</span>
+                    <span class="lang-en hidden">Tax Incentive Test</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
     <section id="services" class="py-24 px-6 scroll-offset relative">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
@@ -124,125 +139,4 @@
                     <div class="text-[#9945FF] text-5xl mb-6 font-thin">％</div>
                     <h3 class="text-2xl font-bold mb-4 text-white group-hover:text-[#9945FF] transition-colors">15% Tax Policy</h3>
                     <p class="text-gray-400 text-sm leading-7 group-hover:text-gray-200">
-                        <span class="lang-cn">实质性运营筹划：深度对接海南所得税优惠政策。协助企业设计架构，锁定企业所得税(CIT)与个人所得税(PIT)双重 15% 封顶。</span>
-                        <span class="lang-en hidden">15% Tax: Strategic planning for Substantial Operations to secure 15% corporate and personal tax caps.</span>
-                    </p>
-                </div>
-
-                <div class="glass-card p-10 rounded-3xl relative overflow-hidden group">
-                    <div class="absolute top-0 left-0 w-1 h-full bg-white"></div>
-                    <div class="text-white text-5xl mb-6 font-thin">RWA</div>
-                    <h3 class="text-2xl font-bold mb-4 text-white transition-colors">RWA Infra</h3>
-                    <p class="text-gray-400 text-sm leading-7 group-hover:text-gray-200">
-                        <span class="lang-cn">资产上链咨询：在海南自贸港监管沙盒框架内，为房地产、碳信用等 RWA 项目提供合规确权、法律结构与技术架构支持。</span>
-                        <span class="lang-en hidden">RWA: Legal and financial structuring for asset tokenization under the Hainan FTP regulatory sandbox.</span>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="tax-test" class="py-20 px-6 scroll-offset">
-        <div class="max-w-4xl mx-auto glass-card p-12 md:p-16 rounded-[40px] text-center border-t border-[#14F195]/50 relative overflow-hidden">
-            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-gradient-to-b from-[#14F195]/5 to-transparent pointer-events-none"></div>
-            
-            <div class="relative z-10">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">
-                    <span class="lang-cn">15% 优惠税率资格自测</span>
-                    <span class="lang-en hidden">Eligibility Pre-check</span>
-                </h2>
-                <p class="text-gray-300 mb-10 text-lg max-w-2xl mx-auto">
-                    <span class="lang-cn">您的项目是否符合海南“实质性运营”标准？我们的 AI 辅助系统可快速评估合规风险。</span>
-                    <span class="lang-en hidden">Evaluate your project's compliance with Hainan's standards in 30 seconds.</span>
-                </p>
-                
-                <button onclick="scrollToId('contact')" class="group relative inline-flex items-center justify-center px-12 py-5 text-lg font-black text-[#14F195] transition-all duration-200 bg-transparent border-2 border-[#14F195] rounded-xl hover:bg-[#14F195] hover:text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#14F195] focus:ring-offset-black">
-                    <span class="lang-cn">开始免费评估 &rarr;</span>
-                    <span class="lang-en hidden">Start Assessment &rarr;</span>
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-20 px-6 text-center">
-        <div class="max-w-5xl mx-auto">
-            <h3 class="text-xs font-bold mb-10 text-[#9945FF] uppercase tracking-[0.4em] flex items-center justify-center gap-4">
-                <span class="h-px w-12 bg-[#9945FF]"></span>
-                <span class="lang-cn">2026 官方内参</span>
-                <span class="lang-en hidden">2026 Official Guide</span>
-                <span class="h-px w-12 bg-[#9945FF]"></span>
-            </h3>
-            
-            <div class="p-4 bg-white/5 rounded-3xl inline-block backdrop-blur-sm">
-                <img src="poster.jpg" alt="Guidebook Poster" class="w-full max-w-3xl rounded-xl shadow-2xl cursor-pointer hover:scale-[1.01] transition-transform duration-500" onclick="scrollToId('contact')">
-            </div>
-            
-            <p class="mt-8 text-gray-500 text-xs tracking-widest uppercase">
-                <span class="lang-cn">点击图片预约完整版 PDF</span>
-                <span class="lang-en hidden">Click to request full PDF</span>
-            </p>
-        </div>
-    </section>
-
-    <footer id="contact" class="py-24 border-t border-white/10 bg-[#020202] scroll-offset">
-        <div class="max-w-6xl mx-auto px-6 text-center">
-            <h2 class="text-3xl md:text-5xl font-bold mb-16 text-white tracking-tight">
-                <span class="lang-cn">联系顾问 · 开启合规</span>
-                <span class="lang-en hidden">Contact Advisor</span>
-            </h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <a href="tel:18117790507" class="glass-card p-10 rounded-2xl group hover:bg-[#14F195] transition-colors">
-                    <p class="text-gray-500 text-xs mb-4 uppercase tracking-widest group-hover:text-black/60">Call Hotline</p>
-                    <p class="font-bold text-2xl text-[#14F195] group-hover:text-black">181-1779-0507</p>
-                </a>
-                
-                <div class="glass-card p-10 rounded-2xl group hover:bg-white transition-colors">
-                    <p class="text-gray-500 text-xs mb-4 uppercase tracking-widest group-hover:text-black/60">WeChat / TG</p>
-                    <p class="font-bold text-xl text-white group-hover:text-black">@SolanaHainan</p>
-                </div>
-                
-                <div class="glass-card p-10 rounded-2xl group hover:bg-[#9945FF] transition-colors">
-                    <p class="text-gray-500 text-xs mb-4 uppercase tracking-widest group-hover:text-white/80">Email</p>
-                    <p class="font-bold text-lg text-white">kosok@solana-hainan.com</p>
-                </div>
-            </div>
-            
-            <div class="mt-24 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-gray-600 text-[10px] uppercase tracking-widest gap-4">
-                <p>&copy; 2026 Solana Hainan Business Consulting Center.</p>
-                <p>Designed for Web3 Compliance.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // 1. 语言切换逻辑 (持久化状态)
-        let isCN = true;
-        function toggleLang() {
-            isCN = !isCN;
-            
-            // 切换 CSS 类控制显示/隐藏
-            document.querySelectorAll('.lang-cn').forEach(el => {
-                el.classList.toggle('hidden', !isCN);
-            });
-            document.querySelectorAll('.lang-en').forEach(el => {
-                el.classList.toggle('hidden', isCN);
-            });
-            
-            // 按钮文字更新
-            document.getElementById('btn-text').innerText = isCN ? 'EN / 中文' : '中文 / EN';
-        }
-
-        // 2. 平滑滚动逻辑 (兼容性增强)
-        function scrollToId(id) {
-            const element = document.getElementById(id);
-            if (element) {
-                // 使用 scrollIntoView 实现原生平滑滚动
-                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            } else {
-                console.error("目标区块不存在: " + id);
-            }
-        }
-    </script>
-</body>
-</html>
+                        <span class="lang-cn">实质性运营筹划：深度对接海南所得税优惠政策。协助企业设计架构，锁定企业所得税(CIT)与个人所得税(PIT)双重 15% 封顶
