@@ -157,7 +157,7 @@
                 <span class="lang-en hidden">—— Official Guide ——</span>
             </h3>
             <div class="p-4 bg-white/5 rounded-[2rem] inline-block backdrop-blur-sm border border-white/10">
-                <img src="poster.jpg" alt="Poster" class="w-full max-w-3xl mx-auto rounded-3xl shadow-2xl cursor-pointer hover:scale-[1.005] transition-all" onclick="scrollToId('contact')">
+                <img id="poster-img" src="poster_cn.jpg" onerror="this.src='poster.jpg'" alt="Poster" class="w-full max-w-3xl mx-auto rounded-3xl shadow-2xl cursor-pointer hover:scale-[1.005] transition-all" onclick="scrollToId('contact')">
             </div>
             <p class="mt-8 text-gray-500 text-xs tracking-widest uppercase">
                 <span class="lang-cn">点击图片预约完整版《2026 封关运作白皮书》PDF</span>
@@ -197,7 +197,6 @@
         function updateCounter() {
             const startDate = new Date('2025-12-18T00:00:00').getTime();
             const now = new Date().getTime();
-            // 防止未到时间显示负数，虽然现在已经是2026年了，肯定为正
             const diff = Math.max(0, now - startDate);
             const days = Math.floor(diff / (1000 * 60 * 60 * 24));
             document.getElementById('day-counter').innerText = `${days} DAYS`;
@@ -205,21 +204,34 @@
         setInterval(updateCounter, 1000);
         updateCounter();
 
-        // 2. 全站语言切换
+        // 2. 全站语言切换 (含海报切换逻辑)
         let isCN = true;
         function toggleLang() {
             isCN = !isCN;
+            
+            // 文本切换
             document.querySelectorAll('.lang-cn').forEach(el => el.classList.toggle('hidden', !isCN));
             document.querySelectorAll('.lang-en').forEach(el => el.classList.toggle('hidden', isCN));
+
+            // 海报图片切换
+            const poster = document.getElementById('poster-img');
+            if (isCN) {
+                // 切换回中文：优先加载 poster_cn.jpg，如果文件不存在则回退到 poster.jpg
+                poster.src = "poster_cn.jpg";
+                poster.onerror = function() { this.src = "poster.jpg"; };
+            } else {
+                // 切换到英文：加载 poster.jpg
+                poster.src = "poster.jpg";
+            }
         }
 
         // 3. 税务测算
         function calculateTax() {
             const income = parseFloat(document.getElementById('incomeInput').value);
             if(!income) return;
-            const saving = income * 0.18; // 简易算法演示
+            const saving = income * 0.18; 
             document.getElementById('savedMoney').innerText = saving.toFixed(2) + " 万";
-            document.getElementById('saving-bar').style.width = '66%'; // 视觉动效
+            document.getElementById('saving-bar').style.width = '66%'; 
         }
 
         // 4. 平滑滚动
