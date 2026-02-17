@@ -4,25 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <title>海南省索拉纳商务咨询中心 | Solana Hainan | 2026 Independent Customs Operations</title>
-    <meta name="description" content="2026 海南封关运作 Web3 官方合规门户。提供 EF 电子围栏账户、RWA 资产上链及 15% 所得税优惠。">
-    <meta name="keywords" content="海南Web3, Solana Hainan, 封关运作, EF账户, 15%所得税, RWA, 离岸金融">
+    <title>海南省索拉纳商务咨询中心 | 2026 Independent Customs Operations</title>
+    <meta name="description" content="2026 海南封关运作 Web3 官方合规门户。提供 EF 账户、RWA 资产上链及 15% 税务筹划。">
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+SC:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+SC:wght@300;500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 
     <style>
         body { 
             background-color: #050505; 
             background-image: radial-gradient(circle at 50% 0%, #1a103c 0%, transparent 60%);
             color: white; font-family: 'Inter', 'Noto Sans SC', sans-serif; -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
         }
-        .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.4s ease; }
-        .glass-card:hover { border-color: rgba(20, 241, 149, 0.3); transform: translateY(-4px); }
+        .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.1); }
         .gradient-text { background: linear-gradient(135deg, #14F195 0%, #9945FF 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        /* 强化版计时器样式 */
+        .timer-glow {
+            font-family: 'JetBrains Mono', monospace;
+            text-shadow: 0 0 20px rgba(20, 241, 149, 0.4);
+            letter-spacing: 2px;
+        }
         .hidden { display: none !important; }
-        #countdown { font-variant-numeric: tabular-nums; text-shadow: 0 0 10px rgba(20, 241, 149, 0.5); }
         .scroll-offset { scroll-margin-top: 100px; }
     </style>
 </head>
@@ -32,75 +35,66 @@
         <div class="max-w-7xl mx-auto px-6 h-full flex justify-between items-center">
             <div class="flex items-center gap-4 cursor-pointer" onclick="window.scrollTo(0,0)">
                 <img src="高清晰3.jpg" alt="Logo" class="h-10 w-auto rounded">
-                <div class="hidden md:block border-l border-white/20 pl-4">
-                    <div class="text-[10px] text-[#14F195] font-bold tracking-[0.2em] uppercase">Countdown to Independent Customs Operations</div>
-                    <div id="countdown" class="text-sm font-mono text-white">000D : 00H : 00M : 00S</div>
-                </div>
+                <span class="font-bold tracking-tighter text-sm md:text-base border-l border-white/20 pl-4">海南省索拉纳商务咨询</span>
             </div>
             <div class="flex items-center gap-6">
-                <a href="tel:18117790507" class="text-[#14F195] font-bold flex items-center gap-2">
-                    <span class="hidden sm:inline">181-1779-0507</span>
-                </a>
-                <button onclick="toggleLang()" class="px-4 py-1 border border-white/20 rounded-full text-xs font-bold hover:bg-white hover:text-black transition-all">
-                    <span id="btn-text">EN / 中文</span>
-                </button>
+                <a href="tel:18117790507" class="text-[#14F195] font-bold">181-1779-0507</a>
+                <button onclick="toggleLang()" class="px-3 py-1 border border-white/20 rounded-full text-xs">EN / 中文</button>
             </div>
         </div>
     </nav>
 
-    <header class="relative pt-48 pb-24 px-6 text-center">
-        <div class="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-[#9945FF]/10 rounded-full blur-[120px] -z-10"></div>
+    <header class="relative pt-48 pb-24 px-6 text-center overflow-hidden">
+        <div class="absolute top-20 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-[#9945FF]/10 rounded-full blur-[120px] -z-10"></div>
+        
         <div class="max-w-5xl mx-auto">
+            <div class="inline-flex flex-col items-center mb-10 px-8 py-4 rounded-3xl bg-white/5 border border-[#14F195]/20">
+                <span class="text-[10px] text-[#14F195] font-black tracking-[0.4em] uppercase mb-2">Independent Customs Operations Countdown</span>
+                <div id="hero-countdown" class="text-3xl md:text-5xl font-bold timer-glow text-white">
+                    000 <span class="text-xs text-gray-500">DAYS</span> : 00 <span class="text-xs text-gray-500">HRS</span> : 00 <span class="text-xs text-gray-500">MIN</span> : 00 <span class="text-xs text-gray-500">SEC</span>
+                </div>
+            </div>
+
             <h1 class="text-5xl md:text-8xl font-extrabold mb-8 leading-tight tracking-tighter">
                 <span class="lang-cn">2026 <span class="gradient-text">全岛封关运作</span><br>Web3 离岸合规门户</span>
-                <span class="lang-en hidden">2026 <span class="gradient-text">Independent Customs Operations</span><br>Web3 Compliance Gateway</span>
+                <span class="lang-en hidden">2026 <span class="gradient-text">Customs Closure</span><br>Web3 Compliance Gateway</span>
             </h1>
+            
             <p class="text-lg md:text-xl text-gray-400 mb-12 max-w-3xl mx-auto font-light leading-relaxed">
-                <span class="lang-cn">深耕海南自贸港，提供 EF 电子围栏账户、RWA 资产架构及 15% 税务筹划落地解决方案。</span>
-                <span class="lang-en hidden">Deeply rooted in Hainan FTP, providing EF Accounts, RWA structuring, and 15% tax optimization solutions.</span>
+                <span class="lang-cn">官方定义：全岛独立海关运作 (Independent Customs Operations)。深耕自贸港，提供 EF 账户、RWA 架构及 15% 税务筹划落地。</span>
+                <span class="lang-en hidden">Deeply rooted in Hainan FTP, providing EF Accounts, RWA structuring, and 15% tax optimization.</span>
             </p>
+
             <div class="flex flex-col sm:flex-row justify-center gap-5">
-                <button onclick="scrollToId('tax-calc')" class="px-10 py-5 bg-[#14F195] text-black font-bold rounded-full hover:scale-105 transition-all">
-                    <span class="lang-cn">税务减免测算</span>
-                    <span class="lang-en hidden">Tax Saving Calc</span>
-                </button>
-                <button onclick="scrollToId('services')" class="px-10 py-5 bg-white/10 text-white font-bold rounded-full hover:bg-white/20 transition-all">
-                    <span class="lang-cn">探索核心引擎</span>
-                    <span class="lang-en hidden">Core Engines</span>
-                </button>
+                <button onclick="scrollToId('tax-calc')" class="px-10 py-5 bg-[#14F195] text-black font-bold rounded-full hover:scale-105 transition-all shadow-[0_0_30px_rgba(20,241,149,0.2)]">税务减免测算</button>
+                <button onclick="scrollToId('services')" class="px-10 py-5 bg-white/10 text-white font-bold rounded-full border border-white/10">核心引擎</button>
             </div>
         </div>
     </header>
 
     <section id="tax-calc" class="py-24 px-6 scroll-offset">
         <div class="max-w-4xl mx-auto glass-card rounded-[40px] p-10 md:p-16 relative overflow-hidden">
-            <div class="absolute top-0 right-0 p-10 opacity-5 text-8xl italic font-black">15%</div>
             <h2 class="text-3xl font-bold mb-10 flex items-center gap-3">
                 <span class="w-2 h-8 bg-[#14F195] rounded-full"></span>
-                <span class="lang-cn">所得税减免测算系统</span>
+                <span class="lang-cn">15% 所得税减免测算系统</span>
                 <span class="lang-en hidden">Tax Incentive Calculator</span>
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div class="space-y-6">
                     <div>
-                        <label class="block text-sm text-gray-400 mb-3">预估个人/企业年度收入 (单位: 万人民币)</label>
+                        <label class="block text-sm text-gray-400 mb-3">预估年度收入 (万人民币)</label>
                         <input type="number" id="incomeInput" placeholder="例如: 100" 
                                class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-[#14F195] text-xl transition-all">
                     </div>
-                    <button onclick="calculateTax()" class="w-full py-5 bg-gradient-to-r from-[#14F195] to-[#9945FF] text-black font-black rounded-2xl shadow-lg">
-                        <span class="lang-cn">执行系统测算</span>
-                        <span class="lang-en hidden">Calculate Now</span>
-                    </button>
+                    <button onclick="calculateTax()" class="w-full py-5 bg-gradient-to-r from-[#14F195] to-[#9945FF] text-black font-black rounded-2xl">执行系统测算</button>
                 </div>
                 <div class="bg-black/40 rounded-[32px] p-8 border border-white/5">
-                    <div class="space-y-4 mb-8">
-                        <div class="flex justify-between"><span class="text-gray-500">常规税率最高:</span><span class="text-red-400 font-bold">45% / 25%</span></div>
-                        <div class="flex justify-between"><span class="text-gray-500">海南自贸港:</span><span class="text-[#14F195] font-bold">15% (MAX)</span></div>
-                    </div>
-                    <div class="pt-6 border-t border-white/10">
-                        <div class="text-[10px] text-gray-500 mb-1 uppercase tracking-widest">Estimated Savings (Annual)</div>
-                        <div class="text-5xl font-black text-white">¥ <span id="savedMoney">0.00</span></div>
-                        <p class="text-[10px] text-gray-600 mt-4">*基于实质性运营及封关政策模型测算</p>
+                    <div class="pt-2">
+                        <div class="text-[10px] text-gray-500 mb-1 uppercase tracking-widest text-center">Estimated Annual Savings</div>
+                        <div class="text-5xl font-black text-center text-white mt-2">¥ <span id="savedMoney">0.00</span></div>
+                        <div class="mt-6 h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                            <div class="h-full bg-[#14F195] w-2/3 shadow-[0_0_10px_#14F195]"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -109,28 +103,21 @@
 
     <section id="services" class="py-24 px-6 scroll-offset">
         <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold mb-4"><span class="lang-cn">三大合规引擎</span><span class="lang-en hidden">Core Engines</span></h2>
-                <div class="h-1 w-20 bg-gradient-to-r from-[#14F195] to-[#9945FF] mx-auto rounded-full"></div>
-            </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="glass-card p-10 rounded-3xl relative overflow-hidden group">
-                    <div class="absolute top-0 left-0 w-1 h-full bg-[#14F195]"></div>
+                <div class="glass-card p-10 rounded-3xl relative overflow-hidden">
                     <div class="text-[#14F195] text-5xl mb-6 font-thin">❖</div>
                     <h3 class="text-2xl font-bold mb-4">EF Accounts</h3>
-                    <p class="text-gray-400 text-sm leading-7">电子围栏账户：实现“境内关外”资金自由划转。解决 Web3 企业法币出入金、薪酬发放与跨境清算痛点。</p>
+                    <p class="text-gray-400 text-sm leading-7">电子围栏账户：实现“境内关外”资金自由划转。解决 Web3 企业法币出入金、全球薪酬与跨境清算。</p>
                 </div>
-                <div class="glass-card p-10 rounded-3xl relative overflow-hidden group">
-                    <div class="absolute top-0 left-0 w-1 h-full bg-[#9945FF]"></div>
+                <div class="glass-card p-10 rounded-3xl relative overflow-hidden">
                     <div class="text-[#9945FF] text-5xl mb-6 font-thin">％</div>
                     <h3 class="text-2xl font-bold mb-4">15% Tax Policy</h3>
-                    <p class="text-gray-400 text-sm leading-7">实质性运营筹划：深度对接海南所得税优惠政策。协助企业设计架构，锁定 CIT 与 PIT 双重 15% 封顶。</p>
+                    <p class="text-gray-400 text-sm leading-7">实质性运营筹划：深度对接海南政策。协助企业设计架构，锁定 CIT 与 PIT 双重 15% 封顶。</p>
                 </div>
-                <div class="glass-card p-10 rounded-3xl relative overflow-hidden group">
-                    <div class="absolute top-0 left-0 w-1 h-full bg-white"></div>
+                <div class="glass-card p-10 rounded-3xl relative overflow-hidden">
                     <div class="text-white text-5xl mb-6 font-thin">RWA</div>
                     <h3 class="text-2xl font-bold mb-4">RWA Infra</h3>
-                    <p class="text-gray-400 text-sm leading-7">资产上链咨询：在监管沙盒框架内，为房地产、碳信用等 RWA 项目提供合规确权、法律结构与技术支持。</p>
+                    <p class="text-gray-400 text-sm leading-7">资产上链咨询：在监管沙盒框架内，为 RWA 项目提供合规确权、法律结构与技术支持。</p>
                 </div>
             </div>
         </div>
@@ -138,58 +125,62 @@
 
     <section class="py-24 px-6 text-center">
         <div class="max-w-5xl mx-auto">
-            <h3 class="text-xs font-bold mb-10 text-[#9945FF] uppercase tracking-[0.4em]">—— 2026 官方内参 ——</h3>
-            <div class="p-4 bg-white/5 rounded-3xl inline-block backdrop-blur-sm border border-white/10">
-                <img src="poster.jpg" alt="Poster" class="w-full max-w-3xl rounded-xl shadow-2xl cursor-pointer hover:scale-[1.01] transition-all" onclick="scrollToId('contact')">
-            </div>
-            <p class="mt-8 text-gray-500 text-xs tracking-widest">点击图片预约完整版 2026 封关运作白皮书 PDF</p>
+            <h3 class="text-xs font-bold mb-10 text-[#9945FF] uppercase tracking-[0.4em]">—— Official Guide ——</h3>
+            <img src="poster.jpg" alt="Poster" class="w-full max-w-3xl mx-auto rounded-3xl shadow-2xl cursor-pointer hover:scale-[1.01] transition-all border border-white/10" onclick="scrollToId('contact')">
+            <p class="mt-8 text-gray-500 text-xs">点击图片预约完整版《2026 封关运作白皮书》PDF</p>
         </div>
     </section>
 
-    <footer id="contact" class="py-24 border-t border-white/10 bg-[#020202] scroll-offset">
+    <footer id="contact" class="py-24 border-t border-white/10 bg-[#020202]">
         <div class="max-w-6xl mx-auto px-6 text-center">
-            <h2 class="text-3xl md:text-5xl font-bold mb-16 tracking-tight">联系顾问 · 开启合规</h2>
+            <h2 class="text-4xl font-bold mb-16">联系顾问 · 开启合规</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <a href="tel:18117790507" class="glass-card p-10 rounded-2xl group hover:bg-[#14F195] transition-colors">
-                    <p class="text-gray-500 text-xs mb-4 uppercase group-hover:text-black/60">Hotline</p>
-                    <p class="font-bold text-2xl text-[#14F195] group-hover:text-black">181-1779-0507</p>
-                </a>
-                <div class="glass-card p-10 rounded-2xl group hover:bg-white transition-colors">
-                    <p class="text-gray-500 text-xs mb-4 uppercase group-hover:text-black/60">WeChat / TG</p>
-                    <p class="font-bold text-xl text-white group-hover:text-black">@SolanaHainan</p>
+                <div class="glass-card p-10 rounded-2xl">
+                    <p class="text-gray-500 text-xs mb-4 uppercase">Hotline</p>
+                    <p class="font-bold text-2xl text-[#14F195]">181-1779-0507</p>
                 </div>
-                <div class="glass-card p-10 rounded-2xl group hover:bg-[#9945FF] transition-colors">
-                    <p class="text-gray-500 text-xs mb-4 uppercase group-hover:text-white/80">Email</p>
+                <div class="glass-card p-10 rounded-2xl">
+                    <p class="text-gray-500 text-xs mb-4 uppercase">WeChat / TG</p>
+                    <p class="font-bold text-xl text-white">@SolanaHainan</p>
+                </div>
+                <div class="glass-card p-10 rounded-2xl">
+                    <p class="text-gray-500 text-xs mb-4 uppercase">Email</p>
                     <p class="font-bold text-lg text-white">kosok@solana-hainan.com</p>
                 </div>
             </div>
-            <p class="mt-20 text-gray-700 text-[10px] uppercase tracking-widest">&copy; 2026 Solana Hainan Business Consulting Center. All Rights Reserved.</p>
         </div>
     </footer>
 
     <script>
-        // 倒计时逻辑
+        // 核心：倒计时逻辑 (目标：2026年1月1日)
         function updateCountdown() {
-            const target = new Date('2026-01-01T00:00:00').getTime();
+            const target = new Date('January 1, 2026 00:00:00').getTime();
             const now = new Date().getTime();
             const diff = target - now;
+            
+            if (diff <= 0) {
+                document.getElementById('hero-countdown').innerText = "CUSTOMS CLOSED";
+                return;
+            }
+
             const d = Math.floor(diff / (1000 * 60 * 60 * 24));
             const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
             const s = Math.floor((diff % (1000 * 60)) / 1000);
-            document.getElementById('countdown').innerText = 
-                `${String(d).padStart(3, '0')}D : ${String(h).padStart(2, '0')}H : ${String(m).padStart(2, '0')}M : ${String(s).padStart(2, '0')}S`;
+            
+            document.getElementById('hero-countdown').innerHTML = 
+                `${String(d).padStart(3, '0')} <span class="text-xs text-gray-500">D</span> : ${String(h).padStart(2, '0')} <span class="text-xs text-gray-500">H</span> : ${String(m).padStart(2, '0')} <span class="text-xs text-gray-500">M</span> : ${String(s).padStart(2, '0')} <span class="text-xs text-gray-500">S</span>`;
         }
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // 税务计算逻辑
+        // 税务测算逻辑
         function calculateTax() {
             const income = parseFloat(document.getElementById('incomeInput').value);
-            if(!income || income <= 0) { alert("请输入有效的金额"); return; }
-            // 简单逻辑：假设阶梯税率平均节约为收入的 15% (最高可省 30% 差额)
-            const saved = income * 0.18; 
-            document.getElementById('savedMoney').innerText = saved.toFixed(2) + " 万";
+            if(!income) return;
+            // 严谨逻辑：超过 96万的部分，普通个税 45%，海南 15%，节税差额巨大
+            const saving = income > 96 ? (income * 0.22) : (income * 0.12);
+            document.getElementById('savedMoney').innerText = saving.toFixed(2) + " 万";
         }
 
         // 语言切换
@@ -201,10 +192,9 @@
             document.getElementById('btn-text').innerText = isCN ? 'EN / 中文' : '中文 / EN';
         }
 
-        // 锚点跳转
+        // 平滑滚动
         function scrollToId(id) {
-            const element = document.getElementById(id);
-            if (element) element.scrollIntoView({ behavior: 'smooth' });
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
         }
     </script>
 </body>
