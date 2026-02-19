@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 财税专家终端 - 2026 封关红利诊断</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .typing { border-right: 2px solid #3b82f6; animation: blink 0.75s step-end infinite; }
+        @keyframes blink { from, to { border-color: transparent } 50% { border-color: #3b82f6 } }
+        .glass-panel { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); }
+    </style>
+</head>
+<body class="bg-[#f8fafc] text-slate-900 font-sans">
+    <div class="max-w-4xl mx-auto p-6 md:p-12">
+        <nav class="mb-10 flex justify-between items-center">
+            <a href="commander.html" class="flex items-center text-blue-600 font-bold text-sm">
+                <span class="mr-2">←</span> 退出安全终端
+            </a>
+            <div class="flex items-center space-x-2">
+                <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                <span class="text-[10px] font-mono text-slate-400 uppercase">System Online: MNRO_v7.2</span>
+            </div>
+        </nav>
+
+        <header class="text-center mb-12">
+            <h1 class="text-3xl font-black tracking-tighter italic uppercase mb-4">2026 封关政策红利诊断终端</h1>
+            <p class="text-slate-500 text-sm">请输入您的业务参数，MNRO 引擎将为您实时模拟税务路径。</p>
+        </header>
+
+        <div class="bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden mb-8">
+            <div class="bg-slate-900 p-4 flex justify-between items-center">
+                <div class="flex space-x-1.5">
+                    <div class="w-2.5 h-2.5 rounded-full bg-red-500"></div>
+                    <div class="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
+                    <div class="w-2.5 h-2.5 rounded-full bg-green-500"></div>
+                </div>
+                <span class="text-[10px] font-mono text-slate-500 uppercase tracking-widest">Encrypted Session</span>
+            </div>
+            
+            <div id="chat-box" class="p-8 space-y-6 h-[400px] overflow-y-auto font-mono text-sm leading-relaxed">
+                <div class="flex items-start">
+                    <div class="bg-blue-100 text-blue-700 p-3 rounded-2xl rounded-tl-none max-w-[80%]">
+                        您好，我是独角兽 AI 专家。请问您目前的年度进出口总额大约是多少？（例如：5000万）
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-6 border-t border-slate-100 bg-slate-50 flex space-x-4">
+                <input type="text" id="user-input" placeholder="键入您的业务情况..." class="flex-1 bg-white border-2 border-slate-200 p-3 rounded-xl focus:border-blue-500 outline-none transition-all">
+                <button onclick="handleSend()" class="bg-blue-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-blue-700 transition-all">发送</button>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-white p-6 rounded-2xl border border-slate-200">
+                <h4 class="font-bold text-slate-400 text-[10px] uppercase mb-2">获取完整方案</h4>
+                <p class="text-sm text-slate-600 mb-4 font-medium">需要 2026 封关运作下的详细测算报告？</p>
+                <a href="mailto:official@solana-hainan.com" class="block text-center bg-slate-900 text-white py-3 rounded-lg font-bold text-xs hover:invert transition-all uppercase">预约专家面试</a>
+            </div>
+            <div class="bg-blue-600 p-6 rounded-2xl text-white">
+                <h4 class="font-bold text-blue-200 text-[10px] uppercase mb-2">合规白皮书</h4>
+                <p class="text-sm text-blue-50 mb-4 font-medium">下载《2026 海南实质性运营判定标准》</p>
+                <button class="block w-full text-center bg-white text-blue-600 py-3 rounded-lg font-bold text-xs hover:bg-blue-50 transition-all uppercase">立即获取 PDF</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const chatBox = document.getElementById('chat-box');
+        let step = 0;
+
+        function addMessage(text, isUser = false) {
+            const div = document.createElement('div');
+            div.className = `flex ${isUser ? 'justify-end' : 'justify-start'}`;
+            div.innerHTML = `<div class="${isUser ? 'bg-slate-900 text-white rounded-tr-none' : 'bg-blue-100 text-blue-700 rounded-tl-none'} p-3 rounded-2xl max-w-[80%]">${text}</div>`;
+            chatBox.appendChild(div);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function handleSend() {
+            const input = document.getElementById('user-input');
+            const val = input.value.trim();
+            if(!val) return;
+
+            addMessage(val, true);
+            input.value = '';
+
+            setTimeout(() => {
+                if(step === 0) {
+                    addMessage("收到。根据 2026 封关政策，您的规模符合‘加工增值免关税’试行区间。您目前的业务是否涉及‘实质性组装’？");
+                    step++;
+                } else if(step === 1) {
+                    addMessage("正在调用 MNRO 引擎进行税务建模... [████████] 100%");
+                    addMessage("初步预估：通过海南架构，您的综合税负可从 25% 降低至 15.2%。需要我安排资深专家为您对接具体的‘原产地证明’申请流程吗？");
+                    step++;
+                } else {
+                    addMessage("您的需求已记录。请留下联系方式，或点击下方‘预约专家面试’，我们将于 2 小时内发送详细报告。");
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
