@@ -3,47 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2.3 模块化财税底座 - 独角兽架构</title>
+    <title>2.3 模块化财税底座 - 代码化交付</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .code-window { background: #011627; border-radius: 1rem; box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
+        .token-keyword { color: #c792ea; }
+        .token-string { color: #ecc48d; }
+        .token-comment { color: #637777; font-style: italic; }
+    </style>
 </head>
-<body class="bg-slate-100 text-slate-800 font-sans p-8">
+<body class="bg-slate-900 text-slate-300 font-sans p-8">
     <div class="max-w-4xl mx-auto">
-        <a href="commander.html" class="text-slate-500 text-sm mb-8 inline-block hover:text-blue-600 transition-colors">← 返回指挥部 / INFRASTRUCTURE</a>
-        
-        <header class="mb-12 border-l-8 border-slate-900 pl-6">
-            <h1 class="text-4xl font-black text-slate-900 tracking-tight mb-2">2.3 模块化财税底座</h1>
-            <p class="text-slate-500 font-mono text-sm uppercase">业务模块化：像乐高一样拼装您的自贸港公司</p>
+        <nav class="mb-10">
+            <a href="commander.html" class="flex items-center text-blue-400 font-bold text-sm hover:text-white transition-colors">
+                <span class="mr-2">←</span> 返回指挥部 / ROOT_ACCESS
+            </a>
+        </nav>
+
+        <header class="mb-12 border-b border-slate-800 pb-8">
+            <h1 class="text-3xl font-black text-white italic tracking-widest uppercase">2.3 模块化财税底座 (TAX-STACK)</h1>
+            <p class="text-slate-500 font-mono text-xs mt-2">API-First Financial Infrastructure for 2026 Hainan FTP</p>
         </header>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-            <div class="bg-white p-6 rounded-lg shadow-sm border-t-4 border-blue-600">
-                <div class="text-[10px] font-mono text-slate-400 mb-2">MODULE_01</div>
-                <h3 class="font-bold mb-3 text-lg">工商极速核验</h3>
-                <p class="text-xs text-slate-500 leading-relaxed mb-4">AI 自动检索重名风险，适配海南 FTP 鼓励类目录代码，确保一次性过审。</p>
-                <div class="text-[10px] bg-slate-50 p-2 font-mono text-green-600 text-center">STATUS: AUTO-GENERATE</div>
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
+            <div class="space-y-4">
+                <h2 class="text-xl font-bold text-blue-400 italic italic">业务即代码 (Business as Code)</h2>
+                <p class="text-sm leading-relaxed">
+                    传统的代办公司通过表格和文档交付。我们通过 **API 终端**。我们将 2026 封关政策中的每一个合规检查点（社保一致性、实质性运营、海关账册同步）都封装成标准的 RESTful API。
+                </p>
+                <div class="p-4 bg-white/5 border border-white/10 rounded-xl">
+                    <div class="text-[10px] text-slate-500 font-bold mb-2">已核实数据接口</div>
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-[10px] font-mono"><span class="text-green-400">GET</span> /api/hainan/tax-rate/15pct <span class="text-slate-600">v1.2</span></div>
+                        <div class="flex justify-between text-[10px] font-mono"><span class="text-blue-400">POST</span> /api/hainan/customs/entry-check <span class="text-slate-600">v2.0</span></div>
+                    </div>
+                </div>
             </div>
-            <div class="bg-white p-6 rounded-lg shadow-sm border-t-4 border-indigo-600">
-                <div class="text-[10px] font-mono text-slate-400 mb-2">MODULE_02</div>
-                <h3 class="font-bold mb-3 text-lg">双 15% 优惠配置</h3>
-                <p class="text-xs text-slate-500 leading-relaxed mb-4">企业所得税与个人所得税的合规路径预设，内置实质性运营红线预警。</p>
-                <div class="text-[10px] bg-slate-50 p-2 font-mono text-indigo-600 text-center">STATUS: POLICY-READY</div>
-            </div>
-            <div class="bg-white p-6 rounded-lg shadow-sm border-t-4 border-slate-800">
-                <div class="text-[10px] font-mono text-slate-400 mb-2">MODULE_03</div>
-                <h3 class="font-bold mb-3 text-lg">离岸贸易接口</h3>
-                <p class="text-xs text-slate-500 leading-relaxed mb-4">支持 EF 账户开立逻辑引导，针对跨境收付汇提供 AI 合规性扫描。</p>
-                <div class="text-[10px] bg-slate-50 p-2 font-mono text-slate-600 text-center">STATUS: GLOBAL-LINK</div>
+
+            <div class="code-window p-6 font-mono text-[11px] overflow-hidden relative">
+                <div class="flex space-x-2 mb-4 opacity-50">
+                    <div class="w-2 h-2 rounded-full bg-red-500"></div>
+                    <div class="w-2 h-2 rounded-full bg-yellow-500"></div>
+                    <div class="w-2 h-2 rounded-full bg-green-500"></div>
+                </div>
+                <div class="leading-relaxed">
+                    <span class="token-comment">// 2026 封关内销免税判定逻辑</span><br>
+                    <span class="token-keyword">function</span> <span class="text-blue-300">checkExemption</span>(order) {<br>
+                    &nbsp;&nbsp;<span class="token-keyword">const</span> threshold = <span class="text-orange-400">0.30</span>;<br>
+                    &nbsp;&nbsp;<span class="token-keyword">const</span> vaRate = (order.out - order.in) / order.in;<br><br>
+                    &nbsp;&nbsp;<span class="token-keyword">if</span> (vaRate >= threshold) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="token-keyword">return</span> <span class="token-string">"DUTY_FREE"</span>;<br>
+                    &nbsp;&nbsp;} <span class="token-keyword">else</span> {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="token-keyword">return</span> <span class="token-string">"APPLY_TAX"</span>;<br>
+                    &nbsp;&nbsp;}<br>
+                    }
+                </div>
+                <div class="absolute bottom-4 right-4 text-[8px] text-slate-700">CORE_V2.3_BUILD_88</div>
             </div>
         </div>
 
-        <div class="bg-slate-900 text-white p-8 rounded-2xl shadow-2xl relative overflow-hidden">
-            <div class="relative z-10">
-                <h3 class="text-xl font-bold mb-4 italic">“从注册到纳税，所有流程均已转化为标准 API”</h3>
-                <p class="text-sm text-slate-400 leading-relaxed">
-                    在我们的底座上，客户不需要懂政策。您只需要输入您的业务规模和行业，底座会自动调取相应的“代码块”进行拼装。这种效率是传统代办公司的 <span class="text-blue-400 font-bold text-lg">20 倍</span> 以上。
-                </p>
+        <div class="p-8 bg-blue-600 rounded-2xl text-white">
+            <h3 class="font-bold text-lg mb-4">为什么这是无法模仿的壁垒？</h3>
+            <div class="grid md:grid-cols-3 gap-6 text-sm">
+                <div>
+                    <div class="font-black mb-1">01 毫秒级合规</div>
+                    <p class="opacity-70 text-[11px]">ERP 每一笔交易，AI 自动进行税收模拟，风险早知道。</p>
+                </div>
+                <div>
+                    <div class="font-black mb-1">02 数据一致性</div>
+                    <p class="opacity-70 text-[11px]">海关账册、财务软件、银行流水三位一体，封关审查无忧。</p>
+                </div>
+                <div>
+                    <div class="font-black mb-1">03 极致降本</div>
+                    <p class="opacity-70 text-[11px]">取消人工报税环节，将客户的人力投入降低 90%。</p>
+                </div>
             </div>
-            <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-blue-600/20 blur-3xl rounded-full"></div>
         </div>
     </div>
 </body>
