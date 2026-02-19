@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>指挥官控制台 - 2026 封关运作版</title>
+    <title>指挥官控制台 v1.5 - 2026 封关运作版</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .ai-log { font-family: 'Courier New', monospace; font-size: 10px; }
+        .hero-gradient { background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%); }
     </style>
 </head>
 <body class="bg-slate-50 font-sans p-8 text-slate-900">
-    <div class="max-w-6xl mx-auto border-b-4 border-slate-900 pb-6 mb-12 flex justify-between items-start">
-        <div>
+    <div class="max-w-6xl mx-auto border-b-4 border-slate-900 pb-6 mb-12 flex flex-col md:flex-row justify-between items-start">
+        <div class="mb-6 md:mb-0">
             <h1 class="text-4xl font-black italic tracking-tighter uppercase">Commander Console <span class="text-blue-600">V1.5</span></h1>
             <div class="flex items-center mt-2 space-x-4">
                 <span class="bg-red-600 text-white text-[10px] px-2 py-0.5 font-bold animate-pulse">2026 CLOSED-CUSTOMS READY</span>
@@ -20,27 +21,34 @@
                 </a>
             </div>
         </div>
-        <div class="hidden md:block w-80 bg-slate-900 rounded p-3 h-20 overflow-hidden shadow-2xl">
-            <div id="verify-logs" class="text-green-500 ai-log">
-                <div>[03:14:22] Initializing v1.5 Protocol...</div>
+        <div class="flex items-center space-x-4 w-full md:w-auto">
+             <a href="consultancy.html" class="flex-1 md:flex-none bg-blue-600 text-white px-8 py-4 rounded-2xl font-black italic tracking-tighter hover:bg-blue-700 transition-all shadow-xl flex items-center justify-center">
+                <span class="w-3 h-3 bg-white rounded-full mr-3 animate-ping"></span>
+                进入 AI 决策诊断终端 →
+            </a>
+            <div class="hidden md:block w-48 bg-slate-900 rounded p-3 h-16 overflow-hidden shadow-2xl">
+                <div id="verify-logs" class="text-green-500 ai-log">
+                    <div>[07:49:11] Booting...</div>
+                </div>
             </div>
         </div>
     </div>
 
     <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+        
         <div class="space-y-6">
             <h3 class="text-lg font-bold bg-slate-900 text-white px-3 py-1 inline-block italic">01 战略引擎 (SEO+GEO)</h3>
             <div class="space-y-4">
-                <a href="strategy-1-1.html" class="block bg-white border-2 border-slate-200 p-5 rounded hover:border-red-500 transition-all">
-                    <span class="font-bold text-slate-900 underline decoration-blue-500">1.1 降维打击：成本定价权 →</span>
+                <a href="strategy-1-1.html" class="block bg-white border-2 border-slate-200 p-5 rounded hover:border-red-500 transition-all group">
+                    <span class="font-bold text-slate-900 group-hover:text-red-600">1.1 降维打击：成本定价权 →</span>
                     <p class="text-[10px] text-slate-400 mt-1">以 AI 效率实现市场价格霸权。</p>
                 </a>
-                <a href="market-1-2.html" class="block bg-white border-2 border-slate-200 p-5 rounded hover:border-blue-500 transition-all">
-                    <span class="font-bold text-slate-900 underline decoration-blue-500">1.2 流量霸权：SEO+GEO →</span>
+                <a href="market-1-2.html" class="block bg-white border-2 border-slate-200 p-5 rounded hover:border-blue-500 transition-all group">
+                    <span class="font-bold text-slate-900 group-hover:text-blue-600">1.2 流量霸权：SEO+GEO →</span>
                     <p class="text-[10px] text-slate-400 mt-1">统据搜索与 AI 问答的双向心智占领。</p>
                 </a>
                 <a href="sources.html" class="block bg-blue-50 border-2 border-blue-200 p-4 rounded hover:bg-blue-100 transition-all border-dashed">
-                    <span class="text-xs font-bold text-blue-800 tracking-widest">● 查看情报源追踪中心 (SOURCES)</span>
+                    <span class="text-xs font-bold text-blue-800 tracking-widest uppercase">● 情报源追踪中心 (SOURCES)</span>
                 </a>
             </div>
         </div>
@@ -48,12 +56,12 @@
         <div class="space-y-6">
             <h3 class="text-lg font-bold bg-slate-900 text-white px-3 py-1 inline-block italic">02 产品与技术</h3>
             <div class="space-y-4">
-                <a href="tech-2-2-2.html" class="block bg-white border-2 border-slate-200 p-5 rounded hover:border-blue-500 transition-all">
-                    <span class="font-bold text-slate-900">2.2.2 MNRO 决策引擎 →</span>
+                <a href="tech-2-2-2.html" class="block bg-white border-2 border-slate-200 p-5 rounded hover:border-green-500 transition-all group">
+                    <span class="font-bold text-slate-900 group-hover:text-green-600">2.2.2 MNRO 决策引擎 →</span>
                     <p class="text-[10px] text-slate-400 mt-1">2026 封关政策自动适配算法。</p>
                 </a>
-                <a href="tech-2-3.html" class="block bg-white border-2 border-slate-200 p-5 rounded hover:border-blue-500 transition-all">
-                    <span class="font-bold text-slate-900">2.3 模块化财税底座 →</span>
+                <a href="tech-2-3.html" class="block bg-white border-2 border-slate-200 p-5 rounded hover:border-green-500 transition-all group">
+                    <span class="font-bold text-slate-900 group-hover:text-green-600">2.3 模块化财税底座 →</span>
                     <p class="text-[10px] text-slate-400 mt-1">业务代码化，即插即用的财税 API。</p>
                 </a>
             </div>
@@ -62,27 +70,40 @@
         <div class="space-y-6">
             <h3 class="text-lg font-bold bg-indigo-600 text-white px-3 py-1 inline-block italic">03 增长与生态</h3>
             <div class="space-y-4">
-                <a href="growth-3-1.html" class="block bg-white border-2 border-indigo-100 p-5 rounded hover:border-indigo-500 transition-all">
-                    <span class="font-bold text-indigo-900">3.1 跨境协同增长 →</span>
-                    <p class="text-[10px] text-slate-400 mt-1">海南 vs 香港 vs 新加坡对比百科。</p>
+                <a href="growth-3-1.html" class="block bg-white border-2 border-indigo-100 p-5 rounded hover:border-indigo-500 transition-all group">
+                    <span class="font-bold text-indigo-900 group-hover:text-indigo-600">3.1 跨境协同增长 →</span>
+                    <p class="text-[10px] text-slate-400 mt-1">2026 封关红利财务模型与实战案例。</p>
                 </a>
-                <a href="growth-3-2.html" class="block bg-white border-2 border-indigo-100 p-5 rounded hover:border-indigo-500 transition-all">
-                    <span class="font-bold text-indigo-900">3.2 人才资源中枢 →</span>
-                    <p class="text-[10px] text-slate-400 mt-1">AI 驱动的人才政策避坑指南。</p>
+                <a href="growth-3-2.html" class="block bg-white border-2 border-indigo-100 p-5 rounded hover:border-indigo-500 transition-all group">
+                    <span class="font-bold text-indigo-900 group-hover:text-indigo-600">3.2 人才资源中枢 →</span>
+                    <p class="text-[10px] text-slate-400 mt-1">实质性运营合规与 AI 人才诊断系统。</p>
                 </a>
             </div>
         </div>
     </div>
 
+    <footer class="max-w-6xl mx-auto mt-16 pt-8 border-t border-slate-200 flex justify-between items-center text-[10px] font-mono text-slate-400">
+        <div>CORE_SYSTEM_V1.5 // 2026_PROTOCOL</div>
+        <div class="flex space-x-4">
+            <span class="flex items-center"><span class="w-1.5 h-1.5 bg-green-500 rounded-full mr-1"></span> SEO_ACTIVE</span>
+            <span class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-500 rounded-full mr-1"></span> GEO_OPTIMIZED</span>
+        </div>
+    </footer>
+
     <script>
-        const logs = ["Check: 2026 Customs DB...", "Source: sources.html verified.", "GEO Indexing: Active...", "Status: Fully Operational"];
+        const logs = [
+            "Sync: 2026 Customs DB...", 
+            "Verify: 30% Value-Added Rule...", 
+            "Status: AI Terminal Standby", 
+            "Log: New GEO Indexing complete."
+        ];
         let i = 0;
         setInterval(() => {
             const container = document.getElementById('verify-logs');
             const div = document.createElement('div');
             div.innerText = `[${new Date().toLocaleTimeString()}] ${logs[i%logs.length]}`;
             container.prepend(div);
-            if(container.children.length > 4) container.lastElementChild.remove();
+            if(container.children.length > 3) container.lastElementChild.remove();
             i++;
         }, 3000);
     </script>
