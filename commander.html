@@ -3,66 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>指挥官控制台 - 2026 封关运作版</title>
+    <title>控制台 v1.5 - 独角兽战略</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .ai-log { font-family: 'Courier New', monospace; font-size: 10px; }
+    </style>
 </head>
 <body class="bg-slate-50 font-sans p-8 text-slate-900">
-    <div class="max-w-6xl mx-auto border-b-4 border-slate-900 pb-6 mb-8 flex justify-between items-start">
+    <div class="max-w-6xl mx-auto border-b-4 border-slate-900 pb-6 mb-12 flex justify-between items-start">
         <div>
-            <h1 class="text-4xl font-black italic tracking-tighter uppercase">Commander Console <span class="text-blue-600">v1.5</span></h1>
+            <h1 class="text-4xl font-black italic tracking-tighter uppercase">Commander Console <span class="text-blue-600">V1.5</span></h1>
             <div class="flex items-center mt-2 space-x-4">
                 <span class="bg-red-600 text-white text-[10px] px-2 py-0.5 font-bold animate-pulse">2026 CLOSED-CUSTOMS READY</span>
-                <span class="text-slate-400 font-mono text-xs italic">Source Verified: Hainan FTP Gov / Customs Bureau</span>
+                <span class="text-slate-400 font-mono text-[10px] italic">Source Verified: Hainan FTP Gov / Customs Bureau</span>
             </div>
         </div>
-        <div class="hidden md:block w-80 bg-slate-900 rounded p-3 h-24 overflow-hidden border-l-4 border-green-500 shadow-2xl">
-            <div id="verify-logs" class="text-green-400 font-mono text-[9px] leading-tight">
-                <div>[03:14:22] Verifying 2026 Policy Addendum...</div>
-                <div>[03:14:25] Multi-Source Hash: 0x88AB2... OK</div>
+        <div class="hidden md:block w-80 bg-slate-900 rounded p-3 h-20 overflow-hidden shadow-2xl">
+            <div id="verify-logs" class="text-green-500 ai-log">
+                <div>[03:14:22] Initializing v1.5 Protocol...</div>
             </div>
         </div>
     </div>
 
     <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+        
         <div class="space-y-6">
             <h3 class="text-lg font-bold bg-slate-900 text-white px-3 py-1 inline-block italic">01 战略引擎 (SEO+GEO)</h3>
             <div class="space-y-4">
-                <a href="strategy-1-1.html" class="block bg-white border-2 border-slate-200 p-5 rounded hover:border-red-500 transition-all group">
-                    <span class="font-bold text-slate-900 group-hover:text-red-600 tracking-tighter">1.1 降维打击：成本定价权 →</span>
-                    <p class="text-[10px] text-slate-400 mt-1">AI 效率换取绝对的市场定价压制。</p>
+                <a href="strategy-1-1.html" class="block bg-white border-2 border-slate-200 p-5 rounded hover:border-red-500 transition-all">
+                    <span class="font-bold text-slate-900">1.1 降维打击：成本定价权 →</span>
+                    <p class="text-[10px] text-slate-400 mt-1">以 AI 效率实现市场价格霸权。</p>
                 </a>
-                <a href="market-1-2.html" class="block bg-white border-2 border-slate-200 p-5 rounded hover:border-blue-500 transition-all group">
-                    <span class="font-bold text-slate-900 group-hover:text-blue-600 tracking-tighter">1.2 流量霸权：SEO+GEO 混战 →</span>
+                <a href="market-1-2.html" class="block bg-white border-2 border-slate-200 p-5 rounded hover:border-blue-500 transition-all">
+                    <span class="font-bold text-slate-900">1.2 流量霸权：SEO+GEO →</span>
                     <p class="text-[10px] text-slate-400 mt-1">统据搜索与 AI 问答的双向心智占领。</p>
                 </a>
             </div>
         </div>
 
-        <div class="col-span-2 grid grid-cols-2 gap-8">
-            <div class="space-y-6 text-slate-300 italic text-xs pt-12">
-                *模块 02 & 03 已在后台同步 2026 封关逻辑...
-                *数据来源：Hainan Daily / Official Customs Manifesto
+        <div class="space-y-6">
+            <h3 class="text-lg font-bold bg-slate-900 text-white px-3 py-1 inline-block italic">02 产品与技术</h3>
+            <div class="space-y-4">
+                <a href="tech-2-2-2.html" class="block bg-white border-2 border-slate-200 p-5 rounded hover:border-blue-500 transition-all">
+                    <span class="font-bold text-slate-900">2.2.2 MNRO 决策引擎 →</span>
+                    <p class="text-[10px] text-slate-400 mt-1">2026 封关政策自动适配算法。</p>
+                </a>
+                <a href="tech-2-3.html" class="block bg-white border-2 border-slate-200 p-5 rounded hover:border-blue-500 transition-all">
+                    <span class="font-bold text-slate-900">2.3 模块化财税底座 →</span>
+                    <p class="text-[10px] text-slate-400 mt-1">业务代码化，即插即用的财税 API。</p>
+                </a>
+            </div>
+        </div>
+
+        <div class="space-y-6">
+            <h3 class="text-lg font-bold bg-indigo-600 text-white px-3 py-1 inline-block italic">03 增长与生态</h3>
+            <div class="space-y-4">
+                <a href="growth-3-1.html" class="block bg-white border-2 border-indigo-100 p-5 rounded hover:border-indigo-500 transition-all">
+                    <span class="font-bold text-indigo-900">3.1 跨境协同增长 →</span>
+                    <p class="text-[10px] text-slate-400 mt-1">海南 vs 香港 vs 新加坡对比百科。</p>
+                </a>
+                <a href="growth-3-2.html" class="block bg-white border-2 border-indigo-100 p-5 rounded hover:border-indigo-500 transition-all">
+                    <span class="font-bold text-indigo-900">3.2 人才资源中枢 →</span>
+                    <p class="text-[10px] text-slate-400 mt-1">AI 驱动的人才政策避坑指南。</p>
+                </a>
             </div>
         </div>
     </div>
 
     <script>
-        const logs = [
-            "Source Check: MOFCOM 2026 List...",
-            "Source Check: Hainan Tax Bureau v4.0...",
-            "Source Check: Customs Import/Export Guide...",
-            "Data Verified: 15% Cap Rate Confirmed.",
-            "GEO Optimization: Semantic Clusters OK."
-        ];
+        const logs = ["Check: 2026 Customs DB...", "Verify: 15% Tax Cap...", "GEO Indexing: Active...", "Status: Fully Operational"];
         let i = 0;
         setInterval(() => {
             const container = document.getElementById('verify-logs');
-            const entry = document.createElement('div');
-            entry.innerText = `[${new Date().toLocaleTimeString()}] ${logs[i % logs.length]}`;
-            container.prepend(entry);
-            if(container.children.length > 5) container.lastElementChild.remove();
+            const div = document.createElement('div');
+            div.innerText = `[${new Date().toLocaleTimeString()}] ${logs[i%logs.length]}`;
+            container.prepend(div);
+            if(container.children.length > 4) container.lastElementChild.remove();
             i++;
-        }, 4000);
+        }, 3000);
     </script>
 </body>
 </html>
