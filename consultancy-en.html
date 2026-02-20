@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tax Diagnosis - 2026 Hainan FTP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .typing { border-right: 2px solid #3b82f6; animation: blink 0.75s step-end infinite; }
+        @keyframes blink { from, to { border-color: transparent } 50% { border-color: #3b82f6 } }
+    </style>
+</head>
+<body class="bg-[#f8fafc] text-slate-900 font-sans">
+    <div class="max-w-4xl mx-auto p-6 md:p-12">
+        <nav class="mb-10 flex justify-between items-center">
+            <a href="commander-en.html" class="flex items-center text-blue-600 font-bold text-sm">
+                <span class="mr-2">←</span> Exit Terminal
+            </a>
+            <div class="flex items-center space-x-2">
+                <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                <span class="text-[10px] font-mono text-slate-400 uppercase">System Online: MNRO_v7.2_EN</span>
+            </div>
+        </nav>
+
+        <header class="text-center mb-12">
+            <h1 class="text-3xl font-black tracking-tighter italic uppercase mb-4">2026 Policy Dividend Diagnosis</h1>
+            <p class="text-slate-500 text-sm">Input your business parameters for real-time MNRO engine simulation.</p>
+        </header>
+
+        <div class="bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden mb-8">
+            <div class="bg-slate-900 p-4 flex justify-between items-center">
+                <div class="flex space-x-1.5">
+                    <div class="w-2.5 h-2.5 rounded-full bg-red-500"></div>
+                    <div class="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
+                    <div class="w-2.5 h-2.5 rounded-full bg-green-500"></div>
+                </div>
+                <span class="text-[10px] font-mono text-slate-500 uppercase tracking-widest">Global Encrypted Session</span>
+            </div>
+            
+            <div id="chat-box" class="p-8 space-y-6 h-[400px] overflow-y-auto font-mono text-sm leading-relaxed text-left">
+                <div class="flex justify-start">
+                    <div class="bg-blue-100 text-blue-700 p-3 rounded-2xl rounded-tl-none max-w-[80%]">
+                        Hello, I am the Unicorn AI Advisor. What is your estimated annual import/export volume? (e.g., $10 Million)
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-6 border-t border-slate-100 bg-slate-50 flex space-x-4">
+                <input type="text" id="user-input" placeholder="Type your inquiry..." class="flex-1 bg-white border-2 border-slate-200 p-3 rounded-xl focus:border-blue-500 outline-none transition-all">
+                <button onclick="handleSend()" class="bg-blue-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-blue-700 transition-all uppercase">Send</button>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 text-left">
+            <div class="bg-white p-6 rounded-2xl border border-slate-200">
+                <h4 class="font-bold text-slate-400 text-[10px] uppercase mb-2">Get Full Strategy</h4>
+                <p class="text-sm text-slate-600 mb-4 font-medium">Need a detailed 2026 Customs audit report?</p>
+                <a href="mailto:official@solana-hainan.com" class="block text-center bg-slate-900 text-white py-3 rounded-lg font-bold text-xs hover:invert transition-all uppercase">Book Consultation</a>
+            </div>
+            <div class="bg-blue-600 p-6 rounded-2xl text-white">
+                <h4 class="font-bold text-blue-200 text-[10px] uppercase mb-2">Compliance Whitepaper</h4>
+                <p class="text-sm text-blue-50 mb-4 font-medium">Download "2026 Substantial Operation Standards"</p>
+                <button class="block w-full text-center bg-white text-blue-600 py-3 rounded-lg font-bold text-xs hover:bg-blue-50 transition-all uppercase">Get PDF Now</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const chatBox = document.getElementById('chat-box');
+        let step = 0;
+
+        function addMessage(text, isUser = false) {
+            const div = document.createElement('div');
+            div.className = `flex ${isUser ? 'justify-end' : 'justify-start'}`;
+            div.innerHTML = `<div class="${isUser ? 'bg-slate-900 text-white rounded-tr-none' : 'bg-blue-100 text-blue-700 rounded-tl-none'} p-3 rounded-2xl max-w-[80%]">${text}</div>`;
+            chatBox.appendChild(div);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function handleSend() {
+            const input = document.getElementById('user-input');
+            const val = input.value.trim();
+            if(!val) return;
+
+            addMessage(val, true);
+            input.value = '';
+
+            setTimeout(() => {
+                if(step === 0) {
+                    addMessage("Received. Under 2026 rules, your scale qualifies for the 'Processing Value-Added' tax exemption. Does your business involve 'Substantial Assembly'?");
+                    step++;
+                } else if(step === 1) {
+                    addMessage("Invoking MNRO Engine... [████████] 100%");
+                    addMessage("Preliminary Forecast: Your total tax burden can be reduced from 25% to 15.2% via Hainan Structure. Shall I connect you with a specialist for Certificate of Origin protocols?");
+                    step++;
+                } else {
+                    addMessage("Inquiry logged. Please leave your contact or click 'Book Consultation' for the full report.");
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
