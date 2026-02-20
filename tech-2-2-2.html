@@ -3,121 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2.2.2 MNRO 决策引擎 - 2026 封关算法</title>
+    <title>2.2.2 MNRO 决策引擎 - 核心技术架构</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        .formula-card { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); }
-        .data-glow { text-shadow: 0 0 10px rgba(34, 197, 94, 0.5); }
+        .code-glow { text-shadow: 0 0 10px rgba(59, 130, 246, 0.5); }
+        .grid-bg { background-image: radial-gradient(#1e293b 1px, transparent 1px); background-size: 20px 20px; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900 font-sans p-8">
-    <div class="max-w-5xl mx-auto">
-        <nav class="mb-10">
-            <a href="commander.html" class="flex items-center text-blue-600 font-bold text-sm hover:underline">
-                <span class="mr-2">←</span> 返回指挥部 / COMMANDER CONSOLE
-            </a>
+<body class="bg-[#020617] text-slate-300 font-sans leading-relaxed grid-bg">
+    <article class="max-w-4xl mx-auto px-6 py-12 border-x border-slate-900 min-h-screen bg-[#020617]/90">
+        
+        <nav class="flex justify-between items-center mb-16 border-b border-slate-800 pb-6">
+            <div class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500">
+                <a href="commander.html" class="hover:text-blue-400">控制台</a> / 
+                <span class="text-white">02 技术底座</span> / 2.2.2 MNRO 引擎
+            </div>
+            <div class="text-[10px] font-bold bg-slate-900 px-4 py-2 rounded-full border border-slate-800">
+                <span class="text-blue-400">中文 (ZH)</span>
+                <span class="text-slate-700 mx-2">|</span>
+                <a href="tech-2-2-2-en.html" class="text-slate-500 hover:text-blue-400 transition-colors">EN</a>
+            </div>
         </nav>
 
-        <header class="mb-12">
-            <div class="flex items-center space-x-3 mb-4">
-                <span class="bg-green-600 text-white text-[10px] px-2 py-1 rounded font-bold uppercase tracking-tighter">Verified: Customs 2026 Protocol</span>
-                <span class="text-slate-400 font-mono text-[10px]">Version: MNRO-7.2-Final</span>
-            </div>
-            <h1 class="text-4xl font-black text-slate-900 italic tracking-tighter">2.2.2 MNRO 政策模拟决策引擎</h1>
-            <p class="text-slate-500 mt-2">核心能力：实时测算“二线”内销免税额度，自动规避合规风险。</p>
+        <header class="mb-16">
+            <div class="inline-block bg-blue-600 text-white text-[10px] font-black px-3 py-1 mb-4 tracking-tighter uppercase">Algorithm Status: Active</div>
+            <h1 class="text-5xl font-black italic tracking-tighter uppercase text-white mb-4 code-glow">MNRO Engine <span class="text-blue-500">v7.2</span></h1>
+            <p class="text-xl text-slate-400 font-light tracking-tight">多模态节点规制优化器：2026 封关运作的数字化脊梁。</p>
         </header>
 
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="md:col-span-1 space-y-6">
-                <div class="p-6 bg-white border border-slate-200 rounded-2xl shadow-sm">
-                    <h3 class="font-bold text-slate-800 mb-3 border-b pb-2">30% 增值计算公式</h3>
-                    <div class="font-mono text-[11px] leading-relaxed text-blue-700">
-                        P = (Output_Price - ΣInput_Cost) / ΣInput_Cost ≥ 30%
-                    </div>
-                    <p class="text-[10px] text-slate-400 mt-3 italic">
-                        *根据 2026 封关新规：海南自产料件不再计入成本分母，显著降低享惠门槛。
+        <section class="space-y-12">
+            <div class="grid md:grid-cols-2 gap-8 items-start">
+                <div class="space-y-4">
+                    <h2 class="text-white font-bold text-lg flex items-center">
+                        <span class="w-8 h-[1px] bg-blue-500 mr-3"></span> 技术定义
+                    </h2>
+                    <p class="text-sm leading-relaxed">
+                        **MNRO (Multimodal Node Regulatory Optimizer)** 并非传统的规则引擎。它利用大语言模型的语义理解能力，配合硬性规则校验，将《海南自贸港法》及封关后的数千项监管指令，实时转化为企业可执行的**“路径最优解”**。
                     </p>
                 </div>
-                <div class="p-6 bg-slate-900 text-white rounded-2xl formula-card">
-                    <h3 class="font-bold text-blue-400 mb-2 italic text-sm underline">数据来源：多渠道核实</h3>
-                    <ul class="text-[10px] space-y-2 opacity-80">
-                        <li>● 海关总署《加工增值免关税货物监管暂行办法》</li>
-                        <li>● 2026 海南自贸港“二线口岸”运行手册</li>
-                        <li>● 国家税务总局海南省税务局 (2025.12 公告)</li>
-                    </ul>
+                <div class="bg-slate-900 border border-slate-800 p-6 font-mono text-[10px] text-blue-400 rounded-lg">
+                    <div class="mb-2 text-slate-600">// 初始化决策矩阵...</div>
+                    <div>IF process_value_added >= 0.30 THEN</div>
+                    <div class="pl-4">EXPORT duty_free_status = TRUE;</div>
+                    <div class="pl-4">GENERATE cert_origin_digital();</div>
+                    <div>ELSE</div>
+                    <div class="pl-4">OPTIMIZE supply_chain_node();</div>
+                    <div class="mb-2 text-slate-600">// 节点优化完成。</div>
                 </div>
             </div>
 
-            <div class="md:col-span-2 bg-white p-8 rounded-3xl border-2 border-slate-100 shadow-xl">
-                <h3 class="font-black text-xl mb-6 flex items-center">
-                    <span class="w-3 h-3 bg-green-500 rounded-full mr-3 animate-pulse"></span>
-                    封关红利实时测算器 (2026 实操版)
+            <div class="space-y-6">
+                <h3 class="text-white font-black text-xs uppercase tracking-widest flex items-center">
+                    三大核心支柱 (Technical Pillars)
                 </h3>
-                
-                <div class="space-y-6">
-                    <div class="grid grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">境外料件进口成本 (¥)</label>
-                            <input type="number" id="inputCost" value="100" class="w-full bg-slate-50 border-2 border-slate-100 p-3 rounded-xl font-bold focus:border-blue-500 outline-none">
-                        </div>
-                        <div>
-                            <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">内地终端销售价格 (¥)</label>
-                            <input type="number" id="outputPrice" value="140" class="w-full bg-slate-50 border-2 border-slate-100 p-3 rounded-xl font-bold focus:border-blue-500 outline-none">
-                        </div>
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="p-6 bg-slate-900/30 border border-slate-800 rounded-2xl hover:border-blue-500 transition-all group">
+                        <div class="text-blue-500 mb-4 font-black text-2xl group-hover:scale-110 transition-transform">01</div>
+                        <h4 class="text-white font-bold text-sm mb-2">多模态规制映射</h4>
+                        <p class="text-[11px] text-slate-500 leading-relaxed">自动解析政府公告、海关细则及国际条约，实现从政策文本到业务逻辑的毫秒级同步。</p>
                     </div>
-
-                    <div id="resultBox" class="p-6 bg-blue-50 rounded-2xl border border-blue-100 text-center transition-all">
-                        <div class="text-[10px] text-blue-600 font-bold uppercase mb-1">增值率 (Value-Added Rate)</div>
-                        <div id="rateDisplay" class="text-4xl font-black text-blue-900 italic data-glow">40.0%</div>
-                        <div id="statusTag" class="mt-2 inline-block px-3 py-1 bg-green-600 text-white text-[10px] font-bold rounded-full uppercase">符合免关税条件</div>
+                    <div class="p-6 bg-slate-900/30 border border-slate-800 rounded-2xl hover:border-blue-500 transition-all group">
+                        <div class="text-blue-500 mb-4 font-black text-2xl group-hover:scale-110 transition-transform">02</div>
+                        <h4 class="text-white font-bold text-sm mb-2">节点动态优化</h4>
+                        <p class="text-[11px] text-slate-500 leading-relaxed">在货物运输中实时重算税盾价值，动态调整供应链终点，最大化套利空间。</p>
                     </div>
-
-                    <div class="text-[11px] text-slate-400 leading-relaxed bg-slate-50 p-4 rounded-lg">
-                        <strong class="text-slate-900 underline">MNRO 引擎点评：</strong><br>
-                        该架构下，进入内地可免征关税（约节省 8%-15%）。相较于在内地直接进口制成品，单笔交易利润率提升约 <span class="text-green-600 font-bold">12.5%</span>。
+                    <div class="p-6 bg-slate-900/30 border border-slate-800 rounded-2xl hover:border-blue-500 transition-all group">
+                        <div class="text-blue-500 mb-4 font-black text-2xl group-hover:scale-110 transition-transform">03</div>
+                        <h4 class="text-white font-bold text-sm mb-2">准实时合规审计</h4>
+                        <p class="text-[11px] text-slate-500 leading-relaxed">通过 1500+ 个审计哨点，确保存储、加工、物流全流程符合“实质性运营”的顶级合规标准。</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <script>
-        const inputC = document.getElementById('inputCost');
-        const outputP = document.getElementById('outputPrice');
-        const rateD = document.getElementById('rateDisplay');
-        const statusT = document.getElementById('statusTag');
-        const box = document.getElementById('resultBox');
+            <div class="border-t border-slate-800 pt-10">
+                <div class="bg-blue-600/5 p-8 rounded-3xl border border-blue-500/10 text-center">
+                    <h4 class="text-white font-black uppercase tracking-tighter mb-4">面向 2026 的终极交付</h4>
+                    <p class="text-sm text-slate-400 max-w-xl mx-auto mb-8 leading-relaxed">
+                        当 2026 封关钟声敲响，传统的报关行将因无法适应动态规制而消失。MNRO 引擎将是您在离岸贸易战场的**全天候预警雷达**。
+                    </p>
+                    <a href="consultancy.html" class="inline-block bg-blue-600 text-white px-10 py-4 rounded-full font-black uppercase text-xs hover:bg-white hover:text-blue-600 transition-all shadow-2xl">
+                        立即接入 MNRO 测试环境 →
+                    </a>
+                </div>
+            </div>
+        </section>
 
-        function update() {
-            const c = parseFloat(inputC.value) || 1;
-            const p = parseFloat(outputP.value) || 0;
-            const rate = ((p - c) / c * 100).toFixed(1);
-            rateD.innerText = rate + '%';
-            
-            if(rate >= 30) {
-                statusT.innerText = '符合免关税条件';
-                statusT.className = 'mt-2 inline-block px-3 py-1 bg-green-600 text-white text-[10px] font-bold rounded-full uppercase';
-                box.className = 'p-6 bg-green-50 rounded-2xl border border-green-100 text-center';
-            } else {
-                statusT.innerText = '不符合条件 (补缴关税)';
-                statusT.className = 'mt-2 inline-block px-3 py-1 bg-red-600 text-white text-[10px] font-bold rounded-full uppercase';
-                box.className = 'p-6 bg-red-50 rounded-2xl border border-red-100 text-center';
-            }
-        }
-
-        inputC.oninput = update;
-        outputP.oninput = update;
-    </script>
-
-    <footer class="max-w-4xl mx-auto mt-20 mb-10 pt-8 border-t border-slate-200">
-    <div class="flex flex-col md:flex-row justify-between items-center bg-slate-100 p-4 rounded-xl">
-        <div class="text-[10px] text-slate-500 font-mono mb-4 md:mb-0">
-            STRATEGIC COMPLIANCE VERIFICATION // SOURCE_ID: 2026-FT-HN
-        </div>
-        <a href="sources.html" class="flex items-center text-xs font-bold text-blue-600 hover:text-blue-800 transition-colors">
-            <span class="mr-2">🔍</span> 验证本文数据来源：情报源追踪中心
-        </a>
-    </div>
-</footer>
+        <footer class="mt-20 pt-10 border-t border-slate-900 flex justify-between items-center opacity-50">
+             <a href="commander.html" class="text-[10px] font-bold text-slate-500 uppercase hover:text-blue-400">← 返回指挥中心</a>
+             <span class="text-[10px] font-mono">MNRO_SYSTEM_7.2_STABLE</span>
+        </footer>
+    </article>
 </body>
 </html>
