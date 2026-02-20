@@ -11,6 +11,8 @@
         .grid-overlay { background-image: linear-gradient(rgba(30, 41, 59, 0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(30, 41, 59, 0.2) 1px, transparent 1px); background-size: 40px 40px; }
         .animate-marquee { display: inline-block; animation: marquee 35s linear infinite; }
         @keyframes marquee { 0% { transform: translateX(50%); } 100% { transform: translateX(-100%); } }
+        /* 修复字体截断：为标题增加微量内边距 */
+        .title-fix { padding-right: 0.1em; }
     </style>
 </head>
 <body class="text-slate-300 grid-overlay">
@@ -38,7 +40,7 @@
                 <div class="hidden md:flex space-x-4 text-xs font-bold">
                     <span class="text-blue-500 cursor-default">ZH</span>
                     <span class="text-slate-800">|</span>
-                    <a href="index-en.html" class="text-slate-500 hover:text-white transition-colors">EN</a>
+                    <a href="index-en.html" class="text-slate-500 hover:text-white transition-colors font-bold">EN</a>
                 </div>
                 <a href="javascript:void(0)" onclick="showAlert()" class="bg-blue-600/20 border border-blue-500/50 px-6 py-2.5 rounded-full text-blue-400 text-sm font-black hover:bg-blue-600 hover:text-white transition-all">注册/登录</a>
             </div>
@@ -60,7 +62,7 @@
 
         <h1 class="text-4xl md:text-6xl font-black text-white text-center italic tracking-tighter uppercase leading-tight mb-8">
             结构化重塑<br>
-            <span class="text-transparent bg-clip-text bg-gradient-to-b from-blue-400 to-blue-700 text-3xl md:text-5xl">封关元年红利</span>
+            <span class="text-transparent bg-clip-text bg-gradient-to-b from-blue-400 to-blue-700 text-3xl md:text-5xl title-fix">封关元年红利</span>
         </h1>
 
         <p class="max-w-2xl text-center text-slate-400 text-base md:text-lg font-light leading-relaxed mb-12">
@@ -76,14 +78,17 @@
                     <div id="days" class="text-5xl font-light text-white font-mono">000</div>
                     <div class="text-xs uppercase tracking-widest text-slate-600 mt-2 font-bold">Days</div>
                 </div>
+                <div class="text-center text-slate-700 text-4xl">:</div>
                 <div class="text-center">
                     <div id="hours" class="text-5xl font-light text-white font-mono">00</div>
                     <div class="text-xs uppercase tracking-widest text-slate-600 mt-2 font-bold">Hours</div>
                 </div>
+                <div class="text-center text-slate-700 text-4xl">:</div>
                 <div class="text-center">
                     <div id="minutes" class="text-5xl font-light text-white font-mono">00</div>
                     <div class="text-xs uppercase tracking-widest text-slate-600 mt-2 font-bold">Mins</div>
                 </div>
+                <div class="text-center text-slate-700 text-4xl">:</div>
                 <div class="text-center">
                     <div id="seconds" class="text-5xl font-light text-blue-500 font-mono">00</div>
                     <div class="text-xs uppercase tracking-widest text-blue-900 mt-2 font-bold">Secs</div>
@@ -103,19 +108,19 @@
 
     <section class="max-w-7xl mx-auto px-6 py-10 border-t border-slate-900">
         <div class="grid md:grid-cols-3 gap-10">
-            <div class="p-10 bg-slate-950 border border-slate-900 rounded-3xl group hover:border-blue-500/50 transition-all">
+            <div class="p-10 bg-slate-950 border border-slate-900 rounded-3xl group hover:border-blue-500/50 transition-all text-left">
                 <div class="text-blue-500 font-mono text-xs mb-4">#01 STRATEGY</div>
                 <h3 class="text-white text-2xl font-bold mb-4 uppercase italic">离岸架构与免税</h3>
                 <p class="text-base text-slate-500 leading-relaxed mb-6">深度解读加工增值 30% 免税政策与离岸账户资产上链路径。</p>
                 <a href="strategy-1-1.html" class="text-xs font-black text-blue-400 hover:text-white uppercase tracking-widest">查看详情 +</a>
             </div>
-            <div class="p-10 bg-slate-950 border border-slate-900 rounded-3xl group hover:border-blue-500/50 transition-all">
+            <div class="p-10 bg-slate-950 border border-slate-900 rounded-3xl group hover:border-blue-500/50 transition-all text-left">
                 <div class="text-blue-500 font-mono text-xs mb-4">#02 TECHNOLOGY</div>
                 <h3 class="text-white text-2xl font-bold mb-4 uppercase italic">AI 财税决策引擎</h3>
                 <p class="text-base text-slate-500 leading-relaxed mb-6">利用 MNRO 算法进行多维规制对标，自动化匹配最优财税接口。</p>
                 <a href="tech-2-2-2.html" class="text-xs font-black text-blue-400 hover:text-white uppercase tracking-widest">查看详情 +</a>
             </div>
-            <div class="p-10 bg-slate-950 border border-slate-900 rounded-3xl group hover:border-blue-500/50 transition-all">
+            <div class="p-10 bg-slate-950 border border-slate-900 rounded-3xl group hover:border-blue-500/50 transition-all text-left">
                 <div class="text-blue-500 font-mono text-xs mb-4">#03 ECOSYSTEM</div>
                 <h3 class="text-white text-2xl font-bold mb-4 uppercase italic">增长协同与合规</h3>
                 <p class="text-base text-slate-500 leading-relaxed mb-6">实质性运营审计对标，保障 15% 企业所得税政策的长期合规性。</p>
@@ -124,30 +129,45 @@
         </div>
     </section>
 
+    <section class="max-w-7xl mx-auto px-6 py-16 border-t border-slate-900 flex flex-wrap justify-around items-center gap-8">
+        <a href="javascript:void(0)" onclick="showAlert()" class="flex items-center space-x-3 group">
+            <span class="w-12 h-12 bg-slate-900 rounded-xl flex items-center justify-center text-blue-500 group-hover:bg-blue-600 group-hover:text-white transition-all text-xl font-bold">W</span>
+            <span class="text-xs font-bold uppercase text-slate-500 tracking-widest">离岸家族办公室</span>
+        </a>
+        <a href="javascript:void(0)" onclick="showAlert()" class="flex items-center space-x-3 group">
+            <span class="w-12 h-12 bg-slate-900 rounded-xl flex items-center justify-center text-blue-500 group-hover:bg-blue-600 group-hover:text-white transition-all text-xl font-bold">S</span>
+            <span class="text-xs font-bold uppercase text-slate-500 tracking-widest">阶梯业务报价</span>
+        </a>
+        <a href="sources.html" class="flex items-center space-x-3 group">
+            <span class="w-12 h-12 bg-slate-900 rounded-xl flex items-center justify-center text-blue-500 group-hover:bg-blue-600 group-hover:text-white transition-all text-xl font-bold">A</span>
+            <span class="text-xs font-bold uppercase text-slate-500 tracking-widest">权威数据核验</span>
+        </a>
+    </section>
+
     <section class="max-w-7xl mx-auto px-6 py-20 bg-gradient-to-b from-transparent to-blue-900/5 border-t border-slate-900">
         <div class="grid md:grid-cols-4 gap-8 text-center md:text-left">
             <div>
                 <h4 class="text-white text-xs font-black uppercase tracking-[0.3em] mb-4">联系电话</h4>
-                <p class="text-blue-400 font-mono text-lg">+86 181-1779-0507</p>
+                <p class="text-blue-400 font-mono text-lg font-bold underline underline-offset-4">+86 181-1779-0507</p>
             </div>
             <div>
-                <h4 class="text-white text-xs font-black uppercase tracking-[0.3em] mb-4">E-mail</h4>
-                <p class="text-slate-300 font-mono text-lg break-words">kosok@solana-hainan.com</p>
+                <h4 class="text-white text-xs font-black uppercase tracking-[0.3em] mb-4 text-center md:text-left">E-mail</h4>
+                <p class="text-slate-300 font-mono text-lg break-words text-center md:text-left">kosok@solana-hainan.com</p>
             </div>
             <div>
-                <h4 class="text-white text-xs font-black uppercase tracking-[0.3em] mb-4">WeChat</h4>
-                <p class="text-slate-500 font-mono text-sm italic">即将上线 (QR Coming)</p>
+                <h4 class="text-white text-xs font-black uppercase tracking-[0.3em] mb-4 text-center md:text-left">WeChat</h4>
+                <p class="text-slate-500 font-mono text-sm italic text-center md:text-left">二维码即将上线</p>
             </div>
             <div>
-                <h4 class="text-white text-xs font-black uppercase tracking-[0.3em] mb-4">Telegram</h4>
-                <p class="text-slate-500 font-mono text-sm italic">即将上线 (ID Coming)</p>
+                <h4 class="text-white text-xs font-black uppercase tracking-[0.3em] mb-4 text-center md:text-left">Telegram</h4>
+                <p class="text-slate-500 font-mono text-sm italic text-center md:text-left">即刻沟通即将上线</p>
             </div>
         </div>
     </section>
 
-    <footer class="bg-black py-12 px-6 border-t border-slate-900 text-[10px] tracking-[0.2em] uppercase font-bold text-slate-600 text-center md:text-left">
+    <footer class="bg-black py-12 px-6 border-t border-slate-900 text-[10px] tracking-[0.2em] uppercase font-bold text-slate-600">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-            <p>合规数据源: PBOC / 海南自由贸易港政务系统</p>
+            <p>合规依据: PBOC / 2026 海南自由贸易港封关政策库</p>
             <p>© 2026 Solana-Hainan Strategic Advisory Co., Ltd.</p>
         </div>
     </footer>
@@ -166,7 +186,7 @@
         }
         setInterval(updateCountdown, 1000);
         updateCountdown();
-        function showAlert() { alert("系统通知：此模块正在根据 2026 Q1 最新财税合规指令进行数据校准，预计近期开放。"); }
+        function showAlert() { alert("系统通知：此模块正在根据 2026 Q1 最新财税合规指令进行数据校准（Calibration），预计近期开放。"); }
     </script>
 </body>
 </html>
