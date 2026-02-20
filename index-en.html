@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solana-Hainan 2026 | Global Offshore Command Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .grid-bg { background-image: radial-gradient(#1e293b 1px, transparent 1px); background-size: 30px 30px; }
+        .glow-text { text-shadow: 0 0 20px rgba(59, 130, 246, 0.8); }
+        .ticker-wrap { width: 100%; overflow: hidden; background-color: #0f172a; border-y: 1px solid #1e293b; }
+        .ticker { display: inline-block; white-space: nowrap; padding-right: 100%; box-sizing: content-box; animation: ticker 25s linear infinite; }
+        @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
+    </style>
+</head>
+<body class="bg-[#020617] text-slate-300 font-sans leading-relaxed grid-bg min-h-screen flex flex-col text-left">
+
+    <nav class="w-full border-b border-slate-800 bg-[#020617]/80 backdrop-blur-md fixed top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center text-left">
+            <div class="flex items-center space-x-2">
+                <div class="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
+                <span class="text-white font-black italic tracking-widest text-lg">SOLANA<span class="text-blue-500">-HAINAN</span></span>
+            </div>
+            <div class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest text-left">
+                <a href="commander-en.html" class="text-slate-300 hover:text-blue-400 transition-colors">Console</a>
+                <a href="simulator-en.html" class="text-slate-300 hover:text-blue-400 transition-colors text-amber-400">ROI Simulator</a>
+                <a href="parks-en.html" class="text-slate-300 hover:text-blue-400 transition-colors">13 Hubs</a>
+                <a href="lifestyle-en.html" class="text-slate-300 hover:text-blue-400 transition-colors">Lifestyle</a>
+            </div>
+            <div class="flex items-center space-x-4 text-xs font-bold text-left">
+                <a href="index.html" class="text-slate-500 hover:text-white transition-colors">ZH</a>
+                <span class="text-slate-700">|</span>
+                <a href="auth-en.html" class="bg-blue-600/20 text-blue-400 border border-blue-500/30 px-4 py-1.5 rounded-full hover:bg-blue-600 hover:text-white transition-all">Portal Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="ticker-wrap mt-16 py-1.5 text-[10px] font-mono text-blue-400 uppercase tracking-widest text-left">
+        <div class="ticker">
+            <span class="mx-4 text-slate-500">LIVE:</span> [AI INTEL] 12 new high-tech categories added to 15% CIT directory... 
+            <span class="mx-4 text-slate-500">|</span> [ALERT] EFU cross-border capital compliance upgrade next month...
+            <span class="mx-4 text-slate-500">|</span> [MARKET] Offshore Family Trust registrations up 300% this quarter...
+        </div>
+    </div>
+
+    <main class="flex-grow flex flex-col justify-center items-center text-center px-6 py-20 relative overflow-hidden">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/20 rounded-full blur-[120px] -z-10"></div>
+
+        <div class="inline-block border border-blue-500/30 bg-blue-500/10 text-blue-400 text-[10px] font-bold px-4 py-1.5 rounded-full mb-8 uppercase tracking-[0.3em] text-center">
+            System Status: 2026 Protocol Active
+        </div>
+
+        <h1 class="text-5xl md:text-7xl font-black italic tracking-tighter text-white mb-6 uppercase leading-tight text-center">
+            Redefining Offshore Wealth<br>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-600 glow-text">For the 2026 Era</span>
+        </h1>
+        
+        <p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-12 font-light text-center">
+            Engineered for multinational corporations and HNWIs. Leverage our AI-driven MNRO engine to secure the ultimate arbitrage window: 15% income tax and 30% zero-tariff exemptions.
+        </p>
+
+        <div class="mb-16 text-center">
+            <p class="text-[10px] text-slate-500 uppercase tracking-[0.3em] font-bold mb-4 text-center">Countdown to Ultimate Customs Closure Verification</p>
+            <div class="flex space-x-4 justify-center text-center" id="countdown-container-en">
+                <div class="bg-slate-900 border border-slate-700 w-20 h-24 rounded-xl flex flex-col justify-center items-center shadow-2xl">
+                    <span id="days-en" class="text-4xl font-black text-white font-mono">00</span>
+                    <span class="text-[9px] text-slate-500 uppercase mt-1 tracking-widest">Days</span>
+                </div>
+                <div class="text-3xl font-black text-slate-700 mt-4">:</div>
+                <div class="bg-slate-900 border border-slate-700 w-20 h-24 rounded-xl flex flex-col justify-center items-center shadow-2xl">
+                    <span id="hours-en" class="text-4xl font-black text-white font-mono">00</span>
+                    <span class="text-[9px] text-slate-500 uppercase mt-1 tracking-widest">Hours</span>
+                </div>
+                <div class="text-3xl font-black text-slate-700 mt-4">:</div>
+                <div class="bg-slate-900 border border-slate-700 w-20 h-24 rounded-xl flex flex-col justify-center items-center shadow-2xl">
+                    <span id="minutes-en" class="text-4xl font-black text-white font-mono">00</span>
+                    <span class="text-[9px] text-slate-500 uppercase mt-1 tracking-widest">Mins</span>
+                </div>
+                <div class="text-3xl font-black text-slate-700 mt-4">:</div>
+                <div class="bg-slate-900 border border-slate-700 w-20 h-24 rounded-xl flex flex-col justify-center items-center shadow-2xl">
+                    <span id="seconds-en" class="text-4xl font-black text-blue-500 font-mono">00</span>
+                    <span class="text-[9px] text-blue-700 uppercase mt-1 tracking-widest">Secs</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 text-center">
+            <a href="commander-en.html" class="bg-blue-600 text-white px-10 py-4 rounded-full font-black uppercase text-sm hover:bg-white hover:text-blue-600 transition-all shadow-[0_0_20px_rgba(37,99,235,0.4)] tracking-widest">
+                Access Console →
+            </a>
+            <a href="simulator-en.html" class="bg-slate-800 text-slate-300 border border-slate-700 px-10 py-4 rounded-full font-black uppercase text-sm hover:bg-slate-700 hover:text-white transition-all tracking-widest">
+                Calculate ROI
+            </a>
+        </div>
+    </main>
+
+    <footer class="border-t border-slate-900 py-8 text-center text-[10px] text-slate-600 uppercase tracking-widest">
+        <div class="space-x-4 mb-2 text-center">
+            <a href="intelligence-en.html" class="hover:text-slate-400">Market Intel</a> |
+            <a href="wealth-en.html" class="hover:text-slate-400">Family Office</a> |
+            <a href="services-en.html" class="hover:text-slate-400">Transparent Pricing</a> |
+            <a href="sources-en.html" class="hover:text-slate-400">Verification</a>
+        </div>
+        <p class="text-center">© 2026 Solana-Hainan. Secured by MNRO Engine.</p>
+    </footer>
+
+    <script>
+        function updateCountdownEn() {
+            const target = new Date("2026-12-31T23:59:59").getTime();
+            const now = new Date().getTime();
+            const diff = target - now;
+
+            if (diff > 0) {
+                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.getElementById("days-en").innerText = d.toString().padStart(2, '0');
+                document.getElementById("hours-en").innerText = h.toString().padStart(2, '0');
+                document.getElementById("minutes-en").innerText = m.toString().padStart(2, '0');
+                document.getElementById("seconds-en").innerText = s.toString().padStart(2, '0');
+            } else {
+                document.getElementById("countdown-container-en").innerHTML = "<div class='text-2xl font-black text-green-500 border border-green-500/30 bg-green-500/10 px-8 py-4 rounded-xl shadow-[0_0_20px_rgba(34,197,94,0.3)]'>CUSTOMS PROTOCOL FULLY ACTIVE</div>";
+            }
+        }
+        setInterval(updateCountdownEn, 1000);
+        updateCountdownEn();
+    </script>
+</body>
+</html>
