@@ -3,241 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>业务与报价 | 交易中心 | Solana-Hainan</title>
+    <title>业务与报价 | Solana-Hainan Strategic</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&display=swap');
         body { font-family: 'Noto Sans SC', sans-serif; background-color: #020617; color: #cbd5e1; }
         .grid-overlay { background-image: linear-gradient(rgba(30, 41, 59, 0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(30, 41, 59, 0.2) 1px, transparent 1px); background-size: 40px 40px; }
-        .price-card:hover { border-color: rgba(59, 130, 246, 0.5); box-shadow: 0 0 40px rgba(59, 130, 246, 0.1); }
-        /* 弹窗动画 */
-        .modal-enter { animation: modalFadeIn 0.3s ease-out forwards; }
-        @keyframes modalFadeIn { from { opacity: 0; transform: scale(0.95) translateY(-20px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+        .service-card { background: rgba(15, 23, 42, 0.8); border: 1px solid #1e293b; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .service-card:hover { border-color: #3b82f6; transform: translateY(-5px); box-shadow: 0 10px 40px rgba(59, 130, 246, 0.1); }
     </style>
 </head>
-<body class="grid-overlay pb-20 relative">
+<body class="grid-overlay pb-20">
 
-    <nav class="fixed top-0 w-full z-50 bg-[#020617]/95 border-b border-slate-800 backdrop-blur-xl">
+    <nav class="fixed top-0 w-full z-50 bg-[#020617]/90 backdrop-blur-xl border-b border-slate-800">
         <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
-            <div class="flex items-center space-x-4">
-                <a href="index.html" class="flex items-center space-x-4">
-                    <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-700 rounded-lg flex items-center justify-center shadow-lg shadow-blue-500/20">
-                        <span class="text-white font-black text-xl">S</span>
-                    </div>
-                    <div class="flex flex-col">
-                        <span class="text-white font-black tracking-tighter text-xl uppercase italic">Solana<span class="text-blue-500 text-lg">Hainan</span></span>
-                    </div>
-                </a>
+            <a href="index.html" class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center font-black text-white text-xl">S</div>
+                <span class="text-white font-black tracking-tighter text-lg uppercase italic">Solana<span class="text-blue-500">Hainan</span></span>
+            </a>
+            <div class="hidden lg:flex space-x-8 text-[11px] font-black uppercase tracking-[0.2em]">
+                <a href="index.html" class="text-slate-400 hover:text-white transition-colors">首页</a>
+                <a href="parks.html" class="text-slate-400 hover:text-white transition-colors">13大园区</a>
+                <a href="services.html" class="text-blue-400 border-b-2 border-blue-500 pb-1">业务与报价</a>
             </div>
-            
-            <div class="hidden lg:flex space-x-8 text-sm font-bold uppercase tracking-widest items-center">
-                <a href="index.html" class="text-slate-400 hover:text-blue-400 transition-colors text-left">首 页</a>
-                <a href="parks.html" class="text-slate-400 hover:text-blue-400 transition-colors text-left">13大园区</a>
-                <a href="services.html" class="text-white border border-blue-500 bg-blue-500/20 px-4 py-1.5 rounded-full transition-all flex items-center gap-2">
-                    <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse text-left"></span> 业务与报价
-                </a>
-            </div>
-            <div class="flex items-center space-x-6">
-                <a href="javascript:void(0)" onclick="openOrderModal('注册会员', '免费')" class="bg-blue-600/20 border border-blue-500/50 px-6 py-2.5 rounded-full text-blue-400 text-sm font-black hover:bg-blue-600 hover:text-white transition-all uppercase">注册入驻</a>
-            </div>
+            <button onclick="openForm('会员注册', '0')" class="bg-blue-600 text-white px-5 py-2 rounded-full text-[10px] font-black uppercase hover:bg-blue-500">立即加入</button>
         </div>
     </nav>
 
-    <header class="pt-40 pb-12 px-6 text-center">
-        <h1 class="text-4xl md:text-5xl font-black text-white italic uppercase tracking-tighter mb-6">战略服务 <span class="text-blue-500">与 报价矩阵</span></h1>
-        <p class="max-w-3xl mx-auto text-slate-400 text-lg font-light leading-relaxed">确定性合规方案与清晰报价。订单提交后将自动同步至指挥中心系统。</p>
+    <header class="pt-40 pb-16 px-6 text-center">
+        <h1 class="text-4xl md:text-5xl font-black text-white italic uppercase tracking-tighter mb-4">业务矩阵 <span class="text-blue-500">& 报价标准</span></h1>
+        <p class="text-slate-400 text-sm font-light tracking-widest uppercase">Pricing Transparency · Compliance First · Data Driven</p>
     </header>
 
-    <section class="max-w-7xl mx-auto px-6 mb-20">
-        <div class="grid md:grid-cols-3 gap-8">
+    <main class="max-w-7xl mx-auto px-6 mb-24">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             
-            <div class="price-card bg-slate-950 border border-slate-800 p-8 rounded-3xl transition-all flex flex-col">
-                <h3 class="text-blue-400 font-mono text-xs uppercase tracking-[0.2em] mb-2">Level 01 - Entry</h3>
-                <div class="text-white text-3xl font-black italic uppercase mb-6">快速落户版</div>
-                <div class="text-5xl font-light text-white mb-8 font-mono">¥9,800<span class="text-sm text-slate-600">/起</span></div>
-                <ul class="space-y-4 mb-10 flex-1 text-sm text-slate-400">
-                    <li class="flex items-start gap-2"><span class="text-blue-500">✓</span> 园区精准匹配建议</li>
-                    <li class="flex items-start gap-2"><span class="text-blue-500">✓</span> 全流程工商注册代理</li>
-                    <li class="flex items-start gap-2"><span class="text-blue-500">✓</span> 基础 EFU 账户开户指引</li>
-                </ul>
-                <button onclick="openOrderModal('快速落户版 (Level 01)', '¥9,800')" class="w-full bg-slate-900 border border-slate-700 text-white py-4 rounded-xl font-bold hover:bg-white hover:text-black transition-all uppercase tracking-widest text-xs">立即下单</button>
-            </div>
-
-            <div class="price-card bg-slate-950 border-2 border-blue-600/30 p-8 rounded-3xl transition-all flex flex-col relative scale-105 shadow-[0_20px_50px_rgba(37,99,235,0.1)]">
-                <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-[10px] font-black px-4 py-1 rounded-full uppercase tracking-widest">最受欢迎</div>
-                <h3 class="text-blue-400 font-mono text-xs uppercase tracking-[0.2em] mb-2">Level 02 - Strategic</h3>
-                <div class="text-white text-3xl font-black italic uppercase mb-6">封关节税版</div>
-                <div class="text-5xl font-light text-white mb-8 font-mono">¥28,000<span class="text-sm text-slate-600">/起</span></div>
-                <ul class="space-y-4 mb-10 flex-1 text-sm text-slate-300">
-                    <li class="flex items-start gap-2"><span class="text-blue-500 font-bold">✓</span> 双15%所得税 专项落地算法</li>
-                    <li class="flex items-start gap-2"><span class="text-blue-500 font-bold">✓</span> 实质性运营 (Substantive) 审计</li>
-                    <li class="flex items-start gap-2"><span class="text-blue-500 font-bold">✓</span> 加工增值 30% 免税路径设计</li>
-                </ul>
-                <button onclick="openOrderModal('封关节税版 (Level 02)', '¥28,000')" class="w-full bg-blue-600 text-white py-4 rounded-xl font-bold hover:bg-white hover:text-blue-600 transition-all uppercase tracking-widest text-xs shadow-xl shadow-blue-500/20">抢占坑位下单</button>
-            </div>
-
-            <div class="price-card bg-slate-950 border border-slate-800 p-8 rounded-3xl transition-all flex flex-col">
-                <h3 class="text-amber-500 font-mono text-xs uppercase tracking-[0.2em] mb-2">Level 03 - Global</h3>
-                <div class="text-white text-3xl font-black italic uppercase mb-6">离岸家族办</div>
-                <div class="text-5xl font-light text-white mb-8 font-mono">定制<span class="text-sm text-slate-600">/Custom</span></div>
-                <ul class="space-y-4 mb-10 flex-1 text-sm text-slate-400">
-                    <li class="flex items-start gap-2"><span class="text-amber-500">✓</span> 全球资产隔离与跨境红利架构</li>
-                    <li class="flex items-start gap-2"><span class="text-amber-500">✓</span> 家族成员落户与绿通</li>
-                    <li class="flex items-start gap-2"><span class="text-amber-500">✓</span> 专属私行级服务</li>
-                </ul>
-                <button onclick="openOrderModal('离岸家族办 (Level 03)', '私行级定制')" class="w-full bg-slate-900 border border-slate-700 text-white py-4 rounded-xl font-bold hover:bg-amber-500 hover:text-black transition-all uppercase tracking-widest text-xs">提交定制意向</button>
-            </div>
-
-        </div>
-    </section>
-
-    <section class="max-w-7xl mx-auto px-6 mb-32 text-center text-sm">
-        <p class="text-slate-500">点击下单即代表您已阅读并同意我们的合规协议。</p>
-        <div class="mt-4 flex justify-center space-x-6 text-blue-500 underline decoration-blue-500/30 underline-offset-4">
-            <a href="javascript:void(0)" onclick="showAlert('《Solana-Hainan 离岸咨询服务协议》正在调用数据库')" class="hover:text-white transition-colors">《服务条款与合规声明》</a>
-            <a href="javascript:void(0)" onclick="showAlert('隐私政策已按照 GDPR 及数据出境安全评估办法更新')" class="hover:text-white transition-colors">《隐私及数据安全政策》</a>
-        </div>
-    </section>
-
-    <div id="order-modal-backdrop" class="fixed inset-0 z-[100] bg-[#020617]/90 backdrop-blur-md hidden flex items-center justify-center p-4">
-        <div id="order-modal" class="bg-slate-900 border border-slate-700 w-full max-w-lg rounded-3xl p-8 relative shadow-[0_0_50px_rgba(59,130,246,0.2)]">
-            <button onclick="closeModal()" class="absolute top-6 right-6 text-slate-400 hover:text-white transition-colors">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-            </button>
-            
-            <h2 id="modal-title" class="text-2xl font-black text-white italic uppercase tracking-tighter mb-2">安全交易终端</h2>
-            <p id="modal-subtitle" class="text-sm text-slate-400 mb-8 font-light">系统已加密。当前项目: <span id="selected-package" class="text-blue-400 font-bold"></span></p>
-
-            <form id="submission-form" onsubmit="submitForm(event)" class="space-y-5">
-                <input type="hidden" id="form-type" value="订单">
-
-                <div>
-                    <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">企业/个人姓名</label>
-                    <input type="text" id="user-name" required class="w-full bg-slate-950 border border-slate-800 text-white px-4 py-3 rounded-xl focus:outline-none focus:border-blue-500 transition-colors placeholder-slate-600 text-sm" placeholder="如：索拉纳（海南）战略咨询">
-                </div>
-
-                <div>
-                    <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">电子邮箱 (必填)</label>
-                    <input type="email" id="user-email" required class="w-full bg-slate-950 border border-slate-800 text-white px-4 py-3 rounded-xl focus:outline-none focus:border-blue-500 transition-colors placeholder-slate-600 text-sm" placeholder="admin@solana-hainan.com">
-                </div>
-
-                <div>
-                    <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">安全通讯号码 (手机号)</label>
-                    <div class="flex gap-2">
-                        <input type="tel" id="user-phone" class="flex-1 bg-slate-950 border border-slate-800 text-white px-4 py-3 rounded-xl focus:outline-none focus:border-blue-500 transition-colors placeholder-slate-600 text-sm" placeholder="181-XXXX-XXXX">
-                        <button type="button" onclick="sendSMS(this)" class="bg-blue-600/20 text-blue-400 border border-blue-500/50 px-4 py-2 rounded-xl text-xs font-bold hover:bg-blue-600 hover:text-white transition-all whitespace-nowrap">
-                            获取验证码
-                        </button>
+            <div class="service-card p-8 rounded-3xl flex flex-col">
+                <div class="text-blue-500 font-black text-xs uppercase tracking-widest mb-4">Registration</div>
+                <h2 class="text-white text-2xl font-black mb-6 italic uppercase">公司落户注册</h2>
+                <div class="space-y-4 flex-1">
+                    <div class="flex justify-between items-center py-3 border-b border-slate-800">
+                        <span class="text-slate-400 text-sm">基础版 (核名/执照)</span>
+                        <span class="text-white font-mono font-bold">¥800</span>
+                    </div>
+                    <div class="flex justify-between items-center py-3 border-b border-slate-800">
+                        <span class="text-blue-400 text-sm font-bold">全包版 (含公章/申报)</span>
+                        <span class="text-white font-mono font-bold">¥1,900</span>
                     </div>
                 </div>
+                <button onclick="openForm('公司注册全包', '1900')" class="mt-8 w-full bg-slate-800 text-white py-4 rounded-xl font-black text-[10px] uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all">立即下单</button>
+            </div>
 
-                <div>
-                    <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">短信指令码 (SMS Code)</label>
-                    <input type="text" id="sms-code" class="w-full bg-slate-950 border border-slate-800 text-white px-4 py-3 rounded-xl focus:outline-none focus:border-slate-500 transition-colors placeholder-slate-600 text-sm" placeholder="输入6位授权码 (阿里云接入中，目前选填)">
+            <div class="service-card p-8 rounded-3xl border-blue-500/50 relative bg-blue-900/10 flex flex-col">
+                <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-[8px] font-black px-4 py-1 rounded-full uppercase">Most Ordered</div>
+                <div class="text-blue-500 font-black text-xs uppercase tracking-widest mb-4">Accounting</div>
+                <h2 class="text-white text-2xl font-black mb-6 italic uppercase">代理记账/合规</h2>
+                <div class="space-y-4 flex-1">
+                    <div class="flex justify-between items-center py-3 border-b border-slate-800">
+                        <span class="text-slate-300 text-sm">小规模纳税人 (年度)</span>
+                        <span class="text-white font-mono font-bold">¥2,400</span>
+                    </div>
+                    <div class="flex justify-between items-center py-3 border-b border-slate-800">
+                        <span class="text-slate-300 text-sm">一般纳税人 (年度)</span>
+                        <span class="text-white font-mono font-bold">¥6,000</span>
+                    </div>
+                </div>
+                <button onclick="openForm('代理记账小规模', '2400')" class="mt-8 w-full bg-blue-600 text-white py-4 rounded-xl font-black text-[10px] uppercase tracking-[0.2em] hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] transition-all">选择方案</button>
+            </div>
+
+            <div class="service-card p-8 rounded-3xl flex flex-col">
+                <div class="text-amber-500 font-black text-xs uppercase tracking-widest mb-4">Specialized</div>
+                <h2 class="text-white text-2xl font-black mb-6 italic uppercase">专项业务模块</h2>
+                <div class="space-y-4 flex-1">
+                    <div class="flex justify-between items-center py-3 border-b border-slate-800">
+                        <span class="text-slate-400 text-sm">商标设计及注册</span>
+                        <span class="text-white font-mono font-bold">¥1,200</span>
+                    </div>
+                    <div class="flex justify-between items-center py-3 border-b border-slate-800">
+                        <span class="text-slate-400 text-sm">EFU 跨境账户开立</span>
+                        <span class="text-white font-mono font-bold">¥5,000起</span>
+                    </div>
+                    <div class="flex justify-between items-center py-3 border-b border-slate-800">
+                        <span class="text-slate-400 text-sm">区块链/Web3 合规咨询</span>
+                        <span class="text-white font-mono font-bold">¥15,000起</span>
+                    </div>
+                </div>
+                <button onclick="openForm('专项业务咨询', 'Custom')" class="mt-8 w-full bg-slate-800 text-white py-4 rounded-xl font-black text-[10px] uppercase tracking-[0.2em] hover:bg-amber-500 hover:text-black transition-all">提交咨询</button>
+            </div>
+
+        </div>
+    </main>
+
+    <div id="form-overlay" class="fixed inset-0 z-[100] bg-black/95 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-800 w-full max-w-lg rounded-[2.5rem] p-10 relative">
+            <button onclick="closeForm()" class="absolute top-8 right-8 text-slate-500 hover:text-white text-2xl">✕</button>
+            <h3 class="text-white text-2xl font-black italic uppercase mb-2">指令发送终端</h3>
+            <p class="text-[10px] text-slate-500 mb-8 uppercase tracking-widest">Selected: <span id="current-item" class="text-blue-500"></span></p>
+
+            <form onsubmit="handleSubmit(event)" class="space-y-5">
+                <input type="hidden" id="service-name">
+                <input type="text" id="name" placeholder="您的姓名 / 公司名" required class="w-full bg-slate-950 border border-slate-800 text-white px-5 py-4 rounded-2xl text-sm outline-none focus:border-blue-500">
+                <input type="email" id="email" placeholder="电子邮箱" required class="w-full bg-slate-950 border border-slate-800 text-white px-5 py-4 rounded-2xl text-sm outline-none focus:border-blue-500">
+                <div class="flex gap-2">
+                    <input type="tel" id="phone" placeholder="手机号码" required class="flex-1 bg-slate-950 border border-slate-800 text-white px-5 py-4 rounded-2xl text-sm outline-none focus:border-blue-500">
+                    <button type="button" class="bg-blue-600/10 text-blue-500 border border-blue-500/20 px-4 rounded-2xl text-[10px] font-bold uppercase">获取验证码</button>
+                </div>
+                <textarea id="note" placeholder="备注需求..." rows="2" class="w-full bg-slate-950 border border-slate-800 text-white px-5 py-4 rounded-2xl text-sm outline-none focus:border-blue-500"></textarea>
+                
+                <div class="flex items-start gap-3 py-2">
+                    <input type="checkbox" required class="mt-1">
+                    <p class="text-[10px] text-slate-500 leading-tight">我已同意 <a href="#" class="text-blue-500 underline">《服务协议》</a> 并授权数据同步至 Google Webhook。</p>
                 </div>
 
-                <div class="flex items-start gap-3 mt-6">
-                    <input type="checkbox" id="agreement" required class="mt-1 bg-slate-900 border-slate-700 rounded focus:ring-blue-500">
-                    <label for="agreement" class="text-xs text-slate-400 leading-tight">
-                        我确认提交的资料真实有效，并已阅读且同意遵守 <a href="javascript:void(0)" class="text-blue-500 hover:underline">《服务协议》</a>。
-                    </label>
-                </div>
-
-                <button type="submit" id="submit-btn" class="w-full bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-4 rounded-xl font-black uppercase tracking-widest text-sm hover:from-blue-500 hover:to-indigo-600 transition-all shadow-[0_0_20px_rgba(37,99,235,0.3)] mt-4 flex justify-center items-center gap-2">
-                    提交数据指令
-                </button>
+                <button type="submit" id="submit-btn" class="w-full bg-blue-600 text-white py-4 rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-blue-500 shadow-xl shadow-blue-900/20">确认提交</button>
             </form>
         </div>
     </div>
 
     <script>
-        const GOOGLE_WEBHOOK_URL = '填入您的GoogleAppsScript宏地址'; // <--- 【待填写】
-
-        function showAlert(msg) { alert("系统提示: " + (msg)); }
-
-        // 打开弹窗
-        function openOrderModal(packageName, price) {
-            document.getElementById('selected-package').innerText = packageName + ' (' + price + ')';
-            document.getElementById('form-type').value = packageName; // 记录表单是买什么
-            
-            const backdrop = document.getElementById('order-modal-backdrop');
-            const modal = document.getElementById('order-modal');
-            backdrop.classList.remove('hidden');
-            modal.classList.add('modal-enter');
+        function openForm(item, price) {
+            document.getElementById('current-item').innerText = item + ' (' + (price === '0' ? '免费' : '¥'+price) + ')';
+            document.getElementById('service-name').value = item;
+            document.getElementById('form-overlay').classList.remove('hidden');
         }
-
-        // 关闭弹窗
-        function closeModal() {
-            const backdrop = document.getElementById('order-modal-backdrop');
-            backdrop.classList.add('hidden');
-        }
-
-        // 模拟短信发送
-        function sendSMS(btn) {
-            const phone = document.getElementById('user-phone').value;
-            if(!phone) {
-                alert("请先输入手机号，再请求短信指令！");
-                return;
-            }
-            btn.disabled = true;
-            let countdown = 60;
-            btn.innerText = countdown + "s 后重发";
-            const timer = setInterval(() => {
-                countdown--;
-                btn.innerText = countdown + "s 后重发";
-                if(countdown <= 0) {
-                    clearInterval(timer);
-                    btn.innerText = "获取验证码";
-                    btn.disabled = false;
-                }
-            }, 1000);
-            alert("短信发送请求已记录。注：阿里云通信接口缴费后正式打通。");
-        }
-
-        // 提交表单到 Google (含防抖和加载动画)
-        async function submitForm(e) {
+        function closeForm() { document.getElementById('form-overlay').classList.add('hidden'); }
+        async function handleSubmit(e) {
             e.preventDefault();
             const btn = document.getElementById('submit-btn');
-            const originalText = btn.innerHTML;
-            
-            // 改变按钮状态：加载中
-            btn.innerHTML = '<svg class="animate-spin h-5 w-5 text-white" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path></svg> 数据同步中...';
+            btn.innerText = "正在同步至 GOOGLE...";
             btn.disabled = true;
-
-            const formData = {
-                type: document.getElementById('form-type').value,
-                name: document.getElementById('user-name').value,
-                email: document.getElementById('user-email').value,
-                phone: document.getElementById('user-phone').value,
-                timestamp: new Date().toISOString()
-            };
-
-            console.log("正在准备向 Google Forms 发送数据: ", formData);
-
-            try {
-                // 如果您已经有 URL，取消下面的注释并请求
-                /*
-                const response = await fetch(GOOGLE_WEBHOOK_URL, {
-                    method: 'POST',
-                    mode: 'no-cors', // 解决跨域问题，Google Apps Script 常用
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(formData)
-                });
-                */
-
-                // 模拟网络延迟 (真实环境把这段删掉)
-                await new Promise(r => setTimeout(r, 1500));
-
-                alert("指令已发送！您的专属系统档案已创建，邮件回执已投递，专员将尽快与您通讯。");
-                closeModal();
-                e.target.reset(); // 清空表单
-            } catch (error) {
-                console.error('Submission failed', error);
-                alert("网络指令被拦截，请重试或直接通过邮件联系我们。");
-            } finally {
-                btn.innerHTML = originalText;
+            // 您的 Webhook 调用逻辑...
+            setTimeout(() => {
+                alert("指令已同步！");
+                closeForm();
+                btn.innerText = "确认提交";
                 btn.disabled = false;
-            }
+            }, 1000);
         }
     </script>
 </body>
