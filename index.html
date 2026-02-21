@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solana-Hainan Strategic Advisory | 2026 封关运作策略枢纽</title>
+    <title>Solana-Hainan Strategic Advisory | 2026 离岸战略枢纽</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700;900&display=swap');
@@ -11,11 +11,13 @@
         .grid-overlay { background-image: linear-gradient(rgba(30, 41, 59, 0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(30, 41, 59, 0.2) 1px, transparent 1px); background-size: 40px 40px; }
         .animate-marquee { display: inline-block; animation: marquee 35s linear infinite; }
         @keyframes marquee { 0% { transform: translateX(50%); } 100% { transform: translateX(-100%); } }
-        /* 修复字体截断：为标题增加微量内边距 */
         .title-fix { padding-right: 0.1em; }
+        /* AI 客服聊天框动画 */
+        .chat-slide-up { animation: slideUp 0.3s ease-out forwards; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
-<body class="text-slate-300 grid-overlay">
+<body class="text-slate-300 grid-overlay pb-20 relative">
 
     <nav class="fixed top-0 w-full z-50 bg-[#020617]/95 border-b border-slate-800 backdrop-blur-xl">
         <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
@@ -29,79 +31,85 @@
                 </div>
             </div>
             
-            <div class="hidden lg:flex space-x-10 text-sm font-bold uppercase tracking-widest">
-                <a href="commander.html" class="text-white hover:text-blue-400 transition-colors">指挥中心</a>
-                <a href="javascript:void(0)" onclick="showAlert()" class="text-slate-400 hover:text-amber-400">ROI 模拟器</a>
-                <a href="parks.html" class="text-slate-400 hover:text-blue-400 font-black">13大园区</a>
-                <a href="javascript:void(0)" onclick="showAlert()" class="text-slate-400 hover:text-blue-400">商务情报</a>
+            <div class="hidden lg:flex space-x-8 text-sm font-bold uppercase tracking-widest items-center">
+                <a href="commander.html" class="text-slate-400 hover:text-blue-400 transition-colors">指挥中心</a>
+                <a href="parks.html" class="text-slate-400 hover:text-blue-400 transition-colors">13大园区</a>
+                
+                <a href="javascript:void(0)" onclick="showAlert('服务与报价模块正在部署中')" class="text-blue-400 hover:text-white border border-blue-500/30 bg-blue-500/10 px-4 py-1.5 rounded-full transition-all flex items-center gap-2 shadow-[0_0_15px_rgba(59,130,246,0.2)]">
+                    <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
+                    业务与报价
+                </a>
+                
+                <a href="javascript:void(0)" onclick="showAlert('离岸家族办公室模块正在部署中')" class="text-slate-400 hover:text-blue-400 transition-colors">家族办公室</a>
+                <a href="javascript:void(0)" onclick="showAlert('算法模块更新中')" class="text-slate-400 hover:text-amber-400">ROI模拟器</a>
             </div>
 
             <div class="flex items-center space-x-6">
                 <div class="hidden md:flex space-x-4 text-xs font-bold">
                     <span class="text-blue-500 cursor-default">ZH</span>
                     <span class="text-slate-800">|</span>
-                    <a href="index-en.html" class="text-slate-500 hover:text-white transition-colors font-bold">EN</a>
+                    <a href="index-en.html" class="text-slate-500 hover:text-white transition-colors">EN</a>
                 </div>
-                <a href="javascript:void(0)" onclick="showAlert()" class="bg-blue-600/20 border border-blue-500/50 px-6 py-2.5 rounded-full text-blue-400 text-sm font-black hover:bg-blue-600 hover:text-white transition-all">注册/登录</a>
+                <a href="javascript:void(0)" onclick="showAlert('内网终端接入中')" class="bg-blue-600/20 border border-blue-500/50 px-6 py-2.5 rounded-full text-blue-400 text-sm font-black hover:bg-blue-600 hover:text-white transition-all uppercase">平台登录</a>
             </div>
         </div>
     </nav>
 
     <div class="mt-20 bg-slate-900/50 border-b border-slate-800 py-3 overflow-hidden">
         <div class="whitespace-nowrap inline-block animate-marquee text-xs uppercase tracking-[0.2em] font-mono text-blue-400/80">
-            <span class="mx-8 font-bold text-slate-500">实时数据流:</span> [政策] 2026 海南封关运作就绪度: 98.4% 
-            <span class="mx-8 text-slate-700">|</span> [合规] EFU 离岸账户跨境额度: 全面开放 
-            <span class="mx-8 text-slate-700">|</span> [案例] 本月新增离岸家族信托架构: 27 组 
+            <span class="mx-8 font-bold text-slate-500">实时战报:</span> [数据] 海南2026全岛封关硬软件准备度: 98.4% 
+            <span class="mx-8 text-slate-700">|</span> [合规] 多功能自由贸易(EFU)账户跨界资金池额度: 无上限 
+            <span class="mx-8 text-slate-700">|</span> [算法] MNRO引擎正在同步全球税务筹划指令...
         </div>
     </div>
 
     <section class="relative pt-24 pb-20 px-6 flex flex-col items-center">
         <div class="inline-flex items-center space-x-2 bg-blue-500/5 border border-blue-500/20 px-4 py-2 rounded-full mb-8">
-            <span class="text-[10px] font-black text-blue-500 uppercase tracking-[0.4em]">2026 Strategic Operational Framework</span>
+            <span class="text-[10px] font-black text-blue-500 uppercase tracking-[0.4em]">2026 战略级运作底座</span>
         </div>
 
         <h1 class="text-4xl md:text-6xl font-black text-white text-center italic tracking-tighter uppercase leading-tight mb-8">
-            结构化重塑<br>
-            <span class="text-transparent bg-clip-text bg-gradient-to-b from-blue-400 to-blue-700 text-3xl md:text-5xl title-fix">封关元年红利</span>
+            结构性重塑 <br>
+            <span class="text-transparent bg-clip-text bg-gradient-to-b from-blue-400 to-blue-700 text-3xl md:text-5xl title-fix">2026 财税非对称红利</span>
         </h1>
 
         <p class="max-w-2xl text-center text-slate-400 text-base md:text-lg font-light leading-relaxed mb-12">
-            基于海南自由贸易港 2026 政策底座。通过离岸合规算法与结构化协同，为全球高净值客户构建具备**非对称效率优势**的财税与资产架构。
+            基于海南自贸港 2026 封关运作底层逻辑。部署离岸合规算法，为全球高净值人群及跨国企业锁定**最高效的财税屏障与增长引擎**。
         </p>
 
         <div class="w-full max-w-3xl bg-white/5 border border-white/10 rounded-3xl p-10 backdrop-blur-xl mb-16 shadow-2xl">
             <div class="text-center mb-8">
-                <span class="text-xs font-bold uppercase tracking-[0.3em] text-slate-500">距离 2026 年度制度对标与红利窗口核验还有</span>
+                <span class="text-xs font-bold uppercase tracking-[0.3em] text-slate-500">距离 2026 政策并轨与系统实装</span>
             </div>
             <div class="flex justify-around items-center max-w-xl mx-auto">
                 <div class="text-center">
                     <div id="days" class="text-5xl font-light text-white font-mono">000</div>
-                    <div class="text-xs uppercase tracking-widest text-slate-600 mt-2 font-bold">Days</div>
+                    <div class="text-xs uppercase tracking-widest text-slate-600 mt-2 font-bold font-sans">天</div>
                 </div>
                 <div class="text-center text-slate-700 text-4xl">:</div>
                 <div class="text-center">
                     <div id="hours" class="text-5xl font-light text-white font-mono">00</div>
-                    <div class="text-xs uppercase tracking-widest text-slate-600 mt-2 font-bold">Hours</div>
+                    <div class="text-xs uppercase tracking-widest text-slate-600 mt-2 font-bold font-sans">时</div>
                 </div>
                 <div class="text-center text-slate-700 text-4xl">:</div>
                 <div class="text-center">
                     <div id="minutes" class="text-5xl font-light text-white font-mono">00</div>
-                    <div class="text-xs uppercase tracking-widest text-slate-600 mt-2 font-bold">Mins</div>
+                    <div class="text-xs uppercase tracking-widest text-slate-600 mt-2 font-bold font-sans">分</div>
                 </div>
                 <div class="text-center text-slate-700 text-4xl">:</div>
                 <div class="text-center">
                     <div id="seconds" class="text-5xl font-light text-blue-500 font-mono">00</div>
-                    <div class="text-xs uppercase tracking-widest text-blue-900 mt-2 font-bold">Secs</div>
+                    <div class="text-xs uppercase tracking-widest text-blue-900 mt-2 font-bold font-sans">秒</div>
                 </div>
             </div>
         </div>
 
         <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8">
             <a href="commander.html" class="bg-blue-600 text-white px-12 py-4 rounded-full font-black uppercase text-sm tracking-widest hover:bg-white hover:text-blue-600 transition-all shadow-2xl shadow-blue-500/20">
-                进入指挥中心 →
+                登入指挥终端 →
             </a>
-            <button onclick="showAlert()" class="bg-slate-900 text-slate-400 border border-slate-700 px-12 py-4 rounded-full font-black uppercase text-sm tracking-widest hover:bg-slate-800 hover:text-white transition-all">
-                ROI 资产测算
+            <button onclick="showAlert('算法模块更新中')" class="bg-slate-900 text-slate-400 border border-slate-700 px-12 py-4 rounded-full font-black uppercase text-sm tracking-widest hover:bg-slate-800 hover:text-white transition-all">
+                测算企业 ROI
             </button>
         </div>
     </section>
@@ -110,69 +118,93 @@
         <div class="grid md:grid-cols-3 gap-10">
             <div class="p-10 bg-slate-950 border border-slate-900 rounded-3xl group hover:border-blue-500/50 transition-all text-left">
                 <div class="text-blue-500 font-mono text-xs mb-4">#01 STRATEGY</div>
-                <h3 class="text-white text-2xl font-bold mb-4 uppercase italic">离岸架构与免税</h3>
-                <p class="text-base text-slate-500 leading-relaxed mb-6">深度解读加工增值 30% 免税政策与离岸账户资产上链路径。</p>
-                <a href="strategy-1-1.html" class="text-xs font-black text-blue-400 hover:text-white uppercase tracking-widest">查看详情 +</a>
+                <h3 class="text-white text-2xl font-bold mb-4 uppercase italic">离岸架构重组</h3>
+                <p class="text-base text-slate-500 leading-relaxed mb-6">全盘掌握 30% 加工增值免税与双 15% 所得税的最优应用路径，打通跨境资产证券化合规通道。</p>
             </div>
             <div class="p-10 bg-slate-950 border border-slate-900 rounded-3xl group hover:border-blue-500/50 transition-all text-left">
                 <div class="text-blue-500 font-mono text-xs mb-4">#02 TECHNOLOGY</div>
-                <h3 class="text-white text-2xl font-bold mb-4 uppercase italic">AI 财税决策引擎</h3>
-                <p class="text-base text-slate-500 leading-relaxed mb-6">利用 MNRO 算法进行多维规制对标，自动化匹配最优财税接口。</p>
-                <a href="tech-2-2-2.html" class="text-xs font-black text-blue-400 hover:text-white uppercase tracking-widest">查看详情 +</a>
+                <h3 class="text-white text-2xl font-bold mb-4 uppercase italic">AI 财税引擎</h3>
+                <p class="text-base text-slate-500 leading-relaxed mb-6">依托独家 MNRO 算法，进行多维度的监管对标与智能税务沙盘推演，消除人为政策盲区。</p>
             </div>
             <div class="p-10 bg-slate-950 border border-slate-900 rounded-3xl group hover:border-blue-500/50 transition-all text-left">
                 <div class="text-blue-500 font-mono text-xs mb-4">#03 ECOSYSTEM</div>
-                <h3 class="text-white text-2xl font-bold mb-4 uppercase italic">增长协同与合规</h3>
-                <p class="text-base text-slate-500 leading-relaxed mb-6">实质性运营审计对标，保障 15% 企业所得税政策的长期合规性。</p>
-                <a href="growth-3-1.html" class="text-xs font-black text-blue-400 hover:text-white uppercase tracking-widest">查看详情 +</a>
+                <h3 class="text-white text-2xl font-bold mb-4 uppercase italic">实质合规增长</h3>
+                <p class="text-base text-slate-500 leading-relaxed mb-6">严格审计“实质性运营”指标，确保企业与高净值个人长效享受自贸港顶格财税红利。</p>
             </div>
         </div>
-    </section>
-
-    <section class="max-w-7xl mx-auto px-6 py-16 border-t border-slate-900 flex flex-wrap justify-around items-center gap-8">
-        <a href="javascript:void(0)" onclick="showAlert()" class="flex items-center space-x-3 group">
-            <span class="w-12 h-12 bg-slate-900 rounded-xl flex items-center justify-center text-blue-500 group-hover:bg-blue-600 group-hover:text-white transition-all text-xl font-bold">W</span>
-            <span class="text-xs font-bold uppercase text-slate-500 tracking-widest">离岸家族办公室</span>
-        </a>
-        <a href="javascript:void(0)" onclick="showAlert()" class="flex items-center space-x-3 group">
-            <span class="w-12 h-12 bg-slate-900 rounded-xl flex items-center justify-center text-blue-500 group-hover:bg-blue-600 group-hover:text-white transition-all text-xl font-bold">S</span>
-            <span class="text-xs font-bold uppercase text-slate-500 tracking-widest">阶梯业务报价</span>
-        </a>
-        <a href="sources.html" class="flex items-center space-x-3 group">
-            <span class="w-12 h-12 bg-slate-900 rounded-xl flex items-center justify-center text-blue-500 group-hover:bg-blue-600 group-hover:text-white transition-all text-xl font-bold">A</span>
-            <span class="text-xs font-bold uppercase text-slate-500 tracking-widest">权威数据核验</span>
-        </a>
     </section>
 
     <section class="max-w-7xl mx-auto px-6 py-20 bg-gradient-to-b from-transparent to-blue-900/5 border-t border-slate-900">
         <div class="grid md:grid-cols-4 gap-8 text-center md:text-left">
             <div>
-                <h4 class="text-white text-xs font-black uppercase tracking-[0.3em] mb-4">联系电话</h4>
+                <h4 class="text-white text-xs font-black uppercase tracking-[0.3em] mb-4">加密专线</h4>
                 <p class="text-blue-400 font-mono text-lg font-bold underline underline-offset-4">+86 181-1779-0507</p>
             </div>
             <div>
-                <h4 class="text-white text-xs font-black uppercase tracking-[0.3em] mb-4 text-center md:text-left">E-mail</h4>
-                <p class="text-slate-300 font-mono text-lg break-words text-center md:text-left">kosok@solana-hainan.com</p>
+                <h4 class="text-white text-xs font-black uppercase tracking-[0.3em] mb-4">核心电邮</h4>
+                <p class="text-slate-300 font-mono text-lg break-words">kosok@solana-hainan.com</p>
             </div>
             <div>
-                <h4 class="text-white text-xs font-black uppercase tracking-[0.3em] mb-4 text-center md:text-left">WeChat</h4>
-                <p class="text-slate-500 font-mono text-sm italic text-center md:text-left">二维码即将上线</p>
+                <h4 class="text-white text-xs font-black uppercase tracking-[0.3em] mb-4">WeChat 终端</h4>
+                <p class="text-slate-500 font-mono text-sm italic">即将开放扫码直连</p>
             </div>
             <div>
-                <h4 class="text-white text-xs font-black uppercase tracking-[0.3em] mb-4 text-center md:text-left">Telegram</h4>
-                <p class="text-slate-500 font-mono text-sm italic text-center md:text-left">即刻沟通即将上线</p>
+                <h4 class="text-white text-xs font-black uppercase tracking-[0.3em] mb-4">Telegram 频道</h4>
+                <p class="text-slate-500 font-mono text-sm italic">安全链路配置中</p>
             </div>
         </div>
     </section>
 
     <footer class="bg-black py-12 px-6 border-t border-slate-900 text-[10px] tracking-[0.2em] uppercase font-bold text-slate-600">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-            <p>合规依据: PBOC / 2026 海南自由贸易港封关政策库</p>
-            <p>© 2026 Solana-Hainan Strategic Advisory Co., Ltd.</p>
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
+            <p>政策授权准则: 中国人民银行 / 海南自贸港封关运作 2026 卷宗</p>
+            <p>© 2026 Solana-Hainan Strategic Advisory Co., Ltd. 保留所有战略解释权.</p>
         </div>
     </footer>
 
+    <div id="ai-chat-widget" class="fixed bottom-6 right-6 z-[100] flex flex-col items-end">
+        <div id="ai-chat-window" class="hidden mb-4 w-80 sm:w-96 bg-slate-950 border border-blue-500/50 rounded-2xl shadow-[0_0_30px_rgba(59,130,246,0.15)] overflow-hidden flex flex-col">
+            <div class="bg-blue-900/40 border-b border-blue-500/30 p-4 flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <div class="relative flex h-3 w-3">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
+                    </div>
+                    <span class="text-white font-bold text-sm tracking-widest uppercase">MNRO 智能参谋</span>
+                </div>
+                <button onclick="toggleChat()" class="text-slate-400 hover:text-white transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <div class="p-4 h-64 overflow-y-auto bg-slate-900/50 flex flex-col gap-3 text-sm">
+                <div class="text-center text-[10px] text-slate-500 font-mono mb-2">=== 2026 封关政策知识库已加载 ===</div>
+                <div class="bg-slate-800 border border-slate-700 text-slate-300 p-3 rounded-lg rounded-tl-none max-w-[85%]">
+                    您好，我是 Solana-Hainan 的 AI 财税参谋。您可以直接告诉我您的**主营业务**或**预估利润**，我能帮您在一秒内匹配最适合的园区，并预估可为您节省的税收成本。
+                </div>
+                <div class="flex flex-wrap gap-2 mt-2">
+                    <button class="bg-blue-900/30 border border-blue-500/30 text-blue-400 text-[11px] px-3 py-1.5 rounded-full hover:bg-blue-600 hover:text-white transition-all">贸易企业如何免税？</button>
+                    <button class="bg-blue-900/30 border border-blue-500/30 text-blue-400 text-[11px] px-3 py-1.5 rounded-full hover:bg-blue-600 hover:text-white transition-all">家族办公室门槛？</button>
+                </div>
+            </div>
+            <div class="p-3 border-t border-slate-800 bg-slate-950 flex items-center gap-2">
+                <input type="text" placeholder="输入您的产业类型..." class="flex-1 bg-slate-900 border border-slate-700 text-sm text-white px-4 py-2 rounded-full focus:outline-none focus:border-blue-500 transition-colors">
+                <button class="bg-blue-600 text-white p-2 rounded-full hover:bg-blue-500 transition-colors">
+                    <svg class="w-5 h-5 ml-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </button>
+            </div>
+        </div>
+
+        <button onclick="toggleChat()" id="ai-chat-btn" class="group relative flex items-center justify-center w-14 h-14 bg-gradient-to-br from-blue-600 to-indigo-900 rounded-full shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_rgba(37,99,235,0.6)] transition-all transform hover:scale-105 border border-blue-400/30">
+            <svg class="w-6 h-6 text-white group-hover:animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+            <span class="absolute top-0 right-0 flex h-3 w-3">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-3 w-3 bg-red-500 border-2 border-[#020617]"></span>
+            </span>
+        </button>
+    </div>
+
     <script>
+        // 倒计时逻辑
         function updateCountdown() {
             const target = new Date("2026-12-31T23:59:59").getTime();
             const now = new Date().getTime();
@@ -186,7 +218,29 @@
         }
         setInterval(updateCountdown, 1000);
         updateCountdown();
-        function showAlert() { alert("系统通知：此模块正在根据 2026 Q1 最新财税合规指令进行数据校准（Calibration），预计近期开放。"); }
+
+        // 通用警告弹窗
+        function showAlert(msg) {
+            alert("系统通知: " + (msg || "模块正在校准中..."));
+        }
+
+        // AI 客服开关逻辑
+        function toggleChat() {
+            const chatWindow = document.getElementById('ai-chat-window');
+            const chatBtn = document.getElementById('ai-chat-btn');
+            
+            if (chatWindow.classList.contains('hidden')) {
+                chatWindow.classList.remove('hidden');
+                chatWindow.classList.add('chat-slide-up');
+                // 改变按钮图标为关闭 X
+                chatBtn.innerHTML = '<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>';
+            } else {
+                chatWindow.classList.add('hidden');
+                chatWindow.classList.remove('chat-slide-up');
+                // 恢复按钮图标为气泡
+                chatBtn.innerHTML = '<svg class="w-6 h-6 text-white group-hover:animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg><span class="absolute top-0 right-0 flex h-3 w-3"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span><span class="relative inline-flex rounded-full h-3 w-3 bg-red-500 border-2 border-[#020617]"></span></span>';
+            }
+        }
     </script>
 </body>
 </html>
