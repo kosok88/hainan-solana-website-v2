@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services & Pricing | Solana-Hainan Strategic Advisory</title>
+    <title>Services & Pricing | Transaction Center | Solana-Hainan</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap');
         body { font-family: 'Inter', sans-serif; background-color: #020617; color: #cbd5e1; text-align: left; }
         .grid-overlay { background-image: linear-gradient(rgba(30, 41, 59, 0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(30, 41, 59, 0.2) 1px, transparent 1px); background-size: 40px 40px; }
         .price-card:hover { border-color: rgba(59, 130, 246, 0.5); box-shadow: 0 0 40px rgba(59, 130, 246, 0.1); }
-        .chat-slide-up { animation: slideUp 0.3s ease-out forwards; }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        /* Modal Animation */
+        .modal-enter { animation: modalFadeIn 0.3s ease-out forwards; }
+        @keyframes modalFadeIn { from { opacity: 0; transform: scale(0.95) translateY(-20px); } to { opacity: 1; transform: scale(1) translateY(0); } }
     </style>
 </head>
-<body class="grid-overlay pb-20">
+<body class="grid-overlay pb-20 relative">
 
     <nav class="fixed top-0 w-full z-50 bg-[#020617]/95 border-b border-slate-800 backdrop-blur-xl">
         <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
@@ -25,174 +26,217 @@
                     </div>
                     <div class="flex flex-col">
                         <span class="text-white font-black tracking-tighter text-xl uppercase italic">Solana<span class="text-blue-500 text-lg">Hainan</span></span>
-                        <span class="text-[9px] text-slate-500 tracking-[0.2em] font-bold uppercase text-left">Strategic Advisory Co., Ltd.</span>
                     </div>
                 </a>
             </div>
             
             <div class="hidden lg:flex space-x-8 text-sm font-bold uppercase tracking-widest items-center">
-                <a href="index-en.html" class="text-slate-400 hover:text-blue-400 transition-colors text-left">Home</a>
-                <a href="parks-en.html" class="text-slate-400 hover:text-blue-400 transition-colors text-left">13 Hubs</a>
-                
+                <a href="index-en.html" class="text-slate-400 hover:text-blue-400 transition-colors">Home</a>
+                <a href="parks-en.html" class="text-slate-400 hover:text-blue-400 transition-colors">13 Hubs</a>
                 <a href="services-en.html" class="text-white border border-blue-500 bg-blue-500/20 px-4 py-1.5 rounded-full transition-all flex items-center gap-2">
-                    <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse text-left"></span>
-                    Services & Pricing
+                    <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span> Services & Pricing
                 </a>
-                
-                <a href="javascript:void(0)" onclick="showAlert()" class="text-slate-400 hover:text-blue-400 transition-colors text-left">Family Office</a>
-                <a href="javascript:void(0)" onclick="showAlert()" class="text-slate-400 hover:text-amber-400 text-left">ROI Engine</a>
             </div>
-
             <div class="flex items-center space-x-6">
-                <div class="hidden md:flex space-x-4 text-xs font-bold text-left">
-                    <a href="services.html" class="text-slate-500 hover:text-white transition-colors text-left">ZH</a>
-                    <span class="text-slate-800">|</span>
-                    <span class="text-blue-500 cursor-default">EN</span>
-                </div>
+                <a href="javascript:void(0)" onclick="openOrderModal('Member Registration', 'Free')" class="bg-blue-600/20 border border-blue-500/50 px-6 py-2.5 rounded-full text-blue-400 text-sm font-black hover:bg-blue-600 hover:text-white transition-all uppercase">Sign Up</a>
             </div>
         </div>
     </nav>
 
-    <header class="pt-40 pb-20 px-6 text-center">
-        <h1 class="text-4xl md:text-5xl font-black text-white italic uppercase tracking-tighter mb-6">
-            Strategic Services <span class="text-blue-500 text-left">& Pricing Matrix</span>
-        </h1>
-        <p class="max-w-3xl mx-auto text-slate-400 text-lg font-light leading-relaxed text-left md:text-center">
-            We don't sell expensive fluff. Solana-Hainan provides **deterministic compliance frameworks** based on the 2026 Customs Closure logic.
-        </p>
+    <header class="pt-40 pb-12 px-6 text-center">
+        <h1 class="text-4xl md:text-5xl font-black text-white italic uppercase tracking-tighter mb-6">Strategic Services <span class="text-blue-500">& Pricing Matrix</span></h1>
+        <p class="max-w-3xl mx-auto text-slate-400 text-lg font-light leading-relaxed">Deterministic compliance frameworks and transparent pricing. Orders are automatically synced to our Command Center.</p>
     </header>
 
-    <section class="max-w-7xl mx-auto px-6 mb-32 text-left">
-        <div class="grid md:grid-cols-3 gap-8 text-left">
+    <section class="max-w-7xl mx-auto px-6 mb-20 text-left">
+        <div class="grid md:grid-cols-3 gap-8">
             
-            <div class="price-card bg-slate-950 border border-slate-800 p-8 rounded-3xl transition-all flex flex-col text-left">
-                <div class="mb-8 text-left">
-                    <h3 class="text-blue-400 font-mono text-xs uppercase tracking-[0.2em] mb-2 text-left">Level 01 - Entry</h3>
-                    <div class="text-white text-3xl font-black italic uppercase text-left">Rapid Setup</div>
-                </div>
-                <div class="text-5xl font-light text-white mb-8 font-mono text-left">¥9,800<span class="text-sm text-slate-600 font-sans">/from</span></div>
-                <ul class="space-y-4 mb-10 flex-1 text-sm text-slate-400 text-left">
-                    <li class="flex items-start gap-2 text-left"><span class="text-blue-500 text-left">✓</span> Optimized Hub Matching (13 Zones Data)</li>
-                    <li class="flex items-start gap-2 text-left"><span class="text-blue-500 text-left">✓</span> Full Entity Registration (A-Z)</li>
-                    <li class="flex items-start gap-2 text-left"><span class="text-blue-500 text-left">✓</span> Basic EFU Account Opening Guidance</li>
-                    <li class="flex items-start gap-2 text-left"><span class="text-blue-500 text-left">✓</span> Monthly 2026 Policy Briefings</li>
+            <div class="price-card bg-slate-950 border border-slate-800 p-8 rounded-3xl transition-all flex flex-col">
+                <h3 class="text-blue-400 font-mono text-xs uppercase tracking-[0.2em] mb-2">Level 01 - Entry</h3>
+                <div class="text-white text-3xl font-black italic uppercase mb-6">Rapid Setup</div>
+                <div class="text-5xl font-light text-white mb-8 font-mono">¥9,800<span class="text-sm text-slate-600">/from</span></div>
+                <ul class="space-y-4 mb-10 flex-1 text-sm text-slate-400">
+                    <li class="flex items-start gap-2"><span class="text-blue-500">✓</span> Optimized Hub Matching</li>
+                    <li class="flex items-start gap-2"><span class="text-blue-500">✓</span> Full Entity Registration (A-Z)</li>
+                    <li class="flex items-start gap-2"><span class="text-blue-500">✓</span> Basic EFU Account Guidance</li>
                 </ul>
-                <button onclick="showAlert('Connecting to Setup Specialist')" class="w-full bg-slate-900 border border-slate-700 text-white py-4 rounded-xl font-bold hover:bg-white hover:text-black transition-all uppercase tracking-widest text-xs text-center">
-                    Launch Now
-                </button>
+                <button onclick="openOrderModal('Rapid Setup (Level 01)', '¥9,800')" class="w-full bg-slate-900 border border-slate-700 text-white py-4 rounded-xl font-bold hover:bg-white hover:text-black transition-all uppercase tracking-widest text-xs text-center">Order Now</button>
             </div>
 
-            <div class="price-card bg-slate-950 border-2 border-blue-600/30 p-8 rounded-3xl transition-all flex flex-col relative scale-105 shadow-[0_20px_50px_rgba(37,99,235,0.1)] text-left">
-                <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-[10px] font-black px-4 py-1 rounded-full uppercase tracking-widest text-left">
-                    Most Selected
-                </div>
-                <div class="mb-8 text-left">
-                    <h3 class="text-blue-400 font-mono text-xs uppercase tracking-[0.2em] mb-2 text-left">Level 02 - Strategic</h3>
-                    <div class="text-white text-3xl font-black italic uppercase text-left">Fiscal Alpha</div>
-                </div>
-                <div class="text-5xl font-light text-white mb-8 font-mono text-left">¥28,000<span class="text-sm text-slate-600 font-sans">/from</span></div>
-                <ul class="space-y-4 mb-10 flex-1 text-sm text-slate-300 text-left">
-                    <li class="flex items-start gap-2 text-left"><span class="text-blue-500 font-bold text-left">✓</span> <b>Dual 15% Tax</b> Structural Algorithms</li>
-                    <li class="flex items-start gap-2 text-left"><span class="text-blue-500 font-bold text-left">✓</span> Substantive Operation Compliance Audit</li>
-                    <li class="flex items-start gap-2 text-left"><span class="text-blue-500 font-bold text-left">✓</span> 30% VAP Duty Exemption Pathway Design</li>
-                    <li class="flex items-start gap-2 text-left"><span class="text-blue-500 font-bold text-left">✓</span> 1-on-1 Review by Senior Strategist</li>
+            <div class="price-card bg-slate-950 border-2 border-blue-600/30 p-8 rounded-3xl transition-all flex flex-col relative scale-105 shadow-[0_20px_50px_rgba(37,99,235,0.1)]">
+                <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-[10px] font-black px-4 py-1 rounded-full uppercase tracking-widest">Most Selected</div>
+                <h3 class="text-blue-400 font-mono text-xs uppercase tracking-[0.2em] mb-2">Level 02 - Strategic</h3>
+                <div class="text-white text-3xl font-black italic uppercase mb-6">Fiscal Alpha</div>
+                <div class="text-5xl font-light text-white mb-8 font-mono">¥28,000<span class="text-sm text-slate-600">/from</span></div>
+                <ul class="space-y-4 mb-10 flex-1 text-sm text-slate-300">
+                    <li class="flex items-start gap-2"><span class="text-blue-500 font-bold">✓</span> Dual 15% Tax Algorithms</li>
+                    <li class="flex items-start gap-2"><span class="text-blue-500 font-bold">✓</span> Substantive Operation Audit</li>
+                    <li class="flex items-start gap-2"><span class="text-blue-500 font-bold">✓</span> 30% VAP Exemption Pathway</li>
                 </ul>
-                <button onclick="showAlert('Connecting to Senior Strategist')" class="w-full bg-blue-600 text-white py-4 rounded-xl font-bold hover:bg-white hover:text-blue-600 transition-all uppercase tracking-widest text-xs shadow-xl shadow-blue-500/20 text-center">
-                    Get Strategy
-                </button>
+                <button onclick="openOrderModal('Fiscal Alpha (Level 02)', '¥28,000')" class="w-full bg-blue-600 text-white py-4 rounded-xl font-bold hover:bg-white hover:text-blue-600 transition-all uppercase tracking-widest text-xs shadow-xl shadow-blue-500/20 text-center">Secure Quota</button>
             </div>
 
-            <div class="price-card bg-slate-950 border border-slate-800 p-8 rounded-3xl transition-all flex flex-col text-left">
-                <div class="mb-8 text-left">
-                    <h3 class="text-amber-500 font-mono text-xs uppercase tracking-[0.2em] mb-2 text-left">Level 03 - Global</h3>
-                    <div class="text-white text-3xl font-black italic uppercase text-left">Family Office</div>
-                </div>
-                <div class="text-5xl font-light text-white mb-8 font-mono text-left">Custom</div>
-                <ul class="space-y-4 mb-10 flex-1 text-sm text-slate-400 text-left">
-                    <li class="flex items-start gap-2 text-left"><span class="text-amber-500 text-left">✓</span> Cross-border Asset Segregation</li>
-                    <li class="flex items-start gap-2 text-left"><span class="text-amber-500 text-left">✓</span> Multi-jurisdictional Sync (SG/HK/HN)</li>
-                    <li class="flex items-start gap-2 text-left"><span class="text-amber-500 text-left">✓</span> High-end Healthcare/Education Concierge</li>
-                    <li class="flex items-start gap-2 text-left"><span class="text-amber-500 text-left">✓</span> 24/7 MNRO Private Banking Service</li>
+            <div class="price-card bg-slate-950 border border-slate-800 p-8 rounded-3xl transition-all flex flex-col">
+                <h3 class="text-amber-500 font-mono text-xs uppercase tracking-[0.2em] mb-2">Level 03 - Global</h3>
+                <div class="text-white text-3xl font-black italic uppercase mb-6">Family Office</div>
+                <div class="text-5xl font-light text-white mb-8 font-mono">Custom</div>
+                <ul class="space-y-4 mb-10 flex-1 text-sm text-slate-400">
+                    <li class="flex items-start gap-2"><span class="text-amber-500">✓</span> Cross-border Asset Segregation</li>
+                    <li class="flex items-start gap-2"><span class="text-amber-500">✓</span> Family Relocation & VIP Access</li>
+                    <li class="flex items-start gap-2"><span class="text-amber-500">✓</span> Private Banking Concierge</li>
                 </ul>
-                <button onclick="showAlert('Connecting to CEO Office')" class="w-full bg-slate-900 border border-slate-700 text-white py-4 rounded-xl font-bold hover:bg-amber-500 hover:text-black transition-all uppercase tracking-widest text-xs text-center">
-                    Private Consult
-                </button>
+                <button onclick="openOrderModal('Global Family Office (Level 03)', 'Custom Pricing')" class="w-full bg-slate-900 border border-slate-700 text-white py-4 rounded-xl font-bold hover:bg-amber-500 hover:text-black transition-all uppercase tracking-widest text-xs text-center">Request Proposal</button>
             </div>
 
         </div>
     </section>
 
-    <section class="max-w-5xl mx-auto px-6 py-20 bg-blue-500/5 rounded-[3rem] border border-blue-500/10 mb-20 text-left">
-        <h2 class="text-white text-3xl font-black text-center italic mb-12 uppercase text-left md:text-center">Why Choose Our <span class="text-blue-500 text-left">2026 Algorithms?</span></h2>
-        <div class="grid md:grid-cols-2 gap-12 text-left">
-            <div class="text-left">
-                <h4 class="text-white font-bold mb-2 flex items-center gap-2 text-left">
-                    <span class="w-1.5 h-6 bg-blue-500 rounded-full text-left"></span> Substantive Compliance
-                </h4>
-                <p class="text-sm text-slate-500 leading-relaxed text-left">
-                    Post-2026, "Shell Companies" will face severe audits. We assist clients in establishing physical substance (Office, Staff, Assets, Finance) to secure tax longevity.
-                </p>
-            </div>
-            <div class="text-left">
-                <h4 class="text-white font-bold mb-2 flex items-center gap-2 text-left">
-                    <span class="w-1.5 h-6 bg-blue-500 rounded-full text-left"></span> EFU Account Mastery
-                </h4>
-                <p class="text-sm text-slate-500 leading-relaxed text-left">
-                    We facilitate rapid Multi-functional Free Trade Account (EFU) approvals, enabling seamless cross-border capital flow and breaking traditional FX barriers.
-                </p>
-            </div>
+    <section class="max-w-7xl mx-auto px-6 mb-32 text-center text-sm">
+        <p class="text-slate-500">By placing an order, you agree to our compliance protocols.</p>
+        <div class="mt-4 flex justify-center space-x-6 text-blue-500 underline decoration-blue-500/30 underline-offset-4">
+            <a href="javascript:void(0)" onclick="showAlert('Retrieving Terms of Service from secure database...')" class="hover:text-white transition-colors">Terms of Service</a>
+            <a href="javascript:void(0)" onclick="showAlert('Privacy Policy is fully compliant with GDPR and Data Export Regulations.')" class="hover:text-white transition-colors">Privacy & Data Security Policy</a>
         </div>
     </section>
 
-    <div id="ai-chat-widget" class="fixed bottom-6 right-6 z-[100] flex flex-col items-end">
-        <div id="ai-chat-window" class="hidden mb-4 w-80 sm:w-96 bg-slate-950 border border-blue-500/50 rounded-2xl shadow-[0_0_30px_rgba(59,130,246,0.15)] overflow-hidden flex flex-col">
-            <div class="bg-blue-900/40 border-b border-blue-500/30 p-4 flex justify-between items-center text-left">
-                <div class="flex items-center gap-3 text-left">
-                    <div class="relative flex h-3 w-3 text-left">
-                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75 text-left"></span>
-                      <span class="relative inline-flex rounded-full h-3 w-3 bg-blue-500 text-left"></span>
+    <div id="order-modal-backdrop" class="fixed inset-0 z-[100] bg-[#020617]/90 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <div id="order-modal" class="bg-slate-900 border border-slate-700 w-full max-w-lg rounded-3xl p-8 relative shadow-[0_0_50px_rgba(59,130,246,0.2)]">
+            <button onclick="closeModal()" class="absolute top-6 right-6 text-slate-400 hover:text-white transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            
+            <h2 id="modal-title" class="text-2xl font-black text-white italic uppercase tracking-tighter mb-2">Secure Terminal</h2>
+            <p id="modal-subtitle" class="text-sm text-slate-400 mb-8 font-light">System Encrypted. Selected Module: <span id="selected-package" class="text-blue-400 font-bold"></span></p>
+
+            <form id="submission-form" onsubmit="submitForm(event)" class="space-y-5">
+                <input type="hidden" id="form-type" value="Order">
+
+                <div>
+                    <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Corporate/Personal Name</label>
+                    <input type="text" id="user-name" required class="w-full bg-slate-950 border border-slate-800 text-white px-4 py-3 rounded-xl focus:outline-none focus:border-blue-500 transition-colors placeholder-slate-600 text-sm" placeholder="e.g., Solana Advisory LLC">
+                </div>
+
+                <div>
+                    <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Email Address (Required)</label>
+                    <input type="email" id="user-email" required class="w-full bg-slate-950 border border-slate-800 text-white px-4 py-3 rounded-xl focus:outline-none focus:border-blue-500 transition-colors placeholder-slate-600 text-sm" placeholder="admin@solana-hainan.com">
+                </div>
+
+                <div>
+                    <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Secure Contact Number</label>
+                    <div class="flex gap-2">
+                        <input type="tel" id="user-phone" class="flex-1 bg-slate-950 border border-slate-800 text-white px-4 py-3 rounded-xl focus:outline-none focus:border-blue-500 transition-colors placeholder-slate-600 text-sm" placeholder="+1 555-0198">
+                        <button type="button" onclick="sendSMS(this)" class="bg-blue-600/20 text-blue-400 border border-blue-500/50 px-4 py-2 rounded-xl text-xs font-bold hover:bg-blue-600 hover:text-white transition-all whitespace-nowrap">
+                            Get SMS
+                        </button>
                     </div>
-                    <span class="text-white font-bold text-sm tracking-widest uppercase text-left">MNRO Oracle AI</span>
                 </div>
-                <button onclick="toggleChat()" class="text-slate-400 hover:text-white transition-colors text-left">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                </button>
-            </div>
-            <div class="p-4 h-64 overflow-y-auto bg-slate-900/50 flex flex-col gap-3 text-sm text-left">
-                <div class="text-center text-[10px] text-slate-500 font-mono mb-2 text-left">=== KNOWLEDGE BASE LOADED ===</div>
-                <div class="bg-slate-800 border border-slate-700 text-slate-300 p-3 rounded-lg rounded-tl-none max-w-[85%] text-left">
-                    Any questions about our pricing tiers? I can recommend the most cost-effective package based on your business model.
+
+                <div>
+                    <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">SMS Authorization Code</label>
+                    <input type="text" id="sms-code" class="w-full bg-slate-950 border border-slate-800 text-white px-4 py-3 rounded-xl focus:outline-none focus:border-slate-500 transition-colors placeholder-slate-600 text-sm" placeholder="6-digit code (Optional during API sync)">
                 </div>
-            </div>
-            <div class="p-3 border-t border-slate-800 bg-slate-950 flex items-center gap-2 text-left">
-                <input type="text" placeholder="Inquire about pricing..." class="flex-1 bg-slate-900 border border-slate-700 text-sm text-white px-4 py-2 rounded-full focus:outline-none focus:border-blue-500 transition-colors text-left">
-                <button class="bg-blue-600 text-white p-2 rounded-full hover:bg-blue-500 transition-colors text-left">
-                    <svg class="w-5 h-5 ml-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+
+                <div class="flex items-start gap-3 mt-6">
+                    <input type="checkbox" id="agreement" required class="mt-1 bg-slate-900 border-slate-700 rounded focus:ring-blue-500">
+                    <label for="agreement" class="text-xs text-slate-400 leading-tight">
+                        I confirm the submitted data is authentic and agree to the <a href="javascript:void(0)" class="text-blue-500 hover:underline">Terms of Service</a>.
+                    </label>
+                </div>
+
+                <button type="submit" id="submit-btn" class="w-full bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-4 rounded-xl font-black uppercase tracking-widest text-sm hover:from-blue-500 hover:to-indigo-600 transition-all shadow-[0_0_20px_rgba(37,99,235,0.3)] mt-4 flex justify-center items-center gap-2">
+                    Transmit Directive
                 </button>
-            </div>
+            </form>
         </div>
-        <button onclick="toggleChat()" id="ai-chat-btn" class="group relative flex items-center justify-center w-14 h-14 bg-gradient-to-br from-blue-600 to-indigo-900 rounded-full shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_rgba(37,99,235,0.6)] transition-all transform hover:scale-105 border border-blue-400/30">
-            <svg class="w-6 h-6 text-white group-hover:animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
-            <span class="absolute top-0 right-0 flex h-3 w-3">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-3 w-3 bg-red-500 border-2 border-[#020617]"></span>
-            </span>
-        </button>
     </div>
 
     <script>
-        function showAlert(msg) { alert("SYSTEM NOTICE: " + (msg || "Module Syncing...")); }
-        function toggleChat() {
-            const chatWindow = document.getElementById('ai-chat-window');
-            const chatBtn = document.getElementById('ai-chat-btn');
-            if (chatWindow.classList.contains('hidden')) {
-                chatWindow.classList.remove('hidden');
-                chatWindow.classList.add('chat-slide-up');
-                chatBtn.innerHTML = '<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>';
-            } else {
-                chatWindow.classList.add('hidden');
-                chatWindow.classList.remove('chat-slide-up');
-                chatBtn.innerHTML = '<svg class="w-6 h-6 text-white group-hover:animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg><span class="absolute top-0 right-0 flex h-3 w-3"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span><span class="relative inline-flex rounded-full h-3 w-3 bg-red-500 border-2 border-[#020617]"></span></span>';
+        const GOOGLE_WEBHOOK_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE'; // <--- [TO BE FILLED]
+
+        function showAlert(msg) { alert("SYSTEM NOTICE: " + (msg)); }
+
+        // Open Modal
+        function openOrderModal(packageName, price) {
+            document.getElementById('selected-package').innerText = packageName + ' (' + price + ')';
+            document.getElementById('form-type').value = packageName; 
+            
+            const backdrop = document.getElementById('order-modal-backdrop');
+            const modal = document.getElementById('order-modal');
+            backdrop.classList.remove('hidden');
+            modal.classList.add('modal-enter');
+        }
+
+        // Close Modal
+        function closeModal() {
+            const backdrop = document.getElementById('order-modal-backdrop');
+            backdrop.classList.add('hidden');
+        }
+
+        // Simulate SMS Sending
+        function sendSMS(btn) {
+            const phone = document.getElementById('user-phone').value;
+            if(!phone) {
+                alert("Please enter a phone number to request an SMS code.");
+                return;
+            }
+            btn.disabled = true;
+            let countdown = 60;
+            btn.innerText = "Resend in " + countdown + "s";
+            const timer = setInterval(() => {
+                countdown--;
+                btn.innerText = "Resend in " + countdown + "s";
+                if(countdown <= 0) {
+                    clearInterval(timer);
+                    btn.innerText = "Get SMS";
+                    btn.disabled = false;
+                }
+            }, 1000);
+            alert("SMS request recorded. (API gateway pending activation)");
+        }
+
+        // Submit Form to Google Webhook
+        async function submitForm(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submit-btn');
+            const originalText = btn.innerHTML;
+            
+            // Loading State
+            btn.innerHTML = '<svg class="animate-spin h-5 w-5 text-white" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path></svg> Syncing Data...';
+            btn.disabled = true;
+
+            const formData = {
+                type: document.getElementById('form-type').value,
+                name: document.getElementById('user-name').value,
+                email: document.getElementById('user-email').value,
+                phone: document.getElementById('user-phone').value,
+                timestamp: new Date().toISOString()
+            };
+
+            console.log("Preparing to transmit data to Google Forms: ", formData);
+
+            try {
+                // Uncomment below to enable real POST request
+                /*
+                const response = await fetch(GOOGLE_WEBHOOK_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+                */
+
+                // Simulated network delay
+                await new Promise(r => setTimeout(r, 1500));
+
+                alert("Directive transmitted! Your profile has been created and our specialist will contact you shortly.");
+                closeModal();
+                e.target.reset(); 
+            } catch (error) {
+                console.error('Submission failed', error);
+                alert("Network intercepted. Please try again or contact us via email.");
+            } finally {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
             }
         }
     </script>
