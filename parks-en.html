@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13 Key Industrial Hubs | Solana-Hainan Strategic Advisory</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #020617; text-align: left; }
+        .grid-overlay { background-image: linear-gradient(rgba(30, 41, 59, 0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(30, 41, 59, 0.2) 1px, transparent 1px); background-size: 40px 40px; }
+        .title-fix { padding-right: 0.15em; }
+        .animate-fade-in { animation: fadeIn 0.4s ease-in-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="text-slate-300 grid-overlay pb-20">
+
+    <nav class="fixed top-0 w-full z-50 bg-[#020617]/95 border-b border-slate-800 backdrop-blur-xl">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center text-left">
+            <div class="flex items-center space-x-4">
+                <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-700 rounded-lg flex items-center justify-center shadow-lg shadow-blue-500/20">
+                    <span class="text-white font-black text-xl">S</span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-white font-black tracking-tighter text-xl uppercase italic">Solana<span class="text-blue-500 text-lg">Hainan</span></span>
+                    <span class="text-[9px] text-slate-500 tracking-[0.2em] font-bold uppercase">Strategic Advisory Co., Ltd.</span>
+                </div>
+            </div>
+            
+            <div class="hidden lg:flex space-x-10 text-sm font-bold uppercase tracking-widest">
+                <a href="commander-en.html" class="text-slate-400 hover:text-blue-400 transition-colors">Console</a>
+                <a href="index-en.html" class="text-slate-400 hover:text-blue-400 transition-colors">Home</a>
+                <a href="parks-en.html" class="text-white font-black border-b-2 border-blue-500 pb-1">13 Hubs</a>
+                <a href="javascript:void(0)" onclick="showAlert()" class="text-slate-400 hover:text-blue-400">Intel Bureau</a>
+            </div>
+
+            <div class="flex items-center space-x-6">
+                <div class="hidden md:flex space-x-4 text-xs font-bold">
+                    <a href="parks.html" class="text-slate-500 hover:text-white transition-colors">ZH</a>
+                    <span class="text-slate-800">|</span>
+                    <span class="text-blue-500 cursor-default">EN</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="relative pt-32 pb-12 px-6 flex flex-col items-center">
+        <div class="inline-flex items-center space-x-2 bg-blue-500/5 border border-blue-500/20 px-4 py-2 rounded-full mb-6">
+            <span class="text-[10px] font-black text-blue-500 uppercase tracking-[0.4em]">13 Key Industrial Hubs</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-black text-white text-center italic tracking-tighter uppercase leading-tight mb-6">
+            The 13 Strategic Hubs <br>
+            <span class="text-transparent bg-clip-text bg-gradient-to-b from-blue-400 to-blue-700 text-3xl md:text-4xl title-fix">2026 Siting Radar</span>
+        </h1>
+        <p class="max-w-3xl text-center text-slate-400 text-sm md:text-base font-light leading-relaxed mb-8">
+            As the core platforms for the 2026 Customs Closure operations, these 13 hubs possess maximum autonomy and policy penetration. Select your operational base to unlock the highest **asymmetrical fiscal and tax advantages**.
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-3 max-w-4xl mt-4">
+            <button onclick="filterParks('all')" class="filter-btn active bg-blue-600 text-white px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all">All Hubs</button>
+            <button onclick="filterParks('trade')" class="filter-btn bg-slate-900 text-slate-400 border border-slate-700 hover:border-blue-500 px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all">Trade & Shipping</button>
+            <button onclick="filterParks('finance')" class="filter-btn bg-slate-900 text-slate-400 border border-slate-700 hover:border-blue-500 px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all">Finance & Services</button>
+            <button onclick="filterParks('tech')" class="filter-btn bg-slate-900 text-slate-400 border border-slate-700 hover:border-blue-500 px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all">Tech & Mfg</button>
+            <button onclick="filterParks('health')" class="filter-btn bg-slate-900 text-slate-400 border border-slate-700 hover:border-blue-500 px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all">Health & Edu</button>
+        </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-6 py-8">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="parks-container">
+            
+            <div class="park-card p-8 bg-slate-950/80 border border-slate-800 rounded-3xl hover:border-blue-500/50 transition-all animate-fade-in text-left" data-category="trade">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="text-[10px] font-black bg-blue-900/30 text-blue-400 px-3 py-1 rounded-sm uppercase tracking-widest border border-blue-500/20">Pressure Test Zone</div>
+                    <span class="text-slate-600 font-mono text-xs">#01</span>
+                </div>
+                <h3 class="text-white text-xl font-black mb-1">Yangpu Economic Dev Zone</h3>
+                <p class="text-sm text-slate-400 leading-relaxed mb-6 mt-4">The vanguard of the FTP. Focused on bonded processing, international trade, and maritime logistics. The primary operational ground for the "30% Value-Added Processing (VAP)" tariff exemption.</p>
+                <div class="border-t border-slate-800 pt-4 mt-auto">
+                    <p class="text-[11px] text-slate-500 mb-1"><span class="text-blue-500 font-bold">Core Dividend:</span> Int'l Ship Registration, VAP Tax Exemption</p>
+                    <p class="text-[11px] text-slate-500"><span class="text-amber-500 font-bold">Ideal For:</span> Import/Export Mfg, Petrochemicals, Logistics Giants</p>
+                </div>
+            </div>
+
+            <div class="park-card p-8 bg-slate-950/80 border border-slate-800 rounded-3xl hover:border-blue-500/50 transition-all animate-fade-in text-left" data-category="finance">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="text-[10px] font-black bg-indigo-900/30 text-indigo-400 px-3 py-1 rounded-sm uppercase tracking-widest border border-indigo-500/20">Modern Services H.Q.</div>
+                    <span class="text-slate-600 font-mono text-xs">#02</span>
+                </div>
+                <h3 class="text-white text-xl font-black mb-1">Haikou Jiangdong New Area</h3>
+                <p class="text-sm text-slate-400 leading-relaxed mb-6 mt-4">The island's financial and corporate "Brain." The core carrier for multinational regional headquarters, offshore trade, and EFU (Free Trade Account) integration.</p>
+                <div class="border-t border-slate-800 pt-4 mt-auto">
+                    <p class="text-[11px] text-slate-500 mb-1"><span class="text-blue-500 font-bold">Core Dividend:</span> QFLP/QDLP Funds, Aircraft/Vessel Leasing</p>
+                    <p class="text-[11px] text-slate-500"><span class="text-amber-500 font-bold">Ideal For:</span> Family Offices, Offshore Traders, MNC Regional HQs</p>
+                </div>
+            </div>
+
+            <div class="park-card p-8 bg-slate-950/80 border border-slate-800 rounded-3xl hover:border-blue-500/50 transition-all animate-fade-in text-left" data-category="health">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="text-[10px] font-black bg-emerald-900/30 text-emerald-400 px-3 py-1 rounded-sm uppercase tracking-widest border border-emerald-500/20">Exclusive Medical Zone</div>
+                    <span class="text-slate-600 font-mono text-xs">#03</span>
+                </div>
+                <h3 class="text-white text-xl font-black mb-1">Boao Lecheng Medical Zone</h3>
+                <p class="text-sm text-slate-400 leading-relaxed mb-6 mt-4">China's sole medical special zone. Enjoys exclusive policies for licensed medical treatment, clinical research, and the global debut of innovative drugs and medical devices.</p>
+                <div class="border-t border-slate-800 pt-4 mt-auto">
+                    <p class="text-[11px] text-slate-500 mb-1"><span class="text-blue-500 font-bold">Core Dividend:</span> Real-World Data (RWD), Zero-Tariff Medical Equipment</p>
+                    <p class="text-[11px] text-slate-500"><span class="text-amber-500 font-bold">Ideal For:</span> Int'l Pharma Giants, High-end Clinics, CROs</p>
+                </div>
+            </div>
+
+            <div class="park-card p-8 bg-slate-950/80 border border-slate-800 rounded-3xl hover:border-blue-500/50 transition-all animate-fade-in text-left" data-category="tech">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="text-[10px] font-black bg-cyan-900/30 text-cyan-400 px-3 py-1 rounded-sm uppercase tracking-widest border border-cyan-500/20">National Hi-Tech Zone</div>
+                    <span class="text-slate-600 font-mono text-xs">#04</span>
+                </div>
+                <h3 class="text-white text-xl font-black mb-1">Haikou National Hi-Tech Zone</h3>
+                <p class="text-sm text-slate-400 leading-relaxed mb-6 mt-4">Hainan's only national-level hi-tech zone. Focusing on biopharmaceuticals, advanced manufacturing equipment, and new materials. The top choice for physical economy entities.</p>
+                <div class="border-t border-slate-800 pt-4 mt-auto">
+                    <p class="text-[11px] text-slate-500 mb-1"><span class="text-blue-500 font-bold">Core Dividend:</span> 15% CIT for Tech Firms, Factory Rent Subsidies</p>
+                    <p class="text-[11px] text-slate-500"><span class="text-amber-500 font-bold">Ideal For:</span> Biopharma Mfg, Precision Instruments, New Materials</p>
+                </div>
+            </div>
+
+            <div class="park-card p-8 bg-slate-950/80 border border-slate-800 rounded-3xl hover:border-blue-500/50 transition-all animate-fade-in text-left" data-category="tech">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="text-[10px] font-black bg-teal-900/30 text-teal-400 px-3 py-1 rounded-sm uppercase tracking-widest border border-teal-500/20">Deep Sea & Seeds Peak</div>
+                    <span class="text-slate-600 font-mono text-xs">#05</span>
+                </div>
+                <h3 class="text-white text-xl font-black mb-1">Yazhou Bay Science & Tech City</h3>
+                <p class="text-sm text-slate-400 leading-relaxed mb-6 mt-4">The gathering place for national strategic scientific forces. Building an international intellectual property trading special zone for deep-sea technology and tropical agriculture (seeds).</p>
+                <div class="border-t border-slate-800 pt-4 mt-auto">
+                    <p class="text-[11px] text-slate-500 mb-1"><span class="text-blue-500 font-bold">Core Dividend:</span> Top-tier R&D Subsidies, IP Offshore Securitization</p>
+                    <p class="text-[11px] text-slate-500"><span class="text-amber-500 font-bold">Ideal For:</span> AgTech R&D, Ocean Engineering, Elite Talent Teams</p>
+                </div>
+            </div>
+
+            <div class="park-card p-8 bg-slate-950/80 border border-slate-800 rounded-3xl hover:border-blue-500/50 transition-all animate-fade-in text-left" data-category="finance">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="text-[10px] font-black bg-purple-900/30 text-purple-400 px-3 py-1 rounded-sm uppercase tracking-widest border border-purple-500/20">Consumption Core</div>
+                    <span class="text-slate-600 font-mono text-xs">#06</span>
+                </div>
+                <h3 class="text-white text-xl font-black mb-1">Sanya Central Business District</h3>
+                <p class="text-sm text-slate-400 leading-relaxed mb-6 mt-4">The commercial engine of the International Tourism Consumption Center. Focused on yachts, duty-free retail, art trading, and high-end private wealth management.</p>
+                <div class="border-t border-slate-800 pt-4 mt-auto">
+                    <p class="text-[11px] text-slate-500 mb-1"><span class="text-blue-500 font-bold">Core Dividend:</span> "Zero-Tariff" Yachts, Bonded Art Displays, Consumer Finance</p>
+                    <p class="text-[11px] text-slate-500"><span class="text-amber-500 font-bold">Ideal For:</span> Yacht Industry, Luxury Retail HQs, Asset Managers</p>
+                </div>
+            </div>
+
+            <div class="park-card p-8 bg-slate-950/80 border border-slate-800 rounded-3xl hover:border-blue-500/50 transition-all animate-fade-in text-left" data-category="tech">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="text-[10px] font-black bg-red-900/30 text-red-400 px-3 py-1 rounded-sm uppercase tracking-widest border border-red-500/20">Commercial Aerospace</div>
+                    <span class="text-slate-600 font-mono text-xs">#07</span>
+                </div>
+                <h3 class="text-white text-xl font-black mb-1">Wenchang Aerospace City</h3>
+                <p class="text-sm text-slate-400 leading-relaxed mb-6 mt-4">Home to China's first commercial spacecraft launch site. Building the rocket, satellite, and data chains to create an international test zone for cross-border spatial data transmission.</p>
+                <div class="border-t border-slate-800 pt-4 mt-auto">
+                    <p class="text-[11px] text-slate-500 mb-1"><span class="text-blue-500 font-bold">Core Dividend:</span> Launch Approval Facilitation, Aerospace Data Export Exemptions</p>
+                    <p class="text-[11px] text-slate-500"><span class="text-amber-500 font-bold">Ideal For:</span> Commercial Rockets, Satellite Comms, Spatial Big Data</p>
+                </div>
+            </div>
+
+            <div class="park-card p-8 bg-slate-950/80 border border-slate-800 rounded-3xl hover:border-blue-500/50 transition-all animate-fade-in text-left" data-category="tech">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="text-[10px] font-black bg-blue-900/30 text-blue-400 px-3 py-1 rounded-sm uppercase tracking-widest border border-blue-500/20">Digital Economy Cluster</div>
+                    <span class="text-slate-600 font-mono text-xs">#08</span>
+                </div>
+                <h3 class="text-white text-xl font-black mb-1">Laocheng Tech City</h3>
+                <p class="text-sm text-slate-400 leading-relaxed mb-6 mt-4">(Upgraded from Hainan Eco-Software Park). A digital economy powerhouse with revenues exceeding 200 billion RMB. Focused on blockchain, digital entertainment, global gaming, and AI.</p>
+                <div class="border-t border-slate-800 pt-4 mt-auto">
+                    <p class="text-[11px] text-slate-500 mb-1"><span class="text-blue-500 font-bold">Core Dividend:</span> Fast-track Game Licensing, Cross-border Data Security Channels</p>
+                    <p class="text-[11px] text-slate-500"><span class="text-amber-500 font-bold">Ideal For:</span> Global Gaming Studios, Web3/Blockchain, AI Algorithms</p>
+                </div>
+            </div>
+
+            <div class="park-card p-8 bg-slate-950/80 border border-slate-800 rounded-3xl hover:border-blue-500/50 transition-all animate-fade-in text-left" data-category="trade">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="text-[10px] font-black bg-orange-900/30 text-orange-400 px-3 py-1 rounded-sm uppercase tracking-widest border border-orange-500/20">Customs Special Zone</div>
+                    <span class="text-slate-600 font-mono text-xs">#09</span>
+                </div>
+                <h3 class="text-white text-xl font-black mb-1">Haikou Comprehensive FTZ</h3>
+                <p class="text-sm text-slate-400 leading-relaxed mb-6 mt-4">The global distribution center for duty-free goods. Focused on cross-border e-commerce, duty-free warehousing, and high-value bonded maintenance and processing.</p>
+                <div class="border-t border-slate-800 pt-4 mt-auto">
+                    <p class="text-[11px] text-slate-500 mb-1"><span class="text-blue-500 font-bold">Core Dividend:</span> "Inside Border, Outside Customs" Policy, E-commerce 1210 Model</p>
+                    <p class="text-[11px] text-slate-500"><span class="text-amber-500 font-bold">Ideal For:</span> Cross-border E-commerce, Duty-free Supply Chains</p>
+                </div>
+            </div>
+
+            <div class="park-card p-8 bg-slate-950/80 border border-slate-800 rounded-3xl hover:border-blue-500/50 transition-all animate-fade-in text-left" data-category="health">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="text-[10px] font-black bg-yellow-900/30 text-yellow-500 px-3 py-1 rounded-sm uppercase tracking-widest border border-yellow-500/20">Global Edu Hub</div>
+                    <span class="text-slate-600 font-mono text-xs">#10</span>
+                </div>
+                <h3 class="text-white text-xl font-black mb-1">Li'An Int'l Education Pilot Zone</h3>
+                <p class="text-sm text-slate-400 leading-relaxed mb-6 mt-4">Realizing "Study in Hainan = Study Abroad." Introducing top-tier foreign universities to run independently, pioneering international educational consumption loops.</p>
+                <div class="border-t border-slate-800 pt-4 mt-auto">
+                    <p class="text-[11px] text-slate-500 mb-1"><span class="text-blue-500 font-bold">Core Dividend:</span> Independent Foreign Univ. Licensing, Zero-Tariff Edu Equipment</p>
+                    <p class="text-[11px] text-slate-500"><span class="text-amber-500 font-bold">Ideal For:</span> Top Global Universities, Global EdTech Enterprises</p>
+                </div>
+            </div>
+
+            <div class="park-card p-8 bg-slate-950/80 border border-slate-800 rounded-3xl hover:border-blue-500/50 transition-all animate-fade-in text-left" data-category="tech">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="text-[10px] font-black bg-blue-900/30 text-blue-400 px-3 py-1 rounded-sm uppercase tracking-widest border border-blue-500/20">Digital Trade Gateway</div>
+                    <span class="text-slate-600 font-mono text-xs">#11</span>
+                </div>
+                <h3 class="text-white text-xl font-black mb-1">Haikou Fuxing City Park</h3>
+                <p class="text-sm text-slate-400 leading-relaxed mb-6 mt-4">The gateway for influencer economy and digital trade. Gathering over 8,000 enterprises, focusing on cross-border data services, influencer livestreaming, and SaaS exports.</p>
+                <div class="border-t border-slate-800 pt-4 mt-auto">
+                    <p class="text-[11px] text-slate-500 mb-1"><span class="text-blue-500 font-bold">Core Dividend:</span> Gig Economy Tax Compliance, Physical Direct Bandwidth Lines</p>
+                    <p class="text-[11px] text-slate-500"><span class="text-amber-500 font-bold">Ideal For:</span> MCN Agencies, Cross-border Livestreaming, SaaS Providers</p>
+                </div>
+            </div>
+
+            <div class="park-card p-8 bg-slate-950/80 border border-slate-800 rounded-3xl hover:border-blue-500/50 transition-all animate-fade-in text-left" data-category="tech trade">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="text-[10px] font-black bg-slate-700/50 text-slate-300 px-3 py-1 rounded-sm uppercase tracking-widest border border-slate-500/20">West Coast Mfg Base</div>
+                    <span class="text-slate-600 font-mono text-xs">#12</span>
+                </div>
+                <h3 class="text-white text-xl font-black mb-1">Dongfang Lingang Industrial Park</h3>
+                <p class="text-sm text-slate-400 leading-relaxed mb-6 mt-4">A newly prioritized hub. Leveraging Basuo Deepwater Port, it focuses on high-tech materials, marine equipment manufacturing, and clean energy (offshore wind & hydrogen).</p>
+                <div class="border-t border-slate-800 pt-4 mt-auto">
+                    <p class="text-[11px] text-slate-500 mb-1"><span class="text-blue-500 font-bold">Core Dividend:</span> Heavy Machinery Import Exemptions, Priority Green Power Quotas</p>
+                    <p class="text-[11px] text-slate-500"><span class="text-amber-500 font-bold">Ideal For:</span> Heavy Equipment Mfg, New Energy, Petrochemical Materials</p>
+                </div>
+            </div>
+
+            <div class="park-card p-8 bg-slate-950/80 border border-slate-800 rounded-3xl hover:border-blue-500/50 transition-all animate-fade-in text-left" data-category="tech">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="text-[10px] font-black bg-slate-700/50 text-slate-300 px-3 py-1 rounded-sm uppercase tracking-widest border border-slate-500/20">Smart Mfg Pioneer</div>
+                    <span class="text-slate-600 font-mono text-xs">#13</span>
+                </div>
+                <h3 class="text-white text-xl font-black mb-1">Lingao Jinpaigang Dev Zone</h3>
+                <p class="text-sm text-slate-400 leading-relaxed mb-6 mt-4">A newly prioritized hub. The island's only full-chain base for prefabricated construction, simultaneously developing new yacht manufacturing and marine engineering equipment.</p>
+                <div class="border-t border-slate-800 pt-4 mt-auto">
+                    <p class="text-[11px] text-slate-500 mb-1"><span class="text-blue-500 font-bold">Core Dividend:</span> Tariff Quotas for Domestic Building Material Sales, Land Subsidies</p>
+                    <p class="text-[11px] text-slate-500"><span class="text-amber-500 font-bold">Ideal For:</span> Prefabricated Supply Chains, Yacht Mfg, Marine Materials</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="max-w-4xl mx-auto px-6 py-12 text-center mt-10">
+        <h2 class="text-2xl font-black text-white mb-4">Undecided on the Optimal Siting Path?</h2>
+        <p class="text-slate-400 mb-8">Our MNRO algorithm will integrate your enterprise nature, revenue projections, and personnel structure to precisely calculate the true 5-year ROI across all 13 hubs, delivering a bespoke benchmarking strategy.</p>
+        <a href="https://wa.me/8618117790507" target="_blank" class="inline-block bg-blue-600 text-white px-10 py-4 rounded-full font-black uppercase text-sm tracking-widest hover:bg-white hover:text-blue-600 transition-all shadow-xl shadow-blue-500/20">
+            Consult Chief Strategy Officer →
+        </a>
+    </section>
+
+    <script>
+        // Smart Filter Logic
+        function filterParks(category) {
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-blue-600', 'text-white');
+                btn.classList.add('bg-slate-900', 'text-slate-400');
+            });
+            event.target.classList.remove('bg-slate-900', 'text-slate-400');
+            event.target.classList.add('bg-blue-600', 'text-white');
+
+            const cards = document.querySelectorAll('.park-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category.includes(category)) {
+                    card.style.display = 'block';
+                    card.classList.remove('animate-fade-in');
+                    void card.offsetWidth; 
+                    card.classList.add('animate-fade-in');
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+        function showAlert() { alert("SYSTEM NOTICE: Intelligence module is syncing with 2026 FTP node data..."); }
+    </script>
+</body>
+</html>
