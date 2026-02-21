@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13大重点园区全景指南 | Solana-Hainan Strategic Advisory</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700;900&display=swap');
+        body { font-family: 'Noto Sans SC', sans-serif; background-color: #020617; }
+        .grid-overlay { background-image: linear-gradient(rgba(30, 41, 59, 0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(30, 41, 59, 0.2) 1px, transparent 1px); background-size: 40px 40px; }
+        .title-fix { padding-right: 0.1em; }
+        .animate-fade-in { animation: fadeIn 0.4s ease-in-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="text-slate-300 grid-overlay pb-20">
+
+    <nav class="fixed top-0 w-full z-50 bg-[#020617]/95 border-b border-slate-800 backdrop-blur-xl">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-700 rounded-lg flex items-center justify-center shadow-lg shadow-blue-500/20">
+                    <span class="text-white font-black text-xl">S</span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-white font-black tracking-tighter text-xl uppercase italic">Solana<span class="text-blue-500 text-lg">Hainan</span></span>
+                    <span class="text-[9px] text-slate-500 tracking-[0.2em] font-bold uppercase">Strategic Advisory Co., Ltd.</span>
+                </div>
+            </div>
+            
+            <div class="hidden lg:flex space-x-10 text-sm font-bold uppercase tracking-widest">
+                <a href="commander.html" class="text-slate-400 hover:text-blue-400 transition-colors">指挥中心</a>
+                <a href="index.html" class="text-slate-400 hover:text-blue-400 transition-colors">返回首页</a>
+                <a href="parks.html" class="text-white font-black border-b-2 border-blue-500 pb-1">13大园区</a>
+                <a href="javascript:void(0)" onclick="showAlert()" class="text-slate-400 hover:text-blue-400">商务情报</a>
+            </div>
+
+            <div class="flex items-center space-x-6">
+                <div class="hidden md:flex space-x-4 text-xs font-bold">
+                    <span class="text-blue-500 cursor-default">ZH</span>
+                    <span class="text-slate-800">|</span>
+                    <a href="parks-en.html" class="text-slate-500 hover:text-white transition-colors font-bold">EN</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="relative pt-32 pb-12 px-6 flex flex-col items-center">
+        <div class="inline-flex items-center space-x-2 bg-blue-500/5 border border-blue-500/20 px-4 py-2 rounded-full mb-6">
+            <span class="text-[10px] font-black text-blue-500 uppercase tracking-[0.4em]">13 Key Industrial Hubs</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-black text-white text-center italic tracking-tighter uppercase leading-tight mb-6">
+            13大重点园区 <br>
+            <span class="text-transparent bg-clip-text bg-gradient-to-b from-blue-400 to-blue-700 text-3xl md:text-4xl title-fix">2026 战略选址雷达</span>
+        </h1>
+        <p class="max-w-3xl text-center text-slate-400 text-sm md:text-base font-light leading-relaxed mb-8">
+            作为封关运作的核心承接地，13大园区拥有最大的自主权与政策穿透力。请根据您的产业类型，精准锁定具备**最高非对称财税优势**的落户阵地。
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-3 max-w-4xl mt-4">
+            <button onclick="filterParks('all')" class="filter-btn active bg-blue-600 text-white px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all">全部阵地</button>
+            <button onclick="filterParks('trade')" class="filter-btn bg-slate-900 text-slate-400 border border-slate-700 hover:border-blue-500 px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all">航运与自贸</button>
+            <button onclick="filterParks('finance')" class="filter-btn bg-slate-900 text-slate-400 border border-slate-700 hover:border-blue-500 px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all">现代金融与服务</button>
+            <button onclick="filterParks('tech')" class="filter-btn bg-slate-900 text-slate-400 border border-slate-700 hover:border-blue-500 px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all">高新科技与制造</button>
+            <button onclick="filterParks('health')" class="filter-btn bg-slate-900 text-slate-400 border border-slate-700 hover:border-blue-500 px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all">医疗与教育</button>
+        </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-6 py-8">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="parks-container">
+            
+            <div class="park-card p-8 bg-slate-950/80 border border-slate-800 rounded-3xl hover:border-blue-500/50 transition-all animate-fade-in" data-category="trade">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="text-[10px] font-black bg-blue-900/30 text-blue-400 px-3 py-1 rounded-sm uppercase tracking-widest border border-blue-500/20">封关压力测试区</div>
+                    <span class="text-slate-600 font-mono text-xs">#01</span>
+                </div>
+                <h3 class="text-white text-xl font-black mb-1">洋浦经济开发区</h3>
+                <p class="text-slate-500 text-xs font-mono mb-4 uppercase">Yangpu Economic Dev Zone</p>
+                <p class="text-sm text-slate-400 leading-relaxed mb-6">自贸港的“排头兵”。主攻保税加工、国际贸易与港航物流。是“加工增值 30% 免关税”政策应用最成熟的物理主阵地。</p>
+                <div class="border-t border-slate-800 pt-4 mt-auto">
+                    <p class="text-[11px] text-slate-500 mb-1"><span class="text-blue-500 font-bold">核心红利:</span> 国际船舶登记、加工增值免税、内外贸同船</p>
+                    <p class="text-[11px] text-slate-500"><span class="text-amber-500 font-bold">最优匹配:</span> 进出口制造、能源化工、跨境物流巨头</p>
+                </div>
+            </div>
+
+            <div class="park-card p-8 bg-slate-950/80 border border-slate-800 rounded-3xl hover:border-blue-500/50 transition-all animate-fade-in" data-category="finance">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="text-[10px] font-black bg-indigo-900/30 text-indigo-400 px-3 py-1 rounded-sm uppercase tracking-widest border border-indigo-500/20">现代服务示范区</div>
+                    <span class="text-slate-600 font-mono text-xs">#02</span>
+                </div>
+                <h3 class="text-white text-xl font-black mb-1">海口江东新区</h3>
+                <p class="text-slate-500 text-xs font-mono mb-4 uppercase">Haikou Jiangdong New Area</p>
+                <p class="text-sm text-slate-400 leading-relaxed mb-6">全岛的“最强大脑”与金融枢纽。集聚跨国区域总部、离岸贸易与离岸金融账户 (EFU) 的核心承载地。</p>
+                <div class="border-t border-slate-800 pt-4 mt-auto">
+                    <p class="text-[11px] text-slate-500 mb-1"><span class="text-blue-500 font-bold">核心红利:</span> 双Q (QFLP/QDLP) 基金、飞机/船舶融资租赁</p>
+                    <p class="text-[11px] text-slate-500"><span class="text-amber-500 font-bold">最优匹配:</span> 家族办公室、离岸贸易企业、跨国企业总部</p>
+                </div>
+            </div>
+
+            <div class="park-card p-8 bg-slate-950/80 border border-slate-800 rounded-3xl hover:border-blue-500/50 transition-all animate-fade-in" data-category="health">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="text-[10px] font-black bg-emerald-900/30 text-emerald-400 px-3 py-1 rounded-sm uppercase tracking-widest border border-emerald-500/20">唯一特许医疗区</div>
+                    <span class="text-slate-600 font-mono text-xs">#03</span>
+                </div>
+                <h3 class="text-white text-xl font-black mb-1">博鳌乐城医疗特区</h3>
+                <p class="text-slate-500 text-xs font-mono mb-4 uppercase">Boao Lecheng Medical Zone</p>
+                <p class="text-sm text-slate-400 leading-relaxed mb-6">全国唯一的医疗“特区”。享有特许医疗、特许研究、特许经营、特许国际医疗交流等政策，实现国际创新药械“首发”。</p>
+                <div class="border-t border-slate-800 pt-4 mt-auto">
+                    <p class="text-[11px] text-slate-500 mb-1"><span class="text-blue-500 font-bold">核心红利:</span> 真实世界数据应用、极简审批、零关税进口药械</p>
+                    <p class="text-[11px] text-slate-500"><span class="text-amber-500 font-bold">最优匹配:</span> 国际药械巨头、高端康养机构、CRO 企业</p>
+                </div>
+            </div>
+
+            <div class="park-card p-8 bg-slate-950/80 border border-slate-800 rounded-3xl hover:border-blue-500/50 transition-all animate-fade-in" data-category="tech">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="text-[10px] font-black bg-cyan-900/30 text-cyan-400 px-3 py-1 rounded-sm uppercase tracking-widest border border-cyan-500/20">国家级高新区</div>
+                    <span class="text-slate-600 font-mono text-xs">#04</span>
+                </div>
+                <h3 class="text-white text-xl font-black mb-1">海口国家高新区</h3>
+                <p class="text-slate-500 text-xs font-mono mb-4 uppercase">Haikou National Hi-Tech Zone</p>
+                <p class="text-sm text-slate-400 leading-relaxed mb-6">海南唯一的国家级高新区。重点发展医药与医疗器械、高端制造装备、节能环保新材料，实体经济落地的首选。</p>
+                <div class="border-t border-slate-800 pt-4 mt-auto">
+                    <p class="text-[11px] text-slate-500 mb-1"><span class="text-blue-500 font-bold">核心红利:</span> 高新技术企业 15% 所得税、厂房代建/租金补贴</p>
+                    <p class="text-[11px] text-slate-500"><span class="text-amber-500 font-bold">最优匹配:</span> 生物医药研发制造、精密仪器加工、新材料</p>
+                </div>
+            </div>
+
+            <div class="park-card p-8 bg-slate-950/80 border border-slate-800 rounded-3xl hover:border-blue-500/50 transition-all animate-fade-in" data-category="tech">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="text-[10px] font-black bg-teal-900/30 text-teal-400 px-3 py-1 rounded-sm uppercase tracking-widest border border-teal-500/20">深海与南繁高地</div>
+                    <span class="text-slate-600 font-mono text-xs">#05</span>
+                </div>
+                <h3 class="text-white text-xl font-black mb-1">三亚崖州湾科技城</h3>
+                <p class="text-slate-500 text-xs font-mono mb-4 uppercase">Yazhou Bay Science & Tech City</p>
+                <p class="text-sm text-slate-400 leading-relaxed mb-6">国家战略科技力量的聚集地。围绕“向海图强、向种图强”，打造深海科技与南繁种业的国际知识产权交易特区。</p>
+                <div class="border-t border-slate-800 pt-4 mt-auto">
+                    <p class="text-[11px] text-slate-500 mb-1"><span class="text-blue-500 font-bold">核心红利:</span> 顶尖科研补贴、知识产权秒批与离岸证券化</p>
+                    <p class="text-[11px] text-slate-500"><span class="text-amber-500 font-bold">最优匹配:</span> 种业/农业科研、海洋工程、高层次人才团队</p>
+                </div>
+            </div>
+
+            <div class="park-card p-8 bg-slate-950/80 border border-slate-800 rounded-3xl hover:border-blue-500/50 transition-all animate-fade-in" data-category="finance">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="text-[10px] font-black bg-purple-900/30 text-purple-400 px-3 py-1 rounded-sm uppercase tracking-widest border border-purple-500/20">自贸消费核心区</div>
+                    <span class="text-slate-600 font-mono text-xs">#06</span>
+                </div>
+                <h3 class="text-white text-xl font-black mb-1">三亚中央商务区</h3>
+                <p class="text-slate-500 text-xs font-mono mb-4 uppercase">Sanya Central Business District</p>
+                <p class="text-sm text-slate-400 leading-relaxed mb-6">国际旅游消费中心的商业引擎。聚焦邮轮游艇、免税零售、文化艺术交易及高端私人财富管理。</p>
+                <div class="border-t border-slate-800 pt-4 mt-auto">
+                    <p class="text-[11px] text-slate-500 mb-1"><span class="text-blue-500 font-bold">核心红利:</span> 游艇“零关税”、艺术品保税展示、消费金融特许</p>
+                    <p class="text-[11px] text-slate-500"><span class="text-amber-500 font-bold">最优匹配:</span> 游艇产业、高奢零售总部、资管机构</p>
+                </div>
+            </div>
+
+            <div class="park-card p-8 bg-slate-950/80 border border-slate-800 rounded-3xl hover:border-blue-500/50 transition-all animate-fade-in" data-category="tech">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="text-[10px] font-black bg-red-900/30 text-red-400 px-3 py-1 rounded-sm uppercase tracking-widest border border-red-500/20">唯一商业航天城</div>
+                    <span class="text-slate-600 font-mono text-xs">#07</span>
+                </div>
+                <h3 class="text-white text-xl font-black mb-1">文昌国际航天城</h3>
+                <p class="text-slate-500 text-xs font-mono mb-4 uppercase">Wenchang Aerospace City</p>
+                <p class="text-sm text-slate-400 leading-relaxed mb-6">中国首个商业航天发射场所在地。构建火箭链、卫星链、数据链，打造国际化的空间数据跨境传输试验区。</p>
+                <div class="border-t border-slate-800 pt-4 mt-auto">
+                    <p class="text-[11px] text-slate-500 mb-1"><span class="text-blue-500 font-bold">核心红利:</span> 商业发射审批便利化、航天数据出境豁免通道</p>
+                    <p class="text-[11px] text-slate-500"><span class="text-amber-500 font-bold">最优匹配:</span> 商业火箭研发、卫星通讯、空天大数据处理</p>
+                </div>
+            </div>
+
+            <div class="park-card p-8 bg-slate-950/80 border border-slate-800 rounded-3xl hover:border-blue-500/50 transition-all animate-fade-in" data-category="tech">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="text-[10px] font-black bg-blue-900/30 text-blue-400 px-3 py-1 rounded-sm uppercase tracking-widest border border-blue-500/20">数字经济千亿集群</div>
+                    <span class="text-slate-600 font-mono text-xs">#08</span>
+                </div>
+                <h3 class="text-white text-xl font-black mb-1">老城科技新城</h3>
+                <p class="text-slate-500 text-xs font-mono mb-4 uppercase">Laocheng Tech City (Eco-Software)</p>
+                <p class="text-sm text-slate-400 leading-relaxed mb-6">(原海南生态软件园升级) 营收破两千亿的数字经济重镇。主攻区块链、数字文体、游戏出海及人工智能应用。</p>
+                <div class="border-t border-slate-800 pt-4 mt-auto">
+                    <p class="text-[11px] text-slate-500 mb-1"><span class="text-blue-500 font-bold">核心红利:</span> 版号极简审批、数据跨境安全评估快速通道</p>
+                    <p class="text-[11px] text-slate-500"><span class="text-amber-500 font-bold">最优匹配:</span> 游戏出海企业、Web3/区块链、AI 算法公司</p>
+                </div>
+            </div>
+
+            <div class="park-card p-8 bg-slate-950/80 border border-slate-800 rounded-3xl hover:border-blue-500/50 transition-all animate-fade-in" data-category="trade">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="text-[10px] font-black bg-orange-900/30 text-orange-400 px-3 py-1 rounded-sm uppercase tracking-widest border border-orange-500/20">海关特殊监管区</div>
+                    <span class="text-slate-600 font-mono text-xs">#09</span>
+                </div>
+                <h3 class="text-white text-xl font-black mb-1">海口综合保税区</h3>
+                <p class="text-slate-500 text-xs font-mono mb-4 uppercase">Haikou Comprehensive FTZ</p>
+                <p class="text-sm text-slate-400 leading-relaxed mb-6">免税品全球集散中心。主攻跨境电商、免税品仓储分拨、高附加值保税维修与保税加工。</p>
+                <div class="border-t border-slate-800 pt-4 mt-auto">
+                    <p class="text-[11px] text-slate-500 mb-1"><span class="text-blue-500 font-bold">核心红利:</span> 境内关外政策、保税展示交易、跨境电商 1210 模式</p>
+                    <p class="text-[11px] text-slate-500"><span class="text-amber-500 font-bold">最优匹配:</span> 跨境电商、免税品供应链、高精尖保税维修</p>
+                </div>
+            </div>
+
+            <div class="park-card p-8 bg-slate-950/80 border border-slate-800 rounded-3xl hover:border-blue-500/50 transition-all animate-fade-in" data-category="health">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="text-[10px] font-black bg-yellow-900/30 text-yellow-500 px-3 py-1 rounded-sm uppercase tracking-widest border border-yellow-500/20">国际教育开放高地</div>
+                    <span class="text-slate-600 font-mono text-xs">#10</span>
+                </div>
+                <h3 class="text-white text-xl font-black mb-1">陵水黎安教育试验区</h3>
+                <p class="text-slate-500 text-xs font-mono mb-4 uppercase">Li'An Int'l Education Pilot Zone</p>
+                <p class="text-sm text-slate-400 leading-relaxed mb-6">实现“学在海南 = 留学国外”。引进境外一流高校独立办学，探索中外合作办学新模式与国际教育消费闭环。</p>
+                <div class="border-t border-slate-800 pt-4 mt-auto">
+                    <p class="text-[11px] text-slate-500 mb-1"><span class="text-blue-500 font-bold">核心红利:</span> 独立法人中外合作办学审批权、教育设备零关税</p>
+                    <p class="text-[11px] text-slate-500"><span class="text-amber-500 font-bold">最优匹配:</span> 国际顶尖高校、全球教育科技(EdTech)企业</p>
+                </div>
+            </div>
+
+            <div class="park-card p-8 bg-slate-950/80 border border-slate-800 rounded-3xl hover:border-blue-500/50 transition-all animate-fade-in" data-category="tech">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="text-[10px] font-black bg-blue-900/30 text-blue-400 px-3 py-1 rounded-sm uppercase tracking-widest border border-blue-500/20">数字贸易出海口</div>
+                    <span class="text-slate-600 font-mono text-xs">#11</span>
+                </div>
+                <h3 class="text-white text-xl font-black mb-1">海口复兴城互联网园</h3>
+                <p class="text-slate-500 text-xs font-mono mb-4 uppercase">Haikou Fuxing City Industrial Park</p>
+                <p class="text-sm text-slate-400 leading-relaxed mb-6">网红经济与数字贸易出海口。集聚超 8000 家企业，主攻跨境数据服务、网红直播出海、跨境电商合规运营。</p>
+                <div class="border-t border-slate-800 pt-4 mt-auto">
+                    <p class="text-[11px] text-slate-500 mb-1"><span class="text-blue-500 font-bold">核心红利:</span> 灵活用工税务合规通道、出海带宽物理专线</p>
+                    <p class="text-[11px] text-slate-500"><span class="text-amber-500 font-bold">最优匹配:</span> MCN 机构、跨境直播、SaaS 服务出海</p>
+                </div>
+            </div>
+
+            <div class="park-card p-8 bg-slate-950/80 border border-slate-800 rounded-3xl hover:border-blue-500/50 transition-all animate-fade-in" data-category="tech trade">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="text-[10px] font-black bg-slate-700/50 text-slate-300 px-3 py-1 rounded-sm uppercase tracking-widest border border-slate-500/20">西岸制造重镇</div>
+                    <span class="text-slate-600 font-mono text-xs">#12</span>
+                </div>
+                <h3 class="text-white text-xl font-black mb-1">东方临港产业园</h3>
+                <p class="text-slate-500 text-xs font-mono mb-4 uppercase">Dongfang Lingang Industrial Park</p>
+                <p class="text-sm text-slate-400 leading-relaxed mb-6">新增重点园区。依托八所深水港，主打高新技术材料、海洋装备制造及清洁能源（海上风电与氢能）。</p>
+                <div class="border-t border-slate-800 pt-4 mt-auto">
+                    <p class="text-[11px] text-slate-500 mb-1"><span class="text-blue-500 font-bold">核心红利:</span> 大型重工设备免税进口、绿电指标优先获取</p>
+                    <p class="text-[11px] text-slate-500"><span class="text-amber-500 font-bold">最优匹配:</span> 重型装备制造、新能源(氢/风电)、石化新材料</p>
+                </div>
+            </div>
+
+            <div class="park-card p-8 bg-slate-950/80 border border-slate-800 rounded-3xl hover:border-blue-500/50 transition-all animate-fade-in" data-category="tech">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="text-[10px] font-black bg-slate-700/50 text-slate-300 px-3 py-1 rounded-sm uppercase tracking-widest border border-slate-500/20">新锐智造特区</div>
+                    <span class="text-slate-600 font-mono text-xs">#13</span>
+                </div>
+                <h3 class="text-white text-xl font-black mb-1">临高金牌港开发区</h3>
+                <p class="text-slate-500 text-xs font-mono mb-4 uppercase">Lingao Jinpaigang Dev Zone</p>
+                <p class="text-sm text-slate-400 leading-relaxed mb-6">新增重点园区。全岛唯一的装配式建筑全产业链基地，同步发力新型游艇制造及海洋工程装备。</p>
+                <div class="border-t border-slate-800 pt-4 mt-auto">
+                    <p class="text-[11px] text-slate-500 mb-1"><span class="text-blue-500 font-bold">核心红利:</span> 建筑材料内销免征关税配额、特种制造用地补贴</p>
+                    <p class="text-[11px] text-slate-500"><span class="text-amber-500 font-bold">最优匹配:</span> 装配式建筑供应链、游艇制造、海洋建材</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="max-w-4xl mx-auto px-6 py-12 text-center mt-10">
+        <h2 class="text-2xl font-black text-white mb-4">未确定最优落户路径？</h2>
+        <p class="text-slate-400 mb-8">我们的 MNRO 算法将结合您的企业性质、年营收预估与人员结构，精准计算 13 个园区的 5 年真实 ROI，并输出包含租金补贴、人才落户的定制化对标方案。</p>
+        <a href="https://wa.me/8618117790507" target="_blank" class="inline-block bg-blue-600 text-white px-10 py-4 rounded-full font-black uppercase text-sm tracking-widest hover:bg-white hover:text-blue-600 transition-all shadow-xl shadow-blue-500/20">
+            预约首席战略官专线 →
+        </a>
+    </section>
+
+    <script>
+        // 智能筛选逻辑
+        function filterParks(category) {
+            // 更新按钮状态
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-blue-600', 'text-white');
+                btn.classList.add('bg-slate-900', 'text-slate-400');
+            });
+            event.target.classList.remove('bg-slate-900', 'text-slate-400');
+            event.target.classList.add('bg-blue-600', 'text-white');
+
+            // 过滤卡片
+            const cards = document.querySelectorAll('.park-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category.includes(category)) {
+                    card.style.display = 'block';
+                    // 重新触发动画
+                    card.classList.remove('animate-fade-in');
+                    void card.offsetWidth; // trigger reflow
+                    card.classList.add('animate-fade-in');
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+        function showAlert() { alert("系统通知：情报模块正与自贸港2026节点数据进行同步..."); }
+    </script>
+</body>
+</html>
