@@ -7,19 +7,21 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap');
-        body { font-family: 'Inter', sans-serif; background-color: #020617; text-align: left; }
+        body { font-family: 'Inter', sans-serif; background-color: #020617; }
         .grid-overlay { background-image: linear-gradient(rgba(30, 41, 59, 0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(30, 41, 59, 0.2) 1px, transparent 1px); background-size: 40px 40px; }
         .animate-marquee { display: inline-block; animation: marquee 35s linear infinite; }
         @keyframes marquee { 0% { transform: translateX(50%); } 100% { transform: translateX(-100%); } }
-        /* Fix for potential font clipping on italic bold text */
-        .title-fix { padding-right: 0.15em; }
+        .title-fix { padding-right: 0.1em; }
+        /* AI Chat Animation */
+        .chat-slide-up { animation: slideUp 0.3s ease-out forwards; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
-<body class="text-slate-300 grid-overlay">
+<body class="text-slate-300 grid-overlay pb-20 relative">
 
     <nav class="fixed top-0 w-full z-50 bg-[#020617]/95 border-b border-slate-800 backdrop-blur-xl">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center text-left">
-            <div class="flex items-center space-x-4">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="flex items-center space-x-4 text-left">
                 <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-700 rounded-lg flex items-center justify-center shadow-lg shadow-blue-500/20">
                     <span class="text-white font-black text-xl">S</span>
                 </div>
@@ -29,11 +31,17 @@
                 </div>
             </div>
             
-            <div class="hidden lg:flex space-x-10 text-sm font-bold uppercase tracking-widest">
-                <a href="commander-en.html" class="text-white hover:text-blue-400 transition-colors">Console</a>
-                <a href="javascript:void(0)" onclick="showAlert()" class="text-slate-400 hover:text-amber-400">ROI Simulator</a>
-                <a href="parks-en.html" class="text-slate-400 hover:text-blue-400 font-black">13 Hubs</a>
-                <a href="javascript:void(0)" onclick="showAlert()" class="text-slate-400 hover:text-blue-400">Intel Bureau</a>
+            <div class="hidden lg:flex space-x-8 text-sm font-bold uppercase tracking-widest items-center">
+                <a href="commander-en.html" class="text-slate-400 hover:text-blue-400 transition-colors">Console</a>
+                <a href="parks-en.html" class="text-slate-400 hover:text-blue-400 transition-colors">13 Hubs</a>
+                
+                <a href="javascript:void(0)" onclick="showAlert('Services & Pricing module is being deployed')" class="text-blue-400 hover:text-white border border-blue-500/30 bg-blue-500/10 px-4 py-1.5 rounded-full transition-all flex items-center gap-2 shadow-[0_0_15px_rgba(59,130,246,0.2)]">
+                    <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
+                    Services & Pricing
+                </a>
+                
+                <a href="javascript:void(0)" onclick="showAlert('Offshore Family Office module under deployment')" class="text-slate-400 hover:text-blue-400 transition-colors">Family Office</a>
+                <a href="javascript:void(0)" onclick="showAlert('ROI Algorithm Updating')" class="text-slate-400 hover:text-amber-400">ROI Simulator</a>
             </div>
 
             <div class="flex items-center space-x-6">
@@ -42,66 +50,66 @@
                     <span class="text-slate-800">|</span>
                     <span class="text-blue-500 cursor-default">EN</span>
                 </div>
-                <a href="javascript:void(0)" onclick="showAlert()" class="bg-blue-600/20 border border-blue-500/50 px-6 py-2.5 rounded-full text-blue-400 text-sm font-black hover:bg-blue-600 hover:text-white transition-all uppercase">Portal Login</a>
+                <a href="javascript:void(0)" onclick="showAlert('Accessing Secure Intranet Terminal')" class="bg-blue-600/20 border border-blue-500/50 px-6 py-2.5 rounded-full text-blue-400 text-sm font-black hover:bg-blue-600 hover:text-white transition-all uppercase">Platform Login</a>
             </div>
         </div>
     </nav>
 
     <div class="mt-20 bg-slate-900/50 border-b border-slate-800 py-3 overflow-hidden">
-        <div class="whitespace-nowrap inline-block animate-marquee text-xs uppercase tracking-[0.2em] font-mono text-blue-400/80">
-            <span class="mx-8 font-bold text-slate-500">REAL-TIME DATA:</span> [STAT] HAINAN 2026 CUSTOMS READINESS: 98.4% 
-            <span class="mx-8 text-slate-700">|</span> [COMPLIANCE] EFU ACCOUNT CROSS-BORDER QUOTA: UNLIMITED 
-            <span class="mx-8 text-slate-700">|</span> [ALGO] MNRO ENGINE SYNCING GLOBAL FISCAL DIRECTIVES...
+        <div class="whitespace-nowrap inline-block animate-marquee text-xs uppercase tracking-[0.2em] font-mono text-blue-400/80 text-left">
+            <span class="mx-8 font-bold text-slate-500">LIVE INTEL:</span> [DATA] HAINAN 2026 CUSTOMS CLOSURE READINESS: 98.4% 
+            <span class="mx-8 text-slate-700">|</span> [COMPLIANCE] MULTI-FUNCTIONAL FREE TRADE (EFU) ACCOUNTS CROSS-BORDER POOLING: UNLIMITED 
+            <span class="mx-8 text-slate-700">|</span> [ALGO] MNRO ENGINE SYNCING GLOBAL TAX STRATEGIES...
         </div>
     </div>
 
     <section class="relative pt-24 pb-20 px-6 flex flex-col items-center">
         <div class="inline-flex items-center space-x-2 bg-blue-500/5 border border-blue-500/20 px-4 py-2 rounded-full mb-8">
-            <span class="text-[10px] font-black text-blue-500 uppercase tracking-[0.4em]">2026 Strategic Operational Framework</span>
+            <span class="text-[10px] font-black text-blue-500 uppercase tracking-[0.4em]">2026 Strategic Infrastructure</span>
         </div>
 
-        <h1 class="text-4xl md:text-6xl font-black text-white text-center italic tracking-tighter uppercase leading-tight mb-8 title-fix">
-            Structural Re-engineering<br>
-            <span class="text-transparent bg-clip-text bg-gradient-to-b from-blue-400 to-blue-700 text-3xl md:text-5xl">2026 Fiscal Dividends</span>
+        <h1 class="text-4xl md:text-6xl font-black text-white text-center italic tracking-tighter uppercase leading-tight mb-8">
+            Structural Reshaping <br>
+            <span class="text-transparent bg-clip-text bg-gradient-to-b from-blue-400 to-blue-700 text-3xl md:text-5xl title-fix">2026 Asymmetrical Tax Alpha</span>
         </h1>
 
         <p class="max-w-2xl text-center text-slate-400 text-base md:text-lg font-light leading-relaxed mb-12">
-            Engineered on the Hainan Free Trade Port 2026 infrastructure. Deploying offshore compliance algorithms to secure **Asymmetrical Efficiency Advantages** for global HNWIs and enterprises.
+            Engineered based on the underlying logic of the 2026 Hainan FTP Customs Closure. Deploying offshore compliance algorithms to secure **maximum fiscal shielding and growth engines** for global HNWI and MNCs.
         </p>
 
         <div class="w-full max-w-3xl bg-white/5 border border-white/10 rounded-3xl p-10 backdrop-blur-xl mb-16 shadow-2xl">
             <div class="text-center mb-8">
-                <span class="text-xs font-bold uppercase tracking-[0.3em] text-slate-500">Countdown to 2026 Policy Alignment & Operational Performance</span>
+                <span class="text-xs font-bold uppercase tracking-[0.3em] text-slate-500">T-MINUS TO 2026 SYSTEM INTEGRATION</span>
             </div>
             <div class="flex justify-around items-center max-w-xl mx-auto">
                 <div class="text-center">
                     <div id="days" class="text-5xl font-light text-white font-mono">000</div>
-                    <div class="text-xs uppercase tracking-widest text-slate-600 mt-2 font-bold font-sans">Days</div>
+                    <div class="text-xs uppercase tracking-widest text-slate-600 mt-2 font-bold font-sans text-center">Days</div>
                 </div>
                 <div class="text-center text-slate-700 text-4xl">:</div>
                 <div class="text-center">
                     <div id="hours" class="text-5xl font-light text-white font-mono">00</div>
-                    <div class="text-xs uppercase tracking-widest text-slate-600 mt-2 font-bold font-sans">Hours</div>
+                    <div class="text-xs uppercase tracking-widest text-slate-600 mt-2 font-bold font-sans text-center">Hrs</div>
                 </div>
                 <div class="text-center text-slate-700 text-4xl">:</div>
                 <div class="text-center">
                     <div id="minutes" class="text-5xl font-light text-white font-mono">00</div>
-                    <div class="text-xs uppercase tracking-widest text-slate-600 mt-2 font-bold font-sans">Mins</div>
+                    <div class="text-xs uppercase tracking-widest text-slate-600 mt-2 font-bold font-sans text-center">Mins</div>
                 </div>
                 <div class="text-center text-slate-700 text-4xl">:</div>
                 <div class="text-center">
                     <div id="seconds" class="text-5xl font-light text-blue-500 font-mono">00</div>
-                    <div class="text-xs uppercase tracking-widest text-blue-900 mt-2 font-bold font-sans">Secs</div>
+                    <div class="text-xs uppercase tracking-widest text-blue-900 mt-2 font-bold font-sans text-center">Secs</div>
                 </div>
             </div>
         </div>
 
         <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8">
-            <a href="commander-en.html" class="bg-blue-600 text-white px-12 py-4 rounded-full font-black uppercase text-sm tracking-widest hover:bg-white hover:text-blue-600 transition-all shadow-2xl shadow-blue-500/20">
-                Access Console →
+            <a href="commander-en.html" class="bg-blue-600 text-white px-12 py-4 rounded-full font-black uppercase text-sm tracking-widest hover:bg-white hover:text-blue-600 transition-all shadow-2xl shadow-blue-500/20 text-center">
+                Access Terminal →
             </a>
-            <button onclick="showAlert()" class="bg-slate-900 text-slate-400 border border-slate-700 px-12 py-4 rounded-full font-black uppercase text-sm tracking-widest hover:bg-slate-800 hover:text-white transition-all">
-                Analyze ROI
+            <button onclick="showAlert('Algorithm Updating')" class="bg-slate-900 text-slate-400 border border-slate-700 px-12 py-4 rounded-full font-black uppercase text-sm tracking-widest hover:bg-slate-800 hover:text-white transition-all text-center">
+                Simulate ROI
             </button>
         </div>
     </section>
@@ -110,69 +118,93 @@
         <div class="grid md:grid-cols-3 gap-10">
             <div class="p-10 bg-slate-950 border border-slate-900 rounded-3xl group hover:border-blue-500/50 transition-all text-left">
                 <div class="text-blue-500 font-mono text-xs mb-4">#01 STRATEGY</div>
-                <h3 class="text-white text-2xl font-bold mb-4 uppercase italic">Offshore Architecture</h3>
-                <p class="text-base text-slate-500 leading-relaxed mb-6">Mastering the 30% VAP tax exemption and cross-border asset tokenization pathways.</p>
-                <a href="strategy-1-1-en.html" class="text-xs font-black text-blue-400 hover:text-white uppercase tracking-widest">Explore More +</a>
+                <h3 class="text-white text-2xl font-bold mb-4 uppercase italic">Offshore Restructuring</h3>
+                <p class="text-base text-slate-500 leading-relaxed mb-6">Mastering the optimal application of 30% VAP duty exemption and dual 15% income tax pathways to establish compliant global asset securitization channels.</p>
             </div>
             <div class="p-10 bg-slate-950 border border-slate-900 rounded-3xl group hover:border-blue-500/50 transition-all text-left">
                 <div class="text-blue-500 font-mono text-xs mb-4">#02 TECHNOLOGY</div>
                 <h3 class="text-white text-2xl font-bold mb-4 uppercase italic">AI Fiscal Engine</h3>
-                <p class="text-base text-slate-500 leading-relaxed mb-6">Utilizing MNRO algorithms for multi-dimensional regulatory alignment and compliance.</p>
-                <a href="tech-2-2-2-en.html" class="text-xs font-black text-blue-400 hover:text-white uppercase tracking-widest">Explore More +</a>
+                <p class="text-base text-slate-500 leading-relaxed mb-6">Powered by the exclusive MNRO algorithm, conducting multi-dimensional regulatory benchmarking and intelligent tax sandbox simulations to eliminate blind spots.</p>
             </div>
             <div class="p-10 bg-slate-950 border border-slate-900 rounded-3xl group hover:border-blue-500/50 transition-all text-left">
                 <div class="text-blue-500 font-mono text-xs mb-4">#03 ECOSYSTEM</div>
-                <h3 class="text-white text-2xl font-bold mb-4 uppercase italic">Growth & Compliance</h3>
-                <p class="text-base text-slate-500 leading-relaxed mb-6">Auditing "Substantial Operations" to secure long-term 15% CIT/IIT eligibility.</p>
-                <a href="growth-3-1-en.html" class="text-xs font-black text-blue-400 hover:text-white uppercase tracking-widest">Explore More +</a>
+                <h3 class="text-white text-2xl font-bold mb-4 uppercase italic">Substantive Growth</h3>
+                <p class="text-base text-slate-500 leading-relaxed mb-6">Rigorous auditing of "Substantive Operations" indicators ensures long-term eligibility for top-tier tax dividends for both MNCs and HNWIs.</p>
             </div>
         </div>
-    </section>
-
-    <section class="max-w-7xl mx-auto px-6 py-16 border-t border-slate-900 flex flex-wrap justify-around items-center gap-8 text-left">
-        <a href="javascript:void(0)" onclick="showAlert()" class="flex items-center space-x-3 group">
-            <span class="w-12 h-12 bg-slate-900 rounded-xl flex items-center justify-center text-blue-500 group-hover:bg-blue-600 group-hover:text-white transition-all text-xl font-bold">W</span>
-            <span class="text-xs font-bold uppercase text-slate-500 tracking-widest">Offshore Family Office</span>
-        </a>
-        <a href="javascript:void(0)" onclick="showAlert()" class="flex items-center space-x-3 group">
-            <span class="w-12 h-12 bg-slate-900 rounded-xl flex items-center justify-center text-blue-500 group-hover:bg-blue-600 group-hover:text-white transition-all text-xl font-bold">S</span>
-            <span class="text-xs font-bold uppercase text-slate-500 tracking-widest">Service Pricing</span>
-        </a>
-        <a href="sources-en.html" class="flex items-center space-x-3 group">
-            <span class="w-12 h-12 bg-slate-900 rounded-xl flex items-center justify-center text-blue-500 group-hover:bg-blue-600 group-hover:text-white transition-all text-xl font-bold">A</span>
-            <span class="text-xs font-bold uppercase text-slate-500 tracking-widest">Authority Verification</span>
-        </a>
     </section>
 
     <section class="max-w-7xl mx-auto px-6 py-20 bg-gradient-to-b from-transparent to-blue-900/5 border-t border-slate-900">
         <div class="grid md:grid-cols-4 gap-8 text-center md:text-left">
             <div>
-                <h4 class="text-white text-xs font-black uppercase tracking-[0.3em] mb-4">Hotline</h4>
-                <p class="text-blue-400 font-mono text-lg font-bold underline underline-offset-4">+86 181-1779-0507</p>
+                <h4 class="text-white text-xs font-black uppercase tracking-[0.3em] mb-4 text-left">Secure Line</h4>
+                <p class="text-blue-400 font-mono text-lg font-bold underline underline-offset-4 text-left">+86 181-1779-0507</p>
             </div>
             <div>
-                <h4 class="text-white text-xs font-black uppercase tracking-[0.3em] mb-4 text-center md:text-left">E-mail</h4>
-                <p class="text-slate-300 font-mono text-lg break-words text-center md:text-left">kosok@solana-hainan.com</p>
+                <h4 class="text-white text-xs font-black uppercase tracking-[0.3em] mb-4 text-left">Core Email</h4>
+                <p class="text-slate-300 font-mono text-lg break-words text-left">kosok@solana-hainan.com</p>
             </div>
             <div>
-                <h4 class="text-white text-xs font-black uppercase tracking-[0.3em] mb-4 text-center md:text-left">WeChat</h4>
-                <p class="text-slate-500 font-mono text-sm italic text-center md:text-left">QR Coming Soon</p>
+                <h4 class="text-white text-xs font-black uppercase tracking-[0.3em] mb-4 text-left">WeChat Terminal</h4>
+                <p class="text-slate-500 font-mono text-sm italic text-left">Direct Scan Opening Soon</p>
             </div>
             <div>
-                <h4 class="text-white text-xs font-black uppercase tracking-[0.3em] mb-4 text-center md:text-left">Telegram</h4>
-                <p class="text-slate-500 font-mono text-sm italic text-center md:text-left">ID Link Coming Soon</p>
+                <h4 class="text-white text-xs font-black uppercase tracking-[0.3em] mb-4 text-left">Telegram Channel</h4>
+                <p class="text-slate-500 font-mono text-sm italic text-left">Secure Link Syncing</p>
             </div>
         </div>
     </section>
 
     <footer class="bg-black py-12 px-6 border-t border-slate-900 text-[10px] tracking-[0.2em] uppercase font-bold text-slate-600">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-            <p>Policy Authority: PBOC / Hainan Free Trade Port Records 2026</p>
-            <p>© 2026 Solana-Hainan Strategic Advisory Co., Ltd. All Rights Reserved.</p>
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
+            <p>Regulatory Policy Authority: PBOC / Hainan FTP 2026 Archive</p>
+            <p>© 2026 Solana-Hainan Strategic Advisory Co., Ltd. All Strategic Rights Reserved.</p>
         </div>
     </footer>
 
+    <div id="ai-chat-widget" class="fixed bottom-6 right-6 z-[100] flex flex-col items-end">
+        <div id="ai-chat-window" class="hidden mb-4 w-80 sm:w-96 bg-slate-950 border border-blue-500/50 rounded-2xl shadow-[0_0_30px_rgba(59,130,246,0.15)] overflow-hidden flex flex-col">
+            <div class="bg-blue-900/40 border-b border-blue-500/30 p-4 flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <div class="relative flex h-3 w-3">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
+                    </div>
+                    <span class="text-white font-bold text-sm tracking-widest uppercase">MNRO Oracle AI</span>
+                </div>
+                <button onclick="toggleChat()" class="text-slate-400 hover:text-white transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <div class="p-4 h-64 overflow-y-auto bg-slate-900/50 flex flex-col gap-3 text-sm">
+                <div class="text-center text-[10px] text-slate-500 font-mono mb-2">=== 2026 FTP KNOWLEDGE BASE LOADED ===</div>
+                <div class="bg-slate-800 border border-slate-700 text-slate-300 p-3 rounded-lg rounded-tl-none max-w-[85%] text-left">
+                    Greetings, I am the MNRO Fiscal Oracle. Provide your **Industry Type** or **Projected Revenue**, and I will instantly match the optimal Hub and estimate your potential tax savings.
+                </div>
+                <div class="flex flex-wrap gap-2 mt-2">
+                    <button class="bg-blue-900/30 border border-blue-500/30 text-blue-400 text-[11px] px-3 py-1.5 rounded-full hover:bg-blue-600 hover:text-white transition-all">Trading Tax Exemptions?</button>
+                    <button class="bg-blue-900/30 border border-blue-500/30 text-blue-400 text-[11px] px-3 py-1.5 rounded-full hover:bg-blue-600 hover:text-white transition-all">Family Office Entry?</button>
+                </div>
+            </div>
+            <div class="p-3 border-t border-slate-800 bg-slate-950 flex items-center gap-2">
+                <input type="text" placeholder="Inquire about industry setup..." class="flex-1 bg-slate-900 border border-slate-700 text-sm text-white px-4 py-2 rounded-full focus:outline-none focus:border-blue-500 transition-colors">
+                <button class="bg-blue-600 text-white p-2 rounded-full hover:bg-blue-500 transition-colors">
+                    <svg class="w-5 h-5 ml-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </button>
+            </div>
+        </div>
+
+        <button onclick="toggleChat()" id="ai-chat-btn" class="group relative flex items-center justify-center w-14 h-14 bg-gradient-to-br from-blue-600 to-indigo-900 rounded-full shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_rgba(37,99,235,0.6)] transition-all transform hover:scale-105 border border-blue-400/30">
+            <svg class="w-6 h-6 text-white group-hover:animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+            <span class="absolute top-0 right-0 flex h-3 w-3">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-3 w-3 bg-red-500 border-2 border-[#020617]"></span>
+            </span>
+        </button>
+    </div>
+
     <script>
+        // Countdown Logic
         function updateCountdown() {
             const target = new Date("2026-12-31T23:59:59").getTime();
             const now = new Date().getTime();
@@ -181,4 +213,32 @@
                 document.getElementById("days").innerText = Math.floor(diff / (1000 * 60 * 60 * 24)).toString().padStart(3, '0');
                 document.getElementById("hours").innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
                 document.getElementById("minutes").innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
-                document.getElementById("seconds").innerText = Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(
+                document.getElementById("seconds").innerText = Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2, '0');
+            }
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // System Alert Function
+        function showAlert(msg) {
+            alert("SYSTEM NOTICE: " + (msg || "Module calibration in progress..."));
+        }
+
+        // AI Chat Toggle Logic
+        function toggleChat() {
+            const chatWindow = document.getElementById('ai-chat-window');
+            const chatBtn = document.getElementById('ai-chat-btn');
+            
+            if (chatWindow.classList.contains('hidden')) {
+                chatWindow.classList.remove('hidden');
+                chatWindow.classList.add('chat-slide-up');
+                chatBtn.innerHTML = '<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>';
+            } else {
+                chatWindow.classList.add('hidden');
+                chatWindow.classList.remove('chat-slide-up');
+                chatBtn.innerHTML = '<svg class="w-6 h-6 text-white group-hover:animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg><span class="absolute top-0 right-0 flex h-3 w-3"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span><span class="relative inline-flex rounded-full h-3 w-3 bg-red-500 border-2 border-[#020617]"></span></span>';
+            }
+        }
+    </script>
+</body>
+</html>
