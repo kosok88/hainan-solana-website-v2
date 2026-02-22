@@ -8,95 +8,129 @@
     <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <style>
         :root { --solana-green: #14F195; --solana-purple: #9945FF; }
-        body { background: #000; color: #fff; font-family: 'PingFang SC', sans-serif; overflow: hidden; }
+        body { background: #050505; color: #fff; font-family: 'PingFang SC', sans-serif; }
         
-        /* 顶部公告（树梢） */
-        .marquee { background: var(--solana-green); color: #000; font-weight: 900; padding: 4px 0; font-size: 11px; z-index: 1100; }
-        .marquee-inner { display: inline-block; animation: marquee 40s linear infinite; white-space: nowrap; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .gradient-text { background: linear-gradient(to right, var(--solana-green), var(--solana-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        /* 1级主页：树干视觉 */
+        .hero-section { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding-top: 80px; }
+        .big-digit { font-size: 10rem; font-weight: 900; line-height: 1; letter-spacing: -5px; }
+
+        /* 顶部公告流 */
+        .marquee { background: var(--solana-green); color: #000; font-weight: 900; padding: 6px 0; font-size: 11px; z-index: 1001; }
+        .marquee-inner { display: inline-block; animation: marquee 30s linear infinite; white-space: nowrap; }
         @keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
 
-        /* 导航（分枝） */
-        nav { background: rgba(0,0,0,0.8); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.05); z-index: 1000; }
-        .nav-link { font-size: 12px; font-weight: 800; letter-spacing: 2px; color: #666; transition: 0.3s; cursor: pointer; }
-        .nav-link:hover, .nav-link.active { color: var(--solana-green); }
+        /* 二级页面切换 */
+        .sub-view { position: fixed; inset: 0; background: #000; z-index: 200; display: none; overflow-y: auto; padding-top: 100px; }
+        .sub-view.active { display: block; animation: slideUp 0.4s ease-out; }
+        @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
 
-        /* 内容层 */
-        .view-layer { position: fixed; inset: 0; background: #000; z-index: 500; display: none; padding-top: 120px; overflow-y: auto; }
-        .view-layer.active { display: block; animation: fadeIn 0.4s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* 首页视觉（树干） */
-        .giant-num { font-size: 10rem; font-weight: 900; line-height: 1; background: linear-gradient(180deg, #fff 30%, #333 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -5px; }
-        
-        /* 玻璃卡片（树叶） */
-        .leaf-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; transition: 0.3s; }
-        .leaf-card:hover { border-color: var(--solana-green); background: rgba(20, 241, 149, 0.04); transform: translateY(-2px); }
-
-        [x-cloak] { display: none !important; }
+        .park-card { transition: 0.3s; cursor: pointer; border: 1px solid rgba(255,255,255,0.05); }
+        .park-card:hover { border-color: var(--solana-green); transform: translateY(-5px); background: rgba(20, 241, 149, 0.05); }
     </style>
 </head>
-<body x-data="hub()">
+<body x-data="siteHandler()">
 
-    <div class="marquee fixed top-0 w-full">
-        <div class="marquee-inner uppercase font-black">
-            ⚡ 2026 封关数据：全岛 EF 账户结算额突破 500 亿 | 🏗️ 13 个重点园区享受加工增值 30% 免关税政策 | 🏦 离岸金融沙盒第三批名单公示中...
+    <div class="marquee fixed top-0 w-full z-[1000]">
+        <div class="marquee-inner uppercase">
+            ⚡ 2026 封关实录：全岛执行“零关税、低税率、简税制” | 🚢 离岸贸易结算规模翻倍 | 🏦 13园区 EF 账户申请量激增 | 🚀 AI助手实时在线解答...
         </div>
     </div>
 
-    <nav class="fixed top-6 w-full h-20 px-10 flex items-center justify-between">
-        <div class="flex items-center gap-3 cursor-pointer" @click="tab = 'home'">
+    <nav class="fixed top-8 w-full z-[500] px-10 h-20 flex items-center justify-between glass mx-auto max-w-[95%] rounded-full">
+        <div class="flex items-center gap-3 cursor-pointer" @click="view = 'home'">
             <div class="w-8 h-8 bg-gradient-to-tr from-[#14F195] to-[#9945FF] rounded-lg"></div>
-            <span class="text-2xl font-black italic">SH-2026</span>
+            <span class="text-2xl font-black italic tracking-tighter">SH-2026</span>
         </div>
-        <div class="flex gap-10">
-            <span @click="tab = 'parks'" :class="tab === 'parks' ? 'active' : ''" class="nav-link">13园区 PARKS</span>
-            <span @click="tab = 'business'" :class="tab === 'business' ? 'active' : ''" class="nav-link">业务报价 BUSINESS</span>
-            <span @click="tab = 'about'" :class="tab === 'about' ? 'active' : ''" class="nav-link">关于 ABOUT</span>
+        <div class="flex gap-10 text-[11px] font-black uppercase tracking-widest text-gray-400">
+            <span @click="view = 'home'" class="hover:text-[#14f195] cursor-pointer">首页 Home</span>
+            <span @click="view = 'parks'" class="hover:text-[#14f195] cursor-pointer">13园区 Parks</span>
+            <span @click="view = 'business'" class="hover:text-[#14f195] cursor-pointer">业务报价 Business</span>
         </div>
-        <button @click="tab = 'business'" class="bg-[#14f195] text-black px-6 py-2 rounded-full font-black text-[10px] uppercase">立即下单</button>
+        <button @click="view = 'business'" class="bg-[#14f195] text-black px-8 py-2 rounded-full font-black text-[10px] uppercase hover:scale-105 transition">立即下单</button>
     </nav>
 
-    <main x-show="tab === 'home'" class="h-screen flex flex-col items-center justify-center text-center px-6">
-        <div class="mb-2 text-[#14f195] font-mono tracking-[0.5em] text-[10px]">YEAR ONE · 2026</div>
-        <div class="giant-num" id="d">300</div>
-        <h1 class="text-xl font-black italic tracking-[0.3em] text-gray-500 uppercase mt-4">封关红利截止倒计时</h1>
-        <div class="mt-12 flex gap-4">
-            <button @click="tab = 'parks'" class="px-10 py-4 border border-white/10 rounded-full text-[10px] font-black uppercase tracking-widest hover:border-[#14f195] transition">探索园区阵列</button>
-            <button @click="tab = 'business'" class="px-10 py-4 bg-white text-black rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-[#14f195] transition">立即订购服务</button>
-        </div>
-    </main>
+    <div x-show="view === 'home'" class="hero-section text-center px-6">
+        <div class="text-[#14f195] font-mono tracking-[1em] text-[10px] mb-4">SINCE 2025.12.18 · YEAR ONE</div>
+        <h1 class="text-6xl md:text-8xl font-black italic tracking-tighter mb-6">封关元年</h1>
+        <div class="big-digit gradient-text" id="d">300</div>
+        <p class="text-xl text-gray-500 font-bold tracking-[0.3em] uppercase mt-4">距离 2026 政策窗口截止</p>
 
-    <div :class="tab === 'parks' ? 'active' : ''" class="view-layer px-10 pb-20">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-6xl font-black italic mb-2">战略阵列</h2>
-            <p class="text-gray-500 font-mono text-xs mb-12 uppercase">13 Strategic Economic Zones of Hainan</p>
+        <div class="mt-24 w-full max-w-6xl">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-3xl font-black italic">13个重点园区阵列</h2>
+                <button @click="view = 'parks'" class="text-[#14f195] text-xs font-bold border-b border-[#14f195]">查看全岛布局 →</button>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                <template x-for="(p, i) in parks.slice(0, 5)">
+                    <div @click="openLeaf(p.name, p.detail)" class="glass p-6 rounded-3xl park-card">
+                        <span class="text-[10px] font-mono text-gray-600" x-text="'ZONE-0'+(i+1)"></span>
+                        <h4 class="font-bold text-sm mt-2" x-text="p.name"></h4>
+                    </div>
+                </template>
+                <div @click="view = 'parks'" class="glass p-6 rounded-3xl border-dashed border-gray-600 flex items-center justify-center cursor-pointer hover:border-[#14f195]">
+                    <span class="text-xs text-gray-500 font-bold">+ 查看全部</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-24 w-full max-w-6xl pb-20 text-left border-t border-white/5 pt-16">
+            <h2 class="text-3xl font-black italic mb-10">核心业务模块</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="space-y-4">
+                    <div class="w-10 h-1 h-1 bg-[#14f195]"></div>
+                    <h3 class="text-xl font-bold">自贸港准入</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed">提供全流程企业落地解决方案，包括园区筛选、工商注册、资质报备及实质性运营架构设计。</p>
+                </div>
+                <div class="space-y-4">
+                    <div class="w-10 h-1 h-1 bg-[#9945FF]"></div>
+                    <h3 class="text-xl font-bold">离岸金融通道</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed">协助开立 EF 电子围栏账户，打通跨境资金自由流动路径，为 Web3 企业提供合规结汇支撑。</p>
+                </div>
+                <div class="space-y-4">
+                    <div class="w-10 h-1 h-1 bg-white"></div>
+                    <h3 class="text-xl font-bold">税务红利锁定</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed">精准匹配“双15%”税收政策，协助高新企业及高净值人才完成封关首年红利申报。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div :class="view === 'parks' ? 'active' : ''" class="sub-view px-10">
+        <div class="max-w-7xl mx-auto pb-20">
+            <div class="mb-16">
+                <h2 class="text-6xl font-black italic tracking-tighter">战略全版图</h2>
+                <p class="text-gray-500 mt-4 font-mono text-xs uppercase tracking-widest italic">13 Strategic Economic Zones / Database 2026</p>
+            </div>
             <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
                 <template x-for="(p, i) in parks">
-                    <div @click="openLeaf(p.name, p.detail)" class="leaf-card p-6 h-48 flex flex-col justify-between group cursor-pointer">
-                        <div class="text-[10px] font-mono text-gray-700" x-text="'0'+(i+1)"></div>
-                        <h3 class="text-xl font-black group-hover:text-[#14f195]" x-text="p.name"></h3>
-                        <div class="text-[9px] text-gray-600 underline">VIEW DOSSIER ➜</div>
+                    <div @click="openLeaf(p.name, p.detail)" class="glass p-8 rounded-3xl park-card flex flex-col justify-between h-56">
+                        <div class="text-[10px] font-mono text-gray-600" x-text="'INDEX-'+(i+1)"></div>
+                        <h3 class="text-2xl font-black leading-tight" x-text="p.name"></h3>
+                        <div class="text-[10px] text-[#14f195] font-bold uppercase tracking-widest">查看档案 ➜</div>
                     </div>
                 </template>
             </div>
         </div>
     </div>
 
-    <div :class="tab === 'business' ? 'active' : ''" class="view-layer px-10 pb-20">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-6xl font-black italic mb-2">服务报价</h2>
-            <p class="text-gray-500 text-xs mb-16 uppercase italic">Standardized service for 2026 Policy</p>
-            <div class="grid gap-4">
+    <div :class="view === 'business' ? 'active' : ''" class="sub-view px-10">
+        <div class="max-w-4xl mx-auto pb-20">
+            <h2 class="text-6xl font-black italic mb-4">业务报价单</h2>
+            <p class="text-gray-500 mb-16 italic text-sm">所有报价均包含 2026 封关运作专项补贴，支持链上及离岸本币支付。</p>
+            <div class="grid gap-6">
                 <template x-for="s in services">
-                    <div class="leaf-card p-8 flex justify-between items-center group">
-                        <div>
-                            <div class="text-[#9945FF] text-[10px] font-bold mb-1 uppercase tracking-tighter" x-text="s.cat"></div>
-                            <h3 class="text-2xl font-black italic text-white/90" x-text="s.title"></h3>
-                            <p class="text-[10px] text-gray-500 mt-2" x-text="s.sub"></p>
+                    <div class="glass p-10 rounded-[40px] flex justify-between items-center group hover:border-[#14f195]">
+                        <div class="flex-1 pr-10">
+                            <span class="text-[#9945FF] text-[10px] font-black uppercase tracking-widest" x-text="s.cat"></span>
+                            <h3 class="text-2xl font-black italic mt-2" x-text="s.title"></h3>
+                            <p class="text-xs text-gray-500 mt-4 leading-relaxed" x-text="s.detail"></p>
                         </div>
-                        <div class="text-right">
-                            <div class="text-3xl font-mono font-black text-[#14f195] mb-4" x-text="'¥ '+s.price"></div>
-                            <button @click="openLeaf(s.title, s.sub, true, s.price)" class="bg-white text-black px-10 py-3 rounded-xl font-black text-[10px] uppercase hover:bg-[#14f195] transition">立即下单</button>
+                        <div class="text-right border-l border-white/10 pl-10">
+                            <div class="text-3xl font-mono font-black text-[#14f195] mb-6" x-text="'¥ '+s.price"></div>
+                            <button @click="openLeaf(s.title, s.detail, true, s.price)" class="bg-white text-black px-10 py-4 rounded-2xl font-black text-xs uppercase hover:bg-[#14f195] transition">下单订购</button>
                         </div>
                     </div>
                 </template>
@@ -104,54 +138,54 @@
         </div>
     </div>
 
-    <div x-show="leafOpen" class="fixed inset-0 z-[2000] flex items-center justify-center p-6 bg-black/95 backdrop-blur-xl" x-cloak x-transition>
-        <div class="leaf-card p-12 max-w-sm w-full text-center border-[#14f195]/30">
-            <h3 class="text-2xl font-black mb-4" x-text="leafData.title"></h3>
-            <p class="text-xs text-gray-500 leading-relaxed mb-10" x-text="leafData.content"></p>
+    <div x-show="leafOpen" class="fixed inset-0 z-[2000] flex items-center justify-center p-6 bg-black/95 backdrop-blur-xl" x-cloak x-transition.opacity>
+        <div class="glass p-12 max-w-md w-full text-center border-[#14f195]/30 rounded-[50px]">
+            <h3 class="text-3xl font-black mb-4 gradient-text" x-text="leafData.title"></h3>
+            <p class="text-sm text-gray-500 leading-relaxed mb-10" x-text="leafData.content"></p>
             
             <template x-if="leafData.isOrder">
                 <div>
-                    <div class="text-5xl font-mono font-black text-[#14f195] mb-10" x-text="'¥'+leafData.price"></div>
-                    <button onclick="alert('进入2026封关结算网关...')" class="w-full py-4 bg-[#14f195] text-black font-black rounded-xl text-xs uppercase tracking-widest">确认订购并支付</button>
+                    <div class="text-5xl font-mono font-black text-white mb-10" x-text="'¥'+leafData.price"></div>
+                    <button onclick="alert('进入2026封关业务专用支付网关...')" class="w-full py-5 bg-[#14f195] text-black font-black rounded-2xl text-xs uppercase tracking-[0.2em] hover:scale-105 transition">确认订购并支付</button>
                 </div>
             </template>
             
-            <button @click="leafOpen = false" class="mt-8 text-gray-700 text-[10px] font-black uppercase tracking-widest hover:text-white transition">返回上一级目录</button>
+            <button @click="leafOpen = false" class="mt-8 text-gray-700 text-[10px] font-black uppercase tracking-widest hover:text-white transition">返回上一层级</button>
         </div>
     </div>
 
     <div class="fixed bottom-10 right-10 z-[1100]">
-        <button onclick="alert('AI 助手：正在检索 2026 年最新封关红利目录...')" class="w-16 h-16 bg-[#14f195] text-black rounded-full flex items-center justify-center text-3xl shadow-[0_0_30px_rgba(20,241,149,0.4)] hover:scale-110 transition">🤖</button>
+        <button onclick="alert('AI助手已就绪：正在为您解析 2026 年最新封关园区准入名单...')" class="w-16 h-16 bg-[#14f195] text-black rounded-full flex items-center justify-center text-3xl shadow-[0_0_30px_rgba(20,241,149,0.5)] hover:rotate-12 transition">🤖</button>
     </div>
 
     <script>
-        function hub() {
+        function siteHandler() {
             return {
-                tab: 'home',
+                view: 'home',
                 leafOpen: false,
                 leafData: {},
-                // 13 个园区全部补齐 (Data Branch)
+                // 13个园区完整数据 (Data Branch)
                 parks: [
-                    { name: '海口江东新区', detail: '现代服务业示范区，重点发展总部经济、融资租赁、离岸贸易。' },
-                    { name: '三亚崖州湾科技城', detail: '高新技术产业集聚区，聚焦深海科技、南繁种业研发。' },
-                    { name: '洋浦经济开发区', detail: '自由贸易港先行区，享受离岸加工增值 30% 免关税政策。' },
-                    { name: '博鳌乐城医疗先行区', detail: '国际医疗旅游先行区，特许药械政策唯一落脚点。' },
-                    { name: '复兴城互联网园', detail: '数字经济核心区，Web3、AI、跨境数据传输沙盒阵地。' },
-                    { name: '海南生态软件园', detail: '区块链技术创新区，数字版权与金融科技领航者。' },
-                    { name: '文昌国际航天城', detail: '航天产业核心区，聚焦商业航天发射、空间大数据应用。' },
-                    { name: '海口综合保税区', detail: '跨境电商与保税加工中心，离岛免税货源集散地。' },
-                    { name: '三亚中央商务区', detail: '邮轮游艇产业总部，现代金融与商贸服务高地。' },
-                    { name: '海口国家高新区', detail: '生物医药与智能制造阵地，海南工业引擎。' },
-                    { name: '东方临港产业园', detail: '油气化工与新能源基地，南海资源保障中心。' },
-                    { name: '陵水黎安教育先行区', detail: '国际人才产学研中心，引进境外顶尖大学独立办学。' },
-                    { name: '定安塔岭低碳园', detail: '新型食品加工与绿色低碳产业示范区。' }
+                    { name: '海口江东新区', detail: '海南自贸港总部经济、现代服务业、融资租赁及航空产业核心。' },
+                    { name: '三亚崖州湾科技城', detail: '高新技术、深海科技、南繁种业研发。' },
+                    { name: '洋浦经济开发区', detail: '国际航运枢纽、先进制造及加工增值免关税政策先行区。' },
+                    { name: '博鳌乐城医疗先行区', detail: '国际医疗旅游、特许药械唯一准入区。' },
+                    { name: '复兴城互联网园', detail: '数字经济、Web3、跨境数据传输沙盒阵地。' },
+                    { name: '海南生态软件园', detail: '区块链技术创新区，数字版权与金融科技。' },
+                    { name: '文昌国际航天城', detail: '商业航天发射、空间大数据应用。' },
+                    { name: '海口综合保税区', detail: '跨境电商、保税加工、免税品分拨中心。' },
+                    { name: '三亚中央商务区', detail: '邮轮游艇、现代金融与商贸服务。' },
+                    { name: '海口国家高新区', detail: '生物医药与智能制造阵地。' },
+                    { name: '东方临港产业园', detail: '油气化工与新能源基地。' },
+                    { name: '陵水黎安教育区', detail: '国际人才产学研、境外高校办学区。' },
+                    { name: '定安塔岭低碳园', detail: '新型食品加工与绿色低碳产业区。' }
                 ],
-                // 业务报价 (Data Branch)
+                // 业务详细数据 (Data Branch)
                 services: [
-                    { cat: 'Registration', title: '企业落地全流程包', price: '1,900', sub: '含核名、地址、五章、工商全办、入园审批、税务报到。' },
-                    { cat: 'Financial', title: 'EF 离岸账户开立', price: '5,000', sub: '协助开立电子围栏账户，实现跨境资金自由进出。' },
-                    { cat: 'Taxation', title: '双 15% 税务合规', price: '3,000', sub: '实质性运营方案设计，确保锁定企业与个税双重红利。' },
-                    { cat: 'Web3 / RWA', title: '离岸资产代币化申报', price: '12,000', sub: 'RWA 试点项目入驻沙盒申报，对接国际结算中心。' }
+                    { cat: 'Entry', title: '企业落地全流程包', price: '1,900', detail: '包含工商注册、刻章、税务报到、银行开户及13园区任选挂靠地址。封关元年特惠价。' },
+                    { cat: 'Finance', title: 'EF 离岸账户咨询', price: '5,000', detail: '针对跨境贸易及Web3项目，提供电子围栏账户开立协助，解决大额资金出入境痛点。' },
+                    { cat: 'Taxation', title: '双 15% 税务合规', price: '3,000', detail: '由资深合伙人设计“实质性运营”架构，确保企业所得税与个税享受 15% 封关红利。' },
+                    { cat: 'Web3', title: 'RWA 资产代币化申报', price: '12,000', detail: '协助实物资产或离岸资产进入自贸港沙盒进行代币化试点，含法律意见书与技术预审。' }
                 ],
                 openLeaf(title, content, isOrder = false, price = '') {
                     this.leafData = { title, content, isOrder, price };
