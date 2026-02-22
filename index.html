@@ -1,244 +1,263 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solana-Hainan | 2026 海南封关战略咨询</title>
+    <title>SOLANA HAINAN | 索拉纳离岸商务咨询中心 - 2026封关官方门户</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&family=JetBrains+Mono&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700;900&display=swap');
-        body { font-family: 'Noto Sans SC', sans-serif; background-color: #020617; }
-        .grid-overlay { background-image: linear-gradient(rgba(30, 41, 59, 0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(30, 41, 59, 0.2) 1px, transparent 1px); background-size: 40px 40px; }
-        .animate-marquee { display: inline-block; animation: marquee 35s linear infinite; }
-        @keyframes marquee { 0% { transform: translateX(50%); } 100% { transform: translateX(-100%); } }
-        .title-fix { padding-right: 0.15em; }
-        /* AI Chat Animation */
-        .chat-slide-up { animation: slideUp 0.3s ease-out forwards; }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        :root { --solana-green: #14F195; --solana-purple: #9945FF; }
+        body { background: #010101; color: #f3f4f6; font-family: 'Outfit', sans-serif; }
+        .glass { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .gradient-text { background: linear-gradient(90deg, var(--solana-green), var(--solana-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .pricing-card:hover { border-color: var(--solana-green); transform: translateY(-5px); box-shadow: 0 10px 40px rgba(20, 241, 149, 0.1); }
+        [x-cloak] { display: none !important; }
+        .sop-step::after { content: '→'; position: absolute; right: -15%; top: 50%; color: #333; font-size: 20px; }
+        @media (max-width: 768px) { .sop-step::after { display: none; } }
     </style>
 </head>
-<body class="text-slate-300 grid-overlay pb-20 relative">
+<body x-data="{ lang: 'cn', isTaxOpen: false, activeTab: 'admin' }">
 
-    <nav class="fixed top-0 w-full z-50 bg-[#020617]/95 border-b border-slate-800 backdrop-blur-xl">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
-            <div class="flex items-center space-x-4">
-                <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-700 rounded-lg flex items-center justify-center shadow-lg shadow-blue-500/20">
-                    <span class="text-white font-black text-xl">S</span>
-                </div>
-                <div class="flex flex-col">
-                    <span class="text-white font-black tracking-tighter text-xl uppercase italic text-left">Solana<span class="text-blue-500 text-lg">Hainan</span></span>
-                    <span class="text-[9px] text-slate-500 tracking-[0.2em] font-bold uppercase text-left">索拉纳纳（海南）战略咨询有限公司</span>
+    <nav class="fixed w-full z-[100] glass h-20 flex items-center px-6">
+        <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <div class="w-10 h-10 bg-gradient-to-br from-[#14F195] to-[#9945FF] rounded-xl shadow-lg shadow-purple-500/20"></div>
+                <div class="leading-none">
+                    <span class="text-2xl font-black block tracking-tighter">SOLANA <span class="text-gray-500 font-light">HAINAN</span></span>
+                    <span class="text-[10px] text-gray-400 uppercase tracking-widest" x-text="lang === 'cn' ? '海南省索拉纳商务咨询中心' : 'Business Consulting Center'"></span>
                 </div>
             </div>
-            
-            <div class="hidden lg:flex space-x-8 text-sm font-bold uppercase tracking-widest items-center">
-                <a href="commander.html" class="text-slate-400 hover:text-blue-400 transition-colors">指挥中心</a>
-                <a href="parks.html" class="text-slate-400 hover:text-blue-400 transition-colors">13大园区</a>
-                
-                <a href="services.html" class="text-blue-400 hover:text-white border border-blue-500/30 bg-blue-500/10 px-4 py-1.5 rounded-full transition-all flex items-center gap-2 shadow-[0_0_15px_rgba(59,130,246,0.2)]">
-                    <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
-                    业务与报价
-                </a>
-                
-                <a href="javascript:void(0)" onclick="showAlert('家族办公室模块部署中')" class="text-slate-400 hover:text-blue-400 transition-colors">家族办公室</a>
-                <a href="javascript:void(0)" onclick="showAlert('ROI模拟器算法同步中')" class="text-slate-400 hover:text-amber-400">ROI模拟器</a>
-            </div>
-
-            <div class="flex items-center space-x-6">
-                <div class="hidden md:flex space-x-4 text-xs font-bold">
-                    <span class="text-blue-500 cursor-default">ZH</span>
-                    <span class="text-slate-800">|</span>
-                    <a href="index-en.html" class="text-slate-500 hover:text-white transition-colors">EN</a>
+            <div class="flex items-center gap-4">
+                <div class="hidden md:flex gap-8 mr-8 text-[11px] font-bold uppercase tracking-widest text-gray-400">
+                    <a href="#services" class="hover:text-[#14F195]">Services</a>
+                    <a href="#pricing" class="hover:text-[#14F195]">Pricing</a>
+                    <a href="#sop" class="hover:text-[#14F195]">Workflow</a>
                 </div>
-                <a href="javascript:void(0)" onclick="showAlert('正在接入内网终端')" class="bg-blue-600/20 border border-blue-500/50 px-6 py-2.5 rounded-full text-blue-400 text-sm font-black hover:bg-blue-600 hover:text-white transition-all uppercase">平台登录</a>
+                <button @click="lang = lang === 'cn' ? 'en' : 'cn'" class="px-4 py-2 border border-white/10 rounded-full text-xs font-bold hover:bg-white/5 transition flex items-center gap-2">
+                    <span x-text="lang === 'cn' ? 'ENGLISH' : '中文'"></span>
+                    <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                </button>
+                <a href="https://t.me/KOSOK0898" target="_blank" class="bg-white text-black px-6 py-2 rounded-full font-bold text-xs uppercase hover:bg-[#14F195] transition">Telegram</a>
             </div>
         </div>
     </nav>
 
-    <div class="mt-20 bg-slate-900/50 border-b border-slate-800 py-3 overflow-hidden">
-        <div class="whitespace-nowrap inline-block animate-marquee text-xs uppercase tracking-[0.2em] font-mono text-blue-400/80">
-            <span class="mx-8 font-bold text-slate-500">[ 数据 ]</span> 海南2026全岛封关硬软件准备额度：98.4% 
-            <span class="mx-8 text-slate-700">|</span> <span class="mx-8 font-bold text-slate-500">[ 合规 ]</span> 多功能自由贸易(EFU)账户跨界资金池额度：无上限 
-            <span class="mx-8 text-slate-700">|</span> <span class="mx-8 font-bold text-slate-500">[ 算法 ]</span> MNRO引擎正在同步全球税务筹划指令...
+    <header class="pt-52 pb-32 px-6 relative text-center overflow-hidden">
+        <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-green-500/5 rounded-full blur-[150px] -z-10"></div>
+        <div class="max-w-5xl mx-auto">
+            <div class="inline-block px-6 py-2 rounded-full glass border-[#14F195]/20 text-[#14F195] text-[11px] font-bold mb-8 tracking-[0.4em] uppercase">
+                <span x-text="lang === 'cn' ? '2026 海南全岛独立海关运作监管门户' : '2026 Hainan Independent Customs Regulatory Portal'"></span>
+            </div>
+            <h1 class="text-6xl md:text-9xl font-black mb-10 leading-none tracking-tighter">
+                <span x-show="lang === 'cn'">离岸合规<br><span class="gradient-text">一站式总署</span></span>
+                <span x-show="lang === 'en'" x-cloak>Offshore <br><span class="gradient-text">Compliance Hub</span></span>
+            </h1>
+            <p class="text-gray-400 text-xl md:text-2xl mb-14 max-w-3xl mx-auto font-light leading-relaxed">
+                <span x-show="lang === 'cn'">为 Web3、RWA 及全球企业打造基于海南自贸港的 EF 账户落地、15% 所得税筹划及国际品牌加速方案。</span>
+                <span x-show="lang === 'en'" x-cloak>Integrating EF accounts, 15% tax incentives, and AI branding for Web3 & Global ventures in Hainan.</span>
+            </p>
+            <div class="flex flex-wrap justify-center gap-6">
+                <button @click="isTaxOpen = true" class="bg-[#14F195] text-black px-12 py-6 rounded-2xl font-black text-xl hover:scale-105 transition shadow-2xl shadow-green-500/20">
+                    <span x-text="lang === 'cn' ? '测算我的 15% 节税额' : 'Calculate My 15% Tax Savings'"></span>
+                </button>
+                <button class="glass px-12 py-6 rounded-2xl font-bold border border-white/10 hover:bg-white/5 transition text-lg">
+                    <span x-text="lang === 'cn' ? '在线签署协议' : 'E-Sign Agreement'"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section id="services" class="py-32 px-6 max-w-7xl mx-auto">
+        <h2 class="text-center text-4xl md:text-5xl font-black mb-20 tracking-tighter uppercase" x-text="lang === 'cn' ? '全生命周期业务矩阵' : 'Full Lifecycle Business Matrix'"></h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <div class="glass p-12 rounded-[50px] pricing-card transition duration-500 group">
+                <div class="w-16 h-16 bg-green-500/10 rounded-2xl flex items-center justify-center text-3xl mb-8 group-hover:bg-green-500 group-hover:text-black transition">🏗️</div>
+                <h3 class="text-2xl font-bold mb-6" x-text="lang === 'cn' ? '海南落地基建' : 'Hainan Entry'"></h3>
+                <ul class="space-y-4 text-gray-500 text-sm font-medium">
+                    <li class="flex items-start gap-2"><span>•</span> <span x-text="lang === 'cn' ? '全球/国内公司极速注册' : 'Global & Local Registration'"></span></li>
+                    <li class="flex items-start gap-2"><span>•</span> <span x-text="lang === 'cn' ? 'EF 电子围栏账户开立协助' : 'EF Account Setup Assistance'"></span></li>
+                    <li class="flex items-start gap-2"><span>•</span> <span x-text="lang === 'cn' ? '商务秘书地址挂靠 (¥2,000/年)' : 'Address Hosting (¥2,000/yr)'"></span></li>
+                    <li class="flex items-start gap-2"><span>•</span> <span x-text="lang === 'cn' ? '实质性运营场地与托管' : 'Managed Substance & Office'"></span></li>
+                </ul>
+            </div>
+
+            <div class="glass p-12 rounded-[50px] border-purple-500/20 pricing-card transition duration-500 group">
+                <div class="w-16 h-16 bg-purple-500/10 rounded-2xl flex items-center justify-center text-3xl mb-8 group-hover:bg-purple-500 group-hover:text-white transition">⛓️</div>
+                <h3 class="text-2xl font-bold mb-6 text-purple-400" x-text="lang === 'cn' ? 'Web3 与 RWA 离岸' : 'Web3 & RWA Hub'"></h3>
+                <ul class="space-y-4 text-gray-500 text-sm font-medium">
+                    <li class="flex items-start gap-2"><span>•</span> <span x-text="lang === 'cn' ? 'RWA 资产上链合规架构' : 'RWA Compliance & Tokenization'"></span></li>
+                    <li class="flex items-start gap-2"><span>•</span> <span x-text="lang === 'cn' ? '离岸金融与美股上链开户' : 'Offshore Finance & Stock Listing'"></span></li>
+                    <li class="flex items-start gap-2"><span>•</span> <span x-text="lang === 'cn' ? '15% 鼓励类产业所得税筹划' : '15% Tax Incentive Planning'"></span></li>
+                    <li class="flex items-start gap-2"><span>•</span> <span x-text="lang === 'cn' ? '跨境 U 结算与出入金方案' : 'Cross-border Settlement Solutions'"></span></li>
+                </ul>
+            </div>
+
+            <div class="glass p-12 rounded-[50px] pricing-card transition duration-500 group">
+                <div class="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center text-3xl mb-8 group-hover:bg-white group-hover:text-black transition">🎨</div>
+                <h3 class="text-2xl font-bold mb-6" x-text="lang === 'cn' ? 'AI 数字化营销' : 'AI Digital Branding'"></h3>
+                <ul class="space-y-4 text-gray-400 text-sm font-medium">
+                    <li class="flex items-start gap-2"><span>•</span> <span x-text="lang === 'cn' ? '国际化 LOGO/VI 视觉体系' : 'Global Logo & VI Design'"></span></li>
+                    <li class="flex items-start gap-2"><span>•</span> <span x-text="lang === 'cn' ? '多语种响应式 Web3 官网' : 'Multilingual Responsive Web'"></span></li>
+                    <li class="flex items-start gap-2"><span>•</span> <span x-text="lang === 'cn' ? '全球社媒代运营 (Twitter/TG)' : 'Global Social Media Growth'"></span></li>
+                    <li class="flex items-start gap-2"><span>•</span> <span x-text="lang === 'cn' ? '全套品牌出海加速套餐' : 'Full Branding Acceleration Pak'"></span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="py-32 bg-white/[0.01]">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-center text-4xl font-black mb-16 tracking-tighter" x-text="lang === 'cn' ? '全业务双币报价单' : 'FULL SERVICE PRICING'"></h2>
+            
+            <div class="flex justify-center gap-4 mb-12">
+                <button @click="activeTab = 'admin'" :class="activeTab === 'admin' ? 'bg-[#14F195] text-black' : 'glass'" class="px-8 py-3 rounded-xl font-bold text-sm transition" x-text="lang === 'cn' ? '工商与税务' : 'Admin & Tax'"></button>
+                <button @click="activeTab = 'design'" :class="activeTab === 'design' ? 'bg-[#14F195] text-black' : 'glass'" class="px-8 py-3 rounded-xl font-bold text-sm transition" x-text="lang === 'cn' ? '品牌与设计' : 'Branding & Design'"></button>
+                <button @click="activeTab = 'offshore'" :class="activeTab === 'offshore' ? 'bg-[#14F195] text-black' : 'glass'" class="px-8 py-3 rounded-xl font-bold text-sm transition" x-text="lang === 'cn' ? '离岸与合规' : 'Offshore & Comp'"></button>
+            </div>
+
+            <div class="glass rounded-[40px] overflow-hidden border-white/5 shadow-2xl">
+                <table class="w-full text-left">
+                    <thead>
+                        <tr class="bg-white/5 border-b border-white/10">
+                            <th class="p-8 text-xs font-bold uppercase tracking-widest text-gray-500" x-text="lang === 'cn' ? '服务内容' : 'SERVICE'"></th>
+                            <th class="p-8 text-xs font-bold uppercase tracking-widest text-gray-500">CNY (¥)</th>
+                            <th class="p-8 text-xs font-bold uppercase tracking-widest text-gray-500">USD ($)</th>
+                            <th class="p-8 text-xs font-bold uppercase tracking-widest text-gray-500" x-text="lang === 'cn' ? '交付周期' : 'DELIVERY'"></th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm font-medium">
+                        <template x-if="activeTab === 'admin'">
+                            <tbody class="divide-y divide-white/5">
+                                <tr>
+                                    <td class="p-8" x-text="lang === 'cn' ? '工商注册 (基础版)' : 'Standard Registration'"></td>
+                                    <td class="p-8 text-[#14F195]">¥800</td><td class="p-8 text-gray-400">$115</td><td class="p-8">3-5 days</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-8" x-text="lang === 'cn' ? '工商注册 (含地址全包)' : 'Premium Reg (Inc. Address)'"></td>
+                                    <td class="p-8 text-[#14F195]">¥1,900</td><td class="p-8 text-gray-400">$270</td><td class="p-8">3-5 days</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-8" x-text="lang === 'cn' ? '代理记账 (零申报/年)' : 'Bookkeeping (Annual)'"></td>
+                                    <td class="p-8 text-[#14F195]">¥1,500</td><td class="p-8 text-gray-400">$215</td><td class="p-8">Monthly</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-8" x-text="lang === 'cn' ? '银行开户协助' : 'Bank Account Support'"></td>
+                                    <td class="p-8 text-[#14F195]">¥1,200</td><td class="p-8 text-gray-400">$170</td><td class="p-8">Scheduled</td>
+                                </tr>
+                            </tbody>
+                        </template>
+
+                        <template x-if="activeTab === 'design'">
+                            <tbody class="divide-y divide-white/5">
+                                <tr>
+                                    <td class="p-8" x-text="lang === 'cn' ? 'LOGO 设计 (标准版)' : 'Standard LOGO'"></td>
+                                    <td class="p-8 text-[#14F195]">¥800</td><td class="p-8 text-gray-400">$115</td><td class="p-8">2-3 days</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-8" x-text="lang === 'cn' ? '响应式网站设计 (单页)' : 'Landing Page Design'"></td>
+                                    <td class="p-8 text-[#14F195]">¥1,000</td><td class="p-8 text-gray-400">$145</td><td class="p-8">3-5 days</td>
+                                </tr>
+                                <tr class="bg-green-500/5">
+                                    <td class="p-8 font-black" x-text="lang === 'cn' ? '🔥 创业入门包 (超值)' : '🔥 Founders Starter Pack'"></td>
+                                    <td class="p-8 text-[#14F195] font-black">¥1,500</td><td class="p-8 text-gray-400">$215</td><td class="p-8">Fast-Track</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-8 font-black" x-text="lang === 'cn' ? '全套品牌合规包' : 'Full Branding Pack'"></td>
+                                    <td class="p-8 text-[#14F195] font-black">¥6,000</td><td class="p-8 text-gray-400">$855</td><td class="p-8">14 days</td>
+                                </tr>
+                            </tbody>
+                        </template>
+
+                        <template x-if="activeTab === 'offshore'">
+                            <tbody class="divide-y divide-white/5">
+                                <tr>
+                                    <td class="p-8 font-bold" x-text="lang === 'cn' ? 'EF 电子围栏账户开立' : 'EF Account Consultation'"></td>
+                                    <td class="p-8 text-[#14F195]">¥5,000起</td><td class="p-8 text-gray-400">$715+</td><td class="p-8">Consulting</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-8" x-text="lang === 'cn' ? '美股/证券上链合规' : 'US Stock Listing/Token'"></td>
+                                    <td class="p-8 text-[#14F195]">¥3,500起</td><td class="p-8 text-gray-400">$500+</td><td class="p-8">Architecture</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-8" x-text="lang === 'cn' ? 'RWA 资产上链架构' : 'RWA Tokenization Setup'"></td>
+                                    <td class="p-8 text-[#14F195] font-mono">Quotes</td><td class="p-8 text-gray-400">Quotes</td><td class="p-8">Custom</td>
+                                </tr>
+                            </tbody>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section id="sop" class="py-32 max-w-7xl mx-auto px-6">
+        <h2 class="text-center text-4xl font-black mb-20 tracking-tighter" x-text="lang === 'cn' ? '12 步标准交付 SOP' : '12-STEP STANDARD SOP'"></h2>
+        <div class="grid grid-cols-2 md:grid-cols-6 gap-6">
+            <template x-for="(step, i) in [
+                {cn:'咨询响应', en:'Consult'}, {cn:'需求确认', en:'Identify'}, {cn:'协议签署', en:'E-Sign'}, 
+                {cn:'定金支付', en:'Deposit'}, {cn:'极速执行', en:'Execution'}, {cn:'初稿交付', en:'Drafts'},
+                {cn:'客户反馈', en:'Feedback'}, {cn:'完善优化', en:'Refinement'}, {cn:'最终验收', en:'Approval'},
+                {cn:'尾款支付', en:'Final Pay'}, {cn:'全量交付', en:'Delivery'}, {cn:'售后微调', en:'Support'}
+            ]">
+                <div class="glass p-6 rounded-3xl text-center relative hover:border-[#14F195]/50 transition duration-500">
+                    <div class="text-[10px] font-mono text-gray-600 mb-2" x-text="'STEP ' + (i+1 < 10 ? '0' + (i+1) : i+1)"></div>
+                    <div class="font-bold text-sm" x-text="lang === 'cn' ? step.cn : step.en"></div>
+                </div>
+            </template>
+        </div>
+    </section>
+
+    <div x-show="isTaxOpen" x-transition x-cloak class="fixed inset-0 z-[200] flex items-center justify-center p-6 bg-black/95 backdrop-blur-2xl">
+        <div class="glass max-w-xl w-full p-12 rounded-[50px] border-[#14F195]/30 relative">
+            <button @click="isTaxOpen = false" class="absolute top-10 right-10 text-gray-500 hover:text-white transition text-2xl">✕</button>
+            <h3 class="text-3xl font-black mb-8 text-center" x-text="lang === 'cn' ? '海南封关 15% 所得税测算' : '15% Tax Savings AI Calc'"></h3>
+            <div class="space-y-8" x-data="{ income: 100 }">
+                <div>
+                    <label class="block text-[10px] text-gray-500 uppercase tracking-[0.3em] mb-4" x-text="lang === 'cn' ? '输入年度预估总营收 (万人民币)' : 'Projected Annual Revenue (10k CNY)'"></label>
+                    <input type="number" x-model="income" class="w-full bg-white/5 border border-white/10 rounded-2xl px-8 py-6 text-4xl font-black outline-none focus:border-[#14F195] transition">
+                </div>
+                <div class="bg-green-500/10 p-10 rounded-[30px] border border-green-500/20 text-center">
+                    <p class="text-xs text-green-400 font-bold mb-4 uppercase tracking-widest" x-text="lang === 'cn' ? '封关后对比内地城市预计节省' : 'Projected Annual Tax Savings'"></p>
+                    <div class="text-7xl font-black tracking-tighter">¥ <span x-text="(income * 0.18).toFixed(1)"></span> <span class="text-2xl">W</span></div>
+                    <p class="text-[10px] text-gray-600 mt-4">* 基于 2026 鼓励类产业目录及实质性运营标准估算</p>
+                </div>
+                <button class="w-full py-6 bg-white text-black font-black rounded-2xl uppercase tracking-widest hover:bg-[#14F195] transition text-lg" x-text="lang === 'cn' ? '立即锁定入驻名额' : 'Secure Entry Slot'"></button>
+            </div>
         </div>
     </div>
 
-    <section class="relative pt-24 pb-20 px-6 flex flex-col items-center">
-        <div class="inline-flex items-center space-x-2 bg-blue-500/5 border border-blue-500/20 px-4 py-2 rounded-full mb-8">
-            <span class="text-[10px] font-black text-blue-500 uppercase tracking-[0.4em]">2026 战略级 运作底座</span>
-        </div>
-
-        <h1 class="text-4xl md:text-7xl font-black text-white text-center italic tracking-tighter uppercase leading-tight mb-8">
-            结构性重塑 <br>
-            <span class="text-transparent bg-clip-text bg-gradient-to-b from-blue-400 to-blue-700 text-3xl md:text-6xl title-fix">2026 财税非对称红利</span>
-        </h1>
-
-        <p class="max-w-2xl text-center text-slate-400 text-base md:text-lg font-light leading-relaxed mb-12">
-            基于海南自贸港 2026 封关运作底层逻辑。部署离岸合规算法，为全球高净值人群及跨国企业锁定**最高效的财税屏障与增长引擎**。
-        </p>
-
-        <div class="w-full max-w-3xl bg-white/5 border border-white/10 rounded-3xl p-10 backdrop-blur-xl mb-16 shadow-2xl">
-            <div class="text-center mb-8">
-                <span class="text-xs font-bold uppercase tracking-[0.3em] text-slate-500 text-center">距离 2026 政策并轨与系统实装</span>
+    <footer class="py-32 px-6 border-t border-white/5">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-20">
+            <div class="col-span-2">
+                <div class="flex items-center gap-4 mb-10">
+                    <div class="w-8 h-8 bg-green-500 rounded-lg"></div>
+                    <span class="text-2xl font-black tracking-tighter">SOLANA HAINAN</span>
+                </div>
+                <p class="text-gray-500 max-w-md leading-relaxed" x-text="lang === 'cn' ? '我们致力于为全球创业者提供海南自贸港最前沿的合规工具与品牌动能，让每一家出海企业都能在 2026 封关时代安全起航。' : 'Empowering global founders with cutting-edge compliance tools and branding momentum in Hainan\'s 2026 Customs era.'"></p>
             </div>
-            <div class="flex justify-around items-center max-w-xl mx-auto">
-                <div class="text-center">
-                    <div id="days" class="text-5xl font-light text-white font-mono">000</div>
-                    <div class="text-[10px] uppercase tracking-widest text-slate-600 mt-2 font-bold">天数 (Days)</div>
+            <div>
+                <h4 class="font-bold mb-8 text-xs uppercase tracking-widest text-gray-400" x-text="lang === 'cn' ? '联系方式' : 'CONTACT'"></h4>
+                <div class="space-y-4 font-bold">
+                    <p class="hover:text-[#14F195] transition cursor-pointer">WeChat: kosok_hainan</p>
+                    <p class="hover:text-[#14F195] transition cursor-pointer">Telegram: @KOSOK0898</p>
+                    <p class="text-[#14F195] text-xl">181-1779-0507</p>
                 </div>
-                <div class="text-center text-slate-700 text-4xl">:</div>
-                <div class="text-center">
-                    <div id="hours" class="text-5xl font-light text-white font-mono">00</div>
-                    <div class="text-[10px] uppercase tracking-widest text-slate-600 mt-2 font-bold">小时 (Hrs)</div>
-                </div>
-                <div class="text-center text-slate-700 text-4xl">:</div>
-                <div class="text-center">
-                    <div id="minutes" class="text-5xl font-light text-white font-mono">00</div>
-                    <div class="text-[10px] uppercase tracking-widest text-slate-600 mt-2 font-bold">分钟 (Mins)</div>
-                </div>
-                <div class="text-center text-slate-700 text-4xl">:</div>
-                <div class="text-center">
-                    <div id="seconds" class="text-5xl font-light text-blue-500 font-mono">00</div>
-                    <div class="text-[10px] uppercase tracking-widest text-blue-900 mt-2 font-bold">秒 (Secs)</div>
+            </div>
+            <div>
+                <h4 class="font-bold mb-8 text-xs uppercase tracking-widest text-gray-400" x-text="lang === 'cn' ? '结算支持' : 'SETTLEMENT'"></h4>
+                <div class="flex flex-wrap gap-4 opacity-50">
+                    <span class="px-3 py-1 glass rounded text-[9px] font-bold">CNY / USD</span>
+                    <span class="px-3 py-1 glass rounded text-[9px] font-bold text-[#14F195]">USDT / SOL</span>
                 </div>
             </div>
         </div>
-
-        <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8">
-            <a href="commander.html" class="bg-blue-600 text-white px-12 py-4 rounded-full font-black uppercase text-sm tracking-widest hover:bg-white hover:text-blue-600 transition-all shadow-2xl shadow-blue-500/20 text-center">
-                进入指挥终端 →
-            </a>
-            <button onclick="showAlert('算法正在同步')" class="bg-slate-900 text-slate-400 border border-slate-700 px-12 py-4 rounded-full font-black uppercase text-sm tracking-widest hover:bg-slate-800 hover:text-white transition-all text-center">
-                模拟收益预测
-            </button>
-        </div>
-    </section>
-
-    <section class="max-w-7xl mx-auto px-6 py-10 border-t border-slate-900">
-        <div class="grid md:grid-cols-3 gap-10">
-            <div class="p-10 bg-slate-950 border border-slate-900 rounded-3xl group hover:border-blue-500/50 transition-all text-left">
-                <div class="text-blue-500 font-mono text-xs mb-4">#01 STRATEGY</div>
-                <h3 class="text-white text-2xl font-bold mb-4 uppercase italic">离岸架构重组</h3>
-                <p class="text-base text-slate-500 leading-relaxed mb-6">掌握 30% 加工增值免关税及双 15% 所得税的最优解，构建合规的全球资产证券化通道。</p>
-            </div>
-            <div class="p-10 bg-slate-950 border border-slate-900 rounded-3xl group hover:border-blue-500/50 transition-all text-left">
-                <div class="text-blue-500 font-mono text-xs mb-4">#02 TECHNOLOGY</div>
-                <h3 class="text-white text-2xl font-bold mb-4 uppercase italic">AI 财税引擎</h3>
-                <p class="text-base text-slate-500 leading-relaxed mb-6">依托独家 MNRO 算法，进行多维度监管对标分析与智能税务沙盒模拟，消除决策盲点。</p>
-            </div>
-            <div class="p-10 bg-slate-950 border border-slate-900 rounded-3xl group hover:border-blue-500/50 transition-all text-left">
-                <div class="text-blue-500 font-mono text-xs mb-4">#03 ECOSYSTEM</div>
-                <h3 class="text-white text-2xl font-bold mb-4 uppercase italic">实质性增长</h3>
-                <p class="text-base text-slate-500 leading-relaxed mb-6">严控“实质性运营”指标审计，为全球跨国企业确保长期的顶级税收优惠权益。</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="max-w-7xl mx-auto px-6 py-20 bg-gradient-to-b from-transparent to-blue-900/5 border-t border-slate-900">
-        <div class="grid md:grid-cols-4 gap-8 text-left">
-            <div>
-                <h4 class="text-white text-xs font-black uppercase tracking-[0.3em] mb-4">安全通讯线</h4>
-                <p class="text-blue-400 font-mono text-lg font-bold underline underline-offset-4">+86 181-1779-0507</p>
-            </div>
-            <div>
-                <h4 class="text-white text-xs font-black uppercase tracking-[0.3em] mb-4">核心电邮</h4>
-                <p class="text-slate-300 font-mono text-lg break-all">kosok@solana-hainan.com</p>
-            </div>
-            <div>
-                <h4 class="text-white text-xs font-black uppercase tracking-[0.3em] mb-4">微信终端</h4>
-                <p class="text-slate-500 font-mono text-sm italic">二维码部署中</p>
-            </div>
-            <div>
-                <h4 class="text-white text-xs font-black uppercase tracking-[0.3em] mb-4">Telegram</h4>
-                <p class="text-slate-500 font-mono text-sm italic">加密通道同步中</p>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-black py-12 px-6 border-t border-slate-900 text-[10px] tracking-[0.2em] uppercase font-bold text-slate-600">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
-            <p>监管授权: PBOC / HAINAN FTP 2026 ARCHIVE</p>
-            <p>© 2026 Solana-Hainan Strategic Advisory Co., Ltd. 版权所有</p>
+        <div class="mt-32 pt-10 border-t border-white/5 text-center text-[10px] text-gray-700 tracking-[0.5em] uppercase">
+            © 2026 Hainan Solana Business Consulting Center | Offshore Infrastructure Specialist
         </div>
     </footer>
 
-    <div id="ai-chat-widget" class="fixed bottom-6 right-6 z-[100] flex flex-col items-end">
-        <div id="ai-chat-window" class="hidden mb-4 w-80 sm:w-96 bg-slate-950 border border-blue-500/50 rounded-2xl shadow-[0_0_30px_rgba(59,130,246,0.15)] overflow-hidden flex flex-col">
-            <div class="bg-blue-900/40 border-b border-blue-500/30 p-4 flex justify-between items-center">
-                <div class="flex items-center gap-3">
-                    <div class="relative flex h-3 w-3">
-                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                      <span class="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
-                    </div>
-                    <span class="text-white font-bold text-sm tracking-widest uppercase">MNRO 智能参谋</span>
-                </div>
-                <button onclick="toggleChat()" class="text-slate-400 hover:text-white transition-colors">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                </button>
-            </div>
-            <div class="p-4 h-64 overflow-y-auto bg-slate-900/50 flex flex-col gap-3 text-sm">
-                <div class="text-center text-[10px] text-slate-500 font-mono mb-2">=== 2026 封关知识库已加载 ===</div>
-                <div class="bg-slate-800 border border-slate-700 text-slate-300 p-3 rounded-lg rounded-tl-none max-w-[85%] text-left">
-                    您好，我是 MNRO 智能参谋。请输入您的**行业**或**目标营收**，我将为您匹配最优园区并预估节税额度。
-                </div>
-                <div class="flex flex-wrap gap-2 mt-2">
-                    <button class="bg-blue-900/30 border border-blue-500/30 text-blue-400 text-[11px] px-3 py-1.5 rounded-full hover:bg-blue-600 hover:text-white transition-all">加工增值税优惠？</button>
-                    <button class="bg-blue-900/30 border border-blue-500/30 text-blue-400 text-[11px] px-3 py-1.5 rounded-full hover:bg-blue-600 hover:text-white transition-all">家办如何落户？</button>
-                </div>
-            </div>
-            <div class="p-3 border-t border-slate-800 bg-slate-950 flex items-center gap-2">
-                <input type="text" placeholder="输入您的业务性质..." class="flex-1 bg-slate-900 border border-slate-700 text-sm text-white px-4 py-2 rounded-full focus:outline-none focus:border-blue-500 transition-colors">
-                <button class="bg-blue-600 text-white p-2 rounded-full hover:bg-blue-500 transition-colors">
-                    <svg class="w-5 h-5 ml-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                </button>
-            </div>
-        </div>
-
-        <button onclick="toggleChat()" id="ai-chat-btn" class="group relative flex items-center justify-center w-14 h-14 bg-gradient-to-br from-blue-600 to-indigo-900 rounded-full shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_rgba(37,99,235,0.6)] transition-all transform hover:scale-105 border border-blue-400/30">
-            <svg class="w-6 h-6 text-white group-hover:animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
-            <span class="absolute top-0 right-0 flex h-3 w-3">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-3 w-3 bg-red-500 border-2 border-[#020617]"></span>
-            </span>
-        </button>
-    </div>
-
-    <script>
-        // 倒计时逻辑
-        function updateCountdown() {
-            const target = new Date("2026-12-31T23:59:59").getTime();
-            const now = new Date().getTime();
-            const diff = target - now;
-            if (diff > 0) {
-                document.getElementById("days").innerText = Math.floor(diff / (1000 * 60 * 60 * 24)).toString().padStart(3, '0');
-                document.getElementById("hours").innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
-                document.getElementById("minutes").innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
-                document.getElementById("seconds").innerText = Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2, '0');
-            }
-        }
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-
-        // 系统弹窗
-        function showAlert(msg) {
-            alert("系统提示: " + (msg || "功能模块同步中..."));
-        }
-
-        // AI 聊天开关
-        function toggleChat() {
-            const chatWindow = document.getElementById('ai-chat-window');
-            const chatBtn = document.getElementById('ai-chat-btn');
-            
-            if (chatWindow.classList.contains('hidden')) {
-                chatWindow.classList.remove('hidden');
-                chatWindow.classList.add('chat-slide-up');
-                chatBtn.innerHTML = '<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>';
-            } else {
-                chatWindow.classList.add('hidden');
-                chatWindow.classList.remove('chat-slide-up');
-                chatBtn.innerHTML = '<svg class="w-6 h-6 text-white group-hover:animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg><span class="absolute top-0 right-0 flex h-3 w-3"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span><span class="relative inline-flex rounded-full h-3 w-3 bg-red-500 border-2 border-[#020617]"></span></span>';
-            }
-        }
-    </script>
 </body>
 </html>
