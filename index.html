@@ -1,295 +1,489 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>封关元年倒计时与智能服务</title>
+    <title>Solana Hainan | 2026 离岸资产指挥部</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* 基础样式重置 */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
-        }
+        :root { --solana-green: #14F195; --solana-purple: #9945FF; }
+        body { background: #010101; color: #f3f4f6; font-family: 'Outfit', sans-serif; }
+        
+        /* 极致美学与交互 */
+        .glass { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .glass-panel { background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(40px); border: 1px solid rgba(20, 241, 149, 0.2); box-shadow: 0 40px 100px rgba(0,0,0,0.8); }
+        .gradient-text { background: linear-gradient(135deg, var(--solana-green), var(--solana-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .btn-glow { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .btn-glow:hover { box-shadow: 0 0 30px rgba(20, 241, 149, 0.4); transform: translateY(-3px); }
+        
+        /* 修复文字重叠与排版 */
+        .hero-title { line-height: 1.15; letter-spacing: -0.02em; font-size: clamp(2.5rem, 5vw, 5.5rem); }
+        
+        /* 隐藏滚动条 */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        [x-cloak] { display: none !important; }
 
-        body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+        /* 表格行动画 */
+        .row-hover { transition: all 0.3s ease; }
+        .row-hover:hover { background: rgba(20, 241, 149, 0.03); border-left: 3px solid var(--solana-green); }
 
-        /* 顶部滚动公告栏 */
-        .marquee-container {
-            width: 100%;
-            background-color: #1a1a1a;
-            color: #fff;
-            padding: 10px 0;
-            overflow: hidden;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-        }
-        .marquee-content {
-            display: inline-block;
-            white-space: nowrap;
-            animation: marquee 20s linear infinite;
-            font-size: 14px;
-            letter-spacing: 1px;
-        }
+        /* 顶部滚动播报动画 */
         @keyframes marquee {
-            0% { transform: translateX(100vw); }
+            0% { transform: translateX(100%); }
             100% { transform: translateX(-100%); }
         }
-
-        /* 主体内容区 */
-        .main-container {
-            margin-top: 80px; /* 避开顶部滚动栏 */
-            text-align: center;
-            padding: 40px 20px;
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            max-width: 800px;
-            width: 90%;
-        }
-
-        /* 倒计时样式 */
-        h1 {
-            color: #333;
-            font-size: 28px;
-            margin-bottom: 20px;
-        }
-        .countdown-box {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 40px;
-        }
-        .time-block {
-            background: #fff;
-            padding: 15px 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            min-width: 80px;
-        }
-        .time-block span {
-            display: block;
-        }
-        .time-number {
-            font-size: 32px;
-            font-weight: bold;
-            color: #007aff;
-        }
-        .time-label {
-            font-size: 12px;
-            color: #888;
-            margin-top: 5px;
-        }
-
-        /* 下单按钮 */
-        .order-btn {
-            background: linear-gradient(90deg, #007aff, #00c6ff);
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            font-size: 18px;
-            font-weight: bold;
-            border-radius: 30px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 122, 255, 0.4);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .order-btn:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 6px 20px rgba(0, 122, 255, 0.6);
-        }
-        .order-btn:active {
-            transform: translateY(0) scale(0.98);
-        }
-
-        /* AI助手悬浮窗 */
-        .ai-chatbot {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 1000;
-        }
-        .ai-btn {
-            width: 60px;
-            height: 60px;
-            background: #1a1a1a;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            transition: transform 0.3s;
-            font-weight: bold;
-        }
-        .ai-btn:hover {
-            transform: scale(1.1);
-        }
-        
-        .chat-window {
-            position: absolute;
-            bottom: 80px;
-            right: 0;
-            width: 300px;
-            height: 400px;
-            background: #fff;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            display: none;
-            flex-direction: column;
-            overflow: hidden;
-        }
-        .chat-header {
-            background: #1a1a1a;
-            color: #fff;
-            padding: 15px;
-            font-size: 16px;
-            text-align: center;
-            font-weight: bold;
-        }
-        .chat-body {
-            flex: 1;
-            padding: 15px;
-            overflow-y: auto;
-            background: #f9f9f9;
-        }
-        .message {
-            margin-bottom: 10px;
-            font-size: 14px;
-            line-height: 1.4;
-        }
-        .ai-msg { color: #333; background: #e0e0e0; padding: 10px; border-radius: 10px 10px 10px 0; max-width: 80%; float: left; clear: both;}
-        .user-msg { color: #fff; background: #007aff; padding: 10px; border-radius: 10px 10px 0 10px; max-width: 80%; float: right; clear: both;}
-        
-        .chat-input-area {
-            display: flex;
-            border-top: 1px solid #eee;
-            background: #fff;
-        }
-        .chat-input-area input {
-            flex: 1;
-            padding: 12px;
-            border: none;
-            outline: none;
-        }
-        .chat-input-area button {
-            background: #007aff;
-            color: white;
-            border: none;
-            padding: 0 15px;
-            cursor: pointer;
-        }
-        .chat-input-area button:hover { background: #005bb5; }
-
+        .animate-marquee { display: inline-block; white-space: nowrap; animation: marquee 30s linear infinite; }
+        .marquee-container:hover .animate-marquee { animation-play-state: paused; }
     </style>
 </head>
-<body>
+<body x-data="appData()" class="antialiased overflow-x-hidden no-scrollbar" :class="{'overflow-hidden': isTaxOpen || isOrderOpen || isChatOpenMobile}">
 
-    <div class="marquee-container">
-        <div class="marquee-content">
-            📢 最新公告：迎接封关元年，全场特惠活动火热进行中！ | 抢先体验封关特权，立即下单获取专属福利！ | 遇到问题请随时点击右下角AI助手咨询。
+    <div class="fixed top-0 w-full h-8 bg-[#14F195] text-black z-[110] flex items-center overflow-hidden marquee-container shadow-[0_0_15px_rgba(20,241,149,0.3)]">
+        <div class="animate-marquee text-[11px] font-black uppercase tracking-widest flex items-center gap-12">
+            <span>🔥 2025.12.18 海南自贸港已正式封关运行</span>
+            <span>⚡️ 15% 企业与个人所得税双重红利全面生效</span>
+            <span>🌐 离岸 EF 电子围栏账户开立通道开启</span>
+            <span>💎 RWA 实体资产代币化沙盒试点运行中</span>
+            <span>🚀 抢占 2026 封关元年核心资产高地！</span>
+            <span>🔥 2025.12.18 海南自贸港已正式封关运行</span>
+            <span>⚡️ 15% 企业与个人所得税双重红利全面生效</span>
         </div>
     </div>
 
-    <div class="main-container">
-        <h1>迎接封关元年 倒计时</h1>
-        <div class="countdown-box" id="countdown-box">
-            <div class="time-block"><span class="time-number" id="days">00</span><span class="time-label">天</span></div>
-            <div class="time-block"><span class="time-number" id="hours">00</span><span class="time-label">时</span></div>
-            <div class="time-block"><span class="time-number" id="minutes">00</span><span class="time-label">分</span></div>
-            <div class="time-block"><span class="time-number" id="seconds">00</span><span class="time-label">秒</span></div>
-        </div>
-
-        <button class="order-btn" onclick="alert('订单已生成，跳转至支付页面！')">立即下单抢占先机</button>
-    </div>
-
-    <div class="ai-chatbot">
-        <div class="chat-window" id="chatWindow">
-            <div class="chat-header">智能客服助手</div>
-            <div class="chat-body" id="chatBody">
-                <div class="message ai-msg">您好！我是AI助手，关于封关政策或下单流程，有什么我可以帮您的吗？</div>
+    <nav class="fixed w-full z-[100] glass h-20 flex items-center px-6 md:px-12 border-b border-white/5 transition-all duration-300 top-8" :class="{ 'bg-black/90': scrolled }">
+        <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
+            <div class="flex items-center gap-3 cursor-pointer" @click="window.scrollTo({top: 0, behavior: 'smooth'})">
+                <div class="w-10 h-10 bg-gradient-to-tr from-[#14F195] to-[#9945FF] rounded-xl flex items-center justify-center font-black text-black text-xl shadow-lg">S</div>
+                <div class="leading-none hidden md:block">
+                    <span class="text-xl font-black block tracking-tighter uppercase italic">Solana <span class="text-gray-500 font-light italic">Hainan</span></span>
+                    <span class="text-[8px] text-[#14F195] uppercase tracking-[0.4em] font-mono">2026 Era Operational</span>
+                </div>
             </div>
-            <div class="chat-input-area">
-                <input type="text" id="chatInput" placeholder="请输入您的问题..." onkeypress="handleEnter(event)">
-                <button onclick="sendMessage()">发送</button>
+            
+            <div class="hidden lg:flex items-center gap-8 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">
+                <a href="#command-center" class="hover:text-[#14F195] transition">指挥部 Command</a>
+                <a href="#pricing" class="hover:text-[#14F195] transition">业务下单 Order</a>
+                <a href="#sop" class="hover:text-[#14F195] transition">交付体系 SOP</a>
+                <a href="#trust" class="hover:text-purple-400 transition">公司资信 Trust</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <div class="hidden sm:flex items-center gap-4 mr-4 pr-4 border-r border-white/10 text-[10px] font-bold tracking-widest text-gray-500">
+                    <button class="hover:text-white transition">登录 LOGIN</button>
+                    <button class="bg-[#14F195]/10 text-[#14F195] border border-[#14F195]/30 px-4 py-1.5 rounded-full hover:bg-[#14F195]/20 transition">注册 JOIN</button>
+                </div>
+                <button @click="toggleLang()" class="px-3 py-1.5 border border-white/10 rounded-md text-[9px] font-bold hover:bg-white/10 transition">
+                    <span x-text="lang === 'cn' ? 'EN' : '中'"></span>
+                </button>
             </div>
         </div>
-        <div class="ai-btn" onclick="toggleChat()">AI</div>
+    </nav>
+
+    <header class="pt-48 pb-24 px-6 relative text-center min-h-screen flex flex-col justify-center overflow-hidden mt-8">
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-[#14F195]/5 rounded-[100%] blur-[150px] -z-10"></div>
+        
+        <div class="mb-10 inline-flex flex-col items-center z-10">
+            <div class="flex items-center gap-2 px-5 py-2 rounded-full bg-black/50 border border-[#14F195]/30 text-[10px] text-[#14F195] uppercase tracking-[0.3em] font-black mb-6 shadow-[0_0_15px_rgba(20,241,149,0.2)]">
+                <span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#14F195] opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-[#14F195]"></span></span>
+                <span x-text="lang === 'cn' ? '抢占封关元年红利倒计时 (至2026.12.18)' : 'Year-1 Dividend Countdown'"></span>
+            </div>
+            <div class="flex gap-4 md:gap-8 items-end">
+                <template x-for="item in ['d', 'h', 'm', 's']" :key="item">
+                    <div class="flex flex-col items-center">
+                        <span class="text-5xl md:text-8xl font-black text-white tracking-tighter italic drop-shadow-2xl font-mono" x-text="countdown[item]"></span>
+                        <span class="text-[9px] text-gray-500 uppercase tracking-widest mt-2" x-text="item === 'd' ? 'Days' : (item==='h'?'Hours':(item==='m'?'Min':'Sec'))"></span>
+                    </div>
+                </template>
+            </div>
+        </div>
+
+        <div class="max-w-6xl mx-auto z-10">
+            <h1 class="hero-title font-black mb-8">
+                <span x-show="lang === 'cn'">全球视野 <span class="gradient-text">封关定局</span></span>
+                <span x-show="lang === 'en'" x-cloak>GLOBAL VISION <span class="gradient-text">DEFINED 2026</span></span>
+            </h1>
+            
+            <p class="text-gray-300 text-lg md:text-xl mb-12 max-w-4xl mx-auto font-light leading-relaxed">
+                <span x-text="lang === 'cn' ? '为您构建从公司落地到 RWA 资产上链的全生命周期解决方案。深度锁定 ' : 'Architecting your offshore gateway. Deeply securing '"></span>
+                <strong class="text-[#14F195] font-bold" x-text="lang === 'cn' ? '15% 企业与个人所得税双重政策红利' : '15% Double Tax Incentives'"></strong>
+                <span x-text="lang === 'cn' ? '，在境内关外时代抢占资产高地。' : ' for corporate and personal income in the post-customs era.'"></span>
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <button @click="isTaxOpen = true" class="bg-[#14F195] text-black px-12 py-5 rounded-2xl font-black text-xs uppercase tracking-[0.1em] btn-glow transition-all flex items-center justify-center gap-2 shadow-[0_0_30px_rgba(20,241,149,0.2)]">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                    <span x-text="lang === 'cn' ? 'AI 节税红利测算' : 'Run Tax AI'"></span>
+                </button>
+                <a href="#pricing" class="glass text-white px-12 py-5 rounded-2xl font-black text-xs uppercase tracking-[0.1em] hover:bg-white/10 transition-all flex items-center justify-center gap-2">
+                    <span x-text="lang === 'cn' ? '直接下单业务' : 'Order Service'"></span> →
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section id="command-center" class="py-24 px-6 bg-white/[0.01] border-y border-white/5 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                <div>
+                    <div class="text-[#14F195] font-mono text-xs mb-3 tracking-[0.4em] uppercase">Operations Hub</div>
+                    <h2 class="text-4xl font-black mb-4 uppercase italic">业务指挥部</h2>
+                    <p class="text-gray-500 text-sm max-w-xl" x-text="lang==='cn'?'这是您的资产出海总调度台，无缝整合工商落地、品牌出海、离岸 Web3 三大战略引擎。':'Your central hub for offshore expansion.'"></p>
+                </div>
+                <div class="flex gap-4">
+                    <div class="glass px-6 py-3 rounded-2xl border-[#14F195]/20 text-center bg-[#14F195]/5 cursor-pointer hover:bg-[#14F195]/10 transition" @click="isChatOpen = true">
+                        <div class="text-[9px] text-gray-500 uppercase mb-1">AI Assistant</div>
+                        <div class="text-[#14F195] text-xs font-bold font-mono flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-[#14F195] animate-pulse"></span> ASK AI NOW
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div @click="openService('admin')" class="glass p-10 rounded-[40px] hover:border-[#14F195]/50 transition-all cursor-pointer group relative overflow-hidden h-[420px] flex flex-col justify-between bg-gradient-to-b hover:from-[#14F195]/5 hover:to-transparent">
+                    <div>
+                        <div class="w-16 h-16 bg-[#14F195]/10 border border-[#14F195]/20 rounded-2xl flex items-center justify-center text-3xl mb-8 group-hover:scale-110 transition-transform">🏛️</div>
+                        <h3 class="text-3xl font-black mb-4 uppercase">落地基建 <span class="text-gray-600 font-light">Hub</span></h3>
+                        <p class="text-gray-400 text-sm leading-relaxed" x-text="lang==='cn'?'包含 14 项标准化工商细则。解决从公司核名、地址挂靠到 EF 账户前置的物理与法务落地。':'14 core administrative services for legal landing.'"></p>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-white/10 pt-6">
+                        <span class="text-[10px] font-black text-[#14F195] uppercase tracking-widest group-hover:tracking-[0.3em] transition-all">下单选购 Order →</span>
+                        <span class="text-xs text-gray-600 font-mono">14 Items</span>
+                    </div>
+                </div>
+                <div @click="openService('design')" class="glass p-10 rounded-[40px] hover:border-purple-500/50 transition-all cursor-pointer group relative overflow-hidden h-[420px] flex flex-col justify-between bg-gradient-to-b hover:from-purple-500/5 hover:to-transparent">
+                    <div>
+                        <div class="w-16 h-16 bg-purple-500/10 border border-purple-500/20 rounded-2xl flex items-center justify-center text-3xl mb-8 group-hover:scale-110 transition-transform">🎨</div>
+                        <h3 class="text-3xl font-black mb-4 uppercase">品牌 AI <span class="text-gray-600 font-light">Matrix</span></h3>
+                        <p class="text-gray-400 text-sm leading-relaxed" x-text="lang==='cn'?'前沿 AI 驱动的国际化 LOGO、UI/UX 设计及多语种 Web3 站点构建，赋予企业全球视觉主权。':'AI-driven global logos, UI/UX, and multilingual Web3 sites.'"></p>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-white/10 pt-6">
+                        <span class="text-[10px] font-black text-purple-400 uppercase tracking-widest group-hover:tracking-[0.3em] transition-all">下单选购 Order →</span>
+                        <span class="text-xs text-gray-600 font-mono">3 Items</span>
+                    </div>
+                </div>
+                <div @click="openService('offshore')" class="glass p-10 rounded-[40px] hover:border-blue-400/50 transition-all cursor-pointer group relative overflow-hidden h-[420px] flex flex-col justify-between bg-gradient-to-b hover:from-blue-400/5 hover:to-transparent">
+                    <div>
+                        <div class="w-16 h-16 bg-blue-500/10 border border-blue-500/20 rounded-2xl flex items-center justify-center text-3xl mb-8 group-hover:scale-110 transition-transform">🌐</div>
+                        <h3 class="text-3xl font-black mb-4 uppercase">离岸 Web3 <span class="text-gray-600 font-light">RWA</span></h3>
+                        <p class="text-gray-400 text-sm leading-relaxed" x-text="lang==='cn'?'深度的合规架构体系。包含 RWA 实体资产代币化咨询、双15%税务实质筹划及跨境资金流动模型。':'Deep compliance architecture and RWA tokenization.'"></p>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-white/10 pt-6">
+                        <span class="text-[10px] font-black text-blue-400 uppercase tracking-widest group-hover:tracking-[0.3em] transition-all">下单选购 Order →</span>
+                        <span class="text-xs text-gray-600 font-mono">Strategic</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                <div>
+                    <div class="text-[#14F195] font-mono text-xs mb-3 tracking-[0.4em] uppercase">Service Pricing</div>
+                    <h2 class="text-4xl font-black italic uppercase tracking-tighter" x-text="lang === 'cn' ? '业务选购与下单' : 'Order Services'"></h2>
+                    <div class="h-1 w-20 bg-[#14F195] mt-4"></div>
+                </div>
+                <div class="flex gap-2 bg-white/5 p-1 rounded-2xl overflow-x-auto no-scrollbar border border-white/10">
+                    <button @click="activeTab = 'admin'" :class="activeTab === 'admin' ? 'bg-[#14F195] text-black shadow-lg' : 'text-gray-400 hover:text-white'" class="px-6 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all whitespace-nowrap">落地基建 (14项)</button>
+                    <button @click="activeTab = 'design'" :class="activeTab === 'design' ? 'bg-purple-500 text-white shadow-lg' : 'text-gray-400 hover:text-white'" class="px-6 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all whitespace-nowrap">品牌 AI</button>
+                    <button @click="activeTab = 'offshore'" :class="activeTab === 'offshore' ? 'bg-blue-500 text-white shadow-lg' : 'text-gray-400 hover:text-white'" class="px-6 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all whitespace-nowrap">离岸与 Web3</button>
+                </div>
+            </div>
+
+            <div class="glass rounded-[40px] overflow-hidden shadow-2xl border-white/10">
+                <table class="w-full text-left border-collapse">
+                    <thead class="bg-black/40 text-[10px] text-gray-500 uppercase tracking-[0.2em] border-b border-white/10">
+                        <tr>
+                            <th class="p-6 md:p-8 font-bold">Code / Item 名称</th>
+                            <th class="p-6 md:p-8 text-center font-bold">Price (CNY)</th>
+                            <th class="p-6 md:p-8 hidden md:table-cell font-bold">详细说明 / Description</th>
+                            <th class="p-6 md:p-8 text-right font-bold">操作 / Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm divide-y divide-white/5 bg-black/20">
+                        <template x-for="item in currentPricing" :key="item.code">
+                            <tr class="row-hover group">
+                                <td class="p-6 md:p-8">
+                                    <div class="text-white font-bold mb-1 text-base" x-text="lang==='cn'?item.cn:item.en"></div>
+                                    <div class="text-[9px] text-[#14F195] font-mono tracking-widest opacity-80" x-text="item.code"></div>
+                                </td>
+                                <td class="p-6 md:p-8 text-center">
+                                    <div class="text-white font-black text-lg md:text-xl tracking-tighter" x-text="'¥ ' + item.price"></div>
+                                </td>
+                                <td class="p-6 md:p-8 hidden md:table-cell text-gray-400 text-xs leading-relaxed" x-text="lang==='cn'?item.remCn:item.remEn"></td>
+                                <td class="p-6 md:p-8 text-right">
+                                    <button @click="openOrderModal(item)" class="px-6 py-2 bg-white/5 hover:bg-[#14F195] text-white hover:text-black border border-white/10 hover:border-[#14F195] rounded-xl text-[10px] font-black uppercase tracking-widest transition-all shadow-lg whitespace-nowrap">
+                                        下单 Order
+                                    </button>
+                                </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section id="sop" class="py-24 px-6 max-w-7xl mx-auto border-t border-white/5">
+        <h2 class="text-center text-xs font-black tracking-[0.5em] text-gray-600 mb-20 uppercase">Global SOP / 12步工业化交付标准</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            <template x-for="(step, i) in sopSteps">
+                <div class="glass p-6 rounded-3xl border-white/5 hover:bg-white/5 hover:border-[#14F195]/30 transition-all group relative overflow-hidden">
+                    <div class="absolute -right-4 -bottom-4 text-5xl font-black text-white/[0.03] group-hover:text-[#14F195]/10 transition-colors" x-text="(i+1 < 10 ? '0' : '') + (i+1)"></div>
+                    <div class="text-[9px] font-mono text-[#14F195] mb-3 opacity-70 group-hover:opacity-100" x-text="'PHASE ' + (i+1 < 10 ? '0' + (i+1) : i+1)"></div>
+                    <div class="font-bold text-[12px] uppercase text-gray-200 leading-tight relative z-10" x-text="lang === 'cn' ? step.cn : step.en"></div>
+                </div>
+            </template>
+        </div>
+    </section>
+
+    <section id="trust" class="py-20 px-6 bg-black/50 border-t border-white/5">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-center text-[10px] font-black tracking-[0.6em] text-gray-500 mb-12 uppercase italic">Corporate Credentials / 资信实力</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="glass p-6 rounded-3xl flex flex-col items-center justify-center text-center hover:bg-white/5 transition">
+                    <div class="text-3xl font-black text-white mb-2 tracking-tighter">Licensed</div>
+                    <div class="text-[9px] text-[#14F195] uppercase tracking-widest">海南首批封关合规咨询资质</div>
+                </div>
+                <div class="glass p-6 rounded-3xl flex flex-col items-center justify-center text-center hover:bg-white/5 transition">
+                    <div class="text-3xl font-black text-white mb-2 tracking-tighter">ISO 27001</div>
+                    <div class="text-[9px] text-gray-400 uppercase tracking-widest">离岸数据安全体系认证</div>
+                </div>
+                <div class="glass p-6 rounded-3xl flex flex-col items-center justify-center text-center hover:bg-white/5 transition">
+                    <div class="text-3xl font-black text-white mb-2 tracking-tighter">Web3 Cert</div>
+                    <div class="text-[9px] text-gray-400 uppercase tracking-widest">数字资产合规架构合作方</div>
+                </div>
+                <div class="glass p-6 rounded-3xl flex flex-col items-center justify-center text-center hover:bg-white/5 transition">
+                    <div class="text-3xl font-black text-white mb-2 tracking-tighter">SME A++</div>
+                    <div class="text-[9px] text-gray-400 uppercase tracking-widest">年度商业诚信示范单位</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div x-show="isTaxOpen" x-transition.opacity x-cloak class="fixed inset-0 z-[200] flex items-center justify-center p-6 bg-black/95 backdrop-blur-xl">
+        <div class="glass-panel max-w-lg w-full p-10 md:p-14 rounded-[40px] relative text-center shadow-[0_0_80px_rgba(20,241,149,0.15)]" @click.away="isTaxOpen = false">
+            <button @click="isTaxOpen = false" class="absolute top-6 right-8 text-gray-500 hover:text-white hover:rotate-90 transition-all duration-300 text-2xl">✕</button>
+            <div class="w-16 h-16 bg-gradient-to-br from-[#14F195] to-[#9945FF] rounded-2xl mx-auto mb-6 flex items-center justify-center shadow-lg">
+                <svg class="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            </div>
+            <h3 class="text-3xl font-black mb-2 uppercase tracking-tighter" x-text="lang === 'cn' ? '封关红利·节税测算' : 'Tax Optimizer'"></h3>
+            <p class="text-[10px] text-[#14F195] uppercase tracking-widest mb-10" x-text="lang === 'cn' ? '基于双15%实质性运营政策' : 'Based on 15% substantive policy'"></p>
+            
+            <div class="space-y-6">
+                <div class="bg-black/50 p-6 rounded-3xl border border-white/10 focus-within:border-[#14F195]/50 transition-colors">
+                    <label class="block text-[10px] text-gray-500 uppercase tracking-widest mb-3" x-text="lang === 'cn' ? '输入年度预估营收 (万人民币)' : 'Est. Annual Revenue (10k CNY)'"></label>
+                    <div class="flex items-center justify-center gap-2">
+                        <span class="text-2xl text-gray-600 font-black">¥</span>
+                        <input type="number" x-model="income" class="w-32 bg-transparent text-5xl font-black text-center outline-none text-white focus:text-[#14F195] transition-colors" placeholder="100">
+                        <span class="text-xl text-gray-600 font-bold" x-show="lang==='cn'">W</span>
+                    </div>
+                </div>
+                <button @click="runAiCalc()" class="w-full py-5 bg-white text-black hover:bg-[#14F195] font-black rounded-2xl uppercase tracking-[0.2em] transition-all duration-300" :disabled="calculating" :class="{'opacity-50 cursor-not-allowed': calculating}">
+                    <span x-text="calculating ? 'Processing...' : (lang === 'cn' ? '运行 AI 测算' : 'Run Analysis')"></span>
+                </button>
+                <div x-show="showResult" x-transition.duration.500ms class="mt-6 p-8 rounded-3xl bg-gradient-to-br from-[#14F195]/20 to-transparent border border-[#14F195]/40 text-left relative overflow-hidden">
+                    <p class="text-[10px] text-[#14F195] uppercase tracking-widest mb-2">预计可节省年度税务成本</p>
+                    <div class="text-5xl font-black text-white tracking-tighter">¥ <span x-text="(income * 0.18).toFixed(1)"></span> <span class="text-2xl text-gray-400">万</span></div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <div x-show="isOrderOpen" x-transition.opacity x-cloak class="fixed inset-0 z-[200] flex items-center justify-center p-6 bg-black/95 backdrop-blur-xl">
+        <div class="glass-panel max-w-md w-full p-10 rounded-[40px] relative text-left shadow-[0_0_80px_rgba(20,241,149,0.15)]" @click.away="isOrderOpen = false">
+            <button @click="isOrderOpen = false" class="absolute top-6 right-8 text-gray-500 hover:text-white transition-all text-2xl">✕</button>
+            <div class="text-[10px] font-mono text-[#14F195] mb-2 tracking-[0.3em] uppercase">Order Confirmation</div>
+            <h3 class="text-2xl font-black mb-6 uppercase tracking-tighter text-white">确认下单意向</h3>
+            
+            <div class="bg-white/5 p-6 rounded-2xl border border-white/10 mb-8" x-show="selectedOrder">
+                <div class="text-[9px] text-gray-500 font-mono tracking-widest mb-1" x-text="selectedOrder?.code"></div>
+                <div class="text-lg font-bold text-white mb-2" x-text="lang==='cn'?selectedOrder?.cn:selectedOrder?.en"></div>
+                <div class="text-3xl font-black text-[#14F195] tracking-tighter" x-text="'¥ ' + selectedOrder?.price"></div>
+            </div>
+            
+            <p class="text-xs text-gray-400 mb-8 leading-relaxed">请选择您最方便的通讯工具，我们的专属合规专家将立即响应您的下单请求并启动 12 步 SOP 流程。</p>
+            
+            <div class="space-y-3">
+                <a href="#" class="w-full py-4 bg-[#07c160]/10 border border-[#07c160]/30 text-[#07c160] hover:bg-[#07c160] hover:text-white font-bold rounded-xl flex items-center justify-center gap-3 transition-all">
+                    微信极速建联 (WeChat)
+                </a>
+                <a href="#" class="w-full py-4 bg-[#24A1DE]/10 border border-[#24A1DE]/30 text-[#24A1DE] hover:bg-[#24A1DE] hover:text-white font-bold rounded-xl flex items-center justify-center gap-3 transition-all">
+                    Telegram 加密专线
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed bottom-6 right-6 z-[150] flex flex-col items-end">
+        <div x-show="isChatOpen" x-transition.origin.bottom.right class="mb-4 glass-panel w-80 md:w-96 h-[500px] rounded-[30px] flex flex-col overflow-hidden shadow-2xl border border-[#14F195]/30" x-cloak>
+            <div class="bg-[#14F195]/10 p-4 border-b border-[#14F195]/20 flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                    <span class="relative flex h-3 w-3"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#14F195] opacity-75"></span><span class="relative inline-flex rounded-full h-3 w-3 bg-[#14F195]"></span></span>
+                    <span class="text-xs font-black uppercase tracking-widest text-white">AI 合规助理</span>
+                </div>
+                <button @click="isChatOpen = false" class="text-gray-400 hover:text-white">✕</button>
+            </div>
+            
+            <div class="flex-1 p-4 overflow-y-auto space-y-4 no-scrollbar bg-black/50" id="chatbox">
+                <template x-for="msg in chatMessages">
+                    <div :class="msg.role === 'ai' ? 'text-left' : 'text-right'">
+                        <div class="inline-block p-3 rounded-2xl max-w-[85%] text-xs leading-relaxed"
+                             :class="msg.role === 'ai' ? 'bg-white/10 text-gray-200 rounded-tl-sm' : 'bg-[#14F195] text-black font-bold rounded-tr-sm'"
+                             x-html="msg.content"></div>
+                    </div>
+                </template>
+                <div x-show="isTyping" class="text-left">
+                    <div class="inline-block p-3 rounded-2xl bg-white/5 text-gray-400 rounded-tl-sm text-xs">AI is typing...</div>
+                </div>
+            </div>
+
+            <div class="p-4 bg-black border-t border-white/5">
+                <div class="flex flex-wrap gap-2 mb-3">
+                    <button @click="sendFastMsg('注册需要多久？')" class="px-3 py-1 bg-white/5 hover:bg-white/10 rounded-full text-[10px] text-gray-300 transition">注册需要多久？</button>
+                    <button @click="sendFastMsg('EF账户怎么开？')" class="px-3 py-1 bg-white/5 hover:bg-white/10 rounded-full text-[10px] text-gray-300 transition">EF账户怎么开？</button>
+                    <button @click="sendFastMsg('双15%什么条件？')" class="px-3 py-1 bg-white/5 hover:bg-white/10 rounded-full text-[10px] text-gray-300 transition">双15%什么条件？</button>
+                </div>
+            </div>
+        </div>
+
+        <button @click="isChatOpen = !isChatOpen" class="w-14 h-14 bg-[#14F195] text-black rounded-full flex items-center justify-center text-2xl shadow-[0_0_20px_rgba(20,241,149,0.4)] hover:scale-110 transition-transform cursor-pointer">
+            <span x-show="!isChatOpen">💬</span>
+            <span x-show="isChatOpen" x-cloak>✕</span>
+        </button>
+    </div>
+
+    <footer class="py-16 border-t border-white/5 bg-[#030303] text-center mt-20">
+        <div class="text-[9px] text-gray-600 uppercase tracking-[0.5em] font-black">
+            © 2026 Solana Hainan Offshore Infrastructure | Operations Started 2025.12.18
+        </div>
+    </footer>
 
     <script>
-        // --- 倒计时逻辑 ---
-        const targetDate = new Date('2025-12-18T00:00:00').getTime();
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('appData', () => ({
+                lang: 'cn',
+                scrolled: false,
+                activeTab: 'admin',
+                isTaxOpen: false,
+                income: 100,
+                calculating: false,
+                showResult: false,
+                
+                // 下单逻辑
+                isOrderOpen: false,
+                selectedOrder: null,
 
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = targetDate - now;
+                // AI 助手逻辑
+                isChatOpen: false,
+                isTyping: false,
+                chatMessages: [
+                    { role: 'ai', content: '您好！我是 Solana Hainan 的 AI 合规助理。目前正是 2026 封关元年红利期，请问您对哪项落地服务感兴趣？' }
+                ],
+                
+                // 封关元年倒计时逻辑 (目标：2026年12月18日)
+                countdown: { d: '00', h: '00', m: '00', s: '00' },
+                
+                // 12 步 SOP
+                sopSteps: [
+                    {cn:'需求响应', en:'Inquiry'}, {cn:'架构画像', en:'Profiling'}, {cn:'云端签约', en:'E-Contract'},
+                    {cn:'预付定金', en:'Deposit'}, {cn:'极速执行', en:'Execution'}, {cn:'进度同步', en:'Reporting'},
+                    {cn:'结果初核', en:'Preview'}, {cn:'迭代优化', en:'Iteration'}, {cn:'合规复审', en:'Compliance'},
+                    {cn:'尾款清算', en:'Settlement'}, {cn:'资产交付', en:'Delivery'}, {cn:'持续支持', en:'Support'}
+                ],
 
-            if (distance < 0) {
-                document.getElementById('countdown-box').innerHTML = '<h2 style="color:#007aff;">封关元年已正式开启！</h2>';
-                return;
-            }
+                // 14 项工商全量数据 + 其他
+                pricing: {
+                    admin: [
+                        {code:'CSV-01', cn:'公司名称核准', en:'Name Approval', price:'200', remCn:'3-5个名称核名，被驳回免费重提一次', remEn:'3-5 names, 1 free resubmission'},
+                        {code:'CSV-02', cn:'工商注册 (基础版)', en:'Corp Reg (Basic)', price:'800', remCn:'执照正副本+刻章+税务登记（客户自备地址）', remEn:'License+Stamps+Tax'},
+                        {code:'CSV-03', cn:'工商注册 (全包版)', en:'Corp Reg (Premium)', price:'1,900', remCn:'含自贸港园区挂靠地址一年及全套落地', remEn:'Includes 1-Year address & full setup'},
+                        {code:'CSV-04', cn:'全套刻章服务', en:'Official Stamps', price:'300', remCn:'公章、财务章、法人章、合同章、发票章 (公安备案)', remEn:'Set of 5 official legal stamps'},
+                        {code:'CSV-05', cn:'税务首次报到', en:'Tax Onboarding', price:'500', remCn:'专管员对接，税种核定与实名认证', remEn:'Tax type setup and real-name auth'},
+                        {code:'CSV-06', cn:'税控及发票申领', en:'Invoice App', price:'300', remCn:'普票或专票资质申请及首次领购指导', remEn:'Invoice eligibility application'},
+                        {code:'CSV-07', cn:'银行开户协助', en:'Bank Setup', price:'1,200', remCn:'材料预审，专人陪同办理（不含银行工本费）', remEn:'Document prep & escort'},
+                        {code:'CSV-08', cn:'社保/公积金开户', en:'Social Security', price:'500', remCn:'单位账户设立及首次增员', remEn:'Account setup + 1st employee'},
+                        {code:'CSV-09', cn:'代理记账 (零申报)', en:'Bookkeeping (D)', price:'1,500', remCn:'年度打包价。无实际流水的企业按月合规申报', remEn:'Annual price for dormant company'},
+                        {code:'CSV-10', cn:'代理记账 (小规模)', en:'Bookkeeping (S)', price:'2,000', remCn:'年度打包价。含基础建账、票据处理及税务申报', remEn:'Annual price for small-scale active'},
+                        {code:'CSV-11', cn:'代理记账 (一般人)', en:'Bookkeeping (V)', price:'5,000', remCn:'年度打包价。全盘账务处理及增值税抵扣', remEn:'Annual price for VAT taxpayers'},
+                        {code:'CSV-12', cn:'公司变更 (单项)', en:'Corp Alteration', price:'600', remCn:'法人/地址/注册资本等单项变更', remEn:'Per item change'},
+                        {code:'CSV-13', cn:'公司注销服务', en:'Company Liquidation', price:'2,000', remCn:'起步价。含税务清算、登报及工商注销', remEn:'Starting price. Includes tax clearance'},
+                        {code:'CSV-14', cn:'国内商标注册', en:'Trademark (CN)', price:'800', remCn:'单类单件。含通过率检索分析及全流程申报', remEn:'Per class. Includes search & filing'}
+                    ],
+                    design: [
+                        {code:'DSG-01', cn:'AI 国际化品牌 LOGO', en:'Global AI Logo', price:'800', remCn:'3 套方案 + 人工精修，48H交付', remEn:'3 concepts + refinement, 48h'},
+                        {code:'DSG-02', cn:'创业出海全量视觉包', en:'Brand Pack', price:'1,500', remCn:'LOGO、名片、PPT 模板及社媒头图', remEn:'Logo, Biz Card, PPT, Social'},
+                        {code:'DSG-03', cn:'Web3 响应式官网', en:'Web3 Site', price:'2,000', remCn:'极简设计，适配移动端，自带 SEO', remEn:'Responsive, mobile-ready, SEO'}
+                    ],
+                    offshore: [
+                        {code:'WEB3-01', cn:'EF 电子围栏账户开立', en:'EF Account', price:'5,000', remCn:'搭建自贸港跨境资金自由流通清算体系', remEn:'Setup for free capital flow via EF'},
+                        {code:'WEB3-02', cn:'双15% 税务合规筹划', en:'15% Tax Structuring', price:'3,000', remCn:'实质性运营标准构建指导，锁定双重优惠', remEn:'Substance standard advisory'},
+                        {code:'WEB3-03', cn:'RWA 资产代币化咨询', en:'RWA Tokenization', price:'定制', remCn:'探索实体资产合规上链与发行路径', remEn:'Compliant pathways for RWA'}
+                    ]
+                },
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                get currentPricing() {
+                    return this.pricing[this.activeTab];
+                },
 
-            document.getElementById('days').innerText = days.toString().padStart(2, '0');
-            document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
-            document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
-            document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
-        }
+                init() {
+                    window.addEventListener('scroll', () => { this.scrolled = window.scrollY > 50; });
 
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
+                    // 倒计时至 2026.12.18
+                    const targetDate = new Date('2026-12-18T23:59:59').getTime();
+                    setInterval(() => {
+                        const now = new Date().getTime();
+                        const diff = targetDate - now;
+                        if(diff > 0) {
+                            this.countdown.d = Math.floor(diff / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+                            this.countdown.h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+                            this.countdown.m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+                            this.countdown.s = Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2, '0');
+                        }
+                    }, 1000);
+                },
 
-        // --- AI助手逻辑 ---
-        function toggleChat() {
-            const chatWin = document.getElementById('chatWindow');
-            chatWin.style.display = chatWin.style.display === 'flex' ? 'none' : 'flex';
-        }
+                toggleLang() { this.lang = this.lang === 'cn' ? 'en' : 'cn'; },
+                openService(id) { this.activeTab = id; document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' }); },
+                openOrderModal(item) { this.selectedOrder = item; this.isOrderOpen = true; },
+                
+                runAiCalc() {
+                    if(!this.income || this.income <= 0) return;
+                    this.calculating = true; this.showResult = false;
+                    setTimeout(() => { this.calculating = false; this.showResult = true; }, 1200);
+                },
 
-        function sendMessage() {
-            const input = document.getElementById('chatInput');
-            const message = input.value.trim();
-            if (!message) return;
+                // AI 聊天逻辑
+                sendFastMsg(text) {
+                    this.chatMessages.push({ role: 'user', content: text });
+                    this.isTyping = true;
+                    this.scrollToBottom();
+                    
+                    setTimeout(() => {
+                        this.isTyping = false;
+                        let reply = '';
+                        if(text.includes('注册')) reply = '在资料齐全的情况下，<strong>3个工作日</strong>即可完成海南公司执照下发，7个工作日完成印章、税务和银行开户的全套基建。';
+                        else if(text.includes('EF账户')) reply = 'EF 账户即多功能自由贸易账户。目前已向部分符合实质性运营的企业开放，支持资金在海南与境外自由汇兑，不受国内结售汇额度限制。我们可以协助您进行资质前置审核。';
+                        else if(text.includes('15%')) reply = '需要满足两个核心条件：1. 属于鼓励类产业目录；2. 具备<strong>实质性运营</strong>（在海南有实际办公地址、人员社保缴纳及业务发生）。我们可以为您提供全套合规筹划。';
+                        else reply = '好的，已收到您的需求。您可以点击左下角按钮联系我们的人工专家进行深度解答。';
+                        
+                        this.chatMessages.push({ role: 'ai', content: reply });
+                        this.scrollToBottom();
+                    }, 1000);
+                },
 
-            // 添加用户消息
-            appendMessage(message, 'user-msg');
-            input.value = '';
-
-            // 模拟AI回复延迟
-            setTimeout(() => {
-                appendMessage('已收到您的问题：“' + message + '”。目前系统正在接入AI大模型，稍后将为您提供详细解答。您可以先尝试点击“立即下单”体验流程！', 'ai-msg');
-            }, 800);
-        }
-
-        function appendMessage(text, className) {
-            const chatBody = document.getElementById('chatBody');
-            const msgDiv = document.createElement('div');
-            msgDiv.className = `message ${className}`;
-            msgDiv.innerText = text;
-            chatBody.appendChild(msgDiv);
-            chatBody.scrollTop = chatBody.scrollHeight; // 自动滚动到底部
-        }
-
-        function handleEnter(e) {
-            if (e.key === 'Enter') {
-                sendMessage();
-            }
-        }
+                scrollToBottom() {
+                    setTimeout(() => {
+                        const box = document.getElementById('chatbox');
+                        if(box) box.scrollTop = box.scrollHeight;
+                    }, 100);
+                }
+            }));
+        });
     </script>
 </body>
 </html>
