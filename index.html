@@ -3,307 +3,236 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solana Hainan | 2026 Year One: Global Offshore Hub</title>
+    <title>Solana Hainan | 2026 封关运作全球指挥中心</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <style>
         :root { --solana-green: #14F195; --solana-purple: #9945FF; }
-        body { background: #030303; color: #fff; font-family: 'Inter', 'PingFang SC', sans-serif; overflow-x: hidden; }
-        
-        /* 极致极简的玻璃态，去掉多余反光 */
-        .glass-panel { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); transition: all 0.3s ease; }
-        .glass-panel:hover { border-color: rgba(20, 241, 149, 0.3); background: rgba(20, 241, 149, 0.02); }
-        
-        /* 跑马灯 */
-        .marquee { background: var(--solana-green); color: #000; font-weight: 900; padding: 8px 0; font-size: 10px; z-index: 1002; letter-spacing: 0.05em; border-bottom: 1px solid #000; }
-        .marquee-inner { display: inline-block; animation: marquee 50s linear infinite; white-space: nowrap; }
-        @keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
-        
-        /* 视图切换动画 */
-        .sub-view { position: fixed; inset: 0; background: #030303; z-index: 500; display: none; overflow-y: auto; padding-top: 120px; }
-        .sub-view.active { display: block; animation: fadeIn 0.3s ease-out; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-        /* 排版排版细节 */
-        .en-text { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.15em; color: #6b7280; font-weight: 700; margin-top: 0.25rem; }
-        .en-desc { font-size: 0.75rem; color: #6b7280; line-height: 1.6; margin-top: 0.5rem; font-family: serif; font-style: italic; }
+        body { background: #030303; color: #fff; font-family: 'PingFang SC', 'Inter', sans-serif; }
+        .glass { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); }
+        .btn-glow:hover { box-shadow: 0 0 20px rgba(20, 241, 149, 0.4); }
+        .marquee { background: var(--solana-green); color: #000; font-weight: 900; py: 8px; position: fixed; top: 0; width: 100%; z-index: 2000; }
+        .sub-page { display: none; padding-top: 120px; min-height: 100vh; }
+        .sub-page.active { display: block; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
-<body x-data="systemCore()" class="antialiased">
+<body x-data="globalState()">
 
-    <div class="marquee fixed top-0 w-full z-[1002]">
-        <div class="marquee-inner">
-            ⚡ 2026 封关运作核心政策已就绪 | CORE POLICIES FOR 2026 CLOSURE ARE READY | 🏦 EF 账户跨境结算支持多币种实时汇兑 | EF ACCOUNTS SUPPORT MULTI-CURRENCY REAL-TIME EXCHANGE | 🚀 13 园区 RWA 试点申请全线开启 | RWA SANDBOX APPLICATIONS NOW OPEN...
+    <div class="marquee text-[10px] md:text-xs uppercase tracking-tighter py-2 overflow-hidden whitespace-nowrap">
+        <div class="inline-block animate-marquee">
+            <template x-for="i in 10">
+                <span class="mx-4" x-text="lang === 'zh' ? '⚡ 2026 封关核心政策已就绪 | 🏦 EF 账户跨境结算支持多币种 | 🚀 13 园区 RWA 试点开启' : '⚡ 2026 POLICIES READY | 🏦 EF ACCOUNTS SUPPORT MULTI-CURRENCY | 🚀 13 PARKS RWA SANDBOX OPEN'"></span>
+            </template>
         </div>
     </div>
 
-    <nav class="fixed top-9 w-full z-[1000] px-8 md:px-16 h-24 flex items-center justify-between bg-[#030303]/90 backdrop-blur-md border-b border-white/5">
-        <div class="flex items-center gap-4 cursor-pointer" @click="view = 'home'">
-            <div class="w-8 h-8 bg-[#14F195] rounded-sm flex items-center justify-center text-black font-black text-xs">SH</div>
+    <nav class="fixed top-8 w-full z-[1500] px-6 md:px-12 h-20 flex items-center justify-between glass border-b border-white/10">
+        <div class="flex items-center gap-3 cursor-pointer" @click="view = 'home'">
+            <div class="w-10 h-10 bg-[#14f195] rounded flex items-center justify-center text-black font-black">SH</div>
             <div>
-                <div class="text-xl font-black italic tracking-tighter leading-none">SOLANA HAINAN</div>
-                <div class="en-text text-[#14f195]">2026 Command Center</div>
+                <div class="text-xl font-black italic tracking-tighter">SOLANA HAINAN</div>
+                <div class="text-[9px] text-[#14f195] font-bold" x-text="lang === 'zh' ? '2026 封关指挥中心' : '2026 COMMAND CENTER'"></div>
             </div>
         </div>
-        <div class="hidden lg:flex gap-16">
-            <div @click="view = 'home'" class="cursor-pointer group">
-                <div :class="view === 'home' ? 'text-[#14f195]' : 'text-white'" class="font-bold text-sm transition group-hover:text-[#14f195]">总台看板</div>
-                <div class="en-text group-hover:text-[#14f195]/70 transition">Dashboard</div>
-            </div>
-            <div @click="view = 'parks'" class="cursor-pointer group">
-                <div :class="view === 'parks' ? 'text-[#14f195]' : 'text-white'" class="font-bold text-sm transition group-hover:text-[#14f195]">13 园区矩阵</div>
-                <div class="en-text group-hover:text-[#14f195]/70 transition">13 Strategic Parks</div>
-            </div>
-            <div @click="view = 'business'" class="cursor-pointer group">
-                <div :class="view === 'business' ? 'text-[#14f195]' : 'text-white'" class="font-bold text-sm transition group-hover:text-[#14f195]">核心业务与报价</div>
-                <div class="en-text group-hover:text-[#14f195]/70 transition">Services & Pricing</div>
-            </div>
+
+        <div class="hidden lg:flex items-center gap-8 text-sm font-bold">
+            <a @click="view = 'home'" class="cursor-pointer hover:text-[#14f195] transition" x-text="lang==='zh'?'首页':'HOME'"></a>
+            <a @click="view = 'parks'" class="cursor-pointer hover:text-[#14f195] transition" x-text="lang==='zh'?'13园区档案':'13 PARKS'"></a>
+            <a @click="view = 'services'" class="cursor-pointer hover:text-[#14f195] transition" x-text="lang==='zh'?'业务报价':'SERVICES'"></a>
+            <a @click="view = 'about'" class="cursor-pointer hover:text-[#14f195] transition" x-text="lang==='zh'?'关于我们':'ABOUT'"></a>
         </div>
-        <button @click="view = 'business'" class="bg-white text-black px-8 py-2.5 rounded-sm font-black text-xs hover:bg-[#14f195] transition">
-            <div>立即入驻</div>
-            <div class="text-[8px] uppercase tracking-widest opacity-60">Apply Now</div>
-        </button>
+
+        <div class="flex items-center gap-4">
+            <div class="flex border border-white/20 rounded overflow-hidden text-[10px] font-black">
+                <button @click="lang = 'zh'" :class="lang === 'zh' ? 'bg-[#14f195] text-black' : 'bg-transparent text-white'" class="px-3 py-1.5 transition">中文</button>
+                <button @click="lang = 'en'" :class="lang === 'en' ? 'bg-[#14f195] text-black' : 'bg-transparent text-white'" class="px-3 py-1.5 transition">EN</button>
+            </div>
+            <button @click="view = 'auth'" class="hidden md:block text-sm font-bold border-b border-[#14f195]" x-text="lang==='zh'?'登录/注册':'LOGIN'"></button>
+            <button @click="view = 'services'" class="bg-white text-black px-5 py-2 text-xs font-black uppercase btn-glow" x-text="lang==='zh'?'立即入驻':'APPLY'"></button>
+        </div>
     </nav>
 
-    <main x-show="view === 'home'" class="pt-40 px-8 md:px-16 max-w-[1600px] mx-auto pb-32">
-        
-        <section class="min-h-[60vh] flex flex-col justify-center border-l-4 border-[#14f195] pl-8 md:pl-16 mb-24">
-            <div class="en-text text-[#14f195] mb-6">Status: System Online · Era: 2026 Closure</div>
-            <h1 class="text-6xl md:text-8xl font-black tracking-tighter mb-2 text-white">2026 封关元年</h1>
-            <h2 class="text-3xl md:text-5xl font-bold text-gray-400 mb-8">重塑全球资产版图</h2>
-            <div class="en-text text-gray-500 mb-8 max-w-2xl leading-relaxed">
-                YEAR ONE OF CLOSURE: RESHAPING THE GLOBAL ASSET LANDSCAPE.<br>
-                HAINAN FREE TRADE PORT OPERATES UNDER INDEPENDENT CUSTOMS REGULATION, OFFERING ZERO TARIFFS AND NEW OFFSHORE OPPORTUNITIES.
-            </div>
-            <div class="flex gap-4">
-                <button @click="view = 'business'" class="border border-[#14f195] text-[#14f195] px-8 py-3 text-xs font-bold uppercase hover:bg-[#14f195] hover:text-black transition">
-                    获取定制落地方案 / Get Proposal
-                </button>
-            </div>
+    <main x-show="view === 'home'" class="pt-48 px-6 md:px-12 max-w-7xl mx-auto pb-32">
+        <section class="border-l-4 border-[#14f195] pl-8 mb-20">
+            <h1 class="text-6xl md:text-8xl font-black tracking-tighter mb-6" x-text="lang==='zh'?'2026 封关元年':'2026 YEAR ONE'"></h1>
+            <p class="text-xl text-gray-400 max-w-2xl font-bold" x-text="lang==='zh'?'重塑全球资产版图。全面对接“一线放开、二线管住”独立监管。':'Reshaping global assets. Fully connecting to independent customs regulation.'"></p>
         </section>
 
-        <section class="py-16 grid grid-cols-2 md:grid-cols-4 gap-8 border-y border-white/10 mb-24">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
             <template x-for="stat in stats">
-                <div>
-                    <div class="text-4xl md:text-5xl font-mono font-black mb-2 text-white" x-text="stat.val"></div>
-                    <div class="font-bold text-sm text-[#14f195]" x-text="stat.cn"></div>
-                    <div class="en-text" x-text="stat.en"></div>
+                <div class="glass p-8">
+                    <div class="text-4xl font-mono font-black text-[#14f195]" x-text="stat.val"></div>
+                    <div class="text-[10px] uppercase font-bold text-gray-500 mt-2" x-text="stat[lang]"></div>
                 </div>
             </template>
-        </section>
+        </div>
 
-        <section class="mb-24">
-            <div class="mb-12">
-                <h2 class="text-3xl font-black">核心战略业务</h2>
-                <div class="en-text text-gray-500">Core Strategic Services</div>
-            </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <template x-for="s in services_intro">
-                    <div @click="view = 'business'" class="glass-panel p-8 cursor-pointer flex flex-col justify-between min-h-[280px]">
-                        <div>
-                            <div class="w-8 h-8 rounded bg-white/5 flex items-center justify-center text-lg mb-6" x-text="s.icon"></div>
-                            <h3 class="text-lg font-black text-white mb-1" x-text="s.cn"></h3>
-                            <div class="en-text mb-4" x-text="s.en"></div>
-                            <p class="text-xs text-gray-400 leading-relaxed" x-text="s.desc_cn"></p>
-                            <p class="en-desc" x-text="s.desc_en"></p>
-                        </div>
-                        <div class="text-[#14f195] text-xs font-bold mt-6">查看详情 / Details →</div>
-                    </div>
-                </template>
-            </div>
-        </section>
-
-        <section class="mb-24 bg-white/5 p-12 rounded-sm border border-white/5">
-            <div class="mb-12 text-center">
-                <h2 class="text-2xl font-black">四步标准化落地流程</h2>
-                <div class="en-text text-gray-500">4-Step Onboarding Process</div>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
-                <div class="hidden md:block absolute top-6 left-[10%] right-[10%] h-[1px] bg-white/10"></div>
-                <template x-for="(step, i) in steps">
-                    <div class="relative text-center z-10">
-                        <div class="w-12 h-12 mx-auto bg-[#030303] border border-[#14f195] text-[#14f195] rounded-full flex items-center justify-center font-mono font-black mb-4" x-text="'0' + (i+1)"></div>
-                        <h4 class="font-bold text-sm text-white" x-text="step.cn"></h4>
-                        <div class="en-text" x-text="step.en"></div>
-                    </div>
-                </template>
-            </div>
-        </section>
-
-        <section class="mb-24">
-            <div class="mb-12 border-l-2 border-[#9945FF] pl-6">
-                <h2 class="text-2xl font-black">自贸港人文生态圈</h2>
-                <div class="en-text text-gray-500">Hainan Free Trade Port: Lifestyle & Hubs</div>
-                <p class="text-xs text-gray-500 mt-4 max-w-xl">工作在海浪之上，生活在自贸之港。我们为您提供不仅是商业落地的支持，更是无国界数字游民生态的全面接入。</p>
-            </div>
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="glass-panel p-8 relative overflow-hidden group">
-                    <div class="absolute -right-4 -top-4 text-8xl opacity-5 group-hover:opacity-10 transition">🌊</div>
-                    <h3 class="text-lg font-black text-[#14f195] mb-1">万宁·日月湾生态</h3>
-                    <div class="en-text mb-4">Wanning Riyue Bay / Digital Nomad</div>
-                    <p class="text-xs text-gray-400 leading-relaxed mb-2">全球数字游民的冲浪胜地与远程工作社群聚集地。</p>
-                    <p class="en-desc">The ultimate surfing destination and remote work hub for global digital nomads.</p>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <template x-for="(step, i) in steps">
+                <div class="bg-white/5 p-6 border-t-2 border-[#14f195]">
+                    <div class="text-[#14f195] font-mono mb-2" x-text="'STEP 0'+(i+1)"></div>
+                    <div class="font-black text-sm" x-text="step[lang]"></div>
                 </div>
-                <div class="glass-panel p-8 relative overflow-hidden group">
-                    <div class="absolute -right-4 -top-4 text-8xl opacity-5 group-hover:opacity-10 transition">🏢</div>
-                    <h3 class="text-lg font-black text-[#9945FF] mb-1">海口·江东金融圈</h3>
-                    <div class="en-text mb-4">Haikou Jiangdong / Financial Hub</div>
-                    <p class="text-xs text-gray-400 leading-relaxed mb-2">离岸金融、跨国总部大楼与 EF 账户结算的神经中枢。</p>
-                    <p class="en-desc">The nerve center for offshore finance, multinational HQs, and EF settlements.</p>
-                </div>
-                <div class="glass-panel p-8 relative overflow-hidden group">
-                    <div class="absolute -right-4 -top-4 text-8xl opacity-5 group-hover:opacity-10 transition">🛥️</div>
-                    <h3 class="text-lg font-black text-white mb-1">三亚·中央商务区</h3>
-                    <div class="en-text mb-4">Sanya CBD / Luxury & Free Trade</div>
-                    <p class="text-xs text-gray-400 leading-relaxed mb-2">零关税游艇、高端免税商业与高净值人群康养主场。</p>
-                    <p class="en-desc">Home to zero-tariff yachts, premium duty-free retail, and high-net-worth wellness.</p>
-                </div>
-            </div>
-        </section>
-
+            </template>
+        </div>
     </main>
 
-    <div :class="view === 'parks' ? 'active' : ''" class="sub-view px-8 md:px-16">
-        <div class="max-w-[1400px] mx-auto pb-32">
-            <div class="mb-16 border-b border-white/10 pb-8">
-                <h2 class="text-4xl font-black">13 园区战略档案</h2>
-                <div class="en-text text-gray-500">13 Strategic Parks Dossier</div>
-                <p class="text-xs text-[#14f195] mt-4">点击园区调取《2026 封关政策执行细则》档案 / Click to access 2026 policy files.</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                <template x-for="(p, i) in parks">
-                    <div @click="openLeaf(p.cn, p.en, p.desc_cn, p.desc_en)" class="glass-panel p-6 cursor-pointer flex gap-6 items-start">
-                        <div class="text-sm font-mono text-gray-600 w-8 pt-1" x-text="'0'+(i+1)"></div>
-                        <div>
-                            <h3 class="text-base font-bold text-white" x-text="p.cn"></h3>
-                            <div class="en-text mb-3" x-text="p.en"></div>
-                            <p class="text-[11px] text-gray-400 leading-relaxed mb-1" x-text="p.desc_cn"></p>
-                            <p class="en-desc !text-[10px]" x-text="p.desc_en"></p>
-                        </div>
-                    </div>
-                </template>
-            </div>
-        </div>
-    </div>
-
-    <div :class="view === 'business' ? 'active' : ''" class="sub-view px-8 md:px-16">
-        <div class="max-w-[1200px] mx-auto pb-32">
-            <div class="mb-16 border-b border-white/10 pb-8">
-                <h2 class="text-4xl font-black">全球统一报价单</h2>
-                <div class="en-text text-gray-500">Global Service Pricing Matrix</div>
-                <p class="text-xs text-gray-400 mt-4">所有服务均包含中英双语对接与 2026 政策合规保障。</p>
-            </div>
-            <div class="space-y-4">
-                <template x-for="s in services_full">
-                    <div class="glass-panel p-8 md:p-12 flex flex-col md:flex-row justify-between items-center">
-                        <div class="flex-1 md:pr-16">
-                            <span class="text-[#9945FF] text-[10px] font-black uppercase tracking-widest px-2 py-1 bg-white/5 border border-white/10" x-text="s.cat"></span>
-                            <h3 class="text-2xl font-black mt-4 mb-1 text-white" x-text="s.cn"></h3>
-                            <div class="en-text mb-4 text-gray-500" x-text="s.en"></div>
-                            <p class="text-xs text-gray-400 leading-relaxed mb-1" x-text="s.d_cn"></p>
-                            <p class="en-desc" x-text="s.d_en"></p>
-                        </div>
-                        <div class="md:text-right mt-8 md:mt-0 md:w-64">
-                            <div class="text-4xl font-mono font-black text-[#14f195] mb-4" x-text="'¥'+s.p"></div>
-                            <button @click="openLeaf(s.cn, s.en, s.d_cn, s.d_en, true, s.p)" class="w-full bg-white text-black px-6 py-3 text-xs font-bold hover:bg-[#14f195] transition">
-                                立即签约 / SIGN NOW
-                            </button>
-                        </div>
-                    </div>
-                </template>
-            </div>
-        </div>
-    </div>
-
-    <div x-show="leafOpen" class="fixed inset-0 z-[2000] flex items-center justify-center p-4 bg-black/95 backdrop-blur-md" x-cloak x-transition.opacity>
-        <div class="glass-panel p-10 max-w-2xl w-full relative bg-[#050505] border-[#14f195]/30">
-            <button @click="leafOpen = false" class="absolute top-6 right-6 text-gray-500 hover:text-white font-bold text-xl">✕</button>
-            
-            <div class="border-l-4 border-[#14f195] pl-6 mb-8 mt-4">
-                <h3 class="text-2xl font-black text-white" x-text="leafData.t_cn"></h3>
-                <div class="en-text text-[#14f195]" x-text="leafData.t_en"></div>
-            </div>
-            
-            <div class="bg-white/5 p-6 border border-white/5 mb-8">
-                <p class="text-sm text-gray-300 leading-relaxed mb-4" x-text="leafData.c_cn"></p>
-                <p class="en-desc !text-xs text-gray-500" x-text="leafData.c_en"></p>
-            </div>
-
-            <template x-if="leafData.isOrder">
-                <div class="flex items-center justify-between border-t border-white/10 pt-8 mt-4">
-                    <div>
-                        <div class="text-xs text-gray-500 mb-1">统一结算价 / Final Price</div>
-                        <div class="text-4xl font-mono font-black text-white" x-text="'¥'+leafData.price"></div>
-                    </div>
-                    <button onclick="alert('即将进入 2026 加密支付与法币双通道网关...\nProceeding to dual-channel payment gateway...')" class="bg-[#14f195] text-black px-8 py-4 font-black text-xs uppercase hover:bg-white transition">
-                        确认并支付 / Confirm & Pay
-                    </button>
+    <div :class="view === 'parks' ? 'active' : ''" class="sub-page px-6 md:px-12 max-w-7xl mx-auto pb-32">
+        <button @click="view = 'home'" class="mb-10 text-[#14f195] font-black flex items-center gap-2">
+            <span>←</span> <span x-text="lang==='zh'?'返回主页':'BACK TO HOME'"></span>
+        </button>
+        <h2 class="text-5xl font-black mb-12 uppercase tracking-tighter" x-text="lang==='zh'?'自贸港 13 个重点园区':'13 KEY STRATEGIC PARKS'"></h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <template x-for="p in parks">
+                <div class="glass p-8 hover:bg-white/5 transition group">
+                    <div class="text-[#14f195] font-mono text-xs mb-4" x-text="p.id"></div>
+                    <h3 class="text-2xl font-black mb-4 group-hover:text-[#14f195]" x-text="p['name_'+lang]"></h3>
+                    <p class="text-xs text-gray-400 leading-relaxed" x-text="p['desc_'+lang]"></p>
                 </div>
             </template>
         </div>
     </div>
 
-    <div class="fixed bottom-10 right-10 z-[1100] group">
-        <div class="absolute -top-12 right-0 bg-white text-black text-[10px] px-4 py-2 font-bold opacity-0 group-hover:opacity-100 transition whitespace-nowrap shadow-lg">
-            <div>启动 AI 政策测算</div>
-            <div class="text-[8px] text-gray-600 mt-0.5">Start AI Assessment</div>
-        </div>
-        <button onclick="alert('AI 测算系统已激活，正在接入大语言模型...\nAI Assessment system activated...')" class="w-14 h-14 bg-[#14f195] text-black rounded-sm flex items-center justify-center text-2xl hover:bg-white transition">
-            🤖
+    <div :class="view === 'services' ? 'active' : ''" class="sub-page px-6 md:px-12 max-w-5xl mx-auto pb-32">
+        <button @click="view = 'home'" class="mb-10 text-[#14f195] font-black flex items-center gap-2">
+            <span>←</span> <span x-text="lang==='zh'?'返回主页':'BACK TO HOME'"></span>
         </button>
+        <h2 class="text-5xl font-black mb-12 uppercase tracking-tighter" x-text="lang==='zh'?'业务矩阵与全球报价':'SERVICES & PRICING'"></h2>
+        <div class="space-y-4">
+            <template x-for="s in services">
+                <div class="glass p-8 flex flex-col md:flex-row justify-between items-center gap-6">
+                    <div class="flex-1">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="px-2 py-0.5 bg-[#14f195] text-black text-[10px] font-black uppercase" x-text="s.cat"></span>
+                            <h3 class="text-2xl font-black" x-text="s['title_'+lang]"></h3>
+                        </div>
+                        <p class="text-sm text-gray-500" x-text="s['desc_'+lang]"></p>
+                    </div>
+                    <div class="text-right border-l border-white/10 pl-8">
+                        <div class="text-3xl font-mono font-black text-[#14f195]" x-text="s.price === 'POA' ? 'POA' : '¥'+s.price"></div>
+                        <div class="text-[10px] text-gray-500 mt-1 uppercase">Starting Price</div>
+                        <button class="mt-4 bg-white text-black px-6 py-2 text-[10px] font-black uppercase hover:bg-[#14f195] transition">Sign Contract</button>
+                    </div>
+                </div>
+            </template>
+        </div>
     </div>
 
-    <footer class="border-t border-white/5 py-12 px-8 md:px-16 text-center text-xs text-gray-500 flex flex-col items-center">
-        <div class="font-bold text-white mb-2">SOLANA HAINAN · 2026 COMMAND CENTER</div>
-        <div class="uppercase tracking-widest text-[9px] mb-6">Authorized Policy Consultation & Global Offshore Services</div>
-        <div class="flex gap-8 uppercase font-bold tracking-widest text-[10px]">
-            <span>400-SOL-2026</span>
-            <span>T.ME/SH2026</span>
-            <span>X.COM/HAINAN2026</span>
+    <div :class="view === 'about' ? 'active' : ''" class="sub-page px-6 md:px-12 max-w-4xl mx-auto pb-32">
+        <button @click="view = 'home'" class="mb-10 text-[#14f195] font-black flex items-center gap-2">
+            <span>←</span> <span x-text="lang==='zh'?'返回主页':'BACK TO HOME'"></span>
+        </button>
+        <h2 class="text-5xl font-black mb-12 uppercase tracking-tighter" x-text="lang==='zh'?'关于指挥中心':'ABOUT COMMAND CENTER'"></h2>
+        
+        <div class="glass p-10 mb-8 leading-loose text-gray-300">
+            <p class="mb-6" x-text="lang==='zh'?'Solana Hainan 2026 是经授权的自贸港一站式入驻指挥中枢。我们专注于为 Web3 开发者、离岸金融机构及跨国贸易企业提供基于封关政策的确定性落地方案。':'Solana Hainan 2026 is an authorized one-stop FTP command center. We focus on providing certainty for Web3 developers, offshore financial institutions, and multinational trade enterprises.'"></p>
+            <p x-text="lang==='zh'?'我们在海口江东新区设有 2000 平米实体联络处，团队由前自贸办专家、跨境税务律师及区块链架构师组成。':'We operate a 2000sqm physical liaison office in Jiangdong, with a team of former FTP officials, tax lawyers, and blockchain architects.'"></p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="glass p-8">
+                <div class="text-[#14f195] text-xs font-black mb-4 uppercase">Contact Info / 联系方式</div>
+                <div class="space-y-4 text-sm font-bold">
+                    <p>📞 400-SOL-2026 (Global)</p>
+                    <p>✉️ admin@solanahainan.com</p>
+                    <p>✈️ Telegram: @SH2026_OFFICIAL</p>
+                    <p>🐦 Twitter: @Hainan2026</p>
+                </div>
+            </div>
+            <div class="glass p-8">
+                <div class="text-[#14f195] text-xs font-black mb-4 uppercase">Headquarters / 总部地址</div>
+                <p class="text-sm font-bold leading-relaxed" x-text="lang==='zh'?'海南省海口市江东新区总部经济区 A 座 2026 指挥室':'Room 2026, Tower A, Jiangdong HQ Zone, Haikou, Hainan Province, China'"></p>
+            </div>
+        </div>
+    </div>
+
+    <div :class="view === 'auth' ? 'active' : ''" class="sub-page px-6 flex items-center justify-center">
+        <div class="w-full max-w-md">
+            <button @click="view = 'home'" class="mb-6 text-[#14f195] font-black flex items-center gap-2">
+                <span>←</span> <span x-text="lang==='zh'?'返回主页':'BACK'"></span>
+            </button>
+            <div class="glass p-10 relative">
+                <div class="flex gap-8 mb-8 border-b border-white/10">
+                    <button @click="isLogin = true" :class="isLogin ? 'text-[#14f195] border-b-2 border-[#14f195]' : 'text-gray-500'" class="pb-2 font-black uppercase" x-text="lang==='zh'?'登录':'LOGIN'"></button>
+                    <button @click="isLogin = false" :class="!isLogin ? 'text-[#14f195] border-b-2 border-[#14f195]' : 'text-gray-500'" class="pb-2 font-black uppercase" x-text="lang==='zh'?'注册':'REGISTER'"></button>
+                </div>
+                <div class="space-y-4">
+                    <input type="text" :placeholder="lang==='zh'?'邮箱/通行证 ID':'Email / Pass ID'" class="w-full bg-white/5 border border-white/10 p-4 outline-none focus:border-[#14f195]">
+                    <input type="password" :placeholder="lang==='zh'?'密码':'Password'" class="w-full bg-white/5 border border-white/10 p-4 outline-none focus:border-[#14f195]">
+                    <div x-show="!isLogin" class="flex gap-2">
+                        <input type="text" :placeholder="lang==='zh'?'验证码':'Code'" class="flex-1 bg-white/5 border border-white/10 p-4 outline-none focus:border-[#14f195]">
+                        <button class="px-4 bg-white/10 text-xs font-bold" x-text="lang==='zh'?'发送':'SEND'"></button>
+                    </div>
+                    <button class="w-full bg-[#14f195] text-black font-black py-4 btn-glow uppercase" x-text="isLogin ? (lang==='zh'?'立即进入':'ENTER SYSTEM') : (lang==='zh'?'创建通行证':'CREATE PASS')"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer x-show="view === 'home'" class="mt-20 border-t border-white/5 py-12 px-6 md:px-12 bg-black/50">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-center md:text-left">
+                <div class="text-xl font-black italic">SOLANA HAINAN</div>
+                <p class="text-[10px] text-gray-500 mt-2 uppercase">© 2026 Authorized Offshore Hub. All Rights Reserved.</p>
+            </div>
+            <div class="flex gap-6 text-[10px] font-black text-gray-400">
+                <a href="#" class="hover:text-white">TELEGRAM</a>
+                <a href="#" class="hover:text-white">TWITTER</a>
+                <a href="#" class="hover:text-white">PRIVACY POLICY</a>
+            </div>
         </div>
     </footer>
 
+    <div class="fixed bottom-8 right-8 z-[2000]">
+        <button onclick="alert('AI Policy Engine Online')" class="w-14 h-14 bg-[#14f195] text-black rounded-full shadow-2xl flex items-center justify-center text-2xl hover:scale-110 transition">🤖</button>
+    </div>
+
     <script>
-        function systemCore() {
+        function globalState() {
             return {
+                lang: 'zh',
                 view: 'home',
-                leafOpen: false,
-                leafData: {},
+                isLogin: true,
                 stats: [
-                    { cn: '企业落地总数', en: 'Total Onboarded', val: '12,450+' },
-                    { cn: 'EF 离岸结算额', en: 'EF Settlement Vol.', val: '¥ 4.2B' },
-                    { cn: '平均合规节税', en: 'Avg. Tax Saving', val: '35%' },
-                    { cn: '极速下证时效', en: 'Setup Speed', val: '24H' }
+                    { zh: '落地企业', en: 'Onboarded', val: '12,450+' },
+                    { zh: 'EF 结算额', en: 'EF Settlement', val: '¥ 4.2B' },
+                    { zh: '节税率', en: 'Tax Saving', val: '35%' },
+                    { zh: '下证速', en: 'Speed', val: '24H' }
                 ],
                 steps: [
-                    { cn: 'AI 需求匹配', en: 'AI Policy Assessment' },
-                    { cn: '园区精准选址', en: 'Strategic Site Selection' },
-                    { cn: '全流程云端申报', en: 'Cloud-Based Filing' },
-                    { cn: '账户开立与交付', en: 'Account Delivery' }
+                    { zh: 'AI 需求测算', en: 'AI Assessment' },
+                    { zh: '13园区选址', en: 'Park Selection' },
+                    { zh: '材料审批申报', en: 'Cloud Filing' },
+                    { zh: '账户下发交付', en: 'Final Delivery' }
                 ],
-                services_intro: [
-                    { icon: '🏢', cn: '企业落地执照', en: 'Corporate Setup', desc_cn: '含虚拟地址、工商执照、税务报到一条龙。', desc_en: 'End-to-end setup including virtual address, license, and tax registration.' },
-                    { icon: '🏦', cn: 'EF 离岸账户', en: 'EF Offshore Banking', desc_cn: '打通多币种电子围栏账户，资金自由跨境。', desc_en: 'Establish multi-currency EF accounts for unrestricted cross-border capital flow.' },
-                    { icon: '🛡️', cn: '双 15% 锁税', en: 'Dual 15% Tax Shield', desc_cn: '实质性运营架构搭建，合规锁定低税红利。', desc_en: 'Substantive operation structuring to legally secure the 15% low-tax benefits.' },
-                    { icon: '⛓️', cn: 'RWA 资产试点', en: 'RWA Tokenization', desc_cn: '合规申报实物与数据资产上链，对接国际结算。', desc_en: 'Compliant application for asset tokenization and access to global settlement hubs.' }
-                ],
+                // 13个园区 - 绝对不漏
                 parks: [
-                    { cn: '海口江东新区', en: 'Haikou Jiangdong', desc_cn: '总部经济、融资租赁、离岸贸易核心承载区。', desc_en: 'Core hub for headquarters economy, financial leasing, and offshore trade.' },
-                    { cn: '三亚崖州湾科技城', en: 'Sanya Yazhou Bay', desc_cn: '深海科技、高新种业研发与空天科技阵地。', desc_en: 'Leading zone for deep-sea tech, seed R&D, and aerospace innovation.' },
-                    { cn: '复兴城互联网园', en: 'Fuxing City Park', desc_cn: '数字经济、Web3 产业与跨境数据传输沙盒。', desc_en: 'Sandbox for digital economy, Web3 industries, and cross-border data transfer.' },
-                    { cn: '洋浦经济开发区', en: 'Yangpu Economic Zone', desc_cn: '享受“加工增值30%免关税”的核心政策先行区。', desc_en: 'Pioneer zone enjoying the 30% value-added tax exemption policy.' },
-                    { cn: '海南生态软件园', en: 'Hainan Software Park', desc_cn: '区块链创新、数字版权与电竞金融特区。', desc_en: 'Special zone for blockchain innovation, digital copyright, and e-sports finance.' },
-                    { cn: '博鳌乐城医疗区', en: 'Boao Lecheng Medical', desc_cn: '国际特许药械唯一准入窗口与高端康养基地。', desc_en: 'The exclusive entry point for international specialized medical devices and healthcare.' }
+                    { id: 'PARK-01', name_zh: '海口江东新区', name_en: 'Jiangdong New Area', desc_zh: '总部经济、离岸贸易与金融核心。', desc_en: 'HQ economy and offshore trade core.' },
+                    { id: 'PARK-02', name_zh: '三亚崖州湾科技城', name_en: 'Yazhou Bay Science City', desc_zh: '深海科技与高新南繁种业阵地。', desc_en: 'Deep-sea tech and seed industry.' },
+                    { id: 'PARK-03', name_zh: '洋浦经济开发区', name_en: 'Yangpu Economic Zone', desc_zh: '加工增值30%免关税先行区。', desc_en: '30% value-added tax exemption.' },
+                    { id: 'PARK-04', name_zh: '复兴城互联网园', name_en: 'Fuxing City Park', desc_zh: '数字经济与数据跨境传输沙盒。', desc_en: 'Digital economy and data sandbox.' },
+                    { id: 'PARK-05', name_zh: '海南生态软件园', name_en: 'Hainan Software Park', desc_zh: '区块链与数字版权创新特区。', desc_en: 'Blockchain and digital copyright.' },
+                    { id: 'PARK-06', name_zh: '博鳌乐城医疗特区', name_en: 'Boao Lecheng Medical', desc_zh: '国际特许药械唯一应用基地。', desc_en: 'Exclusive medical device base.' },
+                    { id: 'PARK-07', name_zh: '海口综合保税区', name_en: 'Haikou Bonded Zone', desc_zh: '免税仓储与跨境电商枢纽。', desc_en: 'Duty-free storage and e-commerce.' },
+                    { id: 'PARK-08', name_zh: '海口国家高新区', name_en: 'Haikou High-tech Zone', desc_zh: '医药研发与高端装备制造。', desc_en: 'Pharma R&D and manufacturing.' },
+                    { id: 'PARK-09', name_zh: '文昌国际航天城', name_en: 'Wenchang Aerospace City', desc_zh: '商业航天发射与空天大数据。', desc_en: 'Commercial aerospace and data.' },
+                    { id: 'PARK-10', name_zh: '陵水国际教育区', name_en: 'Lingshui Education Zone', desc_zh: '中外合作办学与创新枢纽。', desc_en: 'International education hub.' },
+                    { id: 'PARK-11', name_zh: '三亚中央商务区', name_en: 'Sanya CBD', desc_zh: '邮轮游艇与免税商业中心。', desc_en: 'Cruise, yachting and retail.' },
+                    { id: 'PARK-12', name_zh: '东方临港产业园', name_en: 'Dongfang Industrial Park', desc_zh: '石化新材料与海洋装备。', desc_en: 'Petrochemicals and marine gear.' },
+                    { id: 'PARK-13', name_zh: '临高金牌港开发区', name_en: 'Lingao Jinpai Port', desc_zh: '新型建材与海洋经济配套。', desc_en: 'New construction materials hub.' }
                 ],
-                services_full: [
-                    { cat: 'Entry Pack', cn: '全岛落地尊享包', en: 'Premium Entry Package', p: '1,900', d_cn: '含工商查名、全套执照审批、公章刻制、税务报到与首年合规指导，支持 13 园区任选挂靠。', d_en: 'Includes name search, license approval, stamps, tax reporting, and 1st-year compliance guidance. Valid across all 13 parks.' },
-                    { cat: 'Finance', cn: 'EF 离岸账户开通', en: 'EF Account Setup', p: '5,000', d_cn: '由前沿架构师介入，协助完成尽职调查，开通支持多币种结汇的跨境电子围栏账户。', d_en: 'Architect-led service for due diligence and setup of cross-border EF accounts supporting multi-currency settlement.' },
-                    { cat: 'Web3', cn: 'RWA 沙盒准入申报', en: 'RWA Sandbox Application', p: '12,000', d_cn: '针对实物/数据资产出具国内律所合规法律意见书，完成代币化备案并对接官方结算通道。', d_en: 'Includes legal opinions from domestic law firms for physical/data assets, tokenization filing, and official settlement integration.' }
-                ],
-                openLeaf(t_cn, t_en, c_cn, c_en, isOrder = false, price = '') {
-                    this.leafData = { t_cn, t_en, c_cn, c_en, isOrder, price };
-                    this.leafOpen = true;
-                }
+                // 8大核心业务 - 绝对不漏
+                services: [
+                    { cat: 'Basic', title_zh: '全岛落地执照尊享包', title_en: 'Premium Entry Pack', desc_zh: '含工商、全套印章、税务报到、银行开户指引。', desc_en: 'License, stamps, tax, and banking setup.', price: '1,900' },
+                    { cat: 'Finance', title_zh: 'EF 离岸多币种账户', title_en: 'EF Offshore Account', desc_zh: '多币种实时结汇，离岸资金自由跨境通道。', desc_en: 'Multi-currency, free capital flow.', price: '5,000' },
+                    { cat: 'Web3', title_zh: 'Web3 / RWA 沙盒准入', title_en: 'Web3 / RWA Sandbox', desc_zh: '官方备案、合规法律意见书及上链通道。', desc_en: 'Official filing and compliance gateway.', price: '12,000' },
+                    { cat: 'Tax', title_zh: '双 15% 核心税务筹划', title_en: 'Dual 15% Tax Planning', desc_zh: '规划实质性运营架构，锁定封关低税红利。', desc_en: 'Substantive structure for 15% tax.', price: '8,500' },
+                    { cat: 'Visa', title_zh: '工作签证 / 数字游民签', title_en: 'Work Visa / Nomad', desc_zh: '外籍高管与技术人员 2-5 年居留许可。', desc_en: 'Residency for foreign executives.', price: '4,500' },
+                    { cat: 'Legal', title_zh: 'IP 与国际商标注册', title_en: 'IP & Trademark Registration', desc_zh: '自贸港品牌出海防护与版权登记。', desc_en: 'Global brand protection & copyright.', price: '2,200' },
+                    { cat: 'Audit', title_zh: '财税代账与合规审计', title_en: 'Accounting & Audit', desc_zh: '年度合规审计报告及资金监管应对。', desc_en: 'Annual compliance and reports.', price: '3,600' },
+                    { cat: 'Asset', title_zh: '实体办公寻址服务', title_en: 'Office Sourcing', desc_zh: '13 园区核心 CBD 实体办公室选址租赁。', desc_en: 'Physical office leasing in CBDs.', price: 'POA' }
+                ]
             }
         }
     </script>
