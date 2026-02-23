@@ -3,214 +3,291 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solana-Hainan | 2026 封关运作全球战略枢纽</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <title>封关元年倒计时与智能服务</title>
     <style>
-        :root { --solana-green: #14F195; --solana-purple: #9945FF; }
-        body { background: #000; color: #fff; font-family: 'Space Grotesk', 'PingFang SC', sans-serif; }
-        .glass { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(12px); }
-        .glass:hover { border-color: var(--solana-green); background: rgba(20, 241, 149, 0.02); }
-        .marquee { background: var(--solana-green); color: #000; font-weight: 900; font-size: 11px; z-index: 2000; letter-spacing: 1px; }
-        .sub-page { display: none; padding-top: 140px; min-height: 100vh; }
-        .sub-page.active { display: block; animation: slideUp 0.4s ease-out; }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .nav-link { font-size: 10px; font-weight: 700; text-transform: uppercase; color: #666; cursor: pointer; transition: 0.3s; letter-spacing: 1px; }
-        .nav-link:hover, .nav-link.active { color: var(--solana-green); }
-        .service-card { border-left: 2px solid rgba(255,255,255,0.1); transition: 0.3s; }
-        .service-card:hover { border-left-color: var(--solana-green); padding-left: 2rem; }
-        [x-cloak] { display: none !important; }
+        /* 基础样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* 顶部滚动公告栏 */
+        .marquee-container {
+            width: 100%;
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 10px 0;
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        .marquee-content {
+            display: inline-block;
+            white-space: nowrap;
+            animation: marquee 20s linear infinite;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(100vw); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* 主体内容区 */
+        .main-container {
+            margin-top: 80px; /* 避开顶部滚动栏 */
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 90%;
+        }
+
+        /* 倒计时样式 */
+        h1 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        .countdown-box {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        .time-block {
+            background: #fff;
+            padding: 15px 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            min-width: 80px;
+        }
+        .time-block span {
+            display: block;
+        }
+        .time-number {
+            font-size: 32px;
+            font-weight: bold;
+            color: #007aff;
+        }
+        .time-label {
+            font-size: 12px;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        /* 下单按钮 */
+        .order-btn {
+            background: linear-gradient(90deg, #007aff, #00c6ff);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 122, 255, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .order-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 122, 255, 0.6);
+        }
+        .order-btn:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        /* AI助手悬浮窗 */
+        .ai-chatbot {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+        .ai-btn {
+            width: 60px;
+            height: 60px;
+            background: #1a1a1a;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+            font-weight: bold;
+        }
+        .ai-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        .chat-window {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 300px;
+            height: 400px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .chat-header {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 15px;
+            font-size: 16px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .chat-body {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background: #f9f9f9;
+        }
+        .message {
+            margin-bottom: 10px;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        .ai-msg { color: #333; background: #e0e0e0; padding: 10px; border-radius: 10px 10px 10px 0; max-width: 80%; float: left; clear: both;}
+        .user-msg { color: #fff; background: #007aff; padding: 10px; border-radius: 10px 10px 0 10px; max-width: 80%; float: right; clear: both;}
+        
+        .chat-input-area {
+            display: flex;
+            border-top: 1px solid #eee;
+            background: #fff;
+        }
+        .chat-input-area input {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            outline: none;
+        }
+        .chat-input-area button {
+            background: #007aff;
+            color: white;
+            border: none;
+            padding: 0 15px;
+            cursor: pointer;
+        }
+        .chat-input-area button:hover { background: #005bb5; }
+
     </style>
 </head>
-<body x-data="appState()" x-cloak>
+<body>
 
-    <div class="marquee fixed top-0 w-full py-2 overflow-hidden whitespace-nowrap border-b border-black/10">
-        <div class="inline-block animate-[marquee_60s_linear_infinite]">
-            <span class="mx-8" x-text="lang==='zh' ? '【政策】2026 封关物理围网已就绪 | 【注册】本周新增 18 家 Web3 企业入驻 | 【合规】RWA 通证化备案模版更新 v3.2 | 【设计】新增工业 4.0 视觉包装板块' : 'LIVE: [POLICY] 2026 Closure Ready | [REG] 18 Web3 Firms Joined This Week | [COMPLIANCE] RWA Tokenization v3.2 Updated | [DESIGN] New Industrial 4.0 Visuals'"></span>
-            <span class="mx-8" x-text="lang==='zh' ? '【政策】2026 封关物理围网已就绪 | 【注册】本周新增 18 家 Web3 企业入驻 | 【合规】RWA 通证化备案模版更新 v3.2 | 【设计】新增工业 4.0 视觉包装板块' : 'LIVE: [POLICY] 2026 Closure Ready | [REG] 18 Web3 Firms Joined This Week | [COMPLIANCE] RWA Tokenization v3.2 Updated | [DESIGN] New Industrial 4.0 Visuals'"></span>
+    <div class="marquee-container">
+        <div class="marquee-content">
+            📢 最新公告：迎接封关元年，全场特惠活动火热进行中！ | 抢先体验封关特权，立即下单获取专属福利！ | 遇到问题请随时点击右下角AI助手咨询。
         </div>
     </div>
 
-    <nav class="fixed top-8 w-full z-[1500] px-6 md:px-12 h-24 flex items-center justify-between bg-black/80 backdrop-blur-md border-b border-white/5">
-        <div class="flex items-center gap-6 cursor-pointer" @click="view = 'home'">
-            <div class="w-12 h-12 bg-white text-black font-black flex items-center justify-center text-xl">S</div>
-            <div>
-                <div class="text-2xl font-black tracking-tighter leading-none">Solana-Hainan</div>
-                <div class="text-[9px] text-[#14f195] font-bold mt-1 tracking-[3px] uppercase">Strategic Alliance</div>
-            </div>
+    <div class="main-container">
+        <h1>迎接封关元年 倒计时</h1>
+        <div class="countdown-box" id="countdown-box">
+            <div class="time-block"><span class="time-number" id="days">00</span><span class="time-label">天</span></div>
+            <div class="time-block"><span class="time-number" id="hours">00</span><span class="time-label">时</span></div>
+            <div class="time-block"><span class="time-number" id="minutes">00</span><span class="time-label">分</span></div>
+            <div class="time-block"><span class="time-number" id="seconds">00</span><span class="time-label">秒</span></div>
         </div>
 
-        <div class="hidden lg:flex items-center gap-10">
-            <template x-for="item in navItems">
-                <a @click="view = item.id" :class="view === item.id ? 'active' : ''" class="nav-link" x-text="lang==='zh'?item.zh:item.en"></a>
-            </template>
-        </div>
-
-        <div class="flex items-center gap-6">
-            <button @click="lang = (lang === 'zh' ? 'en' : 'zh')" class="text-[10px] font-black border border-white/20 px-3 py-1 hover:border-[#14f195] transition" x-text="lang === 'zh' ? 'EN' : '中文'"></button>
-            <div class="text-right hidden sm:block">
-                <div class="text-[10px] text-gray-500 font-bold uppercase">Hotline</div>
-                <div class="text-sm font-black text-[#14f195]">+86 181-1779-0507</div>
-            </div>
-        </div>
-    </nav>
-
-    <main x-show="view === 'home'" class="pt-52 px-6 md:px-12 max-w-7xl mx-auto pb-32">
-        <div class="grid lg:grid-cols-2 gap-20 items-center">
-            <div>
-                <h1 class="text-7xl md:text-9xl font-black tracking-tighter leading-none mb-10">
-                    2026<br><span class="text-[#14f195]">CLOSURE</span><br>READY.
-                </h1>
-                <p class="text-lg text-gray-400 font-medium leading-relaxed max-w-lg" x-text="lang==='zh'?'我们不仅是咨询顾问，更是您在海南自贸港的物理与数字资产架构师。从公司落地的第一枚印章，到资产上链的最后一行代码，全业务覆盖。':'We are your architects for physical & digital assets in Hainan FTP. From the first corporate seal to the last line of RWA code.'"></p>
-                <div class="mt-12 flex gap-4">
-                    <button @click="view = 'pricing'" class="bg-[#14f195] text-black px-10 py-5 font-black uppercase text-xs tracking-widest hover:bg-white transition">Explore Services</button>
-                    <button @click="view = 'about'" class="border border-white/20 px-10 py-5 font-black uppercase text-xs tracking-widest hover:border-[#14f195] transition">Contact Us</button>
-                </div>
-            </div>
-            <div class="hidden lg:block">
-                <div class="glass p-1 rounded-full aspect-square flex items-center justify-center relative overflow-hidden">
-                    <div class="absolute inset-0 bg-gradient-to-tr from-[#9945FF] to-[#14F195] opacity-20 animate-pulse"></div>
-                    <div class="text-center z-10">
-                        <div class="text-8xl font-black italic">SH</div>
-                        <div class="text-xs font-bold tracking-[5px] text-gray-400 mt-4">ESTABLISHED 2026</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <div :class="view === 'pricing' ? 'active' : ''" class="sub-page px-6 md:px-12 max-w-7xl mx-auto pb-40">
-        <div class="flex flex-col lg:flex-row justify-between items-baseline gap-6 mb-20">
-            <h2 class="text-6xl font-black uppercase tracking-tighter" x-text="lang==='zh'?'业务矩阵':'Business Matrix'"></h2>
-            <div class="flex flex-wrap gap-3">
-                <template x-for="c in categories">
-                    <button @click="activeCat = c.id" :class="activeCat === c.id ? 'bg-white text-black' : 'text-gray-500 hover:text-white'" class="text-[10px] font-black uppercase tracking-widest px-4 py-2 transition" x-text="lang==='zh'?c.zh:c.en"></button>
-                </template>
-            </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/10 border border-white/10">
-            <template x-for="s in filteredServices">
-                <div class="glass p-10 flex flex-col justify-between group">
-                    <div>
-                        <div class="flex justify-between items-start mb-6">
-                            <span class="text-[9px] font-black uppercase tracking-widest text-[#14f195] border border-[#14f195]/30 px-2 py-1" x-text="s.cat"></span>
-                            <span class="text-2xl font-mono font-black text-white group-hover:text-[#14f195] transition" x-text="s.price === 'POA' ? 'POA' : '¥'+s.price"></span>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4" x-text="s['title_'+lang]"></h3>
-                        <p class="text-xs text-gray-500 leading-relaxed mb-8" x-text="s['desc_'+lang]"></p>
-                    </div>
-                    <button class="w-full border border-white/10 py-4 text-[10px] font-black uppercase tracking-[3px] group-hover:bg-white group-hover:text-black transition">Initiate Protocol</button>
-                </div>
-            </template>
-        </div>
+        <button class="order-btn" onclick="alert('订单已生成，跳转至支付页面！')">立即下单抢占先机</button>
     </div>
 
-    <div :class="view === 'parks' ? 'active' : ''" class="sub-page px-6 md:px-12 max-w-7xl mx-auto pb-32">
-        <h2 class="text-6xl font-black mb-20 uppercase tracking-tighter">13 Strategic Parks</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            <template x-for="p in parks">
-                <div class="glass p-8 group">
-                    <div class="text-[#9945FF] font-black text-xs mb-4" x-text="'ZONE_'+p.id"></div>
-                    <h3 class="text-xl font-bold mb-4 group-hover:text-[#14f195] transition" x-text="p['name_'+lang]"></h3>
-                    <p class="text-[10px] text-gray-500 leading-relaxed" x-text="p['desc_'+lang]"></p>
-                </div>
-            </template>
-        </div>
-    </div>
-
-    <div :class="view === 'about' ? 'active' : ''" class="sub-page px-6 md:px-12 max-w-4xl mx-auto pb-32 text-center">
-        <h2 class="text-6xl font-black mb-10 uppercase tracking-tighter">Contact Node</h2>
-        <div class="glass p-16 border-t-8 border-[#14f195]">
-            <p class="text-gray-400 text-sm font-bold uppercase mb-4 tracking-[5px]">Authorized Consultant</p>
-            <div class="text-5xl md:text-7xl font-black text-white mb-10">+86 181-1779-0507</div>
-            <div class="grid md:grid-cols-2 gap-10 text-left pt-10 border-t border-white/10">
-                <div>
-                    <div class="text-[10px] text-gray-500 font-black uppercase mb-2">Primary Email</div>
-                    <div class="text-xl font-bold">kosok@solana-hainan.com</div>
-                </div>
-                <div>
-                    <div class="text-[10px] text-gray-500 font-black uppercase mb-2">Location</div>
-                    <div class="text-xl font-bold" x-text="lang==='zh'?'海南·江东新区总部经济区':'Jiangdong HQ, Hainan FTP'"></div>
-                </div>
+    <div class="ai-chatbot">
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">智能客服助手</div>
+            <div class="chat-body" id="chatBody">
+                <div class="message ai-msg">您好！我是AI助手，关于封关政策或下单流程，有什么我可以帮您的吗？</div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chatInput" placeholder="请输入您的问题..." onkeypress="handleEnter(event)">
+                <button onclick="sendMessage()">发送</button>
             </div>
         </div>
+        <div class="ai-btn" onclick="toggleChat()">AI</div>
     </div>
-
-    <footer class="py-20 border-t border-white/5 text-[10px] text-center text-gray-600 font-bold uppercase tracking-[2px]">
-        © 2026 Solana-Hainan Strategic Advisory. All protocols reserved. 
-    </footer>
 
     <script>
-        function appState() {
-            return {
-                lang: 'zh',
-                view: 'home',
-                activeCat: 'ALL',
-                navItems: [
-                    { id: 'home', zh: '首页', en: 'Home' },
-                    { id: 'parks', zh: '13园区', en: '13 Parks' },
-                    { id: 'pricing', zh: '全量业务', en: 'Services' },
-                    { id: 'about', zh: '联系', en: 'Contact' }
-                ],
-                categories: [
-                    { id: 'ALL', zh: '全部', en: 'All' },
-                    { id: 'REG', zh: '公司注册', en: 'Registration' },
-                    { id: 'DESIGN', zh: '视觉设计', en: 'Creative' },
-                    { id: 'FISCAL', zh: '财税合规', en: 'Fiscal' },
-                    { id: 'RWA', zh: 'Web3/RWA', en: 'Web3' },
-                    { id: 'OPS', zh: '人力/运营', en: 'Operations' }
-                ],
-                get filteredServices() {
-                    if (this.activeCat === 'ALL') return this.services;
-                    return this.services.filter(s => s.catID === this.activeCat);
-                },
-                services: [
-                    // === [REG] 注册与准入系列 (补全) ===
-                    { catID: 'REG', cat: 'REG', price: '1,500', title_zh: '海南内资公司设立 (全套)', title_en: 'Domestic Corp Setup', desc_zh: '含名称预核准、五证合一执照、刻章、基本户预约及税务初始化。', desc_en: 'Full license, seals, bank appointment & tax setup.' },
-                    { catID: 'REG', cat: 'REG', price: '3,800', title_zh: '外资/WFOE 准入设立', title_en: 'Foreign WFOE Setup', desc_zh: '含商务部备案、外管局登记及外币账户开立辅导。', desc_en: 'MOFCOM filing, SAFE registration & FX account guidance.' },
-                    { catID: 'REG', cat: 'REG', price: '6,800', title_zh: 'ICP / EDI 增值电信牌照', title_en: 'Telecom License', desc_zh: '互联网平台进入自贸港必修，含全流程系统评测与政府对接。', desc_en: 'Essential for digital platforms, including government liaison.' },
-                    { catID: 'REG', cat: 'REG', price: '15,000', title_zh: 'QFLP / QDIE 金融备案', title_en: 'QFLP/QDIE Filing', desc_zh: '针对合格境外/境内有限合伙人专项准入，含联审文案。', desc_en: 'Specialized fund access with government review support.' },
-                    { catID: 'REG', cat: 'REG', price: '4,500', title_zh: '特殊行业许可证 (人力/食药)', title_en: 'Special Sector Permits', desc_zh: '含人力资源许可证、食品经营许可证、医疗器械备案等。', desc_en: 'HR, Food, and Medical device sector permits.' },
-                    { catID: 'REG', cat: 'REG', price: '2,500', title_zh: '实质性运营场地对标托管', title_en: 'Substantial Space MGMT', desc_zh: '提供符合 15% 税惠审计要求的实体办公场地及资产托管。', desc_en: 'Audit-ready physical office space and management.' },
+        // --- 倒计时逻辑 ---
+        const targetDate = new Date('2025-12-18T00:00:00').getTime();
 
-                    // === [DESIGN] 视觉设计系列 (补全) ===
-                    { catID: 'DESIGN', cat: 'CREATIVE', price: '9,500', title_zh: 'Web3 品牌视觉系统 (VI)', title_en: 'Web3 Brand VI System', desc_zh: 'Logo、配色、动态视觉规范，融合 Solana 极客与离岸金融美学。', desc_en: 'Logo, palettes, and motion guidelines for Web3 brands.' },
-                    { catID: 'DESIGN', cat: 'CREATIVE', price: '6,000', title_zh: 'NFT / RWA 资产原画设计', title_en: 'NFT/RWA Visual Design', desc_zh: '实物资产代币化后的数字化展示、原画创作与 3D 建模。', desc_en: 'Digital art and 3D modeling for tokenized assets.' },
-                    { catID: 'DESIGN', cat: 'CREATIVE', price: 'POA', title_zh: '自贸港展厅/办公室内设计', title_en: 'Interior & Space Design', desc_zh: '实体展示中心、总部办公室装修规划与品牌落地施工设计。', desc_en: 'Showroom and HQ office planning with branding.' },
-                    { catID: 'DESIGN', cat: 'CREATIVE', price: '4,500', title_zh: 'BP / 白皮书精装排版', title_en: 'Whitepaper & BP Design', desc_zh: '面向监管与投资人的高阶逻辑梳理、翻译及专业排版设计。', desc_en: 'Logic grooming and high-end layout for regulators.' },
-                    { catID: 'DESIGN', cat: 'CREATIVE', price: '5,000', title_zh: '工业产品包装 (30%加工增值)', title_en: 'Industrial Packaging', desc_zh: '针对封关后进入内地的加工产品进行品牌化包装方案设计。', desc_en: 'Branding for VAP products entering mainland.' },
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
 
-                    // === [FISCAL] 财税系列 ===
-                    { catID: 'FISCAL', cat: 'FISCAL', price: '12,000', title_zh: 'MNRO 15% 税率合规审计', title_en: 'MNRO 15% Tax Audit', desc_zh: '实质性运营合规对标，确保企业所得税及个税红利。', desc_en: 'Securing 15% CIT/IIT through strict audit alignment.' },
-                    { catID: 'FISCAL', cat: 'FISCAL', price: '5,000', title_zh: 'EFU 自由贸易账户管理', title_en: 'EFU Account MGMT', desc_zh: 'FT 账户开立、跨境资金调度及多币种自由结汇。', desc_en: 'FT account setup and cross-border capital management.' },
-                    { catID: 'FISCAL', cat: 'FISCAL', price: '8,500', title_zh: '加工增值 30% 免税合规', title_en: '30% VAP Tax Logic', desc_zh: '打通海关、税务流程，实现二线入关零关税逻辑。', desc_en: 'Zero-tariff logic for processed goods entering mainland.' },
-                    { catID: 'FISCAL', cat: 'FISCAL', price: '3,600', title_zh: '年度代账与汇算清缴', title_en: 'Annual Accounting', desc_zh: '含月度税务申报、年度审计配合及政务报备。', desc_en: 'Monthly filing, annual audit, and gov reporting.' },
+            if (distance < 0) {
+                document.getElementById('countdown-box').innerHTML = '<h2 style="color:#007aff;">封关元年已正式开启！</h2>';
+                return;
+            }
 
-                    // === [RWA] Web3 系列 ===
-                    { catID: 'RWA', cat: 'WEB3', price: '25,000', title_zh: 'RWA 资产代币化合规架构', title_en: 'RWA Compliance Stack', desc_zh: '法律意见书、智能合约审计对接及自贸港沙盒备案。', desc_en: 'Legal opinions and sandbox filing for tokenized assets.' },
-                    { catID: 'RWA', cat: 'WEB3', price: '18,000', title_zh: '开发者 API 结算网关部署', title_en: 'Settlement API Hub', desc_zh: '符合监管要求的法币-代币结算接口与自动分润系统。', desc_en: 'Regulated fiat-token settlement & profit sharing.' },
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-                    // === [OPS] 人力运营系列 ===
-                    { catID: 'OPS', cat: 'OPS', price: '4,500', title_zh: '外籍人才工作许可 (A/B类)', title_en: 'Foreigner Work Permit', desc_zh: '高端人才认定、居留证办理及高管落户手续。', desc_en: 'Talent visas and residency for foreign executives.' },
-                    { catID: 'OPS', cat: 'OPS', price: '2,000', title_zh: '社保公积金开户及代缴', title_en: 'HR & Social Security', desc_zh: '员工五险一金代办及劳务合规外包管理。', desc_en: 'Managed social security and payroll compliance.' }
-                ],
-                parks: [
-                    { id: '01', name_zh: '海口江东新区', name_en: 'Jiangdong HQ', desc_zh: '总部经济、离岸贸易与金融。', desc_en: 'HQ and offshore finance.' },
-                    { id: '02', name_zh: '复兴城互联网园', name_en: 'Fuxing City', desc_zh: '数据跨境与数字经济。', desc_en: 'Cross-border data & tech.' },
-                    { id: '03', name_zh: '崖州湾科技城', name_en: 'Yazhou Bay', desc_zh: '深海、高新、南繁种业。', desc_en: 'High-tech and deep sea.' },
-                    { id: '04', name_zh: '海南生态软件园', name_en: 'Software Park', desc_zh: '区块链与版权创新。', desc_en: 'Blockchain & copyright.' },
-                    { id: '05', name_zh: '洋浦经济开发区', name_en: 'Yangpu Zone', desc_zh: '加工增值、航运物流。', desc_en: 'VAP and maritime logistics.' },
-                    { id: '06', name_zh: '博鳌乐城医疗区', name_en: 'Boao Lecheng', desc_zh: '国际特许医疗、创新药械。', desc_en: 'Exclusive medical access.' },
-                    { id: '07', name_zh: '海口国家高新区', name_en: 'High-Tech Zone', desc_zh: '高端装备制造、医药。', desc_en: 'Manufacturing and pharma.' },
-                    { id: '08', name_zh: '海口综合保税区', name_en: 'Bonded Zone', desc_zh: '免税仓储、电商枢纽。', desc_en: 'Duty-free and e-commerce.' },
-                    { id: '09', name_zh: '三亚中央商务区', name_en: 'Sanya CBD', desc_zh: '邮轮游艇、免税商业。', desc_en: 'Cruises and premium retail.' },
-                    { id: '10', name_zh: '文昌国际航天城', name_en: 'Space City', desc_zh: '商业航天、空天大数据。', desc_en: 'Commercial space hub.' },
-                    { id: '11', name_zh: '陵水国际教育区', name_en: 'Lingshui Edu', desc_zh: '中外合作办学。', desc_en: 'International education.' },
-                    { id: '12', name_zh: '东方临港产业园', name_en: 'Dongfang Port', desc_zh: '石化新材料、海洋装备。', desc_en: 'Petrochemicals.' },
-                    { id: '13', name_zh: '临高金牌港开发区', name_en: 'Lingao Jinpai', desc_zh: '建筑产业与海洋经济。', desc_en: 'Construction and marine.' }
-                ]
+            document.getElementById('days').innerText = days.toString().padStart(2, '0');
+            document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // --- AI助手逻辑 ---
+        function toggleChat() {
+            const chatWin = document.getElementById('chatWindow');
+            chatWin.style.display = chatWin.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            if (!message) return;
+
+            // 添加用户消息
+            appendMessage(message, 'user-msg');
+            input.value = '';
+
+            // 模拟AI回复延迟
+            setTimeout(() => {
+                appendMessage('已收到您的问题：“' + message + '”。目前系统正在接入AI大模型，稍后将为您提供详细解答。您可以先尝试点击“立即下单”体验流程！', 'ai-msg');
+            }, 800);
+        }
+
+        function appendMessage(text, className) {
+            const chatBody = document.getElementById('chatBody');
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `message ${className}`;
+            msgDiv.innerText = text;
+            chatBody.appendChild(msgDiv);
+            chatBody.scrollTop = chatBody.scrollHeight; // 自动滚动到底部
+        }
+
+        function handleEnter(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
             }
         }
     </script>
