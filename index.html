@@ -3,262 +3,255 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solana-Hainan Strategic Advisory | 2026 封关运作策略枢纽</title>
+    <title>Solana-Hainan Strategic Advisory | 2026 终极全量中枢</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <style>
         :root { --solana-green: #14F195; --solana-purple: #9945FF; }
         body { background: #030303; color: #fff; font-family: 'Inter', 'PingFang SC', sans-serif; overflow-x: hidden; }
-        .glass { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); }
-        .glass:hover { border-color: rgba(20, 241, 149, 0.4); }
+        .glass { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.3s; }
+        .glass:hover { border-color: var(--solana-green); background: rgba(20, 241, 149, 0.03); }
         .marquee { background: var(--solana-green); color: #000; font-weight: 900; font-size: 11px; z-index: 2000; letter-spacing: 0.05em; }
         .sub-page { display: none; padding-top: 140px; min-height: 100vh; }
-        .sub-page.active { display: block; animation: fadeIn 0.3s ease; }
+        .sub-page.active { display: block; animation: fadeIn 0.4s ease; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .active-link { color: #fff !important; border-bottom: 2px solid var(--solana-green); padding-bottom: 5px; }
         [x-cloak] { display: none !important; }
     </style>
 </head>
-<body x-data="globalState()">
+<body x-data="globalState()" x-cloak>
 
     <div class="marquee fixed top-0 w-full py-2 overflow-hidden whitespace-nowrap">
-        <div class="inline-block animate-[marquee_40s_linear_infinite]">
-            <span class="mx-4" x-text="lang === 'zh' ? '实时数据流: [政策] 2026 海南封关运作就绪度: 98.4% | [合规] EFU 离岸账户跨境额度: 全面开放 | [生态] 开发者 API v2.0 已部署至主网' : 'REAL-TIME: [POLICY] 2026 Closure Readiness: 98.4% | [COMPLIANCE] EFU Offshore Limits: Fully Open | [DEV] API v2.0 Deployed to Mainnet'"></span>
+        <div class="inline-block animate-[marquee_60s_linear_infinite]">
+            <span class="mx-8" x-text="lang === 'zh' ? '实时监控: [政务] 2026 封关准入白名单开放 | [注册] 海口/三亚新增 WFOE 企业 45 家 | [设计] 工业设计中心获省级认证 | [API] 主网 RWA 交易量突破 $200M' : 'REAL-TIME: [GOV] 2026 FTP Whitelist Open | [REG] 45 New WFOEs in Haikou/Sanya | [DESIGN] Industrial Design Center Certified | [API] Mainnet RWA Volume > $200M'"></span>
         </div>
     </div>
 
-    <nav class="fixed top-8 w-full z-[1500] px-4 md:px-10 h-20 flex items-center justify-between bg-[#030303]/95 backdrop-blur-md border-b border-white/10">
-        <div class="flex items-center gap-3 cursor-pointer" @click="view = 'home'">
+    <nav class="fixed top-8 w-full z-[1500] px-6 md:px-12 h-20 flex items-center justify-between bg-[#030303]/90 backdrop-blur-md border-b border-white/10">
+        <div class="flex items-center gap-4 cursor-pointer" @click="view = 'home'">
             <div class="w-10 h-10 bg-[#14f195] text-black font-black flex items-center justify-center rounded-sm text-sm">SH</div>
             <div>
-                <div class="text-lg md:text-xl font-black italic tracking-tighter">Solana-Hainan</div>
-                <div class="text-[9px] text-[#14f195] font-bold uppercase" x-text="lang==='zh'?'2026 封关运作策略枢纽':'Strategic Advisory'"></div>
+                <div class="text-xl font-black italic tracking-tighter">Solana-Hainan</div>
+                <div class="text-[9px] text-[#14f195] font-bold uppercase tracking-widest">2026 Strategic Advisory</div>
             </div>
         </div>
 
-        <div class="hidden lg:flex items-center gap-6 text-[11px] font-bold text-gray-400">
-            <a @click="view = 'home'" :class="view === 'home' ? 'text-white' : ''" class="cursor-pointer hover:text-white transition" x-text="lang==='zh'?'策略中枢':'HOME'"></a>
-            <a @click="view = 'parks'" :class="view === 'parks' ? 'text-white' : ''" class="cursor-pointer hover:text-white transition" x-text="lang==='zh'?'13大园区':'13 PARKS'"></a>
-            <a @click="view = 'pricing'" :class="view === 'pricing' ? 'text-white' : ''" class="cursor-pointer hover:text-white transition" x-text="lang==='zh'?'业务报价':'PRICING'"></a>
-            <a @click="view = 'docs'" :class="view === 'docs' ? 'text-white border-b border-[#14f195] pb-1' : ''" class="cursor-pointer hover:text-white transition" x-text="lang==='zh'?'政策知识库':'DOCS / WIKI'"></a>
-            <a @click="view = 'dev'" :class="view === 'dev' ? 'text-white border-b border-[#14f195] pb-1' : ''" class="cursor-pointer hover:text-white transition" x-text="lang==='zh'?'开发者 API':'DEVELOPERS'"></a>
-            <a @click="view = 'about'" :class="view === 'about' ? 'text-white' : ''" class="cursor-pointer hover:text-white transition" x-text="lang==='zh'?'核验与联系':'ABOUT'"></a>
+        <div class="hidden lg:flex items-center gap-8 text-[11px] font-black text-gray-400 uppercase tracking-tighter">
+            <a @click="view = 'home'" :class="view === 'home' ? 'active-link' : ''" class="cursor-pointer hover:text-white transition">Home</a>
+            <a @click="view = 'parks'" :class="view === 'parks' ? 'active-link' : ''" class="cursor-pointer hover:text-white transition">13 Parks</a>
+            <a @click="view = 'pricing'" :class="view === 'pricing' ? 'active-link' : ''" class="cursor-pointer hover:text-white transition">Business Matrix</a>
+            <a @click="view = 'docs'" :class="view === 'docs' ? 'active-link' : ''" class="cursor-pointer hover:text-white transition">Docs/Wiki</a>
+            <a @click="view = 'dev'" :class="view === 'dev' ? 'active-link' : ''" class="cursor-pointer hover:text-white transition">Dev/API</a>
+            <a @click="view = 'about'" :class="view === 'about' ? 'active-link' : ''" class="cursor-pointer hover:text-white transition">Authority</a>
         </div>
 
-        <div class="flex items-center gap-3 md:gap-4">
-            <div class="flex bg-white/10 rounded-sm text-[10px] font-black overflow-hidden">
-                <button @click="lang = 'zh'" :class="lang === 'zh' ? 'bg-[#14f195] text-black' : 'text-gray-400'" class="px-2 py-1.5 transition">ZH</button>
-                <button @click="lang = 'en'" :class="lang === 'en' ? 'bg-[#14f195] text-black' : 'text-gray-400'" class="px-2 py-1.5 transition">EN</button>
+        <div class="flex items-center gap-4">
+            <div class="flex bg-white/5 rounded-sm text-[10px] font-black border border-white/10">
+                <button @click="lang = 'zh'" :class="lang === 'zh' ? 'bg-[#14f195] text-black' : 'text-gray-500'" class="px-3 py-1.5 transition">ZH</button>
+                <button @click="lang = 'en'" :class="lang === 'en' ? 'bg-[#14f195] text-black' : 'text-gray-500'" class="px-3 py-1.5 transition">EN</button>
             </div>
-            <button @click="view = 'auth'" class="text-[11px] font-bold text-white hover:text-[#14f195] transition whitespace-nowrap" x-text="lang==='zh'?'系统登录':'LOGIN'"></button>
-            <button onclick="alert('进入指挥中心 → ROI 资产测算')" class="bg-white text-black px-4 py-2 text-[10px] font-black uppercase hover:bg-[#14f195] transition whitespace-nowrap" x-text="lang==='zh'?'ROI 模拟器':'ROI SIMULATOR'"></button>
+            <button @click="view = 'auth'" class="bg-white text-black px-4 py-2 text-[10px] font-black uppercase hover:bg-[#14f195] transition">Login</button>
         </div>
     </nav>
 
-    <main x-show="view === 'home'" class="pt-40 px-6 md:px-12 max-w-[1400px] mx-auto pb-32">
+    <main x-show="view === 'home'" class="pt-48 px-6 md:px-12 max-w-7xl mx-auto pb-32">
         <section class="border-l-4 border-[#14f195] pl-8 mb-20">
-            <h1 class="text-5xl md:text-7xl font-black tracking-tighter mb-6 text-white" x-text="lang==='zh'?'结构化重塑 封关元年红利':'Structural Re-engineering 2026 Fiscal Dividends'"></h1>
-            <p class="text-sm md:text-base text-gray-400 max-w-3xl leading-relaxed font-bold" x-text="lang==='zh'?'基于海南自由贸易港 2026 政策底座。通过离岸合规算法与结构化协同，为全球高净值客户构建具备非对称效率优势的财税与资产架构。':'Engineered on the Hainan Free Trade Port 2026 infrastructure. Deploying offshore compliance algorithms to secure Asymmetrical Efficiency Advantages for global HNWIs and enterprises.'"></p>
+            <h1 class="text-6xl md:text-8xl font-black tracking-tighter mb-8 leading-none" x-text="lang==='zh'?'无缝接入<br>封关红利':'SEAMLESS<br>ACCESS TO FTP'"></h1>
+            <p class="text-sm md:text-lg text-gray-400 max-w-2xl font-bold leading-relaxed" x-text="lang==='zh'?'海南自由贸易港 2026 深度参与。为 Web3 项目及全球资产提供从公司注册、多维设计到离岸合规的一站式资产上链枢纽。':'Strategic hub for the 2026 Hainan Free Trade Port. Providing a full-stack pipeline from company registration and creative design to Web3 compliance.'"></p>
         </section>
-
-        <div class="glass p-8 mb-20 flex flex-col md:flex-row justify-between items-center border-l-4 border-l-[#14f195]">
-            <div class="text-sm font-bold text-gray-400 mb-6 md:mb-0" x-text="lang==='zh'?'距离 2026 年度制度对标与红利窗口核验还有：':'Countdown to 2026 Policy Alignment & Operational Performance:'"></div>
-            <div class="flex gap-4 md:gap-8 text-center font-mono font-black text-2xl md:text-4xl text-white">
-                <div>314 <span class="block text-[10px] text-[#14f195] uppercase">Days</span></div><div>:</div>
-                <div>07 <span class="block text-[10px] text-[#14f195] uppercase">Hours</span></div><div>:</div>
-                <div>59 <span class="block text-[10px] text-[#14f195] uppercase">Mins</span></div>
-            </div>
-        </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <template x-for="mod in modules">
-                <div class="glass p-8 hover:bg-white/5 transition">
-                    <div class="text-[#14f195] font-black text-lg mb-2" x-text="mod.id"></div>
-                    <h3 class="text-xl font-bold text-white mb-4" x-text="mod['title_'+lang]"></h3>
-                    <p class="text-xs text-gray-400 leading-relaxed mb-6" x-text="mod['desc_'+lang]"></p>
-                    <button class="text-[10px] text-[#14f195] font-bold border-b border-[#14f195]/30 pb-1" x-text="lang==='zh'?'查看详情 +':'Explore More +'"></button>
+                <div class="glass p-10 flex flex-col justify-between">
+                    <div>
+                        <div class="text-[#14f195] font-black text-xl mb-4" x-text="mod.id"></div>
+                        <h3 class="text-2xl font-bold text-white mb-4" x-text="mod['title_'+lang]"></h3>
+                        <p class="text-xs text-gray-500 leading-relaxed mb-8" x-text="mod['desc_'+lang]"></p>
+                    </div>
+                    <button @click="view = 'pricing'" class="bg-white/5 text-white py-3 text-[10px] font-black uppercase hover:bg-[#14f195] hover:text-black transition">View Details</button>
                 </div>
             </template>
         </div>
     </main>
 
     <div :class="view === 'parks' ? 'active' : ''" class="sub-page px-6 md:px-12 max-w-7xl mx-auto pb-32">
-        <button @click="view = 'home'" class="mb-8 text-[#14f195] font-black hover:text-white transition">← <span x-text="lang==='zh'?'返回中枢':'BACK'"></span></button>
-        <h2 class="text-4xl font-black mb-10 text-white" x-text="lang==='zh'?'13 大园区商务情报':'13 Parks Intelligence'"></h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <h2 class="text-5xl font-black mb-12 uppercase italic">Industrial Parks</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
             <template x-for="p in parks">
                 <div class="glass p-6">
-                    <div class="text-[#14f195] font-mono text-xs font-black mb-2" x-text="p.id"></div>
+                    <div class="text-[#14f195] font-mono text-[10px] font-black mb-2" x-text="p.id"></div>
                     <h3 class="text-lg font-bold text-white mb-2" x-text="p['name_'+lang]"></h3>
-                    <p class="text-[11px] text-gray-400 leading-relaxed" x-text="p['desc_'+lang]"></p>
+                    <p class="text-[10px] text-gray-500 leading-relaxed" x-text="p['desc_'+lang]"></p>
                 </div>
             </template>
         </div>
     </div>
 
-    <div :class="view === 'pricing' ? 'active' : ''" class="sub-page px-6 md:px-12 max-w-5xl mx-auto pb-32">
-        <button @click="view = 'home'" class="mb-8 text-[#14f195] font-bold hover:text-white transition">← <span x-text="lang==='zh'?'返回中枢':'BACK'"></span></button>
-        <div class="mb-12 border-b border-white/10 pb-6">
-            <h2 class="text-4xl font-black text-white" x-text="lang==='zh'?'S 阶梯业务报价':'S Service Pricing'"></h2>
-            <p class="text-xs text-gray-400 mt-2 font-bold" x-text="lang==='zh'?'包含 W 离岸家族办公室及全维合规落地服务 (全量清单)':'Including W Offshore Family Office & Full Compliance Services'"></p>
+    <div :class="view === 'pricing' ? 'active' : ''" class="sub-page px-6 md:px-12 max-w-7xl mx-auto pb-32">
+        <div class="flex flex-col lg:flex-row justify-between items-end gap-8 mb-16 border-b border-white/10 pb-12">
+            <div>
+                <h2 class="text-6xl font-black uppercase mb-4 tracking-tighter">Business Matrix</h2>
+                <p class="text-sm text-gray-400 font-bold max-w-xl" x-text="lang==='zh'?'全生命周期服务体系：涵盖注册、准入、财税、设计、人力及 Web3 技术对接。':'A complete lifecycle service system: Registration, Licensing, Tax, Design, HR, and Web3 Integration.'"></p>
+            </div>
+            <div class="flex flex-wrap gap-2">
+                <template x-for="cat in categories">
+                    <button @click="activeCat = cat" :class="activeCat === cat ? 'bg-[#14f195] text-black' : 'bg-white/5 text-gray-500'" class="px-5 py-2 text-[9px] font-black uppercase rounded-sm transition-all" x-text="cat"></button>
+                </template>
+            </div>
         </div>
-        <div class="space-y-4">
-            <template x-for="s in services">
-                <div class="glass p-8 flex flex-col md:flex-row justify-between items-center gap-6">
+
+        <div class="grid grid-cols-1 gap-4">
+            <template x-for="s in filteredServices">
+                <div class="glass p-8 flex flex-col lg:flex-row justify-between items-center gap-8 group">
                     <div class="flex-1">
-                        <span class="text-[#14f195] font-black text-[10px] uppercase border border-[#14f195]/30 px-2 py-1 rounded-sm mb-3 inline-block" x-text="s.cat"></span>
-                        <h3 class="text-xl font-bold text-white mb-2" x-text="s['title_'+lang]"></h3>
-                        <p class="text-xs text-gray-400 leading-relaxed" x-text="s['desc_'+lang]"></p>
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="text-[#14f195] font-black text-[9px] uppercase border border-[#14f195]/30 px-3 py-1" x-text="s.catName"></span>
+                            <span x-show="s.isNew" class="bg-[#9945FF] text-white text-[9px] font-black px-3 py-1">ULTIMATE</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-[#14f195] transition" x-text="s['title_'+lang]"></h3>
+                        <p class="text-xs text-gray-500 leading-relaxed max-w-4xl" x-text="s['desc_'+lang]"></p>
                     </div>
-                    <div class="text-right w-full md:w-auto md:border-l border-white/10 md:pl-8 mt-4 md:mt-0">
-                        <div class="text-2xl font-mono font-black text-[#14f195]" x-text="s.price === 'POA' ? 'POA' : '¥ '+s.price"></div>
-                        <button class="mt-3 w-full bg-white text-black px-6 py-2 text-[10px] font-black uppercase hover:bg-[#14f195] transition" x-text="lang==='zh'?'申请核验':'Verify & Apply'"></button>
+                    <div class="text-right w-full lg:w-72 lg:border-l border-white/10 lg:pl-10">
+                        <div class="text-3xl font-mono font-black text-[#14f195]" x-text="s.price === 'POA' ? 'POA' : '¥ '+s.price"></div>
+                        <div class="text-[9px] text-gray-600 mt-1 uppercase font-bold" x-text="lang==='zh'?'标准费率 / 起':'Standard Rate / From'"></div>
+                        <button class="mt-6 w-full bg-white text-black py-4 text-[10px] font-black uppercase hover:bg-[#14f195] transition">Acquire Service</button>
                     </div>
                 </div>
             </template>
         </div>
     </div>
 
-    <div :class="view === 'docs' ? 'active' : ''" class="sub-page px-6 md:px-12 max-w-5xl mx-auto pb-32">
-        <button @click="view = 'home'" class="mb-8 text-[#14f195] font-bold hover:text-white transition">← <span x-text="lang==='zh'?'返回中枢':'BACK'"></span></button>
-        <div class="mb-12 border-b border-white/10 pb-6">
-            <h2 class="text-4xl font-black text-white" x-text="lang==='zh'?'政策知识库 & 白皮书':'Policy Knowledge Base & Wiki'"></h2>
-            <p class="text-xs text-gray-400 mt-2 font-bold" x-text="lang==='zh'?'同步 GitHub 最新海南封关政策法案解析与实操文档。':'Syncing the latest Hainan 2026 policy acts and operational docs from GitHub.'"></p>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div :class="view === 'docs' ? 'active' : ''" class="sub-page px-6 md:px-12 max-w-7xl mx-auto pb-32">
+        <h2 class="text-5xl font-black mb-12">POLICY WIKI</h2>
+        <div class="grid md:grid-cols-2 gap-6">
             <template x-for="doc in docs">
-                <div class="glass p-6 hover:border-[#14f195] cursor-pointer group flex items-start gap-4">
-                    <div class="text-2xl">📄</div>
+                <div class="glass p-10 flex items-start gap-8 cursor-pointer">
+                    <div class="text-4xl text-[#14f195]">📄</div>
                     <div>
-                        <h3 class="text-sm font-bold text-white mb-1 group-hover:text-[#14f195] transition" x-text="doc['title_'+lang]"></h3>
-                        <p class="text-[10px] text-gray-500" x-text="doc.date + ' | ' + doc.size"></p>
+                        <h3 class="text-xl font-bold mb-2" x-text="doc['title_'+lang]"></h3>
+                        <div class="text-xs text-gray-500 uppercase font-black" x-text="doc.meta"></div>
                     </div>
                 </div>
             </template>
         </div>
     </div>
 
-    <div :class="view === 'dev' ? 'active' : ''" class="sub-page px-6 md:px-12 max-w-6xl mx-auto pb-32">
-        <button @click="view = 'home'" class="mb-8 text-[#14f195] font-bold hover:text-white transition">← <span x-text="lang==='zh'?'返回中枢':'BACK'"></span></button>
-        <div class="mb-12 border-b border-white/10 pb-6">
-            <h2 class="text-4xl font-black text-white" x-text="lang==='zh'?'开发者与 API 中枢':'Developers & API Hub'"></h2>
-            <p class="text-xs text-[#14f195] mt-2 font-bold" x-text="lang==='zh'?'专为 Web3 项目与离岸企业提供 RWA 资产上链智能合约与 EF 账户清结算接口。':'Smart contracts for RWA tokenization and clearing APIs for EF offshore accounts.'"></p>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div :class="view === 'dev' ? 'active' : ''" class="sub-page px-6 md:px-12 max-w-7xl mx-auto pb-32">
+        <h2 class="text-5xl font-black mb-12">DEV TOOLS</h2>
+        <div class="grid md:grid-cols-2 gap-8">
             <template x-for="api in apis">
-                <div class="glass p-8 border-t-2 border-t-[#9945FF]">
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="text-[10px] bg-white/10 px-2 py-1 rounded text-white font-mono" x-text="api.tag"></span>
-                        <span class="text-[10px] text-[#14f195]" x-text="api.status"></span>
+                <div class="glass p-10 font-mono">
+                    <div class="flex justify-between mb-8">
+                        <span class="bg-[#14f195] text-black px-2 py-1 text-[10px] font-black" x-text="api.method"></span>
+                        <span class="text-gray-500 text-[10px]" x-text="api.ver"></span>
                     </div>
-                    <h3 class="text-lg font-bold text-white mb-2" x-text="api['title_'+lang]"></h3>
-                    <p class="text-[11px] text-gray-400 mb-6" x-text="api['desc_'+lang]"></p>
-                    <code class="block bg-black p-3 text-[10px] font-mono text-[#14f195] rounded overflow-x-auto" x-text="api.code"></code>
+                    <h3 class="text-white text-lg font-bold mb-4" x-text="api.endpoint"></h3>
+                    <div class="bg-black p-4 text-[#14f195] text-[10px] overflow-x-auto" x-text="api.code"></div>
                 </div>
             </template>
         </div>
     </div>
 
     <div :class="view === 'about' ? 'active' : ''" class="sub-page px-6 md:px-12 max-w-4xl mx-auto pb-32">
-        <button @click="view = 'home'" class="mb-8 text-[#14f195] font-bold hover:text-white transition">← <span x-text="lang==='zh'?'返回中枢':'BACK'"></span></button>
-        <h2 class="text-4xl font-black mb-10 text-white" x-text="lang==='zh'?'A 权威数据核验 / 联系我们':'A Authority Verification / Contact'"></h2>
-        <div class="glass p-10 mb-8 border-l-4 border-l-[#14f195]">
-            <h3 class="text-xl font-black text-white mb-4" x-text="lang==='zh'?'生态合作伙伴':'Ecosystem Partners'"></h3>
-            <p class="text-sm text-gray-400 leading-relaxed" x-text="lang==='zh'?'业务运营严格基于 PBOC / 2026 封关政策。合作伙伴包括顶级离岸银行、国内红圈所及 Solana 生态建设者。':'Policy Authority: PBOC 2026. Partners include top-tier offshore banks, Red Circle law firms, and Solana ecosystem builders.'"></p>
-        </div>
-        <div class="grid md:grid-cols-2 gap-6 font-mono text-sm">
-            <div class="glass p-8 space-y-6">
-                <div><div class="text-gray-500 text-[10px] font-black uppercase mb-1">Hotline / 联系电话</div><div class="text-white font-bold">+86 181-1779-0507</div></div>
-                <div><div class="text-gray-500 text-[10px] font-black uppercase mb-1">E-mail / 官方邮箱</div><div class="text-[#14f195] font-bold">kosok@solana-hainan.com</div></div>
-            </div>
-            <div class="glass p-8 space-y-6">
-                <div><div class="text-gray-500 text-[10px] font-black uppercase mb-1">HQ / 实体地址</div><div class="text-white text-xs font-bold leading-relaxed" x-text="lang==='zh'?'海南省海口市江东新区总部大楼 A 座 2026 室':'Room 2026, Tower A, Jiangdong HQ, Haikou, Hainan'"></div></div>
-                <div><div class="text-gray-500 text-[10px] font-black uppercase mb-1">GitHub / 开源仓库</div><a href="#" class="text-[#14f195] font-bold hover:underline">github.com/solana-hainan</a></div>
-            </div>
-        </div>
-    </div>
-
-    <div :class="view === 'auth' ? 'active' : ''" class="sub-page px-6 flex items-center justify-center">
-        <div class="w-full max-w-md glass p-10 relative">
-            <button @click="view = 'home'" class="absolute -top-10 left-0 text-[#14f195] font-black text-sm">← <span x-text="lang==='zh'?'返回':'BACK'"></span></button>
-            <div class="flex gap-8 mb-8 border-b border-white/10 pb-2">
-                <button @click="isLogin = true" :class="isLogin ? 'text-[#14f195]' : 'text-gray-500'" class="font-black text-lg transition" x-text="lang==='zh'?'登录中枢':'LOGIN'"></button>
-                <button @click="isLogin = false" :class="!isLogin ? 'text-[#14f195]' : 'text-gray-500'" class="font-black text-lg transition" x-text="lang==='zh'?'注册账号':'REGISTER'"></button>
-            </div>
-            <div class="space-y-4">
-                <input type="text" :placeholder="lang==='zh'?'邮箱 / Email':'Email Address'" class="w-full bg-[#030303] border border-white/20 p-4 text-white text-sm outline-none focus:border-[#14f195]">
-                <input type="password" :placeholder="lang==='zh'?'密码 / Password':'Password'" class="w-full bg-[#030303] border border-white/20 p-4 text-white text-sm outline-none focus:border-[#14f195]">
-                <div x-show="!isLogin" class="flex gap-3">
-                    <input type="text" :placeholder="lang==='zh'?'验证码':'Code'" class="w-full bg-[#030303] border border-white/20 p-4 text-white text-sm outline-none focus:border-[#14f195]">
-                    <button class="bg-white/10 px-4 text-xs font-bold whitespace-nowrap hover:bg-[#14f195] hover:text-black transition" x-text="lang==='zh'?'获取':'SEND'"></button>
+        <h2 class="text-5xl font-black mb-12 italic uppercase">Authority Hub</h2>
+        <div class="glass p-12 mb-8 border-l-8 border-[#14f195]">
+            <h3 class="text-sm font-black text-gray-500 uppercase mb-2">Primary Advisory Hotline</h3>
+            <div class="text-5xl font-black text-white">+86 181-1779-0507</div>
+            <div class="mt-8 pt-8 border-t border-white/10 grid grid-cols-2 gap-8">
+                <div>
+                    <div class="text-[10px] font-black text-gray-500 uppercase">Email Support</div>
+                    <div class="text-[#14f195] font-bold">kosok@solana-hainan.com</div>
                 </div>
-                <button class="w-full bg-[#14f195] text-black font-black py-4 text-sm mt-2 hover:bg-white uppercase transition" x-text="isLogin ? (lang==='zh'?'进入系统':'ACCESS CONSOLE') : (lang==='zh'?'立即注册':'SIGN UP')"></button>
+                <div>
+                    <div class="text-[10px] font-black text-gray-500 uppercase">Headquarters</div>
+                    <div class="text-white font-bold text-xs" x-text="lang==='zh'?'海南自由贸易港·江东新区总部经济区':'Jiangdong FTP HQ, Hainan'"></div>
+                </div>
             </div>
         </div>
     </div>
 
-    <footer x-show="view === 'home'" class="border-t border-white/10 py-12 px-6 md:px-12 text-center text-xs text-gray-500 font-bold bg-black mt-20">
-        <div class="mb-2">合规依据: PBOC / 2026 海南自由贸易港封关政策库 | GitHub 开源社区支持</div>
-        <div>© 2026 Solana-Hainan Strategic Advisory Co., Ltd. All Rights Reserved.</div>
+    <footer x-show="view === 'home'" class="border-t border-white/10 py-12 text-center text-[10px] text-gray-500 font-bold bg-black">
+        <div class="mb-2">COMPLIANCE: PBOC / 2026 HAINAN FREE TRADE PORT REGULATORY STACK</div>
+        <div>© 2026 SOLANA-HAINAN STRATEGIC ADVISORY CO., LTD. ALL RIGHTS RESERVED.</div>
     </footer>
-
-    <div class="fixed bottom-8 right-8 z-[2000]">
-        <button onclick="alert('MNRO Algorithm Engine / Web3 API Activated')" class="w-14 h-14 bg-[#14f195] text-black rounded-full flex items-center justify-center text-xl shadow-[0_0_20px_rgba(20,241,149,0.3)] hover:scale-110 transition font-black">AI</button>
-    </div>
 
     <script>
         function globalState() {
             return {
                 lang: 'zh',
                 view: 'home',
+                activeCat: 'ALL',
                 isLogin: true,
-                // [原封不动] 主页模块
+                categories: ['ALL', 'REG-FULL', 'CREATIVE', 'FISCAL', 'W-FO', 'TECH-HR'],
+                
+                get filteredServices() {
+                    if (this.activeCat === 'ALL') return this.services;
+                    return this.services.filter(s => s.cat === this.activeCat);
+                },
+
                 modules: [
-                    { id: '#01 STRATEGY', title_zh: '离岸架构与免税', title_en: 'Offshore Architecture', desc_zh: '深度解读加工增值30% 免税政策与离岸账户资产上链路径。', desc_en: 'Mastering the 30% VAP tax exemption and cross-border asset tokenization pathways.' },
-                    { id: '#02 TECHNOLOGY', title_zh: 'AI 财税决策引擎', title_en: 'AI Fiscal Engine', desc_zh: '利用 MNRO 算法进行多维规制对标，自动化匹配最优财税接口。', desc_en: 'Utilizing MNRO algorithms for multi-dimensional regulatory alignment and compliance.' },
-                    { id: '#03 ECOSYSTEM', title_zh: '增长协同与合规', title_en: 'Growth & Compliance', desc_zh: '实质性运营审计对标，保障15% 企业所得税政策的长期合规性。', desc_en: 'Auditing "Substantial Operations" to secure long-term 15% CIT/IIT eligibility.' }
+                    { id: '#01 REGISTRATION', title_zh: '公司设立全链路', title_en: 'Full-Stack Reg', desc_zh: '从准入核名到 2026 封关特种牌照办理。', desc_en: 'From pre-approval to 2026 special licensing.' },
+                    { id: '#02 CREATIVE', title_zh: '多维品牌设计', title_en: 'Multi-Dim Design', desc_zh: '涵盖 Web3 UI、RWA 建模及自贸港实体展示空间。', desc_en: 'UI/UX, RWA modeling, and physical FTP space design.' },
+                    { id: '#03 OFFSHORE', title_zh: '离岸资产合规', title_en: 'Offshore Compliance', desc_zh: 'W 家办架构搭建与 15% 税率实质性运营审计。', desc_en: 'W Family Office and 15% CIT audit alignment.' }
                 ],
-                // [原封不动] 13园区全量档案
+
                 parks: [
-                    { id: 'PARK-01', name_zh: '海口江东新区', name_en: 'Jiangdong HQ', desc_zh: '总部经济、离岸贸易与金融核心。', desc_en: 'HQ economy and offshore trade core.' },
-                    { id: 'PARK-02', name_zh: '三亚崖州湾科技城', name_en: 'Yazhou Bay', desc_zh: '深海科技与高新南繁种业阵地。', desc_en: 'Deep-sea tech and seed industry.' },
-                    { id: 'PARK-03', name_zh: '洋浦经济开发区', name_en: 'Yangpu Zone', desc_zh: '加工增值30%免关税先行区。', desc_en: '30% value-added tax exemption.' },
-                    { id: 'PARK-04', name_zh: '复兴城互联网园', name_en: 'Fuxing City', desc_zh: '数字经济与数据跨境传输沙盒。', desc_en: 'Digital economy and data sandbox.' },
-                    { id: 'PARK-05', name_zh: '海南生态软件园', name_en: 'Software Park', desc_zh: '区块链与数字版权创新特区。', desc_en: 'Blockchain and digital copyright.' },
-                    { id: 'PARK-06', name_zh: '博鳌乐城医疗特区', name_en: 'Boao Lecheng', desc_zh: '国际特许药械唯一应用基地。', desc_en: 'Exclusive medical device base.' },
-                    { id: 'PARK-07', name_zh: '海口综合保税区', name_en: 'Haikou Bonded', desc_zh: '免税仓储与跨境电商枢纽。', desc_en: 'Duty-free storage and e-commerce.' },
-                    { id: 'PARK-08', name_zh: '海口国家高新区', name_en: 'High-tech Zone', desc_zh: '医药研发与高端装备制造。', desc_en: 'Pharma R&D and manufacturing.' },
-                    { id: 'PARK-09', name_zh: '文昌国际航天城', name_en: 'Wenchang Aerospace', desc_zh: '商业航天发射与空天大数据。', desc_en: 'Commercial aerospace and data.' },
-                    { id: 'PARK-10', name_zh: '陵水国际教育区', name_en: 'Lingshui Education', desc_zh: '中外合作办学与创新枢纽。', desc_en: 'International education hub.' },
-                    { id: 'PARK-11', name_zh: '三亚中央商务区', name_en: 'Sanya CBD', desc_zh: '邮轮游艇与免税商业中心。', desc_en: 'Cruise, yachting and retail.' },
-                    { id: 'PARK-12', name_zh: '东方临港产业园', name_en: 'Dongfang Industrial', desc_zh: '石化新材料与海洋装备。', desc_en: 'Petrochemicals and marine gear.' },
-                    { id: 'PARK-13', name_zh: '临高金牌港开发区', name_en: 'Lingao Jinpai', desc_zh: '新型建材与海洋经济配套。', desc_en: 'New construction materials hub.' }
+                    { id: '01', name_zh: '海口江东新区', name_en: 'Jiangdong HQ', desc_zh: '总部经济、离岸贸易与金融核心。', desc_en: 'HQ economy and offshore trade.' },
+                    { id: '02', name_zh: '三亚崖州湾科技城', name_en: 'Yazhou Bay', desc_zh: '深海科技与高新南繁种业。', desc_en: 'Deep-sea tech and seed industry.' },
+                    { id: '03', name_zh: '洋浦经济开发区', name_en: 'Yangpu Zone', desc_zh: '加工增值30%免关税先行区。', desc_en: '30% VAP exemption zone.' },
+                    { id: '04', name_zh: '复兴城互联网园', name_en: 'Fuxing City', desc_zh: '数字经济与数据跨境传输沙盒。', desc_en: 'Digital economy sandbox.' },
+                    { id: '05', name_zh: '海南生态软件园', name_en: 'Software Park', desc_zh: '区块链与数字版权创新特区。', desc_en: 'Blockchain & digital copyright.' },
+                    { id: '06', name_zh: '博鳌乐城医疗特区', name_en: 'Boao Lecheng', desc_zh: '国际特许药械唯一应用基地。', desc_en: 'Exclusive medical device base.' },
+                    { id: '07', name_zh: '海口综合保税区', name_en: 'Haikou Bonded', desc_zh: '免税仓储与跨境电商枢纽。', desc_en: 'Duty-free storage hub.' },
+                    { id: '08', name_zh: '海口国家高新区', name_en: 'High-tech Zone', desc_zh: '医药研发与高端装备制造。', desc_en: 'Pharma R&D and manufacturing.' },
+                    { id: '09', name_zh: '文昌国际航天城', name_en: 'Wenchang Space', desc_zh: '商业航天发射与空天大数据。', desc_en: 'Commercial aerospace hub.' },
+                    { id: '10', name_zh: '陵水国际教育区', name_en: 'Lingshui Edu', desc_zh: '中外合作办学与创新枢纽。', desc_en: 'International education hub.' },
+                    { id: '11', name_zh: '三亚中央商务区', name_en: 'Sanya CBD', desc_zh: '邮轮游艇与免税商业中心。', desc_en: 'Cruise, yachting and retail.' },
+                    { id: '12', name_zh: '东方临港产业园', name_en: 'Dongfang Industrial', desc_zh: '石化新材料与海洋装备。', desc_en: 'Petrochemicals and marine gear.' },
+                    { id: '13', name_zh: '临高金牌港开发区', name_en: 'Lingao Jinpai', desc_zh: '新型建材与海洋经济配套。', desc_en: 'New construction materials.' }
                 ],
-                // [原封不动] S 阶梯全量业务报价
+
+                // 核心业务：全量补齐 (注册全链路 + 多维设计 + 运营人力)
                 services: [
-                    { cat: 'W 离岸家族办公室', title_zh: '家族信托与离岸顶层架构', title_en: 'Family Trust Architecture', desc_zh: '量身定制防范资产风险，实现财富传承。', desc_en: 'Mitigate risks and optimize wealth transfer.', price: 'POA' },
-                    { cat: 'S 阶梯报价 T1', title_zh: '全岛合规落地执照核发', title_en: 'Compliance Entry Licensing', desc_zh: '含工商、全套印章、税务核实。', desc_en: 'License, stamps, tax verification.', price: '1,900' },
-                    { cat: 'S 阶梯报价 T2', title_zh: 'EFU 离岸多币种账户开立', title_en: 'EFU Multi-currency Account', desc_zh: '对接全面开放的跨境额度，多币种自由结汇。', desc_en: 'Access fully open cross-border limits.', price: '5,000' },
-                    { cat: 'S 阶梯报价 T3', title_zh: '加工增值30% 免税合规辅导', title_en: '30% VAP Tax Guidance', desc_zh: '打通海关、税务、工信多部门审批流程。', desc_en: 'Clear customs and tax approval workflows.', price: '8,500' },
-                    { cat: 'S 阶梯报价 T4', title_zh: 'MNRO 财税引擎与税率锁定', title_en: 'MNRO Engine & Tax Lock', desc_zh: '实质性运营审计对标，保障低税红利。', desc_en: 'Substantial operation audit to lock tax benefits.', price: '12,000' },
-                    { cat: 'S 阶梯报价 T5', title_zh: '跨境资产上链与 RWA 准入', title_en: 'RWA Tokenization Sandbox', desc_zh: '出具法律意见书，完成代币化合规备案。', desc_en: 'Legal opinions and compliance filing.', price: '18,000' },
-                    { cat: 'S 阶梯报价 T6', title_zh: '外籍人员许可与居住鉴证', title_en: 'Foreign Work Permit', desc_zh: '处理海外人才入境、居留申报。', desc_en: 'Handle entry and residency for talent.', price: '4,500' },
-                    { cat: 'S 阶梯报价 T7', title_zh: '知识产权与数据跨境合规', title_en: 'IP & Data Compliance', desc_zh: '商标、版权保护及数据出海评估报告。', desc_en: 'Trademark protection and data export docs.', price: '3,200' },
-                    { cat: 'S 阶梯报价 T8', title_zh: '年度财税代账与资金池应对', title_en: 'Annual Accounting & Audit', desc_zh: '应对 PBOC 审查，出具权威审计文件。', desc_en: 'Handle PBOC reviews with official audit reports.', price: '3,600' }
+                    // --- 1. 注册全链路 (REG-FULL) ---
+                    { cat: 'REG-FULL', catName: 'Registration', title_zh: '海南公司注册全流程 (内资)', title_en: 'Domestic Corp Setup', desc_zh: '核名、五证合一执照、印章刻制、银行基本户、税务报到全包。', desc_en: 'Full license, seals, and bank setup.', price: '1,500' },
+                    { cat: 'REG-FULL', catName: 'Registration', title_zh: '外资公司 (WFOE) 准入设立', title_en: 'Foreign WFOE Setup', desc_zh: '含商委备案、外汇登记、外资银行开户及外籍高管申报。', desc_en: 'MOFCOM, SAFE, and foreign bank setup.', price: '3,800' },
+                    { cat: 'REG-FULL', catName: 'Registration', title_zh: 'QFLP / QDIE 基金管理牌照', title_en: 'QFLP/QDIE Fund License', desc_zh: '合格境外/境内合伙人制度专项申请，含政府联审与托管。', desc_en: 'Specialized fund licensing and government joint review.', price: '15,000' },
+                    { cat: 'REG-FULL', catName: 'Registration', title_zh: '增值电信许可证 (ICP/EDI)', title_en: 'ICP/EDI Telecom License', desc_zh: 'Web3 平台必备牌照，含系统评测与通信管理局全流程对接。', desc_en: 'Essential telecom licenses for digital platforms.', price: '6,800' },
+                    { cat: 'REG-FULL', catName: 'Registration', title_zh: '特种行业许可 (食药/人力/教育)', title_en: 'Special Sector Permits', desc_zh: '食品经营、人力资源许可、危化品备案等行业特定准入核发。', desc_en: 'Sector-specific permits for food, HR, and education.', price: 'POA' },
+                    { cat: 'REG-FULL', catName: 'Registration', title_zh: '实质性运营场地托管 (审计版)', title_en: 'Audit-Ready Office Space', desc_zh: '符合 15% 税惠审计要求的实体办公空间租赁、挂牌与资产管理。', desc_en: 'Managed physical office for tax compliance.', price: '3,000' },
+
+                    // --- 2. 创意与设计 (CREATIVE) ---
+                    { cat: 'CREATIVE', catName: 'Design', title_zh: 'Web3 品牌视觉 VI 全案设计', title_en: 'Web3 Brand VI System', desc_zh: 'Logo、配色、字体、社交媒体规范，融合 Solana 极客美学。', desc_en: 'Full VI system with Solana aesthetic.', price: '9,000' },
+                    { cat: 'CREATIVE', catName: 'Design', title_zh: 'RWA 资产 3D 建模与 UI 交互', title_en: 'RWA 3D & UI Design', desc_zh: '实物资产代币化后的数字化展示、APP/DApp 界面交互设计。', desc_en: 'Visual and UI design for tokenized assets.', price: '6,500' },
+                    { cat: 'CREATIVE', catName: 'Design', title_zh: '30% 加工增值产品包装设计', title_en: '30% VAP Product Packing', desc_zh: '针对封关后加工增值进入内地的工业产品进行品牌化包装。', desc_en: 'Industrial packaging for processed products.', price: '4,500' },
+                    { cat: 'CREATIVE', catName: 'Design', title_zh: '自贸港展厅与实体空间设计', title_en: 'FTP Showroom & Space', desc_zh: '实体展示中心、总部办公室装修规划与品牌落地施工设计。', desc_en: 'Interior design for FTP offices and showrooms.', price: 'POA' },
+                    { cat: 'CREATIVE', catName: 'Design', title_zh: 'BP 商业计划书 & 研报精装', title_en: 'Premium BP & Reports', desc_zh: '面向监管与投资人的专业逻辑梳理与高阶视觉排版。', desc_en: 'High-end layout for regulators and investors.', price: '3,200' },
+
+                    // --- 3. 财税合规 (FISCAL) ---
+                    { cat: 'FISCAL', catName: 'Fiscal', title_zh: 'MNRO 15% 税率锁定审计', title_en: 'MNRO 15% Tax Audit', desc_zh: '年度实质性运营审计，确保企业与个人所得税政策锁死。', desc_en: 'Securing 15% CIT/IIT dividends via audit.', price: '12,000' },
+                    { cat: 'FISCAL', catName: 'Fiscal', title_zh: 'EFU 自由贸易账户全量管理', title_en: 'EFU Account Management', desc_zh: '跨境资金结算、多币种结汇与 PBOC 合规报备托管。', desc_en: 'Cross-border capital settlement and reporting.', price: '4,500' },
+                    { cat: 'FISCAL', catName: 'Fiscal', title_zh: '加工增值 30% 免税合规辅导', title_en: '30% VAP Tax Logic', desc_zh: 'ERP 接入、海关台账建立及“二线”入关免税指导。', desc_en: 'Customs guidance for zero-tariff mainland entry.', price: '8,500' },
+                    { cat: 'FISCAL', catName: 'Fiscal', title_zh: '年度代账、审计与税务筹划', title_en: 'Annual Accounting', desc_zh: '含月度申报、年度汇算清缴、土地增值税专项（如需）。', desc_en: 'Full fiscal services and tax planning.', price: '3,600' },
+
+                    // --- 4. 离岸家办 (W-FO) ---
+                    { cat: 'W-FO', catName: 'Family Office', title_zh: 'W 离岸家族信托与资产架构', title_en: 'W Family Trust Design', desc_zh: '全球资产配置、资产隔离保护及跨代际传承合规方案。', desc_en: 'Global asset isolation and trust services.', price: 'POA' },
+                    { cat: 'W-FO', catName: 'Family Office', title_zh: '全球身份配置与税务穿透', title_en: 'Global Identity & Tax', desc_zh: '配合离岸家办的全球身份优化、CRS 应对及税务合规。', desc_en: 'Residency and tax transparency strategies.', price: '12,000' },
+
+                    // --- 5. 技术与人力 (TECH-HR) ---
+                    { cat: 'TECH-HR', catName: 'Ops', title_zh: '开发者 API 结算接口部署', title_en: 'Dev API Deployment', desc_zh: '符合封关政策的 RWA 代币化结算与分润系统部署。', desc_en: 'Settlement and profit-sharing API systems.', price: '25,000' },
+                    { cat: 'TECH-HR', catName: 'Ops', title_zh: '外籍人才工作许可 (A/B 类)', title_en: 'Work Permit (A/B)', desc_zh: '海外顶尖人才入境执照办理、居留许可以及高管认定。', desc_en: 'Talent visas and residency for foreign pros.', price: '4,500' },
+                    { cat: 'TECH-HR', catName: 'Ops', title_zh: '社保公积金代缴与人力托管', title_en: 'HR & Social Security', desc_zh: '企业员工社保开户、代缴及劳务外包合规管理。', desc_en: 'Employee social security and HR outsourcing.', price: '2,000' }
                 ],
-                // [新增] 政策知识库 / Docs
+
                 docs: [
-                    { title_zh: '2026 海南自由贸易港法草案解析', title_en: 'Hainan Free Trade Port Law Draft Analysis 2026', date: '2025-10', size: '2.4 MB PDF' },
-                    { title_zh: '双15% 企业与个人所得税申报实务指南', title_en: 'Dual 15% CIT/IIT Declaration Practical Guide', date: '2025-11', size: '1.8 MB PDF' },
-                    { title_zh: 'RWA 实物资产代币化沙盒合规框架白皮书', title_en: 'RWA Tokenization Sandbox Compliance Framework', date: '2025-12', size: '3.5 MB MD' },
-                    { title_zh: 'EF/EFU 账户开户尽职调查与资金流转文档', title_en: 'EF/EFU Account KYC & Capital Flow Docs', date: '2026-01', size: '1.2 MB DOCX' },
-                    { title_zh: '实质性运营（人员/资产/职能）审计判定细则', title_en: 'Substantial Operations Audit Judgement Rules', date: '2026-02', size: '2.0 MB PDF' },
-                    { title_zh: '数据出海安全评估备案模板 (Web3 企业专用)', title_en: 'Data Export Security Filing Template (Web3)', date: '2026-02', size: '800 KB ZIP' }
+                    { title_zh: '2026 海南封关运作实务红宝书', title_en: 'Hainan 2026 Practical Guide', meta: 'V2.0 | 5.4 MB PDF' },
+                    { title_zh: '实质性运营审计 100 问', title_en: '100 Q&A on Audit Compliance', meta: 'INTERNAL | 1.8 MB PDF' },
+                    { title_zh: 'RWA 资产上链法务备案模板', title_en: 'RWA Legal Filing Templates', meta: 'WEB3 | 3.2 MB MD' }
                 ],
-                // [新增] 开发者与 API 接口
+
                 apis: [
-                    { tag: 'REST API', status: 'v2.0 LIVE', title_zh: 'EFU 账户自动化结算接口', title_en: 'EFU Auto-Settlement API', desc_zh: '支持法币与主流稳定币合规兑换通道调用。', desc_en: 'Fiat and stablecoin compliant exchange endpoint.', code: 'POST /v2/efu/settlement/execute' },
-                    { tag: 'Solana Rust', status: 'MAINNET', title_zh: 'RWA 资产锁定智能合约模板', title_en: 'RWA Asset Lock Contract', desc_zh: '符合自贸港沙盒监管要求的资产铸造与销毁逻辑。', desc_en: 'Minting and burning logic compliant with FTP Sandbox.', code: 'anchor build && anchor deploy --program-name rwa_vault' },
-                    { tag: 'Webhooks', status: 'STABLE', title_zh: '工商/税务状态异步回调', title_en: 'Registry Status Webhooks', desc_zh: '订阅企业注册、税务代账、年审状态实时通知。', desc_en: 'Subscribe to real-time company registration & tax updates.', code: 'WSS wss://api.solanahainan.com/stream' }
+                    { method: 'POST', ver: 'v2.1', endpoint: '/v2/rwa/mint-and-settle', desc_zh: '资产上链与结算接口', code: 'curl -H "Auth: Bearer" -d "asset_id=SH2026"' }
                 ]
             }
         }
