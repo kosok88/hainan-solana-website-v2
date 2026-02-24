@@ -31,7 +31,7 @@
             <div class="flex items-center gap-8">
                 <div class="hidden md:flex items-center gap-8 text-[10px] font-black uppercase tracking-widest text-gray-400">
                     <a href="#" @click.prevent="isTaxOpen = true" class="hover:text-[#14F195] transition">税率计算</a>
-                    <a href="#" @click.prevent="showPricingPage = true; window.scrollTo(0,0)" class="transition-all" :class="showPricingPage ? 'text-[#14F195] border-b-2 border-[#14F195] pb-1' : 'hover:text-[#14F195]'">业务下单</a>
+                    <a href="#" @click.prevent="showPricingPage = true; window.scrollTo(0,0)" class="transition-all" :class="showPricingPage ? 'text-white border-b-2 border-[#14F195] pb-1' : 'hover:text-[#14F195]'">业务下单</a>
                     <a href="#" @click.prevent="isChatOpen = true" class="hover:text-[#14F195] transition">合规咨询</a>
                 </div>
                 <button @click="toggleLang()" class="px-4 py-1.5 border border-white/20 rounded-full text-[10px] font-bold hover:bg-white hover:text-black transition-all" x-text="lang === 'cn' ? 'EN' : '中文'"></button>
@@ -39,24 +39,28 @@
         </div>
     </nav>
 
-    <div x-show="!showPricingPage" x-transition:enter.duration.400ms>
+    <div x-show="!showPricingPage" x-transition:enter.duration.500ms>
         <section class="relative pt-40 pb-20 px-6 overflow-hidden min-h-screen flex flex-col justify-center">
             <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-[#14F195]/10 blur-[150px] rounded-full -z-10 animate-pulse"></div>
+            
             <div class="max-w-6xl mx-auto text-center">
                 <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-full mb-8">
                     <span class="w-2 h-2 bg-[#14F195] rounded-full animate-ping"></span>
                     <span class="text-[10px] font-bold tracking-[0.2em] text-[#14F195] uppercase" x-text="lang==='cn'?'2026 海南全岛封关倒计时':'Count down to 2026 Hainan Closure'"></span>
                 </div>
+                
                 <h1 class="text-6xl md:text-9xl font-black tracking-tighter mb-12 leading-[0.9]">
                     <span class="text-white">HAINAN</span><br/>
                     <span class="text-[#14F195]">OFFSHORE</span>
                 </h1>
+
                 <div class="grid grid-cols-4 gap-4 max-w-2xl mx-auto mb-16">
                     <div class="glass-panel p-4 rounded-3xl"><div class="text-3xl font-black text-white" x-text="countdown.d"></div><div class="text-[8px] text-gray-500 uppercase mt-1">Days</div></div>
                     <div class="glass-panel p-4 rounded-3xl"><div class="text-3xl font-black text-white" x-text="countdown.h"></div><div class="text-[8px] text-gray-500 uppercase mt-1">Hours</div></div>
                     <div class="glass-panel p-4 rounded-3xl"><div class="text-3xl font-black text-white" x-text="countdown.m"></div><div class="text-[8px] text-gray-500 uppercase mt-1">Mins</div></div>
                     <div class="glass-panel p-4 rounded-3xl"><div class="text-3xl font-black text-[#14F195]" x-text="countdown.s"></div><div class="text-[8px] text-gray-500 uppercase mt-1">Secs</div></div>
                 </div>
+
                 <div class="flex flex-col md:flex-row items-center justify-center gap-6">
                     <button @click="showPricingPage = true; window.scrollTo(0,0)" class="group relative px-12 py-5 bg-[#14F195] text-black font-black rounded-2xl overflow-hidden transition-all hover:scale-105 active:scale-95">
                         <span class="relative z-10 uppercase tracking-widest" x-text="lang==='cn'?'立即建立基础设施':'Build Infrastructure'"></span>
@@ -67,14 +71,14 @@
         </section>
 
         <section class="py-32 px-6 bg-[#030303]">
-            <div class="max-w-7xl mx-auto text-center">
-                <div class="mb-20">
+            <div class="max-w-7xl mx-auto">
+                <div class="mb-20 text-center">
                     <h2 class="text-4xl font-black mb-4 uppercase tracking-tighter">12-Step SOP</h2>
                     <p class="text-gray-500 text-sm tracking-widest uppercase">标准化执行协议，确保每一个环节合规且高效</p>
                 </div>
                 <div class="grid grid-cols-2 md:grid-cols-6 gap-4">
                     <template x-for="(step, index) in sopSteps">
-                        <div class="glass-panel p-6 rounded-3xl border-white/5 hover:border-[#14F195]/30 transition-all group text-left">
+                        <div class="glass-panel p-6 rounded-3xl border-white/5 hover:border-[#14F195]/30 transition-all group">
                             <div class="text-[#14F195] font-mono text-xs mb-4" x-text="'0' + (index + 1)"></div>
                             <div class="text-white font-bold text-sm mb-1" x-text="lang==='cn' ? step.cn : step.en"></div>
                             <div class="text-[8px] text-gray-600 uppercase tracking-tighter" x-text="lang==='cn' ? step.en : step.cn"></div>
@@ -87,8 +91,8 @@
 
     <div x-show="showPricingPage" x-transition:enter.duration.500ms class="pt-32 pb-20 px-6 min-h-screen bg-black" x-cloak>
         <div class="max-w-7xl mx-auto">
-            <button @click="showPricingPage = false; window.scrollTo(0,0)" class="mb-10 flex items-center gap-2 text-gray-500 hover:text-[#14F195] transition-all text-xs font-bold uppercase tracking-widest">
-                <span>←</span> 返回主页 / BACK TO HOME
+            <button @click="showPricingPage = false; window.scrollTo(0,0)" class="mb-10 flex items-center gap-2 text-[#14F195] text-xs font-bold hover:gap-4 transition-all">
+                ← 返回首页 / BACK TO HOME
             </button>
 
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
@@ -112,7 +116,7 @@
                                 <div class="text-2xl font-black text-[#14F195] tracking-tighter">¥ <span x-text="item.price"></span></div>
                             </div>
                             <h4 class="text-xl font-black text-white mb-2" x-text="lang === 'cn' ? item.cn : item.en"></h4>
-                            <p class="text-[10px] text-gray-500 leading-relaxed mb-8 h-10" x-text="lang === 'cn' ? item.remCn : item.remEn"></p>
+                            <p class="text-[10px] text-gray-500 leading-relaxed mb-8 h-8" x-text="lang === 'cn' ? item.remCn : item.remEn"></p>
                         </div>
                         <button @click="openOrderModal(item)" class="w-full py-4 bg-white/5 border border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] group-hover:bg-[#14F195] group-hover:text-black transition-all">
                             立即下单 / ORDER NOW
@@ -126,17 +130,17 @@
     <div x-show="isTaxOpen" x-transition.opacity x-cloak class="fixed inset-0 z-[200] flex items-center justify-center p-6 bg-black/90 backdrop-blur-xl">
         <div class="glass-panel max-w-xl w-full p-10 rounded-[40px] relative text-center border-[#14F195]/30" @click.away="isTaxOpen = false">
             <button @click="isTaxOpen = false" class="absolute top-8 right-8 text-gray-500 hover:text-white transition-all">✕</button>
-            <h3 class="text-3xl font-black mb-8 uppercase tracking-tighter">离岸合规成本测算</h3>
+            <h3 class="text-3xl font-black mb-8 uppercase tracking-tighter" x-text="lang==='cn'?'离岸合规成本测算':'Compliance Cost Calc'"></h3>
             <div class="space-y-8">
                 <div>
                     <label class="block text-[10px] text-gray-500 uppercase tracking-widest mb-4">预计年度业务流水 (万人民币)</label>
                     <input type="range" x-model="income" min="50" max="5000" step="50" class="w-full h-1 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#14F195]">
                     <div class="text-4xl font-black text-white mt-4 tracking-tighter">¥ <span x-text="income"></span> <span class="text-xl text-gray-500">万</span></div>
                 </div>
-                <button @click="runAiCalc()" class="w-full py-5 bg-white text-black hover:bg-[#14F195] font-black rounded-2xl uppercase tracking-[0.2em] transition-all" :disabled="calculating">
-                    <span x-text="calculating ? 'Processing...' : '运行 AI 测算'"></span>
+                <button @click="runAiCalc()" class="w-full py-5 bg-white text-black hover:bg-[#14F195] font-black rounded-2xl uppercase tracking-[0.2em] transition-all duration-300" :disabled="calculating" :class="{'opacity-50 cursor-not-allowed': calculating}">
+                    <span x-text="calculating ? 'Processing...' : (lang === 'cn' ? '运行 AI 测算' : 'Run Analysis')"></span>
                 </button>
-                <div x-show="showResult" class="mt-6 p-8 rounded-3xl bg-[#14F195]/10 border border-[#14F195]/40 text-left">
+                <div x-show="showResult" x-transition.duration.500ms class="mt-6 p-8 rounded-3xl bg-gradient-to-br from-[#14F195]/20 to-transparent border border-[#14F195]/40 text-left relative overflow-hidden">
                     <p class="text-[10px] text-[#14F195] uppercase tracking-widest mb-2">预计可节省年度税务成本</p>
                     <div class="text-5xl font-black text-white tracking-tighter">¥ <span x-text="(income * 0.18).toFixed(1)"></span> <span class="text-2xl text-gray-400">万</span></div>
                 </div>
@@ -145,18 +149,26 @@
     </div>
 
     <div x-show="isOrderOpen" x-transition.opacity x-cloak class="fixed inset-0 z-[200] flex items-center justify-center p-6 bg-black/95 backdrop-blur-xl">
-        <div class="glass-panel max-w-md w-full p-10 rounded-[40px] relative" @click.away="isOrderOpen = false">
+        <div class="glass-panel max-w-md w-full p-10 rounded-[40px] relative text-left shadow-[0_0_80px_rgba(20,241,149,0.15)]" @click.away="isOrderOpen = false">
             <button @click="isOrderOpen = false" class="absolute top-6 right-8 text-gray-500 hover:text-white transition-all text-2xl">✕</button>
+            <div class="text-[10px] font-mono text-[#14F195] mb-2 tracking-[0.3em] uppercase">Order Confirmation</div>
             <h3 class="text-2xl font-black mb-6 uppercase tracking-tighter text-white">确认下单意向</h3>
+            
             <div class="bg-white/5 p-6 rounded-2xl border border-white/10 mb-8" x-show="selectedOrder">
-                <div class="text-[9px] text-gray-500 font-mono mb-1" x-text="selectedOrder?.code"></div>
+                <div class="text-[9px] text-gray-500 font-mono tracking-widest mb-1" x-text="selectedOrder?.code"></div>
                 <div class="text-lg font-bold text-white mb-2" x-text="lang==='cn'?selectedOrder?.cn:selectedOrder?.en"></div>
-                <div class="text-3xl font-black text-[#14F195]" x-text="'¥ ' + selectedOrder?.price"></div>
+                <div class="text-3xl font-black text-[#14F195] tracking-tighter" x-text="'¥ ' + selectedOrder?.price"></div>
             </div>
-            <p class="text-xs text-gray-400 mb-8">请选择您的通讯工具，合规专家将启动 12 步 SOP 流程。</p>
+            
+            <p class="text-xs text-gray-400 mb-8 leading-relaxed">请选择您最方便的通讯工具，我们的专属合规专家将立即响应您的下单请求并启动 12 步 SOP 流程。</p>
+            
             <div class="space-y-3">
-                <a href="#" class="w-full py-4 bg-[#07c160]/10 border border-[#07c160]/30 text-[#07c160] hover:bg-[#07c160] hover:text-white font-bold rounded-xl flex items-center justify-center gap-3">微信极速建联 (WeChat)</a>
-                <a href="#" class="w-full py-4 bg-[#24A1DE]/10 border border-[#24A1DE]/30 text-[#24A1DE] hover:bg-[#24A1DE] hover:text-white font-bold rounded-xl flex items-center justify-center gap-3">Telegram 加密专线</a>
+                <a href="#" class="w-full py-4 bg-[#07c160]/10 border border-[#07c160]/30 text-[#07c160] hover:bg-[#07c160] hover:text-white font-bold rounded-xl flex items-center justify-center gap-3 transition-all">
+                    微信极速建联 (WeChat)
+                </a>
+                <a href="#" class="w-full py-4 bg-[#24A1DE]/10 border border-[#24A1DE]/30 text-[#24A1DE] hover:bg-[#24A1DE] hover:text-white font-bold rounded-xl flex items-center justify-center gap-3 transition-all">
+                    Telegram 加密专线
+                </a>
             </div>
         </div>
     </div>
@@ -170,23 +182,32 @@
                 </div>
                 <button @click="isChatOpen = false" class="text-gray-400 hover:text-white">✕</button>
             </div>
+            
             <div class="flex-1 p-4 overflow-y-auto space-y-4 no-scrollbar bg-black/50" id="chatbox">
                 <template x-for="msg in chatMessages">
                     <div :class="msg.role === 'ai' ? 'text-left' : 'text-right'">
-                        <div class="inline-block p-3 rounded-2xl max-w-[85%] text-xs" :class="msg.role === 'ai' ? 'bg-white/10 text-gray-200' : 'bg-[#14F195] text-black font-bold'" x-html="msg.content"></div>
+                        <div class="inline-block p-3 rounded-2xl max-w-[85%] text-xs leading-relaxed"
+                             :class="msg.role === 'ai' ? 'bg-white/10 text-gray-200 rounded-tl-sm' : 'bg-[#14F195] text-black font-bold rounded-tr-sm'"
+                             x-html="msg.content"></div>
                     </div>
                 </template>
+                <div x-show="isTyping" class="text-left">
+                    <div class="inline-block p-3 rounded-2xl bg-white/5 text-gray-400 rounded-tl-sm text-xs">AI is typing...</div>
+                </div>
             </div>
+
             <div class="p-4 bg-black border-t border-white/5">
-                <div class="flex flex-wrap gap-2">
-                    <button @click="sendFastMsg('注册需要多久？')" class="px-3 py-1 bg-white/5 rounded-full text-[10px] text-gray-300">注册需要多久？</button>
-                    <button @click="sendFastMsg('EF账户怎么开？')" class="px-3 py-1 bg-white/5 rounded-full text-[10px] text-gray-300">EF账户怎么开？</button>
-                    <button @click="sendFastMsg('双15%什么条件？')" class="px-3 py-1 bg-white/5 rounded-full text-[10px] text-gray-300">双15%什么条件？</button>
+                <div class="flex flex-wrap gap-2 mb-3">
+                    <button @click="sendFastMsg('注册需要多久？')" class="px-3 py-1 bg-white/5 hover:bg-white/10 rounded-full text-[10px] text-gray-300 transition">注册需要多久？</button>
+                    <button @click="sendFastMsg('EF账户怎么开？')" class="px-3 py-1 bg-white/5 hover:bg-white/10 rounded-full text-[10px] text-gray-300 transition">EF账户怎么开？</button>
+                    <button @click="sendFastMsg('双15%什么条件？')" class="px-3 py-1 bg-white/5 hover:bg-white/10 rounded-full text-[10px] text-gray-300 transition">双15%什么条件？</button>
                 </div>
             </div>
         </div>
-        <button @click="isChatOpen = !isChatOpen" class="w-14 h-14 bg-[#14F195] text-black rounded-full flex items-center justify-center text-2xl shadow-[0_0_20px_rgba(20,241,149,0.4)] hover:scale-110 transition-transform">
-            <span x-show="!isChatOpen">💬</span><span x-show="isChatOpen" x-cloak>✕</span>
+
+        <button @click="isChatOpen = !isChatOpen" class="w-14 h-14 bg-[#14F195] text-black rounded-full flex items-center justify-center text-2xl shadow-[0_0_20px_rgba(20,241,149,0.4)] hover:scale-110 transition-transform cursor-pointer">
+            <span x-show="!isChatOpen">💬</span>
+            <span x-show="isChatOpen" x-cloak>✕</span>
         </button>
     </div>
 
@@ -199,7 +220,7 @@
     <script>
         document.addEventListener('alpine:init', () => {
             Alpine.data('appData', () => ({
-                showPricingPage: false, // 核心逻辑：切换首页与二级页面
+                showPricingPage: false, // 唯一增加的新状态变量，用于控制页面切换
                 lang: 'cn',
                 scrolled: false,
                 activeTab: 'admin',
@@ -207,13 +228,25 @@
                 income: 100,
                 calculating: false,
                 showResult: false,
+                
                 isOrderOpen: false,
                 selectedOrder: null,
+
                 isChatOpen: false,
                 isTyping: false,
-                chatMessages: [{ role: 'ai', content: '您好！我是 Solana Hainan 的 AI 合规助理。目前正是 2026 封关元年红利期，请问您对哪项落地服务感兴趣？' }],
+                chatMessages: [
+                    { role: 'ai', content: '您好！我是 Solana Hainan 的 AI 合规助理。目前正是 2026 封关元年红利期，请问您对哪项落地服务感兴趣？' }
+                ],
+                
                 countdown: { d: '00', h: '00', m: '00', s: '00' },
-                sopSteps: [{cn:'需求响应', en:'Inquiry'}, {cn:'架构画像', en:'Profiling'}, {cn:'云端签约', en:'E-Contract'},{cn:'预付定金', en:'Deposit'}, {cn:'极速执行', en:'Execution'}, {cn:'进度同步', en:'Reporting'},{cn:'结果初核', en:'Preview'}, {cn:'迭代优化', en:'Iteration'}, {cn:'合规复审', en:'Compliance'},{cn:'尾款清算', en:'Settlement'}, {cn:'资产交付', en:'Delivery'}, {cn:'持续支持', en:'Support'}],
+                
+                sopSteps: [
+                    {cn:'需求响应', en:'Inquiry'}, {cn:'架构画像', en:'Profiling'}, {cn:'云端签约', en:'E-Contract'},
+                    {cn:'预付定金', en:'Deposit'}, {cn:'极速执行', en:'Execution'}, {cn:'进度同步', en:'Reporting'},
+                    {cn:'结果初核', en:'Preview'}, {cn:'迭代优化', en:'Iteration'}, {cn:'合规复审', en:'Compliance'},
+                    {cn:'尾款清算', en:'Settlement'}, {cn:'资产交付', en:'Delivery'}, {cn:'持续支持', en:'Support'}
+                ],
+
                 pricing: {
                     admin: [
                         {code:'CSV-01', cn:'公司名称核准', en:'Name Approval', price:'200', remCn:'3-5个名称核名，被驳回免费重提一次', remEn:'3-5 names, 1 free resubmission'},
@@ -242,9 +275,14 @@
                         {code:'WEB3-03', cn:'RWA 资产代币化咨询', en:'RWA Tokenization', price:'定制', remCn:'探索实体资产合规上链与发行路径', remEn:'Compliant pathways for RWA'}
                     ]
                 },
-                get currentPricing() { return this.pricing[this.activeTab]; },
+
+                get currentPricing() {
+                    return this.pricing[this.activeTab];
+                },
+
                 init() {
                     window.addEventListener('scroll', () => { this.scrolled = window.scrollY > 50; });
+
                     const targetDate = new Date('2026-12-18T23:59:59').getTime();
                     setInterval(() => {
                         const now = new Date().getTime();
@@ -257,25 +295,41 @@
                         }
                     }, 1000);
                 },
+
                 toggleLang() { this.lang = this.lang === 'cn' ? 'en' : 'cn'; },
                 openOrderModal(item) { this.selectedOrder = item; this.isOrderOpen = true; },
+                
                 runAiCalc() {
                     if(!this.income || this.income <= 0) return;
                     this.calculating = true; this.showResult = false;
                     setTimeout(() => { this.calculating = false; this.showResult = true; }, 1200);
                 },
+
+                // 还原完整 AI 聊天脚本
                 sendFastMsg(text) {
                     this.chatMessages.push({ role: 'user', content: text });
+                    this.isTyping = true;
+                    this.scrollToBottom();
+                    
                     setTimeout(() => {
-                        let r = '收到。';
-                        if(text.includes('注册')) r = '在资料齐全的情况下，<strong>3个工作日</strong>即可完成海南公司执照下发。';
-                        if(text.includes('EF账户')) r = 'EF 账户支持资金在海南与境外自由汇兑，我们可以协助您进行资质前置审核。';
-                        if(text.includes('15%')) r = '需满足属于鼓励类产业且具备<strong>实质性运营</strong>。';
-                        this.chatMessages.push({ role: 'ai', content: r });
+                        this.isTyping = false;
+                        let reply = '';
+                        if(text.includes('注册')) reply = '在资料齐全的情况下，<strong>3个工作日</strong>即可完成海南公司执照下发，7个工作日完成印章、税务和银行开户的全套基建。';
+                        else if(text.includes('EF账户')) reply = 'EF 账户即多功能自由贸易账户。目前已向部分符合实质性运营的企业开放，支持资金在海南与境外自由汇兑，不受国内结售汇额度限制。我们可以协助您进行资质前置审核。';
+                        else if(text.includes('15%')) reply = '需要满足两个核心条件：1. 属于鼓励类产业目录；2. 具备<strong>实质性运营</strong>（在海南有实际办公地址、人员社保缴纳及业务发生）。我们可以为您提供全套合规筹划。';
+                        else reply = '好的，已收到您的需求。您可以点击左下角按钮联系我们的人工专家进行深度解答。';
+                        
+                        this.chatMessages.push({ role: 'ai', content: reply });
                         this.scrollToBottom();
-                    }, 800);
+                    }, 1000);
                 },
-                scrollToBottom() { setTimeout(() => { let b = document.getElementById('chatbox'); if(b) b.scrollTop = b.scrollHeight; }, 100); }
+
+                scrollToBottom() {
+                    setTimeout(() => {
+                        const box = document.getElementById('chatbox');
+                        if(box) box.scrollTop = box.scrollHeight;
+                    }, 100);
+                }
             }));
         });
     </script>
