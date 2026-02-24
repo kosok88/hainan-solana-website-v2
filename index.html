@@ -217,7 +217,9 @@
                 </div>
             </div>
         </section>
-    </div> <section id="pricing" x-show="showPricingPage" x-transition:enter.duration.500ms class="pt-40 pb-32 px-6 min-h-screen" x-cloak>
+    </div>
+
+    <section id="pricing" x-show="showPricingPage" x-transition:enter.duration.500ms class="pt-40 pb-32 px-6 min-h-screen" x-cloak>
         <div class="max-w-7xl mx-auto">
             
             <button @click="showPricingPage = false; window.scrollTo(0,0)" class="mb-10 text-[#14F195] text-xs font-bold hover:translate-x-[-4px] transition-transform flex items-center gap-2">
@@ -364,6 +366,11 @@
     </div>
 
     <footer class="py-16 border-t border-white/5 bg-[#030303] text-center mt-20">
+        <div class="flex justify-center items-center gap-6 mb-6 text-xs text-gray-400 font-mono tracking-wider">
+            <div><span class="text-[#14F195]">TEL:</span> 86-18117790507</div>
+            <div class="w-px h-3 bg-gray-700"></div>
+            <div><span class="text-[#9945FF]">EMAIL:</span> kosok0898@gmail.com</div>
+        </div>
         <div class="text-[9px] text-gray-600 uppercase tracking-[0.5em] font-black">
             © 2026 Solana Hainan Offshore Infrastructure | Operations Started 2025.12.18
         </div>
