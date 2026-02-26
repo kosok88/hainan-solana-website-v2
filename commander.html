@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>指挥官控制台 v1.5 - 2026 封关运作版</title>
+    <title>指挥官控制台 v1.5 | Commander Console</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
+        [x-cloak] { display: none !important; }
         .ai-log { font-family: 'Courier New', monospace; font-size: 10px; }
     </style>
 </head>
-<body class="bg-slate-50 font-sans text-slate-900">
+<body x-data="commander()" x-cloak class="bg-slate-50 font-sans text-slate-900">
 
     <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm">
         <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
@@ -17,24 +19,20 @@
                 <a href="https://www.solana-hainan.com/" class="hover:opacity-80 transition-opacity">
                     <span class="text-2xl font-black italic tracking-tighter uppercase">Solana<span class="text-blue-600">Hainan</span></span>
                 </a>
-                <span class="bg-red-600 text-white text-[9px] px-2 py-0.5 font-bold rounded animate-pulse">2026 READY</span>
+                <span class="bg-red-600 text-white text-[9px] px-2 py-0.5 font-bold rounded animate-pulse" x-text="t('tag_ready')"></span>
             </div>
             
             <div class="flex items-center space-x-4 md:space-x-6">
-                <a href="https://www.solana-hainan.com/" class="text-sm font-bold text-slate-500 hover:text-blue-600 transition-colors">
-                    ← 返回主页
-                </a>
+                <a href="https://www.solana-hainan.com/" class="text-sm font-bold text-slate-500 hover:text-blue-600 transition-colors" x-text="t('back_home')"></a>
                 
                 <div class="flex space-x-3 text-xs font-bold bg-slate-100 px-3 py-1.5 rounded-full">
-                    <a href="commander.html" class="text-blue-600">中文</a>
+                    <button @click="setLang('cn')" :class="lang === 'cn' ? 'text-blue-600' : 'text-slate-400'">中文</button>
                     <span class="text-slate-300">|</span>
-                    <a href="commander-en.html" class="text-slate-400 hover:text-blue-600 transition-colors">EN</a>
+                    <button @click="setLang('en')" :class="lang === 'en' ? 'text-blue-600' : 'text-slate-400'">EN</button>
                     <span class="text-slate-300">|</span>
-                    <a href="commander-ru.html" class="text-slate-400 hover:text-blue-600 transition-colors">RU</a>
+                    <button @click="setLang('ru')" :class="lang === 'ru' ? 'text-blue-600' : 'text-slate-400'">RU</button>
                 </div>
-                <a href="consultancy.html" class="hidden md:flex bg-blue-600 text-white px-5 py-2 rounded-lg font-bold hover:bg-blue-700 shadow-md transition-all items-center text-sm">
-                    AI 诊断终端 →
-                </a>
+                <a href="consultancy.html" class="hidden md:flex bg-blue-600 text-white px-5 py-2 rounded-lg font-bold hover:bg-blue-700 shadow-md transition-all items-center text-sm" x-text="t('ai_btn')"></a>
             </div>
         </div>
     </nav>
@@ -43,13 +41,11 @@
         <div class="max-w-6xl mx-auto border-b-4 border-slate-900 pb-6 mb-12 flex flex-col md:flex-row justify-between items-start md:items-end">
             <div class="mb-6 md:mb-0">
                 <h1 class="text-4xl font-black italic uppercase tracking-tighter">Commander Console <span class="text-blue-600 text-2xl">V1.5</span></h1>
-                <p class="text-[12px] font-bold text-slate-500 mt-2 uppercase tracking-widest">海南 2026 离岸金融与财税战略枢纽</p>
+                <p class="text-[12px] font-bold text-slate-500 mt-2 uppercase tracking-widest" x-text="t('sub_title')"></p>
             </div>
             
             <div class="flex items-center space-x-4 w-full md:w-auto">
-                <a href="consultancy.html" class="md:hidden flex-1 bg-blue-600 text-white px-6 py-3 rounded-xl font-bold text-center hover:bg-blue-700 shadow-lg">
-                    进入 AI 诊断 →
-                </a>
+                <a href="consultancy.html" class="md:hidden flex-1 bg-blue-600 text-white px-6 py-3 rounded-xl font-bold text-center hover:bg-blue-700 shadow-lg" x-text="t('ai_btn')"></a>
                 <div class="hidden md:block w-48 bg-slate-900 rounded p-3 h-16 overflow-hidden shadow-xl">
                     <div id="verify-logs" class="text-green-500 ai-log">
                         <div>[08:12] System Active...</div>
@@ -61,46 +57,46 @@
         <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 text-left">
             
             <div class="space-y-6">
-                <h3 class="text-lg font-bold bg-slate-900 text-white px-3 py-1 inline-block italic">01 战略引擎 (SEO+GEO)</h3>
+                <h3 class="text-lg font-bold bg-slate-900 text-white px-3 py-1 inline-block italic" x-text="t('sec1_t')"></h3>
                 <div class="space-y-4">
                     <a href="strategy-1-1.html" class="block bg-white border-2 border-slate-200 p-5 rounded hover:border-red-500 transition-all group shadow-sm">
-                        <span class="font-bold text-slate-900 group-hover:text-red-600">1.1 降维打击：成本定价权 →</span>
-                        <p class="text-[10px] text-slate-400 mt-1">以 AI 效率实现市场价格霸权。</p>
+                        <span class="font-bold text-slate-900 group-hover:text-red-600" x-text="t('s1_1_t')"></span>
+                        <p class="text-[10px] text-slate-400 mt-1" x-text="t('s1_1_d')"></p>
                     </a>
                     <a href="market-1-2.html" class="block bg-white border-2 border-slate-200 p-5 rounded hover:border-blue-500 transition-all group shadow-sm">
-                        <span class="font-bold text-slate-900 group-hover:text-blue-600">1.2 流量霸权：SEO+GEO →</span>
-                        <p class="text-[10px] text-slate-400 mt-1">统据搜索与 AI 问答的双向心智占领。</p>
+                        <span class="font-bold text-slate-900 group-hover:text-blue-600" x-text="t('s1_2_t')"></span>
+                        <p class="text-[10px] text-slate-400 mt-1" x-text="t('s1_2_d')"></p>
                     </a>
                     <a href="sources.html" class="block bg-blue-50 border-2 border-blue-200 p-4 rounded hover:bg-blue-100 transition-all border-dashed">
-                        <span class="text-xs font-bold text-blue-800 tracking-widest uppercase">● 情报源追踪中心 (SOURCES)</span>
+                        <span class="text-xs font-bold text-blue-800 tracking-widest uppercase" x-text="t('s1_3')"></span>
                     </a>
                 </div>
             </div>
 
             <div class="space-y-6">
-                <h3 class="text-lg font-bold bg-slate-900 text-white px-3 py-1 inline-block italic">02 产品与技术</h3>
+                <h3 class="text-lg font-bold bg-slate-900 text-white px-3 py-1 inline-block italic" x-text="t('sec2_t')"></h3>
                 <div class="space-y-4">
                     <a href="tech-2-2-2.html" class="block bg-white border-2 border-slate-200 p-5 rounded hover:border-green-500 transition-all group shadow-sm">
-                        <span class="font-bold text-slate-900 group-hover:text-green-600">2.2.2 MNRO 决策引擎 →</span>
-                        <p class="text-[10px] text-slate-400 mt-1">2026 封关政策自动适配算法。</p>
+                        <span class="font-bold text-slate-900 group-hover:text-green-600" x-text="t('s2_2_t')"></span>
+                        <p class="text-[10px] text-slate-400 mt-1" x-text="t('s2_2_d')"></p>
                     </a>
                     <a href="tech-2-3.html" class="block bg-white border-2 border-slate-200 p-5 rounded hover:border-green-500 transition-all group shadow-sm">
-                        <span class="font-bold text-slate-900 group-hover:text-green-600">2.3 模块化财税底座 →</span>
-                        <p class="text-[10px] text-slate-400 mt-1">业务代码化，即插即用的财税 API。</p>
+                        <span class="font-bold text-slate-900 group-hover:text-green-600" x-text="t('s2_3_t')"></span>
+                        <p class="text-[10px] text-slate-400 mt-1" x-text="t('s2_3_d')"></p>
                     </a>
                 </div>
             </div>
 
             <div class="space-y-6">
-                <h3 class="text-lg font-bold bg-indigo-600 text-white px-3 py-1 inline-block italic">03 增长与生态</h3>
+                <h3 class="text-lg font-bold bg-indigo-600 text-white px-3 py-1 inline-block italic" x-text="t('sec3_t')"></h3>
                 <div class="space-y-4">
                     <a href="growth-3-1.html" class="block bg-white border-2 border-indigo-100 p-5 rounded hover:border-indigo-500 transition-all group shadow-sm">
-                        <span class="font-bold text-indigo-900 group-hover:text-indigo-600">3.1 跨境协同增长 →</span>
-                        <p class="text-[10px] text-slate-400 mt-1">2026 封关红利财务模型与实战案例。</p>
+                        <span class="font-bold text-indigo-900 group-hover:text-indigo-600" x-text="t('s3_1_t')"></span>
+                        <p class="text-[10px] text-slate-400 mt-1" x-text="t('s3_1_d')"></p>
                     </a>
                     <a href="growth-3-2.html" class="block bg-white border-2 border-indigo-100 p-5 rounded hover:border-indigo-500 transition-all group shadow-sm">
-                        <span class="font-bold text-indigo-900 group-hover:text-indigo-600">3.2 人才资源中枢 →</span>
-                        <p class="text-[10px] text-slate-400 mt-1">实质性运营合规与 AI 人才诊断系统。</p>
+                        <span class="font-bold text-indigo-900 group-hover:text-indigo-600" x-text="t('s3_2_t')"></span>
+                        <p class="text-[10px] text-slate-400 mt-1" x-text="t('s3_2_d')"></p>
                     </a>
                 </div>
             </div>
@@ -116,6 +112,40 @@
     </footer>
 
     <script>
+        function commander() {
+            return {
+                lang: localStorage.getItem('site_lang') || 'cn',
+                setLang(l) { this.lang = l; localStorage.setItem('site_lang', l); },
+                i18n: {
+                    tag_ready: { cn: '2026 准备就绪', en: '2026 READY', ru: 'ГОВОРНОСТЬ 2026' },
+                    back_home: { cn: '← 返回主页', en: '← BACK HOME', ru: '← НА ГЛАВНУЮ' },
+                    ai_btn: { cn: 'AI 诊断终端 →', en: 'AI DIAGNOSTICS →', ru: 'AI ДИАГНОСТИКА →' },
+                    sub_title: { cn: '海南 2026 离岸金融与财税战略枢纽', en: 'HAINAN 2026 OFFSHORE FINANCE & TAX HUB', ru: 'СТРАТЕГИЧЕСКИЙ ХАБ ОФШОРНЫХ ФИНАНСОВ ХАЙНАНЬ 2026' },
+                    
+                    sec1_t: { cn: '01 战略引擎 (SEO+GEO)', en: '01 STRATEGIC ENGINE', ru: '01 СТРАТЕГИЧЕСКИЙ ДВИЖОК' },
+                    s1_1_t: { cn: '1.1 降维打击：成本定价权 →', en: '1.1 COST PRICING DOMINANCE →', ru: '1.1 ЦЕНОВОЕ ДОМИНИРОВАНИЕ →' },
+                    s1_1_d: { cn: '以 AI 效率实现市场价格霸权。', en: 'Market price hegemony through AI efficiency.', ru: 'Гегемония рыночных цен через эффективность ИИ.' },
+                    s1_2_t: { cn: '1.2 流量霸权：SEO+GEO →', en: '1.2 TRAFFIC HEGEMONY →', ru: '1.2 ТРАФИК-ГЕГЕМОНИЯ →' },
+                    s1_2_d: { cn: '统据搜索与 AI 问答的双向心智占领。', en: 'Dual occupancy of Search & AI Q&A minds.', ru: 'Захват поиска и ответов ИИ.' },
+                    s1_3: { cn: '● 情报源追踪中心 (SOURCES)', en: '● INTELLIGENCE SOURCES', ru: '● ЦЕНТР ИСТОЧНИКОВ РАЗВЕДКИ' },
+
+                    sec2_t: { cn: '02 产品与技术', en: '02 PRODUCT & TECH', ru: '02 ПРОДУКТЫ И ТЕХНОЛОГИИ' },
+                    s2_2_t: { cn: '2.2.2 MNRO 决策引擎 →', en: '2.2.2 MNRO DECISION ENGINE →', ru: '2.2.2 ДВИЖОК РЕШЕНИЙ MNRO →' },
+                    s2_2_d: { cn: '2026 封关政策自动适配算法。', en: '2026 policy auto-adaptation algorithm.', ru: 'Алгоритм автоадаптации к политике 2026 года.' },
+                    s2_3_t: { cn: '2.3 模块化财税底座 →', en: '2.3 MODULAR TAX INFRA →', ru: '2.3 МОДУЛЬНАЯ НАЛОГОВАЯ БАЗА →' },
+                    s2_3_d: { cn: '业务代码化，即插即用的财税 API。', en: 'Business-as-code, plug-and-play Tax API.', ru: 'Бизнес как код, налоговый API "подключай и работай".' },
+
+                    sec3_t: { cn: '03 增长与生态', en: '03 GROWTH & ECOSYSTEM', ru: '03 РОСТ И ЭКОСИСТЕМА' },
+                    s3_1_t: { cn: '3.1 跨境协同增长 →', en: '3.1 CROSS-BORDER GROWTH →', ru: '3.1 ТРАНСГРАНИЧНЫЙ РОСТ →' },
+                    s3_1_d: { cn: '2026 封关红利财务模型与实战案例。', en: '2026 dividend models & use cases.', ru: 'Финансовые модели и кейсы дивидендов 2026.' },
+                    s3_2_t: { cn: '3.2 人才资源中枢 →', en: '3.2 HUMAN RESOURCE HUB →', ru: '3.2 ХАБ ЧЕЛОВЕЧЕСКИХ РЕСУРСОВ →' },
+                    s3_2_d: { cn: '实质性运营合规与 AI 人才诊断系统。', en: 'Substance compliance & AI HR systems.', ru: 'Комплаенс Substance и системы ИИ-кадров.' }
+                },
+                t(key) { return this.i18n[key] ? this.i18n[key][this.lang] : key; }
+            }
+        }
+
+        // 日志动画保持不变
         const logs = ["Syncing 2026 DB...", "GEO Indexing...", "Verify: Tax Protocols...", "Terminal Ready."];
         let i = 0;
         setInterval(() => {
