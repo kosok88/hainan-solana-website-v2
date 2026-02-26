@@ -40,13 +40,13 @@
                 <a @click="scrollTo('sop')" class="text-xs font-bold hover:text-[#14F195] transition cursor-pointer" x-text="t('nav_sop')"></a>
                 <a @click="scrollTo('news')" class="text-xs font-bold hover:text-[#14F195] transition cursor-pointer" x-text="t('nav_news')"></a>
                 <a @click="scrollTo('lifestyle')" class="text-xs font-bold hover:text-[#14F195] transition cursor-pointer" x-text="t('nav_life')"></a>
-                </div>
+            </div>
 
             <div class="flex items-center gap-3">
                 <button @click="openAuth('login')" class="text-xs font-bold hover:text-[#14F195]" x-text="t('login')"></button>
                 <button @click="openAuth('register')" class="bg-[#14F195] text-black px-4 py-1.5 rounded-full text-xs font-black" x-text="t('register')"></button>
                 <div class="w-px h-4 bg-white/20 mx-1"></div>
-                <button @click="toggleLang()" class="text-[10px] border border-white/20 px-2 py-1 rounded uppercase hover:bg-white/10" x-text="lang === 'cn' ? 'EN' : '中文'"></button>
+                <button @click="toggleLang()" class="text-[10px] border border-white/20 px-2 py-1 rounded uppercase hover:bg-white/10 font-bold" x-text="lang === 'cn' ? 'EN' : (lang === 'en' ? 'РУ' : '中文')"></button>
             </div>
         </div>
     </nav>
@@ -243,113 +243,148 @@
                 lang: localStorage.getItem('site_lang') || 'cn',
                 showAuthModal: false,
                 authMode: 'login',
-                toggleLang() { this.lang = this.lang === 'cn' ? 'en' : 'cn'; localStorage.setItem('site_lang', this.lang); },
+                // 升级为三语循环算法
+                toggleLang() { 
+                    const langs = ['cn', 'en', 'ru'];
+                    let currentIndex = langs.indexOf(this.lang);
+                    this.lang = langs[(currentIndex + 1) % langs.length];
+                    localStorage.setItem('site_lang', this.lang); 
+                },
                 openAuth(mode) { this.authMode = mode; this.showAuthModal = true; },
                 scrollTo(id) { document.getElementById(id).scrollIntoView({ behavior: 'smooth' }); },
 
-                // 业务预览数据
+                // 业务预览数据扩展 RU
                 bizPreview: [
                     {
-                        name: { cn: '行政落地 (5项)', en: 'ADMIN INFRA (5)' }, icon: '🏛️',
-                        list: [{cn:'名称核准', en:'Name Pre-clearance'}, {cn:'执照申领', en:'License Setup'}, {cn:'地址挂靠', en:'Office Registry'}, {cn:'印章备案', en:'Official Seals'}, {cn:'银行开户', en:'Bank Setup'}]
+                        name: { cn: '行政落地 (5项)', en: 'ADMIN INFRA (5)', ru: 'АДМИНИСТРАТИВНАЯ ИНФРАСТРУКТУРА (5)' }, icon: '🏛️',
+                        list: [
+                            {cn:'名称核准', en:'Name Pre-clearance', ru:'Предварительное согласование названия'}, 
+                            {cn:'执照申领', en:'License Setup', ru:'Оформление лицензии'}, 
+                            {cn:'地址挂靠', en:'Office Registry', ru:'Регистрация офиса'}, 
+                            {cn:'印章备案', en:'Official Seals', ru:'Официальные печати'}, 
+                            {cn:'银行开户', en:'Bank Setup', ru:'Открытие банковского счета'}
+                        ]
                     },
                     {
-                        name: { cn: '财税与资质 (5项)', en: 'FINANCE & TAX (5)' }, icon: '💳',
-                        list: [{cn:'EF账户开立', en:'EF Account Setup'}, {cn:'税务登记', en:'Tax Registration'}, {cn:'代理记账', en:'Accounting'}, {cn:'进出口权', en:'I/E Rights'}, {cn:'外汇备案', en:'FOREX Record'}]
+                        name: { cn: '财税与资质 (5项)', en: 'FINANCE & TAX (5)', ru: 'ФИНАНСЫ И НАЛОГИ (5)' }, icon: '💳',
+                        list: [
+                            {cn:'EF账户开立', en:'EF Account Setup', ru:'Открытие счета EF'}, 
+                            {cn:'税务登记', en:'Tax Registration', ru:'Налоговая регистрация'}, 
+                            {cn:'代理记账', en:'Accounting', ru:'Бухгалтерский учет'}, 
+                            {cn:'进出口权', en:'I/E Rights', ru:'Права на импорт/экспорт'}, 
+                            {cn:'外汇备案', en:'FOREX Record', ru:'Валютный учет'}
+                        ]
                     },
                     {
-                        name: { cn: '离岸合规与技术 (4项)', en: 'COMPLIANCE & TECH (4)' }, icon: '🌐',
-                        list: [{cn:'实质性审查', en:'Substance Review'}, {cn:'RWA合规咨询', en:'RWA Consulting'}, {cn:'品牌视觉', en:'Brand Identity'}, {cn:'Web3站点', en:'Web3 Portal'}]
+                        name: { cn: '离岸合规与技术 (4项)', en: 'COMPLIANCE & TECH (4)', ru: 'КОМПЛАЕНС И ТЕХНОЛОГИИ (4)' }, icon: '🌐',
+                        list: [
+                            {cn:'实质性审查', en:'Substance Review', ru:'Проверка присутствия (Substance)'}, 
+                            {cn:'RWA合规咨询', en:'RWA Consulting', ru:'Консалтинг RWA'}, 
+                            {cn:'品牌视觉', en:'Brand Identity', ru:'Фирменный стиль'}, 
+                            {cn:'Web3站点', en:'Web3 Portal', ru:'Web3 Портал'}
+                        ]
                     }
                 ],
 
-                // SOP 完整12步数据
+                // SOP 扩展 RU
                 sopSteps: [
-                    { cn: '落地需求初审与背景审计', en: 'Initial Audit & Review' },
-                    { cn: '全球离岸法律主体架构规划', en: 'Global Structure Planning' },
-                    { cn: '自贸港政策匹配与园区选址', en: 'Policy Matching & Site' },
-                    { cn: '工商主体核准与执照申领', en: 'Entity Registration' },
-                    { cn: '官方印章刻制与公安备案', en: 'Official Seals & Filing' },
-                    { cn: '银行基本账户面签与开立', en: 'Basic Bank Account Setup' },
-                    { cn: 'EF 多功能账户申请', en: 'EF Account Application' },
-                    { cn: '税务核定与 15% 优惠备案', en: 'Tax Record & 15% Benefit' },
-                    { cn: '实质性运营场地与人员配置审查', en: 'Substance Review & Staffing' },
-                    { cn: '进出口经营权与外汇备案', en: 'Import/Export & FOREX' },
-                    { cn: '数字资产/Web3 沙盒接入', en: 'Web3 Sandbox Entry' },
-                    { cn: '离岸全案交付与持续合规', en: 'Final Delivery & Compliance' }
+                    { cn: '落地需求初审与背景审计', en: 'Initial Audit & Review', ru: 'Первичный аудит и проверка требований' },
+                    { cn: '全球离岸法律主体架构规划', en: 'Global Structure Planning', ru: 'Планирование глобальной структуры' },
+                    { cn: '自贸港政策匹配与园区选址', en: 'Policy Matching & Site', ru: 'Подбор политик и выбор парка' },
+                    { cn: '工商主体核准与执照申领', en: 'Entity Registration', ru: 'Регистрация юридического лица' },
+                    { cn: '官方印章刻制与公安备案', en: 'Official Seals & Filing', ru: 'Изготовление печатей и регистрация' },
+                    { cn: '银行基本账户面签与开立', en: 'Basic Bank Account Setup', ru: 'Открытие базового банковского счета' },
+                    { cn: 'EF 多功能账户申请', en: 'EF Account Application', ru: 'Открытие многофункционального счета EF' },
+                    { cn: '税务核定与 15% 优惠备案', en: 'Tax Record & 15% Benefit', ru: 'Налоговая регистрация и льгота 15%' },
+                    { cn: '实质性运营场地与人员配置审查', en: 'Substance Review & Staffing', ru: 'Проверка офиса и персонала (Substance)' },
+                    { cn: '进出口经营权与外汇备案', en: 'Import/Export & FOREX', ru: 'Оформление прав на импорт/экспорт' },
+                    { cn: '数字资产/Web3 沙盒接入', en: 'Web3 Sandbox Entry', ru: 'Вход в песочницу Web3' },
+                    { cn: '离岸全案交付与持续合规', en: 'Final Delivery & Compliance', ru: 'Финальная сдача и постоянный комплаенс' }
                 ],
 
-                // 13大园区数据
+                // 13大园区数据扩展 RU (采用标准俄文地理音译)
                 parksList: [
-                    { cn: '海口江东新区', en: 'Haikou Jiangdong' }, { cn: '三亚中央商务区', en: 'Sanya CBD' },
-                    { cn: '博鳌乐城医疗区', en: 'Boao Lecheng' }, { cn: '洋浦经济开发区', en: 'Yangpu Zone' },
-                    { cn: '复兴城互联网园', en: 'Fullsing Town' }, { cn: '三亚崖州湾科技城', en: 'Yazhou Bay' },
-                    { cn: '海口综合保税区', en: 'Haikou FTZ' }, { cn: '海南生态软件园', en: 'Eco Software Park' },
-                    { cn: '文昌国际航天城', en: 'Wenchang Aerospace' }, { cn: '陵水国际教育区', en: 'Lingshui Edu Zone' },
-                    { cn: '临高金牌港开发区', en: 'Lingao Jinpai' }, { cn: '海口国家高新区', en: 'Haikou High-tech' },
-                    { cn: '三亚深海科技城', en: 'Sanya Deep Sea' }
+                    { cn: '海口江东新区', en: 'Haikou Jiangdong', ru: 'Хайкоу Цзяндун (Новый район)' }, 
+                    { cn: '三亚中央商务区', en: 'Sanya CBD', ru: 'Центральный деловой район Санья' },
+                    { cn: '博鳌乐城医疗区', en: 'Boao Lecheng', ru: 'Медицинский район Боао Лэчэн' }, 
+                    { cn: '洋浦经济开发区', en: 'Yangpu Zone', ru: 'Зона экономического развития Янпу' },
+                    { cn: '复兴城互联网园', en: 'Fullsing Town', ru: 'Интернет-парк Фулсин Таун' }, 
+                    { cn: '三亚崖州湾科技城', en: 'Yazhou Bay', ru: 'Наукоград Ячжоувань' },
+                    { cn: '海口综合保税区', en: 'Haikou FTZ', ru: 'Комплексная бондовая зона Хайкоу' }, 
+                    { cn: '海南生态软件园', en: 'Eco Software Park', ru: 'Экологический парк ПО' },
+                    { cn: '文昌国际航天城', en: 'Wenchang Aerospace', ru: 'Аэрокосмический город Вэньчан' }, 
+                    { cn: '陵水国际教育区', en: 'Lingshui Edu Zone', ru: 'Образовательная зона Линшуй' },
+                    { cn: '临高金牌港开发区', en: 'Lingao Jinpai', ru: 'Зона развития порта Цзиньпай' }, 
+                    { cn: '海口国家高新区', en: 'Haikou High-tech', ru: 'Высокотехнологичная зона Хайкоу' },
+                    { cn: '三亚深海科技城', en: 'Sanya Deep Sea', ru: 'Глубоководный наукоград Санья' }
                 ],
 
-                // 新闻动态数据
+                // 新闻动态数据扩展 RU
                 newsList: [
-                    { tag: { cn: '2026 POLICY UPDATE', en: '2026 POLICY UPDATE' }, title: { cn: '多功能自由贸易账户 (EF) 全面扩容指南发布', en: 'Comprehensive Guide to EF Account Expansion Released' } },
-                    { tag: { cn: 'REGULATION', en: 'REGULATION' }, title: { cn: '关于实质性运营的双15%税务审查最新细则解读', en: 'Interpretation of the Latest Rules on 15% Tax Substance Review' } }
+                    { 
+                        tag: { cn: '2026 POLICY UPDATE', en: '2026 POLICY UPDATE', ru: 'ОБНОВЛЕНИЕ ПОЛИТИКИ 2026' }, 
+                        title: { cn: '多功能自由贸易账户 (EF) 全面扩容指南发布', en: 'Comprehensive Guide to EF Account Expansion Released', ru: 'Опубликовано руководство по расширению счетов EF' } 
+                    },
+                    { 
+                        tag: { cn: 'REGULATION', en: 'REGULATION', ru: 'РЕГУЛИРОВАНИЕ' }, 
+                        title: { cn: '关于实质性运营的双15%税务审查最新细则解读', en: 'Interpretation of the Latest Rules on 15% Tax Substance Review', ru: 'Интерпретация новых правил проверки Substance для льготы 15%' } 
+                    }
                 ],
 
-                // 多语言字典库
+                // 多语言字典库扩展 RU
                 i18n: {
-                    top_bar: { cn: '系统状态：2026 海南封关运营模式已激活', en: 'STATUS: 2026 CUSTOM CLOSURE ACTIVE' },
-                    nav_policy: { cn: '核心红利', en: 'ADVANTAGES' },
-                    nav_parks: { cn: '重点园区', en: 'PARKS' },
-                    nav_pricing: { cn: '业务与报价', en: 'SERVICES & PRICING' },
-                    nav_sop: { cn: '交付流程', en: 'SOP PROCESS' },
-                    nav_news: { cn: '封关动态', en: 'NEWS' },
-                    nav_life: { cn: '风土人情', en: 'LIFESTYLE' },
-                    // nav_detail 字典项保留但不再在 HTML 中调用
-                    nav_detail: { cn: '全案报价单', en: 'DETAILED LIST' },
-                    login: { cn: '登录', en: 'LOGIN' },
-                    register: { cn: '注册', en: 'REGISTER' },
-                    hero_title_1: { cn: '锁定海南自贸港', en: 'SECURE YOUR' },
-                    hero_title_2: { cn: '离岸资产红利', en: 'OFFSHORE ASSETS' },
-                    hero_desc: { cn: '为您打通 59 国免签政策、13 大园区入口及 EF 账户系统。执行 12 步标准交付。', en: 'Access 59-nation visa-free, 13 industrial parks, and EF accounts. 12-step standard delivery.' },
-                    btn_pricing: { cn: '业务与报价单', en: 'SERVICES & PRICING' },
-                    btn_register: { cn: '创建企业账户', en: 'CREATE ACCOUNT' },
+                    top_bar: { cn: '系统状态：2026 海南封关运营模式已激活', en: 'STATUS: 2026 CUSTOM CLOSURE ACTIVE', ru: 'СТАТУС: РЕЖИМ ЗАКРЫТОЙ ТАМОЖНИ 2026 АКТИВЕН' },
+                    nav_policy: { cn: '核心红利', en: 'ADVANTAGES', ru: 'ПРЕИМУЩЕСТВА' },
+                    nav_parks: { cn: '重点园区', en: 'PARKS', ru: 'ПАРКИ' },
+                    nav_pricing: { cn: '业务与报价', en: 'SERVICES & PRICING', ru: 'УСЛУГИ И ЦЕНЫ' },
+                    nav_sop: { cn: '交付流程', en: 'SOP PROCESS', ru: 'ПРОЦЕСС SOP' },
+                    nav_news: { cn: '封关动态', en: 'NEWS', ru: 'НОВОСТИ' },
+                    nav_life: { cn: '风土人情', en: 'LIFESTYLE', ru: 'ОБРАЗ ЖИЗНИ' },
+                    nav_detail: { cn: '全案报价单', en: 'DETAILED LIST', ru: 'ПОДРОБНЫЙ СПИСОК' },
+                    login: { cn: '登录', en: 'LOGIN', ru: 'ВОЙТИ' },
+                    register: { cn: '注册', en: 'REGISTER', ru: 'РЕГИСТРАЦИЯ' },
                     
-                    sec_policy: { cn: '海南自贸港四大战略红利', en: 'CORE STRATEGIC ADVANTAGES' },
-                    p1_t: { cn: '双 15% 所得税', en: '15% INCOME TAX' },
-                    p1_d: { cn: '企业与个人所得税上限 15%，全国最低税负。', en: 'Corporate & Personal tax capped at 15%.' },
-                    p2_t: { cn: '59 国免签入境', en: 'VISA-FREE ACCESS' },
-                    p2_d: { cn: '人员免签入境海南，国际商务往来零门槛。', en: 'Visa-free entry for citizens of 59 countries.' },
-                    p3_t: { cn: 'EF 电子围栏账户', en: 'EF ACCOUNT SYSTEM' },
-                    p3_d: { cn: '多功能自由贸易账户，跨境资金高效结算通道。', en: 'EF account for seamless global settlements.' },
-                    p4_t: { cn: '离岸零关税', en: 'ZERO TARIFFS' },
-                    p4_d: { cn: '生产设备、原材料零关税，降低供应链成本。', en: 'Zero tariffs on equipment and raw materials.' },
+                    hero_title_1: { cn: '锁定海南自贸港', en: 'SECURE YOUR', ru: 'ОБЕСПЕЧЬТЕ СВОИ' },
+                    hero_title_2: { cn: '离岸资产红利', en: 'OFFSHORE ASSETS', ru: 'ОФШОРНЫЕ АКТИВЫ' },
+                    hero_desc: { cn: '为您打通 59 国免签政策、13 大园区入口及 EF 账户系统。执行 12 步标准交付。', en: 'Access 59-nation visa-free, 13 industrial parks, and EF accounts. 12-step standard delivery.', ru: 'Безвизовый въезд для 59 стран, 13 индустриальных парков и счета EF. 12-этапный стандартный процесс оформления.' },
+                    btn_pricing: { cn: '业务与报价单', en: 'SERVICES & PRICING', ru: 'УСЛУГИ И ЦЕНЫ' },
+                    btn_register: { cn: '创建企业账户', en: 'CREATE ACCOUNT', ru: 'СОЗДАТЬ АККАУНТ' },
                     
-                    sec_parks: { cn: '全岛 13 大核心园区接入', en: '13 STRATEGIC INDUSTRIAL PARKS' },
-                    parks_sub: { cn: '根据产业属性精准匹配自贸港最佳落地点', en: 'Match your industry with the perfect Free Trade Port location.' },
+                    sec_policy: { cn: '海南自贸港四大战略红利', en: 'CORE STRATEGIC ADVANTAGES', ru: 'КЛЮЧЕВЫЕ СТРАТЕГИЧЕСКИЕ ПРЕИМУЩЕСТВА' },
+                    p1_t: { cn: '双 15% 所得税', en: '15% INCOME TAX', ru: 'ПОДОХОДНЫЙ НАЛОГ 15%' },
+                    p1_d: { cn: '企业与个人所得税上限 15%，全国最低税负。', en: 'Corporate & Personal tax capped at 15%.', ru: 'Корпоративный и личный налог ограничен 15%.' },
+                    p2_t: { cn: '59 国免签入境', en: 'VISA-FREE ACCESS', ru: 'БЕЗВИЗОВЫЙ ДОСТУП' },
+                    p2_d: { cn: '人员免签入境海南，国际商务往来零门槛。', en: 'Visa-free entry for citizens of 59 countries.', ru: 'Безвизовый въезд для граждан 59 стран.' },
+                    p3_t: { cn: 'EF 电子围栏账户', en: 'EF ACCOUNT SYSTEM', ru: 'СИСТЕМА СЧЕТОВ EF' },
+                    p3_d: { cn: '多功能自由贸易账户，跨境资金高效结算通道。', en: 'EF account for seamless global settlements.', ru: 'Счет EF для беспрепятственных международных расчетов.' },
+                    p4_t: { cn: '离岸零关税', en: 'ZERO TARIFFS', ru: 'НУЛЕВЫЕ ПОШЛИНЫ' },
+                    p4_d: { cn: '生产设备、原材料零关税，降低供应链成本。', en: 'Zero tariffs on equipment and raw materials.', ru: 'Нулевые пошлины на оборудование и сырье.' },
                     
-                    biz_subtitle: { cn: '涵盖行政、财税、合规等 14 项标准化离岸交付业务', en: '14 standardized offshore services including admin, tax, and compliance.' },
-                    view_detail_btn: { cn: '查看详细清单与报价单 →', en: 'View Detailed Pricing List →' },
+                    sec_parks: { cn: '全岛 13 大核心园区接入', en: '13 STRATEGIC INDUSTRIAL PARKS', ru: '13 СТРАТЕГИЧЕСКИХ ИНДУСТРИАЛЬНЫХ ПАРКОВ' },
+                    parks_sub: { cn: '根据产业属性精准匹配自贸港最佳落地点', en: 'Match your industry with the perfect Free Trade Port location.', ru: 'Подберите идеальное место в Порту свободной торговли для вашей отрасли.' },
                     
-                    sec_sop: { cn: '12 步标准交付协议 (SOP)', en: '12-STEP DELIVERY SOP' },
+                    biz_subtitle: { cn: '涵盖行政、财税、合规等 14 项标准化离岸交付业务', en: '14 standardized offshore services including admin, tax, and compliance.', ru: '14 стандартизированных офшорных услуг, включая администрирование, налоги и комплаенс.' },
+                    view_detail_btn: { cn: '查看详细清单与报价单 →', en: 'View Detailed Pricing List →', ru: 'Посмотреть подробный прайс-лист →' },
                     
-                    sec_news: { cn: '封关运营前沿追踪', en: 'CLOSURE OPERATION UPDATES' },
-                    read_more: { cn: '阅读简报', en: 'Read Brief' },
+                    sec_sop: { cn: '12 步标准交付协议 (SOP)', en: '12-STEP DELIVERY SOP', ru: '12-ЭТАПНЫЙ ПРОЦЕСС ОФОРМЛЕНИЯ (SOP)' },
+                    
+                    sec_news: { cn: '封关运营前沿追踪', en: 'CLOSURE OPERATION UPDATES', ru: 'ОБНОВЛЕНИЯ ОПЕРАЦИЙ ЗАКРЫТИЯ' },
+                    read_more: { cn: '阅读简报', en: 'Read Brief', ru: 'Читать сводку' },
 
-                    life_t: { cn: '不仅是税收洼地，更是生活高地', en: 'MORE THAN A TAX HAVEN' },
-                    life_d: { cn: '海南拥有热带雨林、顶级冲浪点、离岸免税购物及世界级的康养资源。在碧海蓝天间，处理全球订单，实现事业与生命的完美平衡。', en: 'Tropical rainforests, world-class surfing, offshore duty-free shopping. Balance your global business with paradise.' },
-                    l1: { cn: '热带雨林康养', en: 'RAINFOREST WELLNESS' },
-                    l2: { cn: '离岸免税购物', en: 'OFFSHORE SHOPPING' },
-                    l3: { cn: '5G 全覆盖数字海岛', en: '5G DIGITAL ISLAND' },
-                    l4: { cn: '顶级帆船与潜水', en: 'SAILING & DIVING' },
+                    life_t: { cn: '不仅是税收洼地，更是生活高地', en: 'MORE THAN A TAX HAVEN', ru: 'БОЛЬШЕ, ЧЕМ НАЛОГОВАЯ ГАВАНЬ' },
+                    life_d: { cn: '海南拥有热带雨林、顶级冲浪点、离岸免税购物及世界级的康养资源。在碧海蓝天间，处理全球订单，实现事业与生命的完美平衡。', en: 'Tropical rainforests, world-class surfing, offshore duty-free shopping. Balance your global business with paradise.', ru: 'Тропические леса, серфинг мирового класса, офшорный шопинг без пошлин. Совместите глобальный бизнес с райской жизнью.' },
+                    l1: { cn: '热带雨林康养', en: 'RAINFOREST WELLNESS', ru: 'ОЗДОРОВЛЕНИЕ В ТРОПИКАХ' },
+                    l2: { cn: '离岸免税购物', en: 'OFFSHORE SHOPPING', ru: 'ОФШОРНЫЙ ШОПИНГ' },
+                    l3: { cn: '5G 全覆盖数字海岛', en: '5G DIGITAL ISLAND', ru: 'ЦИФРОВОЙ ОСТРОВ 5G' },
+                    l4: { cn: '顶级帆船与潜水', en: 'SAILING & DIVING', ru: 'ЯХТИНГ И ДАЙВИНГ' },
                     
-                    sec_video: { cn: '离岸基建·视觉预览', en: 'OFFSHORE INFRA PREVIEW' },
+                    sec_video: { cn: '离岸基建·视觉预览', en: 'OFFSHORE INFRA PREVIEW', ru: 'ОБЗОР ОФШОРНОЙ ИНФРАСТРУКТУРЫ' },
 
-                    footer_t: { cn: '准备好开启您的海南业务了吗？', en: 'READY TO START IN HAINAN?' },
-                    f_user: { cn: '手机号 / 邮箱', en: 'Phone / Email' },
-                    f_pass: { cn: '设置密码', en: 'Password' },
-                    f_comp: { cn: '企业名称 / 联系人', en: 'Company / Name' },
-                    f_submit: { cn: '提交注册 / 登录', en: 'SUBMIT' }
+                    footer_t: { cn: '准备好开启您的海南业务了吗？', en: 'READY TO START IN HAINAN?', ru: 'ГОТОВЫ НАЧАТЬ БИЗНЕС НА ХАЙНАНЕ?' },
+                    f_user: { cn: '手机号 / 邮箱', en: 'Phone / Email', ru: 'Телефон / Email' },
+                    f_pass: { cn: '设置密码', en: 'Password', ru: 'Пароль' },
+                    f_comp: { cn: '企业名称 / 联系人', en: 'Company / Name', ru: 'Компания / Имя' },
+                    f_submit: { cn: '提交注册 / 登录', en: 'SUBMIT', ru: 'ОТПРАВИТЬ' }
                 },
                 t(key) { return this.i18n[key] ? this.i18n[key][this.lang] : key; }
             }
