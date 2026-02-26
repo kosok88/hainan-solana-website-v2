@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh" x-data="servicePage()" x-cloak>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>业务矩阵与全量报价清单 | Solana-Hainan Strategic</title>
+    <title x-text="t('page_title')"></title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700;900&display=swap');
+        [x-cloak] { display: none !important; }
         body { font-family: 'Noto Sans SC', sans-serif; background-color: #020617; color: #cbd5e1; scroll-behavior: smooth; }
         .grid-overlay { background-image: linear-gradient(rgba(30, 41, 59, 0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(30, 41, 59, 0.2) 1px, transparent 1px); background-size: 40px 40px; }
         .glass-card { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(51, 65, 85, 0.4); }
@@ -25,11 +27,14 @@
                 <span class="text-white font-black tracking-tighter text-lg uppercase italic">Solana<span class="text-blue-500">Hainan</span></span>
             </a>
             <div class="hidden lg:flex space-x-8 text-[11px] font-black uppercase tracking-[0.2em]">
-                <a href="index.html" class="text-slate-400 hover:text-white transition-colors">首页</a>
-                <a href="parks.html" class="text-slate-400 hover:text-white transition-colors">13大园区</a>
-                <a href="services.html" class="text-blue-400 border-b-2 border-blue-500 pb-1">业务与报价</a>
+                <a href="index.html" class="text-slate-400 hover:text-white transition-colors" x-text="t('nav_home')"></a>
+                <a href="parks.html" class="text-slate-400 hover:text-white transition-colors" x-text="t('nav_parks')"></a>
+                <a href="services.html" class="text-blue-400 border-b-2 border-blue-500 pb-1" x-text="t('nav_pricing')"></a>
             </div>
-            <button onclick="openForm('会员咨询', '0')" class="bg-blue-600 text-white px-5 py-2 rounded-full text-[10px] font-black uppercase hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] transition-all">注册/咨询</button>
+            <div class="flex items-center gap-4">
+                <button @click="toggleLang()" class="text-[10px] border border-slate-700 px-2 py-1 rounded text-slate-400 hover:text-white transition uppercase font-bold" x-text="lang === 'cn' ? 'EN' : (lang === 'en' ? 'РУ' : '中文')"></button>
+                <button @click="openForm(t('nav_consult'), '0')" class="bg-blue-600 text-white px-5 py-2 rounded-full text-[10px] font-black uppercase hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] transition-all" x-text="t('nav_consult')"></button>
+            </div>
         </div>
     </nav>
 
@@ -37,20 +42,16 @@
         <div class="grid lg:grid-cols-2 gap-12 items-center">
             <div class="text-left">
                 <h1 class="text-5xl md:text-7xl font-black text-white italic uppercase tracking-tighter mb-6 leading-none">
-                    全量业务矩阵<br><span class="text-blue-500">2026 报价清单</span>
+                    <span x-text="t('h1_1')"></span><br><span class="text-blue-500" x-text="t('h1_2')"></span>
                 </h1>
-                <p class="text-slate-400 text-lg max-w-xl leading-relaxed">
-                    不仅是代办，更是针对海南封关政策的<b>确定性合规方案</b>。我们整合了过往所有实战业务，为您提供一站式落户、财税、合规及资本路径设计。
-                </p>
+                <p class="text-slate-400 text-lg max-w-xl leading-relaxed" x-text="t('header_desc')"></p>
             </div>
             <div class="glass-card p-6 rounded-3xl border-slate-700/50">
                 <div class="flex items-center gap-4 mb-4">
                     <div class="w-3 h-3 rounded-full bg-green-500 animate-pulse"></div>
-                    <span class="text-xs font-bold text-slate-300 uppercase tracking-widest">系统实时同步: 13 园区接口已就绪</span>
+                    <span class="text-xs font-bold text-slate-300 uppercase tracking-widest" x-text="t('sync_status')"></span>
                 </div>
-                <div class="text-xs text-slate-500 leading-relaxed">
-                    当前报价包含：基础注册、进阶财税、实质性运营、Web3专项及海外架构等 5 大核心模块。所有价格公开透明，无隐含费用。
-                </div>
+                <div class="text-xs text-slate-500 leading-relaxed" x-text="t('sync_desc')"></div>
             </div>
         </div>
     </header>
@@ -59,101 +60,97 @@
         
         <section class="mb-20">
             <div class="flex items-center gap-4 mb-10">
-                <h2 class="text-2xl font-black text-white italic uppercase">01. 企业设立与主体落户</h2>
+                <h2 class="text-2xl font-black text-white italic uppercase" x-text="t('sec1_t')"></h2>
                 <div class="h-[1px] flex-1 bg-slate-800"></div>
             </div>
             <div class="grid md:grid-cols-3 gap-6">
                 <div class="glass-card p-8 rounded-[2rem] flex flex-col hover:border-blue-500/50 transition-all">
-                    <h3 class="text-white text-xl font-bold mb-2">基础注册版</h3>
-                    <p class="text-xs text-slate-500 mb-6">适合已有明确地址、仅需执照的主体</p>
+                    <h3 class="text-white text-xl font-bold mb-2" x-text="t('s1_p1_t')"></h3>
+                    <p class="text-xs text-slate-500 mb-6" x-text="t('s1_p1_d')"></p>
                     <div class="price-tag p-4 rounded-xl mb-6">
                         <span class="text-3xl font-mono font-black text-white">¥800</span>
                         <span class="text-[10px] text-slate-500 ml-2 uppercase">Starter</span>
                     </div>
                     <ul class="service-detail-list text-slate-400 flex-1">
-                        <li>企业核名 (3次)</li>
-                        <li>工商注册代办 (领取执照)</li>
-                        <li>提供标准公司章程模板</li>
+                        <li x-text="t('s1_p1_l1')"></li>
+                        <li x-text="t('s1_p1_l2')"></li>
+                        <li x-text="t('s1_p1_l3')"></li>
                     </ul>
-                    <button onclick="openForm('基础注册', '800')" class="mt-8 w-full py-4 rounded-xl bg-slate-800 text-white font-black text-[10px] uppercase tracking-widest hover:bg-white hover:text-black transition-all">立刻启动</button>
+                    <button @click="openForm(t('s1_p1_t'), '800')" class="mt-8 w-full py-4 rounded-xl bg-slate-800 text-white font-black text-[10px] uppercase tracking-widest hover:bg-white hover:text-black transition-all" x-text="t('btn_start')"></button>
                 </div>
                 <div class="glass-card p-8 rounded-[2rem] border-blue-500/50 relative flex flex-col scale-105 bg-blue-900/10 shadow-2xl">
-                    <div class="absolute -top-3 right-8 hot-badge text-[9px] font-black px-3 py-1 rounded-full text-white uppercase tracking-tighter">Recommended</div>
-                    <h3 class="text-white text-xl font-bold mb-2 text-blue-400">全包落户版</h3>
-                    <p class="text-xs text-slate-400 mb-6">一站式解决，拿到执照即可经营</p>
+                    <div class="absolute -top-3 right-8 hot-badge text-[9px] font-black px-3 py-1 rounded-full text-white uppercase tracking-tighter" x-text="t('badge_rec')"></div>
+                    <h3 class="text-white text-xl font-bold mb-2 text-blue-400" x-text="t('s1_p2_t')"></h3>
+                    <p class="text-xs text-slate-400 mb-6" x-text="t('s1_p2_d')"></p>
                     <div class="price-tag p-4 rounded-xl mb-6 border-blue-500">
                         <span class="text-3xl font-mono font-black text-white">¥1,900</span>
-                        <span class="text-[10px] text-blue-400 ml-2 uppercase tracking-widest">Business Plus</span>
+                        <span class="text-[10px] text-blue-400 ml-2 uppercase tracking-widest">Plus</span>
                     </div>
                     <ul class="service-detail-list text-slate-300 flex-1">
-                        <li><b>包含基础版所有项目</b></li>
-                        <li>官方公章/财务章/法人章 (刻制)</li>
-                        <li>税务登记与纳税人身份初始化</li>
-                        <li>银行基本户预约与开户陪同</li>
+                        <li class="font-bold" x-text="t('s1_p2_l1')"></li>
+                        <li x-text="t('s1_p2_l2')"></li>
+                        <li x-text="t('s1_p2_l3')"></li>
+                        <li x-text="t('s1_p2_l4')"></li>
                     </ul>
-                    <button onclick="openForm('全包落户', '1900')" class="mt-8 w-full py-4 rounded-xl bg-blue-600 text-white font-black text-[10px] uppercase tracking-widest hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] transition-all">选定此方案</button>
+                    <button @click="openForm(t('s1_p2_t'), '1900')" class="mt-8 w-full py-4 rounded-xl bg-blue-600 text-white font-black text-[10px] uppercase tracking-widest hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] transition-all" x-text="t('btn_select')"></button>
                 </div>
                 <div class="glass-card p-8 rounded-[2rem] flex flex-col hover:border-blue-500/50 transition-all">
-                    <h3 class="text-white text-xl font-bold mb-2">WFOE/海外主体</h3>
-                    <p class="text-xs text-slate-500 mb-6">外资或港澳台资企业落户海南</p>
+                    <h3 class="text-white text-xl font-bold mb-2" x-text="t('s1_p3_t')"></h3>
+                    <p class="text-xs text-slate-500 mb-6" x-text="t('s1_p3_d')"></p>
                     <div class="price-tag p-4 rounded-xl mb-6">
                         <span class="text-3xl font-mono font-black text-white">¥5,000</span>
                         <span class="text-[10px] text-slate-500 ml-2 uppercase">Global</span>
                     </div>
                     <ul class="service-detail-list text-slate-400 flex-1">
-                        <li>外资准入政策合规性筛查</li>
-                        <li>FDI 备案及相关外汇登记</li>
-                        <li>多语种文件公证辅助引导</li>
+                        <li x-text="t('s1_p3_l1')"></li>
+                        <li x-text="t('s1_p3_l2')"></li>
+                        <li x-text="t('s1_p3_l3')"></li>
                     </ul>
-                    <button onclick="openForm('海外主体落户', '5000')" class="mt-8 w-full py-4 rounded-xl bg-slate-800 text-white font-black text-[10px] uppercase tracking-widest hover:bg-white hover:text-black transition-all">海外通道咨询</button>
+                    <button @click="openForm(t('s1_p3_t'), '5000')" class="mt-8 w-full py-4 rounded-xl bg-slate-800 text-white font-black text-[10px] uppercase tracking-widest hover:bg-white hover:text-black transition-all" x-text="t('btn_global')"></button>
                 </div>
             </div>
         </section>
 
         <section class="mb-20">
             <div class="flex items-center gap-4 mb-10">
-                <h2 class="text-2xl font-black text-white italic uppercase">02. 财税外包与政策合规</h2>
+                <h2 class="text-2xl font-black text-white italic uppercase" x-text="t('sec2_t')"></h2>
                 <div class="h-[1px] flex-1 bg-slate-800"></div>
             </div>
             <div class="grid md:grid-cols-2 gap-6">
                 <div class="glass-card p-10 rounded-[2.5rem] flex flex-col md:flex-row gap-8 items-center">
                     <div class="flex-1">
-                        <h3 class="text-white text-2xl font-black italic mb-4 uppercase">年度代理记账 <span class="text-blue-500 text-sm ml-2">Subscription</span></h3>
-                        <p class="text-sm text-slate-500 mb-6 leading-relaxed">
-                            根据企业规模精准定价，包含海南 FTP 特有的“实质性运营”证据链留存指导。
-                        </p>
+                        <h3 class="text-white text-2xl font-black italic mb-4 uppercase" x-text="t('s2_p1_t')"></h3>
+                        <p class="text-sm text-slate-500 mb-6 leading-relaxed" x-text="t('s2_p1_d')"></p>
                         <div class="grid grid-cols-2 gap-4">
                             <div class="bg-slate-900 p-4 rounded-2xl border border-slate-800">
-                                <div class="text-[10px] text-slate-500 uppercase mb-1">小规模纳税人</div>
-                                <div class="text-xl font-mono text-white">¥2,400<span class="text-[10px] text-slate-600">/年</span></div>
+                                <div class="text-[10px] text-slate-500 uppercase mb-1" x-text="t('tax_small')"></div>
+                                <div class="text-xl font-mono text-white">¥2,400<span class="text-[10px] text-slate-600" x-text="t('per_year')"></span></div>
                             </div>
                             <div class="bg-slate-900 p-4 rounded-2xl border border-slate-800">
-                                <div class="text-[10px] text-slate-500 uppercase mb-1">一般纳税人</div>
-                                <div class="text-xl font-mono text-white">¥6,000<span class="text-[10px] text-slate-600">/年</span></div>
+                                <div class="text-[10px] text-slate-500 uppercase mb-1" x-text="t('tax_general')"></div>
+                                <div class="text-xl font-mono text-white">¥6,000<span class="text-[10px] text-slate-600" x-text="t('per_year')"></span></div>
                             </div>
                         </div>
                     </div>
                     <div class="w-full md:w-64 space-y-4">
                         <ul class="text-[11px] text-slate-400 space-y-2">
-                            <li>• 每月全电发票处理与记账</li>
-                            <li>• 季度/年度所得税汇算清缴</li>
-                            <li>• 免费年度工商公示申报</li>
-                            <li>• 专家在线财税咨询 (24h)</li>
+                            <li x-text="t('s2_p1_l1')"></li>
+                            <li x-text="t('s2_p1_l2')"></li>
+                            <li x-text="t('s2_p1_l3')"></li>
+                            <li x-text="t('s2_p1_l4')"></li>
                         </ul>
-                        <button onclick="openForm('小规模记账', '2400')" class="w-full py-4 rounded-xl bg-blue-600 text-white font-black text-[10px] uppercase tracking-widest">立即订阅</button>
+                        <button @click="openForm(t('s2_p1_t'), '2400')" class="w-full py-4 rounded-xl bg-blue-600 text-white font-black text-[10px] uppercase tracking-widest" x-text="t('btn_sub')"></button>
                     </div>
                 </div>
                 <div class="glass-card p-10 rounded-[2.5rem] bg-gradient-to-br from-slate-900 to-slate-950 border-slate-700/50">
-                    <h3 class="text-white text-2xl font-black italic mb-4 uppercase">专项筹划与高新申报</h3>
-                    <p class="text-sm text-slate-400 mb-8 leading-relaxed">
-                        针对需要申请 **15% 企业所得税减免** 的重点项目，提供“高新技术企业”认证辅导。
-                    </p>
+                    <h3 class="text-white text-2xl font-black italic mb-4 uppercase" x-text="t('s2_p2_t')"></h3>
+                    <p class="text-sm text-slate-400 mb-8 leading-relaxed" x-text="t('s2_p2_d')"></p>
                     <div class="flex justify-between items-end mb-8">
                         <div>
-                            <div class="text-[10px] text-slate-500 uppercase">高新企业认证 (HNTE)</div>
-                            <div class="text-2xl font-mono text-white font-black">¥15,000 <span class="text-sm">起</span></div>
+                            <div class="text-[10px] text-slate-500 uppercase" x-text="t('hnte_tag')"></div>
+                            <div class="text-2xl font-mono text-white font-black">¥15,000 <span class="text-sm" x-text="t('price_from')"></span></div>
                         </div>
-                        <button onclick="openForm('高新申报咨询', '15000')" class="px-6 py-3 rounded-xl border border-blue-500 text-blue-400 font-bold text-[10px] uppercase hover:bg-blue-600 hover:text-white transition-all">获取方案</button>
+                        <button @click="openForm(t('s2_p2_t'), '15000')" class="px-6 py-3 rounded-xl border border-blue-500 text-blue-400 font-bold text-[10px] uppercase hover:bg-blue-600 hover:text-white transition-all" x-text="t('btn_plan')"></button>
                     </div>
                 </div>
             </div>
@@ -161,106 +158,190 @@
 
         <section class="mb-20">
             <div class="flex items-center gap-4 mb-10">
-                <h2 class="text-2xl font-black text-white italic uppercase">03. 封关战略专项模块</h2>
+                <h2 class="text-2xl font-black text-white italic uppercase" x-text="t('sec3_t')"></h2>
                 <div class="h-[1px] flex-1 bg-slate-800"></div>
             </div>
             <div class="grid md:grid-cols-4 gap-4">
-                <div class="glass-card p-6 rounded-2xl border-slate-800 hover:border-blue-500 transition-all cursor-pointer" onclick="openForm('商标注册', '1200')">
+                <div @click="openForm(t('m1_t'), '1200')" class="glass-card p-6 rounded-2xl border-slate-800 hover:border-blue-500 transition-all cursor-pointer">
                     <div class="text-blue-500 font-black mb-2 text-xs">IP & Branding</div>
-                    <div class="text-white font-bold text-sm mb-4">商标注册 & 设计</div>
+                    <div class="text-white font-bold text-sm mb-4" x-text="t('m1_t')"></div>
                     <div class="text-xl font-mono text-white font-black mb-2">¥1,200</div>
-                    <p class="text-[10px] text-slate-500">含设计+一类注册费</p>
+                    <p class="text-[10px] text-slate-500" x-text="t('m1_d')"></p>
                 </div>
-                <div class="glass-card p-6 rounded-2xl border-slate-800 hover:border-blue-500 transition-all cursor-pointer" onclick="openForm('EFU账户', '5000')">
+                <div @click="openForm(t('m2_t'), '5000')" class="glass-card p-6 rounded-2xl border-slate-800 hover:border-blue-500 transition-all cursor-pointer">
                     <div class="text-blue-500 font-black mb-2 text-xs">Finance</div>
-                    <div class="text-white font-bold text-sm mb-4">EFU 跨境账户开立</div>
-                    <div class="text-xl font-mono text-white font-black mb-2">¥5,000<span class="text-[10px]">起</span></div>
-                    <p class="text-[10px] text-slate-500">多币种自由贸易账户</p>
+                    <div class="text-white font-bold text-sm mb-4" x-text="t('m2_t')"></div>
+                    <div class="text-xl font-mono text-white font-black mb-2">¥5,000<span class="text-[10px]" x-text="t('price_from')"></span></div>
+                    <p class="text-[10px] text-slate-500" x-text="t('m2_d')"></p>
                 </div>
-                <div class="glass-card p-6 rounded-2xl border-slate-800 hover:border-blue-500 transition-all cursor-pointer" onclick="openForm('Web3合规', '15000')">
+                <div @click="openForm(t('m3_t'), '15000')" class="glass-card p-6 rounded-2xl border-slate-800 hover:border-blue-500 transition-all cursor-pointer">
                     <div class="text-blue-500 font-black mb-2 text-xs">Web3 & Tech</div>
-                    <div class="text-white font-bold text-sm mb-4">区块链/Web3 咨询</div>
-                    <div class="text-xl font-mono text-white font-black mb-2">¥15,000<span class="text-[10px]">起</span></div>
-                    <p class="text-[10px] text-slate-500">ICP/EDI/区块链备案</p>
+                    <div class="text-white font-bold text-sm mb-4" x-text="t('m3_t')"></div>
+                    <div class="text-xl font-mono text-white font-black mb-2">¥15,000<span class="text-[10px]" x-text="t('price_from')"></span></div>
+                    <p class="text-[10px] text-slate-500" x-text="t('m3_d')"></p>
                 </div>
-                <div class="glass-card p-6 rounded-2xl border-slate-800 hover:border-blue-500 transition-all cursor-pointer" onclick="openForm('实质性运营', '按需')">
+                <div @click="openForm(t('m4_t'), t('price_on_demand'))" class="glass-card p-6 rounded-2xl border-slate-800 hover:border-blue-500 transition-all cursor-pointer">
                     <div class="text-blue-500 font-black mb-2 text-xs">Operation</div>
-                    <div class="text-white font-bold text-sm mb-4">实质性运营代办</div>
-                    <div class="text-xl font-mono text-white font-black mb-2">面议</div>
-                    <p class="text-[10px] text-slate-500">含办公室/社保/人员</p>
+                    <div class="text-white font-bold text-sm mb-4" x-text="t('m4_t')"></div>
+                    <div class="text-xl font-mono text-white font-black mb-2" x-text="t('price_on_demand')"></div>
+                    <p class="text-[10px] text-slate-500" x-text="t('m4_d')"></p>
                 </div>
             </div>
         </section>
-
     </main>
 
     <div id="form-overlay" class="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl hidden flex items-center justify-center p-4">
         <div class="bg-slate-950 border border-slate-800 w-full max-w-lg rounded-[3rem] p-12 relative shadow-[0_0_100px_rgba(59,130,246,0.15)]">
-            <button onclick="closeForm()" class="absolute top-10 right-10 text-slate-500 hover:text-white transition-all text-2xl font-light">✕</button>
+            <button @click="closeForm()" class="absolute top-10 right-10 text-slate-500 hover:text-white transition-all text-2xl font-light">✕</button>
             <div class="mb-10">
-                <h3 class="text-white text-3xl font-black italic uppercase mb-2">指令发送中...</h3>
+                <h3 class="text-white text-3xl font-black italic uppercase mb-2" x-text="t('form_t')"></h3>
                 <div class="inline-block px-4 py-1 bg-blue-600/10 border border-blue-500/30 rounded-full">
                     <span id="current-item" class="text-blue-400 font-mono text-[10px] font-bold uppercase tracking-widest"></span>
                 </div>
             </div>
-
-            <form onsubmit="handleSubmit(event)" class="space-y-4">
+            <form @submit.prevent="handleSubmit" class="space-y-4">
                 <input type="hidden" id="service-name">
                 <div class="space-y-1">
-                    <label class="text-[10px] font-black text-slate-600 uppercase tracking-widest ml-4">您的称呼 / 企业全称</label>
-                    <input type="text" id="name" placeholder="Name / Entity" required class="w-full bg-slate-900 border border-slate-800 text-white px-6 py-4 rounded-2xl text-sm outline-none focus:border-blue-500 transition-all">
+                    <label class="text-[10px] font-black text-slate-600 uppercase tracking-widest ml-4" x-text="t('f_label_name')"></label>
+                    <input type="text" id="name" :placeholder="t('f_ph_name')" required class="w-full bg-slate-900 border border-slate-800 text-white px-6 py-4 rounded-2xl text-sm outline-none focus:border-blue-500 transition-all">
                 </div>
                 <div class="grid grid-cols-2 gap-4">
                     <div class="space-y-1">
-                        <label class="text-[10px] font-black text-slate-600 uppercase tracking-widest ml-4">手机号码</label>
+                        <label class="text-[10px] font-black text-slate-600 uppercase tracking-widest ml-4" x-text="t('f_label_phone')"></label>
                         <input type="tel" id="phone" placeholder="Phone" required class="w-full bg-slate-900 border border-slate-800 text-white px-6 py-4 rounded-2xl text-sm outline-none focus:border-blue-500">
                     </div>
                     <div class="space-y-1">
-                        <label class="text-[10px] font-black text-slate-600 uppercase tracking-widest ml-4">电子邮箱</label>
+                        <label class="text-[10px] font-black text-slate-600 uppercase tracking-widest ml-4">Email</label>
                         <input type="email" id="email" placeholder="Email" required class="w-full bg-slate-900 border border-slate-800 text-white px-6 py-4 rounded-2xl text-sm outline-none focus:border-blue-500">
                     </div>
                 </div>
                 <div class="space-y-1">
-                    <label class="text-[10px] font-black text-slate-600 uppercase tracking-widest ml-4">业务备注 (选填)</label>
-                    <textarea id="note" placeholder="例如：指定在海口江东新区落户..." rows="3" class="w-full bg-slate-900 border border-slate-800 text-white px-6 py-4 rounded-2xl text-sm outline-none focus:border-blue-500"></textarea>
+                    <label class="text-[10px] font-black text-slate-600 uppercase tracking-widest ml-4" x-text="t('f_label_note')"></label>
+                    <textarea id="note" :placeholder="t('f_ph_note')" rows="3" class="w-full bg-slate-900 border border-slate-800 text-white px-6 py-4 rounded-2xl text-sm outline-none focus:border-blue-500"></textarea>
                 </div>
-                
                 <div class="flex items-center gap-3 p-4 bg-blue-600/5 rounded-2xl border border-blue-500/10">
                     <input type="checkbox" required class="w-4 h-4 rounded border-slate-800 bg-slate-900 text-blue-600">
-                    <p class="text-[10px] text-slate-500 leading-tight">我已阅读并签署 <a href="#" class="text-blue-400 underline">《Solana Strategic 服务协议》</a>，授权系统将此指令同步至 Google Workspace 数据中心。</p>
+                    <p class="text-[10px] text-slate-500 leading-tight" x-html="t('f_agreement')"></p>
                 </div>
-
-                <button type="submit" id="submit-btn" class="w-full bg-blue-600 text-white py-5 rounded-2xl font-black uppercase text-sm tracking-[0.3em] hover:bg-blue-500 shadow-xl shadow-blue-900/40 transition-all">TRANSMIT DATA</button>
+                <button type="submit" id="submit-btn" class="w-full bg-blue-600 text-white py-5 rounded-2xl font-black uppercase text-sm tracking-[0.3em] hover:bg-blue-500 shadow-xl shadow-blue-900/40 transition-all" x-text="t('f_btn')"></button>
             </form>
         </div>
     </div>
 
     <script>
-        function openForm(item, price) {
-            const displayPrice = price === '按需' || price === '面议' ? price : '¥' + price;
-            document.getElementById('current-item').innerText = item + ' / ' + displayPrice;
-            document.getElementById('service-name').value = item;
-            document.getElementById('form-overlay').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        }
-        function closeForm() { 
-            document.getElementById('form-overlay').classList.add('hidden'); 
-            document.body.style.overflow = 'auto';
-        }
-        async function handleSubmit(e) {
-            e.preventDefault();
-            const btn = document.getElementById('submit-btn');
-            const originalText = btn.innerText;
-            btn.innerText = "SYNCHRONIZING...";
-            btn.disabled = true;
+        function servicePage() {
+            return {
+                lang: localStorage.getItem('site_lang') || 'cn',
+                toggleLang() {
+                    const langs = ['cn', 'en', 'ru'];
+                    this.lang = langs[(langs.indexOf(this.lang) + 1) % 3];
+                    localStorage.setItem('site_lang', this.lang);
+                },
+                openForm(item, price) {
+                    const displayPrice = (price === '按需' || price === '面议' || price === 'On Demand' || price === 'По запросу') ? price : '¥' + price;
+                    document.getElementById('current-item').innerText = item + ' / ' + displayPrice;
+                    document.getElementById('service-name').value = item;
+                    document.getElementById('form-overlay').classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                },
+                closeForm() {
+                    document.getElementById('form-overlay').classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                },
+                handleSubmit(e) {
+                    const btn = document.getElementById('submit-btn');
+                    const originalText = btn.innerText;
+                    btn.innerText = this.lang === 'cn' ? "同步中..." : (this.lang === 'en' ? "SYNCHRONIZING..." : "СИНХРОНИЗАЦИЯ...");
+                    btn.disabled = true;
+                    setTimeout(() => {
+                        alert(this.t('alert_success'));
+                        this.closeForm();
+                        btn.innerText = originalText;
+                        btn.disabled = false;
+                    }, 1500);
+                },
+                i18n: {
+                    page_title: { cn: '业务矩阵与全量报价清单 | Solana-Hainan', en: 'Business Matrix & Price List | Solana-Hainan', ru: 'Матрица услуг и прайс-лист | Solana-Hainan' },
+                    nav_home: { cn: '首页', en: 'HOME', ru: 'ГЛАВНАЯ' },
+                    nav_parks: { cn: '13大园区', en: '13 PARKS', ru: '13 ПАРКОВ' },
+                    nav_pricing: { cn: '业务与报价', en: 'SERVICES', ru: 'УСЛУГИ' },
+                    nav_consult: { cn: '注册/咨询', en: 'CONSULT', ru: 'КОНСУЛЬТАЦИЯ' },
+                    
+                    h1_1: { cn: '全量业务矩阵', en: 'FULL BUSINESS MATRIX', ru: 'ПОЛНАЯ МАТРИЦА УСЛУГ' },
+                    h1_2: { cn: '2026 报价清单', en: '2026 PRICE LIST', ru: 'ПРАЙС-ЛИСТ 2026' },
+                    header_desc: { cn: '不仅是代办，更是针对海南封关政策的确定性合规方案。提供一站式落户、财税、合规及资本路径设计。', en: 'More than agency, we provide compliance solutions for Hainan 2026 closure. One-stop setup, tax, and capital design.', ru: 'Больше чем агентство: мы предлагаем готовые комплаенс-решения для закрытия таможни Хайнаня 2026. Регистрация, налоги и капитал.' },
+                    sync_status: { cn: '系统实时同步: 13 园区接口已就绪', en: 'LIVE SYNC: 13 PARK INTERFACES READY', ru: 'СИНХРОНИЗАЦИЯ: ИНТЕРФЕЙСЫ 13 ПАРКОВ ГОТОВЫ' },
+                    sync_desc: { cn: '当前报价包含：基础注册、进阶财税、实质性运营、Web3专项及海外架构。价格公开透明。', en: 'Includes: Basic setup, advanced tax, substance, Web3, and global structures. Transparent pricing.', ru: 'Включает: Регистрацию, налоги, Substance, Web3 и глобальные структуры. Прозрачные цены.' },
+                    
+                    sec1_t: { cn: '01. 企业设立与主体落户', en: '01. ENTITY SETUP & REGISTRATION', ru: '01. РЕГИСТРАЦИЯ ЮРИДИЧЕСКИХ ЛИЦ' },
+                    s1_p1_t: { cn: '基础注册版', en: 'Starter Edition', ru: 'Пакет «Стартовый»' },
+                    s1_p1_d: { cn: '适合已有明确地址、仅需执照的主体', en: 'For entities with address, license only.', ru: 'Для компаний с адресом, только регистрация.' },
+                    s1_p1_l1: { cn: '企业核名 (3次)', en: 'Name Pre-clearance (3x)', ru: 'Проверка названия (3 раза)' },
+                    s1_p1_l2: { cn: '工商注册代办 (领取执照)', en: 'Business Registration (License)', ru: 'Регистрация бизнеса (Лицензия)' },
+                    s1_p1_l3: { cn: '提供标准公司章程模板', en: 'Standard Articles of Association', ru: 'Стандартный устав компании' },
+                    btn_start: { cn: '立刻启动', en: 'START NOW', ru: 'ЗАПУСТИТЬ' },
 
-            // 这里是您的数据同步逻辑 (Google Apps Script)
-            setTimeout(() => {
-                alert("指令同步成功！管理员将在 2 小时内与您联系。");
-                closeForm();
-                btn.innerText = originalText;
-                btn.disabled = false;
-            }, 1500);
+                    badge_rec: { cn: '推荐方案', en: 'RECOMMENDED', ru: 'РЕКОМЕНДУЕМ' },
+                    s1_p2_t: { cn: '全包落户版', en: 'All-inclusive Business Plus', ru: 'Пакет «Все включено»' },
+                    s1_p2_d: { cn: '一站式解决，拿到执照即可经营', en: 'One-stop solution, ready to operate.', ru: 'Решение под ключ, готовность к работе.' },
+                    s1_p2_l1: { cn: '包含基础版所有项目', en: 'Includes all Starter items', ru: 'Включает всё из «Стартового»' },
+                    s1_p2_l2: { cn: '官方公章/财务章/法人章 (刻制)', en: 'Official Seals (Corp/Finance/Legal)', ru: 'Изготовление печатей (Офиц./Фин./Юр.)' },
+                    s1_p2_l3: { cn: '税务登记与纳税人身份初始化', en: 'Tax ID & Initial Setup', ru: 'Налоговый учет и инициализация' },
+                    s1_p2_l4: { cn: '银行基本户预约与开户陪同', en: 'Bank Account Appointment & Escort', ru: 'Запись и сопровождение в банк' },
+                    btn_select: { cn: '选定此方案', en: 'SELECT PLAN', ru: 'ВЫБРАТЬ ЭТОТ ПАКЕТ' },
+
+                    s1_p3_t: { cn: 'WFOE/海外主体', en: 'Global WFOE Setup', ru: 'Иностранные структуры (WFOE)' },
+                    s1_p3_d: { cn: '外资或港澳台资企业落户海南', en: 'For foreign or HK/Macao/TW investment.', ru: 'Для иностранных инвестиций в Хайнань.' },
+                    s1_p3_l1: { cn: '外资准入政策合规性筛查', en: 'Foreign Entry Compliance Screen', ru: 'Проверка соответствия иностр. входа' },
+                    s1_p3_l2: { cn: 'FDI 备案及相关外汇登记', en: 'FDI Filing & FOREX Registry', ru: 'Регистрация ПИИ и валютный учет' },
+                    s1_p3_l3: { cn: '多语种文件公证辅助引导', en: 'Multilingual Notary Guidance', ru: 'Нотариальное сопровождение' },
+                    btn_global: { cn: '海外通道咨询', en: 'GLOBAL CONSULT', ru: 'КОНСУЛЬТАЦИЯ ПО ВЭД' },
+
+                    sec2_t: { cn: '02. 财税外包与政策合规', en: '02. ACCOUNTING & COMPLIANCE', ru: '02. БУХГАЛТЕРИЯ И КОМПЛАЕНС' },
+                    s2_p1_t: { cn: '年度代理记账', en: 'Annual Accounting Subscription', ru: 'Годовое бух. сопровождение' },
+                    s2_p1_d: { cn: '含海南 FTP 特有的“实质性运营”证据链留存指导。', en: 'Includes FTP "Substance" evidence guidance.', ru: 'Включает ведение базы для Substance (FTP).' },
+                    tax_small: { cn: '小规模纳税人', en: 'Small-scale Taxpayer', ru: 'Малый налогоплательщик' },
+                    tax_general: { cn: '一般纳税人', en: 'General Taxpayer', ru: 'Общий налогоплательщик' },
+                    per_year: { cn: '/年', en: '/yr', ru: '/год' },
+                    s2_p1_l1: { cn: '每月全电发票处理与记账', en: 'Monthly E-invoice & Booking', ru: 'Ежемесячные счета и учет' },
+                    s2_p1_l2: { cn: '季度/年度所得税汇算清缴', en: 'Tax Settlement & Filing', ru: 'Квартальная и годовая отчетность' },
+                    s2_p1_l3: { cn: '免费年度工商公示申报', en: 'Free Annual Business Report', ru: 'Бесплатный годовой бизнес-отчет' },
+                    s2_p1_l4: { cn: '专家在线财税咨询 (24h)', en: '24h Expert Tax Consult', ru: 'Консультации эксперта 24/7' },
+                    btn_sub: { cn: '立即订阅', en: 'SUBSCRIBE', ru: 'ПОДПИСАТЬСЯ' },
+
+                    s2_p2_t: { cn: '专项筹划与高新申报', en: 'Tax Planning & HNTE Filing', ru: 'Налоговое планирование и HNTE' },
+                    s2_p2_d: { cn: '针对 15% 企业所得税减免项目，提供认证辅导。', en: 'Certification guidance for 15% CIT benefits.', ru: 'Сопровождение для льготы по налогу на прибыль 15%.' },
+                    hnte_tag: { cn: '高新企业认证 (HNTE)', en: 'HNTE Certification', ru: 'Сертификация HNTE' },
+                    price_from: { cn: '起', en: 'Up', ru: 'от' },
+                    btn_plan: { cn: '获取方案', en: 'GET PLAN', ru: 'ПОЛУЧИТЬ ПЛАН' },
+
+                    sec3_t: { cn: '03. 封关战略专项模块', en: '03. STRATEGIC MODULES', ru: '03. СПЕЦИАЛЬНЫЕ МОДУЛИ' },
+                    m1_t: { cn: '商标注册 & 设计', en: 'Trademark & Design', ru: 'Товарные знаки и дизайн' },
+                    m1_d: { cn: '含设计+一类注册费', en: 'Design + 1 Class Fee', ru: 'Дизайн + сбор за 1 класс' },
+                    m2_t: { cn: 'EFU 跨境账户开立', en: 'EFU Account Setup', ru: 'Открытие счета EFU/EF' },
+                    m2_d: { cn: '多币种自由贸易账户', en: 'Multi-currency FT Account', ru: 'Многовалютный торговый счет' },
+                    m3_t: { cn: '区块链/Web3 咨询', en: 'Web3 & Blockchain', ru: 'Блокчейн и Web3' },
+                    m3_d: { cn: 'ICP/EDI/区块链备案', en: 'ICP/EDI/Blockchain Filing', ru: 'Регистрация ICP/EDI/Блокчейн' },
+                    m4_t: { cn: '实质性运营代办', en: 'Substance Operation', ru: 'Услуги Substance' },
+                    m4_d: { cn: '含办公室/社保/人员', en: 'Office/Social Sec/Staff', ru: 'Офис, страхование, персонал' },
+                    price_on_demand: { cn: '面议', en: 'On Demand', ru: 'По запросу' },
+
+                    form_t: { cn: '指令发送中...', en: 'TRANSMITTING...', ru: 'ОТПРАВКА ДАННЫХ...' },
+                    f_label_name: { cn: '您的称呼 / 企业全称', en: 'Name / Entity', ru: 'Ваше имя / Компания' },
+                    f_ph_name: { cn: 'Name / Entity', en: 'Name / Entity', ru: 'Имя / Название' },
+                    f_label_phone: { cn: '手机号码', en: 'Phone', ru: 'Телефон' },
+                    f_label_note: { cn: '业务备注 (选填)', en: 'Notes (Optional)', ru: 'Примечания (опционально)' },
+                    f_ph_note: { cn: '例如：指定在海口江东新区落户...', en: 'e.g. Jiangdong District...', ru: 'Напр.: Район Цзяндун...' },
+                    f_agreement: { 
+                        cn: '我已阅读并签署 <a href="#" class="text-blue-400 underline">《服务协议》</a>', 
+                        en: 'I agree to the <a href="#" class="text-blue-400 underline">Service Agreement</a>', 
+                        ru: 'Я принимаю <a href="#" class="text-blue-400 underline">Соглашение об услугах</a>' 
+                    },
+                    f_btn: { cn: 'TRANSMIT DATA', en: 'TRANSMIT DATA', ru: 'ОТПРАВИТЬ ДАННЫЕ' },
+                    alert_success: { cn: '指令同步成功！管理员将在 2 小时内与您联系。', en: 'Sync Success! Contact in 2h.', ru: 'Данные синхронизированы! Мы свяжемся с вами в течение 2 часов.' }
+                },
+                t(key) { return this.i18n[key] ? this.i18n[key][this.lang] : key; }
+            }
         }
     </script>
 </body>
