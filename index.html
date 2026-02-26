@@ -36,12 +36,11 @@
             <div class="hidden xl:flex gap-6 items-center">
                 <a @click="scrollTo('policy')" class="text-xs font-bold hover:text-[#14F195] transition cursor-pointer" x-text="t('nav_policy')"></a>
                 <a href="https://www.solana-hainan.com/parks.html" class="text-xs font-bold hover:text-[#14F195] transition cursor-pointer" x-text="t('nav_parks')"></a>
-                <a @click="scrollTo('biz_preview')" class="text-xs font-bold hover:text-[#14F195] transition cursor-pointer" x-text="t('nav_pricing')"></a>
+                <a href="https://www.solana-hainan.com/services.html" class="text-xs font-bold hover:text-[#14F195] transition cursor-pointer" x-text="t('nav_pricing')"></a>
                 <a @click="scrollTo('sop')" class="text-xs font-bold hover:text-[#14F195] transition cursor-pointer" x-text="t('nav_sop')"></a>
                 <a @click="scrollTo('news')" class="text-xs font-bold hover:text-[#14F195] transition cursor-pointer" x-text="t('nav_news')"></a>
                 <a @click="scrollTo('lifestyle')" class="text-xs font-bold hover:text-[#14F195] transition cursor-pointer" x-text="t('nav_life')"></a>
-                <a href="services.html" class="bg-white/5 border border-white/20 px-4 py-1.5 rounded-lg text-xs font-black text-[#14F195] hover:bg-white/10" x-text="t('nav_detail')"></a>
-            </div>
+                </div>
 
             <div class="flex items-center gap-3">
                 <button @click="openAuth('login')" class="text-xs font-bold hover:text-[#14F195]" x-text="t('login')"></button>
@@ -306,6 +305,7 @@
                     nav_sop: { cn: '交付流程', en: 'SOP PROCESS' },
                     nav_news: { cn: '封关动态', en: 'NEWS' },
                     nav_life: { cn: '风土人情', en: 'LIFESTYLE' },
+                    // nav_detail 字典项保留但不再在 HTML 中调用
                     nav_detail: { cn: '全案报价单', en: 'DETAILED LIST' },
                     login: { cn: '登录', en: 'LOGIN' },
                     register: { cn: '注册', en: 'REGISTER' },
