@@ -3,47 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>园区详情 | Solana Hainan</title>
+    <title>Park Detail</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="js/parksData.js"></script>
 </head>
-<body class="bg-slate-950 text-slate-300" x-data="parkApp()" x-init="init()">
-    <nav class="p-6 border-b border-slate-800 flex justify-between items-center">
-        <a href="parks.html" class="text-blue-500">← 返回列表</a>
+<body class="bg-slate-950 text-slate-300" x-data="parkManager()" x-init="init()">
+    <nav class="p-6 border-b border-slate-800 flex justify-between items-center bg-slate-900/50">
+        <a href="parks.html" class="text-blue-500 font-bold hover:underline">← Back to Parks</a>
         <div class="flex gap-4">
-            <button @click="lang='cn'" :class="lang==='cn'?'text-white':'text-slate-500'">中</button>
-            <button @click="lang='en'" :class="lang==='en'?'text-white':'text-slate-500'">EN</button>
-            <button @click="lang='ru'" :class="lang==='ru'?'text-white':'text-slate-500'">RU</button>
+            <button @click="lang='cn'" :class="lang==='cn'?'text-white font-bold':'text-slate-500'">中</button>
+            <button @click="lang='en'" :class="lang==='en'?'text-white font-bold':'text-slate-500'">EN</button>
+            <button @click="lang='ru'" :class="lang==='ru'?'text-white font-bold':'text-slate-500'">РУ</button>
         </div>
     </nav>
 
-    <main class="max-w-4xl mx-auto p-6 pt-10" x-show="park">
-        <h1 class="text-4xl font-bold text-white mb-2" x-text="park.name_zh || park.name[lang]"></h1>
-        <p class="text-blue-400 text-xl mb-8" x-text="park.subtitle_zh || park.subtitle[lang]"></p>
+    <main class="max-w-4xl mx-auto p-6 mt-10" x-show="park">
+        <h1 class="text-4xl md:text-5xl font-black text-white mb-4" x-text="park.name[lang]"></h1>
+        <p class="text-xl text-blue-400 mb-10" x-text="park.subtitle[lang]"></p>
         
-        <div class="prose prose-invert max-w-none" x-html="lang==='cn' ? (park.detail_zh || park.positioning.cn) : (park.detail_en || park.positioning.en)">
-            </div>
+        <div class="prose prose-invert prose-blue max-w-none text-slate-400 leading-relaxed" 
+             x-html="lang === 'cn' ? (park.detail_zh || '暂无详细介绍') : (park.detail_en || 'No detail available')">
+        </div>
     </main>
 
+    <div x-show="!park" class="text-center py-20 text-red-500">
+        <p class="text-2xl font-bold">⚠️ 无法加载园区数据</p>
+        <p class="mt-2 text-slate-500">请检查 URL 参数（如 ?id=park08）是否正确</p>
+    </div>
+
     <script>
-        function parkApp() {
+        function parkManager() {
             return {
-                lang: 'cn',
+                lang: localStorage.getItem('lang') || 'cn',
                 park: null,
                 init() {
-                    // 自动从 URL 获取 ?id=...
-                    const id = new URLSearchParams(window.location.search).get('id');
-                    // 这里的 parksFullData 必须对应你 js 文件里的变量名
-                    // 如果你 js 里叫 parksData，这里就改叫 parksData
-                    const db = window.parksFullData || window.parksData;
+                    const params = new URLSearchParams(window.location.search);
+                    const id = params.get('id');
                     
-                    if (db && id) {
-                        this.park = db[id];
-                    }
+                    // 自动匹配 window.parksData 或其他可能的变量名
+                    const database = window.parksData || window.parksFullData;
                     
-                    if (!this.park) {
-                        console.error("未找到数据，请检查 ID 和数据库变量名");
+                    if (database && id && database[id]) {
+                        this.park = database[id];
+                        console.log("成功匹配园区:", this.park.name.cn);
+                    } else {
+                        console.error("加载失败！ID:", id, "数据库状态:", !!database);
                     }
                 }
             }
