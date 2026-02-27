@@ -1,238 +1,272 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" x-data="site()" x-init="init()" x-cloak>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solana海南 | 2026 海南封关全案交付中心</title>
-    <meta name="description" content="专业提供海南自贸港公司注册、15%税收筹划、EF账户开立、13大园区入驻及Web3全案服务。">
+    <title>Solana Hainan | 2026 海南封关全案交付中心</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Noto+Sans+SC:wght@400;700;900&display=swap" rel="stylesheet">
     
     <style>
         [x-cloak] { display: none !important; }
-        body { background: #050505; color: #fff; font-family: 'Noto Sans SC', sans-serif; scroll-behavior: smooth; }
-        .card-bg { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; transition: 0.3s; }
-        .card-bg:hover { border-color: #14F195; background: rgba(255, 255, 255, 0.05); }
-        .btn-primary { background: #14F195; color: #000; font-weight: 900; transition: 0.3s; cursor: pointer; text-align: center; }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(20, 241, 149, 0.4); }
-        .input-field { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 12px; border-radius: 8px; color: #fff; outline: none; }
+        :root { --solana-green: #14F195; --solana-purple: #9945FF; }
+        body { background: #000; color: #fff; font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif; scroll-behavior: smooth; overflow-x: hidden; }
+        
+        /* 霓虹发光效果 */
+        .neon-border { position: relative; border: 1px solid rgba(20, 241, 149, 0.2); }
+        .neon-border:hover { border-color: var(--solana-green); box-shadow: 0 0 20px rgba(20, 241, 149, 0.15); }
+        
+        /* 渐变文字 */
+        .text-gradient { background: linear-gradient(90deg, #fff 0%, var(--solana-green) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        /* 玻璃卡片 */
+        .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .glass-card:hover { transform: translateY(-5px); background: rgba(255, 255, 255, 0.06); border-color: var(--solana-green); }
+
+        /* 动画 */
+        @keyframes pulse-slow { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.6; } }
+        .bg-glow { position: absolute; filter: blur(120px); z-index: -1; animation: pulse-slow 8s infinite; }
+        
+        /* 自定义滚动条 */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: #222; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--solana-green); }
     </style>
 </head>
-<body x-data="site()" x-cloak class="antialiased overflow-x-hidden">
+<body class="antialiased" @scroll.window="scrolled = (window.pageYOffset > 50)">
 
-    <div class="fixed top-0 w-full z-[110] bg-[#14F195] text-black text-[9px] font-black uppercase tracking-[0.3em] py-1 text-center">
-        <span x-text="t('top_bar')"></span>
+    <div class="bg-glow w-[500px] h-[500px] bg-purple-900/20 top-[-100px] left-[-100px]"></div>
+    <div class="bg-glow w-[600px] h-[600px] bg-green-900/10 bottom-[10%] right-[-100px]"></div>
+
+    <div class="fixed top-0 w-full z-[120] bg-[#14F195] text-black overflow-hidden h-7 flex items-center">
+        <div class="whitespace-nowrap flex animate-marquee">
+            <template x-for="i in 10">
+                <span class="text-[10px] font-black uppercase tracking-[0.3em] mx-10" x-text="t('top_bar')"></span>
+            </template>
+        </div>
     </div>
 
-    <nav class="fixed top-6 w-full z-[100] bg-black/90 backdrop-blur-lg border-b border-white/10 px-6 py-4">
+    <nav :class="scrolled ? 'bg-black/80 backdrop-blur-xl border-b border-white/10 py-3' : 'bg-transparent py-6'" 
+         class="fixed top-7 w-full z-[100] transition-all duration-500 px-6">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="flex items-center gap-2">
-                <img src="logo-solana.webp" alt="Logo" class="h-7">
-                <span class="text-xl font-black">Solana<span class="text-gray-500 font-light">Hainan</span></span>
+            <div class="flex items-center gap-3 group cursor-pointer" @click="window.scrollTo(0,0)">
+                <div class="w-10 h-10 bg-gradient-to-tr from-purple-600 to-green-400 p-[2px] rounded-lg">
+                    <div class="bg-black w-full h-full rounded-[6px] flex items-center justify-center font-black text-xl italic">S</div>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xl font-black leading-none tracking-tighter">Solana<span class="text-[#14F195]">Hainan</span></span>
+                    <span class="text-[8px] text-gray-500 font-bold tracking-widest uppercase">Consulting Center</span>
+                </div>
             </div>
             
-            <div class="hidden xl:flex gap-6 items-center">
-                <a @click="scrollTo('policy')" class="text-xs font-bold hover:text-[#14F195] transition cursor-pointer" x-text="t('nav_policy')"></a>
-                <a href="https://www.solana-hainan.com/parks.html" class="text-xs font-bold hover:text-[#14F195] transition cursor-pointer" x-text="t('nav_parks')"></a>
-                <a href="https://www.solana-hainan.com/services.html" class="text-xs font-bold hover:text-[#14F195] transition cursor-pointer" x-text="t('nav_pricing')"></a>
-                <a @click="scrollTo('sop')" class="text-xs font-bold hover:text-[#14F195] transition cursor-pointer" x-text="t('nav_sop')"></a>
-                <a @click="scrollTo('news')" class="text-xs font-bold hover:text-[#14F195] transition cursor-pointer" x-text="t('nav_news')"></a>
-                <a @click="scrollTo('lifestyle')" class="text-xs font-bold hover:text-[#14F195] transition cursor-pointer" x-text="t('nav_life')"></a>
+            <div class="hidden xl:flex gap-8 items-center">
+                <template x-for="item in navLinks">
+                    <a @click="scrollTo(item.id)" 
+                       class="text-[11px] font-bold tracking-widest text-gray-400 hover:text-[#14F195] transition cursor-pointer uppercase" 
+                       x-text="t(item.key)"></a>
+                </template>
             </div>
 
-            <div class="flex items-center gap-3">
-                <button @click="openAuth('login')" class="text-xs font-bold hover:text-[#14F195]" x-text="t('login')"></button>
-                <button @click="openAuth('register')" class="bg-[#14F195] text-black px-4 py-1.5 rounded-full text-xs font-black" x-text="t('register')"></button>
-                <div class="w-px h-4 bg-white/20 mx-1"></div>
-                <button @click="toggleLang()" class="text-[10px] border border-white/20 px-2 py-1 rounded uppercase hover:bg-white/10 font-bold" x-text="lang === 'cn' ? 'EN' : (lang === 'en' ? 'РУ' : '中文')"></button>
+            <div class="flex items-center gap-4">
+                <div class="flex items-center gap-2 mr-4">
+                    <button @click="toggleLang()" class="text-[10px] border border-white/20 px-3 py-1 rounded-full font-black hover:border-[#14F195] transition uppercase" 
+                            x-text="langName"></button>
+                </div>
+                <button @click="openAuth('login')" class="hidden md:block text-xs font-bold text-gray-400 hover:text-white" x-text="t('login')"></button>
+                <button @click="openAuth('register')" class="bg-[#14F195] text-black px-6 py-2 rounded-full text-xs font-black hover:shadow-[0_0_20px_rgba(20,241,149,0.5)] transition" x-text="t('register')"></button>
             </div>
         </div>
     </nav>
 
-    <header class="pt-48 pb-20 px-6 text-center">
-        <h1 class="text-5xl md:text-8xl font-black mb-6 italic uppercase tracking-tighter leading-none">
-            <span x-text="t('hero_title_1')"></span> <br>
-            <span class="text-[#14F195]" x-text="t('hero_title_2')"></span>
-        </h1>
-        <p class="text-gray-400 text-lg max-w-2xl mx-auto mb-10" x-text="t('hero_desc')"></p>
-        <div class="flex flex-wrap justify-center gap-4">
-            <a href="services.html" class="btn-primary px-10 py-4 rounded-xl text-sm uppercase tracking-widest" x-text="t('btn_pricing')"></a>
-            <button @click="openAuth('register')" class="card-bg px-10 py-4 rounded-xl text-sm font-bold uppercase tracking-widest border-[#14F195]/30 hover:bg-white/5" x-text="t('btn_register')"></button>
+    <header class="relative pt-64 pb-32 px-6 overflow-hidden">
+        <div class="max-w-7xl mx-auto text-center relative z-10">
+            <div class="inline-block px-4 py-1 border border-[#14F195]/30 rounded-full mb-8 bg-green-500/5">
+                <span class="text-[#14F195] text-[10px] font-bold tracking-[0.2em] uppercase">2026 Infrastructure Readiness</span>
+            </div>
+            <h1 class="text-6xl md:text-9xl font-black mb-8 italic uppercase tracking-tighter leading-none">
+                <span class="text-white" x-text="t('hero_title_1')"></span> <br>
+                <span class="text-gradient" x-text="t('hero_title_2')"></span>
+            </h1>
+            <p class="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto mb-12 font-light leading-relaxed" x-text="t('hero_desc')"></p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <a href="services.html" class="bg-[#14F195] text-black px-12 py-5 rounded-2xl text-sm font-black uppercase tracking-widest hover:scale-105 transition shadow-2xl shadow-green-500/20">
+                    <span x-text="t('btn_pricing')"></span>
+                </a>
+                <button @click="openAuth('register')" class="glass-card px-12 py-5 rounded-2xl text-sm font-black uppercase tracking-widest hover:border-[#14F195]">
+                    <span x-text="t('btn_register')"></span>
+                </button>
+            </div>
         </div>
+        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-transparent to-[#14F195]"></div>
     </header>
 
-    <section id="policy" class="py-24 px-6 border-t border-white/5 bg-[#080808]">
+    <section id="policy" class="py-32 px-6 border-t border-white/5">
         <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl font-black mb-12 text-center" x-text="t('sec_policy')"></h2>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                <div class="card-bg p-8 border-t-2 border-[#14F195]">
-                    <div class="text-[#14F195] text-4xl mb-4 font-black">15%</div>
-                    <div class="font-bold mb-2" x-text="t('p1_t')"></div>
-                    <div class="text-xs text-gray-500" x-text="t('p1_d')"></div>
-                </div>
-                <div class="card-bg p-8 border-t-2 border-blue-500">
-                    <div class="text-blue-500 text-4xl mb-4 font-black">VISA</div>
-                    <div class="font-bold mb-2" x-text="t('p2_t')"></div>
-                    <div class="text-xs text-gray-500" x-text="t('p2_d')"></div>
-                </div>
-                <div class="card-bg p-8 border-t-2 border-purple-500">
-                    <div class="text-purple-500 text-4xl mb-4 font-black">EF</div>
-                    <div class="font-bold mb-2" x-text="t('p3_t')"></div>
-                    <div class="text-xs text-gray-500" x-text="t('p3_d')"></div>
-                </div>
-                <div class="card-bg p-8 border-t-2 border-orange-500">
-                    <div class="text-orange-500 text-4xl mb-4 font-black">DUTY</div>
-                    <div class="font-bold mb-2" x-text="t('p4_t')"></div>
-                    <div class="text-xs text-gray-500" x-text="t('p4_d')"></div>
-                </div>
+            <div class="mb-20 text-center">
+                <h2 class="text-4xl md:text-6xl font-black mb-4 uppercase italic" x-text="t('sec_policy')"></h2>
+                <div class="h-1 w-20 bg-[#14F195] mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <template x-for="(pol, idx) in policyCards">
+                    <div class="glass-card p-10 group relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-1 h-0 bg-[#14F195] group-hover:h-full transition-all duration-500"></div>
+                        <div class="text-5xl font-black mb-6 italic opacity-20 group-hover:opacity-100 group-hover:text-[#14F195] transition-all" x-text="pol.val"></div>
+                        <h3 class="text-xl font-black mb-4 uppercase" x-text="t(pol.t)"></h3>
+                        <p class="text-sm text-gray-500 leading-relaxed" x-text="t(pol.d)"></p>
+                    </div>
+                </template>
             </div>
         </div>
     </section>
 
-    <section id="parks" class="py-24 px-6 border-t border-white/5">
-        <div class="max-w-7xl mx-auto text-center">
-            <a href="https://www.solana-hainan.com/parks.html" class="inline-block group">
-                <h2 class="text-3xl font-black mb-6 group-hover:text-[#14F195] transition-colors" x-text="t('sec_parks')"></h2>
-            </a>
-            <p class="text-gray-500 text-sm mb-12" x-text="t('parks_sub')"></p>
-            <div class="flex flex-wrap justify-center gap-3">
+    <section id="parks" class="py-32 px-6 bg-[#050505]">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+                <div class="max-w-2xl">
+                    <h2 class="text-4xl md:text-5xl font-black uppercase italic mb-6" x-text="t('sec_parks')"></h2>
+                    <p class="text-gray-500" x-text="t('parks_sub')"></p>
+                </div>
+                <a href="parks.html" class="text-[#14F195] text-sm font-bold border-b border-[#14F195] pb-1 hover:opacity-70 transition">VIEW ALL 13 PARKS</a>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
                 <template x-for="park in parksList">
-                    <div class="px-5 py-2.5 bg-white/5 border border-white/10 rounded-full text-xs text-gray-300 hover:border-[#14F195] hover:text-[#14F195] cursor-pointer transition font-bold" x-text="park[lang]"></div>
-                </template>
-            </div>
-        </div>
-    </section>
-
-    <section id="biz_preview" class="py-24 px-6 border-t border-white/5 bg-[#080808]">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-black mb-4 uppercase" x-text="t('nav_pricing')"></h2>
-                <p class="text-gray-500 text-sm" x-text="t('biz_subtitle')"></p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <template x-for="cat in bizPreview">
-                    <div class="card-bg p-8 flex flex-col">
-                        <div class="text-3xl mb-4" x-text="cat.icon"></div>
-                        <h3 class="text-xl font-bold mb-4 text-[#14F195]" x-text="cat.name[lang]"></h3>
-                        <ul class="space-y-3 flex-grow">
-                            <template x-for="item in cat.list">
-                                <li class="text-xs text-gray-400 flex items-center gap-2">
-                                    <span class="text-[#14F195]">▪</span> <span x-text="item[lang]"></span>
-                                </li>
-                            </template>
-                        </ul>
-                        <div class="mt-8 pt-4 border-t border-white/10">
-                            <a href="services.html" class="text-xs font-bold text-white hover:text-[#14F195] transition" x-text="t('view_detail_btn')"></a>
-                        </div>
+                    <div class="glass-card p-4 text-center cursor-pointer group">
+                        <span class="text-[10px] md:text-xs font-bold text-gray-400 group-hover:text-white transition" x-text="park[lang]"></span>
                     </div>
                 </template>
             </div>
         </div>
     </section>
 
-    <section id="sop" class="py-24 px-6 border-t border-white/5">
+    <section id="sop" class="py-32 px-6 border-y border-white/5 relative">
         <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl font-black mb-16 text-center uppercase" x-text="t('sec_sop')"></h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <h2 class="text-4xl md:text-6xl font-black mb-20 text-center uppercase italic" x-text="t('sec_sop')"></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <template x-for="(step, i) in sopSteps">
-                    <div class="card-bg p-6 group hover:border-[#14F195]/50 relative overflow-hidden">
-                        <div class="absolute -right-2 -bottom-2 text-6xl font-black text-white/5 group-hover:text-[#14F195]/10 transition" x-text="i+1"></div>
-                        <div class="text-[#14F195] text-xs font-mono mb-2" x-text="'STEP ' + (i+1)"></div>
-                        <div class="text-sm font-bold leading-snug" x-text="step[lang]"></div>
+                    <div class="glass-card p-8 relative group overflow-hidden">
+                        <div class="text-[80px] absolute -right-4 -bottom-4 font-black text-white/[0.02] group-hover:text-[#14F195]/[0.05] transition" x-text="String(i+1).padStart(2,'0')"></div>
+                        <div class="w-10 h-10 rounded-lg bg-[#14F195]/10 flex items-center justify-center text-[#14F195] font-black mb-6 border border-[#14F195]/20" x-text="i+1"></div>
+                        <h4 class="text-lg font-black mb-4 text-white group-hover:text-[#14F195] transition" x-text="step[lang]"></h4>
+                        <div class="w-8 h-[2px] bg-gray-800 group-hover:w-16 group-hover:bg-[#14F195] transition-all"></div>
                     </div>
                 </template>
             </div>
         </div>
     </section>
 
-    <section id="news" class="py-24 px-6 border-t border-white/5 bg-[#080808]">
+    <section id="lifestyle" class="py-32 px-6 overflow-hidden">
         <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl font-black mb-12" x-text="t('sec_news')"></h2>
-            <div class="space-y-4">
-                <template x-for="news in newsList">
-                    <div class="card-bg p-6 flex flex-col md:flex-row gap-6 justify-between items-start md:items-center">
-                        <div>
-                            <div class="text-[#14F195] text-xs font-mono mb-2" x-text="news.tag[lang]"></div>
-                            <h3 class="font-bold text-lg" x-text="news.title[lang]"></h3>
+            <div class="flex flex-col lg:flex-row gap-20 items-center">
+                <div class="lg:w-1/2">
+                    <h2 class="text-5xl md:text-7xl font-black mb-8 italic uppercase leading-tight" x-text="t('life_t')"></h2>
+                    <p class="text-xl text-gray-400 mb-10 font-light leading-relaxed" x-text="t('life_d')"></p>
+                    <div class="grid grid-cols-2 gap-6">
+                        <template x-for="item in ['l1','l2','l3','l4']">
+                            <div class="flex items-center gap-4 group">
+                                <div class="w-2 h-2 rounded-full bg-[#14F195] shadow-[0_0_10px_#14F195]"></div>
+                                <span class="text-xs font-black uppercase tracking-widest text-gray-300 group-hover:text-white transition" x-text="t(item)"></span>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 grid grid-cols-2 gap-4 relative">
+                    <div class="aspect-[4/5] rounded-3xl overflow-hidden glass-card p-2">
+                        <div class="w-full h-full bg-gray-900 rounded-2xl flex items-center justify-center italic text-gray-800 font-black">BEACH</div>
+                    </div>
+                    <div class="aspect-[4/5] rounded-3xl overflow-hidden glass-card p-2 mt-12">
+                        <div class="w-full h-full bg-gray-900 rounded-2xl flex items-center justify-center italic text-gray-800 font-black">CBD</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="pt-32 pb-12 border-t border-white/10 bg-black">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-20 mb-20 items-center">
+                <div>
+                    <h2 class="text-5xl font-black mb-8 italic text-gradient" x-text="t('footer_t')"></h2>
+                    <div class="flex flex-wrap gap-4">
+                        <button @click="openAuth('register')" class="bg-white text-black px-10 py-4 rounded-xl font-black uppercase tracking-widest hover:bg-[#14F195] transition">Get Started</button>
+                        <div class="px-8 py-4 glass-card rounded-xl flex items-center gap-4">
+                            <span class="text-[#14F195] font-black text-xl">181 1779 0507</span>
                         </div>
-                        <button class="text-xs border border-white/20 px-4 py-2 rounded hover:bg-white/10 transition whitespace-nowrap" x-text="t('read_more')"></button>
-                    </div>
-                </template>
-            </div>
-        </div>
-    </section>
-
-    <section id="lifestyle" class="py-24 px-6 border-t border-white/5">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row gap-12 items-center">
-                <div class="flex-1">
-                    <h2 class="text-4xl font-black mb-6" x-text="t('life_t')"></h2>
-                    <p class="text-gray-400 leading-relaxed mb-8" x-text="t('life_d')"></p>
-                    <div class="grid grid-cols-2 gap-4 text-xs font-bold uppercase tracking-widest text-[#14F195]">
-                        <div class="flex items-center gap-2">🌴 <span x-text="t('l1')"></span></div>
-                        <div class="flex items-center gap-2">🛍️ <span x-text="t('l2')"></span></div>
-                        <div class="flex items-center gap-2">🌐 <span x-text="t('l3')"></span></div>
-                        <div class="flex items-center gap-2">🏄 <span x-text="t('l4')"></span></div>
                     </div>
                 </div>
-                <div class="flex-1 w-full grid grid-cols-2 gap-4">
-                    <div class="aspect-square card-bg bg-gray-900 flex items-center justify-center text-gray-700 text-xs">Lifestyle Image 1</div>
-                    <div class="aspect-square card-bg bg-gray-900 flex items-center justify-center text-gray-700 text-xs mt-8">Lifestyle Image 2</div>
+                <div class="grid grid-cols-2 gap-10">
+                    <div>
+                        <h4 class="text-xs font-black text-gray-500 uppercase tracking-widest mb-6">Contact</h4>
+                        <p class="text-sm font-bold text-gray-300 mb-2">Telegram: @KOSOK0898</p>
+                        <p class="text-sm font-bold text-gray-300">Mail: kosok0898@gmail.com</p>
+                    </div>
+                    <div>
+                        <h4 class="text-xs font-black text-gray-500 uppercase tracking-widest mb-6">Location</h4>
+                        <p class="text-sm font-bold text-gray-300">Jiangdong New Area, Haikou</p>
+                        <p class="text-sm font-bold text-gray-300">Yazhou Bay, Sanya</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section id="video" class="py-24 px-6 bg-[#080808] border-t border-white/5">
-        <div class="max-w-5xl mx-auto text-center">
-            <h2 class="text-3xl font-black mb-12" x-text="t('sec_video')"></h2>
-            <div class="aspect-video card-bg flex items-center justify-center relative group cursor-pointer overflow-hidden border-[#14F195]/20">
-                <div class="absolute inset-0 bg-gray-900 flex items-center justify-center">
-                    <span class="text-gray-700 text-sm">Video Poster Placeholder</span>
-                </div>
-                <div class="w-20 h-20 bg-[#14F195] rounded-full flex items-center justify-center text-black text-3xl z-10 shadow-[0_0_30px_rgba(20,241,149,0.5)] group-hover:scale-110 transition">▶</div>
-                <div class="absolute bottom-6 left-6 text-left z-10">
-                    <div class="font-black text-lg uppercase text-white drop-shadow-lg">Hainan 2026: The New Hub</div>
-                    <div class="text-xs text-[#14F195]">Official Infrastructure Preview</div>
+            
+            <div class="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="text-[9px] text-gray-700 font-black uppercase tracking-[0.5em]">© 2026 Solana Hainan Infrastructure Protocol</div>
+                <div class="flex gap-6">
+                    <template x-for="icon in ['weixin', 'telegram', 'twitter']">
+                        <div class="w-8 h-8 glass-card rounded-lg flex items-center justify-center text-gray-500 hover:text-[#14F195] cursor-pointer">
+                            <i :class="'fa-brands fa-' + icon"></i>
+                        </div>
+                    </template>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <footer class="py-24 border-t border-white/10 bg-black text-center">
-        <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-3xl font-black mb-8" x-text="t('footer_t')"></h2>
-            <div class="flex flex-wrap justify-center gap-6 mb-12">
-                <button @click="openAuth('register')" class="btn-primary px-12 py-4 rounded-full text-sm uppercase tracking-widest" x-text="t('btn_register')"></button>
-                <div class="flex items-center gap-4 px-6 py-4 card-bg">
-                    <span class="text-gray-500 text-xs uppercase font-bold">Hotline:</span>
-                    <span class="font-black text-lg">181 1779 0507</span>
-                </div>
-            </div>
-            <div class="flex justify-center gap-8 mb-8 text-xs text-gray-500 font-bold uppercase tracking-widest">
-                <div>Telegram: @KOSOK0898</div>
-                <div>Email: kosok0898@gmail.com</div>
-            </div>
-            <p class="text-[10px] text-gray-800 uppercase tracking-[0.4em]">Solana Hainan Infrastructure Protocol © 2026</p>
         </div>
     </footer>
 
-    <div x-show="showAuthModal" class="fixed inset-0 z-[200] bg-black/95 backdrop-blur-xl flex items-center justify-center p-4">
-        <div @click.away="showAuthModal = false" class="card-bg w-full max-w-md p-10 relative">
-            <button @click="showAuthModal = false" class="absolute top-6 right-6 text-2xl text-gray-500 hover:text-white">×</button>
-            <div class="flex gap-6 border-b border-white/10 mb-8 pb-2">
-                <button @click="authMode = 'login'" :class="authMode === 'login' ? 'text-[#14F195] border-[#14F195] border-b-2' : 'text-gray-500'" class="pb-2 text-lg font-black transition" x-text="t('login')"></button>
-                <button @click="authMode = 'register'" :class="authMode === 'register' ? 'text-[#14F195] border-[#14F195] border-b-2' : 'text-gray-500'" class="pb-2 text-lg font-black transition" x-text="t('register')"></button>
+    <div x-show="showAuthModal" 
+         x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0 scale-95"
+         x-transition:enter-end="opacity-100 scale-100"
+         class="fixed inset-0 z-[200] bg-black/95 backdrop-blur-xl flex items-center justify-center p-4">
+        
+        <div @click.away="showAuthModal = false" class="glass-card w-full max-w-[440px] p-10 relative rounded-[2rem]">
+            <button @click="showAuthModal = false" class="absolute top-8 right-8 text-2xl text-gray-500 hover:text-white transition">×</button>
+            
+            <div class="mb-10">
+                <h3 class="text-3xl font-black italic uppercase" x-text="authMode"></h3>
+                <div class="h-1 w-10 bg-[#14F195] mt-2"></div>
             </div>
-            <form class="space-y-4">
+
+            <div class="flex gap-6 border-b border-white/10 mb-10">
+                <button @click="authMode = 'login'" :class="authMode === 'login' ? 'text-[#14F195] border-[#14F195] border-b-2' : 'text-gray-500'" 
+                        class="pb-4 text-sm font-black transition uppercase tracking-widest" x-text="t('login')"></button>
+                <button @click="authMode = 'register'" :class="authMode === 'register' ? 'text-[#14F195] border-[#14F195] border-b-2' : 'text-gray-500'" 
+                        class="pb-4 text-sm font-black transition uppercase tracking-widest" x-text="t('register')"></button>
+            </div>
+
+            <form class="space-y-6">
                 <template x-if="authMode === 'register'">
-                    <input type="text" :placeholder="t('f_comp')" class="input-field text-sm">
+                    <div class="space-y-2">
+                        <label class="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-2">Company / Name</label>
+                        <input type="text" class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-sm outline-none focus:border-[#14F195] transition">
+                    </div>
                 </template>
-                <input type="text" :placeholder="t('f_user')" class="input-field text-sm">
-                <input type="password" :placeholder="t('f_pass')" class="input-field text-sm">
-                <button type="button" class="w-full btn-primary py-4 rounded-xl text-xs uppercase tracking-widest" x-text="t('f_submit')"></button>
+                <div class="space-y-2">
+                    <label class="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-2">Phone or Email</label>
+                    <input type="text" class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-sm outline-none focus:border-[#14F195] transition">
+                </div>
+                <div class="space-y-2">
+                    <label class="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-2">Secure Password</label>
+                    <input type="password" class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-sm outline-none focus:border-[#14F195] transition">
+                </div>
+                
+                <button type="button" class="w-full bg-[#14F195] text-black py-5 rounded-xl font-black uppercase tracking-widest text-xs mt-6 hover:shadow-[0_0_30px_rgba(20,241,149,0.3)] transition">
+                    Confirm Access
+                </button>
             </form>
         </div>
     </div>
@@ -241,154 +275,99 @@
         function site() {
             return {
                 lang: localStorage.getItem('site_lang') || 'cn',
+                scrolled: false,
                 showAuthModal: false,
                 authMode: 'login',
-                // 升级为三语循环算法
-                toggleLang() { 
-                    const langs = ['cn', 'en', 'ru'];
-                    let currentIndex = langs.indexOf(this.lang);
-                    this.lang = langs[(currentIndex + 1) % langs.length];
-                    localStorage.setItem('site_lang', this.lang); 
+                
+                get langName() {
+                    return { cn: '中文 (CN)', en: 'ENGLISH (EN)', ru: 'РУССКИЙ (RU)' }[this.lang];
                 },
-                openAuth(mode) { this.authMode = mode; this.showAuthModal = true; },
-                scrollTo(id) { document.getElementById(id).scrollIntoView({ behavior: 'smooth' }); },
 
-                // 业务预览数据扩展 RU
-                bizPreview: [
-                    {
-                        name: { cn: '行政落地 (5项)', en: 'ADMIN INFRA (5)', ru: 'АДМИНИСТРАТИВНАЯ ИНФРАСТРУКТУРА (5)' }, icon: '🏛️',
-                        list: [
-                            {cn:'名称核准', en:'Name Pre-clearance', ru:'Предварительное согласование названия'}, 
-                            {cn:'执照申领', en:'License Setup', ru:'Оформление лицензии'}, 
-                            {cn:'地址挂靠', en:'Office Registry', ru:'Регистрация офиса'}, 
-                            {cn:'印章备案', en:'Official Seals', ru:'Официальные печати'}, 
-                            {cn:'银行开户', en:'Bank Setup', ru:'Открытие банковского счета'}
-                        ]
-                    },
-                    {
-                        name: { cn: '财税与资质 (5项)', en: 'FINANCE & TAX (5)', ru: 'ФИНАНСЫ И НАЛОГИ (5)' }, icon: '💳',
-                        list: [
-                            {cn:'EF账户开立', en:'EF Account Setup', ru:'Открытие счета EF'}, 
-                            {cn:'税务登记', en:'Tax Registration', ru:'Налоговая регистрация'}, 
-                            {cn:'代理记账', en:'Accounting', ru:'Бухгалтерский учет'}, 
-                            {cn:'进出口权', en:'I/E Rights', ru:'Права на импорт/экспорт'}, 
-                            {cn:'外汇备案', en:'FOREX Record', ru:'Валютный учет'}
-                        ]
-                    },
-                    {
-                        name: { cn: '离岸合规与技术 (4项)', en: 'COMPLIANCE & TECH (4)', ru: 'КОМПЛАЕНС И ТЕХНОЛОГИИ (4)' }, icon: '🌐',
-                        list: [
-                            {cn:'实质性审查', en:'Substance Review', ru:'Проверка присутствия (Substance)'}, 
-                            {cn:'RWA合规咨询', en:'RWA Consulting', ru:'Консалтинг RWA'}, 
-                            {cn:'品牌视觉', en:'Brand Identity', ru:'Фирменный стиль'}, 
-                            {cn:'Web3站点', en:'Web3 Portal', ru:'Web3 Портал'}
-                        ]
-                    }
+                navLinks: [
+                    {key:'nav_policy', id:'policy'},
+                    {key:'nav_parks', id:'parks'},
+                    {key:'nav_pricing', id:'lifestyle'},
+                    {key:'nav_sop', id:'sop'},
                 ],
 
-                // SOP 扩展 RU
-                sopSteps: [
-                    { cn: '落地需求初审与背景审计', en: 'Initial Audit & Review', ru: 'Первичный аудит и проверка требований' },
-                    { cn: '全球离岸法律主体架构规划', en: 'Global Structure Planning', ru: 'Планирование глобальной структуры' },
-                    { cn: '自贸港政策匹配与园区选址', en: 'Policy Matching & Site', ru: 'Подбор политик и выбор парка' },
-                    { cn: '工商主体核准与执照申领', en: 'Entity Registration', ru: 'Регистрация юридического лица' },
-                    { cn: '官方印章刻制与公安备案', en: 'Official Seals & Filing', ru: 'Изготовление печатей и регистрация' },
-                    { cn: '银行基本账户面签与开立', en: 'Basic Bank Account Setup', ru: 'Открытие базового банковского счета' },
-                    { cn: 'EF 多功能账户申请', en: 'EF Account Application', ru: 'Открытие многофункционального счета EF' },
-                    { cn: '税务核定与 15% 优惠备案', en: 'Tax Record & 15% Benefit', ru: 'Налоговая регистрация и льгота 15%' },
-                    { cn: '实质性运营场地与人员配置审查', en: 'Substance Review & Staffing', ru: 'Проверка офиса и персонала (Substance)' },
-                    { cn: '进出口经营权与外汇备案', en: 'Import/Export & FOREX', ru: 'Оформление прав на импорт/экспорт' },
-                    { cn: '数字资产/Web3 沙盒接入', en: 'Web3 Sandbox Entry', ru: 'Вход в песочницу Web3' },
-                    { cn: '离岸全案交付与持续合规', en: 'Final Delivery & Compliance', ru: 'Финальная сдача и постоянный комплаенс' }
+                policyCards: [
+                    {val: '15%', t: 'p1_t', d: 'p1_d'},
+                    {val: 'VISA', t: 'p2_t', d: 'p2_d'},
+                    {val: 'EF', t: 'p3_t', d: 'p3_d'},
+                    {val: 'ZERO', t: 'p4_t', d: 'p4_d'}
                 ],
 
-                // 13大园区数据扩展 RU (采用标准俄文地理音译)
+                // 数据对象继承
                 parksList: [
-                    { cn: '海口江东新区', en: 'Haikou Jiangdong', ru: 'Хайкоу Цзяндун (Новый район)' }, 
-                    { cn: '三亚中央商务区', en: 'Sanya CBD', ru: 'Центральный деловой район Санья' },
-                    { cn: '博鳌乐城医疗区', en: 'Boao Lecheng', ru: 'Медицинский район Боао Лэчэн' }, 
-                    { cn: '洋浦经济开发区', en: 'Yangpu Zone', ru: 'Зона экономического развития Янпу' },
-                    { cn: '复兴城互联网园', en: 'Fullsing Town', ru: 'Интернет-парк Фулсин Таун' }, 
-                    { cn: '三亚崖州湾科技城', en: 'Yazhou Bay', ru: 'Наукоград Ячжоувань' },
-                    { cn: '海口综合保税区', en: 'Haikou FTZ', ru: 'Комплексная бондовая зона Хайкоу' }, 
-                    { cn: '海南生态软件园', en: 'Eco Software Park', ru: 'Экологический парк ПО' },
-                    { cn: '文昌国际航天城', en: 'Wenchang Aerospace', ru: 'Аэрокосмический город Вэньчан' }, 
-                    { cn: '陵水国际教育区', en: 'Lingshui Edu Zone', ru: 'Образовательная зона Линшуй' },
-                    { cn: '临高金牌港开发区', en: 'Lingao Jinpai', ru: 'Зона развития порта Цзиньпай' }, 
-                    { cn: '海口国家高新区', en: 'Haikou High-tech', ru: 'Высокотехнологичная зона Хайкоу' },
-                    { cn: '三亚深海科技城', en: 'Sanya Deep Sea', ru: 'Глубоководный наукоград Санья' }
+                    { cn: '海口江东新区', en: 'Jiangdong New Area', ru: 'Хайкоу Цзяндун' }, 
+                    { cn: '三亚中央商务区', en: 'Sanya CBD', ru: 'ЦДР Санья' },
+                    { cn: '洋浦经济开发区', en: 'Yangpu Economic Zone', ru: 'Зона Янпу' },
+                    { cn: '海南生态软件园', en: 'Eco-Software Park', ru: 'Эко-парк ПО' },
+                    { cn: '复兴城互联网园', en: 'Fullsing Town', ru: 'Фулсин Таун' }
                 ],
 
-                // 新闻动态数据扩展 RU
-                newsList: [
-                    { 
-                        tag: { cn: '2026 POLICY UPDATE', en: '2026 POLICY UPDATE', ru: 'ОБНОВЛЕНИЕ ПОЛИТИКИ 2026' }, 
-                        title: { cn: '多功能自由贸易账户 (EF) 全面扩容指南发布', en: 'Comprehensive Guide to EF Account Expansion Released', ru: 'Опубликовано руководство по расширению счетов EF' } 
-                    },
-                    { 
-                        tag: { cn: 'REGULATION', en: 'REGULATION', ru: 'РЕГУЛИРОВАНИЕ' }, 
-                        title: { cn: '关于实质性运营的双15%税务审查最新细则解读', en: 'Interpretation of the Latest Rules on 15% Tax Substance Review', ru: 'Интерпретация новых правил проверки Substance для льготы 15%' } 
-                    }
+                sopSteps: [
+                    { cn: '落地需求初审与背景审计', en: 'Initial Audit & Review', ru: 'Первичный аудит' },
+                    { cn: '全球离岸主体架构规划', en: 'Global Structure Planning', ru: 'Планирование структуры' },
+                    { cn: '自贸港政策匹配与园区选址', en: 'Policy Matching & Site', ru: 'Подбор политик и парка' },
+                    { cn: '工商主体核准与执照申领', en: 'Entity Registration', ru: 'Регистрация лица' },
+                    { cn: '银行基本账户面签与开立', en: 'Bank Account Setup', ru: 'Открытие счета' },
+                    { cn: 'EF 多功能账户申请', en: 'EF Account Application', ru: 'Счет EF' }
                 ],
 
-                // 多语言字典库扩展 RU
+                toggleLang() {
+                    const langs = ['cn', 'en', 'ru'];
+                    this.lang = langs[(langs.indexOf(this.lang) + 1) % langs.length];
+                    localStorage.setItem('site_lang', this.lang);
+                },
+
+                openAuth(mode) { this.authMode = mode; this.showAuthModal = true; },
+                scrollTo(id) { 
+                    const el = document.getElementById(id);
+                    if(el) window.scrollTo({ top: el.offsetTop - 100, behavior: 'smooth' });
+                },
+
+                t(key) {
+                    return this.i18n[key] ? (this.i18n[key][this.lang] || key) : key;
+                },
+
+                // 核心词库
                 i18n: {
-                    top_bar: { cn: '系统状态：2026 海南封关运营模式已激活', en: 'STATUS: 2026 CUSTOM CLOSURE ACTIVE', ru: 'СТАТУС: РЕЖИМ ЗАКРЫТОЙ ТАМОЖНИ 2026 АКТИВЕН' },
+                    top_bar: { cn: '系统状态：2026 海南封关运营模式已激活', en: 'STATUS: 2026 CUSTOM CLOSURE ACTIVE', ru: 'СТАТУС: РЕЖИМ ЗАКРЫТОЙ ТАМОЖНИ 2026' },
                     nav_policy: { cn: '核心红利', en: 'ADVANTAGES', ru: 'ПРЕИМУЩЕСТВА' },
                     nav_parks: { cn: '重点园区', en: 'PARKS', ru: 'ПАРКИ' },
-                    nav_pricing: { cn: '业务与报价', en: 'SERVICES & PRICING', ru: 'УСЛУГИ И ЦЕНЫ' },
-                    nav_sop: { cn: '交付流程', en: 'SOP PROCESS', ru: 'ПРОЦЕСС SOP' },
-                    nav_news: { cn: '封关动态', en: 'NEWS', ru: 'НОВОСТИ' },
-                    nav_life: { cn: '风土人情', en: 'LIFESTYLE', ru: 'ОБРАЗ ЖИЗНИ' },
-                    nav_detail: { cn: '全案报价单', en: 'DETAILED LIST', ru: 'ПОДРОБНЫЙ СПИСОК' },
-                    login: { cn: '登录', en: 'LOGIN', ru: 'ВОЙТИ' },
-                    register: { cn: '注册', en: 'REGISTER', ru: 'РЕГИСТРАЦИЯ' },
-                    
+                    nav_pricing: { cn: '服务报价', en: 'SERVICES', ru: 'УСЛУГИ' },
+                    nav_sop: { cn: '交付流程', en: 'PROCESS', ru: 'ПРОЦЕСС' },
+                    login: { cn: '登录', en: 'LOGIN', ru: 'ВХОД' },
+                    register: { cn: '开启入驻', en: 'GET STARTED', ru: 'НАЧАТЬ' },
                     hero_title_1: { cn: '锁定海南自贸港', en: 'SECURE YOUR', ru: 'ОБЕСПЕЧЬТЕ СВОИ' },
                     hero_title_2: { cn: '离岸资产红利', en: 'OFFSHORE ASSETS', ru: 'ОФШОРНЫЕ АКТИВЫ' },
-                    hero_desc: { cn: '为您打通 59 国免签政策、13 大园区入口及 EF 账户系统。执行 12 步标准交付。', en: 'Access 59-nation visa-free, 13 industrial parks, and EF accounts. 12-step standard delivery.', ru: 'Безвизовый въезд для 59 стран, 13 индустриальных парков и счета EF. 12-этапный стандартный процесс оформления.' },
-                    btn_pricing: { cn: '业务与报价单', en: 'SERVICES & PRICING', ru: 'УСЛУГИ И ЦЕНЫ' },
+                    hero_desc: { cn: '打通 59 国免签政策、13 大园区入口及 EF 账户系统。为您提供 2026 封关全案标准交付。', en: 'Access 59-nation visa-free, 13 industrial parks, and EF accounts. Standard 2026 delivery.', ru: 'Безвизовый въезд для 59 стран, 13 парков и счета EF. Стандарт 2026.' },
+                    btn_pricing: { cn: '查看服务清单', en: 'VIEW SERVICES', ru: 'СПИСОК УСЛУГ' },
                     btn_register: { cn: '创建企业账户', en: 'CREATE ACCOUNT', ru: 'СОЗДАТЬ АККАУНТ' },
-                    
-                    sec_policy: { cn: '海南自贸港四大战略红利', en: 'CORE STRATEGIC ADVANTAGES', ru: 'КЛЮЧЕВЫЕ СТРАТЕГИЧЕСКИЕ ПРЕИМУЩЕСТВА' },
-                    p1_t: { cn: '双 15% 所得税', en: '15% INCOME TAX', ru: 'ПОДОХОДНЫЙ НАЛОГ 15%' },
-                    p1_d: { cn: '企业与个人所得税上限 15%，全国最低税负。', en: 'Corporate & Personal tax capped at 15%.', ru: 'Корпоративный и личный налог ограничен 15%.' },
+                    sec_policy: { cn: '四大战略红利', en: 'STRATEGIC ADVANTAGES', ru: 'ПРЕИМУЩЕСТВА' },
+                    p1_t: { cn: '双 15% 所得税', en: '15% INCOME TAX', ru: 'НАЛОГ 15%' },
+                    p1_d: { cn: '企业与个人所得税上限 15%，全国最低税负。', en: 'Corporate & Personal tax capped at 15%.', ru: 'Личный налог ограничен 15%.' },
                     p2_t: { cn: '59 国免签入境', en: 'VISA-FREE ACCESS', ru: 'БЕЗВИЗОВЫЙ ДОСТУП' },
-                    p2_d: { cn: '人员免签入境海南，国际商务往来零门槛。', en: 'Visa-free entry for citizens of 59 countries.', ru: 'Безвизовый въезд для граждан 59 стран.' },
-                    p3_t: { cn: 'EF 电子围栏账户', en: 'EF ACCOUNT SYSTEM', ru: 'СИСТЕМА СЧЕТОВ EF' },
-                    p3_d: { cn: '多功能自由贸易账户，跨境资金高效结算通道。', en: 'EF account for seamless global settlements.', ru: 'Счет EF для беспрепятственных международных расчетов.' },
+                    p2_d: { cn: '人员免签入境海南，国际商务往来零门槛。', en: 'Visa-free entry for citizens of 59 countries.', ru: 'Въезд без виз для 59 стран.' },
+                    p3_t: { cn: 'EF 电子围栏账户', en: 'EF ACCOUNT SYSTEM', ru: 'СИСТЕМА EF' },
+                    p3_d: { cn: '多功能自由贸易账户，跨境资金高效结算。', en: 'EF account for seamless global settlements.', ru: 'Счет EF для расчетов.' },
                     p4_t: { cn: '离岸零关税', en: 'ZERO TARIFFS', ru: 'НУЛЕВЫЕ ПОШЛИНЫ' },
-                    p4_d: { cn: '生产设备、原材料零关税，降低供应链成本。', en: 'Zero tariffs on equipment and raw materials.', ru: 'Нулевые пошлины на оборудование и сырье.' },
-                    
-                    sec_parks: { cn: '全岛 13 大核心园区接入', en: '13 STRATEGIC INDUSTRIAL PARKS', ru: '13 СТРАТЕГИЧЕСКИХ ИНДУСТРИАЛЬНЫХ ПАРКОВ' },
-                    parks_sub: { cn: '根据产业属性精准匹配自贸港最佳落地点', en: 'Match your industry with the perfect Free Trade Port location.', ru: 'Подберите идеальное место в Порту свободной торговли для вашей отрасли.' },
-                    
-                    biz_subtitle: { cn: '涵盖行政、财税、合规等 14 项标准化离岸交付业务', en: '14 standardized offshore services including admin, tax, and compliance.', ru: '14 стандартизированных офшорных услуг, включая администрирование, налоги и комплаенс.' },
-                    view_detail_btn: { cn: '查看详细清单与报价单 →', en: 'View Detailed Pricing List →', ru: 'Посмотреть подробный прайс-лист →' },
-                    
-                    sec_sop: { cn: '12 步标准交付协议 (SOP)', en: '12-STEP DELIVERY SOP', ru: '12-ЭТАПНЫЙ ПРОЦЕСС ОФОРМЛЕНИЯ (SOP)' },
-                    
-                    sec_news: { cn: '封关运营前沿追踪', en: 'CLOSURE OPERATION UPDATES', ru: 'ОБНОВЛЕНИЯ ОПЕРАЦИЙ ЗАКРЫТИЯ' },
-                    read_more: { cn: '阅读简报', en: 'Read Brief', ru: 'Читать сводку' },
-
-                    life_t: { cn: '不仅是税收洼地，更是生活高地', en: 'MORE THAN A TAX HAVEN', ru: 'БОЛЬШЕ, ЧЕМ НАЛОГОВАЯ ГАВАНЬ' },
-                    life_d: { cn: '海南拥有热带雨林、顶级冲浪点、离岸免税购物及世界级的康养资源。在碧海蓝天间，处理全球订单，实现事业与生命的完美平衡。', en: 'Tropical rainforests, world-class surfing, offshore duty-free shopping. Balance your global business with paradise.', ru: 'Тропические леса, серфинг мирового класса, офшорный шопинг без пошлин. Совместите глобальный бизнес с райской жизнью.' },
-                    l1: { cn: '热带雨林康养', en: 'RAINFOREST WELLNESS', ru: 'ОЗДОРОВЛЕНИЕ В ТРОПИКАХ' },
-                    l2: { cn: '离岸免税购物', en: 'OFFSHORE SHOPPING', ru: 'ОФШОРНЫЙ ШОПИНГ' },
-                    l3: { cn: '5G 全覆盖数字海岛', en: '5G DIGITAL ISLAND', ru: 'ЦИФРОВОЙ ОСТРОВ 5G' },
-                    l4: { cn: '顶级帆船与潜水', en: 'SAILING & DIVING', ru: 'ЯХТИНГ И ДАЙВИНГ' },
-                    
-                    sec_video: { cn: '离岸基建·视觉预览', en: 'OFFSHORE INFRA PREVIEW', ru: 'ОБЗОР ОФШОРНОЙ ИНФРАСТРУКТУРЫ' },
-
-                    footer_t: { cn: '准备好开启您的海南业务了吗？', en: 'READY TO START IN HAINAN?', ru: 'ГОТОВЫ НАЧАТЬ БИЗНЕС НА ХАЙНАНЕ?' },
-                    f_user: { cn: '手机号 / 邮箱', en: 'Phone / Email', ru: 'Телефон / Email' },
-                    f_pass: { cn: '设置密码', en: 'Password', ru: 'Пароль' },
-                    f_comp: { cn: '企业名称 / 联系人', en: 'Company / Name', ru: 'Компания / Имя' },
-                    f_submit: { cn: '提交注册 / 登录', en: 'SUBMIT', ru: 'ОТПРАВИТЬ' }
-                },
-                t(key) { return this.i18n[key] ? this.i18n[key][this.lang] : key; }
+                    p4_d: { cn: '生产设备、原材料零关税，大幅降低成本。', en: 'Zero tariffs on equipment and materials.', ru: 'Нулевые пошлины на материалы.' },
+                    sec_parks: { cn: '13 大核心园区接入', en: '13 CORE PARKS', ru: '13 ОСНОВНЫХ ПАРКОВ' },
+                    parks_sub: { cn: '根据产业属性匹配最佳落地点', en: 'Perfect Free Trade Port location matching.', ru: 'Подбор места в порту.' },
+                    sec_sop: { cn: '标准交付协议', en: 'DELIVERY SOP', ru: 'ПРОЦЕСС SOP' },
+                    life_t: { cn: '生活高地', en: 'LIFE AT PEAK', ru: 'ВЕРШИНА ЖИЗНИ' },
+                    life_d: { cn: '不仅是税收洼地，更是生活高地。热带雨林与碧海蓝天间的事业平衡。', en: 'More than a tax haven. A balance between business and paradise.', ru: 'Больше, чем гавань. Баланс бизнеса и рая.' },
+                    l1: { cn: '热带康养', en: 'WELLNESS', ru: 'ОЗДОРОВЛЕНИЕ' },
+                    l2: { cn: '免税购物', en: 'DUTY FREE', ru: 'ШОПИНГ' },
+                    l3: { cn: '数字海岛', en: 'DIGITAL ISLAND', ru: 'ЦИФРОВОЙ ОСТРОВ' },
+                    l4: { cn: '顶级水上运动', en: 'WATER SPORTS', ru: 'ЯХТИНГ' },
+                    footer_t: { cn: '开启您的海南业务', en: 'START IN HAINAN', ru: 'БИЗНЕС НА ХАЙНАНЕ' }
+                }
             }
         }
     </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </body>
 </html>
