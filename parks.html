@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="zh" x-data="parksPage()" x-cloak>
+<html lang="zh" x-data="parksPage()" x-init="init()" x-cloak>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>13 Major Parks | Solana-Hainan</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="js/parksData.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700;900&display=swap');
         [x-cloak] { display: none !important; }
         body { font-family: 'Noto Sans SC', sans-serif; background-color: #020617; color: #cbd5e1; }
         .park-card { background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(10px); border: 1px solid rgba(51, 65, 85, 0.3); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
         .park-card:hover { border-color: #3b82f6; transform: translateY(-5px); box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.3); }
-        .status-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 6px; }
     </style>
 </head>
 <body class="bg-[#020617]">
@@ -22,32 +22,24 @@
                 <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center font-black text-white text-xl">S</div>
                 <span class="text-white font-black tracking-tighter text-lg uppercase italic">Solana<span class="text-blue-500">Hainan</span></span>
             </a>
-            <div class="flex items-center gap-4">
-                <button @click="toggleLang()" class="text-[10px] border border-slate-700 px-2 py-1 rounded text-slate-400 hover:text-white transition uppercase font-bold" x-text="lang === 'cn' ? 'EN' : (lang === 'en' ? 'РУ' : '中文')"></button>
-            </div>
+            <button @click="toggleLang()" class="text-[10px] border border-slate-700 px-2 py-1 rounded text-slate-400 uppercase font-bold" x-text="lang === 'cn' ? 'EN' : (lang === 'en' ? 'РУ' : '中文')"></button>
         </div>
     </nav>
 
-    <header class="pt-40 pb-16 px-6 max-w-7xl mx-auto text-center">
-        <h1 class="text-5xl md:text-6xl font-black text-white italic uppercase tracking-tighter mb-6">
-            <span x-text="t('header_2')"></span>
-        </h1>
+    <header class="pt-40 pb-16 px-6 text-center">
+        <h1 class="text-5xl md:text-6xl font-black text-white italic uppercase tracking-tighter mb-6" x-text="t('header')"></h1>
     </header>
 
     <main class="max-w-7xl mx-auto px-6 pb-32">
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <template x-for="park in parks" :key="park.id">
-                <div class="park-card p-8 rounded-[2rem] flex flex-col justify-between">
+            <template x-for="(park, id) in allParks" :key="id">
+                <div class="park-card p-8 rounded-[2rem] flex flex-col justify-between h-full">
                     <div>
-                        <div class="flex justify-between items-start mb-6">
-                            <div class="text-[10px] font-mono text-blue-500 font-bold tracking-widest uppercase" x-text="park.location[lang]"></div>
-                            <div class="flex items-center"><span class="status-dot bg-green-500 animate-pulse"></span><span class="text-[9px] font-bold text-slate-500 uppercase">Active</span></div>
-                        </div>
-                        <h3 class="text-white text-xl font-bold mb-3" x-text="park.name[lang]"></h3>
-                        <p class="text-sm text-slate-400 mb-6 leading-relaxed h-20 overflow-hidden" x-text="park.desc[lang]"></p>
+                        <div class="text-[10px] font-mono text-blue-500 font-bold tracking-widest uppercase mb-4" x-text="park.subtitle[lang]"></div>
+                        <h3 class="text-white text-2xl font-bold mb-3" x-text="park.name[lang]"></h3>
                     </div>
-                    <a :href="'park-detail.html?id=' + park.id" class="inline-flex items-center text-[10px] font-black uppercase tracking-widest text-blue-500 hover:text-white transition-colors group">
-                        <span x-text="t('view_details')"></span>
+                    <a :href="'park-detail.html?id=' + id" class="mt-8 inline-flex items-center text-[10px] font-black uppercase tracking-widest text-blue-500 hover:text-white transition-colors group">
+                        <span x-text="t('view')"></span>
                         <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
                     </a>
                 </div>
@@ -59,6 +51,10 @@
         function parksPage() {
             return {
                 lang: localStorage.getItem('site_lang') || 'cn',
+                allParks: {},
+                init() {
+                    this.allParks = window.parksData;
+                },
                 toggleLang() {
                     const langs = ['cn', 'en', 'ru'];
                     this.lang = langs[(langs.indexOf(this.lang) + 1) % 3];
@@ -66,17 +62,11 @@
                 },
                 t(key) {
                     const i18n = {
-                        header_2: { cn: '13 大重点园区', en: '13 KEY INDUSTRIAL PARKS', ru: '13 КЛЮЧЕВЫХ ПАРКОВ' },
-                        view_details: { cn: '查看详情', en: 'VIEW DETAILS', ru: 'ПОДРОБНЕЕ' }
+                        header: { cn: '13 大重点园区', en: '13 KEY PARKS', ru: '13 КЛЮЧЕВЫХ ПАРКОВ' },
+                        view: { cn: '查看详情', en: 'VIEW DETAILS', ru: 'ПОДРОБНЕЕ' }
                     };
-                    return i18n[key] ? i18n[key][this.lang] : key;
-                },
-                parks: [
-                    { id: 'jiangdong', location: { cn: '海口', en: 'HAIKOU', ru: 'ХАЙКОУ' }, name: { cn: '海口江东新区', en: 'Haikou Jiangdong', ru: 'Район Цзяндун' }, desc: { cn: '自贸港总部经济区', en: 'HQ economy hub', ru: 'Хаб штаб-квартир' } },
-                    { id: 'fullsing', location: { cn: '海口', en: 'HAIKOU', ru: 'ХАЙКОУ' }, name: { cn: '复兴城互联网园', en: 'Fullsing Internet Park', ru: 'IT-парк Фусинчэн' }, desc: { cn: '数字经济高地', en: 'Digital economy peak', ru: 'Центр цифровой экономики' } },
-                    { id: 'yazhou', location: { cn: '三亚', en: 'SANYA', ru: 'САНЬЯ' }, name: { cn: '三亚崖州湾科技城', en: 'Yazhou Bay Sci-Tech City', ru: 'Наукоград залива Ячжоу' }, desc: { cn: '深海与种业科研核心', en: 'Deep-sea & Seed tech', ru: 'Центр селекции' } }
-                    // 其他园区 ID 保持一致即可
-                ]
+                    return i18n[key][this.lang];
+                }
             }
         }
     </script>
