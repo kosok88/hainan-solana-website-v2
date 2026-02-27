@@ -3,52 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Park Detail</title>
+    <title>Park Details | Solana-Hainan</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="js/parksData.js"></script>
 </head>
-<body class="bg-slate-950 text-slate-300" x-data="parkManager()" x-init="init()">
-    <nav class="p-6 border-b border-slate-800 flex justify-between items-center bg-slate-900/50">
-        <a href="parks.html" class="text-blue-500 font-bold hover:underline">← Back to Parks</a>
-        <div class="flex gap-4">
-            <button @click="lang='cn'" :class="lang==='cn'?'text-white font-bold':'text-slate-500'">中</button>
-            <button @click="lang='en'" :class="lang==='en'?'text-white font-bold':'text-slate-500'">EN</button>
-            <button @click="lang='ru'" :class="lang==='ru'?'text-white font-bold':'text-slate-500'">РУ</button>
+<body class="bg-[#020617] text-slate-300" x-data="detailApp()" x-init="init()">
+    <nav class="fixed top-0 w-full z-50 bg-[#020617]/90 backdrop-blur-xl border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <a href="index.html" class="flex items-center space-x-2 text-white hover:text-blue-500 transition">
+                    <span class="font-black">HOME 首页</span>
+                </a>
+                <span class="text-slate-600">/</span>
+                <a href="parks.html" class="text-slate-400 hover:text-white transition">PARKS 园区</a>
+            </div>
+            <div class="flex gap-4">
+                <button @click="lang='cn'" :class="lang==='cn'?'text-blue-500 font-bold':'text-slate-500'">中文</button>
+                <button @click="lang='en'" :class="lang==='en'?'text-blue-500 font-bold':'text-slate-500'">EN</button>
+                <button @click="lang='ru'" :class="lang==='ru'?'text-blue-500 font-bold':'text-slate-500'">РУ</button>
+            </div>
         </div>
     </nav>
 
-    <main class="max-w-4xl mx-auto p-6 mt-10" x-show="park">
-        <h1 class="text-4xl md:text-5xl font-black text-white mb-4" x-text="park.name[lang]"></h1>
-        <p class="text-xl text-blue-400 mb-10" x-text="park.subtitle[lang]"></p>
-        
-        <div class="prose prose-invert prose-blue max-w-none text-slate-400 leading-relaxed" 
-             x-html="lang === 'cn' ? (park.detail_zh || '暂无详细介绍') : (park.detail_en || 'No detail available')">
-        </div>
+    <main class="max-w-4xl mx-auto pt-32 pb-20 px-6">
+        <template x-if="park">
+            <div>
+                <h1 class="text-4xl md:text-6xl font-black text-white mb-4 italic uppercase tracking-tighter" x-text="park.name[lang]"></h1>
+                <p class="text-xl text-blue-500 font-bold mb-10 border-l-4 border-blue-500 pl-4" x-text="park.subtitle[lang]"></p>
+                
+                <div class="prose prose-invert prose-blue max-w-none text-slate-400 leading-relaxed text-lg" 
+                     x-html="lang === 'cn' ? park.detail_zh : (lang === 'en' ? park.detail_en : (park.detail_ru || park.detail_en))">
+                </div>
+
+                <div class="mt-20 pt-10 border-t border-slate-800 text-center">
+                    <a href="services.html" class="bg-blue-600 text-white px-10 py-4 rounded-full font-black uppercase hover:bg-blue-700 transition">
+                        咨询落户方案 / CONSULT NOW
+                    </a>
+                </div>
+            </div>
+        </template>
+
+        <template x-if="!park">
+            <div class="text-center py-20">
+                <p class="text-2xl text-red-500">⚠️ 未找到园区数据</p>
+                <a href="parks.html" class="mt-4 inline-block text-blue-500">返回园区列表</a>
+            </div>
+        </template>
     </main>
 
-    <div x-show="!park" class="text-center py-20 text-red-500">
-        <p class="text-2xl font-bold">⚠️ 无法加载园区数据</p>
-        <p class="mt-2 text-slate-500">请检查 URL 参数（如 ?id=park08）是否正确</p>
-    </div>
-
     <script>
-        function parkManager() {
+        function detailApp() {
             return {
-                lang: localStorage.getItem('lang') || 'cn',
+                lang: localStorage.getItem('site_lang') || 'cn',
                 park: null,
                 init() {
                     const params = new URLSearchParams(window.location.search);
                     const id = params.get('id');
-                    
-                    // 自动匹配 window.parksData 或其他可能的变量名
-                    const database = window.parksData || window.parksFullData;
-                    
-                    if (database && id && database[id]) {
-                        this.park = database[id];
-                        console.log("成功匹配园区:", this.park.name.cn);
+                    // 核心自愈逻辑：确保能抓到 window.parksData
+                    if (window.parksData && id) {
+                        this.park = window.parksData[id];
+                        console.log("加载成功:", this.park);
                     } else {
-                        console.error("加载失败！ID:", id, "数据库状态:", !!database);
+                        console.error("加载失败! ID:", id);
                     }
                 }
             }
