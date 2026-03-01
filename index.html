@@ -42,12 +42,27 @@
                 <a @click="scrollTo('lifestyle')" class="text-xs font-bold hover:text-[#14F195] transition cursor-pointer" x-text="t('nav_life')"></a>
             </div>
 
-            <div class="flex items-center gap-3">
-                <button @click="openAuth('login')" class="text-xs font-bold hover:text-[#14F195]" x-text="t('login')"></button>
-                <button @click="openAuth('register')" class="bg-[#14F195] text-black px-4 py-1.5 rounded-full text-xs font-black" x-text="t('register')"></button>
-                <div class="w-px h-4 bg-white/20 mx-1"></div>
-                <button @click="toggleLang()" class="text-[10px] border border-white/20 px-2 py-1 rounded uppercase hover:bg-white/10 font-bold" x-text="lang === 'cn' ? 'EN' : (lang === 'en' ? 'РУ' : '中文')"></button>
-            </div>
+           <div class="flex items-center gap-3">
+    <button 
+      @click="alert('进度查询功能正在接入，请直接联系客服获取最新状态')" 
+      class="text-xs font-bold hover:text-[#14F195]">
+      进度查询
+    </button>
+
+    <button 
+      @click="const form = document.getElementById('contact-form'); if(form) { form.scrollIntoView({behavior: 'smooth'}) } else { alert('正在为您跳转咨询区域...'); window.location.hash = '#contact'; }" 
+      class="bg-[#14F195] text-black px-4 py-1.5 rounded-full text-xs font-black">
+      立即咨询
+    </button>
+
+    <div class="w-px h-4 bg-white/20 mx-1"></div>
+
+    <button 
+      @click="toggleLang()" 
+      class="text-[10px] border border-white/20 px-2 py-1 rounded uppercase hover:bg-white/10 font-bold" 
+      x-text="lang === 'cn' ? 'EN' : (lang === 'en' ? 'РУ' : '中文')">
+    </button>
+</div>
         </div>
     </nav>
 
@@ -226,14 +241,21 @@
                 <button @click="authMode = 'login'" :class="authMode === 'login' ? 'text-[#14F195] border-[#14F195] border-b-2' : 'text-gray-500'" class="pb-2 text-lg font-black transition" x-text="t('login')"></button>
                 <button @click="authMode = 'register'" :class="authMode === 'register' ? 'text-[#14F195] border-[#14F195] border-b-2' : 'text-gray-500'" class="pb-2 text-lg font-black transition" x-text="t('register')"></button>
             </div>
-            <form class="space-y-4">
-                <template x-if="authMode === 'register'">
-                    <input type="text" :placeholder="t('f_comp')" class="input-field text-sm">
-                </template>
-                <input type="text" :placeholder="t('f_user')" class="input-field text-sm">
-                <input type="password" :placeholder="t('f_pass')" class="input-field text-sm">
-                <button type="button" class="w-full btn-primary py-4 rounded-xl text-xs uppercase tracking-widest" x-text="t('f_submit')"></button>
-            </form>
+           <form id="contact-form" class="space-y-4">
+    <input type="text" id="cust_name" :placeholder="t('f_user')" class="input-field text-sm w-full bg-white/5 border border-white/10 p-4 rounded-xl text-white outline-none focus:border-[#14F195] transition-colors">
+    
+    <input type="text" id="cust_contact" placeholder="微信 / WhatsApp / 手机号" class="input-field text-sm w-full bg-white/5 border border-white/10 p-4 rounded-xl text-white outline-none focus:border-[#14F195] transition-colors">
+    
+    <input type="text" id="cust_company" :placeholder="t('f_comp')" class="input-field text-sm w-full bg-white/5 border border-white/10 p-4 rounded-xl text-white outline-none focus:border-[#14F195] transition-colors">
+
+    <textarea id="cust_req" placeholder="请输入您的具体需求或订单号（查进度用）" class="input-field text-sm w-full bg-white/5 border border-white/10 p-4 rounded-xl text-white h-24 outline-none focus:border-[#14F195] transition-colors"></textarea>
+
+    <button type="button" 
+            onclick="submitToGoogle(this)"
+            class="w-full btn-primary py-4 rounded-xl text-xs font-bold uppercase tracking-widest hover:opacity-90 transition-opacity" 
+            x-text="t('f_submit')">
+    </button>
+</form>
         </div>
     </div>
 
