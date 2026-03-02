@@ -3,313 +3,294 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solana Hainan | 2026 海南封关全案交付中心</title>
+    <title>Solana Hainan | 2026 离岸资产交付门户</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;500;900&family=Inter:wght@400;900&display=swap" rel="stylesheet">
     
     <script src="parksData.js" defer></script>
     <script src="parks_complete_system.js" defer></script>
     <script src="news_data.js" defer></script>
 
     <style>
+        :root { --solana: #14F195; --solana-dark: #0fbc74; }
         [x-cloak] { display: none !important; }
-        body { background-color: #050505; color: #ffffff; font-family: 'Noto Sans SC', sans-serif; scroll-behavior: smooth; overflow-x: hidden; }
-        /* 品牌色体系 */
-        .text-solana { color: #14F195; }
-        .bg-solana { background-color: #14F195; }
-        .border-solana { border-color: #14F195; }
+        body { background-color: #020202; color: #e5e7eb; font-family: 'Inter', 'Noto Sans SC', sans-serif; scroll-behavior: smooth; }
         
-        /* 核心卡片UI：深邃、质感 */
-        .card-premium { 
-            background: linear-gradient(145deg, rgba(20, 241, 149, 0.02) 0%, rgba(255, 255, 255, 0.02) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.05); 
-            border-radius: 16px; 
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
-        }
-        .card-premium:hover { 
-            border-color: rgba(20, 241, 149, 0.4); 
-            background: linear-gradient(145deg, rgba(20, 241, 149, 0.05) 0%, rgba(255, 255, 255, 0.03) 100%); 
-            transform: translateY(-4px); 
-            box-shadow: 0 10px 40px -10px rgba(20, 241, 149, 0.1);
-        }
+        /* 极致对比色调 */
+        .text-glow { text-shadow: 0 0 20px rgba(20, 241, 149, 0.4); }
+        .bg-glass { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
         
-        /* 按钮体系 */
-        .btn-solid { background-color: #14F195; color: #000; font-weight: 900; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; }
-        .btn-solid:hover { box-shadow: 0 0 25px rgba(20, 241, 149, 0.4); transform: scale(1.02); }
-        .btn-outline { background: transparent; border: 1px solid rgba(255, 255, 255, 0.2); color: #fff; font-weight: 700; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; }
-        .btn-outline:hover { border-color: #14F195; color: #14F195; background: rgba(20, 241, 149, 0.05); }
+        /* 高级动态边框（树枝卡片专用） */
+        .neon-card { position: relative; transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); overflow: hidden; border-radius: 20px; }
+        .neon-card::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(20, 241, 149, 0.15) 0%, transparent 50%); opacity: 0; transition: opacity 0.5s; }
+        .neon-card:hover::before { opacity: 1; }
+        .neon-card:hover { transform: translateY(-8px); border-color: var(--solana); box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5); }
 
-        /* 新闻滚动条动画预设 */
-        @keyframes ticker { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
-        .news-ticker-content { display: inline-block; white-space: nowrap; animation: ticker 25s linear infinite; }
+        /* 标题排版打磨 */
+        .hero-title { line-height: 1.6; letter-spacing: -0.04em; }
+
+        /* 滚动条美化 */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--solana); }
     </style>
 </head>
-<body x-data="portalSite()" x-cloak class="antialiased selection:bg-solana selection:text-black">
+<body x-data="siteController()" @mousemove="handleMouse" class="antialiased overflow-x-hidden">
 
-    <div class="fixed top-0 w-full z-[120] bg-solana text-black text-[10px] font-black uppercase tracking-[0.3em] py-1.5 flex justify-center items-center gap-4 shadow-[0_0_15px_rgba(20,241,149,0.2)]">
-        <span class="w-2 h-2 rounded-full bg-black animate-pulse"></span>
-        SYSTEM STATUS: 2026 CUSTOM CLOSURE PREP ACTIVE
+    <div class="fixed top-0 w-full z-[200] bg-solana text-black py-1.5 overflow-hidden border-b border-black/10">
+        <div class="flex whitespace-nowrap animate-[marquee_30s_linear_infinite] font-black text-[9px] uppercase tracking-[0.4em]">
+            <span class="mx-8">System Status: Active</span><span class="mx-8">|</span>
+            <span class="mx-8">2026 Custom Closure Ready</span><span class="mx-8">|</span>
+            <span class="mx-8">Offshore Account Infrastructure Online</span><span class="mx-8">|</span>
+            <span class="mx-8">13 Parks Integrated</span><span class="mx-8">|</span>
+            <span class="mx-8 text-white/80">System Status: Active</span><span class="mx-8">|</span>
+            <span class="mx-8 text-white/80">2026 Custom Closure Ready</span>
+        </div>
     </div>
 
-    <nav class="fixed top-[30px] w-full z-[110] bg-black/80 backdrop-blur-xl border-b border-white/5 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-4 group">
-                <div class="w-9 h-9 bg-solana rounded flex items-center justify-center font-black text-black italic text-xl group-hover:scale-105 transition">S</div>
+    <nav class="fixed top-[28px] w-full z-[150] transition-all duration-500" :class="scrolled ? 'bg-black/80 backdrop-blur-xl py-3 border-b border-white/5' : 'bg-transparent py-6'">
+        <div class="max-w-7xl mx-auto px-8 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 bg-solana rounded-xl flex items-center justify-center font-black text-black italic text-xl shadow-[0_0_20px_rgba(20,241,149,0.3)] group-hover:rotate-[10deg] transition-transform">S</div>
                 <div class="flex flex-col">
-                    <span class="text-xl font-black tracking-tighter leading-none uppercase">Solana Hainan</span>
-                    <span class="text-[9px] text-solana font-bold tracking-widest uppercase mt-1">2026 Offshore Portal</span>
+                    <span class="text-xl font-black tracking-tighter text-white leading-none">SOLANA HAINAN</span>
+                    <span class="text-[8px] text-solana font-bold tracking-[0.3em] uppercase opacity-80">Offshore Deliver Center</span>
                 </div>
             </a>
             
-            <div class="hidden lg:flex gap-8 items-center text-[11px] font-bold uppercase tracking-[0.15em] text-gray-300">
-                <a href="parks.html" class="hover:text-solana transition">核心园区 (Parks)</a>
-                <a href="services.html" class="hover:text-solana transition">业务总览 (Services)</a>
-                <a href="hainan-videos.html" class="hover:text-solana transition">全景视频 (Media)</a>
-                <a href="track.html" class="text-solana flex items-center gap-1 hover:brightness-125 transition">
-                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                    订单追踪 (Track)
-                </a>
-            </div>
-
-            <div class="flex items-center gap-4">
-                <a href="index-en_old.html" class="text-[10px] border border-white/20 px-2 py-1 rounded hover:bg-white/10 font-black transition">EN</a>
-                <a href="order.html" class="btn-solid px-6 py-2 rounded-full text-[10px] uppercase tracking-widest hidden sm:flex">立项下单</a>
+            <div class="hidden xl:flex items-center gap-10">
+                <div class="flex gap-8 text-[11px] font-black uppercase tracking-widest text-gray-400">
+                    <a href="parks.html" class="hover:text-solana transition">核心园区</a>
+                    <a href="services.html" class="hover:text-solana transition">业务报价</a>
+                    <a href="hainan-videos.html" class="hover:text-solana transition">媒体矩阵</a>
+                    <a href="track.html" class="hover:text-solana flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 bg-solana rounded-full animate-pulse"></span>交付查询
+                    </a>
+                </div>
+                <div class="h-4 w-[1px] bg-white/10"></div>
+                <div class="flex items-center gap-4">
+                    <a href="index-en_old.html" class="text-[10px] font-bold text-gray-500 hover:text-white transition">EN</a>
+                    <a href="order.html" class="bg-white text-black px-6 py-2 rounded-full text-[10px] font-black uppercase hover:bg-solana transition duration-300">Start Project</a>
+                </div>
             </div>
         </div>
     </nav>
 
-    <header class="relative pt-48 pb-32 px-6 overflow-hidden min-h-[85vh] flex items-center border-b border-white/5">
-        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-solana/10 blur-[120px] rounded-full -z-10 pointer-events-none"></div>
-        <div class="absolute bottom-0 w-full h-1/2 bg-gradient-to-t from-[#050505] to-transparent -z-10"></div>
-
-        <div class="max-w-6xl mx-auto text-center relative z-10">
-            <div id="news-ticker-container" class="inline-flex overflow-hidden max-w-md mx-auto px-4 py-1 border border-solana/30 rounded-full bg-solana/5 text-[10px] font-bold text-solana uppercase tracking-widest mb-10">
-                <span class="news-ticker-content">2026 离岸资产架构全案交付中心已上线 | OFFICIAL INFRASTRUCTURE ONLINE</span>
+    <header class="relative min-h-screen flex items-center px-8 pt-20 overflow-hidden">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] bg-solana/5 blur-[160px] rounded-full pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+            <div class="lg:col-span-8">
+                <div class="inline-flex items-center gap-3 px-4 py-2 bg-white/5 border border-white/10 rounded-full mb-8 animate-fade-in">
+                    <span class="flex h-2 w-2 rounded-full bg-solana"></span>
+                    <span class="text-[9px] font-black uppercase tracking-[0.3em] text-gray-300">2026 Strategic Layout Launch</span>
+                </div>
+                <h1 class="hero-title text-5xl md:text-7xl lg:text-8xl font-[900] italic uppercase text-white mb-10">
+                    锁定海南自贸港<br>
+                    <span class="text-solana text-glow">离岸资产红利</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-400 max-w-2xl font-light leading-relaxed mb-12">
+                    打破传统边际，通过 <span class="text-white font-bold">13大园区</span> 深度渗透与 <span class="text-white font-bold">EF账户</span> 体系，为您构建在 2026 封关背景下的离岸商业堡垒。
+                </p>
+                <div class="flex flex-wrap gap-6">
+                    <a href="order.html" class="group bg-solana text-black px-12 py-5 rounded-2xl font-black uppercase text-xs tracking-widest hover:scale-105 transition-all shadow-[0_20px_40px_-10px_rgba(20,241,149,0.3)]">
+                        立即启动交付
+                    </a>
+                    <button onclick="if(typeof showParksModal==='function') showParksModal();" class="bg-white/5 backdrop-blur-md border border-white/10 text-white px-10 py-5 rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-white/10 transition-all">
+                        园区入驻系统
+                    </button>
+                </div>
             </div>
-
-            <h1 class="text-4xl md:text-6xl lg:text-7xl font-black mb-10 italic uppercase tracking-tighter leading-[1.4] md:leading-[1.4] drop-shadow-2xl">
-                锁定海南自贸港<br>
-                <span class="text-solana block mt-4">离岸资产红利</span>
-            </h1>
             
-            <p class="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto mb-16 font-medium leading-relaxed">
-                依托2026海南封关政策，为您打通免签通道、13大园区准入及EF多功能账户，实现离岸资产的全球化最优配置与合规运营。
-            </p>
-            
-            <div class="flex flex-col sm:flex-row justify-center gap-6">
-                <button id="parks-system-trigger" onclick="if(typeof showParksModal==='function') showParksModal(); else window.location.href='parks.html';" class="btn-solid px-10 py-4 rounded-xl text-xs uppercase tracking-widest shadow-[0_0_20px_rgba(20,241,149,0.2)]">
-                    进入园区入驻系统 →
-                </button>
-                <a href="services.html" class="btn-outline px-10 py-4 rounded-xl text-xs uppercase tracking-widest bg-black/50 backdrop-blur-md">
-                    查看完整业务报价
-                </a>
+            <div class="lg:col-span-4 hidden lg:block">
+                <div class="p-8 bg-glass rounded-[32px] border border-white/10 relative group">
+                    <div class="absolute -inset-0.5 bg-gradient-to-br from-solana/20 to-transparent rounded-[32px] blur opacity-0 group-hover:opacity-100 transition duration-1000"></div>
+                    <div class="relative space-y-6">
+                        <div class="flex justify-between items-center">
+                            <span class="text-[10px] font-black text-gray-500 uppercase tracking-widest">Live Node Status</span>
+                            <span class="text-solana font-mono text-xs">ONLINE</span>
+                        </div>
+                        <div class="h-[1px] bg-white/5"></div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="text-center p-4 bg-white/5 rounded-2xl">
+                                <div class="text-2xl font-black text-white italic">13</div>
+                                <div class="text-[8px] text-gray-500 uppercase mt-1">Total Parks</div>
+                            </div>
+                            <div class="text-center p-4 bg-white/5 rounded-2xl">
+                                <div class="text-2xl font-black text-solana italic">15%</div>
+                                <div class="text-[8px] text-gray-500 uppercase mt-1">Tax Capped</div>
+                            </div>
+                        </div>
+                        <a href="track.html" class="block w-full py-3 bg-white/10 rounded-xl text-center text-[9px] font-black uppercase tracking-[0.2em] hover:bg-solana hover:text-black transition">Track My Asset</a>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
 
-    <section class="py-24 px-6 border-b border-white/5 bg-[#080808]">
+    <section class="py-32 px-8 bg-[#050505]">
         <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-sm font-black text-solana uppercase tracking-[0.3em] mb-4">Core Advantages</h2>
-                <h3 class="text-3xl font-black italic uppercase tracking-tighter">四大封关核心红利</h3>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="card-premium p-8 relative overflow-hidden group">
-                    <div class="absolute -right-4 -top-4 text-7xl font-black italic text-white/5 group-hover:text-solana/10 transition duration-500">15%</div>
-                    <div class="w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center mb-6 text-solana">💰</div>
-                    <h4 class="text-lg font-black mb-3 uppercase tracking-tight">所得税封顶 15%</h4>
-                    <p class="text-gray-400 text-xs leading-relaxed">对鼓励类产业企业减按15%征收企业所得税，高端紧缺人才个人所得税最高15%。</p>
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-20 gap-8">
+                <div class="max-w-2xl">
+                    <h2 class="text-solana font-black uppercase tracking-[0.4em] text-xs mb-6">Service Infrastructure</h2>
+                    <h3 class="text-4xl md:text-5xl font-black italic uppercase text-white leading-tight">全域业务矩阵<br>四大交付模块</h3>
                 </div>
-                <div class="card-premium p-8 relative overflow-hidden group">
-                    <div class="absolute -right-4 -top-4 text-7xl font-black italic text-white/5 group-hover:text-solana/10 transition duration-500">59</div>
-                    <div class="w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center mb-6 text-solana">✈️</div>
-                    <h4 class="text-lg font-black mb-3 uppercase tracking-tight">59国免签入境</h4>
-                    <p class="text-gray-400 text-xs leading-relaxed">覆盖全球主要经济体，最长停留30天，全球商务往来无缝衔接。</p>
-                </div>
-                <div class="card-premium p-8 relative overflow-hidden group">
-                    <div class="absolute -right-4 -top-4 text-7xl font-black italic text-white/5 group-hover:text-solana/10 transition duration-500">EF</div>
-                    <div class="w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center mb-6 text-solana">🏦</div>
-                    <h4 class="text-lg font-black mb-3 uppercase tracking-tight">EF多功能自由账户</h4>
-                    <p class="text-gray-400 text-xs leading-relaxed">资金“跨一线”自由流动，实现真正意义上的离岸金融与跨境结算结算中心。</p>
-                </div>
-                <div class="card-premium p-8 relative overflow-hidden group">
-                    <div class="absolute -right-4 -top-4 text-7xl font-black italic text-white/5 group-hover:text-solana/10 transition duration-500">0</div>
-                    <div class="w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center mb-6 text-solana">📦</div>
-                    <h4 class="text-lg font-black mb-3 uppercase tracking-tight">原辅料零关税</h4>
-                    <p class="text-gray-400 text-xs leading-relaxed">实行“一线放开、二线管住”进出口管理制度，进口设备、原辅料免征关税。</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-32 px-6 relative">
-        <div class="absolute left-0 top-1/2 -translate-y-1/2 w-1/3 h-[500px] bg-solana/5 blur-[150px] -z-10 pointer-events-none"></div>
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-                <div>
-                    <h2 class="text-sm font-black text-solana uppercase tracking-[0.3em] mb-4">Service Matrix</h2>
-                    <h3 class="text-3xl md:text-4xl font-black italic uppercase tracking-tighter">全域业务矩阵<br><span class="text-gray-500 text-2xl">4大交付模块</span></h3>
-                </div>
-                <a href="services.html" class="group flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-solana transition">
-                    查看所有子服务与协议合集 
-                    <span class="w-8 h-[1px] bg-gray-600 group-hover:bg-solana transition-all"></span>
-                </a>
+                <p class="text-gray-500 text-sm max-w-sm leading-relaxed">
+                    从顶层咨询到数字指挥，我们提供的不仅仅是中介服务，而是一套完整的离岸运营操作系统。
+                </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <a href="consultancy.html" class="card-premium p-10 flex flex-col justify-between group h-full min-h-[250px]">
-                    <div class="flex justify-between items-start mb-8">
-                        <div class="text-solana text-5xl font-black italic opacity-50">01</div>
-                        <div class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-solana group-hover:text-black transition duration-300">↗</div>
-                    </div>
-                    <div>
-                        <h4 class="text-2xl font-black mb-3 uppercase">战略咨询 (Consultancy)</h4>
-                        <p class="text-gray-400 text-sm leading-relaxed">离岸架构顶层设计、主体合规规划、税务筹划及自贸港政策适配诊断。</p>
-                    </div>
-                </a>
-                <a href="design-services.html" class="card-premium p-10 flex flex-col justify-between group h-full min-h-[250px]">
-                    <div class="flex justify-between items-start mb-8">
-                        <div class="text-solana text-5xl font-black italic opacity-50">02</div>
-                        <div class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-solana group-hover:text-black transition duration-300">↗</div>
-                    </div>
-                    <div>
-                        <h4 class="text-2xl font-black mb-3 uppercase">设计服务 (Design)</h4>
-                        <p class="text-gray-400 text-sm leading-relaxed">全套企业VI视觉系统、官方网站搭建、物料设计及高端办公空间装潢指导。</p>
-                    </div>
-                </a>
-                <a href="commander.html" class="card-premium p-10 flex flex-col justify-between group h-full min-h-[250px]">
-                    <div class="flex justify-between items-start mb-8">
-                        <div class="text-solana text-5xl font-black italic opacity-50">03</div>
-                        <div class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-solana group-hover:text-black transition duration-300">↗</div>
-                    </div>
-                    <div>
-                        <h4 class="text-2xl font-black mb-3 uppercase">云端指挥舱 (Commander)</h4>
-                        <p class="text-gray-400 text-sm leading-relaxed">企业远程运营中枢系统，打破地理限制，实现离岸业务的数字化、可视化远程管理。</p>
-                    </div>
-                </a>
-                <a href="sources.html" class="card-premium p-10 flex flex-col justify-between group h-full min-h-[250px]">
-                    <div class="flex justify-between items-start mb-8">
-                        <div class="text-solana text-5xl font-black italic opacity-50">04</div>
-                        <div class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-solana group-hover:text-black transition duration-300">↗</div>
-                    </div>
-                    <div>
-                        <h4 class="text-2xl font-black mb-3 uppercase">资源对接 (Resources)</h4>
-                        <p class="text-gray-400 text-sm leading-relaxed">高端政企通道打通、四大行EF账户开立面签指导、核心园区高管直接对接。</p>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-24 px-6 border-t border-white/5 bg-[#080808]">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <a href="parks.html" class="group inline-block">
-                    <h2 class="text-sm font-black text-gray-500 uppercase tracking-[0.3em] mb-4 group-hover:text-solana transition">Parks Access System</h2>
-                    <h3 class="text-3xl md:text-4xl font-black italic uppercase tracking-tighter group-hover:text-white transition">
-                        全岛13大核心园区接入 <span class="text-solana inline-block ml-2 transform group-hover:translate-x-2 transition">→</span>
-                    </h3>
-                </a>
-                <p class="mt-4 text-gray-400 text-sm">点击图块进入各园区参数与准入条件详解（L3级详情页）</p>
-            </div>
-            
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4">
-                <template x-for="park in parksList">
-                    <a :href="'park-detail.html?name=' + park" class="card-premium py-6 px-2 flex flex-col items-center justify-center text-center group h-28">
-                        <div class="w-8 h-8 mb-3 rounded-full border border-white/10 flex items-center justify-center text-gray-500 group-hover:bg-solana group-hover:text-black group-hover:border-solana transition-all duration-300">
-                            <span class="text-xs font-black">P</span>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <a href="consultancy.html" class="neon-card bg-glass p-12 group">
+                    <div class="flex justify-between items-start mb-12">
+                        <div class="w-16 h-16 rounded-2xl bg-solana/10 border border-solana/20 flex items-center justify-center group-hover:bg-solana transition-colors duration-500">
+                            <svg class="w-8 h-8 text-solana group-hover:text-black transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                         </div>
-                        <span class="text-[10px] font-black uppercase tracking-widest text-gray-400 group-hover:text-white transition" x-text="park"></span>
+                        <span class="text-5xl font-black italic text-white/5 group-hover:text-solana/10 transition">01</span>
+                    </div>
+                    <h4 class="text-2xl font-black text-white mb-4 uppercase tracking-tight">战略咨询 (Consultancy)</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-8">深度拆解封关政策，定制离岸架构，规避跨境合规风险。您的每一笔资产都有理有据。</p>
+                    <div class="flex items-center gap-2 text-solana text-[10px] font-black uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                        Explore Strategy <span class="text-xl">→</span>
+                    </div>
+                </a>
+
+                <a href="design-services.html" class="neon-card bg-glass p-12 group">
+                    <div class="flex justify-between items-start mb-12">
+                        <div class="w-16 h-16 rounded-2xl bg-solana/10 border border-solana/20 flex items-center justify-center group-hover:bg-solana transition-colors duration-500">
+                            <svg class="w-8 h-8 text-solana group-hover:text-black transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path></svg>
+                        </div>
+                        <span class="text-5xl font-black italic text-white/5 group-hover:text-solana/10 transition">02</span>
+                    </div>
+                    <h4 class="text-2xl font-black text-white mb-4 uppercase tracking-tight">设计服务 (Design)</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-8">自贸港实体形象构建。从 VI 视觉到 3D 空间规划，塑造具备国际竞争力的企业门面。</p>
+                    <div class="flex items-center gap-2 text-solana text-[10px] font-black uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                        View Portfolio <span class="text-xl">→</span>
+                    </div>
+                </a>
+
+                <a href="commander.html" class="neon-card bg-glass p-12 group">
+                    <div class="flex justify-between items-start mb-12">
+                        <div class="w-16 h-16 rounded-2xl bg-solana/10 border border-solana/20 flex items-center justify-center group-hover:bg-solana transition-colors duration-500">
+                            <svg class="w-8 h-8 text-solana group-hover:text-black transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <span class="text-5xl font-black italic text-white/5 group-hover:text-solana/10 transition">03</span>
+                    </div>
+                    <h4 class="text-2xl font-black text-white mb-4 uppercase tracking-tight">云端指挥舱 (Commander)</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-8">突破地理限制，通过数字化中枢远程管理您的海南离岸实体，实现“离岸不离手”。</p>
+                    <div class="flex items-center gap-2 text-solana text-[10px] font-black uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                        Open Console <span class="text-xl">→</span>
+                    </div>
+                </a>
+
+                <a href="sources.html" class="neon-card bg-glass p-12 group">
+                    <div class="flex justify-between items-start mb-12">
+                        <div class="w-16 h-16 rounded-2xl bg-solana/10 border border-solana/20 flex items-center justify-center group-hover:bg-solana transition-colors duration-500">
+                            <svg class="w-8 h-8 text-solana group-hover:text-black transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                        </div>
+                        <span class="text-5xl font-black italic text-white/5 group-hover:text-solana/10 transition">04</span>
+                    </div>
+                    <h4 class="text-2xl font-black text-white mb-4 uppercase tracking-tight">资源对接 (Resources)</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-8">打通园区高层、银行绿色通道、Web3 合规接口。在自贸港，我们就是您的资源加速器。</p>
+                    <div class="flex items-center gap-2 text-solana text-[10px] font-black uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                        Connect Network <span class="text-xl">→</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 px-8 border-t border-white/5 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20">
+                <h3 class="text-4xl md:text-5xl font-black italic uppercase text-white mb-6">全岛13大核心园区接入</h3>
+                <p class="text-gray-500 text-sm tracking-[0.2em] uppercase font-black">Parks Integration System V2.1</p>
+            </div>
+            
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-7 gap-4">
+                <template x-for="park in parksList">
+                    <a :href="'park-detail.html?name=' + park" class="bg-glass border border-white/5 p-6 flex flex-col items-center justify-center text-center group hover:border-solana transition-all duration-500 rounded-2xl h-32">
+                        <div class="text-[10px] font-black text-gray-500 group-hover:text-solana transition mb-2">P-NODE</div>
+                        <span class="text-xs font-bold text-gray-200 group-hover:text-white group-hover:scale-110 transition-transform" x-text="park"></span>
                     </a>
                 </template>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-32 px-6 border-t border-white/5 relative">
-        <div class="absolute right-0 bottom-0 w-1/3 h-[400px] bg-solana/5 blur-[120px] -z-10 pointer-events-none"></div>
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-                <div>
-                    <h2 class="text-sm font-black text-solana uppercase tracking-[0.3em] mb-4">Standard Operating Procedure</h2>
-                    <h3 class="text-3xl md:text-4xl font-black italic uppercase tracking-tighter">12步标准化交付SOP</h3>
-                </div>
-                <a href="track.html" class="flex items-center gap-3 bg-white/5 border border-white/10 px-6 py-3 rounded-lg hover:border-solana hover:bg-solana/10 transition group">
-                    <div class="w-8 h-8 rounded bg-black flex items-center justify-center text-solana group-hover:scale-110 transition">🔍</div>
-                    <div class="text-left">
-                        <div class="text-[10px] text-gray-400 uppercase tracking-widest">已有项目单号？</div>
-                        <div class="text-xs font-black text-white group-hover:text-solana transition">进入交付查询系统 (Track)</div>
-                    </div>
+                <a href="parks.html" class="bg-solana/5 border border-solana/20 p-6 flex flex-col items-center justify-center text-center group hover:bg-solana transition-all duration-500 rounded-2xl h-32">
+                    <div class="text-[10px] font-black text-solana mb-2">ALL</div>
+                    <span class="text-xs font-black text-solana uppercase">查看全景</span>
                 </a>
             </div>
-
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 relative">
-                <div class="hidden lg:block absolute top-1/2 left-0 w-full h-0.5 bg-white/5 -translate-y-1/2 -z-10"></div>
-                
-                <template x-for="(step, i) in sopSteps">
-                    <div class="card-premium p-5 min-h-[140px] flex flex-col justify-between group">
-                        <div class="flex justify-between items-start">
-                            <div class="text-[9px] font-black text-solana uppercase bg-solana/10 px-2 py-1 rounded">Step <span x-text="i+1 < 10 ? '0'+(i+1) : i+1"></span></div>
-                            <span class="text-3xl font-black text-white/5 italic group-hover:text-white/10 transition" x-text="i+1"></span>
-                        </div>
-                        <div>
-                            <h4 class="text-xs font-black leading-tight uppercase text-gray-200 mt-4" x-text="step"></h4>
-                            <div class="w-6 h-1 bg-white/10 group-hover:bg-solana transition-all duration-500 rounded-full mt-3"></div>
-                        </div>
-                    </div>
-                </template>
-            </div>
         </div>
     </section>
 
-    <footer class="pt-24 pb-12 border-t border-white/10 bg-[#030303]">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <h2 class="text-3xl md:text-5xl font-black mb-8 italic uppercase tracking-tighter">立即开启离岸布局</h2>
-            <p class="text-gray-500 text-sm mb-12 max-w-2xl mx-auto">您的每一步决策，都将由我们的系统生成专属档案并实时追踪。我们已准备好为您提供顶级的合规与落地服务。</p>
-            
-            <div class="flex flex-wrap justify-center gap-4 mb-24">
-                <a href="order.html" class="btn-solid px-12 py-5 rounded-xl text-xs uppercase tracking-widest shadow-[0_0_30px_rgba(20,241,149,0.15)]">建立企业档案 (Order Now)</a>
-                <a href="consultancy.html" class="btn-outline px-12 py-5 rounded-xl text-xs uppercase tracking-widest bg-black/50 backdrop-blur-md">了解咨询细则</a>
-            </div>
-            
-            <div class="pt-10 border-t border-white/5 flex flex-col lg:flex-row justify-between items-center gap-8 text-[10px] text-gray-500 font-bold uppercase tracking-[0.2em]">
-                <div class="flex items-center gap-4">
-                    <img src="logo-solana.webp" alt="Solana Logo" class="w-8 h-8 object-contain rounded opacity-70 grayscale"> 
-                    <span>SOLANA HAINAN OFFSHORE PORTAL © 2026</span>
+    <footer class="pt-32 pb-16 px-8 border-t border-white/10 bg-black">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-16 mb-32">
+                <div class="lg:col-span-2">
+                    <div class="flex items-center gap-3 mb-8">
+                        <div class="w-10 h-10 bg-solana rounded-lg flex items-center justify-center font-black text-black italic text-xl">S</div>
+                        <span class="text-2xl font-black tracking-tighter text-white">SOLANA HAINAN</span>
+                    </div>
+                    <p class="text-gray-500 text-sm leading-relaxed max-w-sm mb-8 font-light">
+                        我们致力于为全球投资者提供在 2026 海南封关大背景下的全案交付服务。锁定红利，合规落地。
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-solana hover:text-black transition">✈️</a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-solana hover:text-black transition">💬</a>
+                    </div>
                 </div>
-                <div class="flex flex-col sm:flex-row gap-4 sm:gap-8 text-center">
+                
+                <div>
+                    <h4 class="text-white font-black text-[10px] uppercase tracking-[0.3em] mb-8">Quick Access</h4>
+                    <ul class="space-y-4 text-sm text-gray-500 font-medium">
+                        <li><a href="services.html" class="hover:text-solana transition">业务总览表</a></li>
+                        <li><a href="track.html" class="hover:text-solana transition">项目交付追踪</a></li>
+                        <li><a href="hainan-videos.html" class="hover:text-solana transition">自贸港视频库</a></li>
+                        <li><a href="admin.html" class="hover:text-solana transition">管理后台</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-black text-[10px] uppercase tracking-[0.3em] mb-8">Legal & Policy</h4>
+                    <ul class="space-y-4 text-sm text-gray-500 font-medium">
+                        <li><a href="agreement-consulting.html" class="hover:text-solana transition">咨询服务协议</a></li>
+                        <li><a href="agreement-fiscal.html" class="hover:text-solana transition">财税合规准则</a></li>
+                        <li><a href="agreement-design.html" class="hover:text-solana transition">设计交付协议</a></li>
+                        <li><a href="privacy.html" class="hover:text-solana transition">隐私权条款</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] text-gray-600 font-black tracking-widest uppercase">
+                <div>© 2026 Solana Hainan Offshore Deliver Center. All Rights Reserved.</div>
+                <div class="flex gap-8">
                     <span>TG: @KOSOK0898</span>
                     <span>Email: kosok0898@gmail.com</span>
                     <span>琼ICP备 20240001号</span>
-                </div>
-                <div class="flex gap-6">
-                    <a href="agreement-consulting.html" class="hover:text-white transition">法务协议合集</a>
-                    <a href="admin.html" class="text-solana hover:text-white transition flex items-center gap-1">
-                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                        Admin
-                    </a>
                 </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // 将 Alpine.js 数据域隔离，避免与您仓库内的 JS 产生变量冲突
-        function portalSite() {
+        function siteController() {
             return {
-                // 如果您的 parksData.js 没有被正常加载，这里作为兜底数据
-                parksList: window.parksData ? window.parksData.map(p => p.name) : [
-                    '海口江东', '三亚CBD', '博鳌乐城', '洋浦开发', 
-                    '复兴城', '崖州湾', '海口保税', '生态软件', 
-                    '文昌航天', '陵水教育', '临高港', '高新区', '深海科技'
-                ],
-                sopSteps: [
-                    '审计评估', '主体规划', '园区选址', '工商核准', 
-                    '公章备案', '银行面签', 'EF账户', '税务核定', 
-                    '运营核查', '外管备案', 'Web3合规', '全案交付'
-                ]
+                scrolled: false,
+                parksList: ['海口江东', '三亚CBD', '博鳌乐城', '洋浦开发', '复兴城', '崖州湾', '海口保税', '生态软件', '文昌航天', '陵水教育', '临高港', '高新区', '深海科技'],
+                init() {
+                    window.addEventListener('scroll', () => { this.scrolled = window.scrollY > 20; });
+                },
+                handleMouse(e) {
+                    const cards = document.querySelectorAll('.neon-card');
+                    cards.forEach(card => {
+                        const rect = card.getBoundingClientRect();
+                        const x = ((e.clientX - rect.left) / rect.width) * 100;
+                        const y = ((e.clientY - rect.top) / rect.height) * 100;
+                        card.style.setProperty('--x', `${x}%`);
+                        card.style.setProperty('--y', `${y}%`);
+                    });
+                }
             }
         }
     </script>
