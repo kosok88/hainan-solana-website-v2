@@ -12,39 +12,65 @@
     <style>
         :root { --s-green: #14F195; --s-purple: #9945FF; --s-blue: #00C2FF; }
         [x-cloak] { display: none !important; }
-        body { background: #080810; color: #fff; font-family: 'Inter', 'Noto Sans SC', sans-serif; }
         
-        /* 🎨 统一色彩：对标服务清单页 */
-        .gradient-bg { background: radial-gradient(circle at 0% 0%, rgba(153,69,255,0.15) 0%, transparent 50%), radial-gradient(circle at 100% 100%, rgba(20,241,149,0.15) 0%, transparent 50%); }
-        .gradient-text { background: linear-gradient(90deg, #fff, var(--s-green), var(--s-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .neon-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); transition: 0.4s; backdrop-filter: blur(20px); }
-        .neon-card:hover { border-color: var(--s-green); box-shadow: 0 0 30px rgba(20,241,149,0.1); transform: translateY(-5px); }
+        /* 🎨 色彩完全同步“服务清单”：高饱和度、霓虹感、深邃底色 */
+        body { 
+            background: #05050a; 
+            color: #fff; 
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+            background-image: 
+                radial-gradient(circle at 0% 0%, rgba(153,69,255,0.25) 0%, transparent 45%),
+                radial-gradient(circle at 100% 100%, rgba(20,241,149,0.2) 0%, transparent 45%),
+                radial-gradient(circle at 50% 50%, rgba(0,194,255,0.05) 0%, transparent 50%);
+            background-attachment: fixed;
+        }
+        
+        .gradient-text { 
+            background: linear-gradient(90deg, #fff, var(--s-green), var(--s-blue)); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+        }
+        
+        .neon-card { 
+            background: rgba(255,255,255,0.03); 
+            border: 1px solid rgba(255,255,255,0.08); 
+            backdrop-filter: blur(25px);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+        .neon-card:hover { 
+            border-color: var(--s-green); 
+            box-shadow: 0 0 40px rgba(20,241,149,0.12); 
+            transform: translateY(-8px);
+            background: rgba(255,255,255,0.05);
+        }
         
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         .animate-marquee { animation: marquee 35s linear infinite; }
-        .lang-btn.active { color: var(--s-green); border-bottom: 2px solid var(--s-green); opacity: 1; }
+        
+        .lang-btn { font-weight: 900; text-transform: uppercase; font-size: 10px; opacity: 0.3; transition: 0.3s; }
+        .lang-btn.active { opacity: 1; color: var(--s-green); border-bottom: 2px solid var(--s-green); }
     </style>
 </head>
-<body x-data="app()" class="antialiased overflow-x-hidden gradient-bg">
+<body x-data="app()" class="antialiased overflow-x-hidden">
 
-    <div class="fixed top-0 w-full z-[200] bg-gradient-to-r from-s-purple to-s-green text-black py-1 text-[9px] font-black uppercase tracking-[0.3em] overflow-hidden">
+    <div class="fixed top-0 w-full z-[200] bg-gradient-to-r from-s-purple to-s-green text-black py-1 text-[9px] font-black uppercase tracking-[0.3em] overflow-hidden shadow-2xl">
         <div class="flex animate-marquee whitespace-nowrap">
             <template x-for="i in 2">
-                <div class="flex">
+                <div class="flex italic">
                     <span class="mx-8" x-text="t[lang].marquee1"></span>
                     <span class="mx-8" x-text="t[lang].marquee2"></span>
-                    <span class="mx-8">EMAIL: KOSOK0898@GMAIL.COM</span>
-                    <span class="mx-8">EF-ACCOUNT: ACTIVE</span>
+                    <span class="mx-8">KOSOK0898@GMAIL.COM</span>
+                    <span class="mx-8" x-text="t[lang].marquee3"></span>
                 </div>
             </template>
         </div>
     </div>
 
-    <nav class="fixed top-[22px] w-full z-[150] bg-black/60 backdrop-blur-3xl border-b border-white/5 py-5 px-8">
+    <nav class="fixed top-[22px] w-full z-[150] bg-black/70 backdrop-blur-3xl border-b border-white/5 py-5 px-8">
         <div class="max-w-[1600px] mx-auto flex justify-between items-center">
             <div class="flex items-center gap-12">
-                <a href="index.html" class="flex items-center gap-4">
-                    <div class="w-10 h-10 bg-gradient-to-br from-s-purple to-s-green rounded-xl flex items-center justify-center font-black text-black italic text-xl">S</div>
+                <a href="index.html" class="flex items-center gap-4 group">
+                    <div class="w-10 h-10 bg-gradient-to-br from-s-purple to-s-green rounded-xl flex items-center justify-center font-black text-black italic text-xl shadow-[0_0_20px_rgba(153,69,255,0.4)] group-hover:scale-110 transition">S</div>
                     <div class="flex flex-col">
                         <span class="text-xl font-black tracking-tighter uppercase leading-none">Solana Hainan</span>
                         <span class="text-[8px] text-s-green font-bold tracking-[0.3em] mt-1" x-text="t[lang].navSub"></span>
@@ -54,17 +80,17 @@
                     <a href="parks.html" class="hover:text-s-green transition" x-text="t[lang].menu1"></a>
                     <a href="services.html" class="hover:text-s-green transition" x-text="t[lang].menu2"></a>
                     <a href="track.html" class="hover:text-s-blue flex items-center gap-2">
-                        <span class="w-1.5 h-1.5 bg-s-blue rounded-full animate-ping"></span><span x-text="t[lang].menu3"></span>
+                        <span class="w-1 h-1 bg-s-blue rounded-full animate-ping"></span><span x-text="t[lang].menu3"></span>
                     </a>
                 </div>
             </div>
             <div class="flex items-center gap-8">
                 <div class="flex gap-4 border-r border-white/10 pr-8">
-                    <button @click="lang='cn'" :class="lang=='cn'?'active':''" class="lang-btn opacity-40 font-black text-[10px]">CN</button>
-                    <button @click="lang='en'" :class="lang=='en'?'active':''" class="lang-btn opacity-40 font-black text-[10px]">EN</button>
-                    <button @click="lang='ru'" :class="lang=='ru'?'active':''" class="lang-btn opacity-40 font-black text-[10px]">RU</button>
+                    <button @click="lang='cn'" :class="lang=='cn'?'active':''" class="lang-btn">CN</button>
+                    <button @click="lang='en'" :class="lang=='en'?'active':''" class="lang-btn">EN</button>
+                    <button @click="lang='ru'" :class="lang=='ru'?'active':''" class="lang-btn">RU</button>
                 </div>
-                <a href="order.html" class="bg-gradient-to-r from-s-green to-s-blue text-black px-8 py-3 rounded-full text-[10px] font-black uppercase hover:shadow-lg transition duration-500" x-text="t[lang].btnStart"></a>
+                <a href="order.html" class="bg-white text-black px-8 py-3 rounded-full text-[10px] font-black uppercase hover:bg-s-green transition shadow-xl" x-text="t[lang].btnStart"></a>
             </div>
         </div>
     </nav>
@@ -81,38 +107,38 @@
                 </h1>
                 <p class="text-xl md:text-2xl text-gray-400 max-w-2xl font-light leading-relaxed mb-12" x-text="t[lang].heroDesc"></p>
                 <div class="flex flex-wrap gap-6">
-                    <button @click="showAI = true" class="bg-white text-black px-12 py-5 rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-s-green transition-all shadow-2xl" x-text="t[lang].btnAI"></button>
+                    <button @click="showAI = true" class="bg-gradient-to-r from-s-purple to-s-blue text-white px-12 py-5 rounded-2xl font-black uppercase text-xs tracking-widest hover:scale-105 transition shadow-2xl" x-text="t[lang].btnAI"></button>
                     <a href="services.html" class="neon-card text-white px-10 py-5 rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-white/5 transition" x-text="t[lang].btnServices"></a>
                 </div>
             </div>
             <div class="lg:col-span-4 hidden lg:block">
-                <div class="neon-card p-10 rounded-[40px] border-s-purple/20">
+                <div class="neon-card p-10 rounded-[40px] border-s-purple/30 bg-black/40">
                     <div class="space-y-8">
                         <div class="flex justify-between items-end border-b border-white/5 pb-6">
                             <span class="text-[10px] text-gray-500 font-bold uppercase" x-text="t[lang].stat1Title"></span>
-                            <span class="text-3xl font-black italic text-s-green">98.6%</span>
+                            <span class="text-4xl font-black italic text-s-green">98.6%</span>
                         </div>
                         <div class="flex justify-between items-end border-b border-white/5 pb-6">
-                            <span class="text-[10px] text-gray-500 font-bold uppercase">Active Parks</span>
-                            <span class="text-3xl font-black italic text-s-blue">13</span>
+                            <span class="text-[10px] text-gray-500 font-bold uppercase">Active Nodes</span>
+                            <span class="text-4xl font-black italic text-s-blue">13</span>
                         </div>
-                        <div class="pt-4 text-[9px] text-gray-500 leading-loose uppercase tracking-widest italic" x-text="t[lang].statDesc"></div>
+                        <div class="pt-4 text-[9px] text-gray-500 leading-loose uppercase tracking-[0.2em] italic" x-text="t[lang].statDesc"></div>
                     </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <section class="py-32 px-8">
+    <section class="py-32 px-8 relative">
         <div class="max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <template x-for="p in t[lang].pillars">
                 <div class="neon-card p-12 rounded-[50px] group">
-                    <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-10 text-3xl font-black bg-white/5" :class="p.color" x-text="p.icon"></div>
+                    <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-10 text-3xl font-black bg-white/5 shadow-inner" :class="p.color" x-text="p.icon"></div>
                     <h3 class="text-2xl font-black mb-6 italic uppercase" x-html="p.title"></h3>
-                    <p class="text-xs text-gray-500 leading-relaxed mb-10" x-text="p.desc"></p>
+                    <p class="text-[11px] text-gray-500 leading-relaxed mb-10 h-16" x-text="p.desc"></p>
                     <div class="flex gap-2">
                         <template x-for="tag in p.tags">
-                            <span class="text-[8px] px-2 py-1 bg-white/5 rounded text-gray-400 font-bold" x-text="tag"></span>
+                            <span class="text-[8px] px-2 py-1 bg-white/5 rounded-md text-gray-400 font-black tracking-widest uppercase" x-text="tag"></span>
                         </template>
                     </div>
                 </div>
@@ -124,15 +150,15 @@
         <div class="max-w-[1400px] mx-auto">
             <div class="text-center mb-24">
                 <h2 class="text-5xl font-black italic uppercase mb-6" x-text="t[lang].sopTitle"></h2>
-                <p class="text-s-green text-[10px] tracking-[0.5em] uppercase font-black italic">Hainan Free Trade Port Closure Protocol V2.6</p>
+                <p class="text-s-green text-[10px] tracking-[0.5em] uppercase font-black italic">V2.6 High-Fidelity Delivery</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-20">
                 <template x-for="(step, i) in t[lang].sopSteps">
-                    <div class="flex gap-6 items-start">
-                        <span class="text-5xl font-black text-white/5 italic" x-text="i+1 < 10 ? '0'+(i+1) : i+1"></span>
+                    <div class="flex gap-6 items-start group">
+                        <span class="text-5xl font-black text-white/5 italic group-hover:text-s-green transition duration-500" x-text="i+1 < 10 ? '0'+(i+1) : i+1"></span>
                         <div>
-                            <h4 class="text-sm font-black text-white mb-3 uppercase tracking-wider" x-text="step.title"></h4>
-                            <p class="text-[10px] text-gray-500 leading-loose" x-text="step.desc"></p>
+                            <h4 class="text-sm font-black text-white mb-3 uppercase tracking-wider group-hover:text-s-green transition" x-text="step.title"></h4>
+                            <p class="text-[10px] text-gray-400 leading-loose" x-text="step.desc"></p>
                         </div>
                     </div>
                 </template>
@@ -140,37 +166,38 @@
         </div>
     </section>
 
-    <section class="py-32 px-8 relative">
-        <div class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-20 items-center">
+    <section class="py-40 px-8">
+        <div class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-24 items-center">
             <div class="lg:col-span-7">
                 <h2 class="text-5xl font-black italic mb-8 uppercase leading-tight" x-html="t[lang].syncTitle"></h2>
                 <p class="text-gray-400 text-lg mb-12 font-light" x-text="t[lang].syncDesc"></p>
-                <div class="flex gap-6">
-                    <a href="order.html" class="bg-gradient-to-r from-s-purple to-s-blue text-white px-12 py-5 rounded-2xl font-black uppercase text-xs tracking-widest shadow-2xl transition hover:scale-105" x-text="t[lang].btnSubmit"></a>
-                </div>
+                <a href="order.html" class="bg-white text-black px-12 py-5 rounded-2xl font-black uppercase text-xs tracking-widest shadow-2xl hover:bg-s-green transition inline-block" x-text="t[lang].btnSubmit"></a>
             </div>
-            <div class="lg:col-span-5 neon-card p-12 rounded-[50px]">
-                <div class="space-y-6">
-                    <div class="flex justify-between items-center bg-black/40 p-5 rounded-2xl">
-                        <span class="text-[10px] font-bold text-gray-500 uppercase italic">Email Sync</span>
-                        <span class="text-[10px] font-black text-s-green animate-pulse">● ONLINE</span>
-                    </div>
-                    <div class="p-8 bg-black/60 rounded-3xl border border-white/5 font-mono text-[9px] text-gray-400 italic">
-                        POST: /api/order/v2.6<br>
-                        TO: kosok0898@gmail.com<br>
-                        DATA: order-data.js
+            <div class="lg:col-span-5">
+                <div class="neon-card p-12 rounded-[50px] bg-gradient-to-br from-s-purple/10 to-transparent">
+                    <div class="space-y-6 font-mono">
+                        <div class="flex justify-between items-center bg-black p-4 rounded-xl border border-white/5">
+                            <span class="text-[10px] font-bold text-gray-500 uppercase">Gateway_Sync</span>
+                            <span class="text-[10px] font-black text-s-green animate-pulse">● READY</span>
+                        </div>
+                        <div class="p-8 bg-black/60 rounded-3xl border border-white/5 text-[10px] text-gray-500 leading-loose italic">
+                            <span class="text-s-purple">// PROTOCOL_V2.6</span><br>
+                            PUSH -> kosok0898@gmail.com<br>
+                            META -> order-data.js<br>
+                            STATUS -> NO_OMISSIONS_CHECKED
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="pt-40 pb-20 px-8 border-t border-white/5 bg-[#050508]">
+    <footer class="pt-40 pb-20 px-8 border-t border-white/5 bg-black/80">
         <div class="max-w-[1600px] mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-20 mb-32">
                 <div class="lg:col-span-2">
                     <div class="text-3xl font-black italic tracking-tighter mb-10">SOLANA HAINAN <span class="text-s-green">2026</span></div>
-                    <p class="text-gray-500 text-xs leading-loose max-w-sm mb-12 italic" x-text="t[lang].footerTagline"></p>
+                    <p class="text-gray-500 text-[11px] leading-loose max-w-sm mb-12 italic font-bold" x-text="t[lang].footerTagline"></p>
                     <div class="flex gap-4">
                         <a href="https://t.me/KOSOK0898" class="w-12 h-12 neon-card rounded-full flex items-center justify-center hover:bg-s-green transition">TG</a>
                         <a href="mailto:kosok0898@gmail.com" class="w-12 h-12 neon-card rounded-full flex items-center justify-center hover:bg-s-purple transition">✉️</a>
@@ -178,7 +205,7 @@
                 </div>
                 <div>
                     <h5 class="text-[10px] font-black uppercase text-white tracking-widest mb-10 border-l-2 border-s-green pl-4" x-text="t[lang].fCol1"></h5>
-                    <ul class="text-[10px] text-gray-500 space-y-6 font-bold uppercase">
+                    <ul class="text-[10px] text-gray-500 space-y-6 font-black uppercase">
                         <li><a href="consultancy.html" class="hover:text-white transition">Consultancy</a></li>
                         <li><a href="design-services.html" class="hover:text-white transition">Design</a></li>
                         <li><a href="commander.html" class="hover:text-s-blue transition">Commander</a></li>
@@ -186,33 +213,33 @@
                 </div>
                 <div>
                     <h5 class="text-[10px] font-black uppercase text-white tracking-widest mb-10 border-l-2 border-s-purple pl-4" x-text="t[lang].fCol2"></h5>
-                    <ul class="text-[10px] text-gray-500 space-y-6 font-bold uppercase">
+                    <ul class="text-[10px] text-gray-500 space-y-6 font-black uppercase">
                         <li><a href="growth-3-1.html" class="hover:text-white transition">Growth 3-1</a></li>
                         <li><a href="tech-2-2-2.html" class="hover:text-white transition">Tech 2-2-2</a></li>
-                        <li><a href="agreement-consulting.html" class="hover:text-white transition text-s-green">Legal Template</a></li>
+                        <li><a href="agreement-consulting.html" class="text-s-green hover:text-white transition italic">Legal Templates</a></li>
                     </ul>
                 </div>
                 <div>
                     <h5 class="text-[10px] font-black uppercase text-white tracking-widest mb-10 border-l-2 border-s-blue pl-4" x-text="t[lang].fCol3"></h5>
-                    <ul class="text-[10px] text-gray-500 space-y-6 font-bold uppercase">
-                        <li><button @click="lang='cn'">中文版本</button></li>
-                        <li><button @click="lang='en'">English</button></li>
-                        <li><button @click="lang='ru'">Русский</button></li>
+                    <ul class="text-[10px] text-gray-500 space-y-6 font-black uppercase">
+                        <li><button @click="lang='cn'">中文 (CN)</button></li>
+                        <li><button @click="lang='en'">English (EN)</button></li>
+                        <li><button @click="lang='ru'">Русский (RU)</button></li>
                     </ul>
                 </div>
             </div>
-            <div class="pt-12 border-t border-white/5 text-center text-[9px] text-gray-600 font-bold uppercase tracking-[0.4em]">
-                © 2026 Solana Hainan Hub. Secure. Offshore. 2026 Ready.
+            <div class="pt-12 border-t border-white/5 text-center text-[9px] text-gray-600 font-black uppercase tracking-[0.5em]">
+                © 2026 Solana Hainan Hub. Offshore Protocol. 100% Verified.
             </div>
         </div>
     </footer>
 
     <div x-show="showAI" x-cloak x-transition class="fixed inset-0 z-[300] bg-black/95 backdrop-blur-3xl flex items-center justify-center p-6">
-        <div @click.away="showAI = false" class="neon-card w-full max-w-2xl p-16 rounded-[60px] relative">
+        <div @click.away="showAI = false" class="neon-card w-full max-w-2xl p-16 rounded-[60px] relative overflow-hidden">
             <button @click="showAI = false" class="absolute top-10 right-10 text-3xl text-gray-500 hover:text-white transition">×</button>
             <h3 class="text-3xl font-black italic text-s-green uppercase mb-8" x-text="t[lang].aiTitle"></h3>
-            <textarea class="w-full bg-white/5 border border-white/10 rounded-3xl p-8 text-xs text-white outline-none focus:border-s-green h-48 mb-8"></textarea>
-            <button class="w-full bg-white text-black py-6 rounded-2xl font-black uppercase text-xs tracking-widest" x-text="t[lang].aiBtn"></button>
+            <textarea class="w-full bg-white/5 border border-white/10 rounded-3xl p-8 text-xs text-white outline-none focus:border-s-green h-48 mb-8" placeholder="..."></textarea>
+            <button class="w-full bg-white text-black py-6 rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-s-green transition" x-text="t[lang].aiBtn"></button>
         </div>
     </div>
 
@@ -223,84 +250,84 @@
                 showAI: false,
                 t: {
                     cn: {
-                        marquee1: "系统状态：在线", marquee2: "2026 封关就绪度：98%",
+                        marquee1: "系统状态：在线", marquee2: "2026 就绪度：98.6%", marquee3: "EF账户：已激活",
                         navSub: "2026 交付中心", menu1: "园区矩阵", menu2: "服务清单", menu3: "项目追踪", btnStart: "启动交付",
                         heroBadge: "2026 海南封关交付协议", heroT1: "锁定海南", heroT2: "离岸资产红利",
-                        heroDesc: "在“二线管住”变局下，构建通往全球的资产避风港。涵盖 EF 账户、离岸架构及数字化指挥系统。",
-                        btnAI: "AI 方案评估", btnServices: "查看服务清单",
-                        stat1Title: "2026 就绪度", statDesc: "实时接收 13 个园区的最新离岸准入 API 数据。",
-                        sopTitle: "交付标准 12 步",
+                        heroDesc: "构建通往全球的资产避风港。涵盖 EF 账户、离岸架构及数字化指挥系统。",
+                        btnAI: "AI 架构评估", btnServices: "查看清单",
+                        stat1Title: "2026 准备就绪", statDesc: "实时同步来自 13 个工业园区的离岸准入 API 数据。",
+                        sopTitle: "交付标准 12 步 SOP",
                         syncTitle: "同步您的<br><span class='gradient-text'>交付订单</span>",
-                        syncDesc: "数据经 order-data.js 处理后实时推送至 kosok0898@gmail.com。承诺 4 小时内完成首轮合规反馈。",
-                        btnSubmit: "即刻启动", footerTagline: "海南封关资产交付的终极枢纽。全球资产，本地交付。",
-                        fCol1: "核心业务", fCol2: "专精插件", fCol3: "多国语言", aiTitle: "AI 架构助手", aiBtn: "生成诊断报告",
+                        syncDesc: "数据经 order-data.js 实时推送至交付邮箱：kosok0898@gmail.com。",
+                        btnSubmit: "即刻启动同步", footerTagline: "海南封关资产交付的终极枢纽。全球资产，本地交付。",
+                        fCol1: "核心交付", fCol2: "专精插件", fCol3: "多语言切换", aiTitle: "AI 智能分析", aiBtn: "生成报告",
                         pillars: [
                             { icon: '?', title: '战略咨询', desc: '封关政策解读与离岸股权架构设计。', color: 'text-s-purple', tags: ['TAX', 'LEGAL'] },
-                            { icon: 'D', title: '设计服务', desc: '自贸港品牌 VI、官网与数字空间设计。', color: 'text-s-green', tags: ['BRAND', 'UI'] },
-                            { icon: 'C', title: '指挥舱', desc: '远程管理系统，实时合规与运营监控。', color: 'text-s-blue', tags: ['SAAS', 'API'] },
-                            { icon: 'S', title: '资源对接', desc: '银行 EF 账户通道与园区高层撮合。', color: 'text-white', tags: ['BANK', 'GOV'] }
+                            { icon: 'D', title: '品牌服务', desc: '自贸港品牌 VI、官网与数字空间设计。', color: 'text-s-green', tags: ['BRAND', 'UI'] },
+                            { icon: 'C', title: '指挥中枢', desc: '远程管理系统，实时合规与运营监控。', color: 'text-s-blue', tags: ['SAAS', 'API'] },
+                            { icon: 'S', title: '资源对接', desc: '银行 EF 账户通道与园区高层对接。', color: 'text-white', tags: ['BANK', 'GOV'] }
                         ],
                         sopSteps: [
-                            { title: "资产审计", desc: "评估现状，确定路径。" }, { title: "架构建模", desc: "设计持股与税收模型。" },
+                            { title: "资产审计", desc: "评估现状，确定转型路径。" }, { title: "架构建模", desc: "设计持股与税收模型。" },
                             { title: "园区筛选", desc: "匹配最佳物理落地节点。" }, { title: "文书拟定", desc: "生成封关合规协议。" },
                             { title: "工商入驻", desc: "极速办理注册与许可。" }, { title: "账户开立", desc: "协助完成 EF 账户面签。" },
                             { title: "品牌建档", desc: "开发官网与 VI 系统。" }, { title: "系统部署", desc: "配置 Commander 管理舱。" },
                             { title: "合规预演", desc: "模拟封关后跨境流动。" }, { title: "资源注入", desc: "对接本地人才与补贴。" },
-                            { title: "年度托管", desc: "全年度财税与离岸维护。" }, { title: "流动闭环", desc: "实现全球化退出或再投资。" }
+                            { title: "年度托管", desc: "全年度财税维护服务。" }, { title: "资产闭环", desc: "实现全球化流动性闭环。" }
                         ]
                     },
                     en: {
-                        marquee1: "SYSTEM: ONLINE", marquee2: "2026 READINESS: 98%",
-                        navSub: "2026 DELIVERY", menu1: "PARKS", menu2: "SERVICES", menu3: "TRACKING", btnStart: "START PROJECT",
-                        heroBadge: "HAINAN 2026 DELIVERY PROTOCOL", heroT1: "SECURE HAINAN", heroT2: "OFFSHORE DIVIDENDS",
-                        heroDesc: "Building your global asset haven under 2026 policy. Integrated EF-accounts, structures, and digital consoles.",
-                        btnAI: "AI ASSESSMENT", btnServices: "VIEW SERVICES",
-                        stat1Title: "READINESS", statDesc: "Real-time access to the latest offshore API data from 13 parks.",
-                        sopTitle: "12-STEP SOP",
+                        marquee1: "SYSTEM: ONLINE", marquee2: "2026 READINESS: 98.6%", marquee3: "EF-ACCOUNT: ACTIVE",
+                        navSub: "DELIVERY HUB 2026", menu1: "PARKS", menu2: "SERVICES", menu3: "TRACKING", btnStart: "LAUNCH NOW",
+                        heroBadge: "HAINAN 2026 CLOSURE PROTOCOL", heroT1: "SECURE HAINAN", heroT2: "OFFSHORE DIVIDEND",
+                        heroDesc: "Building your global asset haven under 2026 policy. Integrated EF-accounts & digital consoles.",
+                        btnAI: "AI ASSESSMENT", btnServices: "VIEW LIST",
+                        stat1Title: "2026 READINESS", statDesc: "Real-time streaming from 13 industrial parks API data.",
+                        sopTitle: "12-STEP SOP PROTOCOL",
                         syncTitle: "SYNC YOUR<br><span class='gradient-text'>DELIVERY ORDER</span>",
-                        syncDesc: "Data pushed to kosok0898@gmail.com. 4-hour response guarantee for compliance feedback.",
-                        btnSubmit: "SUBMIT NOW", footerTagline: "The definitive hub for Hainan FTP offshore delivery.",
-                        fCol1: "CORE", fCol2: "PLUGINS", fCol3: "LANGUAGE", aiTitle: "AI ASSISTANT", aiBtn: "GENERATE REPORT",
+                        syncDesc: "Data pushed to kosok0898@gmail.com via order-data.js.",
+                        btnSubmit: "START SYNC", footerTagline: "The definitive hub for Hainan offshore delivery.",
+                        fCol1: "CORE", fCol2: "PLUGINS", fCol3: "LANGUAGE", aiTitle: "AI ASSISTANT", aiBtn: "GENERATE",
                         pillars: [
-                            { icon: '?', title: 'CONSULTANCY', desc: 'Policy analysis & offshore structure design.', color: 'text-s-purple', tags: ['TAX', 'LEGAL'] },
-                            { icon: 'D', title: 'DESIGN', desc: 'Branding, VI, Web & digital space.', color: 'text-s-green', tags: ['BRAND', 'UI'] },
-                            { icon: 'C', title: 'COMMANDER', desc: 'Remote management & compliance monitoring.', color: 'text-s-blue', tags: ['SAAS', 'API'] },
-                            { icon: 'S', title: 'SOURCES', desc: 'EF-account & Gov relationship matching.', color: 'text-white', tags: ['BANK', 'GOV'] }
+                            { icon: '?', title: 'CONSULTANCY', desc: 'Policy analysis & structure design.', color: 'text-s-purple', tags: ['TAX', 'LEGAL'] },
+                            { icon: 'D', title: 'DESIGN', desc: 'Branding, VI, & web spaces.', color: 'text-s-green', tags: ['BRAND', 'UI'] },
+                            { icon: 'C', title: 'COMMANDER', desc: 'Remote SaaS management system.', color: 'text-s-blue', tags: ['SAAS', 'API'] },
+                            { icon: 'S', title: 'SOURCES', desc: 'EF-account & Gov matching.', color: 'text-white', tags: ['BANK', 'GOV'] }
                         ],
                         sopSteps: [
                             { title: "AUDIT", desc: "Assess assets & paths." }, { title: "MODELING", desc: "Tax & structure design." },
-                            { title: "SELECTION", desc: "Select optimal park nodes." }, { title: "DOCS", desc: "Compliance agreements." },
-                            { title: "REG", desc: "Fast-track registration." }, { title: "BANKING", desc: "EF-account opening." },
-                            { title: "BRAND", desc: "Web & VI development." }, { title: "DEPLOY", desc: "Commander console setup." },
-                            { title: "DRILL", desc: "Simulate cross-border flows." }, { title: "RESOURCES", desc: "Talent & subsidy injection." },
-                            { title: "MANAGEMENT", desc: "Yearly maintenance." }, { title: "EXIT", desc: "Liquidity & reinvestment." }
+                            { title: "SELECTION", desc: "Optimal park selection." }, { title: "DOCS", desc: "Compliance agreements." },
+                            { title: "REGISTRATION", desc: "Fast-track company setup." }, { title: "BANKING", desc: "EF-account opening." },
+                            { title: "BRANDING", desc: "Web & VI development." }, { title: "DEPLOY", desc: "Commander console setup." },
+                            { title: "DRILL", desc: "Cross-border flow testing." }, { title: "INJECTION", desc: "Local talent & subsidies." },
+                            { title: "MANAGEMENT", desc: "Yearly maintenance." }, { title: "CLOSURE", desc: "Liquidity exit closure." }
                         ]
                     },
                     ru: {
-                        marquee1: "СИСТЕМА: ОНЛАЙН", marquee2: "ГОТОВНОСТЬ 2026: 98%",
-                        navSub: "ДОСТАВКА 2026", menu1: "ПАРКИ", menu2: "УСЛУГИ", menu3: "ТРЕКИНГ", btnStart: "НАЧАТЬ",
+                        marquee1: "СИСТЕМА: ОНЛАЙН", marquee2: "ГОТОВНОСТЬ: 98.6%", marquee3: "СЧЕТ EF: АКТИВЕН",
+                        navSub: "ЦЕНТР 2026", menu1: "ПАРКИ", menu2: "УСЛУГИ", menu3: "ТРЕКИНГ", btnStart: "ЗАПУСТИТЬ",
                         heroBadge: "ПРОТОКОЛ ХАЙНАНЬ 2026", heroT1: "ЗАКРЕПИТЬ", heroT2: "ДИВИДЕНДЫ",
-                        heroDesc: "Создание глобального убежища для активов. Счета EF, офшорные структуры и консоли управления.",
-                        btnAI: "AI ОЦЕНКА", btnServices: "УСЛУГИ",
-                        stat1Title: "ГОТОВНОСТЬ", statDesc: "Доступ к API данным из 13 парков в реальном времени.",
+                        heroDesc: "Создание глобального убежища для ваших активов. Счета EF и системы управления.",
+                        btnAI: "AI ОЦЕНКА", btnServices: "СПИСОК",
+                        stat1Title: "ГОТОВНОСТЬ 2026", statDesc: "Данные из 13 парков в реальном времени.",
                         sopTitle: "SOP ИЗ 12 ШАГОВ",
                         syncTitle: "СИНХРОНИЗАЦИЯ<br><span class='gradient-text'>ЗАКАЗА</span>",
-                        syncDesc: "Данные отправляются на kosok0898@gmail.com. Ответ в течение 4 часов.",
-                        btnSubmit: "ОТПРАВИТЬ", footerTagline: "Главный хаб для офшорной доставки на Хайнане.",
+                        syncDesc: "Данные отправляются на kosok0898@gmail.com.",
+                        btnSubmit: "ОТПРАВИТЬ", footerTagline: "Главный хаб для доставки на Хайнане.",
                         fCol1: "ЯДРО", fCol2: "ПЛАГИНЫ", fCol3: "ЯЗЫК", aiTitle: "AI ПОМОЩНИК", aiBtn: "ОТЧЕТ",
                         pillars: [
-                            { icon: '?', title: 'КОНСАЛТИНГ', desc: 'Анализ политики и дизайн структур.', color: 'text-s-purple', tags: ['TAX', 'LEGAL'] },
+                            { icon: '?', title: 'КОНСАЛТИНГ', desc: 'Анализ политики и дизайн.', color: 'text-s-purple', tags: ['TAX', 'LEGAL'] },
                             { icon: 'D', title: 'ДИЗАЙН', desc: 'Брендинг, VI и веб-разработка.', color: 'text-s-green', tags: ['BRAND', 'UI'] },
-                            { icon: 'C', title: 'COMMANDER', desc: 'Удаленное управление и мониторинг.', color: 'text-s-blue', tags: ['SAAS', 'API'] },
-                            { icon: 'S', title: 'РЕСУРСЫ', desc: 'Счета EF и связи с госорганами.', color: 'text-white', tags: ['BANK', 'GOV'] }
+                            { icon: 'C', title: 'COMMANDER', desc: 'Удаленное управление SaaS.', color: 'text-s-blue', tags: ['SAAS', 'API'] },
+                            { icon: 'S', title: 'РЕСУРСЫ', desc: 'Счета EF и связи.', color: 'text-white', tags: ['BANK', 'GOV'] }
                         ],
                         sopSteps: [
-                            { title: "АУДИТ", desc: "Оценка активов." }, { title: "МОДЕЛЬ", desc: "Дизайн налогов." },
+                            { title: "АУДИТ", desc: "Оценка активов." }, { title: "МОДЕЛЬ", desc: "Налоговый дизайн." },
                             { title: "ВЫБОР", desc: "Выбор парка." }, { title: "ДОКИ", desc: "Соглашения." },
-                            { title: "РЕГ", desc: "Регистрация." }, { title: "БАНК", desc: "Открытие счета EF." },
+                            { title: "РЕГ", desc: "Регистрация." }, { title: "БАНК", desc: "Открытие счета." },
                             { title: "БРЕНД", desc: "Веб и VI." }, { title: "ЗАПУСК", desc: "Настройка консоли." },
-                            { title: "ТЕСТ", desc: "Симуляция потоков." }, { title: "РЕСУРСЫ", desc: "Таланты и субсидии." },
-                            { title: "УПРАВЛЕНИЕ", desc: "Годовое обслуживание." }, { title: "ВЫХОД", desc: "Ликвидность." }
+                            { title: "ТЕСТ", desc: "Симуляция потоков." }, { title: "РЕСУРСЫ", desc: "Таланты." },
+                            { title: "УПРАВЛЕНИЕ", desc: "Обслуживание." }, { title: "ВЫХОД", desc: "Ликвидность." }
                         ]
                     }
                 }
