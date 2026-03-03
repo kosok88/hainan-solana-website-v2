@@ -3,169 +3,215 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solana Hainan | 2026 海南封关全案交付中心 - 离岸资产专家</title>
+    <title>Solana Hainan | 2026 海南封关全案交付中心 - 全球离岸资产枢纽</title>
     
-    <meta name="description" content="Solana Hainan提供2026海南封关政策下的全案交付服务：离岸架构、EF账户开立、13大园区入驻、云端指挥舱系统。专为全球投资者设计的离岸资产避风港。">
-    <meta name="keywords" content="海南封关, 2026海南, EF账户, 离岸资产, 海南自贸港, Solana Hainan, 跨境金融">
-    
+    <meta name="description" content="海南封关全案交付专家。提供EF账户、离岸架构、13大园区入驻服务。">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "InvestmentOrForexService",
-      "name": "Solana Hainan 2026 Delivery Center",
-      "provider": { "@type": "Organization", "name": "Solana Hainan" },
-      "areaServed": "Hainan Free Trade Port",
-      "offers": {
-        "@type": "Offer",
-        "category": ["Offshore Infrastructure", "Legal Consulting", "Digital Commander"]
-      }
+      "@type": "InvestmentService",
+      "name": "Solana Hainan 2026 Delivery Hub",
+      "languagesSupported": ["Chinese", "English", "Russian"],
+      "provider": { "@type": "Organization", "name": "Solana Hainan" }
     }
     </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+SC:wght@300;900&display=swap" rel="stylesheet">
     
     <script src="order-data.js" defer></script>
     <script src="parksData.js" defer></script>
-    <script src="news_data.js" defer></script>
 
     <style>
-        :root { --solana: #14F195; --dark-bg: #030303; }
+        :root { 
+            --s-green: #14F195; 
+            --s-purple: #9945FF; 
+            --s-blue: #00C2FF;
+            --bg-deep: #050508;
+        }
         [x-cloak] { display: none !important; }
-        body { background-color: var(--dark-bg); color: #fff; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
-        .glass-panel { background: rgba(255,255,255,0.02); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.06); }
-        .hover-neon:hover { border-color: var(--solana); box-shadow: 0 0 20px rgba(20,241,149,0.15); }
-        .hero-text { background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.5) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .scroll-indicator { animation: bounce 2s infinite; }
-        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
+        body { 
+            background-color: var(--bg-deep); 
+            color: #fff; 
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+            background: radial-gradient(circle at 0% 0%, rgba(153,69,255,0.08) 0%, transparent 40%),
+                        radial-gradient(circle at 100% 100%, rgba(20,241,149,0.08) 0%, transparent 40%);
+        }
+        
+        /* 彩色渐变文字 */
+        .gradient-text { 
+            background: linear-gradient(90deg, #fff 0%, var(--s-green) 50%, var(--s-blue) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
+        }
+        
+        /* 霓虹发光卡片 */
+        .neon-card { 
+            background: rgba(255,255,255,0.03); 
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .neon-card:hover { 
+            border-color: var(--s-green);
+            box-shadow: 0 0 30px rgba(20,241,149,0.1);
+            background: rgba(20,241,149,0.02);
+            transform: translateY(-5px);
+        }
+        
+        /* 语言切换器样式 */
+        .lang-btn { font-size: 10px; font-weight: 900; color: #666; transition: all 0.3s; }
+        .lang-btn.active { color: var(--s-green); border-bottom: 2px solid var(--s-green); }
+
+        /* 极光背景动画 */
+        .aurora { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.3; pointer-events: none; }
     </style>
 </head>
-<body x-data="globalApp()" class="overflow-x-hidden">
+<body x-data="appController()" class="antialiased">
 
-    <div class="fixed top-0 w-full z-[100] bg-solana text-black py-1 px-6 flex justify-between items-center overflow-hidden">
-        <div class="flex gap-10 animate-[marquee_30s_linear_infinite] whitespace-nowrap text-[9px] font-black uppercase tracking-[0.4em]">
-            <span>SYSTEM STATUS: 2026 READY</span>
-            <span>EF-ACCOUNT CHANNEL: ACTIVE</span>
-            <span>ORDER-DATA FEED: CONNECTED</span>
-            <span>GMAIL GATEWAY: KOSOK0898@GMAIL.COM</span>
-        </div>
+    <div class="aurora">
+        <div class="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-purple-900/20 blur-[120px] rounded-full"></div>
+        <div class="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-emerald-900/20 blur-[120px] rounded-full"></div>
     </div>
 
-    <nav class="fixed top-[24px] w-full z-50 bg-black/80 backdrop-blur-xl border-b border-white/5 py-4">
-        <div class="max-w-[1600px] mx-auto px-8 flex justify-between items-center">
-            <div class="flex items-center gap-10">
-                <a href="index.html" class="flex items-center gap-3 group">
-                    <div class="w-10 h-10 bg-solana rounded-lg flex items-center justify-center font-black text-black italic text-xl group-hover:rotate-12 transition">S</div>
+    <nav class="fixed top-0 w-full z-[100] bg-black/60 backdrop-blur-2xl border-b border-white/5 py-5 px-8">
+        <div class="max-w-[1600px] mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-12">
+                <a href="index.html" class="flex items-center gap-4 group">
+                    <div class="w-10 h-10 bg-gradient-to-br from-s-purple to-s-green rounded-xl flex items-center justify-center font-black text-black italic text-xl shadow-lg group-hover:scale-110 transition">S</div>
                     <div class="flex flex-col">
                         <span class="text-xl font-black tracking-tighter uppercase leading-none">Solana Hainan</span>
-                        <span class="text-[8px] text-solana font-bold tracking-[0.3em] mt-1">2026 Delivery Hub</span>
+                        <span class="text-[8px] text-s-green font-bold tracking-[0.3em] mt-1">Global 2026 Hub</span>
                     </div>
                 </a>
-                <div class="hidden xl:flex items-center gap-8 text-[11px] font-black uppercase tracking-widest text-gray-400">
-                    <a href="parks.html" class="hover:text-solana transition">园区矩阵</a>
-                    <a href="services.html" class="hover:text-solana transition">全项服务</a>
-                    <a href="track.html" class="hover:text-solana flex items-center gap-2"><span class="w-1.5 h-1.5 bg-solana rounded-full animate-pulse"></span>项目追踪</a>
-                    <a href="hainan-videos.html" class="hover:text-solana transition">视频中心</a>
-                    <a href="sources.html" class="hover:text-solana transition">核心资源</a>
+                <div class="hidden lg:flex gap-10 text-[11px] font-black uppercase tracking-widest text-gray-400">
+                    <a href="parks.html" class="hover:text-s-green transition">园区矩阵</a>
+                    <a href="services.html" class="hover:text-s-green transition">服务清单</a>
+                    <a href="track.html" class="hover:text-s-green flex items-center gap-2"><span class="w-1.5 h-1.5 bg-s-green rounded-full animate-pulse"></span>交付追踪</a>
+                    <a href="hainan-videos.html" class="hover:text-s-green transition">实探视频</a>
                 </div>
             </div>
-            <div class="flex items-center gap-6">
-                <a href="order.html" class="bg-white text-black px-8 py-2.5 rounded-full text-[10px] font-black uppercase hover:bg-solana transition duration-500">
-                    启动交付订单
+
+            <div class="flex items-center gap-8">
+                <div class="flex gap-4 border-r border-white/10 pr-8">
+                    <button @click="lang='cn'" :class="lang=='cn'?'active':''" class="lang-btn">CN</button>
+                    <button @click="lang='en'" :class="lang=='en'?'active':''" class="lang-btn">EN</button>
+                    <button @click="lang='ru'" :class="lang=='ru'?'active':''" class="lang-btn">RU</button>
+                </div>
+                <a href="order.html" class="bg-gradient-to-r from-s-green to-s-blue text-black px-8 py-3 rounded-full text-[10px] font-black uppercase hover:shadow-[0_0_20px_rgba(20,241,149,0.4)] transition duration-500">
+                    启动交付 / Start Project
                 </a>
             </div>
         </div>
     </nav>
 
-    <header class="relative min-h-screen flex items-center px-8 pt-20">
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(20,241,149,0.05),transparent_70%)]"></div>
-        <div class="max-w-[1400px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            <div class="lg:col-span-8">
-                <div class="inline-flex items-center gap-3 px-4 py-2 glass-panel rounded-full mb-10 border-solana/20">
-                    <span class="w-2 h-2 rounded-full bg-solana"></span>
-                    <span class="text-[9px] font-black uppercase tracking-widest text-solana">Hainan 2026 Infrastructure</span>
+    <header class="relative min-h-screen flex items-center px-8 pt-20 overflow-hidden">
+        <div class="max-w-[1400px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-20 items-center">
+            <div class="lg:col-span-8 z-10">
+                <div class="inline-flex items-center gap-3 px-4 py-2 bg-s-green/10 border border-s-green/20 rounded-full mb-10">
+                    <span class="text-[9px] font-black uppercase tracking-widest text-s-green">2026 Hainan Closure Delivery Protocol</span>
                 </div>
-                <h1 class="hero-text text-6xl md:text-8xl lg:text-9xl font-black uppercase italic leading-[0.9] mb-10">
-                    锁定海南封关<br><span class="text-solana">离岸资产红利</span>
+                <h1 class="text-7xl md:text-9xl font-black uppercase italic leading-[0.85] mb-12">
+                    <span class="block">锁定海南</span>
+                    <span class="gradient-text">离岸资产红利</span>
                 </h1>
-                <p class="text-xl md:text-2xl text-gray-400 max-w-3xl font-light leading-relaxed mb-12">
-                    构建“一线放开、二线管住”下的全球资产中枢。我们提供从 <span class="text-white font-bold italic">EF账户</span> 到 <span class="text-white font-bold italic">离岸持股架构</span> 的 2026 全景交付。
+                <p class="text-xl md:text-2xl text-gray-400 max-w-2xl font-light leading-relaxed mb-12">
+                    从顶层架构到 EF 账户，从 13 大园区准入到数字化指挥舱。我们为您在 2026 海南封关之际，构建通往全球的<span class="text-white font-bold">离岸资产堡垒</span>。
                 </p>
                 <div class="flex flex-wrap gap-6">
-                    <button @click="showAI = true" class="bg-solana text-black px-12 py-5 rounded-2xl font-black uppercase text-xs tracking-widest hover:scale-105 transition-all shadow-[0_10px_40px_rgba(20,241,149,0.3)]">
-                        AI 智能方案评估
+                    <button @click="showAI = true" class="bg-white text-black px-12 py-5 rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-s-green transition-all shadow-2xl">
+                        AI 方案评估
                     </button>
-                    <a href="track.html" class="glass-panel text-white px-10 py-5 rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-white/10 transition">
-                        追踪现有项目
+                    <a href="consultancy.html" class="neon-card text-white px-10 py-5 rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-white/5 transition">
+                        咨询全案
                     </a>
                 </div>
             </div>
-            <div class="lg:col-span-4 hidden lg:block">
-                <div class="glass-panel p-10 rounded-[40px] border-white/10">
-                    <div class="flex flex-col gap-8">
-                        <div class="flex justify-between items-end border-b border-white/5 pb-6">
-                            <span class="text-[10px] text-gray-500 uppercase font-bold">2026 Ready</span>
-                            <span class="text-3xl font-black italic">98.2%</span>
+            
+            <div class="lg:col-span-4 hidden lg:block z-10">
+                <div class="neon-card p-10 rounded-[40px] relative">
+                    <div class="absolute -top-10 -right-10 w-40 h-40 bg-s-purple/20 blur-[60px]"></div>
+                    <div class="space-y-10">
+                        <div>
+                            <div class="text-[10px] text-gray-500 font-bold uppercase mb-2">EF-Account Access</div>
+                            <div class="text-3xl font-black text-s-blue italic">ACTIVE</div>
                         </div>
-                        <div class="flex justify-between items-end border-b border-white/5 pb-6">
-                            <span class="text-[10px] text-gray-500 uppercase font-bold">Live Data Feed</span>
-                            <span class="text-solana text-[10px] font-black uppercase animate-pulse">Connected</span>
+                        <div>
+                            <div class="text-[10px] text-gray-500 font-bold uppercase mb-2">Ready for 2026</div>
+                            <div class="w-full h-1 bg-white/5 rounded-full mt-2">
+                                <div class="w-[98%] h-full bg-gradient-to-r from-s-purple to-s-green"></div>
+                            </div>
                         </div>
-                        <div class="pt-4">
-                            <p class="text-[10px] text-gray-500 leading-loose uppercase tracking-widest">
-                                实时索引: 13大园区政策数据、EF账户开立准则、跨境合规协议模版已全部离线化并支持 AI 抓取。
+                        <div class="pt-6 border-t border-white/5">
+                            <p class="text-[10px] text-gray-500 leading-loose italic uppercase tracking-widest">
+                                数据同步：已接入 13 个园区 API，KOSOK0898@GMAIL.COM 邮件路由已就绪。
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 scroll-indicator">
-            <span class="text-[9px] font-black uppercase tracking-widest text-gray-600">Scroll to Explore</span>
-        </div>
     </header>
 
     <section class="py-32 px-8">
         <div class="max-w-[1600px] mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <a href="consultancy.html" class="glass-panel p-12 rounded-[48px] hover-neon group transition-all">
-                    <div class="text-5xl font-black text-white/5 mb-8 group-hover:text-solana/20 transition italic">01</div>
-                    <h3 class="text-2xl font-black mb-6 uppercase italic">战略咨询<br><span class="text-gray-500 font-medium">Consultancy</span></h3>
-                    <p class="text-xs text-gray-500 leading-relaxed mb-10">离岸持股架构、产业扶持政策对标、封关风险控制模型设计。</p>
-                    <span class="text-[9px] font-black text-solana uppercase tracking-widest">View Portfolio →</span>
-                </a>
-                <a href="design-services.html" class="glass-panel p-12 rounded-[48px] hover-neon group transition-all">
-                    <div class="text-5xl font-black text-white/5 mb-8 group-hover:text-solana/20 transition italic">02</div>
-                    <h3 class="text-2xl font-black mb-6 uppercase italic">设计服务<br><span class="text-gray-500 font-medium">Design</span></h3>
-                    <p class="text-xs text-gray-500 leading-relaxed mb-10">自贸港品牌VI/官网全案、数字办公空间规划、国际化传播设计。</p>
-                    <span class="text-[9px] font-black text-solana uppercase tracking-widest">View Portfolio →</span>
-                </a>
-                <a href="commander.html" class="glass-panel p-12 rounded-[48px] hover-neon group transition-all">
-                    <div class="text-5xl font-black text-white/5 mb-8 group-hover:text-solana/20 transition italic">03</div>
-                    <h3 class="text-2xl font-black mb-6 uppercase italic">指挥舱系统<br><span class="text-gray-500 font-medium">Commander</span></h3>
-                    <p class="text-xs text-gray-500 leading-relaxed mb-10">数字化离岸管家，远程实时合规监测面板，实现全岛业务云端掌控。</p>
-                    <span class="text-[9px] font-black text-solana uppercase tracking-widest">Launch Console →</span>
-                </a>
-                <a href="sources.html" class="glass-panel p-12 rounded-[48px] hover-neon group transition-all">
-                    <div class="text-5xl font-black text-white/5 mb-8 group-hover:text-solana/20 transition italic">04</div>
-                    <h3 class="text-2xl font-black mb-6 uppercase italic">资源对接<br><span class="text-gray-500 font-medium">Sources</span></h3>
-                    <p class="text-xs text-gray-500 leading-relaxed mb-10">EF账户银行绿色通道、园区高层直通、产业链上下游资源撮合。</p>
-                    <span class="text-[9px] font-black text-solana uppercase tracking-widest">Explore Map →</span>
-                </a>
+                <div class="neon-card p-12 rounded-[50px] group">
+                    <div class="w-16 h-16 bg-s-purple/10 rounded-2xl flex items-center justify-center mb-10 text-s-purple text-3xl font-black">?</div>
+                    <h3 class="text-2xl font-black mb-6 italic uppercase">战略咨询<br><span class="text-s-purple text-xs font-medium">Consultancy</span></h3>
+                    <p class="text-xs text-gray-500 leading-relaxed mb-8">封关政策精读、离岸架构搭建、15% 所得税合规适配。从顶层设计确保您的资产安全性。</p>
+                    <ul class="space-y-3 mb-10 text-[10px] font-bold text-gray-400 uppercase">
+                        <li>• 离岸持股层级设计</li>
+                        <li>• 政策性补贴申请</li>
+                        <li>• 封关风险控制模型</li>
+                    </ul>
+                    <a href="consultancy.html" class="text-xs font-black text-s-purple hover:underline">VIEW DETAIL →</a>
+                </div>
+                <div class="neon-card p-12 rounded-[50px] group">
+                    <div class="w-16 h-16 bg-s-green/10 rounded-2xl flex items-center justify-center mb-10 text-s-green text-3xl font-black">D</div>
+                    <h3 class="text-2xl font-black mb-6 italic uppercase">设计服务<br><span class="text-s-green text-xs font-medium">Design</span></h3>
+                    <p class="text-xs text-gray-500 leading-relaxed mb-8">自贸港实体门面建设。包含国际化品牌 VI、高端官网、数字化展厅及办公空间设计。</p>
+                    <ul class="space-y-3 mb-10 text-[10px] font-bold text-gray-400 uppercase">
+                        <li>• 全球化品牌形象</li>
+                        <li>• 数字化交付系统UI</li>
+                        <li>• 空间与展陈全案</li>
+                    </ul>
+                    <a href="design-services.html" class="text-xs font-black text-s-green hover:underline">VIEW DETAIL →</a>
+                </div>
+                <div class="neon-card p-12 rounded-[50px] group">
+                    <div class="w-16 h-16 bg-s-blue/10 rounded-2xl flex items-center justify-center mb-10 text-s-blue text-3xl font-black">C</div>
+                    <h3 class="text-2xl font-black mb-6 italic uppercase">指挥舱系统<br><span class="text-s-blue text-xs font-medium">Commander</span></h3>
+                    <p class="text-xs text-gray-500 leading-relaxed mb-8">跨越地理限制。通过数字化中枢远程管理您的海南主体，实时监控合规、财税与物流。</p>
+                    <ul class="space-y-3 mb-10 text-[10px] font-bold text-gray-400 uppercase">
+                        <li>• 离岸业务云端控制台</li>
+                        <li>• 合规自动化监测</li>
+                        <li>• 实时财税仪表盘</li>
+                    </ul>
+                    <a href="commander.html" class="text-xs font-black text-s-blue hover:underline">VIEW DETAIL →</a>
+                </div>
+                <div class="neon-card p-12 rounded-[50px] group">
+                    <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mb-10 text-white text-3xl font-black">S</div>
+                    <h3 class="text-2xl font-black mb-6 italic uppercase">资源对接<br><span class="text-white text-xs font-medium">Sources</span></h3>
+                    <p class="text-xs text-gray-500 leading-relaxed mb-8">打通自贸港最后一百米。提供银行 EF 账户面签绿色通道、园区高层撮合及本地产业链配套。</p>
+                    <ul class="space-y-3 mb-10 text-[10px] font-bold text-gray-400 uppercase">
+                        <li>• EF 账户快速通道</li>
+                        <li>• 园区政策议价权</li>
+                        <li>• 本地精英人才猎聘</li>
+                    </ul>
+                    <a href="sources.html" class="text-xs font-black text-white hover:underline">VIEW DETAIL →</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="py-32 px-8 bg-white/[0.01] border-y border-white/5">
+    <section class="py-32 px-8 bg-white/[0.02] border-y border-white/5">
         <div class="max-w-[1200px] mx-auto text-center mb-24">
-            <h2 class="text-4xl md:text-6xl font-black italic uppercase mb-8">12步全案交付流程</h2>
-            <p class="text-gray-500 text-xs tracking-[0.5em] uppercase font-bold">Standard Operating Procedure V2.1</p>
+            <h2 class="text-5xl font-black italic uppercase mb-6">全案交付标准流程</h2>
+            <p class="text-s-green text-[10px] tracking-[0.5em] uppercase font-bold">Standard Operating Procedure V2.6</p>
         </div>
         <div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-16">
             <template x-for="(step, i) in sopSteps">
                 <div class="flex gap-6 items-start">
-                    <span class="text-4xl font-black text-solana opacity-30 italic" x-text="i+1 < 10 ? '0'+(i+1) : i+1"></span>
+                    <span class="text-5xl font-black text-white/5 italic group-hover:text-s-green transition" x-text="i+1 < 10 ? '0'+(i+1) : i+1"></span>
                     <div>
                         <h4 class="text-sm font-black text-white mb-3 uppercase tracking-wider" x-text="step.title"></h4>
                         <p class="text-[10px] text-gray-500 leading-loose" x-text="step.desc"></p>
@@ -175,88 +221,36 @@
         </div>
     </section>
 
-    <section class="py-32 px-8">
-        <div class="max-w-[1600px] mx-auto">
-            <div class="flex justify-between items-end mb-20">
-                <h2 class="text-4xl font-black italic uppercase">13大核心园区<span class="text-solana">直通矩阵</span></h2>
-                <a href="parks.html" class="text-[10px] font-bold text-gray-500 hover:text-white transition">查看全景详情 →</a>
-            </div>
-            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
-                <template x-for="park in parksList">
-                    <a :href="'park-detail.html?p=' + park" class="glass-panel py-8 rounded-2xl flex flex-col items-center justify-center group hover:bg-solana transition-all duration-500">
-                        <span class="text-[8px] font-bold text-gray-600 group-hover:text-black mb-2 uppercase tracking-widest italic">Node Access</span>
-                        <span class="text-xs font-black text-gray-400 group-hover:text-black transition uppercase" x-text="park"></span>
-                    </a>
-                </template>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-32 px-8 border-t border-white/5">
-        <div class="max-w-[1600px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20">
-            <div class="glass-panel p-16 rounded-[60px] relative overflow-hidden">
-                <div class="absolute -top-20 -right-20 w-64 h-64 bg-solana/10 blur-[80px]"></div>
-                <h3 class="text-3xl font-black italic uppercase mb-8">Growth Acceleration 3-1</h3>
-                <p class="text-gray-400 mb-12 text-sm leading-relaxed font-light">
-                    专为高成长型企业设计的离岸加速方案。整合了工商快速核准、办公空间补贴、以及首年度财税合规包。
-                </p>
-                <ul class="space-y-4 mb-12">
-                    <template x-for="item in ['离岸持股层架设计', '双语合规文书套件', '1v1 政策吹风会']">
-                        <li class="flex items-center gap-3 text-[10px] font-bold text-gray-300">
-                            <span class="w-1.5 h-1.5 bg-solana rounded-full"></span> <span x-text="item"></span>
-                        </li>
-                    </template>
-                </ul>
-                <a href="growth-3-1.html" class="text-[10px] font-black text-solana uppercase tracking-widest border-b border-solana/30 pb-1">查看详细技术文档 →</a>
-            </div>
-            <div class="glass-panel p-16 rounded-[60px] relative overflow-hidden">
-                <div class="absolute -bottom-20 -left-20 w-64 h-64 bg-blue-500/10 blur-[80px]"></div>
-                <h3 class="text-3xl font-black italic uppercase mb-8">Tech Empowerment 2-2</h3>
-                <p class="text-gray-400 mb-12 text-sm leading-relaxed font-light">
-                    侧重于 Web3、跨境数据传输、以及高新牌照申请。为您解决二线管住背景下的技术出海与合规瓶颈。
-                </p>
-                <ul class="space-y-4 mb-12">
-                    <template x-for="item in ['跨境数据节点部署', '高新企业入库指导', '知识产权全球质押']">
-                        <li class="flex items-center gap-3 text-[10px] font-bold text-gray-300">
-                            <span class="w-1.5 h-1.5 bg-solana rounded-full"></span> <span x-text="item"></span>
-                        </li>
-                    </template>
-                </ul>
-                <a href="tech-2-2-2.html" class="text-[10px] font-black text-solana uppercase tracking-widest border-b border-solana/30 pb-1">查看详细技术文档 →</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-32 px-8 bg-solana/5">
+    <section class="py-32 px-8 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-s-purple/5 to-s-green/5"></div>
         <div class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-20 items-center">
-            <div class="lg:col-span-8">
-                <h2 class="text-5xl font-black italic mb-8 uppercase leading-tight">打通您的<br><span class="text-solana">交付订单数据</span></h2>
+            <div class="lg:col-span-7">
+                <h2 class="text-5xl font-black italic mb-8 uppercase leading-tight">同步您的<br><span class="gradient-text">离岸交付订单</span></h2>
                 <p class="text-gray-400 text-lg mb-12 font-light">
-                    每一份提交的申请都将实时映射至 `order-data.js` 缓存中，并同步触达交付核心邮箱。基于 2026 封关协议，我们承诺 4 小时内完成首轮合规反馈。
+                    所有提交数据将通过 `order-data.js` 缓存处理，并实时触发邮件至 <span class="text-s-green font-mono">KOSOK0898@GMAIL.COM</span>。
+                    我们承诺：4 小时内完成首轮合规性预审。
                 </p>
                 <div class="flex gap-6">
-                    <a href="order.html" class="bg-white text-black px-12 py-5 rounded-2xl font-black uppercase text-xs tracking-widest shadow-2xl shadow-white/10 transition hover:scale-105">
-                        即刻启动表单提交
+                    <a href="order.html" class="bg-gradient-to-r from-s-purple to-s-blue text-white px-12 py-5 rounded-2xl font-black uppercase text-xs tracking-widest shadow-2xl transition hover:scale-105">
+                        即刻提交表单 / Submit Now
                     </a>
                 </div>
             </div>
-            <div class="lg:col-span-4 glass-panel p-10 rounded-[40px] border-solana/20">
-                <div class="text-[9px] font-black text-solana uppercase tracking-[0.4em] mb-8">Live Sync Status</div>
-                <div class="space-y-6">
-                    <div class="flex justify-between items-center bg-black/40 p-4 rounded-xl">
-                        <span class="text-[10px] font-bold text-gray-500 uppercase">Gmail Gateway</span>
-                        <span class="text-[10px] font-black text-solana">ACTIVE</span>
+            <div class="lg:col-span-5 neon-card p-12 rounded-[50px]">
+                <div class="flex flex-col gap-6">
+                    <div class="flex justify-between items-center bg-black/40 p-5 rounded-2xl">
+                        <span class="text-[10px] font-bold text-gray-500 uppercase">Gmail Route</span>
+                        <span class="text-[10px] font-black text-s-green">ONLINE</span>
                     </div>
-                    <div class="flex justify-between items-center bg-black/40 p-4 rounded-xl">
-                        <span class="text-[10px] font-bold text-gray-500 uppercase">Order Buffer</span>
-                        <span class="text-[10px] font-black text-solana italic">SYNCING...</span>
+                    <div class="flex justify-between items-center bg-black/40 p-5 rounded-2xl">
+                        <span class="text-[10px] font-bold text-gray-500 uppercase">Data Sync</span>
+                        <span class="text-[10px] font-black text-s-blue italic">ORDER-DATA.JS READY</span>
                     </div>
-                    <div class="p-6 bg-black/80 rounded-2xl border border-white/5">
-                        <p class="font-mono text-[9px] text-gray-500 leading-relaxed italic">
-                            POST /api/delivery/trigger<br>
-                            DEST: kosok0898@gmail.com<br>
-                            DATA: { user_intent: "Offshore" }
-                        </p>
+                    <div class="p-8 bg-black/60 rounded-3xl border border-white/5 font-mono text-[9px] text-gray-400">
+                        <span class="text-s-purple">// LOG_STREAM_ACTIVE</span><br>
+                        POST: /delivery/v2.6<br>
+                        TO: kosok0898@gmail.com<br>
+                        STATUS: 200 OK
                     </div>
                 </div>
             </div>
@@ -267,95 +261,80 @@
         <div class="max-w-[1600px] mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-20 mb-32">
                 <div class="lg:col-span-2">
-                    <div class="text-3xl font-black italic tracking-tighter mb-10">SOLANA HAINAN <span class="text-solana">2026</span></div>
-                    <p class="text-gray-500 text-xs leading-loose max-w-sm mb-12">
-                        作为海南封关全案交付先行者，我们不仅建设企业实体，更在构建数字离岸的未来。
+                    <div class="text-3xl font-black italic tracking-tighter mb-10">SOLANA HAINAN <span class="text-s-green">2026</span></div>
+                    <p class="text-gray-500 text-xs leading-loose max-w-sm mb-12 italic">
+                        The definitive hub for offshore asset delivery in Hainan FTP. Secured, Accelerated, and Managed.
                     </p>
                     <div class="flex gap-4">
-                        <a href="https://t.me/KOSOK0898" class="w-12 h-12 glass-panel rounded-full flex items-center justify-center hover:bg-solana hover:text-black transition">TG</a>
-                        <a href="mailto:kosok0898@gmail.com" class="w-12 h-12 glass-panel rounded-full flex items-center justify-center hover:bg-solana hover:text-black transition">MAIL</a>
+                        <a href="https://t.me/KOSOK0898" class="w-12 h-12 neon-card rounded-full flex items-center justify-center hover:bg-s-green hover:text-black transition">TG</a>
+                        <a href="mailto:kosok0898@gmail.com" class="w-12 h-12 neon-card rounded-full flex items-center justify-center hover:bg-s-purple hover:text-white transition">✉️</a>
                     </div>
                 </div>
+                
                 <div>
-                    <h5 class="text-[10px] font-black uppercase text-white tracking-widest mb-10 border-l-2 border-solana pl-4">业务子项</h5>
-                    <ul class="text-[10px] text-gray-500 space-y-6 font-bold uppercase">
-                        <li><a href="consultancy.html" class="hover:text-white transition">战略咨询</a></li>
-                        <li><a href="design-services.html" class="hover:text-white transition">品牌设计</a></li>
-                        <li><a href="commander.html" class="hover:text-white transition italic text-solana">指挥舱系统 (Global)</a></li>
-                        <li><a href="sources.html" class="hover:text-white transition">核心资源库</a></li>
+                    <h5 class="text-[10px] font-black uppercase text-white tracking-widest mb-10 border-l-2 border-s-green pl-4">核心交付</h5>
+                    <ul class="text-[10px] text-gray-500 space-y-6 font-bold uppercase tracking-wider">
+                        <li><a href="consultancy.html" class="hover:text-s-green transition">战略咨询 Consultancy</a></li>
+                        <li><a href="design-services.html" class="hover:text-s-green transition">设计服务 Design</a></li>
+                        <li><a href="commander.html" class="hover:text-s-blue transition italic">指挥舱 Commander</a></li>
+                        <li><a href="sources.html" class="hover:text-white transition">资源对接 Sources</a></li>
                     </ul>
                 </div>
+
                 <div>
-                    <h5 class="text-[10px] font-black uppercase text-white tracking-widest mb-10 border-l-2 border-solana pl-4">功能插件</h5>
-                    <ul class="text-[10px] text-gray-500 space-y-6 font-bold uppercase">
-                        <li><a href="growth-3-1.html" class="hover:text-white transition">成长加速包 3-1</a></li>
-                        <li><a href="tech-2-2-2.html" class="hover:text-white transition">技术赋能 2-2-2</a></li>
-                        <li><a href="agreement-consulting.html" class="hover:text-white transition">咨询协议模板</a></li>
-                        <li><a href="admin.html" class="hover:text-white transition text-solana/50">管理后台入口</a></li>
+                    <h5 class="text-[10px] font-black uppercase text-white tracking-widest mb-10 border-l-2 border-s-purple pl-4">业务子项</h5>
+                    <ul class="text-[10px] text-gray-500 space-y-6 font-bold uppercase tracking-wider">
+                        <li><a href="growth-3-1.html" class="hover:text-s-green transition">成长加速包 3-1</a></li>
+                        <li><a href="tech-2-2-2.html" class="hover:text-s-green transition">技术赋能 2-2-2</a></li>
+                        <li><a href="agreement-consulting.html" class="hover:text-s-blue transition">咨询服务协议</a></li>
+                        <li><a href="admin.html" class="hover:text-white transition opacity-30">管理后台接入</a></li>
                     </ul>
                 </div>
+
                 <div>
-                    <h5 class="text-[10px] font-black uppercase text-white tracking-widest mb-10 border-l-2 border-solana pl-4">多媒体中心</h5>
-                    <ul class="text-[10px] text-gray-500 space-y-6 font-bold uppercase">
-                        <li><a href="hainan-videos.html" class="hover:text-white transition">政策实探视频</a></li>
-                        <li><a href="parks.html" class="hover:text-white transition">全岛航拍地图</a></li>
-                        <li><a href="track.html" class="hover:text-white transition italic">项目实时追踪</a></li>
+                    <h5 class="text-[10px] font-black uppercase text-white tracking-widest mb-10 border-l-2 border-s-blue pl-4">Global Reach</h5>
+                    <ul class="text-[10px] text-gray-500 space-y-6 font-bold uppercase tracking-wider">
+                        <li><a href="index-en_old.html" class="hover:text-white transition">English Portal</a></li>
+                        <li><a href="#" class="hover:text-white transition">Русский Портал</a></li>
+                        <li><a href="privacy.html" class="hover:text-white transition">Privacy Policy</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="pt-12 border-t border-white/5 text-center flex flex-col md:flex-row justify-between items-center gap-8 text-[9px] text-gray-600 font-bold uppercase tracking-[0.4em]">
-                <span>© 2026 Solana Hainan Hub. SEO / AI-Search Optimized System.</span>
-                <div class="flex gap-6 uppercase">
-                    <a href="privacy.html">Privacy Policy</a>
-                    <a href="terms.html">Legal Agreements</a>
+
+            <div class="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-[9px] text-gray-600 font-bold uppercase tracking-[0.4em]">
+                <span>© 2026 Solana Hainan. Built for the Future Offshore Economy.</span>
+                <div class="flex gap-10">
+                    <span>TG: @KOSOK0898</span>
+                    <span>MAIL: KOSOK0898@GMAIL.COM</span>
                 </div>
             </div>
         </div>
     </footer>
 
-    <div x-show="showAI" x-transition x-cloak class="fixed inset-0 z-[200] bg-black/95 backdrop-blur-3xl flex items-center justify-center p-6">
-        <div @click.away="showAI = false" class="glass-panel w-full max-w-2xl p-12 rounded-[60px] relative overflow-hidden">
-            <div class="absolute top-0 left-0 w-full h-1 bg-solana/20"><div class="animate-[progress_3s_ease-in-out_infinite] bg-solana h-full w-[30%]"></div></div>
+    <div x-show="showAI" x-cloak x-transition class="fixed inset-0 z-[200] bg-black/95 backdrop-blur-3xl flex items-center justify-center p-6">
+        <div @click.away="showAI = false" class="neon-card w-full max-w-2xl p-16 rounded-[60px] relative">
             <button @click="showAI = false" class="absolute top-10 right-10 text-3xl text-gray-500 hover:text-white transition">×</button>
-            <div class="mb-12 text-center">
-                <h3 class="text-3xl font-black italic text-solana uppercase mb-2">AI 离岸架构助手</h3>
-                <p class="text-[10px] text-gray-500 uppercase tracking-widest">Autonomous Offshore Architecture Diagnostic</p>
-            </div>
-            <div class="space-y-8">
-                <div class="space-y-4">
-                    <label class="text-[10px] font-bold text-gray-500 uppercase ml-4">核心业务类型</label>
-                    <select class="w-full bg-white/5 border border-white/10 rounded-2xl p-4 text-xs outline-none focus:border-solana">
-                        <option>Web3 / 数字资产</option>
-                        <option>跨境电商 / 供应链</option>
-                        <option>现代服务业 / 咨询</option>
-                        <option>高新科技 / 研发中心</option>
-                    </select>
-                </div>
-                <div class="space-y-4">
-                    <label class="text-[10px] font-bold text-gray-500 uppercase ml-4">您的核心诉求</label>
-                    <textarea class="w-full bg-white/5 border border-white/10 rounded-3xl p-6 text-xs text-white outline-none focus:border-solana h-32" placeholder="例如：我想注册离岸主体并开立EF账户，主要用于资产避险与全球结算..."></textarea>
-                </div>
-                <button class="w-full bg-solana text-black py-6 rounded-2xl font-black uppercase text-xs tracking-widest shadow-2xl shadow-solana/30">
-                    生成智能评估报告 (PDF)
-                </button>
-            </div>
+            <h3 class="text-3xl font-black italic text-s-green uppercase mb-8">AI 架构诊断助手</h3>
+            <textarea class="w-full bg-white/5 border border-white/10 rounded-3xl p-8 text-xs text-white outline-none focus:border-s-green h-48 mb-8" placeholder="请输入您的离岸诉求 (CN/EN/RU)..."></textarea>
+            <button class="w-full bg-gradient-to-r from-s-green to-s-blue text-black py-6 rounded-2xl font-black uppercase text-xs tracking-widest">生成全案报告 (AI Analyze)</button>
         </div>
     </div>
 
     <script>
-        function globalApp() {
+        function appController() {
             return {
+                lang: 'cn',
                 showAI: false,
-                parksList: ['海口江东', '三亚CBD', '复兴城', '博鳌乐城', '崖州湾', '洋浦开发', '生态软件', '临高港', '文昌航天', '海口保税'],
                 sopSteps: [
-                    { title: "顶层架构审计", desc: "深度评估离岸业务需求，确定股权架构与避税节点。" },
-                    { title: "园区精准对标", desc: "匹配 13 大园区政策细则，申请最优税收减免红利。" },
-                    { title: "合规文书套件", desc: "生成符合 2026 封关协议的全套离岸管理文书。" },
-                    { title: "工商快速核准", desc: "全流程代办海南主体注册，极速获取数字营业执照。" },
-                    { title: "银行绿色通道", desc: "对接核心合办行，协助企业完成 EF 账户开立及面签。" },
-                    { title: "指挥舱系统上线", desc: "部署 Commander 云端后台，实现远程运营合规监测。" },
-                    { title: "资源池初步对接", desc: "引入自贸港产业链上下游，开启业务实质性运营。" },
-                    { title: "年度合规管家", desc: "持续提供税务申报、离岸审计及政策更新适配服务。" }
+                    { title: "顶层资产审计", desc: "评估离岸需求，锁定最优全球持股路径。" },
+                    { title: "13园区准入对标", desc: "基于各园区政策，筛选最佳物理落地节点。" },
+                    { title: "主体极速设立", desc: "办理工商注册、外资备案及特行许可证。" },
+                    { title: "EF 账户全套对接", desc: "对接核心合办行，完成自由贸易账户面签。" },
+                    { title: "法务合规闭环", desc: "签署年度财税协议与离岸运营管理包。" },
+                    { title: "设计与品牌立项", desc: "启动 VI 设计、官网及数字化展厅开发。" },
+                    { title: "指挥舱系统部署", desc: "Commander 系统配置，实现远程实时管控。" },
+                    { title: "运营资源注入", desc: "对接本地人才库、产业链上下游核心资源。" },
+                    { title: "年度审计维护", desc: "提供年度申报、税务统筹及政策适配升级。" }
                 ]
             }
         }
