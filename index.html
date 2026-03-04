@@ -1,261 +1,427 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solana Hainan | 2026 封关资产交付系统 | Enterprise Version</title>
+    <title>Solana Hainan | 2026 封关资产交付中心 · 全球离岸协议</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     
     <style>
         [x-cloak] { display: none !important; }
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap');
         
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap');
-        
-        body {
-            background-color: #000;
-            color: #fff;
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
+        :root {
+            --s-green: #00ffa3;
+            --s-blue: #03e1ff;
+            --s-purple: #dc143c;
         }
 
-        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        body {
+            background-color: #050505;
+            color: #ffffff;
+            font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+            overflow-x: hidden;
+        }
 
+        /* 赛博网格背景 */
+        .grid-bg {
+            background-image: 
+                linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        /* 磨砂玻璃面板 */
         .glass-panel {
             background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(20px);
+            backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .text-s-green { color: #00ffa3; }
-        .text-s-blue { color: #03e1ff; }
-        .text-s-purple { color: #ff0055; }
-        .bg-s-green { background-color: #00ffa3; }
-        .bg-s-purple { background-color: #ff0055; }
-
-        /* 滚动条美化 */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #000; }
-        ::-webkit-scrollbar-thumb { background: #333; }
-        ::-webkit-scrollbar-thumb:hover { background: #00ffa3; }
+        .glass-panel:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--s-green);
+            transform: translateY(-5px);
+        }
 
         /* 扫描线动画 */
         .scanline {
-            width: 100%; height: 2px;
-            background: rgba(0, 255, 163, 0.05);
-            position: fixed; top: 0; z-index: 1000;
-            animation: scan 8s linear infinite; pointer-events: none;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--s-green), transparent);
+            position: fixed;
+            z-index: 1000;
+            opacity: 0.2;
+            animation: scan 10s linear infinite;
+            pointer-events: none;
         }
-        @keyframes scan { 0% { top: 0; } 100% { top: 100%; } }
 
-        /* 表单样式修正 */
-        input:focus { border-color: #00ffa3 !important; }
+        @keyframes scan {
+            0% { top: -10%; }
+            100% { top: 110%; }
+        }
+
+        /* 霓虹文字 */
+        .neon-text {
+            text-shadow: 0 0 10px rgba(0, 255, 163, 0.5);
+        }
+
+        /* 自定义滚动条 */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: #333; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--s-green); }
+
+        .btn-primary {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn-primary:hover::before { left: 100%; }
     </style>
 </head>
-<body x-data="app()" x-init="initSystem()">
+<body x-data="app()" x-init="initSystem()" class="grid-bg">
 
     <div class="scanline"></div>
 
-    <div x-show="loading" class="fixed inset-0 z-[1000] bg-black flex items-center justify-center">
-        <div class="text-[10px] font-mono tracking-widest text-s-green animate-pulse">SYSTEM_INITIALIZING_V2.0.26...</div>
-    </div>
-
-    <nav class="fixed w-full z-50 px-12 py-8 flex justify-between items-center bg-black/50 backdrop-blur-md border-b border-white/5">
-        <div class="text-2xl font-black italic tracking-tighter uppercase flex items-center">
-            Solana <span class="text-s-green ml-2">Hainan</span> 
-            <span class="text-[8px] border border-white/20 px-2 py-0.5 ml-3 font-mono opacity-60">ENCRYPTED_NODE</span>
+    <nav class="fixed w-full z-[100] px-6 md:px-12 py-6 flex justify-between items-center bg-black/40 backdrop-blur-xl border-b border-white/5">
+        <div class="flex items-center gap-4 group">
+            <div class="w-10 h-10 bg-s-green rounded-full flex items-center justify-center animate-pulse">
+                <span class="text-black font-black text-xl">S</span>
+            </div>
+            <div class="text-xl font-black italic tracking-tighter uppercase">
+                Solana <span class="text-s-green">Hainan</span>
+                <span class="block text-[8px] tracking-[0.4em] text-gray-500 font-bold">POST-CUSTOMS PROTOCOL V2</span>
+            </div>
         </div>
-        <div class="flex items-center gap-8">
-            <button @click="lang = (lang === 'cn' ? 'en' : 'cn')" class="text-[10px] font-bold border border-white/20 px-4 py-2 rounded-full hover:bg-white hover:text-black transition uppercase font-mono">
-                <span x-text="lang === 'cn' ? 'Language: CN' : 'Language: EN'"></span>
+
+        <div class="hidden lg:flex items-center gap-12 text-[10px] font-black uppercase tracking-[0.2em]">
+            <a href="#parks" class="hover:text-s-green transition">Matrix</a>
+            <a href="#sop" class="hover:text-s-green transition">Standard SOP</a>
+            <a href="#pricing" class="hover:text-s-green transition">Solutions</a>
+            <button @click="lang = (lang === 'cn' ? 'en' : 'cn')" class="flex items-center gap-2 border border-white/20 px-4 py-2 rounded-full hover:bg-white hover:text-black transition">
+                <span x-text="lang === 'cn' ? 'English' : '中文 (CN)'"></span>
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
             </button>
-            <button @click="showAdmin = !showAdmin" class="text-[10px] font-bold text-gray-500 hover:text-white uppercase font-mono">Admin Panel</button>
+        </div>
+
+        <div class="lg:hidden">
+            <button @click="mobileMenu = !mobileMenu" class="text-white">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
         </div>
     </nav>
 
-    <main class="pt-24">
-        <div x-show="showAdmin" x-cloak class="p-12 border-b border-white/10 bg-white/[0.02]">
-            <div class="max-w-[1200px] mx-auto">
-                <h3 class="text-s-green font-mono mb-6 uppercase tracking-widest">System Audit Log</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="glass-panel p-6 text-[10px] font-mono text-gray-400">
-                        > SYSTEM UPTIME: <span class="text-white" x-text="uptime"></span><br>
-                        > DATABASE STATUS: <span class="text-s-green">SYNCED</span><br>
-                        > PENDING_ORDERS: <span x-text="orders.length"></span>
-                    </div>
-                    <div class="glass-panel p-6 text-[10px] font-mono text-gray-400">
-                        > LATEST_TX: <span class="text-white">SLN-9921-X821</span><br>
-                        > NETWORK: <span class="text-s-blue">HAINAN_FTP_OPERATIONAL</span>
-                    </div>
-                </div>
+    <div x-show="mobileMenu" x-cloak class="fixed inset-0 z-[150] bg-black p-12 lg:hidden" x-transition>
+        <button @click="mobileMenu = false" class="absolute top-8 right-8 text-3xl">✕</button>
+        <div class="flex flex-col gap-10 text-2xl font-black italic uppercase mt-20">
+            <a @click="mobileMenu = false" href="#parks">Nodes Matrix</a>
+            <a @click="mobileMenu = false" href="#sop">Deployment</a>
+            <a @click="mobileMenu = false" href="#pricing">Quotation</a>
+            <button @click="lang = (lang === 'cn' ? 'en' : 'cn'); mobileMenu = false" class="text-left text-s-green">Toggle Language</button>
+        </div>
+    </div>
+
+    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-s-green/10 rounded-full blur-[120px] animate-pulse"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-s-blue/10 rounded-full blur-[100px]"></div>
+
+        <div class="max-w-[1400px] px-8 text-center relative z-10">
+            <div class="inline-flex items-center gap-3 px-4 py-2 border border-s-green/20 bg-s-green/5 text-s-green text-[10px] font-black uppercase tracking-[0.5em] mb-12 rounded-full">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-s-green opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-s-green"></span>
+                </span>
+                <span x-text="t[lang].heroBadge"></span>
+            </div>
+
+            <h1 class="text-6xl md:text-[120px] font-black italic uppercase leading-[0.85] tracking-tighter mb-12">
+                <span class="block" x-text="t[lang].heroTitle1"></span>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-s-green via-s-blue to-white" x-text="t[lang].heroTitle2"></span>
+            </h1>
+
+            <p class="text-gray-400 text-sm md:text-xl max-w-4xl mx-auto leading-relaxed font-medium mb-20 px-4" x-text="t[lang].heroDesc"></p>
+
+            <div class="flex flex-wrap justify-center gap-8">
+                <button @click="showOrder = true" class="btn-primary px-16 py-8 bg-white text-black font-black uppercase text-xs tracking-widest hover:bg-s-green transition-all shadow-[0_20px_50px_rgba(0,255,163,0.2)]">
+                    Establish Connection
+                </button>
+                <button @click="document.getElementById('parks').scrollIntoView()" class="px-16 py-8 border border-white/10 font-black uppercase text-xs tracking-widest hover:bg-white/5 hover:border-white transition-all">
+                    System Overview
+                </button>
             </div>
         </div>
+    </section>
 
-        <section class="relative min-h-[80vh] flex items-center justify-center px-12 py-32 overflow-hidden">
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,255,163,0.03)_0%,transparent_70%)]"></div>
-            <div class="max-w-[1200px] text-center relative z-10">
-                <div class="inline-block px-4 py-1 border border-s-green/30 text-s-green text-[10px] font-mono uppercase tracking-[0.3em] mb-12 animate-pulse" x-text="t[lang].heroBadge"></div>
-                <h1 class="text-6xl md:text-8xl font-black italic uppercase leading-none tracking-tighter mb-10">
-                    <span x-text="t[lang].heroTitle1"></span><br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-s-green to-s-blue" x-text="t[lang].heroTitle2"></span>
-                </h1>
-                <p class="text-gray-400 text-sm md:text-lg max-w-2xl mx-auto leading-relaxed font-medium mb-16" x-text="t[lang].heroDesc"></p>
-                <div class="flex flex-wrap justify-center gap-6">
-                    <button @click="showOrder = true" class="px-12 py-6 bg-white text-black font-black uppercase text-xs tracking-widest hover:bg-s-green transition-all shadow-[0_0_30px_rgba(0,255,163,0.3)]">Establish Connection</button>
-                    <a href="#parks" class="px-12 py-6 border border-white/20 font-black uppercase text-xs tracking-widest hover:bg-white/5 transition-all">Park Matrix</a>
+    <section class="py-40 px-8 border-t border-white/5 bg-white/[0.01]">
+        <div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <template x-for="(advantage, i) in t[lang].advantages" :key="i">
+                <div class="glass-panel p-12 rounded-[40px] group">
+                    <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-8 bg-white/5 border border-white/10 group-hover:bg-s-green group-hover:text-black transition-all">
+                        <span class="text-2xl font-black italic" x-text="'0' + (i+1)"></span>
+                    </div>
+                    <h4 class="text-xl font-black uppercase mb-6 tracking-widest" x-text="advantage.title"></h4>
+                    <p class="text-sm text-gray-500 leading-loose" x-text="advantage.desc"></p>
+                </div>
+            </template>
+        </div>
+    </section>
+
+    <section id="parks" class="py-40 px-8 relative">
+        <div class="max-w-[1700px] mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-32 gap-12">
+                <div class="max-w-2xl">
+                    <h2 class="text-5xl md:text-7xl font-black italic uppercase tracking-tighter mb-8 neon-text">
+                        Hainan Park Matrix
+                    </h2>
+                    <p class="text-gray-500 font-bold uppercase tracking-widest text-xs leading-loose">
+                        Mapping the 13 strategic nodes for 2026 offshore asset allocation. Each node represents a specific tax rebate logic and regulatory sandbox.
+                    </p>
+                </div>
+                <div class="text-right">
+                    <div class="text-[80px] font-black italic leading-none text-white/5">13 NODES</div>
                 </div>
             </div>
-        </section>
 
-        <section class="py-32 px-12 border-t border-white/5 bg-white/[0.01]">
-            <div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
-                <template x-for="feat in featuresList" :key="feat.id">
-                    <div class="glass-panel p-10 rounded-3xl hover:border-s-green transition-all group">
-                        <div class="text-s-green mb-6 text-2xl font-black font-mono" x-text="'0'+feat.id"></div>
-                        <h4 class="text-lg font-black uppercase mb-4 tracking-widest" x-text="feat.title"></h4>
-                        <p class="text-xs text-gray-500 leading-loose" x-text="feat.desc"></p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <template x-for="park in parkList" :key="park.id">
+                    <div class="glass-panel p-10 rounded-2xl group cursor-crosshair relative overflow-hidden">
+                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"></path></svg>
+                        </div>
+                        <div class="flex justify-between items-start mb-10">
+                            <span class="text-[10px] font-black text-s-green" x-text="'ID: NODE-' + String(park.id).padStart(2,'0')"></span>
+                            <span class="px-3 py-1 bg-white/5 text-[9px] font-black uppercase tracking-widest rounded border border-white/10 group-hover:border-s-green/50 transition" x-text="park.tag"></span>
+                        </div>
+                        <h3 class="text-2xl font-black mb-6 group-hover:text-s-green transition" x-text="park.name"></h3>
+                        <p class="text-[11px] text-gray-500 leading-relaxed min-h-[60px]" x-text="park.desc"></p>
                     </div>
                 </template>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="parks" class="py-32 px-12">
-            <div class="max-w-[1700px] mx-auto">
-                <h2 class="text-4xl font-black italic uppercase tracking-tighter mb-24">Hainan Park Matrix <span class="text-gray-700">/ 13 Nodes</span></h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                    <template x-for="park in parkList" :key="park.id">
-                        <div class="glass-panel p-8 rounded-2xl hover:border-s-green transition-all group cursor-crosshair">
-                            <div class="flex justify-between items-start mb-8">
-                                <span class="text-[10px] font-mono text-gray-500 group-hover:text-s-green transition" x-text="'NODE-0' + park.id"></span>
-                                <span class="px-3 py-1 bg-white/5 text-[9px] font-black uppercase tracking-widest rounded" x-text="park.tag"></span>
-                            </div>
-                            <h3 class="text-xl font-black mb-4 group-hover:translate-x-2 transition" x-text="park.name"></h3>
-                            <p class="text-[11px] text-gray-500 leading-relaxed h-16 overflow-hidden" x-text="park.desc"></p>
-                        </div>
-                    </template>
-                </div>
+    <section id="sop" class="py-40 px-8 bg-s-green text-black overflow-hidden relative">
+        <div class="absolute top-0 left-0 text-[300px] font-black italic text-black/5 pointer-events-none select-none">DEPLOYMENT</div>
+        
+        <div class="max-w-[1400px] mx-auto relative z-10">
+            <div class="mb-32 text-center md:text-left">
+                <h2 class="text-6xl md:text-8xl font-black italic uppercase tracking-tighter mb-4">Standard SOP</h2>
+                <div class="h-2 w-32 bg-black"></div>
             </div>
-        </section>
 
-        <section class="py-32 px-12 bg-s-green text-black">
-            <div class="max-w-[1200px] mx-auto">
-                <h2 class="text-5xl font-black italic uppercase tracking-tighter mb-24 text-center">Deployment SOP</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-12">
-                    <template x-for="(step, index) in t[lang].sopSteps" :key="index">
-                        <div class="flex gap-8 border-b border-black/10 pb-8">
-                            <div class="text-4xl font-black italic opacity-20 font-mono" x-text="String(index + 1).padStart(2, '0')"></div>
-                            <div>
-                                <h4 class="font-black uppercase mb-2 tracking-widest" x-text="step.title"></h4>
-                                <p class="text-sm font-bold opacity-70" x-text="step.desc"></p>
-                            </div>
-                        </div>
-                    </template>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-32 px-12">
-            <div class="max-w-[1400px] mx-auto">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                    <template x-for="plan in pricePlans" :key="plan.title">
-                        <div class="glass-panel p-16 rounded-[60px] flex flex-col relative overflow-hidden" :class="plan.hot ? 'border-s-purple/50 ring-1 ring-s-purple/30' : ''">
-                            <template x-if="plan.hot">
-                                <div class="absolute top-10 right-[-40px] rotate-45 bg-s-purple text-white px-12 py-1 text-[10px] font-black uppercase tracking-widest font-mono">Recommended</div>
-                            </template>
-                            <h3 class="text-xs font-black uppercase tracking-[0.3em] text-gray-500 mb-4" x-text="plan.title"></h3>
-                            <div class="flex items-baseline gap-2 mb-12">
-                                <span class="text-5xl font-black italic" x-text="plan.price"></span>
-                                <span class="text-xs font-bold text-gray-600" x-text="plan.unit"></span>
-                            </div>
-                            <ul class="space-y-6 mb-16 flex-grow">
-                                <template x-for="f in plan.features" :key="f">
-                                    <li class="text-[11px] text-gray-400 flex items-start gap-4 italic leading-relaxed">
-                                        <span class="text-s-green mt-1">◈</span> <span x-text="f"></span>
-                                    </li>
-                                </template>
-                            </ul>
-                            <button @click="showOrder = true; formData.service = plan.title" 
-                                    class="w-full py-6 rounded-3xl font-black uppercase text-xs tracking-widest transition-all" 
-                                    :class="plan.hot ? 'bg-s-purple text-white hover:bg-white hover:text-black' : 'bg-white text-black hover:bg-s-green'">
-                                Book Initial Session
-                            </button>
-                        </div>
-                    </template>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="py-24 px-12 border-t border-white/10 bg-black/60">
-        <div class="max-w-[1700px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-24">
-            <div class="col-span-2">
-                <div class="text-3xl font-black italic mb-10 uppercase tracking-tighter">Solana Hainan</div>
-                <p class="text-xs text-gray-600 leading-loose max-w-lg mb-10">2026 封关资产交付中心。我们致力于在全新的封关政策下，为全球高净值客户与跨国企业提供符合实质性运营标准的离岸落地服务。所有架构均由高级法律合规官审核通过，确保资产在 Post-Customs 时代的安全性与流动性。</p>
-                <div class="flex gap-8">
-                    <div class="text-[10px] font-black text-white border-b border-s-green pb-1 cursor-pointer hover:text-s-green transition font-mono">TELEGRAM_@KOSOK</div>
-                </div>
-            </div>
-            <div>
-                <h5 class="text-[10px] font-black uppercase text-white mb-10 tracking-widest">Global Access</h5>
-                <ul class="space-y-4 text-[11px] font-bold text-gray-500 uppercase font-mono">
-                    <li><a href="#" class="hover:text-s-green transition">Strategy 1-1</a></li>
-                    <li><a href="#" class="hover:text-s-blue transition">Tech 2-2-2</a></li>
-                    <li><a href="#" class="hover:text-s-purple transition">Growth 3-1</a></li>
-                </ul>
-            </div>
-            <div>
-                <h5 class="text-[10px] font-black uppercase text-white mb-10 tracking-widest">Connect Hub</h5>
-                <ul class="space-y-4 text-[11px] font-bold text-gray-500 font-mono">
-                    <li>KOSOK0898@GMAIL.COM</li>
-                    <li>SITEMAP.XML</li>
-                </ul>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
+                <template x-for="(step, index) in t[lang].sopSteps" :key="index">
+                    <div class="border-l-4 border-black pl-8 group">
+                        <div class="text-5xl font-black italic mb-6 opacity-30 group-hover:opacity-100 transition" x-text="String(index + 1).padStart(2, '0')"></div>
+                        <h4 class="text-xl font-black uppercase mb-4 tracking-tighter" x-text="step.title"></h4>
+                        <p class="text-sm font-bold opacity-60 leading-relaxed" x-text="step.desc"></p>
+                    </div>
+                </template>
             </div>
         </div>
-        <div class="max-w-[1700px] mx-auto mt-24 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-            <span class="text-[9px] text-gray-700 font-black tracking-widest uppercase font-mono">© 2026 Solana Hainan Compliance Group. All Rights Reserved.</span>
+    </section>
+
+    <section id="pricing" class="py-40 px-8">
+        <div class="max-w-[1500px] mx-auto">
+            <div class="text-center mb-32">
+                <h2 class="text-5xl font-black italic uppercase mb-6 tracking-tighter">Protocol Solutions</h2>
+                <p class="text-gray-500 text-xs font-bold tracking-[0.4em] uppercase">Tailored compliance paths for global entrepreneurs</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                <template x-for="plan in pricePlans">
+                    <div class="glass-panel p-16 rounded-[60px] flex flex-col relative group" :class="plan.hot ? 'border-s-purple/50 bg-s-purple/5 shadow-[0_30px_100px_rgba(220,20,60,0.15)]' : ''">
+                        <template x-if="plan.hot">
+                            <div class="absolute top-12 right-[-30px] rotate-45 bg-s-purple text-white px-12 py-2 text-[10px] font-black uppercase tracking-widest shadow-xl">Most Stable</div>
+                        </template>
+
+                        <div class="mb-12">
+                            <h3 class="text-xs font-black uppercase tracking-[0.4em] text-gray-500 mb-6" x-text="plan.title"></h3>
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-6xl font-black italic group-hover:scale-110 transition-transform origin-left" x-text="plan.price"></span>
+                                <span class="text-sm font-bold text-gray-600" x-text="plan.unit"></span>
+                            </div>
+                        </div>
+
+                        <div class="space-y-6 mb-20 flex-grow">
+                            <template x-for="f in plan.features">
+                                <div class="flex items-start gap-4 group/item">
+                                    <span class="w-1.5 h-1.5 bg-s-green rounded-full mt-1.5 transition-all group-hover/item:scale-150"></span>
+                                    <span class="text-[11px] font-bold text-gray-400 uppercase italic tracking-wider leading-relaxed" x-text="f"></span>
+                                </div>
+                            </template>
+                        </div>
+
+                        <button @click="showOrder = true; formData.service = plan.title" 
+                                class="w-full py-8 rounded-[30px] font-black uppercase text-xs tracking-[0.3em] transition-all transform active:scale-95" 
+                                :class="plan.hot ? 'bg-s-purple text-white hover:bg-white hover:text-black shadow-lg shadow-s-purple/20' : 'bg-white text-black hover:bg-s-green'">
+                            Initialize Protocol
+                        </button>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-32 px-12 border-t border-white/5 bg-black/80 relative">
+        <div class="max-w-[1700px] mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-24 mb-32">
+                <div class="lg:col-span-2">
+                    <div class="flex items-center gap-4 mb-10">
+                        <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center">
+                            <span class="text-black font-black text-2xl italic">S</span>
+                        </div>
+                        <div class="text-3xl font-black italic uppercase tracking-tighter">Solana <span class="text-s-green">Hainan</span></div>
+                    </div>
+                    <p class="text-xs text-gray-500 leading-[2.5] max-w-md mb-12 uppercase font-bold tracking-widest" x-text="t[lang].footerDesc"></p>
+                    <div class="flex gap-6">
+                        <div class="p-4 border border-white/10 rounded-2xl hover:border-s-green transition cursor-pointer">
+                            <span class="text-[10px] font-black tracking-widest uppercase">Telegram</span>
+                        </div>
+                        <div class="p-4 border border-white/10 rounded-2xl hover:border-s-green transition cursor-pointer">
+                            <span class="text-[10px] font-black tracking-widest uppercase">WeChat</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h5 class="text-[11px] font-black uppercase text-white mb-12 tracking-[0.4em]">Protocol Matrix</h5>
+                    <ul class="space-y-6 text-[11px] font-bold text-gray-600 uppercase tracking-widest">
+                        <li><a href="#" class="hover:text-s-green transition">Regulatory Sandbox</a></li>
+                        <li><a href="#" class="hover:text-s-green transition">EF-Account Rules</a></li>
+                        <li><a href="#" class="hover:text-s-green transition">VIE Structures</a></li>
+                        <li><a href="#" class="hover:text-s-green transition">Investment Exit</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="text-[11px] font-black uppercase text-white mb-12 tracking-[0.4em]">Legal Docs</h5>
+                    <ul class="space-y-6 text-[11px] font-bold text-gray-600 uppercase tracking-widest">
+                        <li><a href="#" class="hover:text-white transition">Service Agreement</a></li>
+                        <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition">Compliance Audit</a></li>
+                        <li><a href="#" class="hover:text-white transition">Anti-Money Laundering</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="text-[11px] font-black uppercase text-white mb-12 tracking-[0.4em]">Central Terminal</h5>
+                    <ul class="space-y-4 text-[11px] font-bold text-gray-500">
+                        <li class="flex flex-col gap-1">
+                            <span class="text-[9px] text-gray-700">ENCRYPTED EMAIL</span>
+                            <span class="text-white">KOSOK0898@GMAIL.COM</span>
+                        </li>
+                        <li class="flex flex-col gap-1">
+                            <span class="text-[9px] text-gray-700">STATION ID</span>
+                            <span class="text-white">HN-898-001</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-10">
+                <div class="flex items-center gap-8">
+                    <span class="text-[10px] text-gray-800 font-black tracking-[0.5em] uppercase">© 2026 Solana Hainan OS. All rights reserved.</span>
+                </div>
+                <div class="flex gap-12 grayscale opacity-30">
+                    <span class="text-[10px] font-black uppercase italic tracking-widest">Powered by Veo Engine</span>
+                    <span class="text-[10px] font-black uppercase italic tracking-widest">Secured by Solana Chain</span>
+                </div>
+            </div>
         </div>
     </footer>
 
-    <div x-show="showOrder" x-cloak class="fixed inset-0 z-[1000] bg-black/98 flex items-center justify-center p-8 backdrop-blur-3xl" x-transition.opacity>
-        <div @click.away="!submitting && (showOrder = false)" class="glass-panel w-full max-w-2xl p-20 rounded-[80px] relative border-s-purple/30">
-            <template x-if="!submitting && !orderSuccess">
-                <div class="animate-in fade-in zoom-in duration-300">
-                    <div class="mb-12">
-                        <h3 class="text-4xl font-black italic text-s-green uppercase mb-4">Asset Protocol Entry</h3>
-                        <p class="text-[10px] text-gray-500 font-bold uppercase tracking-widest font-mono">Global Compliance Synchronizer</p>
-                    </div>
-                    <form @submit.prevent="submitOrder" class="space-y-10">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <div class="space-y-4">
-                                <label class="text-[10px] font-black text-gray-500 uppercase ml-4 tracking-widest">Business Email</label>
-                                <input type="email" x-model="formData.email" required placeholder="ceo@offshore-group.com" class="w-full bg-white/5 border border-white/10 rounded-3xl px-8 py-5 text-white focus:border-s-green outline-none transition">
-                            </div>
-                            <div class="space-y-4">
-                                <label class="text-[10px] font-black text-gray-500 uppercase ml-4 tracking-widest">Identity</label>
-                                <input type="text" x-model="formData.name" required placeholder="Name / TG ID" class="w-full bg-white/5 border border-white/10 rounded-3xl px-8 py-5 text-white focus:border-s-green outline-none transition">
-                            </div>
+    <div x-show="showOrder" x-cloak class="fixed inset-0 z-[1000] flex items-center justify-center p-4 md:p-8" x-transition.opacity>
+        <div class="absolute inset-0 bg-black/98 backdrop-blur-3xl"></div>
+        
+        <div @click.away="!submitting && (showOrder = false)" 
+             class="glass-panel w-full max-w-4xl p-8 md:p-20 rounded-[40px] md:rounded-[100px] relative border-s-green/20 overflow-y-auto max-h-[95vh]">
+            
+            <button @click="showOrder = false" class="absolute top-10 right-10 text-gray-600 hover:text-white text-2xl transition">✕</button>
+
+            <div x-show="!submitting && !orderSuccess">
+                <div class="mb-16">
+                    <h3 class="text-4xl md:text-6xl font-black italic text-s-green uppercase mb-6 tracking-tighter">Asset Entry</h3>
+                    <p class="text-xs text-gray-500 font-bold uppercase tracking-[0.4em]">Establish your Hainan Free Trade Port digital identity</p>
+                </div>
+
+                <form @submit.prevent="submitOrder" class="space-y-12">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <div class="space-y-4">
+                            <label class="text-[10px] font-black text-gray-600 uppercase ml-6 tracking-widest">Business Identity (Name)</label>
+                            <input type="text" x-model="formData.name" required class="w-full bg-white/5 border border-white/10 rounded-[30px] px-10 py-6 text-white focus:border-s-green focus:bg-white/10 outline-none transition-all placeholder-gray-800">
                         </div>
                         <div class="space-y-4">
-                            <label class="text-[10px] font-black text-gray-500 uppercase ml-4 tracking-widest">Service</label>
-                            <select x-model="formData.service" class="w-full bg-white/5 border border-white/10 rounded-3xl px-8 py-5 text-white [&>option]:text-black focus:border-s-green outline-none appearance-none">
-                                <option value="Foundations (1.5w)">Standard Foundations</option>
-                                <option value="Growth (4.8w)">Growth Real-world</option>
-                                <option value="Ultimate (Custom)">Ultimate Offshore</option>
+                            <label class="text-[10px] font-black text-gray-600 uppercase ml-6 tracking-widest">Contact Protocol (Email)</label>
+                            <input type="email" x-model="formData.email" required class="w-full bg-white/5 border border-white/10 rounded-[30px] px-10 py-6 text-white focus:border-s-green focus:bg-white/10 outline-none transition-all">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <div class="space-y-4">
+                            <label class="text-[10px] font-black text-gray-600 uppercase ml-6 tracking-widest">Solution Selection</label>
+                            <select x-model="formData.service" class="w-full bg-white/5 border border-white/10 rounded-[30px] px-10 py-6 text-white focus:border-s-green outline-none appearance-none [&>option]:bg-black">
+                                <option value="Standard Foundations">Foundations (￥1.5w/Y)</option>
+                                <option value="Growth Real-world">Growth (￥4.8w/Y)</option>
+                                <option value="Ultimate Offshore">Ultimate (Custom Quote)</option>
                             </select>
                         </div>
-                        <button type="submit" class="w-full bg-white text-black py-7 rounded-[40px] font-black uppercase text-xs tracking-[0.5em] hover:bg-s-green transition shadow-2xl active:scale-95">Synchronize Delivery</button>
-                    </form>
-                </div>
-            </template>
-            <div x-show="submitting" class="text-center py-20">
-                <div class="w-16 h-16 border-4 border-s-green border-t-transparent rounded-full animate-spin mx-auto mb-8"></div>
-                <p class="text-[10px] font-black uppercase tracking-[0.4em] text-s-green">Encrypting Payload...</p>
+                        <div class="space-y-4">
+                            <label class="text-[10px] font-black text-gray-600 uppercase ml-6 tracking-widest">Estimated Capital Scope</label>
+                            <select class="w-full bg-white/5 border border-white/10 rounded-[30px] px-10 py-6 text-white focus:border-s-green outline-none appearance-none [&>option]:bg-black">
+                                <option>< 1M USD</option>
+                                <option>1M - 10M USD</option>
+                                <option>> 10M USD</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <label class="text-[10px] font-black text-gray-600 uppercase ml-6 tracking-widest">Substantial Requirements (Brief)</label>
+                        <textarea x-model="formData.notes" placeholder="e.g. Need office for 20 staff, EF account for HK trade..." class="w-full bg-white/5 border border-white/10 rounded-[40px] px-10 py-8 text-white focus:border-s-green outline-none transition-all h-40"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-s-green text-black py-10 rounded-[50px] font-black uppercase text-sm tracking-[0.5em] hover:bg-white transition-all shadow-2xl active:scale-95 shadow-s-green/20">
+                        Execute Synchronize Protocol
+                    </button>
+                </form>
             </div>
-            <div x-show="orderSuccess" class="text-center py-20">
-                <h3 class="text-2xl font-black text-s-green uppercase mb-4">Transmission Success</h3>
-                <button @click="showOrder = false; orderSuccess = false" class="text-xs text-white underline">Close Console</button>
+
+            <div x-show="submitting" class="text-center py-40">
+                <div class="relative w-32 h-32 mx-auto mb-16">
+                    <div class="absolute inset-0 border-4 border-s-green border-t-transparent rounded-full animate-spin"></div>
+                    <div class="absolute inset-4 border-4 border-s-blue border-b-transparent rounded-full animate-spin-slow"></div>
+                </div>
+                <h4 class="text-2xl font-black italic uppercase text-white mb-4 animate-pulse">Encrypting & Transmitting</h4>
+                <p class="text-[10px] font-bold text-gray-600 uppercase tracking-[0.5em]">Establishing secure link to KOSOK Central Terminal...</p>
+            </div>
+
+            <div x-show="orderSuccess" class="text-center py-20 animate__animated animate__zoomIn">
+                <div class="w-24 h-24 bg-s-green rounded-full flex items-center justify-center mx-auto mb-12 shadow-[0_0_50px_rgba(0,255,163,0.5)]">
+                    <svg class="w-12 h-12 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path></svg>
+                </div>
+                <h3 class="text-4xl md:text-5xl font-black italic text-white uppercase mb-8">Protocol Synchronized</h3>
+                <div class="bg-white/5 p-8 rounded-3xl max-w-md mx-auto mb-12 border border-white/10">
+                    <p class="text-[10px] text-gray-500 uppercase font-black mb-4 tracking-widest">Protocol Reference ID</p>
+                    <p class="text-2xl font-mono text-s-green font-black" x-text="lastOrderId"></p>
+                </div>
+                <p class="text-xs text-gray-500 uppercase font-bold tracking-widest mb-16">Our Compliance Officer will initiate contact via terminal within 4 hours.</p>
+                <button @click="showOrder = false; orderSuccess = false" class="px-16 py-6 border border-white/20 rounded-full font-black uppercase text-[10px] tracking-widest hover:bg-white hover:text-black transition-all">Close Entry Portal</button>
             </div>
         </div>
     </div>
@@ -264,90 +430,150 @@
         function app() {
             return {
                 lang: 'cn',
+                mobileMenu: false,
                 showOrder: false,
                 submitting: false,
                 orderSuccess: false,
-                loading: true,
-                showAdmin: false,
-                uptime: '00:00:00',
-                orders: [],
-                formData: { email: '', name: '', service: 'Foundations (1.5w)' },
+                lastOrderId: '',
+                formData: { 
+                    email: '', 
+                    name: '', 
+                    service: 'Standard Foundations', 
+                    notes: '' 
+                },
                 
-                featuresList: [
-                    { id: 1, title: "VIE Restructure", desc: "重构投资链路，适应 2026 最新外汇与跨境条例。" },
-                    { id: 2, title: "Commander SaaS", desc: "部署实时监控，确保所得税与实质运营痕迹留存。" },
-                    { id: 3, title: "Cashflow Loop", desc: "构建闭环，激活跨境现金流，锁定所得税红利。" },
-                    { id: 4, title: "Yearly Stewardship", desc: "全年度法律合规派驻，无忧应对银行及监管抽查。" }
-                ],
-
+                // 核心园区数据全量版
                 parkList: [
-                    { id: 1, name: "海口江东新区", tag: "HQ Economy", desc: "跨国公司总部基地。" },
-                    { id: 2, name: "洋浦开发区", tag: "Manufacturing", desc: "30% 增值免税核心。" },
-                    { id: 3, name: "复兴城", tag: "Digital Trade", desc: "Web3与数据出口圣地。" },
-                    { id: 4, name: "海口综保区", tag: "E-Commerce", desc: "保税维修与分拨中心。" },
-                    { id: 5, name: "博鳌医疗", tag: "Healthcare", desc: "生物医药特区。" },
-                    { id: 6, name: "崖州湾", tag: "Deep Tech", desc: "科研补贴高地。" },
-                    { id: 7, name: "三亚CBD", tag: "Finance", desc: "离岸金融实战基地。" },
-                    { id: 8, name: "文昌航天", tag: "Aerospace", desc: "特种行业集群。" },
-                    { id: 9, name: "陵水教育", tag: "Education", desc: "国际联合办学中心。" },
-                    { id: 10, name: "东方临港", tag: "Green Energy", desc: "能源储备出口节点。" },
-                    { id: 11, name: "金牌港", tag: "Construction", desc: "绿色装配式建筑。" },
-                    { id: 12, name: "定安塔岭", tag: "Food Process", desc: "全球食品深加工。" },
-                    { id: 13, name: "昌江核电", tag: "Clean Energy", desc: "高耗能制造首选。" }
+                    { id: 1, name: "海口江东新区", tag: "HQ Economy", desc: "封关后跨国公司总部首选地，外资准入最快路径。主打现代服务业与融资租赁。" },
+                    { id: 2, name: "洋浦经济开发区", tag: "Manufacturing", desc: "加工增值30%免关税政策核爆点。适合出口型实体与能源贸易。" },
+                    { id: 3, name: "复兴城互联网园", tag: "Digital Trade", desc: "数字游民圣地，Web3与离岸数据出口核心节点。全岛最早的产业园之一。" },
+                    { id: 4, name: "海口综合保税区", tag: "E-Commerce", desc: "保税加工与跨境电商分拨中心，税收红利极速兑现。支持保税维修业务。" },
+                    { id: 5, name: "博鳌乐城医疗园", tag: "Healthcare", desc: "特许医疗、药物准入政策特区。全球生物医药资产与前沿医疗港。" },
+                    { id: 6, name: "三亚崖州湾科技城", tag: "Deep Tech", desc: "深海、种业研发基地。拥有全岛最高科研补贴与高新企业认定政策。" },
+                    { id: 7, name: "三亚中央商务区", tag: "Finance", desc: "财富管理、游艇产业与离岸金融实战基地。适合高净值家族办公室落地。" },
+                    { id: 8, name: "文昌国际航天城", tag: "Aerospace", desc: "商业航天、卫星遥感应用。海南封关后极具爆发力的特种行业园区。" },
+                    { id: 9, name: "陵水黎安教育城", tag: "Education", desc: "国际教育聚集地。中外合作办学与文化创意产业的避税架构优选。" },
+                    { id: 10, name: "东方临港产业园", tag: "Green Energy", desc: "天然气化工与绿能产业。封关后出口深加工与能源储备的关键节点。" },
+                    { id: 11, name: "临高金牌港园区", tag: "Construction", desc: "新型装配式建筑制造。服务东南亚基建市场，享受出海零关税便利。" },
+                    { id: 12, name: "定安塔岭园区", tag: "Food Process", desc: "特色农产品深加工。利用封关后增值30%政策，打造全球高端食品品牌。" },
+                    { id: 13, name: "昌江核电产业园", tag: "Clean Energy", desc: "高耗能低碳出口制造。全岛电力最稳定节点，适合高科技制造业入驻。" }
                 ],
 
+                // 方案细节
                 pricePlans: [
-                    { title: "Standard Foundations", price: "￥1.5w", unit: "/ Year", features: ["注册代办", "财务托管", "合规报告"], hot: false },
-                    { title: "Growth Real-world", price: "￥4.8w", unit: "/ Year", features: ["面签指导", "实质运营痕迹", "15%备案"], hot: true },
-                    { title: "Ultimate Offshore", price: "Custom", unit: "Quote", features: ["VIE架构设计", "资产安全通道", "长年派驻顾问"], hot: false }
+                    { 
+                        title: "Standard Foundations", price: "￥1.5w", unit: "/ Year", 
+                        features: ["园区工商准入注册", "基础离岸财务托管", "双语公司章程拟定", "实质性办公物理证明", "合规官 KYC 预检报告", "离岸公章受控管理"], 
+                        hot: false 
+                    },
+                    { 
+                        title: "Growth Real-world", price: "￥4.8w", unit: "/ Year", 
+                        features: ["EF 账户跨境面签指导", "实质性运营建档(人员/资产)", "企业所得税 15% 锁定备案", "Commander SaaS 终端部署", "季度合规性内审与维护", "海关 AEO 初级辅导"], 
+                        hot: true 
+                    },
+                    { 
+                        title: "Ultimate Offshore", price: "Custom", unit: "Quote", 
+                        features: ["VIE 跨境架构设计与重组", "资金全球化闭环链路配置", "紧缺人才个税 15% 顶格认定", "长年法律合规顾问派驻", "紧急资产保值退出通道", "家族办公室离岸托管"], 
+                        hot: false 
+                    }
                 ],
 
                 initSystem() {
-                    setTimeout(() => this.loading = false, 1500);
-                    setInterval(() => {
-                        let d = new Date();
-                        this.uptime = d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
-                    }, 1000);
+                    // 初始化 EmailJS
                     emailjs.init("YOUR_PUBLIC_KEY");
+                    console.log("Terminal Sync Completed. Status: 200 OK");
+                    
+                    // 打印系统版本信息
+                    console.table({
+                        System: "Solana Hainan V2 OS",
+                        Version: "2026.3.4",
+                        Compliance_Module: "Active",
+                        Post_Customs_Logic: "Verified"
+                    });
                 },
 
                 async submitOrder() {
                     this.submitting = true;
-                    // Mock Sync
-                    await new Promise(r => setTimeout(r, 2000));
-                    this.orders.push({...this.formData, id: Date.now()});
-                    this.submitting = false;
-                    this.orderSuccess = true;
+                    // 生成符合离岸风格的订单号
+                    const orderId = 'SLN-PROTOCOL-' + Math.random().toString(36).substr(2, 6).toUpperCase();
+                    this.lastOrderId = orderId;
+                    
+                    const payload = {
+                        order_id: orderId,
+                        ...this.formData,
+                        timestamp: new Date().toISOString()
+                    };
+
+                    try {
+                        // 本地持久化
+                        let db = JSON.parse(localStorage.getItem('solana_vault') || '[]');
+                        db.push(payload);
+                        localStorage.setItem('solana_vault', JSON.stringify(db));
+
+                        // 模拟异步加密传输逻辑
+                        await new Promise(resolve => setTimeout(resolve, 3000));
+                        
+                        this.orderSuccess = true;
+                        this.formData = { email: '', name: '', service: 'Standard Foundations', notes: '' };
+                    } catch (e) {
+                        alert("Protocol Sync Error. Local Cache Initialized.");
+                    } finally {
+                        this.submitting = false;
+                    }
                 },
 
+                // 全量翻译字典
                 t: {
                     cn: {
-                        heroBadge: "2026 封关资产交付中心 · 系统就绪",
+                        heroBadge: "2026 封关资产交付中心 · 全岛准入就绪",
                         heroTitle1: "海南封关时代",
-                        heroTitle2: "全球资产避风港",
-                        heroDesc: "海南已于 2025 年 12 月 18 日正式启动全岛封关。在“一线放开、二线管住”的逻辑下，我们协助您合法锁定双 15% 红利。",
+                        heroTitle2: "离岸资产避风港",
+                        heroDesc: "海南已于 2025 年末正式启动全岛封关。在“一线放开、二线管住”的全新监管逻辑下，我们通过 EF 离岸账户与 VIE 架构重组，协助全球高净值客户合法锁定所得税与个税双 15% 顶格红利。",
+                        footerDesc: "2026 封关资产交付中心。我们致力于在全新的封关政策下，为全球高净值客户提供符合实质性运营标准的离岸落地服务。所有架构均由高级法律合规官审核。",
+                        advantages: [
+                            { title: "VIE Restructure", desc: "利用封关政策重构离岸控股，实现 BVI/HK 与海南实体的资本流动闭环。" },
+                            { title: "SaaS Monitor", desc: "独立部署 Commander SaaS，全球远程监控海南实体的税务健康与运营痕迹。" },
+                            { title: "Cashflow Loop", desc: "通过紧缺人才 15% 个税认定与供应链金融，快速激活实体的跨境现金流。" },
+                            { title: "Stewardship", desc: "全年度财税、法律合规托管。确保应对银行 KYC 与园区实质性运营随机抽查。" }
+                        ],
                         sopSteps: [
-                            { title: "实质性运营预审", desc: "审计人员(社保)、财务(流水)、资产(物理)。" },
-                            { title: "EF 账户压力测试", desc: "模拟跨境路径，打通一线放开命门。" },
-                            { title: "VIE 离岸架构重设", desc: "适配 2026 外汇管理与投资条例。" },
-                            { title: "15% 税务合规备案", desc: "确保优惠在申报期准时获批。" }
+                            { title: "实质性运营预审", desc: "审计人员、财务、物理资产，确保符合 2026 最新实质性运营认定标准。" },
+                            { title: "EF 账户压力测试", desc: "模拟多币种跨境收支路径，打通“一线放开”下的自由贸易命门。" },
+                            { title: "园区红利矩阵筛选", desc: "基于 13 大园区的落户门槛与返税速度，匹配最优落户节点。" },
+                            { title: "离岸架构重设", desc: "适配最新的外汇管理与跨境直接投资条例，重设全球控股链路。" },
+                            { title: "双语合规文书拟定", desc: "提供全套国际标准的跨境服务协议、代持协议及架构法律意见书。" },
+                            { title: "所得税 15% 备案", desc: "精准指导行业分类逻辑，确保 15% 优惠在年度申报期准时获批。" }
                         ]
                     },
                     en: {
                         heroBadge: "2026 Post-Customs Delivery Center · Active",
-                        heroTitle1: "The Post-Custom Era",
+                        heroTitle1: "Post-Customs",
                         heroTitle2: "Offshore Asset Hub",
-                        heroDesc: "Hainan officially closed its customs on Dec 18, 2025. We leverage EF-Accounts and VIE structures to secure tax caps.",
+                        heroDesc: "Hainan officially launched full island customs closure in late 2025. Under the 'One-Line Open' logic, we help global clients secure double 15% tax caps via EF-Accounts and VIE restructuring.",
+                        footerDesc: "2026 Post-Customs Delivery Center. Dedicated to providing offshore landing services under substantial operation standards for global entrepreneurs.",
+                        advantages: [
+                            { title: "VIE Restructure", desc: "Restructuring offshore holding via post-customs policies for seamless capital loops." },
+                            { title: "SaaS Monitor", desc: "Deploying Commander SaaS for remote monitoring of fiscal and operational footprints." },
+                            { title: "Cashflow Loop", desc: "Activating cross-border cashflow through talent tax caps and supply chain finance." },
+                            { title: "Stewardship", desc: "Yearly fiscal and legal stewardship ensuring full compliance for banking and audits." }
+                        ],
                         sopSteps: [
-                            { title: "Substantial Audit", desc: "Reviewing personnel, finance, and assets." },
-                            { title: "EF Stress Test", desc: "Simulating capital flow under 'One-Line Open'." },
-                            { title: "VIE Reset", desc: "Updating investment paths to 2026 regulations." },
-                            { title: "15% Tax Filing", desc: "Securing CIT tax reductions." }
+                            { title: "Substantial Audit", desc: "Reviewing personnel, finance, and assets for 2026 regulatory compliance." },
+                            { title: "EF Stress Test", desc: "Simulating capital flow under 'One-Line Open' logic with multi-currency." },
+                            { title: "Park Node Selection", desc: "Comparing the 13 nodes for rebate speed, stability and industry fit." },
+                            { title: "Offshore Reset", desc: "Updating investment paths to 2026 offshore forex and FDI regulations." },
+                            { title: "Legal Drafting", desc: "Standardized bilingual agreements for international cross-border services." },
+                            { title: "15% Corp Tax Filing", desc: "Securing CIT reductions during the annual reporting season accurately." }
                         ]
                     }
                 }
             }
         }
     </script>
+
+    <style>
+        .animate-spin-slow { animation: spin 8s linear infinite; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    </style>
 </body>
 </html>
