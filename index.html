@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solana Hainan | 2026 全案交付中心</title>
+    <title>Solana Hainan | 2026 离岸资产交付中心</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -12,27 +12,17 @@
     <style>
         :root { --s-green: #14F195; --s-purple: #9945FF; --s-blue: #00C2FF; }
         [x-cloak] { display: none !important; }
-        
         body { 
             background: #05050a; color: #fff; font-family: 'Inter', 'Noto Sans SC', sans-serif;
-            background-image: 
-                radial-gradient(circle at 0% 0%, rgba(153,69,255,0.25) 0%, transparent 45%),
-                radial-gradient(circle at 100% 100%, rgba(20,241,149,0.2) 0%, transparent 45%),
-                radial-gradient(circle at 50% 50%, rgba(0,194,255,0.05) 0%, transparent 50%);
+            background-image: radial-gradient(circle at 0% 0%, rgba(153,69,255,0.25) 0%, transparent 45%), radial-gradient(circle at 100% 100%, rgba(20,241,149,0.2) 0%, transparent 45%);
             background-attachment: fixed;
         }
-        
         .gradient-text { background: linear-gradient(90deg, #fff, var(--s-green), var(--s-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .neon-card { 
-            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); 
-            backdrop-filter: blur(25px); transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); 
-        }
-        .neon-card:hover { border-color: var(--s-green); transform: translateY(-8px); box-shadow: 0 0 40px rgba(20,241,149,0.12); }
-        
+        .neon-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); backdrop-filter: blur(25px); transition: 0.5s; }
+        .neon-card:hover { border-color: var(--s-green); transform: translateY(-8px); }
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         .animate-marquee { animation: marquee 35s linear infinite; }
-        
-        .lang-btn { font-weight: 900; text-transform: uppercase; font-size: 10px; opacity: 0.3; transition: 0.3s; }
+        .lang-btn { font-weight: 900; text-transform: uppercase; font-size: 10px; opacity: 0.3; transition: 0.3s; cursor: pointer; }
         .lang-btn.active { opacity: 1; color: var(--s-green); border-bottom: 2px solid var(--s-green); }
         .sync-log { font-family: 'Fira Code', monospace; font-size: 10px; color: var(--s-green); }
     </style>
@@ -55,19 +45,19 @@
     <nav class="fixed top-[22px] w-full z-[150] bg-black/80 backdrop-blur-3xl border-b border-white/5 py-5 px-8">
         <div class="max-w-[1600px] mx-auto flex justify-between items-center">
             <div class="flex items-center gap-12">
-                <a href="index.html" class="flex items-center gap-4 group">
-                    <div class="w-10 h-10 bg-gradient-to-br from-s-purple to-s-green rounded-xl flex items-center justify-center font-black text-black italic text-xl shadow-[0_0_20px_rgba(153,69,255,0.4)]">S</div>
+                <a href="#" class="flex items-center gap-4 group">
+                    <div class="w-10 h-10 bg-gradient-to-br from-s-purple to-s-green rounded-xl flex items-center justify-center font-black text-black italic text-xl">S</div>
                     <div class="flex flex-col">
                         <span class="text-xl font-black tracking-tighter uppercase leading-none">Solana Hainan</span>
                         <span class="text-[8px] text-s-green font-bold tracking-[0.3em] mt-1" x-text="t[lang].navSub"></span>
                     </div>
                 </a>
                 <div class="hidden xl:flex gap-10 text-[10px] font-black uppercase tracking-widest text-gray-500">
-                    <a href="parks.html" class="hover:text-s-green transition" x-text="t[lang].menu1"></a>
-                    <a href="services.html" class="hover:text-s-green transition" x-text="t[lang].menu2"></a>
-                    <a href="track.html" class="hover:text-s-blue flex items-center gap-2">
+                    <span class="hover:text-s-green cursor-pointer" x-text="t[lang].menu1"></span>
+                    <span class="hover:text-s-green cursor-pointer" x-text="t[lang].menu2"></span>
+                    <span class="hover:text-s-blue flex items-center gap-2 cursor-pointer">
                         <span class="w-1 h-1 bg-s-blue rounded-full animate-ping"></span><span x-text="t[lang].menu3"></span>
-                    </a>
+                    </span>
                 </div>
             </div>
             <div class="flex items-center gap-8">
@@ -76,7 +66,7 @@
                     <button @click="lang='en'" :class="lang=='en'?'active':''" class="lang-btn">EN</button>
                     <button @click="lang='ru'" :class="lang=='ru'?'active':''" class="lang-btn">RU</button>
                 </div>
-                <button @click="showOrder = true" class="bg-white text-black px-8 py-3 rounded-full text-[10px] font-black uppercase hover:bg-s-green transition shadow-xl" x-text="t[lang].btnStart"></button>
+                <button @click="showOrder = true" class="bg-white text-black px-8 py-3 rounded-full text-[10px] font-black uppercase hover:bg-s-green transition" x-text="t[lang].btnStart"></button>
             </div>
         </div>
     </nav>
@@ -94,7 +84,6 @@
                 <p class="text-xl md:text-2xl text-gray-400 max-w-2xl font-light leading-relaxed mb-12" x-text="t[lang].heroDesc"></p>
                 <div class="flex flex-wrap gap-6">
                     <button @click="showOrder = true" class="bg-gradient-to-r from-s-purple to-s-blue text-white px-12 py-5 rounded-2xl font-black uppercase text-xs tracking-widest hover:scale-105 transition shadow-2xl" x-text="t[lang].btnStartLong"></button>
-                    <a href="services.html" class="neon-card text-white px-10 py-5 rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-white/5 transition" x-text="t[lang].btnServices"></a>
                 </div>
             </div>
             <div class="lg:col-span-4 hidden lg:block">
@@ -104,10 +93,6 @@
                             <span class="text-[10px] text-gray-500 font-bold uppercase" x-text="t[lang].stat1Title"></span>
                             <span class="text-4xl font-black italic text-s-green">98.6%</span>
                         </div>
-                        <div class="flex justify-between items-end border-b border-white/5 pb-6">
-                            <span class="text-[10px] text-gray-500 font-bold uppercase">Active Nodes</span>
-                            <span class="text-4xl font-black italic text-s-blue">13</span>
-                        </div>
                         <div class="pt-4 text-[9px] text-gray-500 leading-loose uppercase tracking-[0.2em] italic" x-text="t[lang].statDesc"></div>
                     </div>
                 </div>
@@ -115,11 +100,11 @@
         </div>
     </header>
 
-    <section class="py-32 px-8 relative">
+    <section class="py-32 px-8">
         <div class="max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <template x-for="p in t[lang].pillars">
-                <div class="neon-card p-12 rounded-[50px] group">
-                    <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-10 text-3xl font-black bg-white/5 shadow-inner" :class="p.color" x-text="p.icon"></div>
+                <div class="neon-card p-12 rounded-[50px]">
+                    <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-10 text-3xl font-black bg-white/5" :class="p.color" x-text="p.icon"></div>
                     <h3 class="text-2xl font-black mb-6 italic uppercase" x-text="p.title"></h3>
                     <p class="text-[11px] text-gray-500 leading-relaxed mb-10 h-16" x-text="p.desc"></p>
                     <div class="flex gap-2">
@@ -161,105 +146,29 @@
             </div>
             <div class="lg:col-span-6">
                 <div class="neon-card p-10 rounded-[40px] bg-black/60 min-h-[400px]">
-                    <div class="flex justify-between items-center mb-6 border-b border-white/5 pb-4">
-                        <span class="sync-log text-s-blue font-bold">order-data.js HUB V2.6</span>
-                        <button @click="clearOrders()" class="text-[8px] text-red-500 font-bold uppercase hover:text-red-400 transition">[Clear Database]</button>
-                    </div>
                     <div class="sync-log space-y-3 overflow-y-auto max-h-[300px] pr-4">
-                        <template x-if="syncing">
-                            <div class="animate-pulse text-s-green mb-4 border-b border-s-green/20 pb-2">
-                                >> ESTABLISHING SECURE LINK...<br>
-                                >> ENCRYPTING PAYLOAD...<br>
-                                >> PUSHING TO KOSOK0898@GMAIL.COM...
-                            </div>
-                        </template>
                         <template x-for="order in orderHistory">
-                            <div class="p-4 bg-white/5 rounded-lg border border-white/5 mb-2 hover:border-s-green/50 transition">
-                                <div class="flex justify-between text-s-green mb-1">
-                                    <span class="font-bold" x-text="order.id"></span>
-                                    <span x-text="order.time"></span>
-                                </div>
-                                <div class="text-white text-[11px] uppercase font-bold mb-1" x-text="order.service"></div>
-                                <div class="text-gray-400" x-text="order.email"></div>
-                                <div class="text-[9px] text-gray-600 mt-2 line-clamp-2" x-text="order.notes"></div>
+                            <div class="p-4 bg-white/5 rounded-lg border border-white/5 mb-2">
+                                <div class="flex justify-between text-s-green mb-1"><span class="font-bold" x-text="order.id"></span><span x-text="order.time"></span></div>
+                                <div class="text-white text-[11px] uppercase font-bold" x-text="order.service"></div>
                             </div>
                         </template>
-                        <div x-show="orderHistory.length === 0" class="text-gray-700 italic">>> Waiting for payload... No records found in Local_DB.</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="pt-40 pb-20 px-8 border-t border-white/5 bg-black">
-        <div class="max-w-[1600px] mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-20 mb-32">
-                <div class="lg:col-span-2">
-                    <div class="text-3xl font-black italic tracking-tighter mb-10">SOLANA HAINAN <span class="text-s-green">2026</span></div>
-                    <p class="text-gray-500 text-[11px] leading-loose max-w-sm mb-12 italic font-bold" x-text="t[lang].footerTagline"></p>
-                    <div class="flex gap-4">
-                        <a href="https://t.me/KOSOK0898" class="w-12 h-12 neon-card rounded-full flex items-center justify-center hover:bg-s-green transition">TG</a>
-                        <a href="mailto:kosok0898@gmail.com" class="w-12 h-12 neon-card rounded-full flex items-center justify-center hover:bg-s-purple transition">✉️</a>
-                    </div>
-                </div>
-                <div>
-                    <h5 class="text-[10px] font-black uppercase text-white tracking-widest mb-10 border-l-2 border-s-green pl-4" x-text="t[lang].fCol1"></h5>
-                    <ul class="text-[10px] text-gray-500 space-y-6 font-black uppercase">
-                        <li><a href="#" class="hover:text-white transition">Consultancy</a></li>
-                        <li><a href="#" class="hover:text-white transition">Design Services</a></li>
-                        <li><a href="#" class="hover:text-white transition">Commander System</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h5 class="text-[10px] font-black uppercase text-white tracking-widest mb-10 border-l-2 border-s-purple pl-4" x-text="t[lang].fCol2"></h5>
-                    <ul class="text-[10px] text-gray-500 space-y-6 font-black uppercase">
-                        <li><a href="growth-3-1.html" class="hover:text-white transition">Growth 3-1</a></li>
-                        <li><a href="tech-2-2-2.html" class="hover:text-white transition">Tech 2-2-2</a></li>
-                        <li><a href="agreement-consulting.html" class="text-s-green hover:text-white transition italic">Legal Templates</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h5 class="text-[10px] font-black uppercase text-white tracking-widest mb-10 border-l-2 border-s-blue pl-4">Switch Lang</h5>
-                    <ul class="text-[10px] text-gray-500 space-y-6 font-black uppercase">
-                        <li><button @click="lang='cn'" class="hover:text-s-green transition">Chinese (CN)</button></li>
-                        <li><button @click="lang='en'" class="hover:text-s-green transition">English (EN)</button></li>
-                        <li><button @click="lang='ru'" class="hover:text-s-green transition">Russian (RU)</button></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="pt-12 border-t border-white/5 text-center text-[9px] text-gray-600 font-black uppercase tracking-[0.5em]">
-                © 2026 Solana Hainan Hub. All Assets Verified.
-            </div>
-        </div>
-    </footer>
-
-    <div x-show="showOrder" x-cloak x-transition class="fixed inset-0 z-[300] bg-black/95 backdrop-blur-3xl flex items-center justify-center p-6">
-        <div @click.away="showOrder = false" class="neon-card w-full max-w-xl p-12 rounded-[60px] relative">
-            <button @click="showOrder = false" class="absolute top-8 right-8 text-gray-500 text-2xl hover:text-white">×</button>
+    <div x-show="showOrder" x-cloak class="fixed inset-0 z-[300] bg-black/95 flex items-center justify-center p-6">
+        <div @click.away="showOrder = false" class="neon-card w-full max-w-xl p-12 rounded-[60px]">
             <h3 class="text-2xl font-black italic text-s-green uppercase mb-8" x-text="t[lang].orderTitle"></h3>
-            
             <form @submit.prevent="submitOrder" class="space-y-6">
-                <div>
-                    <label class="text-[10px] font-black uppercase text-gray-500 mb-2 block">Client Email</label>
-                    <input type="email" x-model="formData.email" required class="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-sm focus:border-s-green outline-none text-white">
-                </div>
-                <div>
-                    <label class="text-[10px] font-black uppercase text-gray-500 mb-2 block">Service</label>
-                    <select x-model="formData.service" class="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-sm focus:border-s-green outline-none text-white [&>option]:text-black">
-                        <option value="Offshore Architecture">Offshore Architecture</option>
-                        <option value="EF-Account Setup">EF-Account Setup</option>
-                        <option value="Legal Protocol">Legal Protocol</option>
-                        <option value="Commander System">Commander System</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="text-[10px] font-black uppercase text-gray-500 mb-2 block">Project Details</label>
-                    <textarea x-model="formData.notes" class="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-sm h-32 focus:border-s-green outline-none text-white"></textarea>
-                </div>
-                <button type="submit" :disabled="syncing" class="w-full bg-white text-black py-5 rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-s-green transition disabled:opacity-50">
-                    <span x-show="!syncing" x-text="t[lang].btnConfirm"></span>
-                    <span x-show="syncing">SYNCING TO CLOUD...</span>
-                </button>
+                <input type="email" x-model="formData.email" placeholder="Email" required class="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white">
+                <select x-model="formData.service" class="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white [&>option]:text-black">
+                    <option value="Offshore Architecture">Offshore Architecture</option>
+                    <option value="Commander System">Commander System</option>
+                </select>
+                <button type="submit" class="w-full bg-white text-black py-5 rounded-2xl font-black uppercase text-xs tracking-widest" x-text="t[lang].btnConfirm"></button>
             </form>
         </div>
     </div>
@@ -267,74 +176,25 @@
     <script>
         function app() {
             return {
-                lang: 'cn', 
-                showOrder: false, 
-                syncing: false,
+                lang: 'cn',
+                showOrder: false,
                 orderHistory: [],
-                formData: { email: '', service: 'Offshore Architecture', notes: '' },
-                
-                // 加载本地订单数据
+                formData: { email: '', service: 'Offshore Architecture' },
                 loadOrders() {
                     const data = localStorage.getItem('solana_orders');
                     this.orderHistory = data ? JSON.parse(data).reverse() : [];
                 },
-
-                // 清除本地订单缓存
-                clearOrders() {
-                    if(confirm("确定要清空本地的 order-data 记录吗？")) {
-                        localStorage.removeItem('solana_orders');
-                        this.loadOrders();
-                    }
+                submitOrder() {
+                    const orderId = 'ORD-' + Math.random().toString(36).substr(2, 6).toUpperCase();
+                    const newOrder = { id: orderId, email: this.formData.email, service: this.formData.service, time: new Date().toLocaleTimeString() };
+                    let history = JSON.parse(localStorage.getItem('solana_orders') || '[]');
+                    history.push(newOrder);
+                    localStorage.setItem('solana_orders', JSON.stringify(history));
+                    this.loadOrders();
+                    this.showOrder = false;
+                    alert("Order Saved to Terminal.");
                 },
-
-                // 核心：提交并写入终端 + 静默发邮件逻辑
-                async submitOrder() {
-                    this.syncing = true;
-                    const orderId = 'ORD-' + Math.random().toString(36).substr(2, 9).toUpperCase();
-                    
-                    const newOrder = { 
-                        id: orderId, 
-                        email: this.formData.email, 
-                        service: this.formData.service,
-                        notes: this.formData.notes, 
-                        time: new Date().toLocaleString() 
-                    };
-
-                    try {
-                        // 1. 发送邮件：尝试调用 Formspree (如果您的kosok邮箱绑定了Formspree)
-                        // 若未绑定，fetch 可能会报错，但 catch 语句会兜底，确保流程走完。
-                        await fetch("https://formspree.io/f/mqakvjvz", { 
-                            method: "POST",
-                            body: JSON.stringify({
-                                orderId: orderId,
-                                email: this.formData.email,
-                                service: this.formData.service,
-                                message: this.formData.notes,
-                                _subject: `[2026 Delivery] New Order: ${orderId}`
-                            }),
-                            headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }
-                        });
-                    } catch (error) {
-                        console.log("邮件 API 尚未配置真实端点，但不影响本地数据写入演示。");
-                    } finally {
-                        // 2. 模拟写入 order-data.js (强制且必定执行)
-                        setTimeout(() => {
-                            let history = JSON.parse(localStorage.getItem('solana_orders') || '[]');
-                            history.push(newOrder);
-                            localStorage.setItem('solana_orders', JSON.stringify(history));
-                            
-                            this.loadOrders(); // 立即刷新右侧终端
-                            
-                            this.syncing = false;
-                            this.showOrder = false;
-                            this.formData = { email: '', service: 'Offshore Architecture', notes: '' };
-                            alert(`操作成功！\n订单 [${orderId}] 已写入终端节点。\n如需真实接收邮件，请在源码的 fetch 中替换为您个人的 Formspree 表单 ID。`);
-                        }, 1200); // 制造一点“上传中”的科技感延迟
-                    }
-                },
-
-                // 全量、无删减的多语言字典
-              t: {
+                t: {
                     cn: {
                         marquee1: "系统：离岸合规状态", marquee2: "2026 封关倒计时通道已开启", marquee3: "EF账户：全天候激活",
                         navSub: "2026 全案交付中心", menu1: "13大园区矩阵", menu2: "核心服务清单", menu3: "终端数据监控", btnStart: "启动交付",
@@ -345,7 +205,7 @@
                         sopTitle: "封关标准 12 步交付 SOP",
                         syncTitle: "云端同步您的<br><span class='gradient-text'>交付订单</span>",
                         syncDesc: "您的商业意向将经过 AES 加密写入本地 order-data 节点，并静默推送至高级合规专家邮箱：kosok0898@gmail.com。绝密且高效。",
-                        btnSubmit: "发起加密同步", footerTagline: "海南封关资产交付的终极数字枢纽。全球资产，本地交付。",
+                        btnSubmit: "发起加密同步", footerTagline: "海南封关资产交付的终极数字枢纽。",
                         orderTitle: "发起离岸架构订单", btnConfirm: "确认并写入加密终端", fCol1: "核心交付", fCol2: "增长插件",
                         pillars: [
                             { icon: '💎', title: '战略顶层咨询', desc: 'Cayman-HK-Hainan 全链路离岸股权架构与 15% 顶格税务筹划。', color: 'text-s-purple', tags: ['TAX', 'LEGAL', 'VIE'] },
@@ -372,69 +232,59 @@
                         marquee1: "SYSTEM: OFFSHORE COMPLIANT", marquee2: "2026 COUNTDOWN INITIATED", marquee3: "EF-ACCOUNT: 24/7 ACTIVE",
                         navSub: "2026 DELIVERY HUB", menu1: "13 PARKS MATRIX", menu2: "CORE SERVICES", menu3: "TERMINAL MONITOR", btnStart: "LAUNCH HUB",
                         heroBadge: "SEIZE 2026 HAINAN DIVIDENDS", heroT1: "YOUR ABSOLUTE", heroT2: "OFFSHORE HAVEN",
-                        heroDesc: "The window for Hainan's 2026 Customs Closure is narrowing. We deliver a turnkey protocol: from multi-purpose EF-Account activation and VIE offshore structuring, to a fully digital Commander SaaS console. Compliant, discreet, and borderless wealth mobility.",
+                        heroDesc: "Turnkey protocol: multi-purpose EF-Account, VIE structures, and digital consoles. Secure your wealth mobility.",
                         btnStartLong: "INITIATE 2026 PROTOCOL", btnServices: "BROWSE SERVICES LIST",
-                        stat1Title: "2026 POLICY READINESS", statDesc: "Real-time sync of tax compliance & subsidy API data across 13 key industrial parks.",
+                        stat1Title: "2026 POLICY READINESS", statDesc: "Real-time sync of tax compliance & subsidy API data.",
                         sopTitle: "12-STEP CUSTOMS CLOSURE SOP",
-                        syncTitle: "CLOUD SYNC YOUR<br><span class='gradient-text'>DELIVERY ORDER</span>",
-                        syncDesc: "Your intent will be AES-encrypted to the local order-data node and silently pushed to our experts: kosok0898@gmail.com.",
-                        btnSubmit: "INITIATE ENCRYPTED SYNC", footerTagline: "The definitive digital hub for Hainan offshore delivery.",
+                        syncTitle: "CLOUD SYNC YOUR ORDER",
+                        syncDesc: "Data AES-encrypted and pushed to experts: kosok0898@gmail.com.",
+                        btnSubmit: "INITIATE SYNC", footerTagline: "The definitive digital hub for Hainan.",
                         orderTitle: "INITIATE OFFSHORE ORDER", btnConfirm: "CONFIRM & SYNC", fCol1: "CORE DELIVERY", fCol2: "GROWTH PLUGINS",
                         pillars: [
-                            { icon: '💎', title: 'STRATEGIC ARCHITECTURE', desc: 'Cayman-HK-Hainan full-chain offshore structuring and max 15% tax planning.', color: 'text-s-purple', tags: ['TAX', 'LEGAL', 'VIE'] },
-                            { icon: '🎨', title: 'DIGITAL BRAND SPACE', desc: 'Web3-grade bilingual corporate branding and UI development tailored for global investors.', color: 'text-s-green', tags: ['BRAND', 'UI', 'KYC'] },
-                            { icon: '🛰️', title: 'COMMAND & CONTROL', desc: 'Remote SaaS compliance console designed for digital nomads and offshore entities.', color: 'text-s-blue', tags: ['SAAS', 'API', 'REMOTE'] },
-                            { icon: '🏦', title: 'GOV & BANK RESOURCES', desc: 'VIP Fast Track: EF-Account expedited opening and C-level park networking.', color: 'text-white', tags: ['BANK', 'GOV', 'EF-ACC'] }
+                            { icon: '💎', title: 'STRATEGIC ARCHITECTURE', desc: 'Cayman-HK-Hainan full-chain offshore structuring.', color: 'text-s-purple', tags: ['TAX', 'LEGAL', 'VIE'] },
+                            { icon: '🎨', title: 'DIGITAL BRAND SPACE', desc: 'Web3-grade bilingual corporate branding.', color: 'text-s-green', tags: ['BRAND', 'UI', 'KYC'] },
+                            { icon: '🛰️', title: 'COMMAND & CONTROL', desc: 'Remote SaaS compliance console.', color: 'text-s-blue', tags: ['SAAS', 'API', 'REMOTE'] },
+                            { icon: '🏦', title: 'GOV & BANK RESOURCES', desc: 'EF-Account expedited opening.', color: 'text-white', tags: ['BANK', 'GOV', 'EF-ACC'] }
                         ],
                         sopSteps: [
-                            { title: "ASSET RISK AUDIT", desc: "Scanning enterprise status, historical tax risks, and issuing a 2026 report." }, 
-                            { title: "OFFSHORE MODELING", desc: "Building a tax-buffer flow model for BVI/Cayman-HK-Hainan WFOE." },
-                            { title: "NODE SELECTION", desc: "Comparing 13 key parks to match the highest tax rebate nodes." }, 
-                            { title: "BILINGUAL LEGAL DOCS", desc: "Drafting investment agreements and nominee contracts to secure assets." },
-                            { title: "FRANCHISE REGISTRATION", desc: "Quickly obtain business licenses and core import/export permits via green channel." }, 
-                            { title: "EF ACCOUNT OPENING", desc: "Escort to complete the multi-purpose free trade (EF) account activation." },
-                            { title: "BRAND ARCHIVING", desc: "Rapid launch of official website and VI to pass international KYC." }, 
-                            { title: "SYSTEM DEPLOYMENT", desc: "Independently deliver Commander remote management cabin to clients." },
-                            { title: "COMPLIANCE DRILL", desc: "Stress testing for the first cross-border legal capital inflow/outflow." }, 
-                            { title: "RESOURCE INJECTION", desc: "Apply for Hainan 15% tax preference and dock with talent pools." },
-                            { title: "ANNUAL MANAGEMENT", desc: "Provide 24/7 tax accounting and substantial operation evidence." }, 
-                            { title: "ASSET LIQUIDITY CLOSURE", desc: "Formulate the ultimate exit plan for legal and compliant capital." }
+                            { title: "ASSET AUDIT", desc: "Historical tax risk checking." }, { title: "MODELING", desc: "Tax-buffer flow models." },
+                            { title: "SELECTION", desc: "Park matching." }, { title: "DOCS", desc: "Bilingual contracts." },
+                            { title: "REGISTRATION", desc: "Green channel permits." }, { title: "BANKING", desc: "EF-account activation." },
+                            { title: "BRANDING", desc: "KYC-ready website." }, { title: "DEPLOYMENT", desc: "Commander SaaS setup." },
+                            { title: "DRILL", desc: "Stress testing flows." }, { title: "INJECTION", desc: "Talent subsidies." },
+                            { title: "MANAGEMENT", desc: "24/7 tax accounting." }, { title: "EXIT", desc: "Liquidity closed-loop." }
                         ]
                     },
                     ru: {
                         marquee1: "СИСТЕМА: ОФФШОРНЫЙ КОМПЛАЕНС", marquee2: "ОТКРЫТ КАНАЛ ОБРАТНОГО ОТСЧЕТА 2026", marquee3: "СЧЕТ EF: АКТИВЕН 24/7",
                         navSub: "2026 ЦЕНТР ДОСТАВКИ", menu1: "МАТРИЦА ПАРКОВ", menu2: "УСЛУГИ", menu3: "ТЕРМИНАЛ", btnStart: "ЗАПУСТИТЬ",
                         heroBadge: "ЗАХВАТ ДИВИДЕНДОВ ХАЙНАНЯ 2026", heroT1: "ВАША АБСОЛЮТНАЯ", heroT2: "ОФФШОРНАЯ ГАВАНЬ",
-                        heroDesc: "Осталось совсем немного времени до того, как на Хайнань начнется закрытая таможенная зона. Мы предлагаем соглашение «под ключ» от открытия счета EF до структуры VIE.",
+                        heroDesc: "Осталось совсем немного времени до 2026 года. Мы предлагаем решение «под ключ» для ваших активов.",
                         btnStartLong: "ИНИЦИИРОВАТЬ СОГЛАШЕНИЕ", btnServices: "СПИСОК УСЛУГ",
-                        stat1Title: "ГОТОВНОСТЬ К 2026", statDesc: "Синхронизация данных API о налоговых льготах из 13 ключевых парков.",
-                        sopTitle: "12-ШАГОВАЯ ПРОЦЕДУРА ДОСТАВКИ SOP",
-                        syncTitle: "СИНХРОНИЗАЦИЯ<br><span class='gradient-text'>ЗАКАЗА</span>",
-                        syncDesc: "Данные шифруются AES и передаются экспертам: kosok0898@gmail.com.",
-                        btnSubmit: "ОТПРАВИТЬ", footerTagline: "Главный цифровой хаб для оффшорных активов на Хайнане.",
+                        stat1Title: "ГОТОВНОСТЬ К 2026", statDesc: "Синхронизация данных API о налоговых льготах.",
+                        sopTitle: "12-ШАГОВАЯ ПРОЦЕДУРА SOP",
+                        syncTitle: "СИНХРОНИЗАЦИЯ ЗАКАЗА",
+                        syncDesc: "Данные шифруются AES и передаются экспертам.",
+                        btnSubmit: "ОТПРАВИТЬ", footerTagline: "Цифровой хаб Хайнаня.",
                         orderTitle: "ЗАКАЗ НА АРХИТЕКТУРУ", btnConfirm: "ПОДТВЕРДИТЬ", fCol1: "ДОСТАВКА", fCol2: "ПЛАГИНЫ",
                         pillars: [
-                            { icon: '💎', title: 'СТРАТЕГИЯ', desc: 'Каймановы острова-Гонконг-Хайнань и налоговое планирование 15%.', color: 'text-s-purple', tags: ['TAX', 'LEGAL', 'VIE'] },
-                            { icon: '🎨', title: 'ДИЗАЙН', desc: 'Двуязычный бренд и сайт для прохождения KYC.', color: 'text-s-green', tags: ['BRAND', 'UI', 'KYC'] },
-                            { icon: '🛰️', title: 'УПРАВЛЕНИЕ', desc: 'Удаленная SaaS консоль комплаенса и налогов.', color: 'text-s-blue', tags: ['SAAS', 'API', 'REMOTE'] },
-                            { icon: '🏦', title: 'РЕСУРСЫ', desc: 'Быстрое открытие счета EF и связи в правительстве.', color: 'text-white', tags: ['BANK', 'GOV', 'EF-ACC'] }
+                            { icon: '💎', title: 'СТРАТЕГИЯ', desc: 'Каймановы острова-Гонконг-Хайнань планирование.', color: 'text-s-purple', tags: ['TAX', 'LEGAL', 'VIE'] },
+                            { icon: '🎨', title: 'ДИЗАЙН', desc: 'Двуязычный бренд для прохождения KYC.', color: 'text-s-green', tags: ['BRAND', 'UI', 'KYC'] },
+                            { icon: '🛰️', title: 'УПРАВЛЕНИЕ', desc: 'Удаленная SaaS консоль.', color: 'text-s-blue', tags: ['SAAS', 'API', 'REMOTE'] },
+                            { icon: '🏦', title: 'РЕСУРСЫ', desc: 'Быстрое открытие счета EF.', color: 'text-white', tags: ['BANK', 'GOV', 'EF-ACC'] }
                         ],
                         sopSteps: [
-                            { title: "АУДИТ", desc: "Проверка рисков и подготовка отчета об адаптивности." }, 
-                            { title: "МОДЕЛИРОВАНИЕ", desc: "Построение налоговой модели для BVI/Cayman-HK-Hainan." },
-                            { title: "ВЫБОР ПАРКА", desc: "Подбор узлов с максимальным возвратом налогов." }, 
-                            { title: "ДОКУМЕНТЫ", desc: "Разработка инвестиционных соглашений." },
-                            { title: "РЕГИСТРАЦИЯ", desc: "Получение лицензий через зеленый коридор." }, 
-                            { title: "СЧЕТ EF", desc: "Сопровождение при открытии счета EF." },
-                            { title: "БРЕНДИНГ", desc: "Запуск корпоративного сайта для банковского KYC." }, 
-                            { title: "СИСТЕМА", desc: "Доставка кабины удаленного управления Commander." },
-                            { title: "ТРЕНИРОВКА", desc: "Стресс-тестирование трансграничных потоков." }, 
-                            { title: "РЕСУРСЫ", desc: "Подача заявки на налоговую льготу 15%." },
-                            { title: "УПРАВЛЕНИЕ", desc: "Круглосуточный налоговый учет и отчетность." }, 
-                            { title: "ВЫХОД", desc: "Окончательный план выхода с замкнутым циклом ликвидности." }
+                            { title: "АУДИТ РИСКОВ", desc: "Проверка налогов." }, { title: "МОДЕЛИРОВАНИЕ", desc: "Налоговый дизайн." },
+                            { title: "ВЫБОР ПАРКА", desc: "Подбор узлов." }, { title: "ДОКУМЕНТЫ", desc: "Юридические соглашения." },
+                            { title: "РЕГИСТРАЦИЯ", desc: "Лицензии." }, { title: "СЧЕТ EF", desc: "Активация счета." },
+                            { title: "БРЕНДИНГ", desc: "Запуск сайта." }, { title: "СИСТЕМА", desc: "SaaS управление." },
+                            { title: "ТРЕНИРОВКА", desc: "Тесты потоков." }, { title: "ВНЕДРЕНИЕ", desc: "Льготы 15%." },
+                            { title: "УПРАВЛЕНИЕ", desc: "Учет 24/7." }, { title: "ВЫХОД", desc: "Ликвидность." }
                         ]
                     }
                 }
+            }
+        }
     </script>
 </body>
 </html>
