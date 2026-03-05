@@ -1,244 +1,489 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>海南省索拉纳商务咨询中心 | Solana Hainan Business Center</title>
-    
+    <title>Solana Hainan | 2026 离岸资产指挥部</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Noto+Sans+SC:wght@400;700;900&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --sol-purple: #9945FF; --sol-green: #14F195; --sol-blue: #00C2FF; }
-        body { font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif; background-color: #000; color: #fff; }
-        .solana-gradient { background: linear-gradient(135deg, var(--sol-purple) 0%, var(--sol-blue) 50%, var(--sol-green) 100%); }
-        .text-gradient { background: linear-gradient(135deg, var(--sol-purple), var(--sol-green)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .nav-link { transition: all 0.3s ease; border-bottom: 2px solid transparent; }
-        .nav-link:hover { color: var(--sol-green); border-bottom: 2px solid var(--sol-green); }
-        .glass-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .sop-step:hover .step-num { transform: scale(1.2) rotate(10deg); color: var(--sol-green); }
+        :root { --solana-green: #14F195; --solana-purple: #9945FF; }
+        body { background: #010101; color: #f3f4f6; font-family: 'Outfit', sans-serif; }
+        
+        /* 极致美学与交互 */
+        .glass { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .glass-panel { background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(40px); border: 1px solid rgba(20, 241, 149, 0.2); box-shadow: 0 40px 100px rgba(0,0,0,0.8); }
+        .gradient-text { background: linear-gradient(135deg, var(--solana-green), var(--solana-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .btn-glow { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .btn-glow:hover { box-shadow: 0 0 30px rgba(20, 241, 149, 0.4); transform: translateY(-3px); }
+        
+        /* 修复文字重叠与排版 */
+        .hero-title { line-height: 1.15; letter-spacing: -0.02em; font-size: clamp(2.5rem, 5vw, 5.5rem); }
+        
+        /* 隐藏滚动条 */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        [x-cloak] { display: none !important; }
+
+        /* 表格行动画 */
+        .row-hover { transition: all 0.3s ease; }
+        .row-hover:hover { background: rgba(20, 241, 149, 0.03); border-left: 3px solid var(--solana-green); }
+
+        /* 顶部滚动播报动画 */
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        .animate-marquee { display: inline-block; white-space: nowrap; animation: marquee 30s linear infinite; }
+        .marquee-container:hover .animate-marquee { animation-play-state: paused; }
     </style>
 </head>
-<body x-data="siteCore()">
+<body x-data="appData()" class="antialiased overflow-x-hidden no-scrollbar" :class="{'overflow-hidden': isTaxOpen || isOrderOpen || isChatOpenMobile}">
 
-    <div class="border-b border-white/10 bg-black/50 backdrop-blur-md sticky top-0 z-[1000]">
-        <div class="max-w-[1600px] mx-auto px-6 h-20 flex justify-between items-center">
+    <div class="fixed top-0 w-full h-8 bg-[#14F195] text-black z-[110] flex items-center overflow-hidden marquee-container shadow-[0_0_15px_rgba(20,241,149,0.3)]">
+        <div class="animate-marquee text-[11px] font-black uppercase tracking-widest flex items-center gap-12">
+            <span>🔥 2025.12.18 海南自贸港已正式封关运行</span>
+            <span>⚡️ 15% 企业与个人所得税双重红利全面生效</span>
+            <span>🌐 离岸 EF 电子围栏账户开立通道开启</span>
+            <span>💎 RWA 实体资产代币化沙盒试点运行中</span>
+            <span>🚀 抢占 2026 封关元年核心资产高地！</span>
+            <span>🔥 2025.12.18 海南自贸港已正式封关运行</span>
+            <span>⚡️ 15% 企业与个人所得税双重红利全面生效</span>
+        </div>
+    </div>
+
+    <nav class="fixed w-full z-[100] glass h-20 flex items-center px-6 md:px-12 border-b border-white/5 transition-all duration-300 top-8" :class="{ 'bg-black/90': scrolled }">
+        <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
+            <div class="flex items-center gap-3 cursor-pointer" @click="window.scrollTo({top: 0, behavior: 'smooth'})">
+                <div class="w-10 h-10 bg-gradient-to-tr from-[#14F195] to-[#9945FF] rounded-xl flex items-center justify-center font-black text-black text-xl shadow-lg">S</div>
+                <div class="leading-none hidden md:block">
+                    <span class="text-xl font-black block tracking-tighter uppercase italic">Solana <span class="text-gray-500 font-light italic">Hainan</span></span>
+                    <span class="text-[8px] text-[#14F195] uppercase tracking-[0.4em] font-mono">2026 Era Operational</span>
+                </div>
+            </div>
             
-            <div class="flex items-center gap-4 cursor-pointer" @click="view = 'home'">
-                <div class="w-10 h-10 solana-gradient rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(153,69,255,0.4)]">
-                    <img src="https://solana.com/favicon.ico" class="w-6 h-6 brightness-0 invert" alt="Logo">
+            <div class="hidden lg:flex items-center gap-8 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">
+                <a href="#command-center" class="hover:text-[#14F195] transition">指挥部 Command</a>
+                <a href="#pricing" class="hover:text-[#14F195] transition">业务下单 Order</a>
+                <a href="#sop" class="hover:text-[#14F195] transition">交付体系 SOP</a>
+                <a href="#trust" class="hover:text-purple-400 transition">公司资信 Trust</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <div class="hidden sm:flex items-center gap-4 mr-4 pr-4 border-r border-white/10 text-[10px] font-bold tracking-widest text-gray-500">
+                    <button class="hover:text-white transition">登录 LOGIN</button>
+                    <button class="bg-[#14F195]/10 text-[#14F195] border border-[#14F195]/30 px-4 py-1.5 rounded-full hover:bg-[#14F195]/20 transition">注册 JOIN</button>
                 </div>
-                <div class="flex flex-col">
-                    <h1 class="text-lg font-black tracking-tighter leading-none">海南省索拉纳商务咨询中心</h1>
-                    <p class="text-[9px] font-bold text-slate-500 uppercase tracking-widest mt-1">Hainan Solana Business Center</p>
+                <button @click="toggleLang()" class="px-3 py-1.5 border border-white/10 rounded-md text-[9px] font-bold hover:bg-white/10 transition">
+                    <span x-text="lang === 'cn' ? 'EN' : '中'"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="pt-48 pb-24 px-6 relative text-center min-h-screen flex flex-col justify-center overflow-hidden mt-8">
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-[#14F195]/5 rounded-[100%] blur-[150px] -z-10"></div>
+        
+        <div class="mb-10 inline-flex flex-col items-center z-10">
+            <div class="flex items-center gap-2 px-5 py-2 rounded-full bg-black/50 border border-[#14F195]/30 text-[10px] text-[#14F195] uppercase tracking-[0.3em] font-black mb-6 shadow-[0_0_15px_rgba(20,241,149,0.2)]">
+                <span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#14F195] opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-[#14F195]"></span></span>
+                <span x-text="lang === 'cn' ? '抢占封关元年红利倒计时 (至2026.12.18)' : 'Year-1 Dividend Countdown'"></span>
+            </div>
+            <div class="flex gap-4 md:gap-8 items-end">
+                <template x-for="item in ['d', 'h', 'm', 's']" :key="item">
+                    <div class="flex flex-col items-center">
+                        <span class="text-5xl md:text-8xl font-black text-white tracking-tighter italic drop-shadow-2xl font-mono" x-text="countdown[item]"></span>
+                        <span class="text-[9px] text-gray-500 uppercase tracking-widest mt-2" x-text="item === 'd' ? 'Days' : (item==='h'?'Hours':(item==='m'?'Min':'Sec'))"></span>
+                    </div>
+                </template>
+            </div>
+        </div>
+
+        <div class="max-w-6xl mx-auto z-10">
+            <h1 class="hero-title font-black mb-8">
+                <span x-show="lang === 'cn'">全球视野 <span class="gradient-text">封关定局</span></span>
+                <span x-show="lang === 'en'" x-cloak>GLOBAL VISION <span class="gradient-text">DEFINED 2026</span></span>
+            </h1>
+            
+            <p class="text-gray-300 text-lg md:text-xl mb-12 max-w-4xl mx-auto font-light leading-relaxed">
+                <span x-text="lang === 'cn' ? '为您构建从公司落地到 RWA 资产上链的全生命周期解决方案。深度锁定 ' : 'Architecting your offshore gateway. Deeply securing '"></span>
+                <strong class="text-[#14F195] font-bold" x-text="lang === 'cn' ? '15% 企业与个人所得税双重政策红利' : '15% Double Tax Incentives'"></strong>
+                <span x-text="lang === 'cn' ? '，在境内关外时代抢占资产高地。' : ' for corporate and personal income in the post-customs era.'"></span>
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <button @click="isTaxOpen = true" class="bg-[#14F195] text-black px-12 py-5 rounded-2xl font-black text-xs uppercase tracking-[0.1em] btn-glow transition-all flex items-center justify-center gap-2 shadow-[0_0_30px_rgba(20,241,149,0.2)]">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                    <span x-text="lang === 'cn' ? 'AI 节税红利测算' : 'Run Tax AI'"></span>
+                </button>
+                <a href="#pricing" class="glass text-white px-12 py-5 rounded-2xl font-black text-xs uppercase tracking-[0.1em] hover:bg-white/10 transition-all flex items-center justify-center gap-2">
+                    <span x-text="lang === 'cn' ? '直接下单业务' : 'Order Service'"></span> →
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section id="command-center" class="py-24 px-6 bg-white/[0.01] border-y border-white/5 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                <div>
+                    <div class="text-[#14F195] font-mono text-xs mb-3 tracking-[0.4em] uppercase">Operations Hub</div>
+                    <h2 class="text-4xl font-black mb-4 uppercase italic">业务指挥部</h2>
+                    <p class="text-gray-500 text-sm max-w-xl" x-text="lang==='cn'?'这是您的资产出海总调度台，无缝整合工商落地、品牌出海、离岸 Web3 三大战略引擎。':'Your central hub for offshore expansion.'"></p>
+                </div>
+                <div class="flex gap-4">
+                    <div class="glass px-6 py-3 rounded-2xl border-[#14F195]/20 text-center bg-[#14F195]/5 cursor-pointer hover:bg-[#14F195]/10 transition" @click="isChatOpen = true">
+                        <div class="text-[9px] text-gray-500 uppercase mb-1">AI Assistant</div>
+                        <div class="text-[#14F195] text-xs font-bold font-mono flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-[#14F195] animate-pulse"></span> ASK AI NOW
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="hidden lg:flex items-center gap-8 text-sm font-bold uppercase tracking-wider">
-                <a @click="view='home'" class="nav-link cursor-pointer" :class="view==='home' && 'text-solana-green border-solana-green'">主页</a>
-                <a @click="view='services'" class="nav-link cursor-pointer" :class="view==='services' && 'text-solana-green border-solana-green'">服务与报价</a>
-                <a @click="view='parks'" class="nav-link cursor-pointer" :class="view==='parks' && 'text-solana-green border-solana-green'">13大园区</a>
-                <a @click="view='sop'" class="nav-link cursor-pointer" :class="view==='sop' && 'text-solana-green border-solana-green'">交付流程(SOP)</a>
-                <a @click="view='cases'" class="nav-link cursor-pointer" :class="view==='cases' && 'text-solana-green border-solana-green'">成功案例</a>
-                <a @click="view='about'" class="nav-link cursor-pointer" :class="view==='about' && 'text-solana-green border-solana-green'">关于我们</a>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div @click="openService('admin')" class="glass p-10 rounded-[40px] hover:border-[#14F195]/50 transition-all cursor-pointer group relative overflow-hidden h-[420px] flex flex-col justify-between bg-gradient-to-b hover:from-[#14F195]/5 hover:to-transparent">
+                    <div>
+                        <div class="w-16 h-16 bg-[#14F195]/10 border border-[#14F195]/20 rounded-2xl flex items-center justify-center text-3xl mb-8 group-hover:scale-110 transition-transform">🏛️</div>
+                        <h3 class="text-3xl font-black mb-4 uppercase">落地基建 <span class="text-gray-600 font-light">Hub</span></h3>
+                        <p class="text-gray-400 text-sm leading-relaxed" x-text="lang==='cn'?'包含 14 项标准化工商细则。解决从公司核名、地址挂靠到 EF 账户前置的物理与法务落地。':'14 core administrative services for legal landing.'"></p>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-white/10 pt-6">
+                        <span class="text-[10px] font-black text-[#14F195] uppercase tracking-widest group-hover:tracking-[0.3em] transition-all">下单选购 Order →</span>
+                        <span class="text-xs text-gray-600 font-mono">14 Items</span>
+                    </div>
+                </div>
+                <div @click="openService('design')" class="glass p-10 rounded-[40px] hover:border-purple-500/50 transition-all cursor-pointer group relative overflow-hidden h-[420px] flex flex-col justify-between bg-gradient-to-b hover:from-purple-500/5 hover:to-transparent">
+                    <div>
+                        <div class="w-16 h-16 bg-purple-500/10 border border-purple-500/20 rounded-2xl flex items-center justify-center text-3xl mb-8 group-hover:scale-110 transition-transform">🎨</div>
+                        <h3 class="text-3xl font-black mb-4 uppercase">品牌 AI <span class="text-gray-600 font-light">Matrix</span></h3>
+                        <p class="text-gray-400 text-sm leading-relaxed" x-text="lang==='cn'?'前沿 AI 驱动的国际化 LOGO、UI/UX 设计及多语种 Web3 站点构建，赋予企业全球视觉主权。':'AI-driven global logos, UI/UX, and multilingual Web3 sites.'"></p>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-white/10 pt-6">
+                        <span class="text-[10px] font-black text-purple-400 uppercase tracking-widest group-hover:tracking-[0.3em] transition-all">下单选购 Order →</span>
+                        <span class="text-xs text-gray-600 font-mono">3 Items</span>
+                    </div>
+                </div>
+                <div @click="openService('offshore')" class="glass p-10 rounded-[40px] hover:border-blue-400/50 transition-all cursor-pointer group relative overflow-hidden h-[420px] flex flex-col justify-between bg-gradient-to-b hover:from-blue-400/5 hover:to-transparent">
+                    <div>
+                        <div class="w-16 h-16 bg-blue-500/10 border border-blue-500/20 rounded-2xl flex items-center justify-center text-3xl mb-8 group-hover:scale-110 transition-transform">🌐</div>
+                        <h3 class="text-3xl font-black mb-4 uppercase">离岸 Web3 <span class="text-gray-600 font-light">RWA</span></h3>
+                        <p class="text-gray-400 text-sm leading-relaxed" x-text="lang==='cn'?'深度的合规架构体系。包含 RWA 实体资产代币化咨询、双15%税务实质筹划及跨境资金流动模型。':'Deep compliance architecture and RWA tokenization.'"></p>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-white/10 pt-6">
+                        <span class="text-[10px] font-black text-blue-400 uppercase tracking-widest group-hover:tracking-[0.3em] transition-all">下单选购 Order →</span>
+                        <span class="text-xs text-gray-600 font-mono">Strategic</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                <div>
+                    <div class="text-[#14F195] font-mono text-xs mb-3 tracking-[0.4em] uppercase">Service Pricing</div>
+                    <h2 class="text-4xl font-black italic uppercase tracking-tighter" x-text="lang === 'cn' ? '业务选购与下单' : 'Order Services'"></h2>
+                    <div class="h-1 w-20 bg-[#14F195] mt-4"></div>
+                </div>
+                <div class="flex gap-2 bg-white/5 p-1 rounded-2xl overflow-x-auto no-scrollbar border border-white/10">
+                    <button @click="activeTab = 'admin'" :class="activeTab === 'admin' ? 'bg-[#14F195] text-black shadow-lg' : 'text-gray-400 hover:text-white'" class="px-6 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all whitespace-nowrap">落地基建 (14项)</button>
+                    <button @click="activeTab = 'design'" :class="activeTab === 'design' ? 'bg-purple-500 text-white shadow-lg' : 'text-gray-400 hover:text-white'" class="px-6 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all whitespace-nowrap">品牌 AI</button>
+                    <button @click="activeTab = 'offshore'" :class="activeTab === 'offshore' ? 'bg-blue-500 text-white shadow-lg' : 'text-gray-400 hover:text-white'" class="px-6 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all whitespace-nowrap">离岸与 Web3</button>
+                </div>
             </div>
 
-            <div class="flex items-center gap-6">
-                <div class="flex bg-white/10 p-1 rounded-lg text-[10px] font-black">
-                    <button @click="lang='cn'" :class="lang==='cn' ? 'bg-white text-black' : 'text-white'" class="px-3 py-1 rounded transition">简</button>
-                    <button @click="lang='en'" :class="lang==='en' ? 'bg-white text-black' : 'text-white'" class="px-3 py-1 rounded transition">EN</button>
-                    <button @click="lang='jp'" :class="lang==='jp' ? 'bg-white text-black' : 'text-white'" class="px-3 py-1 rounded transition">JP</button>
+            <div class="glass rounded-[40px] overflow-hidden shadow-2xl border-white/10">
+                <table class="w-full text-left border-collapse">
+                    <thead class="bg-black/40 text-[10px] text-gray-500 uppercase tracking-[0.2em] border-b border-white/10">
+                        <tr>
+                            <th class="p-6 md:p-8 font-bold">Code / Item 名称</th>
+                            <th class="p-6 md:p-8 text-center font-bold">Price (CNY)</th>
+                            <th class="p-6 md:p-8 hidden md:table-cell font-bold">详细说明 / Description</th>
+                            <th class="p-6 md:p-8 text-right font-bold">操作 / Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm divide-y divide-white/5 bg-black/20">
+                        <template x-for="item in currentPricing" :key="item.code">
+                            <tr class="row-hover group">
+                                <td class="p-6 md:p-8">
+                                    <div class="text-white font-bold mb-1 text-base" x-text="lang==='cn'?item.cn:item.en"></div>
+                                    <div class="text-[9px] text-[#14F195] font-mono tracking-widest opacity-80" x-text="item.code"></div>
+                                </td>
+                                <td class="p-6 md:p-8 text-center">
+                                    <div class="text-white font-black text-lg md:text-xl tracking-tighter" x-text="'¥ ' + item.price"></div>
+                                </td>
+                                <td class="p-6 md:p-8 hidden md:table-cell text-gray-400 text-xs leading-relaxed" x-text="lang==='cn'?item.remCn:item.remEn"></td>
+                                <td class="p-6 md:p-8 text-right">
+                                    <button @click="openOrderModal(item)" class="px-6 py-2 bg-white/5 hover:bg-[#14F195] text-white hover:text-black border border-white/10 hover:border-[#14F195] rounded-xl text-[10px] font-black uppercase tracking-widest transition-all shadow-lg whitespace-nowrap">
+                                        下单 Order
+                                    </button>
+                                </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section id="sop" class="py-24 px-6 max-w-7xl mx-auto border-t border-white/5">
+        <h2 class="text-center text-xs font-black tracking-[0.5em] text-gray-600 mb-20 uppercase">Global SOP / 12步工业化交付标准</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            <template x-for="(step, i) in sopSteps">
+                <div class="glass p-6 rounded-3xl border-white/5 hover:bg-white/5 hover:border-[#14F195]/30 transition-all group relative overflow-hidden">
+                    <div class="absolute -right-4 -bottom-4 text-5xl font-black text-white/[0.03] group-hover:text-[#14F195]/10 transition-colors" x-text="(i+1 < 10 ? '0' : '') + (i+1)"></div>
+                    <div class="text-[9px] font-mono text-[#14F195] mb-3 opacity-70 group-hover:opacity-100" x-text="'PHASE ' + (i+1 < 10 ? '0' + (i+1) : i+1)"></div>
+                    <div class="font-bold text-[12px] uppercase text-gray-200 leading-tight relative z-10" x-text="lang === 'cn' ? step.cn : step.en"></div>
                 </div>
-                <button class="text-sm font-bold text-white/70 hover:text-white transition">登录</button>
-                <button class="bg-white text-black px-6 py-2 rounded-full text-sm font-black hover:bg-solana-green transition">开启咨询</button>
+            </template>
+        </div>
+    </section>
+
+    <section id="trust" class="py-20 px-6 bg-black/50 border-t border-white/5">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-center text-[10px] font-black tracking-[0.6em] text-gray-500 mb-12 uppercase italic">Corporate Credentials / 资信实力</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="glass p-6 rounded-3xl flex flex-col items-center justify-center text-center hover:bg-white/5 transition">
+                    <div class="text-3xl font-black text-white mb-2 tracking-tighter">Licensed</div>
+                    <div class="text-[9px] text-[#14F195] uppercase tracking-widest">海南首批封关合规咨询资质</div>
+                </div>
+                <div class="glass p-6 rounded-3xl flex flex-col items-center justify-center text-center hover:bg-white/5 transition">
+                    <div class="text-3xl font-black text-white mb-2 tracking-tighter">ISO 27001</div>
+                    <div class="text-[9px] text-gray-400 uppercase tracking-widest">离岸数据安全体系认证</div>
+                </div>
+                <div class="glass p-6 rounded-3xl flex flex-col items-center justify-center text-center hover:bg-white/5 transition">
+                    <div class="text-3xl font-black text-white mb-2 tracking-tighter">Web3 Cert</div>
+                    <div class="text-[9px] text-gray-400 uppercase tracking-widest">数字资产合规架构合作方</div>
+                </div>
+                <div class="glass p-6 rounded-3xl flex flex-col items-center justify-center text-center hover:bg-white/5 transition">
+                    <div class="text-3xl font-black text-white mb-2 tracking-tighter">SME A++</div>
+                    <div class="text-[9px] text-gray-400 uppercase tracking-widest">年度商业诚信示范单位</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div x-show="isTaxOpen" x-transition.opacity x-cloak class="fixed inset-0 z-[200] flex items-center justify-center p-6 bg-black/95 backdrop-blur-xl">
+        <div class="glass-panel max-w-lg w-full p-10 md:p-14 rounded-[40px] relative text-center shadow-[0_0_80px_rgba(20,241,149,0.15)]" @click.away="isTaxOpen = false">
+            <button @click="isTaxOpen = false" class="absolute top-6 right-8 text-gray-500 hover:text-white hover:rotate-90 transition-all duration-300 text-2xl">✕</button>
+            <div class="w-16 h-16 bg-gradient-to-br from-[#14F195] to-[#9945FF] rounded-2xl mx-auto mb-6 flex items-center justify-center shadow-lg">
+                <svg class="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            </div>
+            <h3 class="text-3xl font-black mb-2 uppercase tracking-tighter" x-text="lang === 'cn' ? '封关红利·节税测算' : 'Tax Optimizer'"></h3>
+            <p class="text-[10px] text-[#14F195] uppercase tracking-widest mb-10" x-text="lang === 'cn' ? '基于双15%实质性运营政策' : 'Based on 15% substantive policy'"></p>
+            
+            <div class="space-y-6">
+                <div class="bg-black/50 p-6 rounded-3xl border border-white/10 focus-within:border-[#14F195]/50 transition-colors">
+                    <label class="block text-[10px] text-gray-500 uppercase tracking-widest mb-3" x-text="lang === 'cn' ? '输入年度预估营收 (万人民币)' : 'Est. Annual Revenue (10k CNY)'"></label>
+                    <div class="flex items-center justify-center gap-2">
+                        <span class="text-2xl text-gray-600 font-black">¥</span>
+                        <input type="number" x-model="income" class="w-32 bg-transparent text-5xl font-black text-center outline-none text-white focus:text-[#14F195] transition-colors" placeholder="100">
+                        <span class="text-xl text-gray-600 font-bold" x-show="lang==='cn'">W</span>
+                    </div>
+                </div>
+                <button @click="runAiCalc()" class="w-full py-5 bg-white text-black hover:bg-[#14F195] font-black rounded-2xl uppercase tracking-[0.2em] transition-all duration-300" :disabled="calculating" :class="{'opacity-50 cursor-not-allowed': calculating}">
+                    <span x-text="calculating ? 'Processing...' : (lang === 'cn' ? '运行 AI 测算' : 'Run Analysis')"></span>
+                </button>
+                <div x-show="showResult" x-transition.duration.500ms class="mt-6 p-8 rounded-3xl bg-gradient-to-br from-[#14F195]/20 to-transparent border border-[#14F195]/40 text-left relative overflow-hidden">
+                    <p class="text-[10px] text-[#14F195] uppercase tracking-widest mb-2">预计可节省年度税务成本</p>
+                    <div class="text-5xl font-black text-white tracking-tighter">¥ <span x-text="(income * 0.18).toFixed(1)"></span> <span class="text-2xl text-gray-400">万</span></div>
+                </div>
             </div>
         </div>
     </div>
 
-    <main>
-        
-        <template x-if="view === 'home'">
-            <section class="relative pt-32 pb-48 overflow-hidden">
-                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-sol-purple/20 blur-[120px] rounded-full"></div>
-                <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
-                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 mb-8">
-                        <span class="w-2 h-2 rounded-full bg-sol-green animate-pulse"></span>
-                        <span class="text-xs font-bold tracking-widest text-sol-green uppercase">2026 封关合规交付系统已就绪</span>
+    <div x-show="isOrderOpen" x-transition.opacity x-cloak class="fixed inset-0 z-[200] flex items-center justify-center p-6 bg-black/95 backdrop-blur-xl">
+        <div class="glass-panel max-w-md w-full p-10 rounded-[40px] relative text-left shadow-[0_0_80px_rgba(20,241,149,0.15)]" @click.away="isOrderOpen = false">
+            <button @click="isOrderOpen = false" class="absolute top-6 right-8 text-gray-500 hover:text-white transition-all text-2xl">✕</button>
+            <div class="text-[10px] font-mono text-[#14F195] mb-2 tracking-[0.3em] uppercase">Order Confirmation</div>
+            <h3 class="text-2xl font-black mb-6 uppercase tracking-tighter text-white">确认下单意向</h3>
+            
+            <div class="bg-white/5 p-6 rounded-2xl border border-white/10 mb-8" x-show="selectedOrder">
+                <div class="text-[9px] text-gray-500 font-mono tracking-widest mb-1" x-text="selectedOrder?.code"></div>
+                <div class="text-lg font-bold text-white mb-2" x-text="lang==='cn'?selectedOrder?.cn:selectedOrder?.en"></div>
+                <div class="text-3xl font-black text-[#14F195] tracking-tighter" x-text="'¥ ' + selectedOrder?.price"></div>
+            </div>
+            
+            <p class="text-xs text-gray-400 mb-8 leading-relaxed">请选择您最方便的通讯工具，我们的专属合规专家将立即响应您的下单请求并启动 12 步 SOP 流程。</p>
+            
+            <div class="space-y-3">
+                <a href="#" class="w-full py-4 bg-[#07c160]/10 border border-[#07c160]/30 text-[#07c160] hover:bg-[#07c160] hover:text-white font-bold rounded-xl flex items-center justify-center gap-3 transition-all">
+                    微信极速建联 (WeChat)
+                </a>
+                <a href="#" class="w-full py-4 bg-[#24A1DE]/10 border border-[#24A1DE]/30 text-[#24A1DE] hover:bg-[#24A1DE] hover:text-white font-bold rounded-xl flex items-center justify-center gap-3 transition-all">
+                    Telegram 加密专线
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed bottom-6 right-6 z-[150] flex flex-col items-end">
+        <div x-show="isChatOpen" x-transition.origin.bottom.right class="mb-4 glass-panel w-80 md:w-96 h-[500px] rounded-[30px] flex flex-col overflow-hidden shadow-2xl border border-[#14F195]/30" x-cloak>
+            <div class="bg-[#14F195]/10 p-4 border-b border-[#14F195]/20 flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                    <span class="relative flex h-3 w-3"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#14F195] opacity-75"></span><span class="relative inline-flex rounded-full h-3 w-3 bg-[#14F195]"></span></span>
+                    <span class="text-xs font-black uppercase tracking-widest text-white">AI 合规助理</span>
+                </div>
+                <button @click="isChatOpen = false" class="text-gray-400 hover:text-white">✕</button>
+            </div>
+            
+            <div class="flex-1 p-4 overflow-y-auto space-y-4 no-scrollbar bg-black/50" id="chatbox">
+                <template x-for="msg in chatMessages">
+                    <div :class="msg.role === 'ai' ? 'text-left' : 'text-right'">
+                        <div class="inline-block p-3 rounded-2xl max-w-[85%] text-xs leading-relaxed"
+                             :class="msg.role === 'ai' ? 'bg-white/10 text-gray-200 rounded-tl-sm' : 'bg-[#14F195] text-black font-bold rounded-tr-sm'"
+                             x-html="msg.content"></div>
                     </div>
-                    <h2 class="text-7xl lg:text-9xl font-black tracking-tighter mb-10 leading-none">
-                        SOLANA <br> <span class="text-gradient">HAINAN</span>
-                    </h2>
-                    <p class="text-xl text-slate-400 max-w-3xl mx-auto mb-16 leading-relaxed">
-                        深耕海南自贸港 13 大重点园区，为全球 Web3 与数字贸易企业提供
-                        <span class="text-white font-bold">实质性运营</span>、<span class="text-white font-bold">EF 账户开立</span> 及 <span class="text-white font-bold">VIE 跨境架构</span> 全流程咨询。
-                    </p>
-                    <div class="flex justify-center gap-6">
-                        <button @click="view='services'" class="solana-gradient px-12 py-5 rounded-2xl font-black text-black hover:scale-105 transition shadow-[0_0_30px_rgba(20,241,149,0.3)]">立即查看服务报价</button>
-                        <button @click="view='sop'" class="bg-white/10 px-12 py-5 rounded-2xl font-bold border border-white/20 hover:bg-white/20 transition">了解交付流程</button>
-                    </div>
-                </div>
-            </section>
-        </template>
-
-        <template x-if="view === 'services'">
-            <section class="py-24 max-w-7xl mx-auto px-6">
-                <h3 class="text-4xl font-black mb-16 italic">SERVICE MATRIX & PRICING <span class="text-sol-blue">.</span></h3>
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    <template x-for="s in serviceData">
-                        <div class="glass-card p-12 rounded-[40px] hover:border-sol-green/50 transition-all group">
-                            <div class="text-xs font-black text-sol-green mb-4 tracking-[0.3em] uppercase" x-text="s.level"></div>
-                            <h4 class="text-3xl font-black mb-2" x-text="s.title"></h4>
-                            <div class="text-5xl font-black tracking-tighter mb-10 text-gradient" x-text="s.price"></div>
-                            <ul class="space-y-4 mb-12 text-sm text-slate-400">
-                                <template x-for="feat in s.features">
-                                    <li class="flex items-center gap-3"><span class="text-sol-blue">▶</span> <span x-text="feat"></span></li>
-                                </template>
-                            </ul>
-                            <button class="w-full py-4 rounded-xl bg-white text-black font-black hover:bg-sol-green transition">立即预约</button>
-                        </div>
-                    </template>
-                </div>
-                <div class="mt-20 flex flex-col items-center border-t border-white/10 pt-20">
-                    <p class="text-xs font-bold text-slate-500 mb-8 uppercase tracking-widest text-center">我们接受以下支付方式 | We Accept</p>
-                    <div class="flex gap-12 opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition duration-700">
-                        <img src="alipay.jpg" class="h-8" alt="Alipay">
-                        <img src="wechat_pay.jpg" class="h-8" alt="Wechat Pay">
-                        <div class="flex items-center gap-2 font-black text-xl"><img src="https://solana.com/favicon.ico" class="h-6"> SOLANA</div>
-                    </div>
-                </div>
-            </section>
-        </template>
-
-        <template x-if="view === 'parks'">
-            <section class="py-24 max-w-[1600px] mx-auto px-6">
-                <div class="mb-20 text-center">
-                    <h3 class="text-5xl font-black italic mb-4">THE 13 ZONES</h3>
-                    <p class="text-slate-500">精准匹配海南 2026 封关政策，锁定 15% 所得税红利。</p>
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <template x-for="p in parkList">
-                        <div class="glass-card p-8 rounded-3xl hover:bg-white/10 cursor-pointer transition group">
-                            <div class="flex justify-between items-start mb-6">
-                                <span class="text-[10px] font-black text-sol-blue uppercase" x-text="p.category"></span>
-                                <span class="text-xs text-white/20" x-text="'#'+p.id"></span>
-                            </div>
-                            <h4 class="text-xl font-bold mb-4 group-hover:text-sol-green transition" x-text="p.name"></h4>
-                            <p class="text-xs text-slate-500 leading-relaxed" x-text="p.desc"></p>
-                        </div>
-                    </template>
-                </div>
-            </section>
-        </template>
-
-        <template x-if="view === 'sop'">
-            <section class="py-24 max-w-5xl mx-auto px-6">
-                <h3 class="text-4xl font-black mb-20 text-center italic">合规交付 SOP <span class="text-sol-green">/</span> 12 STEPS</h3>
-                <div class="relative border-l-2 border-white/10 ml-4 space-y-12">
-                    <template x-for="(step, i) in sopSteps">
-                        <div class="relative pl-12 sop-step transition">
-                            <div class="step-num absolute left-[-21px] top-0 w-10 h-10 rounded-full bg-black border-2 border-sol-purple flex items-center justify-center font-black text-xs transition duration-500" x-text="i+1"></div>
-                            <h4 class="text-xl font-black mb-2" x-text="step.title"></h4>
-                            <p class="text-slate-500 text-sm" x-text="step.desc"></p>
-                        </div>
-                    </template>
-                </div>
-            </section>
-        </template>
-
-    </main>
-
-    <footer class="bg-[#050505] border-t border-white/5 pt-24 pb-12">
-        <div class="max-w-[1600px] mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-16">
-            <div class="col-span-2">
-                <div class="flex items-center gap-4 mb-8">
-                    <div class="w-8 h-8 solana-gradient rounded-full"></div>
-                    <span class="text-xl font-black italic">SOLANA HAINAN</span>
-                </div>
-                <p class="text-slate-500 text-sm max-w-sm mb-8">
-                    作为 Solana 生态在自贸港的先锋咨询机构，我们致力于将区块链的去中心化精神与海南封关后的高度开放政策相结合，打造全球资产避风港。
-                </p>
-                <div class="flex gap-4">
-                    <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-sol-purple transition">𝕏</a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-sol-purple transition">TG</a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-sol-purple transition">GH</a>
+                </template>
+                <div x-show="isTyping" class="text-left">
+                    <div class="inline-block p-3 rounded-2xl bg-white/5 text-gray-400 rounded-tl-sm text-xs">AI is typing...</div>
                 </div>
             </div>
-            <div>
-                <h5 class="text-xs font-black text-sol-green uppercase tracking-widest mb-8">快速通道</h5>
-                <ul class="space-y-4 text-sm text-slate-400">
-                    <li><a href="#" class="hover:text-white transition">Commander SaaS 登录</a></li>
-                    <li><a href="#" class="hover:text-white transition">13大园区白皮书</a></li>
-                    <li><a href="#" class="hover:text-white transition">实质性运营审计表</a></li>
-                    <li><a href="#" class="hover:text-white transition">离岸账户(EF)申请</a></li>
-                </ul>
-            </div>
-            <div>
-                <h5 class="text-xs font-black text-sol-blue uppercase tracking-widest mb-8">联系我们</h5>
-                <p class="text-sm text-slate-400 mb-2">海南省海口市复兴城互联网产业园 A 区</p>
-                <p class="text-sm font-bold text-white mb-6">kosok@solana-hainan.com</p>
-                <div class="p-4 bg-white/5 rounded-xl border border-white/10">
-                    <p class="text-[10px] text-slate-500 mb-2">工作时间（UTC+8）</p>
-                    <p class="text-xs font-bold">周一至周五 09:00 - 18:00</p>
+
+            <div class="p-4 bg-black border-t border-white/5">
+                <div class="flex flex-wrap gap-2 mb-3">
+                    <button @click="sendFastMsg('注册需要多久？')" class="px-3 py-1 bg-white/5 hover:bg-white/10 rounded-full text-[10px] text-gray-300 transition">注册需要多久？</button>
+                    <button @click="sendFastMsg('EF账户怎么开？')" class="px-3 py-1 bg-white/5 hover:bg-white/10 rounded-full text-[10px] text-gray-300 transition">EF账户怎么开？</button>
+                    <button @click="sendFastMsg('双15%什么条件？')" class="px-3 py-1 bg-white/5 hover:bg-white/10 rounded-full text-[10px] text-gray-300 transition">双15%什么条件？</button>
                 </div>
             </div>
         </div>
-        <div class="max-w-[1600px] mx-auto px-6 mt-24 pt-8 border-t border-white/5 flex justify-between items-center text-[10px] text-slate-600 font-bold tracking-widest uppercase">
-            <span>© 2026 Hainan Solana Business Consulting Center. No Financial Advice.</span>
-            <div class="flex gap-8">
-                <span>ICP备2024XXXX号-1</span>
-                <a href="#" class="hover:text-white transition">Security Audit</a>
-            </div>
+
+        <button @click="isChatOpen = !isChatOpen" class="w-14 h-14 bg-[#14F195] text-black rounded-full flex items-center justify-center text-2xl shadow-[0_0_20px_rgba(20,241,149,0.4)] hover:scale-110 transition-transform cursor-pointer">
+            <span x-show="!isChatOpen">💬</span>
+            <span x-show="isChatOpen" x-cloak>✕</span>
+        </button>
+    </div>
+
+    <footer class="py-16 border-t border-white/5 bg-[#030303] text-center mt-20">
+        <div class="text-[9px] text-gray-600 uppercase tracking-[0.5em] font-black">
+            © 2026 Solana Hainan Offshore Infrastructure | Operations Started 2025.12.18
         </div>
     </footer>
 
     <script>
-        function siteCore() {
-            return {
-                view: 'home',
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('appData', () => ({
                 lang: 'cn',
+                scrolled: false,
+                activeTab: 'admin',
+                isTaxOpen: false,
+                income: 100,
+                calculating: false,
+                showResult: false,
                 
-                // GitHub 报价数据补齐
-                serviceData: [
-                    { level: 'Level 1', title: '基础合规', price: '￥1.5w', features: ['工商注册落地', '基础代账服务', '园区入驻证明', '2026封关政策咨询'] },
-                    { level: 'Level 2', title: '增长架构', price: '￥4.8w', features: ['EF账户辅助开立', '实质性运营托管', 'Commander SaaS授权', '15%个税/税筹方案'] },
-                    { level: 'Level 3', title: '旗舰交付', price: 'Custom', features: ['VIE/红筹架构设计', '跨境资产安全交付', '离岸数据双向流通', '专属合规官随访'] }
-                ],
+                // 下单逻辑
+                isOrderOpen: false,
+                selectedOrder: null,
 
-                // 13大园区完整名单补齐
-                parkList: [
-                    { id: 1, name: '海口江东新区', category: '总部/金融', desc: '全岛封关核心区，外资总部聚集地。' },
-                    { id: 2, name: '洋浦经济开发区', category: '先进制造', desc: '加工增值30%免关税政策样板间。' },
-                    { id: 3, name: '复兴城互联网园', category: '数字贸易', desc: 'Web3、离岸数据与数字游民首选。' },
-                    { id: 4, name: '海口综合保税区', category: '跨境电商', desc: '免税品、保税维修与分拨中心。' },
-                    { id: 5, name: '三亚中央商务区', category: '现代服务', desc: '游艇产业、离岸金融与财富管理。' },
-                    { id: 6, name: '三亚崖州湾科技城', category: '高新科技', desc: '深海、种业与南繁科研高地。' },
-                    { id: 7, name: '博鳌乐城医疗园', category: '医疗旅游', desc: '全球最新药物与医疗器械特许区。' },
-                    { id: 8, name: '文昌国际航天城', category: '航天产业', desc: '商业航天发射与遥感应用基地。' },
-                    { id: 9, name: '海南生态软件园', category: '区块链/IT', desc: '数字贸易试点区，电竞与数字内容。' },
-                    { id: 10, name: '海口高新区', category: '生物医药', desc: '先进制造业与生物医药生产。' },
-                    { id: 11, name: '东方临港产业园', category: '低碳制造', desc: '油气化工与风电制氢基地。' },
-                    { id: 12, name: '昌江核电园', category: '新能源', desc: '清洁能源与高能效产业。' },
-                    { id: 13, name: '定安塔岭工业园', category: '食品加工', desc: '民生工业与冷链物流。' }
+                // AI 助手逻辑
+                isChatOpen: false,
+                isTyping: false,
+                chatMessages: [
+                    { role: 'ai', content: '您好！我是 Solana Hainan 的 AI 合规助理。目前正是 2026 封关元年红利期，请问您对哪项落地服务感兴趣？' }
                 ],
-
-                // GitHub SOP 12步核心补齐
+                
+                // 封关元年倒计时逻辑 (目标：2026年12月18日)
+                countdown: { d: '00', h: '00', m: '00', s: '00' },
+                
+                // 12 步 SOP
                 sopSteps: [
-                    { title: '企业画像测算', desc: '根据业务类型（Web3/贸易/制造）匹配最优税收模型。' },
-                    { title: '实质性运营评估', desc: '自测是否满足“人、财、物”在岛审计标准。' },
-                    { title: '园区筛选与尽调', desc: '对比13大园区对具体细分行业的落地奖励。' },
-                    { title: '离岸架构预设', desc: '针对2026封关环境设计VIE或跨国架构。' },
-                    { title: '注册与合规建档', desc: '完成工商登记，并在税务局锁定15%优惠资格。' },
-                    { title: 'EF 自由贸易账户申请', desc: '打通跨境资金调拨的唯一合法命门。' },
-                    { title: '物理办公空间落位', desc: '提供真实的、符合审计要求的工位或独立办公室。' },
-                    { title: '社保与人员派驻', desc: '完成核心高管在岛社保缴纳，确保人员实质在位。' },
-                    { title: 'Commander 系统集成', desc: '部署财务与行政同步系统，应对实时审计。' },
-                    { title: '首笔跨境收支测试', desc: '模拟真实贸易流，验证结汇与资产调拨时效。' },
-                    { title: '季度合规性自查', desc: '定期扫描运营风险，防止15%优惠被撤销。' },
-                    { title: '正式封关交付', desc: '全体系移交客户，开启长期资产增值。' }
-                ]
-            }
-        }
+                    {cn:'需求响应', en:'Inquiry'}, {cn:'架构画像', en:'Profiling'}, {cn:'云端签约', en:'E-Contract'},
+                    {cn:'预付定金', en:'Deposit'}, {cn:'极速执行', en:'Execution'}, {cn:'进度同步', en:'Reporting'},
+                    {cn:'结果初核', en:'Preview'}, {cn:'迭代优化', en:'Iteration'}, {cn:'合规复审', en:'Compliance'},
+                    {cn:'尾款清算', en:'Settlement'}, {cn:'资产交付', en:'Delivery'}, {cn:'持续支持', en:'Support'}
+                ],
+
+                // 14 项工商全量数据 + 其他
+                pricing: {
+                    admin: [
+                        {code:'CSV-01', cn:'公司名称核准', en:'Name Approval', price:'200', remCn:'3-5个名称核名，被驳回免费重提一次', remEn:'3-5 names, 1 free resubmission'},
+                        {code:'CSV-02', cn:'工商注册 (基础版)', en:'Corp Reg (Basic)', price:'800', remCn:'执照正副本+刻章+税务登记（客户自备地址）', remEn:'License+Stamps+Tax'},
+                        {code:'CSV-03', cn:'工商注册 (全包版)', en:'Corp Reg (Premium)', price:'1,900', remCn:'含自贸港园区挂靠地址一年及全套落地', remEn:'Includes 1-Year address & full setup'},
+                        {code:'CSV-04', cn:'全套刻章服务', en:'Official Stamps', price:'300', remCn:'公章、财务章、法人章、合同章、发票章 (公安备案)', remEn:'Set of 5 official legal stamps'},
+                        {code:'CSV-05', cn:'税务首次报到', en:'Tax Onboarding', price:'500', remCn:'专管员对接，税种核定与实名认证', remEn:'Tax type setup and real-name auth'},
+                        {code:'CSV-06', cn:'税控及发票申领', en:'Invoice App', price:'300', remCn:'普票或专票资质申请及首次领购指导', remEn:'Invoice eligibility application'},
+                        {code:'CSV-07', cn:'银行开户协助', en:'Bank Setup', price:'1,200', remCn:'材料预审，专人陪同办理（不含银行工本费）', remEn:'Document prep & escort'},
+                        {code:'CSV-08', cn:'社保/公积金开户', en:'Social Security', price:'500', remCn:'单位账户设立及首次增员', remEn:'Account setup + 1st employee'},
+                        {code:'CSV-09', cn:'代理记账 (零申报)', en:'Bookkeeping (D)', price:'1,500', remCn:'年度打包价。无实际流水的企业按月合规申报', remEn:'Annual price for dormant company'},
+                        {code:'CSV-10', cn:'代理记账 (小规模)', en:'Bookkeeping (S)', price:'2,000', remCn:'年度打包价。含基础建账、票据处理及税务申报', remEn:'Annual price for small-scale active'},
+                        {code:'CSV-11', cn:'代理记账 (一般人)', en:'Bookkeeping (V)', price:'5,000', remCn:'年度打包价。全盘账务处理及增值税抵扣', remEn:'Annual price for VAT taxpayers'},
+                        {code:'CSV-12', cn:'公司变更 (单项)', en:'Corp Alteration', price:'600', remCn:'法人/地址/注册资本等单项变更', remEn:'Per item change'},
+                        {code:'CSV-13', cn:'公司注销服务', en:'Company Liquidation', price:'2,000', remCn:'起步价。含税务清算、登报及工商注销', remEn:'Starting price. Includes tax clearance'},
+                        {code:'CSV-14', cn:'国内商标注册', en:'Trademark (CN)', price:'800', remCn:'单类单件。含通过率检索分析及全流程申报', remEn:'Per class. Includes search & filing'}
+                    ],
+                    design: [
+                        {code:'DSG-01', cn:'AI 国际化品牌 LOGO', en:'Global AI Logo', price:'800', remCn:'3 套方案 + 人工精修，48H交付', remEn:'3 concepts + refinement, 48h'},
+                        {code:'DSG-02', cn:'创业出海全量视觉包', en:'Brand Pack', price:'1,500', remCn:'LOGO、名片、PPT 模板及社媒头图', remEn:'Logo, Biz Card, PPT, Social'},
+                        {code:'DSG-03', cn:'Web3 响应式官网', en:'Web3 Site', price:'2,000', remCn:'极简设计，适配移动端，自带 SEO', remEn:'Responsive, mobile-ready, SEO'}
+                    ],
+                    offshore: [
+                        {code:'WEB3-01', cn:'EF 电子围栏账户开立', en:'EF Account', price:'5,000', remCn:'搭建自贸港跨境资金自由流通清算体系', remEn:'Setup for free capital flow via EF'},
+                        {code:'WEB3-02', cn:'双15% 税务合规筹划', en:'15% Tax Structuring', price:'3,000', remCn:'实质性运营标准构建指导，锁定双重优惠', remEn:'Substance standard advisory'},
+                        {code:'WEB3-03', cn:'RWA 资产代币化咨询', en:'RWA Tokenization', price:'定制', remCn:'探索实体资产合规上链与发行路径', remEn:'Compliant pathways for RWA'}
+                    ]
+                },
+
+                get currentPricing() {
+                    return this.pricing[this.activeTab];
+                },
+
+                init() {
+                    window.addEventListener('scroll', () => { this.scrolled = window.scrollY > 50; });
+
+                    // 倒计时至 2026.12.18
+                    const targetDate = new Date('2026-12-18T23:59:59').getTime();
+                    setInterval(() => {
+                        const now = new Date().getTime();
+                        const diff = targetDate - now;
+                        if(diff > 0) {
+                            this.countdown.d = Math.floor(diff / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+                            this.countdown.h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+                            this.countdown.m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+                            this.countdown.s = Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2, '0');
+                        }
+                    }, 1000);
+                },
+
+                toggleLang() { this.lang = this.lang === 'cn' ? 'en' : 'cn'; },
+                openService(id) { this.activeTab = id; document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' }); },
+                openOrderModal(item) { this.selectedOrder = item; this.isOrderOpen = true; },
+                
+                runAiCalc() {
+                    if(!this.income || this.income <= 0) return;
+                    this.calculating = true; this.showResult = false;
+                    setTimeout(() => { this.calculating = false; this.showResult = true; }, 1200);
+                },
+
+                // AI 聊天逻辑
+                sendFastMsg(text) {
+                    this.chatMessages.push({ role: 'user', content: text });
+                    this.isTyping = true;
+                    this.scrollToBottom();
+                    
+                    setTimeout(() => {
+                        this.isTyping = false;
+                        let reply = '';
+                        if(text.includes('注册')) reply = '在资料齐全的情况下，<strong>3个工作日</strong>即可完成海南公司执照下发，7个工作日完成印章、税务和银行开户的全套基建。';
+                        else if(text.includes('EF账户')) reply = 'EF 账户即多功能自由贸易账户。目前已向部分符合实质性运营的企业开放，支持资金在海南与境外自由汇兑，不受国内结售汇额度限制。我们可以协助您进行资质前置审核。';
+                        else if(text.includes('15%')) reply = '需要满足两个核心条件：1. 属于鼓励类产业目录；2. 具备<strong>实质性运营</strong>（在海南有实际办公地址、人员社保缴纳及业务发生）。我们可以为您提供全套合规筹划。';
+                        else reply = '好的，已收到您的需求。您可以点击左下角按钮联系我们的人工专家进行深度解答。';
+                        
+                        this.chatMessages.push({ role: 'ai', content: reply });
+                        this.scrollToBottom();
+                    }, 1000);
+                },
+
+                scrollToBottom() {
+                    setTimeout(() => {
+                        const box = document.getElementById('chatbox');
+                        if(box) box.scrollTop = box.scrollHeight;
+                    }, 100);
+                }
+            }));
+        });
     </script>
 </body>
 </html>
